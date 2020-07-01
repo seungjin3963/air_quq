@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<!-- Root Context: defines shared resources visible to all other web components -->
+		<!-- MySql DataSource -->
+		<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+			<property name="driverClassName" value="com.mysql.cj.jdbc.Driver"></property>
+			<!-- jdbc:mysql://localhost:3306/ [Sample01] 선택된 데이터베이스이름 입력  -->
+			<property name="url" value="jdbc:mysql://192.168.0.2:3306/air_quq"/>
+			<!-- 
+				SET GLOBAL time_zone = '+3:00'; 으로 에러해결
+			 -->
+			<!-- 계정의 아이디와 비밀번호 입력 -->
+			<property name="username" value="beom"/>
+			<property name="password" value="java1234"/>
+		</bean>
+		
+		<!-- SqlSessionFactoryBean 설정 -->
+		<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+			<property name="dataSource" ref="dataSource"/>
+			<property name="configLocation" value="classpath:com/jhta/mybatis/config/mybatis-config.xml"/>
+		</bean>
+		
+		<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
+			<constructor-arg index="0" ref="sqlSessionFactory"/>
+		</bean>
+</beans>
