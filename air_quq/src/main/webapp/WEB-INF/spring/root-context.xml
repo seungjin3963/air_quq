@@ -13,7 +13,7 @@
 				SET GLOBAL time_zone = '+3:00'; 으로 에러해결
 			 -->
 			<!-- 계정의 아이디와 비밀번호 입력 -->
-			<property name="username" value="beom"/>
+			<property name="username" value="admin"/>
 			<property name="password" value="java1234"/>
 		</bean>
 		
