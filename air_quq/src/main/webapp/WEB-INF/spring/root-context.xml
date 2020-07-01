@@ -8,7 +8,7 @@
 		<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 			<property name="driverClassName" value="com.mysql.cj.jdbc.Driver"></property>
 			<!-- jdbc:mysql://localhost:3306/ [Sample01] 선택된 데이터베이스이름 입력  -->
-			<property name="url" value="jdbc:mysql://192.168.0.2:3306/air_quq"/>
+			<property name="url" value="jdbc:mysql://localhost:3306/air_quq"/>
 			<!-- 
 				SET GLOBAL time_zone = '+3:00'; 으로 에러해결
 			 -->

@@ -33,13 +33,11 @@
 	<beans:bean
 		class="org.springframework.web.servlet.view.UrlBasedViewResolver">
 		<beans:property name="viewNames" value=".*"></beans:property>
-		<beans:property name="viewClass"
-			value="org.springframework.web.servlet.view.tiles3.TilesView"></beans:property>
+		<beans:property name="viewClass" value="org.springframework.web.servlet.view.tiles3.TilesView"></beans:property>
 		<beans:property name="order" value="1"></beans:property>
 	</beans:bean>
 
-	<beans:bean
-		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<beans:property name="prefix" value="/WEB-INF/views/" />
 		<beans:property name="suffix" value=".jsp" />
 		<beans:property name="order" value="2"></beans:property>

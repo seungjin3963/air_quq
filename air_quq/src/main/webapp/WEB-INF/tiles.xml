@@ -2,14 +2,22 @@
 <!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN" 
 "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
 <tiles-definitions>
-	<definition name=".home"
-		template="/WEB-INF/views/layout.jsp">
-		<put-attribute name="header"
-			value="/WEB-INF/views/header.jsp"></put-attribute>
-		<put-attribute name="main"
-			value="/WEB-INF/views/home.jsp"></put-attribute>
-		<put-attribute name="footer"
-			value="/WEB-INF/views/footer.jsp"></put-attribute>
+	<definition name=".home" template="/WEB-INF/views/layout.jsp">
+		<put-attribute name="header" value="/WEB-INF/views/header.jsp"></put-attribute>
+		<put-attribute name="main" value="/WEB-INF/views/home.jsp"></put-attribute>
+		<put-attribute name="footer" value="/WEB-INF/views/footer.jsp"></put-attribute>
+	</definition>
+	
+	<definition name=".login" extends=".home">
+		<put-attribute name="main" value="/WEB-INF/login/login.jsp"></put-attribute>
+	</definition>
+	
+	<definition name=".join" extends=".home">
+		<put-attribute name="main" value="/WEB-INF/join/join.jsp"></put-attribute>
+	</definition>
+	
+	<definition name=".loginforgotpw" extends=".home">
+		<put-attribute name="main" value="/WEB-INF/join/forgot-password.jsp"></put-attribute>
 	</definition>
 </tiles-definitions>
 

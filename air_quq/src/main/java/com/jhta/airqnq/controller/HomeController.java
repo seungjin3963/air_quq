@@ -18,4 +18,19 @@ public class HomeController {
 	public String error() {
 		return ".error";
 	}
+	
+	@RequestMapping(value = "/login", method = RequestMethod.GET)
+	public String login() {
+		return ".login";
+	}
+	
+	@RequestMapping(value = "/member/join", method = RequestMethod.GET)
+	public String join() {
+		return ".join";
+	}
+	
+	@RequestMapping(value = "login/forgotpwd", method = RequestMethod.GET)
+	public String loginForgotPassword() {
+		return ".loginforgotpw";
+	}
 }
