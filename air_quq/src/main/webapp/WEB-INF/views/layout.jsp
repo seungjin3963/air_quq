@@ -21,6 +21,8 @@
 <link href="/resources/css/home.css" rel="stylesheet">
 
 
+
+
 </head>
 <body id="page-top">
 	<div id="wrapper">
@@ -70,5 +72,8 @@
 
 	<!-- Custom scripts for all pages-->
 	<script src="/resources/js/sb-admin-2.min.js"></script>
+	
+	<!-- 회원가입 관련 js -->
+	<script type="text/javascript" src="/resources/js/main/main.js"></script>
 </body>
 </html>
