@@ -19,11 +19,14 @@
 <link href="/resources/css/sb-admin-2.min.css" rel="stylesheet">
 
 <link href="/resources/css/home.css" rel="stylesheet">
+<link href="/resources/css/experience.css" rel="stylesheet"><!-- 영노 -->
+
 
 
 </head>
 <body id="page-top">
 	<div id="wrapper">
+		
 		<div id="header">
 			<tiles:insertAttribute name="header" />
 		</div>
@@ -70,5 +73,8 @@
 
 	<!-- Custom scripts for all pages-->
 	<script src="/resources/js/sb-admin-2.min.js"></script>
+	
+	<!-- 회원가입 관련 js -->
+	<script type="text/javascript" src="/resources/js/main/main.js"></script>
 </body>
 </html>
