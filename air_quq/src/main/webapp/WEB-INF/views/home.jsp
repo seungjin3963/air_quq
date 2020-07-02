@@ -11,13 +11,13 @@
 		<div class="row no-gutters align-items-center">
 			<div class="col mr-2">
 				<div class="text-xs font-weight-bold text-primary text-uppercase mb-1">체크인</div>
-				<input type="text" class="form-control bg-light border-0 small" placeholder="날짜 추가">
+				<input type="date" class="form-control bg-light border-0 small" placeholder="날짜 추가">
 			</div>
 		</div>
 		<div class="row no-gutters align-items-center">
 			<div class="col mr-2">
 				<div class="text-xs font-weight-bold text-primary text-uppercase mb-1">체크아웃</div>
-				<input type="text" class="form-control bg-light border-0 small" placeholder="날짜 추가">
+				<input type="date" class="form-control bg-light border-0 small" placeholder="날짜 추가">
 			</div>
 		</div>
 		<div class="row no-gutters align-items-center">
@@ -32,4 +32,5 @@
 			</button>
 		</div>
 	</div>
+	<h1>test</h1>
 </form>
