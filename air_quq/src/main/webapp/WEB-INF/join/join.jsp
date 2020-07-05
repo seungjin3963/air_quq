@@ -1,4 +1,5 @@
     <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+    
   <div class="container">
 
     <div class="card o-hidden border-0 shadow-lg my-5">
@@ -9,9 +10,9 @@
           <div class="col-lg-7">
             <div class="p-5">
               <div class="text-center">
-                <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
+                <h1 class="h4 text-gray-900 mb-4">새로운 회원으로 등록하기!</h1>
               </div>
-              <form class="user" action="/upload/memberjoin" enctype="multipart/form-data">
+              <form class="user" action="/upload/memberjoin" enctype="multipart/form-data" onsubmit="false">
                 <div class="form-group row">
                   <div class="col-sm-12 mb-3 mb-sm-0">
                     <input type="text" class="form-control form-control-user" placeholder="아이디" name="id">
@@ -21,7 +22,7 @@
                   <input type="text" class="form-control form-control-user" placeholder="주소" name="addr">
                 </div>
                 <div class="form-group">
-                  <input type="email" class="form-control form-control-user" placeholder="Email Address" name="email">
+                  <input type="email" class="form-control form-control-user" placeholder="이메일 주소" name="email">
                 </div>
                 <div class="form-group row">
 	                <div class="col-sm-12 mb-3 mb-sm-0">
@@ -30,10 +31,10 @@
                 </div>
                 <div class="form-group row">
                   <div class="col-sm-6 mb-3 mb-sm-0">
-                    <input type="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Password" name="pwd">
+                    <input type="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="비밀번호" name="pwd">
                   </div>
                   <div class="col-sm-6">
-                    <input type="password" class="form-control form-control-user" id="exampleRepeatPassword" placeholder="Repeat Password">
+                    <input type="password" class="form-control form-control-user" id="exampleRepeatPassword" placeholder="비밀번호 확인" name="pwdChk">
                   </div>
                 </div>
                 
@@ -53,24 +54,21 @@
 	            <div class="form-group">
                  	 <b>프로필 사진&nbsp;&nbsp;&nbsp;<input type="file" name="file1">
                 </div>
-                
-                <a href="login.html" class="btn btn-primary btn-user btn-block">
-                  Register Account
-                </a>
+                <input type="submit" id="search" name="submit" alt="search" value="회원가입 하기" class="btn btn-primary btn-user btn-block">
                 <hr>
                 <a href="index.html" class="btn btn-google btn-user btn-block">
-                  <i class="fab fa-google fa-fw"></i> Register with Google
+                  <i class="fab fa-google fa-fw"></i> 구글 아이디로 가입하기
                 </a>
                 <a href="index.html" class="btn btn-facebook btn-user btn-block">
-                  <i class="fab fa-facebook-f fa-fw"></i> Register with Facebook
+                  <i class="fab fa-facebook-f fa-fw"></i> 페이스북 아이디로 가입하기
                 </a>
               </form>
               <hr>
               <div class="text-center">
-                <a class="small" href="/login/forgotpwd">Forgot Password?</a>
+                <a class="small" href="/login/forgotpwd">비밀번호를 잊으셨나요?</a>
               </div>
               <div class="text-center">
-                <a class="small" href="/login">Already have an account? Login!</a>
+                <a class="small" href="/login">아이디가있으신가요? 로그인하기!</a>
               </div>
             </div>
           </div>
