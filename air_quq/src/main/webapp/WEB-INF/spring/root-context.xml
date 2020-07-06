@@ -12,13 +12,8 @@
 		<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 			<property name="driverClassName" value="${jdbc.driverClassName}"></property>
 			<!-- jdbc:mysql://localhost:3306/ [Sample01] 선택된 데이터베이스이름 입력  -->
-<<<<<<< HEAD
-			<property name="url" value="jdbc:mysql://192.168.0.2:3306/air_quq"/>
-			<!-- 
-=======
 			<property name="url" value="${jdbc.url}"/>
 			<!--
->>>>>>> 776dcaf570ee748a0352635f9d85625823d7ed6e
 				SET GLOBAL time_zone = '+3:00'; 으로 에러해결
 			 -->
 			<!-- 계정의 아이디와 비밀번호 입력 -->
