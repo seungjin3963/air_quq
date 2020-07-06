@@ -79,4 +79,6 @@ Servers/
 # JDT-specific (Eclipse Java Development Tools)     
 .classpath
 
+jdbc.properties
+
 # End of https://www.toptal.com/developers/gitignore/api/eclipse,java-web
