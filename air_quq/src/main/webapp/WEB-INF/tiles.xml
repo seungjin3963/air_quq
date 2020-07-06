@@ -20,9 +20,16 @@
 		<put-attribute name="main" value="/WEB-INF/views/join/forgot-password.jsp"></put-attribute>
 	</definition>
 	
+	<definition name=".experience.ep_insert.*" template="/WEB-INF/views/experience/ep_layout.jsp">	
+		<put-attribute name="header" value="/WEB-INF/views/header.jsp"></put-attribute>
+		<put-attribute name="footer" value="/WEB-INF/views/footer.jsp"></put-attribute>
+		<put-attribute name="type" value="/WEB-INF/views/experience/ep_type.jsp"></put-attribute>
+	</definition>
+	
 	<definition name=".*.*" extends=".home">	
 		<put-attribute name="main" value="/WEB-INF/views/{1}/{2}.jsp"></put-attribute>
 	</definition>
+	
 </tiles-definitions>
 
 
