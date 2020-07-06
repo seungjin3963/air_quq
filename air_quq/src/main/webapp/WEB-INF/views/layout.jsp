@@ -19,7 +19,6 @@
 <link href="/resources/css/sb-admin-2.min.css" rel="stylesheet">
 
 <link href="/resources/css/home.css" rel="stylesheet">
-<link href="/resources/css/experience.css" rel="stylesheet"><!-- 영노 -->
 
 
 
@@ -75,6 +74,6 @@
 	<script src="/resources/js/sb-admin-2.min.js"></script>
 	
 	<!-- 회원가입 관련 js -->
-	<script type="text/javascript" src="/resources/js/main/main.js"></script>
+	<script type="text/javascript" src="/resources/js/main/join.js"></script>
 </body>
 </html>

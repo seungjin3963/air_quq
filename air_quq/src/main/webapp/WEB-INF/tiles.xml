@@ -9,15 +9,15 @@
 	</definition>
 	
 	<definition name=".login" extends=".home">
-		<put-attribute name="main" value="/WEB-INF/login/login.jsp"></put-attribute>
+		<put-attribute name="main" value="/WEB-INF/views/login/login.jsp"></put-attribute>
 	</definition>
 	
 	<definition name=".join" extends=".home">
-		<put-attribute name="main" value="/WEB-INF/join/join.jsp"></put-attribute>
+		<put-attribute name="main" value="/WEB-INF/views/join/join.jsp"></put-attribute>
 	</definition>
 	
 	<definition name=".loginforgotpw" extends=".home">
-		<put-attribute name="main" value="/WEB-INF/join/forgot-password.jsp"></put-attribute>
+		<put-attribute name="main" value="/WEB-INF/views/join/forgot-password.jsp"></put-attribute>
 	</definition>
 	
 	<definition name=".*.*" extends=".home">	

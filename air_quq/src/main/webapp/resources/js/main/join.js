@@ -1,4 +1,5 @@
 var checkGender = null;
+var idchk = null;
 
 $("a[name=man]").click( ()=> {
 	//alert('남자');
@@ -12,10 +13,27 @@ $("a[name=woman]").click( ()=> {
 	checkGender = 2;
 });
 
+//아이디 중복체크
+$("input[name='id']").change( ()=> {
+	var id = $("input[name='id']").val();
+
+	$.getJSON( "/idchk",{id: id}, ( data ) => {
+		console.log(data);
+		
+		if(data == false){
+			idchk = data;
+			console.log("실패");
+		} else if(data == true){
+			idchk = data;
+			console.log("중복");
+			alert('아이디가 이미 존재합니다.');
+		}
+	});
+});
+
 
 //회원가입 아이디중복방지및 폼값 널값 방지
-$(".user").submit( (event) => {
-	event.preventDefault();
+$(".user").submit( () => {
 	var id = $("input[name='id']").val();
 	var id_tf = true;
 	var addr = $("input[name='addr']").val();
@@ -26,7 +44,6 @@ $(".user").submit( (event) => {
 	var pwdChk = $("input[name='pwdChk']").val();
 	var pwd_tf = true;
 	var pwd_chk = true;
-	var checkGender_value = null;
 
 	//공백 방지
 	if(id == null || id == ''){
@@ -60,7 +77,7 @@ $(".user").submit( (event) => {
 	if(checkGender == null){
 		alert('성별을 선택해 주세요.');
 	} else {
-		checkGender_value = $.trim( $("#dropdownMenuButton").text() );
+		checkGender = 1;
 	}
 
 	//비밀번호 체크
@@ -71,7 +88,8 @@ $(".user").submit( (event) => {
 		pwd_chk = true;
 	}
 
-	if(id_tf && addr_tf && phone_tf && pwd_tf && checkGender != null && pwd_chk){
-		$(this).submit();
+
+	if(!( id_tf==true && addr_tf==true && phone==true && pwd_tf==true && checkGender!=null && pwd_chk==true) ){
+		return false;
 	}
 });

@@ -4,19 +4,9 @@
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
  <typeAliases>
- 	<typeAlias type="com.jhta.airqnq.vo.TestVo" alias="test"/>
+ 	<typeAlias type="com.jhta.airqnq.vo.JoinVo" alias="join"/>
  </typeAliases>
  <mappers>
-    <mapper resource="com/jhta/mybatis/mapper/TestMapper.xml"/>
+    <mapper resource="com/jhta/mybatis/mapper/JoinMapper.xml"/>
   </mappers>
 </configuration>
-
-
-
-
-
-
-
-
-
-

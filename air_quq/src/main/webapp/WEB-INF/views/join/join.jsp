@@ -12,7 +12,7 @@
               <div class="text-center">
                 <h1 class="h4 text-gray-900 mb-4">새로운 회원으로 등록하기!</h1>
               </div>
-              <form class="user" action="/upload/memberjoin" enctype="multipart/form-data" onsubmit="false">
+              <form class="user" action="/upload/memberjoin" enctype="multipart/form-data" method="post">
                 <div class="form-group row">
                   <div class="col-sm-12 mb-3 mb-sm-0">
                     <input type="text" class="form-control form-control-user" placeholder="아이디" name="id">
