@@ -66,7 +66,8 @@ public class JoinController {
 			
 			//DB에 값넣기
 //			int memun, String id, String pwd, String addr, String email, String phone, String gender,String profile_img
-			JoinVo vo = new JoinVo(0, id, pwd, addr, email, phone, "0", savefileName);
+			String profile_img = savefileName;
+			JoinVo vo = new JoinVo(0, id, pwd, addr, email, phone, "0", profile_img);
 			
 			int n = service.insertJoin(vo);
 			if(n<0 || n==0) return null;
