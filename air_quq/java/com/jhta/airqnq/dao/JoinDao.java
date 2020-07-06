@@ -15,4 +15,8 @@ public class JoinDao {
 	public int idChk(String id) {
 		return sqlSessionTemplate.selectOne(NAMESPACE + ".selectId", id);
 	}
+	
+	public int insertJoin(JoinVo vo) {
+		return sqlSessionTemplate.insert(NAMESPACE + ".insertMember", vo);
+	}
 }
