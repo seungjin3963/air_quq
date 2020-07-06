@@ -24,7 +24,7 @@
 
 
 </head>
-<body id="page-top">
+<body>
 	<div id="wrapper">
 		
 		<div id="header">
