@@ -17,13 +17,11 @@
                     <h1 class="h4 text-gray-900 mb-2">비밀번호를 잊으셨나요?</h1>
                     <p class="mb-4">아래에 이메일주소를 입력하시면, 비밀번호를 재설정할수있는 메일이 전송됩니다!</p>
                   </div>
-                  <form class="user">
+                  <form class="userforget" action="/forget/member">
                     <div class="form-group">
-                      <input type="email" class="form-control form-control-user" id="email" aria-describedby="emailHelp" placeholder="이메일주소를 입력하세요.">
+                      <input type="email" class="form-control form-control-user" name="email" aria-describedby="emailHelp" placeholder="이메일주소를 입력하세요.">
                     </div>
-                    <a href="/forget/member" class="btn btn-primary btn-user btn-block">
-                      	재설정 이메일 보내기
-                    </a>
+                    <input type="submit" class="btn btn-primary btn-user btn-block" value="재설정 이메일 보내기">
                   </form>
                   <hr>
                   <div class="text-center">
