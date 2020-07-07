@@ -14,15 +14,21 @@
               <div class="col-lg-6">
                 <div class="p-5">
                   <div class="text-center">
-                    <h1 class="h4 text-gray-900 mb-2">비밀번호를 잊으셨나요?</h1>
-                    <p class="mb-4">아래에 이메일주소를 입력하시면, 비밀번호를 재설정할수있는 메일이 전송됩니다!</p>
+                    <h1 class="h4 text-gray-900 mb-2">비밀번호 재설정 페이지</h1>
+                    <p class="mb-4">아래에 인증번호와 비밀번호를 입력해주세요.</p>
                   </div>
                   <form class="user">
                     <div class="form-group">
-                      <input type="email" class="form-control form-control-user" id="email" aria-describedby="emailHelp" placeholder="이메일주소를 입력하세요.">
+                      <input type="password" class="form-control form-control-user" id="forgetKey" aria-describedby="emailHelp" placeholder="인증번호">
                     </div>
-                    <a href="/forget/member" class="btn btn-primary btn-user btn-block">
-                      	재설정 이메일 보내기
+                    <div class="form-group">
+                      <input type="password" class="form-control form-control-user" id="pwd" aria-describedby="emailHelp" placeholder="비밀번호를 입력하세요.">
+                    </div>
+                    <div class="form-group">
+                      <input type="password" class="form-control form-control-user" id="pwdChk" aria-describedby="emailHelp" placeholder="비밀번호 확인">
+                    </div>
+                    <a href="/forget/member/success" class="btn btn-primary btn-user btn-block">
+                      	비밀번호 변경 요청 완료
                     </a>
                   </form>
                   <hr>
