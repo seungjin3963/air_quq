@@ -8,12 +8,12 @@ public class JoinVo {
 	private String email;
 	private String phone;
 	private String gender;
-	private String profile_img;
+	private byte[] profile_img;
 
 	public JoinVo() {}
 
 	public JoinVo(int memun, String id, String pwd, String addr, String email, String phone, String gender,
-			String profile_img) {
+			byte[] profile_img) {
 		super();
 		this.memun = memun;
 		this.id = id;
@@ -81,11 +81,11 @@ public class JoinVo {
 		this.gender = gender;
 	}
 
-	public String getProfile_img() {
+	public byte[] getProfile_img() {
 		return profile_img;
 	}
 
-	public void setProfile_img(String profile_img) {
+	public void setProfile_img(byte[] profile_img) {
 		this.profile_img = profile_img;
 	}
 
