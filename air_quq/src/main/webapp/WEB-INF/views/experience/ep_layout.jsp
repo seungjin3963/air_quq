@@ -75,32 +75,41 @@
 
 						<!-- Nav Item - Utilities Collapse Menu -->
 						<li class="nav-item"><a class="nav-link collapsed"
-							href="/experience/ep_insert/ep_type"> <span>체험 유형</span>
+							href="/experience/ep_insert/ep_type?num=1"> <span>체험
+									유형</span>
 						</a></li>
 
 						<li class="nav-item"><a class="nav-link collapsed"
-							href="/experience/ep_insert/ep_location"> <span>위치</span>
+							href="/experience/ep_insert/ep_type?num=2"> <span>위치</span>
 						</a></li>
 
-						<li class="nav-item"><a class="nav-link collapsed" href="/">
-								<span>주제</span>
+						<li class="nav-item"><a class="nav-link collapsed"
+							href="/experience/ep_insert/ep_type?num=3"> <span>주제</span>
 						</a></li>
 
-						<li class="nav-item"><a class="nav-link collapsed" href="/">
-								<span>자기소개</span>
+						<li class="nav-item"><a class="nav-link collapsed"
+							href="/experience/ep_insert/ep_type?num=4"> <span>자기소개</span>
 						</a></li>
 
-						<li class="nav-item"><a class="nav-link collapsed" href="/">
-								<span>프로그램 설명</span>
+						<li class="nav-item"><a class="nav-link collapsed"
+							href="/experience/ep_insert/ep_type?num=5"> <span>프로그램
+									설명</span>
 						</a></li>
-						<li class="nav-item"><a class="nav-link collapsed" href="/">
-								<span>게스트 준비물</span>
+						<li class="nav-item"><a class="nav-link collapsed"
+							href="/experience/ep_insert/ep_type?num=6"> <span>게스트
+									준비물</span>
 						</a></li>
-						<li class="nav-item"><a class="nav-link collapsed" href="/">
-								<span>제목</span>
+						<li class="nav-item"><a class="nav-link collapsed"
+							href="/experience/ep_insert/ep_type?num=7"> <span>제목</span>
 						</a></li>
-						<li class="nav-item"><a class="nav-link collapsed" href="/">
-								<span>사진</span>
+						<li class="nav-item"><a class="nav-link collapsed"
+							href="/experience/ep_insert/ep_type?num=8"> <span>사진</span>
+						</a></li>
+						<li class="nav-item"><a class="nav-link collapsed"
+							href="/experience/ep_insert/ep_type?num=9"> <span>날짜</span>
+						</a></li>
+						<li class="nav-item"><a class="nav-link collapsed"
+							href="/experience/ep_insert/ep_type?num=10"> <span>가격</span>
 						</a></li>
 
 						<!-- Divider -->
@@ -192,4 +201,10 @@
 	<!-- 회원가입 관련 js -->
 	<script type="text/javascript" src="/resources/js/main/main.js"></script>
 </body>
+<script type="text/javascript">
+	$("#materials_div").click(function(){
+		var aa="<input type='text' class='form-control bg-light border-0 small' placeholder='여기에 항목을 입력하세요'><br>";
+		$("#materials_div1").append(aa);
+	});
+</script>
 </html>

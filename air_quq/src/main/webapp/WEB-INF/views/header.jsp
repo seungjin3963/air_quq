@@ -18,9 +18,9 @@
 
 			<!-- Topbar Navbar -->
 			<ul class="navbar-nav ml-auto">
-				<li>
-					<a href="/experience/myexperience"> 체험 호스팅하기 </a>
-				</li>
+				
+					<a href="/experience/myexperience" class="align-self-center"> 체험 호스팅하기 </a>
+			
 				<!-- Nav Item - Search Dropdown (Visible Only XS) -->
 				<li class="nav-item dropdown no-arrow d-sm-none">
 					<a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

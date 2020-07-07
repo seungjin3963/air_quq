@@ -12,9 +12,7 @@
 		<br>
 		<p>
 			온라인 체험은 동영상을 통해 전 세계 어디서나 호스팅하실 수 있으며, 대면으로<br> 진행되는 체험은 특정 장소에서
-			진행됩니다.
-			<br>
-			<br>
+			진행됩니다. <br> <br>
 		</p>
 		<div class="ep_type_div1">
 			<br>
@@ -27,12 +25,14 @@
 		<div class="ep_type_div2">
 			<br>
 			<h5>대면으로 진행되는 체험</h5>
-			<span>게스트와 현장에서 직접<br>대면하고 함께 참여하는<br>체험입니다. 
+			<span>게스트와 현장에서 직접<br>대면하고 함께 참여하는<br>체험입니다.
 			</span>
 
 		</div>
+
+			<a href="/experience/ep_insert/ep_type?num=2"
+				class="btn btn-primary btn-icon-split" id="ep_type_btn"><div>선택하기</div></a>
 		
-		<a href="/experience/ep_insert/ep_type" class="btn btn-primary btn-icon-split" id="ep_type_btn"><div>선택하기</div></a>
 	</div>
-	
+
 </div>

@@ -9,4 +9,13 @@
 	<insert id="insertMember" parameterType="join">
 		insert into member values(0, #{id}, #{pwd}, #{addr}, #{email}, #{phone}, #{gender}, #{profile_img})
 	</insert>
+	
+	
+	<!-- 영노 -->
+	<select id="ep_subject" resultType="com.jhta.airqnq.vo.ExperienceVo">
+		select * from subject
+	</select>
+	<select id="ep_detailsub" parameterType="int" resultType="com.jhta.airqnq.vo.ExperienceVo">
+		select sunum expernum, subname from subDetail where expernum=#{num}
+	</select>
 </mapper>

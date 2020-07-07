@@ -95,3 +95,49 @@
 #ep_type_btn div{
 	margin: auto;
 }
+
+#ep_type_location{
+	width: 30%;
+	height:50px;	
+	margin: 200px;
+	margin-top: 300px;
+}
+#ep_type_location div{
+	margin: auto;
+}
+
+#ep_type_introduce{
+	width: 30%;
+	height:50px;	
+	margin-left: 200px;
+	margin-top: 190px;
+}
+#ep_type_introduce div{
+	margin: auto;
+}
+
+#ep_type_program{
+	width: 30%;
+	height:50px;	
+	margin-left: 200px;
+	margin-top: 190px;
+}
+#ep_type_program div{
+	margin: auto;
+}
+
+#ep_type_materials{
+	width: 30%;
+	height:50px;	
+	margin-left: 200px;
+	margin-top: 229px;
+}
+#ep_type_materials div{
+	margin: auto;
+}
+
+
+
+.ep_sub_div{
+	margin: auto;
+}
