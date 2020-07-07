@@ -74,8 +74,8 @@
 		</div>
 	</div>
 		<div style="text-align: center;">
-			<input type="text" id="startdate" readonly="readonly" style="border: none">
-			<input type="text" id="enddate" readonly="readonly" style="border: none"><br>
+			<input type="text" id="startdate" readonly="readonly" style="border: none; font-size: 20px;">
+			<input type="text" id="enddate" readonly="readonly" style="border: none; font-size: 20px;"><br>
 			<div id="cal" style="display: inline-block;"></div>
 			<div class="row" style="border-bottom: #c4c4c4 1px solid; padding: 10px 0px;"></div>
 		</div>
@@ -96,6 +96,9 @@
 </div>
 
 <script>
+
+		var onswitch=true;
+		var tempdate;
 		var startcal=$("#cal").datepicker({
 			showOn: "both",
 			numberOfMonths: [1,2],
@@ -104,6 +107,24 @@
 			yearSuffix: "년",
 			showMonthAfterYear: true,
 			dayNamesMin:["일","월","화","수","목","금","토"],
-			monthNames: ["1월","2월","3월","4월","5월","6월","7월","8월","9월","10월","11월","12월"]
+			monthNames: ["1월","2월","3월","4월","5월","6월","7월","8월","9월","10월","11월","12월"],
+			onSelect:function(d){
+				if(onswitch){
+					$("#startdate").val(d);
+					onswitch=false;
+					tempdate=d;
+				}else{
+					if(tempdate<d){
+						$("#enddate").val(d);
+						onswitch=true;
+					}else{
+						alert("이전날짜 입니다.");
+					}
+				}
+			}
+		});
+		
+		$("#cal").click(function(){
+			
 		});
 </script>
