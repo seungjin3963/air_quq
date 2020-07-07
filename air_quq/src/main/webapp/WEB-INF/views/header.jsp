@@ -20,6 +20,7 @@
 			<ul class="navbar-nav ml-auto">
 				
 					<a href="/experience/myexperience" class="align-self-center"> 체험 호스팅하기 </a>
+					<a href="/user/apply"> /신청하기 </a>
 			
 				<!-- Nav Item - Search Dropdown (Visible Only XS) -->
 				<li class="nav-item dropdown no-arrow d-sm-none">
