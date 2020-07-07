@@ -4,9 +4,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
-public class OnlineExpController {
-	@GetMapping(value="/onlineExp/onlineExp")
+public class ExpOnlineController {
+	@GetMapping(value="/expOnline/expOnline")
 	public String onlineExp() {
-		return "/onlineExp/onlineExp";
+		return "/expOnline/expOnline";
 	}
 }

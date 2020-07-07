@@ -29,9 +29,9 @@
 </div>
 
 <script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
-<script src="js/main.js"></script>
+<script src="/resources/js/expOnline/expOnline.js"></script>
 
-<script src="../../../js/lib/ga.js"></script>
+<script src="/resources/js/expOnline/ga.js"></script>
 
 </body>
 </html>
