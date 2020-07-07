@@ -21,6 +21,10 @@
 <link href="/resources/css/home.css" rel="stylesheet">
 <link href="/resources/css/experience.css" rel="stylesheet"><!--  영노 -->
 
+<!-- jquery -->
+<link rel="stylesheet" type="text/css" href="/resources/css/jquery-ui.css">
+<script src="/resources/js/jquery/jquery-3.5.1.js"></script>
+<script src="/resources/js/jquery/jquery-ui.js"></script>
 
 </head>
 <body id="page-top">
