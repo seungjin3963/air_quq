@@ -75,6 +75,7 @@ public class JoinController {
 			
 			//DB에 값넣기
 			int n = 0;
+			System.out.println(">>>>>>>>>>>>>>>>>>>>>" + jvo.getGender());
 			if(profile_img.length <= 16777215) { //MEDIUMBLOB 최대사이즈보다 작을경우에만..
 				JoinVo vo = new JoinVo(0, jvo.getId(), jvo.getPwd(), jvo.getAddr(),
 						jvo.getEmail(), jvo.getPhone(), jvo.getGender(), profile_img);
@@ -156,7 +157,7 @@ public class JoinController {
 		
 		@PostMapping("/forget/member/success")
 		public String resetPwd(String authkey, String forgetKey, String pwd, String auth_email) {
-			//System.out.println(authkey + "," + forgetKey + "," + pwd);
+			System.out.println(authkey + "," + forgetKey + "," + pwd);
 			
 			if(authkey.equals(forgetKey)) {
 				System.out.println("인증 확인됨");

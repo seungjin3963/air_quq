@@ -6,12 +6,14 @@ $("a[name=man]").click( ()=> {
 	//alert('남자');
 	$("#dropdownMenuButton").html("남자");
 	checkGender = 1;
+	$("input[name='gender']").val(checkGender);
 });
 
 $("a[name=woman]").click( ()=> {
 	//alert('여자');
 	$("#dropdownMenuButton").html("여자");
 	checkGender = 2;
+	$("input[name='gender']").val(checkGender);
 });
 
 //아이디 중복체크

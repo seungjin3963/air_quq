@@ -4,9 +4,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>에러 페이지</title>
 </head>
 <body>
-	<h1>파일크기 초과됨</h1>
+	<h1>잘못된 이메일주소이거나 잘못된 키값입니다.</h1>
 </body>
 </html>

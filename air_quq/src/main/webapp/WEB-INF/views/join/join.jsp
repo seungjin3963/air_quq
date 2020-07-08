@@ -41,6 +41,7 @@
                 <!-- 성별 드랍다운 메뉴 -->
 	           	
 		          <div class="dropdown no-arrow mb-4">
+		          <input type="hidden" name="gender">
 		             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 		                	성별을 선택해 주세요.(*)
 		             </button>
