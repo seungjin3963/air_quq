@@ -26,9 +26,9 @@
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context-support</artifactId>
-			<version>${org.springframework-version}</version>
+			<version>4.3.15.RELEASE</version>
 		</dependency>
-
+ 
 		<dependency>
 			<groupId>com.sun.mail</groupId>
 			<artifactId>javax.mail</artifactId>
@@ -238,7 +238,7 @@
 					<showDeprecation>true</showDeprecation>
 				</configuration>
 			</plugin>
-			<plugin>
+			<plugin> 
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>exec-maven-plugin</artifactId>
 				<version>1.2.1</version>
