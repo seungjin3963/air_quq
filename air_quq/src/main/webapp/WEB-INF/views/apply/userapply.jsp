@@ -2,6 +2,8 @@
 	pageEncoding="UTF-8"%>
 <style>
 	.ui-datepicker{ font-size: 25px;}
+	.ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active, .ui-widget-content .ui-state-hover{color : #FF0000; border: 1px solid #FF0000;}
+	.ui-widget-content .ui-state-highlight{color:#FF0000;}
 </style>
 <div class="container">
 	<h1>house_info title가져오기</h1>
@@ -74,11 +76,31 @@
 		</div>
 	</div>
 		<div style="text-align: center;">
-			<input type="text" id="startdate" readonly="readonly" style="border: none; font-size: 20px;">
-			<input type="text" id="enddate" readonly="readonly" style="border: none; font-size: 20px;"><br>
+			<div id="datecnt" style="display: inline-block; text-align: center; font-weight: bold; font-size: 50px;">체크인 날짜를 선택해 주세요</div><br>
+			<div id="detaildate">여행 날짜를 입력해 주세요</div>
+			<input type="hidden" id="startdate" name="startdate">
+			<input type="hidden" id="enddate" name="enddate">
 			<div id="cal" style="display: inline-block;"></div>
 			<div class="row" style="border-bottom: #c4c4c4 1px solid; padding: 10px 0px;"></div>
 		</div>
+	<div class="row" style="border-bottom: #c4c4c4 1px solid;"></div>
+	<div class="row" style="border-bottom: #c4c4c4 1px solid; padding: 10px 0px; font-weight: bold; font-size: 30px;">
+		<div class="col-md-12">
+			첫 후기를 남겨 주세요!!
+		</div>
+	</div>
+
+	<div class="row" style="border-bottom: #c4c4c4 1px solid; padding: 10px 0px; text-align: center;">
+		<div class="col-md-12">
+			지도
+		</div>
+	</div>
+	<div class="row" style="border-bottom: #c4c4c4 1px solid; padding: 10px 0px; font-weight: bold; font-size: 30px;">
+		<div class="col-md-12">
+			<img src="/resources/img/Jellyfish.jpg" style="width: 50px; height: 50px; border-radius: 100%;"> member id님<br>
+			<input type="button" value="호스트에게 연락하기" class="btn btn-danger btn-icon-split">
+		</div>
+	</div>
 	</div>
 <div style="width: 100px; height: 340px; position: fixed; right: 150px; top: 200px; border: gray 1px solid; text-align: center;">
 	<div style="margin: 10px 0px; border: ">
@@ -96,10 +118,10 @@
 </div>
 
 <script>
-
+		var dateArr=new Array();
 		var onswitch=true;
 		var tempdate;
-		var startcal=$("#cal").datepicker({
+		$("#cal").datepicker({
 			showOn: "both",
 			numberOfMonths: [1,2],
 			buttonText: "Calendar",
@@ -109,22 +131,39 @@
 			dayNamesMin:["일","월","화","수","목","금","토"],
 			monthNames: ["1월","2월","3월","4월","5월","6월","7월","8월","9월","10월","11월","12월"],
 			onSelect:function(d){
+				
+				var detaildate=$("#detaildate");
+				
 				if(onswitch){
+					detaildate.empty();
 					$("#startdate").val(d);
+					detaildate.append(d+"-");
 					onswitch=false;
 					tempdate=d;
 				}else{
 					if(tempdate<d){
 						$("#enddate").val(d);
+						detaildate.append(d);
+						var startarr=tempdate.split("/");
+						var endarr=d.split("/");
+						
+						var startobj=new Date(startarr[0], Number(startarr[1])-1, startarr[2]);
+						var endobj=new Date(endarr[0], Number(endarr[1])-1, endarr[2]);
+						
+						var betweendate=(endobj.getTime()-startobj.getTime())/1000/60/60/24;
+						
+						$("#datecnt").text(betweendate+"박"+(betweendate+1)+"일");
+						
+						for (var i = 0; i <= betweendate; i++) {
+							var Adate=new Date(startobj.getTime()+(i*24*60*60*1000));
+							dateArr[i]=Adate;
+						}		
+						
 						onswitch=true;
 					}else{
 						alert("이전날짜 입니다.");
 					}
 				}
 			}
-		});
-		
-		$("#cal").click(function(){
-			
 		});
 </script>
