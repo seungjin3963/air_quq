@@ -6,10 +6,18 @@
 	<select id="selectId" parameterType="string" resultType="int">
 		select count(*) cnt from member where id = #{id}
 	</select>
+	
+	<select id="selectEmail" parameterType="string" resultType="int">
+		select count(*) cnt from member where email = #{email}
+	</select>
+	
 	<insert id="insertMember" parameterType="join">
 		insert into member values(0, #{id}, #{pwd}, #{addr}, #{email}, #{phone}, #{gender}, #{profile_img})
 	</insert>
 	
+	<update id="updateMember" parameterType="hashmap">
+		update member set pwd=#{pwd} where email=#{email}
+	</update>
 	
 	<!-- 영노 -->
 	<select id="ep_subject" resultType="com.jhta.airqnq.vo.ExperienceVo">

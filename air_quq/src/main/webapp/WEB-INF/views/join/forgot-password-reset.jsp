@@ -17,19 +17,19 @@
                     <h1 class="h4 text-gray-900 mb-2">비밀번호 재설정 페이지</h1>
                     <p class="mb-4">아래에 인증번호와 비밀번호를 입력해주세요.</p>
                   </div>
-                  <form class="user">
+                  <form action="/forget/member/success" method="post">
+                  <input type="hidden" name="authkey" value="${ authkey }">
+                  <input type="hidden" name="auth_email" value="${ auth_email }">
                     <div class="form-group">
-                      <input type="password" class="form-control form-control-user" id="forgetKey" aria-describedby="emailHelp" placeholder="인증번호">
+                      <input type="password" class="form-control form-control-user" name="forgetKey" aria-describedby="emailHelp" placeholder="인증번호">
                     </div>
                     <div class="form-group">
-                      <input type="password" class="form-control form-control-user" id="pwd" aria-describedby="emailHelp" placeholder="비밀번호를 입력하세요.">
+                      <input type="password" class="form-control form-control-user" name="pwd" aria-describedby="emailHelp" placeholder="비밀번호를 입력하세요.">
                     </div>
                     <div class="form-group">
-                      <input type="password" class="form-control form-control-user" id="pwdChk" aria-describedby="emailHelp" placeholder="비밀번호 확인">
+                      <input type="password" class="form-control form-control-user" name="pwdChk" aria-describedby="emailHelp" placeholder="비밀번호 확인">
                     </div>
-                    <a href="/forget/member/success" class="btn btn-primary btn-user btn-block">
-                      	비밀번호 변경 요청 완료
-                    </a>
+                    <input type="submit" class="btn btn-primary btn-user btn-block" value="비밀번호 변경 요청">
                   </form>
                   <hr>
                   <div class="text-center">

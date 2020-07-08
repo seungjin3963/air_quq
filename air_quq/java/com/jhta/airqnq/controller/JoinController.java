@@ -1,6 +1,7 @@
 package com.jhta.airqnq.controller;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.Properties;
 import java.util.Random;
 
@@ -15,6 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -50,6 +52,21 @@ public class JoinController {
 		return chkid;
 	}
 	
+	@RequestMapping(value = "/emailchk", method = RequestMethod.GET)
+	@ResponseBody
+	public String selectEmail(String email) {
+		String chkEmail = "";
+		
+		int cnt = service.emailChk(email);
+		if(cnt == 0) {
+			chkEmail = "false";
+		} else {
+			chkEmail = "true";
+		}
+		
+		return chkEmail;
+	}
+	
 	@PostMapping("/upload/memberjoin")
 	public String memberJoinOk(HttpSession session, MultipartFile file1, JoinVo jvo) {
 		
@@ -77,7 +94,7 @@ public class JoinController {
 	
 	//비밀번호 찾기 메일보내기
 		@GetMapping("/forget/member")
-		public String pwdSearch(String email) {
+		public String pwdSearch(String email, Model model) {
 			String setfrom = "kurassyio@naver.com"; //관리자 이메일
 			String tomail = email; // 받는 사람 이메일
 			String title = "에어 큐엔큐 비밀번호찾기 확인 이메일 입니다."; // 제목
@@ -85,14 +102,17 @@ public class JoinController {
 			
 			System.out.println("받는사람 이메일주소 : " + email);
 			
-			StringBuffer rKey = new RandomKey().getRandomKeyValue();
-			System.out.println("랜덤한 인증Key : " + rKey);
-			
+			StringBuffer rkey = new RandomKey().getRandomKeyValue();
+			System.out.println("랜덤한 인증Key : " + rkey);
+			model.addAttribute("authkey", rkey.toString());
+			model.addAttribute("auth_email", email);
 			try {
 				MimeMessage message = mailSender.createMimeMessage();
 				MimeMessageHelper messageHelper = new MimeMessageHelper(message,
 						true, "UTF-8");
-
+				
+				content = "인증번호는 " + rkey + " 입니다.";
+				
 				messageHelper.setFrom(setfrom); // 보내는사람 생략하면 정상작동을 안함
 				messageHelper.setTo(tomail); // 받는사람 이메일
 				messageHelper.setSubject(title); // 메일제목은 생략이 가능하다
@@ -103,11 +123,12 @@ public class JoinController {
 				System.out.println(e);
 			}
 
-			return "main/main.tiles";
+			return ".pwdresetForm";
 			
 		}
 		
-		class RandomKey { //랜덤문자열값 생성 클래스
+		class RandomKey { 
+			//랜덤문자열값 생성 클래스
 			StringBuffer temp = new StringBuffer();
 			public StringBuffer getRandomKeyValue() {
 				Random rnd = new Random();
@@ -131,5 +152,25 @@ public class JoinController {
 				
 				return temp;
 			}
+		}
+		
+		@PostMapping("/forget/member/success")
+		public String resetPwd(String authkey, String forgetKey, String pwd, String auth_email) {
+			//System.out.println(authkey + "," + forgetKey + "," + pwd);
+			
+			if(authkey.equals(forgetKey)) {
+				System.out.println("인증 확인됨");
+				HashMap<String, Object> map = new HashMap<String, Object>();
+				map.put("pwd", pwd);
+				map.put("email", auth_email);
+				int n = service.updateMemberPwd(map);
+				
+				if(n>0) {
+					System.out.println("비밀번호 수정 완료!");
+					return "redirect:/";
+				}
+			}
+			
+			return "error";
 		}
 }

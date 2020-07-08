@@ -12,17 +12,17 @@
               <div class="text-center">
                 <h1 class="h4 text-gray-900 mb-4">새로운 회원으로 등록하기!</h1>
               </div>
-              <form class="user" action="/upload/memberjoin" enctype="multipart/form-data" method="post">
+              <form class="user" action="/upload/memberjoin" enctype="multipart/form-data" method="post" id="jid">
                 <div class="form-group row">
                   <div class="col-sm-12 mb-3 mb-sm-0">
-                    <input type="text" class="form-control form-control-user" placeholder="아이디" name="id">
+                    <input type="text" class="form-control form-control-user" placeholder="아이디(*)" name="id">
                   </div>
                 </div>
                 <div class="form-group">
                   <input type="text" class="form-control form-control-user" placeholder="주소" name="addr">
                 </div>
                 <div class="form-group">
-                  <input type="email" class="form-control form-control-user" placeholder="이메일 주소" name="email">
+                  <input type="email" class="form-control form-control-user" placeholder="이메일 주소(*)" name="email">
                 </div>
                 <div class="form-group row">
 	                <div class="col-sm-12 mb-3 mb-sm-0">
@@ -31,10 +31,10 @@
                 </div>
                 <div class="form-group row">
                   <div class="col-sm-6 mb-3 mb-sm-0">
-                    <input type="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="비밀번호" name="pwd">
+                    <input type="password" class="form-control form-control-user" id="InputPassword" placeholder="비밀번호(*)" name="pwd">
                   </div>
                   <div class="col-sm-6">
-                    <input type="password" class="form-control form-control-user" id="exampleRepeatPassword" placeholder="비밀번호 확인" name="pwdChk">
+                    <input type="password" class="form-control form-control-user" id="RepeatPassword" placeholder="비밀번호 확인" name="pwdChk">
                   </div>
                 </div>
                 
@@ -42,7 +42,7 @@
 	           	
 		          <div class="dropdown no-arrow mb-4">
 		             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-		                	성별을 선택해 주세요.
+		                	성별을 선택해 주세요.(*)
 		             </button>
 		                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
 		                  <a class="dropdown-item" name="man">남자</a>
@@ -54,7 +54,8 @@
 	            <div class="form-group">
                  	 <b>프로필 사진&nbsp;&nbsp;&nbsp;<input type="file" name="file1">
                 </div>
-                <input type="submit" id="search" name="submit" alt="search" value="회원가입 하기" class="btn btn-primary btn-user btn-block">
+                <input type="submit" id="search" value="회원가입 하기" class="btn btn-primary btn-user btn-block">
+              </form>
                 <hr>
                 <a href="index.html" class="btn btn-google btn-user btn-block">
                   <i class="fab fa-google fa-fw"></i> 구글 아이디로 가입하기
@@ -62,7 +63,6 @@
                 <a href="index.html" class="btn btn-facebook btn-user btn-block">
                   <i class="fab fa-facebook-f fa-fw"></i> 페이스북 아이디로 가입하기
                 </a>
-              </form>
               <hr>
               <div class="text-center">
                 <a class="small" href="/login/forgotpwd">비밀번호를 잊으셨나요?</a>

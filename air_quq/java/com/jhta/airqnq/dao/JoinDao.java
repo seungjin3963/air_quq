@@ -1,5 +1,7 @@
 package com.jhta.airqnq.dao;
 
+import java.util.HashMap;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -18,5 +20,13 @@ public class JoinDao {
 	
 	public int insertJoin(JoinVo vo) {
 		return sqlSessionTemplate.insert(NAMESPACE + ".insertMember", vo);
+	}
+	
+	public int updateMemberPwd(HashMap<String, Object> map) {
+		return sqlSessionTemplate.update(NAMESPACE + ".updateMember", map);
+	}
+	
+	public int emailChk(String email) {
+		return sqlSessionTemplate.selectOne(NAMESPACE + ".selectEmail", email);
 	}
 }

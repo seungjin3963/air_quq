@@ -1,5 +1,6 @@
 var checkGender = null;
-var idchk = null;
+var idchk = false;
+var emailchk = false;
 
 $("a[name=man]").click( ()=> {
 	//alert('남자');
@@ -20,76 +21,58 @@ $("input[name='id']").change( ()=> {
 	$.getJSON( "/idchk",{id: id}, ( data ) => {
 		console.log(data);
 		
-		if(data == false){
-			idchk = data;
-			console.log("실패");
+		if(data == false && id != ""){
+			idchk = true;
+			console.log("사용가능한 아이디");
 		} else if(data == true){
-			idchk = data;
+			idchk = false;
 			console.log("중복");
 			alert('아이디가 이미 존재합니다.');
 		}
 	});
 });
 
+//이메일 중복체크
+$("input[name='email']").change( ()=> {
+	var email = $("input[name='email']").val();
 
-//회원가입 아이디중복방지및 폼값 널값 방지
-$(".user").submit( () => {
-	var id = $("input[name='id']").val();
-	var id_tf = true;
-	var addr = $("input[name='addr']").val();
-	var addr_tf = true;
-	var phone = $("input[name='phone']").val();
-	var phone = true;
-	var pwd = $("input[name='pwd']").val();
-	var pwdChk = $("input[name='pwdChk']").val();
-	var pwd_tf = true;
-	var pwd_chk = true;
+	$.getJSON( "/emailchk",{email: email}, ( data ) => {
+		console.log(data);
+		
+		if(data == false && email != ""){
+			emailchk = true;
+			console.log("사용가능한 이메일 주소");
+		} else if(data == true){
+			emailchk = false;
+			console.log("중복");
+			alert('사용할수없는 이메일입니다.');
+		}
+	});
+});
 
-	//공백 방지
-	if(id == null || id == ''){
-		alert('아이디를 입력해주세요.');
-		id_tf = false;
+//페스워드 입력 체크
+function passwordCheckForm(){
+	var pwd = $("#InputPassword").val();
+	var pwd_repeat = $("#RepeatPassword").val();
+	
+	if(pwd == pwd_repeat && pwd != "" && pwd_repeat != ""){
+		return true;
 	} else {
-		id_tf =true;
-	}
-
-	if(addr == null || addr == ''){
-		alert('주소를 입력해주세요.');
-		addr_tf = false;
-	} else {
-		addr_tf = true;
-	}
-
-	if(phone == null || phone == ''){
-		alert('전화번호를 입력해주세요.');
-		phone_tf = false;
-	} else {
-		phone_tf = true;
-	}
-
-	if(pwd == null || pwd == ''){
-		alert('비밀번호를 입력해주세요.');
-		pwd_tf = false;
-	} else {
-		pwd_tf = true;
-	}
-
-	if(checkGender == null){
-		alert('성별을 선택해 주세요.');
-	} else {
-		checkGender = 1;
-	}
-
-	//비밀번호 체크
-	if(pwd != pwdChk){
-		alert('비밀번호가 일치하지 않습니다.');
-		pwd_chk = false;
-	} else {
-		pwd_chk = true;
-	}
-
-
-	if(!( id_tf==true && addr_tf==true && phone==true && pwd_tf==true && checkGender!=null && pwd_chk==true) ){
 		return false;
 	}
+}
+
+
+function checkedForm(){
+	var chk = passwordCheckForm();
+	if(emailchk == true && idchk == true && chk == true && checkGender != null){
+		return true;
+	}
+	return false;
+}
+
+
+$("#jid").submit(function(){
+	alert(checkedForm());
+	return checkedForm();
 });
