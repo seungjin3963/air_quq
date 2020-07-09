@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mybatis.experienceMapper">	
+	<!-- 영노 -->
+	<select id="ep_subject"
+		resultType="com.jhta.airqnq.vo.ExperienceVo">
+		select * from subject where expernum!=26
+	</select>
+	<select id="ep_detailsub" parameterType="int"
+		resultType="com.jhta.airqnq.vo.ExperienceVo">
+		select sunum expernum, subname from subDetail where
+		expernum=#{num}
+	</select>
+
+	
+	<insert id="ep_temporary" parameterType="int">
+		insert into house_info(hinum,menum) values(0,#{loginum})
+	</insert>
+	<select id="ep_hinum" resultType="int">
+		SELECT * FROM house_info order by hinum desc LIMIT 1
+	</select>
+	<insert id="insertexperience" parameterType="int">
+		insert into experience_info(einum,hinum,sunum) values(0,#{hinum},163)
+	</insert>
+	
+	<update id="ep_type" parameterType="hashmap">
+		update experience_info set div_type=#{div} where hinum=#{hinum}
+	</update>
+	<update id="ep_loc" parameterType="hashmap">
+		update experience_info set loc=#{loc} where hinum=#{hinum}
+	</update>
+	<update id="ep_sub" parameterType="hashmap">
+		update experience_info set sunum=#{sunum} where hinum=#{hinum}
+	</update>
+	<update id="ep_intr" parameterType="hashmap">
+		update experience_info set intr=#{intr} where hinum=#{hinum}
+	</update>
+	<update id="ep_program" parameterType="hashmap">
+		update experience_info set program=#{program} where hinum=#{hinum}
+	</update>
+	<update id="ep_title" parameterType="hashmap">
+		update experience_info set title=#{title} where hinum=#{hinum}
+	</update>
+	<update id="ep_pricetimes" parameterType="hashmap">
+		update experience_info set price=#{price} ,times=#{times} where hinum=#{hinum}
+	</update>
+</mapper>

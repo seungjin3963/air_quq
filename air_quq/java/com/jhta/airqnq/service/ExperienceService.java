@@ -1,6 +1,7 @@
 package com.jhta.airqnq.service;
 
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,5 +20,33 @@ public class ExperienceService {
 	
 	public List<ExperienceVo> detailsub(int num){
 		return dao.detailsub(num);
+	}
+	
+	public int temporary(int loginnum) { //임시 저장
+		return dao.temporary(loginnum);
+	}
+	public int insertexperience(int hinum) {
+		return dao.insertexperience(hinum);
+	}
+	public int inserttype(HashMap<String, Object> map) {//div 설정
+		return dao.inserttype(map);
+	}
+	public int insertloc(HashMap<String, Object> map) {
+		return dao.insertloc(map);
+	}
+	public int insertsunum(HashMap<String, Object> map) {
+		return dao.insertsunum(map);
+	}
+	public int insertintr(HashMap<String, Object> map) {
+		return dao.insertintr(map);
+	}
+	public int insertprogram(HashMap<String, Object> map) {
+		return dao.insertprogram(map);
+	}
+	public int inserttitle(HashMap<String, Object> map) {
+		return dao.inserttitle(map);
+	}
+	public int insertpricetimes(HashMap<String, Object> map) {
+		return dao.insertpricetimes(map);
 	}
 }

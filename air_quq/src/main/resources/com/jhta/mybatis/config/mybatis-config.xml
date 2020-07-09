@@ -9,5 +9,6 @@
  <mappers>
     <mapper resource="com/jhta/mybatis/mapper/JoinMapper.xml"/>
     <mapper resource="com/jhta/mybatis/mapper/LoginMapper.xml"/>
+    <mapper resource="com/jhta/mybatis/mapper/experienceMapper.xml"/>
   </mappers>
 </configuration>

@@ -1,12 +1,17 @@
 package com.jhta.airqnq.controller;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+
+import javax.mail.Session;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.jhta.airqnq.service.ExperienceService;
@@ -19,47 +24,264 @@ public class ExperiencePageController {
 	private ExperienceService service;
 
 	@RequestMapping("/experience/myexperience") // 등록 전 화면
-	public String experiencePage() {
+	public String experiencePage(HttpSession session) {
+		session.setAttribute("sessionnum", 8);
 		return ".experience.myexperience";
 	}
+	//////////////////////////////////////////////////////////
 
+	@RequestMapping("/experience/ep_insert/ep") // 체험 추가 페이지 이동
+	public String experienceInsertEp(Model model, @RequestParam(value = "num", defaultValue = "0") int num,
+			HttpSession session) {
+		int sessnum = (int) session.getAttribute("sessionnum");
 
-	
-	@RequestMapping("/experience/ep_insert/ep_type") //////// 페이지 이동
-	public String experienceInsertType(int num, Model model, String value) {
-
-		if (num == 1) {		
-			return ".experience.ep_insert.ep_type";		
-		} else if (num == 2) {		
-			return ".experience.ep_insert.ep_location";		
-		} else if (num == 3) { ////////////////////// 
-			List<ExperienceVo> list = service.subject();
-			model.addAttribute("list", list);
-			model.addAttribute("category", "모든 주제");
-			model.addAttribute("sub", "subject");
-			return ".experience.ep_insert.ep_subject";
-		} else if (num == 4) {
-			return ".experience.ep_insert.ep_introduce";
-		} else if (num == 5) {
-			return ".experience.ep_insert.ep_program";
-		} else if (num == 6) {
-			return ".experience.ep_insert.ep_materials";
-		} else if (num == 7) {
-			return ".experience.ep_insert.ep_title";
-		} else if (num == 8) {
-			return ".experience.ep_insert.ep_insertimg";
+		if (sessnum > 8) {
+			model.addAttribute("ep_num", sessnum);
+		} else {
+			model.addAttribute("ep_num", 8);
+			session.setAttribute("sessionnum", 8);
 		}
-		return null;
+		if (num == 1) {
+			int loginnum = 999; // 회원번호
+			int housenum = service.temporary(loginnum);
+			int n = service.insertexperience(housenum);
+			session.setAttribute("ep_housenum", housenum);
+			return ".experience.ep_insert.ep_type";
+		} else {
+			return ".experience.ep_insert.ep_type";
+		}
+
 	}
 
-	@RequestMapping("/experince/ep_insert/subject") // 소주제 뽑아오기
-	public String experinceSubject(int num, Model model, String name) {
+	@RequestMapping("/experience/ep_insert/type") // 체험 타입 설정 1
+	public String experienceInsertType(Model model, String type, HttpSession session) {
+		int sessnum = (int) session.getAttribute("sessionnum");
+
+		if (sessnum > 10) {
+			model.addAttribute("ep_num", sessnum);
+		} else {
+			model.addAttribute("ep_num", 10);
+			session.setAttribute("sessionnum", 10);
+		}
+
+		List<ExperienceVo> list = service.subject();
+		model.addAttribute("list", list);
+		model.addAttribute("category", "모든 주제");
+		model.addAttribute("sub", "subject");
+
+		if (type == "" || type == null) {
+			return ".experience.ep_insert.ep_subject";
+		} else {
+			int housenum = (int) session.getAttribute("ep_housenum");
+			HashMap<String, Object> map = new HashMap<String, Object>();
+			map.put("hinum", housenum);
+			map.put("div", Integer.parseInt(type));
+			int n = service.inserttype(map);
+
+			return ".experience.ep_insert.ep_subject";
+		}
+	}
+
+	@RequestMapping("/experience/ep_insert/location") // 체험 위치 설정 2
+	public String experienceInsertlocation(Model model, String value, HttpSession session) {
+
+		int sessnum = (int) session.getAttribute("sessionnum");
+
+		if (sessnum > 14) {
+			model.addAttribute("ep_num", sessnum);
+		} else {
+			model.addAttribute("ep_num", 14);
+			session.setAttribute("sessionnum", 14);
+		}
+		if (value == "" || value == null) {
+			return ".experience.ep_insert.ep_introduce";
+		} else {
+			session.setAttribute("ep_loc", value);
+			int housenum = (int) session.getAttribute("ep_housenum");
+			HashMap<String, Object> map = new HashMap<String, Object>();
+			map.put("hinum", housenum);
+			map.put("loc", value);
+			int n = service.insertloc(map);
+			return ".experience.ep_insert.ep_introduce";
+		}
+	}
+
+	@RequestMapping("/experience/ep_insert/subject") // 체험 주제 설정 3
+	public String experienceInsertsubject(Model model, String value, HttpSession session) {
+		int sessnum = (int) session.getAttribute("sessionnum");
+
+		if (sessnum > 12) {
+			model.addAttribute("ep_num", sessnum);
+		} else {
+			model.addAttribute("ep_num", 12);
+			session.setAttribute("sessionnum", 12);
+		}
+		if (value == "" || value == null) {
+			return ".experience.ep_insert.ep_location";
+		} else {
+			int housenum = (int) session.getAttribute("ep_housenum");
+			HashMap<String, Object> map = new HashMap<String, Object>();
+			map.put("hinum", housenum);
+			map.put("sunum", value);
+			int n = service.insertsunum(map);
+			return ".experience.ep_insert.ep_location";
+		}
+
+	}
+
+	@RequestMapping("/experience/ep_insert/introduce") // 체험 자기소개 설정 4
+	public String experienceInsertintroduce(Model model, String value, HttpSession session) {
+
+		int sessnum = (int) session.getAttribute("sessionnum");
+		if (sessnum > 16) {
+			model.addAttribute("ep_num", sessnum);
+		} else {
+			model.addAttribute("ep_num", 16);
+			session.setAttribute("sessionnum", 16);
+		}
+		if (value == "" || value == null) {
+			return ".experience.ep_insert.ep_program";
+		} else {
+			session.setAttribute("ep_intr", value);
+			int housenum = (int) session.getAttribute("ep_housenum");
+			HashMap<String, Object> map = new HashMap<String, Object>();
+			map.put("hinum", housenum);
+			map.put("intr", value);
+			int n = service.insertintr(map);
+
+			return ".experience.ep_insert.ep_program";
+		}
+
+	}
+
+	@RequestMapping("/experience/ep_insert/program") // 체험 프로그램설명 설정 5
+	public String experienceInsertprogram(Model model, String value, HttpSession session) {
+		int sessnum = (int) session.getAttribute("sessionnum");
+		if (sessnum > 18) {
+			model.addAttribute("ep_num", sessnum);
+		} else {
+			model.addAttribute("ep_num", 18);
+			session.setAttribute("sessionnum", 18);
+		}
+		if (value == "" || value == null) {
+			return ".experience.ep_insert.ep_materials";
+		} else {
+			session.setAttribute("ep_pro", value);
+			int housenum = (int) session.getAttribute("ep_housenum");
+			HashMap<String, Object> map = new HashMap<String, Object>();
+			map.put("hinum", housenum);
+			map.put("program", value);
+			service.insertprogram(map);
+			return ".experience.ep_insert.ep_materials";
+		}
+	}
+
+	@RequestMapping("/experience/ep_insert/materials") // 체험 준비물 설정 6
+	public String experienceInsertmaterials(Model model, String[] value, HttpSession session) {
+		int sessnum = (int) session.getAttribute("sessionnum");
+		if (sessnum > 20) {
+			model.addAttribute("ep_num", sessnum);
+		} else {
+			model.addAttribute("ep_num", 20);
+			session.setAttribute("sessionnum", 20);
+		}
+		if (value == null) {
+			return ".experience.ep_insert.ep_title";
+		} else {
+
+			session.setAttribute("ep_mater", value);
+			String val = "";
+			for (int i = 0; i < value.length; i++) {
+				val += value[i] + ",";
+			}
+			/*
+			 * int housenum = (int) session.getAttribute("ep_housenum"); HashMap<String,
+			 * Object> map = new HashMap<String, Object>(); map.put("hinum", housenum);
+			 * map.put("program", value); service.insertprogram(map);
+			 */
+			return ".experience.ep_insert.ep_title";
+		}
+	}
+
+	@RequestMapping("/experience/ep_insert/title") // 체험 제목 설정 7
+	public String experienceInserttitle(Model model, String value, HttpSession session) {
+
+		int sessnum = (int) session.getAttribute("sessionnum");
+		if (sessnum > 22) {
+			model.addAttribute("ep_num", sessnum);
+		} else {
+			model.addAttribute("ep_num", 22);
+			session.setAttribute("sessionnum", 22);
+		}
+		if (value == "" || value == null) {
+			return ".experience.ep_insert.ep_price_time";
+		} else {
+			session.setAttribute("ep_title", value);
+			int housenum = (int) session.getAttribute("ep_housenum");
+			HashMap<String, Object> map = new HashMap<String, Object>();
+			map.put("hinum", housenum);
+			map.put("title", value);
+			service.inserttitle(map);
+			return ".experience.ep_insert.ep_price_time";
+		}
+	}
+
+	@RequestMapping("/experience/ep_insert/price_time") // 체험 가격 시간 설정 8
+	public String experienceInsertprice_time(Model model, String price, String ep_fiedset, HttpSession session) {
+		System.out.println(ep_fiedset);
+		int sessnum = (int) session.getAttribute("sessionnum");
+		if (sessnum > 24) {
+			model.addAttribute("ep_num", sessnum);
+		} else {
+			model.addAttribute("ep_num", 24);
+			session.setAttribute("sessionnum", 24);
+		}
+		if (ep_fiedset == "" || ep_fiedset == null) {
+			return ".experience.ep_insert.ep_insertimg";
+		} else {
+			session.setAttribute("ep_price", price);
+			session.setAttribute("ep_fiedset", ep_fiedset);
+			int housenum = (int) session.getAttribute("ep_housenum");
+			HashMap<String, Object> map = new HashMap<String, Object>();
+			map.put("hinum", housenum);
+			map.put("price", price);
+			map.put("times", ep_fiedset);
+			service.insertpricetimes(map);
+			return ".experience.ep_insert.ep_insertimg";
+		}
+	}
+
+	/////////////////////////////////////////////////////////////
+	@RequestMapping("/experince/ep_insert/Sub") // 소주제 뽑아오기
+	public String experinceSubject(int num, Model model, String name, HttpSession session) {
+		int sessnum = (int) session.getAttribute("sessionnum");
+		if (sessnum > 24) {
+			model.addAttribute("ep_num", sessnum);
+		} else {
+			model.addAttribute("ep_num", 10);
+			session.setAttribute("sessionnum", 10);
+		}
+
 		List<ExperienceVo> list = service.detailsub(num);
 
 		model.addAttribute("list", list);
 		model.addAttribute("category", name);
 		model.addAttribute("sub", "detailsub");
 		return ".experience.ep_insert.ep_subject";
+	}
+
+	@RequestMapping("/experience/ep_insert/subdetail") //
+	public String experincesubDatile(String value, Model model, int num, HttpSession session) {
+		int sessnum = (int) session.getAttribute("sessionnum");
+		if (sessnum > 10) {
+			model.addAttribute("ep_num", sessnum);
+		} else {
+			model.addAttribute("ep_num", 10);
+			session.setAttribute("sessionnum", 10);
+		}
+		model.addAttribute("subdetail", value);
+		model.addAttribute("expernum", num);
+		return ".experience.ep_insert.subdetail";
 	}
 
 }

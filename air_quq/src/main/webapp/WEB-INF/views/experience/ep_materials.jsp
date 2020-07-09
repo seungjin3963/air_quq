@@ -1,6 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
+	<%@taglib prefix="ep" uri="http://java.sun.com/jsp/jstl/core" %>
+<a href="#"
+			class="btn btn-primary btn-icon-split" style="float:right; width: 8%; height:30px;"><div>저장 </div></a>
+<a href="#"
+			class="btn btn-primary btn-icon-split" style="float:right; width: 8%; height:30px;margin-right: 10px;"><div>나가기</div></a>
 <!-- Page Heading -->
 <h1 class="h3 mb-4 text-gray-800">게스트 준비물</h1>
 <div class="ep_type">
@@ -15,9 +19,17 @@
 			받으면, 게스트가 체험 액티비티를 준비할 수 있도록 여기에 입력하신 정보가 게스트에게 이메일로 전달됩니다.
 		</p>
 		<p>한 번에 하나씩 추가하거나 비슷한 항목을 함께 묶으세요.</p>
-		<div id="materials_div1"></div>
-		<a href="#" id="materials_div">+ 항목 추가하기</a><br> <a href="/experience/ep_insert/ep_type?num=7"
-			class="btn btn-primary btn-icon-split" id="ep_type_materials"><div>선택하기</div></a>
+		<form action="/experience/ep_insert/materials">
+			<div id="materials_div1"></div>
+			<ep:forEach var="i" items="${ep_mater}">
+				<input type='text' class='form-control bg-light border-0 small' name='value' value="${i}" placeholder='여기에 항목을 입력하세요'><br>
+			</ep:forEach>
+			<a href="#" id="materials_div">+ 항목 추가하기</a><br>
+			<div>
+				<input type="submit" value="선택하기"
+					class="btn btn-primary btn-icon-split" id="ep_type_materials">
+			</div>
+		</form>
 	</div>
 
 </div>
