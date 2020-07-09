@@ -23,7 +23,8 @@
 
 <!-- jquery -->
 <link rel="stylesheet" type="text/css" href="/resources/css/jquery-ui.css">
-<script src="/resources/js/jquery/jquery-3.5.1.js"></script>
+<!-- <script src="/resources/js/jquery/jquery-3.5.1.js"></script> -->
+<script src="/resources/vendor/jquery/jquery.min.js"></script>
 <script src="/resources/js/jquery/jquery-ui.js"></script>
 
 </head>
@@ -49,8 +50,9 @@
 	</div>
 
 	<!-- Bootstrap core JavaScript-->
-	<script src="/resources/vendor/jquery/jquery.min.js"></script>
+	
 	<script src="/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
 
 	<!-- Core plugin JavaScript-->
 	<script src="/resources/vendor/jquery-easing/jquery.easing.min.js"></script>
