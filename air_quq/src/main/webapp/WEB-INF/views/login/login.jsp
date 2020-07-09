@@ -15,12 +15,12 @@
                   <div class="text-center">
                     <h1 class="h4 text-gray-900 mb-4">환영합니다!</h1>
                   </div>
-                  <form class="user">
+                  <form action="/member/login" method="post">
                     <div class="form-group">
-                      <input type="text" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="아이디를 입력해주세요.">
+                      <input type="text" class="form-control form-control-user" name="idl" placeholder="아이디를 입력해주세요.">
                     </div>
                     <div class="form-group">
-                      <input type="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="비밀번호">
+                      <input type="password" class="form-control form-control-user" name="pwdl" placeholder="비밀번호">
                     </div>
                     <div class="form-group">
                       <div class="custom-control custom-checkbox small">
@@ -28,17 +28,12 @@
                         <label class="custom-control-label" for="customCheck">자동 로그인</label>
                       </div>
                     </div>
-                    <a href="index.html" class="btn btn-primary btn-user btn-block">
-                      	로그인
-                    </a>
-                    <hr>
-                    <a href="index.html" class="btn btn-google btn-user btn-block">
-                      <i class="fab fa-google fa-fw"></i> Google으로 로그인
-                    </a>
-                    <a href="index.html" class="btn btn-facebook btn-user btn-block">
-                      <i class="fab fa-facebook-f fa-fw"></i> FaceBook으로 로그인
-                    </a>
+                    <input type="submit" class="btn btn-primary btn-user btn-block" value="로그인" >
                   </form>
+                    <hr>
+                    <a href="https://kauth.kakao.com/oauth/authorize?client_id=f5b5ae84edd2bb27cfdebdebaa48bc3f&redirect_uri=http://localhost:8090/kakao/login&response_type=code">
+                      <img src="/resources/img/kakao_login_medium_wide.png" style="width:100%;">
+                    </a>
                   <hr>
                   <div class="text-center">
                     <a class="small" href="/login/forgotpwd">비밀번호를 잊으셨나요?</a>

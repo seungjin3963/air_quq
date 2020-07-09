@@ -24,14 +24,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.jhta.airqnq.service.JoinService;
+import com.jhta.airqnq.service.MemberFunctionService;
 import com.jhta.airqnq.vo.JoinVo;
 
 
 @Controller
 public class JoinController {
 	@Autowired
-	JoinService service;
+	MemberFunctionService service;
 	
 	@Autowired 
 	private JavaMailSenderImpl mailSender;

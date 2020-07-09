@@ -8,5 +8,6 @@
  </typeAliases>
  <mappers>
     <mapper resource="com/jhta/mybatis/mapper/JoinMapper.xml"/>
+    <mapper resource="com/jhta/mybatis/mapper/LoginMapper.xml"/>
   </mappers>
 </configuration>

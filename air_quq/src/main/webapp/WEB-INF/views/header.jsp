@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!-- Content Wrapper -->
 <div id="content-wrapper" class="d-flex flex-column">
 	<!-- Main Content -->
@@ -147,7 +148,14 @@
 
 				<!-- Nav Item - User Information -->
 				<a href="/login" class="align-self-center">
-					<button type="button" class="btn">Login</button>
+				<c:choose>
+					<c:when test="${ logind == false || logind == null }">
+						<button type="button" class="btn">Login</button>
+					</c:when>
+					<c:otherwise>
+						<button type="button" class="btn">Logout</button>
+					</c:otherwise>
+				</c:choose>
 				</a>
 				</li>
 			</ul>
