@@ -18,10 +18,16 @@
 
 			<!-- Topbar Navbar -->
 			<ul class="navbar-nav ml-auto">
-				
-					<a href="/experience/myexperience" class="align-self-center"> 체험 호스팅하기 </a>
-					<a href="/user/apply"> /신청하기 </a>
-			
+				<a href="/epOnline/epOnline" class="btn btn-light align-self-center">
+					<span class="text">온라인 체험(테스트)</span>
+				</a>
+				<a href="/experience/myexperience" class="btn btn-light align-self-center">
+					<span class="text">체험 호스팅하기</span>
+				</a>
+				<a href="/user/apply" class="btn btn-light align-self-center">
+					<span class="text">예약 신청하기(테스트)</span>
+				</a>
+
 				<!-- Nav Item - Search Dropdown (Visible Only XS) -->
 				<li class="nav-item dropdown no-arrow d-sm-none">
 					<a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

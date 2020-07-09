@@ -30,7 +30,7 @@ let pcConfig = {
 let room = 'foo';
 
 //let socket = io.connect();
-let socket = io("http://192.168.0.2:3000/socket.io/socket.io.js");
+let socket = io("http://192.168.0.2:3000");
 
   if(room !==''){
     socket.emit('create or join',room);
@@ -86,8 +86,7 @@ function sendMessage(message){
   socket.emit('message',message);
 }
 
-navigator.mediaDevices
-  .getUserMedia({
+navigator.mediaDevices.getUserMedia({
     video: true,
     audio: false,
   })
