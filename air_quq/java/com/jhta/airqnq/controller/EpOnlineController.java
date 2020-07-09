@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class EpOnlineController {
 	@RequestMapping("/online/home")
 	public String goHome() {
-		return  ".epOnline.home";
+		return  ".epOnline.layout";
 	}
 	
 	@GetMapping(value="/epOnline/epOnline")

@@ -30,9 +30,16 @@
 		<put-attribute name="type" value="/WEB-INF/views/experience/ep_type.jsp"></put-attribute>
 	</definition>
 	
+	<definition name=".epOnline.layout" template="/WEB-INF/views/epOnline/layout.jsp">
+		<put-attribute name="header" value="/WEB-INF/views/header.jsp"></put-attribute>
+		<put-attribute name="nav" value="/WEB-INF/views/epOnline/navbar.jsp"></put-attribute>
+		<put-attribute name="footer" value="/WEB-INF/views/footer.jsp"></put-attribute>
+	</definition>
+	
 	<definition name=".*.*" extends=".home">	
 		<put-attribute name="main" value="/WEB-INF/views/{1}/{2}.jsp"></put-attribute>
 	</definition>
+	
 	
 </tiles-definitions>
 
