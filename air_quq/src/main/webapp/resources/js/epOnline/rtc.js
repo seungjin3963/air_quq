@@ -30,7 +30,8 @@ let pcConfig = {
 let room = 'foo';
 
 //let socket = io.connect();
-let socket = io("https://192.168.0.2:3000");
+//let socket = io("https://192.168.0.2:3000");
+let socket = io("http://localhost:3000");
 
   if(room !==''){
     socket.emit('create or join',room);
@@ -56,7 +57,7 @@ socket.on('joined',room=>{
   console.log('joined : '+ room );
   isChannelReady= true;
 })
-socket.on('log', array=>{
+socket.on('log', array=>{	
   console.log.apply(console,array);
 });
 

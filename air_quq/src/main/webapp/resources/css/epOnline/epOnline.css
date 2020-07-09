@@ -1,0 +1,13 @@
+#localContainer {
+	background-color: aqua;
+}
+
+#localVideo {
+	width: 50%;
+	height: 400px;
+}
+
+.remoteVideo {
+	width: 20%;
+	height: 200px;
+}
