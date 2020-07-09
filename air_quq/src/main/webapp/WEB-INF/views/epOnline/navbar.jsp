@@ -42,10 +42,6 @@
 				<li class="nav-item">
 					<a class="nav-link" href="#">음주</a>
 				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="#">엔터테인먼트</a>
-				</li>
-				
 			</ul>
 		</div>
 	</div>
