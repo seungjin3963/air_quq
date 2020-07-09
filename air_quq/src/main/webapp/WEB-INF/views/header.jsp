@@ -153,13 +153,16 @@
 				<div class="topbar-divider d-none d-sm-block"></div>
 
 				<!-- Nav Item - User Information -->
-				<a href="/login" class="align-self-center">
 				<c:choose>
 					<c:when test="${ logind == false || logind == null }">
+					<a href="/login" class="align-self-center">
 						<button type="button" class="btn">Login</button>
+					</a>
 					</c:when>
 					<c:otherwise>
+					<a href="/kakao/logout" class="align-self-center">
 						<button type="button" class="btn">Logout</button>
+					</a>
 					</c:otherwise>
 				</c:choose>
 				</a>

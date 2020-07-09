@@ -31,9 +31,11 @@
                     <input type="submit" class="btn btn-primary btn-user btn-block" value="로그인" >
                   </form>
                     <hr>
-                    <a href="https://kauth.kakao.com/oauth/authorize?client_id=f5b5ae84edd2bb27cfdebdebaa48bc3f&redirect_uri=http://localhost:8090/kakao/login&response_type=code">
-                      <img src="/resources/img/kakao_login_medium_wide.png" style="width:100%;">
-                    </a>
+                    <div class="text-center">
+                		<a href="https://kauth.kakao.com/oauth/authorize?client_id=f5b5ae84edd2bb27cfdebdebaa48bc3f&redirect_uri=http://localhost:8090/kakao/login&response_type=code">
+                   			<img src="/resources/img/kakao_login_medium_wide.png">
+                		</a>
+                	</div>
                   <hr>
                   <div class="text-center">
                     <a class="small" href="/login/forgotpwd">비밀번호를 잊으셨나요?</a>

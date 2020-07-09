@@ -58,12 +58,11 @@
                 <input type="submit" id="search" value="회원가입 하기" class="btn btn-primary btn-user btn-block">
               </form>
                 <hr>
-                <a href="index.html" class="btn btn-google btn-user btn-block">
-                  <i class="fab fa-google fa-fw"></i> 구글 아이디로 가입하기
+                <div class="text-center">
+                <a href="https://kauth.kakao.com/oauth/authorize?client_id=f5b5ae84edd2bb27cfdebdebaa48bc3f&redirect_uri=http://localhost:8090/kakao/login&response_type=code">
+                   <img src="/resources/img/kakao_login_medium_wide.png">
                 </a>
-                <a href="index.html" class="btn btn-facebook btn-user btn-block">
-                  <i class="fab fa-facebook-f fa-fw"></i> 페이스북 아이디로 가입하기
-                </a>
+                </div>
               <hr>
               <div class="text-center">
                 <a class="small" href="/login/forgotpwd">비밀번호를 잊으셨나요?</a>

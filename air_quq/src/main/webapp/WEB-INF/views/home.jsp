@@ -49,6 +49,7 @@
 		</div>
 	</div>
 	<h1 class="text-danger">이제 가까운 곳에서 소중한 것들을 찾아보세요.</h1>
+	
 	<div class="row">
 		<div class="col-md-4">
 			<a href="" class="text-decoration-none">
