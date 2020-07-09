@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <style>
-	.ui-datepicker{ font-size: 25px;}
+	.ui-datepicker{ font-size: 18px;}
 	.ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active, .ui-widget-content .ui-state-hover{color : #FF0000; border: 1px solid #FF0000;}
 	.ui-widget-content .ui-state-highlight{color:#FF0000;}
 </style>
@@ -75,13 +75,15 @@
 			<input type="button" value="편의시설 conven 갯수" class="btn btn-danger btn-icon-split">	
 		</div>
 	</div>
-		<div style="text-align: center;">
-			<div id="datecnt" style="display: inline-block; text-align: center; font-weight: bold; font-size: 50px;">체크인 날짜를 선택해 주세요</div><br>
-			<div id="detaildate">여행 날짜를 입력해 주세요</div>
-			<input type="hidden" id="startdate" name="startdate">
-			<input type="hidden" id="enddate" name="enddate">
-			<div id="cal" style="display: inline-block;"></div>
-			<div class="row" style="border-bottom: #c4c4c4 1px solid; padding: 10px 0px;"></div>
+		<div class="row" style="border-bottom: #c4c4c4 1px solid; padding: 10px 0px;">
+			<div class="col-md-12" style="text-align: center;">
+				<div style="display: inline-block; text-align: center; font-weight: bold; font-size: 50px;">O박O일</div><br>
+				사용자가 입력한 시작날짜 - 사용자가 입력한 끝날짜<br>
+				인원수<br>
+				<input type="hidden" id="startdate" name="startdate">
+				<input type="hidden" id="enddate" name="enddate">
+				<input type="button" value="수정하기" class="btn btn-danger btn-icon-split" data-toggle="modal" data-target="#myModal">
+			</div>
 		</div>
 	<div class="row" style="border-bottom: #c4c4c4 1px solid;"></div>
 	<div class="row" style="border-bottom: #c4c4c4 1px solid; padding: 10px 0px; font-weight: bold; font-size: 30px;">
@@ -104,76 +106,138 @@
 		</div>
 	</div>
 	</div>
-<div style="width: 100px; height: 340px; position: fixed; right: 150px; top: 200px; border: gray 1px solid; text-align: center;">
+<div style="width: 240px; height: 500px; position: fixed; right: 80px; top: 150px; border: gray 1px solid; text-align: center;">
 	<div style="margin: 10px 0px; border: ">
 		<i class="far fa-calendar-alt fa-3x"></i><br>체크인<br>
+		<input type="text" value="사용자가 입력한 시작날짜" readonly="readonly" id="checkin">
 	</div>
 	<div style="margin: 10px 0px;">
 		<i class="fa fa-calendar-alt fa-3x"></i><br>체크아웃<br>
+		<input type="text" value="사용자가 입력한 끝날짜" readonly="readonly" id="checkout">
 	</div>
 	<div style="margin: 10px 0px;">
 		<i class="fas fa-users fa-3x"></i><br>인원수<br>
+		<input type="text" value="사용자가 입력한 인원수" readonly="readonly">
 	</div>
 	<div style="margin: 10px 0px;">
 		<i class="fas fa-coins fa-3x"></i><br>총금액
+		<input type="text" value="사용자 결제 금액" readonly="readonly">
+	</div>
+	<div style="margin: 10px 0px;">
+		<input type="button" value="예약하기" class="btn btn-danger btn-icon-split">
+		<input type="button" value="수정하기" class="btn btn-danger btn-icon-split" data-toggle="modal" data-target="#myModal">
 	</div>
 </div>
+<div class="modal fade" id="myModal" role="dialog">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h3 class="modal-title">예약 정보 수정</h3>
+			</div>
+			<div class="modal-body" style="height: 300px; margin: auto; font-size: 20px;">
+				<div style="display: inline-block; height: 100%; width: 100%;">
+					<div style="display: inline-block; width: 162px; text-align: center;">
+						체크인<br>
+						<input type="text" value="2020/07/19" id="startmodified" readonly="readonly" style="border: none; outline:none; text-align: center; width: 70%;">
+						<i class="far fa-calendar-alt fa-1x" id="calclick"></i>
+					</div>
+					<div style="display: inline-block; width: 162px; text-align: center;">
+						체크아웃<br>
+						<input type="text" value="2020/07/19" id="endmodified" readonly="readonly" style="border: none; outline:none; text-align: center; width: 70%;">
+						<i class="fa fa-calendar-alt fa-1x" id="calclick"></i>
+					</div>
+					<div id="bundle" style="position: absolute; display: none; background-color: #eeeeee">
+						<div id="cal"></div>
+						<div>
+							<input type="button" value="닫기" class="btn btn-danger btn-icon-split" style="float: right;">					
+						</div>
+					</div>
+					<div>
+						<div>
+							인원
+						</div>
+					</div>
+					<div>
+						일일금액<span style="float:right;">$house_info price</span><br>
+						숙박일<span style="float:right;">선택한 숙박일</span><br>
+						<hr>
+						총금액<span style="float:right;">숙박금액*숙박일</span>
+					</div>
+					<div style="text-align: center; margin: 20px;">
+						<input type="button" value="수정" class="btn btn-danger btn-icon-split" style="width: 100px;">
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=asd"></script>
 <script>
-		var dateArr=new Array();
-		var onswitch=true;
-		var tempdate;
-		$("#cal").datepicker({
-			showOn: "both",
-			numberOfMonths: [1,2],
-			buttonText: "Calendar",
-			dateFormat: "yy/mm/dd",
-			yearSuffix: "년",
-			showMonthAfterYear: true,
-			dayNamesMin:["일","월","화","수","목","금","토"],
-			monthNames: ["1월","2월","3월","4월","5월","6월","7월","8월","9월","10월","11월","12월"],
-			onSelect:function(d){
-				
-				var detaildate=$("#detaildate");
-				
-				if(onswitch){
-					detaildate.empty();
-					$("#startdate").val(d);
-					detaildate.append(d+"-");
-					onswitch=false;
-					tempdate=d;
+	var startmodified=$("#startmodified");
+	var endmodified=$("#endmodified");
+	
+	$("input[value='수정하기']").click(function(){
+		var checkin=$("#checkin").val();
+		var checkout=$("#checkout").val();
+		
+		startmodified.val(checkin);
+		endmodified.val(checkout);
+	})
+
+	
+	var onswitch=true;
+	var tempdate;
+	$("#cal").datepicker({
+		showOn: "both",
+		closeText: "Close",
+		numberOfMonths: [1,2],
+		buttonText: "Calendar",
+		dateFormat: "yy/mm/dd",
+		yearSuffix: "년",
+		showMonthAfterYear: true,
+		dayNamesMin:["일","월","화","수","목","금","토"],
+		monthNames: ["1월","2월","3월","4월","5월","6월","7월","8월","9월","10월","11월","12월"],
+		minDate : 0,
+		onSelect:function(d){
+			
+			if(onswitch){
+				startmodified.val(d);
+				onswitch=false;
+				tempdate=d;
+			}else{
+				if(tempdate<d){
+					endmodified.val(d);
+					var startarr=tempdate.split("/");
+					var endarr=d.split("/");
+					
+					var startobj=new Date(startarr[0], Number(startarr[1])-1, startarr[2]);
+					var endobj=new Date(endarr[0], Number(endarr[1])-1, endarr[2]);
+					
+					var betweendate=(endobj.getTime()-startobj.getTime())/1000/60/60/24;
+					
+					onswitch=true;
+					$("#bundle").css({display: "none"});
 				}else{
-					if(tempdate<d){
-						$("#enddate").val(d);
-						detaildate.append(d);
-						var startarr=tempdate.split("/");
-						var endarr=d.split("/");
-						
-						var startobj=new Date(startarr[0], Number(startarr[1])-1, startarr[2]);
-						var endobj=new Date(endarr[0], Number(endarr[1])-1, endarr[2]);
-						
-						var betweendate=(endobj.getTime()-startobj.getTime())/1000/60/60/24;
-						
-						$("#datecnt").text(betweendate+"박"+(betweendate+1)+"일");
-						
-						for (var i = 0; i <= betweendate; i++) {
-							var Adate=new Date(startobj.getTime()+(i*24*60*60*1000));
-							dateArr[i]=Adate;
-						}		
-						
-						onswitch=true;
-					}else{
-						alert("이전날짜 입니다.");
-					}
+					alert("이전날짜 입니다.");
 				}
 			}
-		});
+		}
+	});	
 		
-		var container = document.getElementById('map'); //지도를 담을 영역의 DOM 레퍼런스
-		var options = { //지도를 생성할 때 필요한 기본 옵션
-			center: new kakao.maps.LatLng(33.450701, 126.570667), //지도의 중심좌표.
-			level: 3 //지도의 레벨(확대, 축소 정도)
-		};
+	$("#calclick").click(function(){
+		$("#bundle").css({display: "block"});	
+	})
+	
+	$("input[value='닫기']").click(function(){
+		$("#bundle").css({display: "none"});
+	})
+	
+	var container = document.getElementById('map'); //지도를 담을 영역의 DOM 레퍼런스
+	var options = { //지도를 생성할 때 필요한 기본 옵션
+		center: new kakao.maps.LatLng(33.450701, 126.570667), //지도의 중심좌표.
+		level: 3 //지도의 레벨(확대, 축소 정도)
+	};
 
-		var map = new kakao.maps.Map(container, options); //지도 생성 및 객체 리턴
+	var map = new kakao.maps.Map(container, options); //지도 생성 및 객체 리턴
 </script>
