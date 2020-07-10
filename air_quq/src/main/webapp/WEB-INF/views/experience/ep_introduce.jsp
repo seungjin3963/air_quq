@@ -1,9 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<a href="#"
-			class="btn btn-primary btn-icon-split" style="float:right; width: 8%; height:30px;"><div>저장 </div></a>
-<a href="#"
-			class="btn btn-primary btn-icon-split" style="float:right; width: 8%; height:30px;margin-right: 10px;"><div>나가기</div></a>
+<input type="button" onclick="ep_model()"
+			class="btn btn-danger btn-icon-split" style="float:right; width: 8%; height:30px;margin-right: 10px;" value="나가기">
 <!-- Page Heading -->
 <h1 class="h3 mb-4 text-gray-800">자기소개</h1>
 <div class="ep_type">
@@ -21,7 +19,7 @@
 
 			<br>
 			<input type="text" cols="10"
-				class="form-control bg-light border-0 small"
+				class="form-control bg-light border-3 small"
 				placeholder="게스트에게 자기 소개와 함께 체험 진행에 있어 나만의 특별함을 알려주세요" id="ep_info_intr" name="value" value="${ep_intr}">
 			<br>
 			<p>참고: 게스트는 해당 분야의 전문가를 찾고 있습니다. 전문성 기준에 대해 자세히 알아보세요.</p>
@@ -29,7 +27,7 @@
 
 			<div>
 				<input type="button" value="선택하기" onclick="check_intr()"
-					class="btn btn-primary btn-icon-split" id="ep_type_materials">
+					class="btn btn-danger btn-icon-split ep_botton">
 			</div>
 
 		</form>

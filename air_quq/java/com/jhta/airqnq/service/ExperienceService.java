@@ -49,4 +49,16 @@ public class ExperienceService {
 	public int insertpricetimes(HashMap<String, Object> map) {
 		return dao.insertpricetimes(map);
 	}
+	public int insertmater(HashMap<String, Object> map) {
+		return dao.insertmater(map);
+	}
+	public int ep_delete(int hinum) {
+		return dao.ep_delete(hinum);
+	}
+	public int ep_updatediv(int hinum) {
+		return dao.ep_updatediv(hinum);
+	}
+	public int ep_insertsession(HashMap<String, Object> map) {
+		return dao.ep_insertsession(map);
+	}
 }

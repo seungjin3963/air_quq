@@ -2,10 +2,8 @@
 	pageEncoding="UTF-8"%>
 	<%@taglib prefix="ep" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<a href="#"
-			class="btn btn-primary btn-icon-split" style="float:right; width: 8%; height:30px;"><div>저장 </div></a>
-<a href="#"
-			class="btn btn-primary btn-icon-split" style="float:right; width: 8%; height:30px;margin-right: 10px;"><div>나가기</div></a>
+<input type="button" onclick="ep_model()"
+			class="btn btn-danger btn-icon-split" style="float:right; width: 8%; height:30px;margin-right: 10px;" value="나가기">
 <h1 class="h3 mb-4 text-gray-800">주요 주제 선택</h1>
 <br>
 
@@ -16,9 +14,9 @@
 
 		<a
 			href="/experince/ep_insert/Sub?num=${i.expernum }&name=${i.subname}"
-			class="btn btn-primary btn-icon-split"
+			class="btn border-left-danger btn-icon-split"
 			style="width: 30%; height: 70px; margin: 15px;"><div
-				class="ep_sub_div">${i.subname}</div></a>
+				class="ep_sub_div"><p style="font-size: 30px; font-weight: bold; color: black;">${i.subname}<p></div></a>
 
 	</ep:forEach>
 </ep:if>
@@ -29,9 +27,9 @@
 	<br>
 	<ep:forEach var="i" items="${list}">
 
-		<a href="/experience/ep_insert/subdetail?value=${i.subname}&num=${i.expernum}" class="btn btn-primary btn-icon-split"
+		<a href="/experience/ep_insert/subdetail?value=${i.subname}&num=${i.expernum}" class="btn border-left-danger btn-icon-split"
 			style="width: 30%; height: 70px; margin: 15px;"><div
-				class="ep_sub_div">${i.subname}</div></a>
+				class="ep_sub_div"><p style="font-size: 30px; font-weight: bold;color: black;">${i.subname}<p></div></a>
 
 	</ep:forEach>
 </ep:if>

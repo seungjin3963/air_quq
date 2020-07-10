@@ -50,4 +50,17 @@ public class ExperienceDao {
 	public int insertpricetimes(HashMap<String, Object> map) {
 		return sqlSessionTemplate.update(NAMESPACE+".ep_pricetimes" , map);
 	}
+	public int insertmater(HashMap<String, Object> map) {
+		return sqlSessionTemplate.update(NAMESPACE+".ep_mater", map);
+	}
+	public int ep_delete(int hinum) {
+		 sqlSessionTemplate.delete(NAMESPACE+".ep_deleteexper", hinum);
+		return sqlSessionTemplate.delete(NAMESPACE+".ep_deletehous", hinum);
+	}
+	public int ep_updatediv(int hinum) {
+		return sqlSessionTemplate.update(NAMESPACE+".ep_updatediv", hinum);	
+	}
+	public int ep_insertsession(HashMap<String, Object> map) {
+		return sqlSessionTemplate.update(NAMESPACE+".ep_sessnum", map);
+	}
 } 

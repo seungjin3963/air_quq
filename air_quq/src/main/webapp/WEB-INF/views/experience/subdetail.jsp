@@ -1,9 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<a href="#"
-			class="btn btn-primary btn-icon-split" style="float:right; width: 8%; height:30px;"><div>저장 </div></a>
-<a href="#"
-			class="btn btn-primary btn-icon-split" style="float:right; width: 8%; height:30px;margin-right: 10px;"><div>나가기</div></a>
+<input type="button" onclick="ep_model()"
+			class="btn btn-danger btn-icon-split" style="float:right; width: 8%; height:30px;margin-right: 10px;" value="나가기">
 <!-- Page Heading -->
 <h1 class="h3 mb-4 text-gray-800">주제</h1>
 <div class="ep_type">
@@ -21,7 +19,7 @@
 		
 		<br><a
 			href="/experience/ep_insert/subject?value=${expernum}"
-			class="btn btn-primary btn-icon-split" id="ep_type_subdetail"><div>선택하기</div></a>
+			class="btn btn-danger btn-icon-split" id="ep_type_subdetail"><div>선택하기</div></a>
 	</div>
 
 </div>

@@ -142,29 +142,29 @@
 	margin: auto;
 }
 
-#ep_type_materials{
+#ep_type_mater{
 	width: 30%;
 	height:50px;	
 	margin-left: 200px;
-	margin-top: 229px;
+	margin-top: 180px;
 }
 #ep_type_materials div{
 	margin: auto;
 }
 
-
-
 .ep_sub_div{
 	margin: auto;
 }
 
-
-#ep_sub_btn{
-	width: 100px;
-	height: 50px;
-	margin-top: 100px;
-	float: right;
+.ep_botton{
+	position: absolute;
+	top: 693px;
+	left: 978px; 
+	width:171px;
+	height:50px;	
 }
+
+
 
 
 #ep_type_price{
@@ -177,11 +177,10 @@
 	margin: auto;
 }
 
-.a_click {
-pointer-events: none;
-cursor: default;
+.ep_icon{
+	float: right;
 }
 
-.ep_icon{
+.ep_mater_icon{
 	float: right;
 }
