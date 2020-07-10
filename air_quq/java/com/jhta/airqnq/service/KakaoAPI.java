@@ -108,10 +108,19 @@ public class KakaoAPI {
 		        JsonObject kakao_account = element.getAsJsonObject().get("kakao_account").getAsJsonObject();
 		        
 		        String nickname = properties.getAsJsonObject().get("nickname").getAsString();
-		        //String email = kakao_account.getAsJsonObject().get("email").getAsString();
+		        String email = "";
+		        if(kakao_account.getAsJsonObject().get("email") != null) {
+		        	email = kakao_account.getAsJsonObject().get("email").getAsString();
+		        	System.out.println(email + "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
+		        }
+		        //String profileImgPath = kakao_account.getAsJsonObject().get("profile").getAsString();
 		        
 		        userInfo.put("nickname", nickname);
-		        //userInfo.put("email", email);
+		        if(email != null) {
+		        	userInfo.put("email", email);
+		        } else {
+		        	userInfo.put("email", null);
+		        }
 		        
 		    } catch (IOException e) {
 		        // TODO Auto-generated catch block

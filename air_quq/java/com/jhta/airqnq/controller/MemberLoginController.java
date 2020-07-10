@@ -51,9 +51,11 @@ public class MemberLoginController {
         
         HashMap<String, Object> userInfo = kakao.getUserInfo(access_Token);
         
+        System.out.println(userInfo.get("email") + ",   " + userInfo.get("nickname"));
+        
         //    클라이언트의 이메일이 존재할 때 모델에 해당 이메일과 토큰 등록
         if (userInfo.get("nickname") != null) {
-        	session.setAttribute("userId", userInfo.get("nickname"));
+        	session.setAttribute("userInfo", userInfo);
         	session.setAttribute("access_Token", access_Token);
         	session.setAttribute("logind", true);
         } else {
@@ -67,7 +69,7 @@ public class MemberLoginController {
 	public String logout(HttpSession session) {
 	    kakao.kakaoLogout((String)session.getAttribute("access_Token"));
 	    session.removeAttribute("access_Token");
-	    session.removeAttribute("userId");
+	    session.removeAttribute("userInfo");
 	    session.removeAttribute("logind");
 	    return ".home";
 	}
