@@ -160,7 +160,7 @@
 					</a>
 					</c:when>
 					<c:otherwise>
-					<a href="/kakao/logout" class="align-self-center">
+					<a href="https://kauth.kakao.com/oauth/logout?client_id=f5b5ae84edd2bb27cfdebdebaa48bc3f&logout_redirect_uri=http://localhost:8090/kakao/logout&state=?" class="align-self-center">
 						<button type="button" class="btn">Logout</button>
 					</a>
 					</c:otherwise>

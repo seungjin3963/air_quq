@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.jhta.airqnq.service.KakaoAPI;
 import com.jhta.airqnq.service.MemberFunctionService;
-import com.jhta.airqnq.vo.JoinVo;
 
 @Controller
 public class MemberLoginController {
@@ -34,7 +33,6 @@ public class MemberLoginController {
 		System.out.println(cnt);
 		
 		if(cnt > 0) {
-			System.out.println("조회된 아이디 있음");
 			model.addAttribute("logind", true);
 			return ".home";
 		} else {
@@ -45,13 +43,10 @@ public class MemberLoginController {
 	
 	@GetMapping("/kakao/login")
 	public String kakaoLogin(String code, HttpSession session) {
-		System.out.println("User Token : " + code);
 		String access_Token = kakao.getAccessToken(code);
-        System.out.println("사용자 접속 토큰 : " + access_Token);
         
         HashMap<String, Object> userInfo = kakao.getUserInfo(access_Token);
         
-        System.out.println(userInfo.get("email") + ",   " + userInfo.get("nickname"));
         
         //    클라이언트의 이메일이 존재할 때 모델에 해당 이메일과 토큰 등록
         if (userInfo.get("nickname") != null) {
@@ -67,7 +62,8 @@ public class MemberLoginController {
 	
 	@RequestMapping(value="/kakao/logout")
 	public String logout(HttpSession session) {
-	    kakao.kakaoLogout((String)session.getAttribute("access_Token"));
+		System.out.println("로그아웃");
+		
 	    session.removeAttribute("access_Token");
 	    session.removeAttribute("userInfo");
 	    session.removeAttribute("logind");
