@@ -72,6 +72,7 @@ public class ExperiencePageController {
 		if (type == "" || type == null) {
 			return ".experience.ep_insert.ep_subject";
 		} else {
+			session.setAttribute("ep_type", type);
 			int housenum = (int) session.getAttribute("ep_housenum");
 			HashMap<String, Object> map = new HashMap<String, Object>();
 			map.put("hinum", housenum);
@@ -188,17 +189,23 @@ public class ExperiencePageController {
 		if (value == null) {
 			return ".experience.ep_insert.ep_title";
 		} else {
-
 			session.setAttribute("ep_mater", value);
 			String val = "";
+			String val1 = "";
 			for (int i = 0; i < value.length; i++) {
-				val += value[i] + ",";
+				if (value[i] == "" || value[i] == null) {
+					val1 += value[i];
+				} else {
+					val += value[i] + ",";
+				}
 			}
-			/*
-			 * int housenum = (int) session.getAttribute("ep_housenum"); HashMap<String,
-			 * Object> map = new HashMap<String, Object>(); map.put("hinum", housenum);
-			 * map.put("program", value); service.insertprogram(map);
-			 */
+
+			int housenum = (int) session.getAttribute("ep_housenum");
+			HashMap<String, Object> map = new HashMap<String, Object>();
+			map.put("hinum", housenum);
+			map.put("mater", val);
+			service.insertmater(map);
+
 			return ".experience.ep_insert.ep_title";
 		}
 	}
@@ -228,7 +235,7 @@ public class ExperiencePageController {
 
 	@RequestMapping("/experience/ep_insert/price_time") // 체험 가격 시간 설정 8
 	public String experienceInsertprice_time(Model model, String price, String ep_fiedset, HttpSession session) {
-		System.out.println(ep_fiedset);
+
 		int sessnum = (int) session.getAttribute("sessionnum");
 		if (sessnum > 24) {
 			model.addAttribute("ep_num", sessnum);
@@ -254,8 +261,9 @@ public class ExperiencePageController {
 	/////////////////////////////////////////////////////////////
 	@RequestMapping("/experince/ep_insert/Sub") // 소주제 뽑아오기
 	public String experinceSubject(int num, Model model, String name, HttpSession session) {
+		session.setAttribute("subjectname", name);
 		int sessnum = (int) session.getAttribute("sessionnum");
-		if (sessnum > 24) {
+		if (sessnum > 10) {
 			model.addAttribute("ep_num", sessnum);
 		} else {
 			model.addAttribute("ep_num", 10);
@@ -272,6 +280,7 @@ public class ExperiencePageController {
 
 	@RequestMapping("/experience/ep_insert/subdetail") //
 	public String experincesubDatile(String value, Model model, int num, HttpSession session) {
+		session.setAttribute("subjectdename", value);
 		int sessnum = (int) session.getAttribute("sessionnum");
 		if (sessnum > 10) {
 			model.addAttribute("ep_num", sessnum);
@@ -283,5 +292,41 @@ public class ExperiencePageController {
 		model.addAttribute("expernum", num);
 		return ".experience.ep_insert.subdetail";
 	}
-
+	
+	@RequestMapping("/ep/GoHome")
+	public String epGoHome(int num ,HttpSession session) {
+		
+		session.removeAttribute("ep_type");
+		session.removeAttribute("subjectname");
+		session.removeAttribute("subjectdename");
+		session.removeAttribute("ep_title");
+		session.removeAttribute("ep_loc");
+		session.removeAttribute("ep_intr");
+		session.removeAttribute("ep_pro");
+		session.removeAttribute("ep_price");
+		session.removeAttribute("ep_mater");
+		session.removeAttribute("ep_fiedset");
+		int hinum=(int)session.getAttribute("ep_housenum");
+		if(num==1) {
+			//저장 후 나가기 sessionnum table 저장
+			int sessnum = (int) session.getAttribute("sessionnum");
+			HashMap<String, Object> map=new HashMap<String, Object>();
+			map.put("hinum", hinum);
+			map.put("sessnum", sessnum);
+			int n=service.ep_insertsession(map);
+			session.removeAttribute("ep_housenum");
+			return ".home";
+		}else if(num==2) {
+			//그냥 나가기 table삭제
+			int n=service.ep_delete(hinum);
+			session.removeAttribute("ep_housenum");
+			return ".home";
+		}else if(num==3) {
+			// 최종 제출 div_type 변경
+			int n=service.ep_updatediv(hinum);
+			session.removeAttribute("ep_housenum");
+			return ".home";
+		}
+		return null;
+	}
 }

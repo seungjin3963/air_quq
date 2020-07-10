@@ -84,7 +84,7 @@
                   <h6 class="m-0 font-weight-bold text-primary">셰프와 함께하는 온라인 체험</h6>
                 </div>
                 <div class="card-body">
-                  <img src="">
+                  	<tiles:insertAttribute name="slider"></tiles:insertAttribute>
                 </div>
               </div>
             </div>

@@ -30,9 +30,15 @@
 		<put-attribute name="type" value="/WEB-INF/views/experience/{1}.jsp"></put-attribute>
 	</definition>
 	
-	<definition name=".epOnline.layout" template="/WEB-INF/views/epOnline/layout.jsp">
+	<definition name=".epOnline.layout" template="/WEB-INF/views/epOnline/layout2.jsp">
 		<put-attribute name="header" value="/WEB-INF/views/header.jsp"></put-attribute>
 		<put-attribute name="nav" value="/WEB-INF/views/epOnline/navbar.jsp"></put-attribute>
+		<put-attribute name="slider" value="/WEB-INF/views/epOnline/slider.jsp"></put-attribute>
+		<put-attribute name="slider2" value="/WEB-INF/views/epOnline/slider2.jsp"></put-attribute>
+		<put-attribute name="slider3" value="/WEB-INF/views/epOnline/slider2.jsp"></put-attribute>
+		<put-attribute name="slider4" value="/WEB-INF/views/epOnline/slider2.jsp"></put-attribute>
+		<put-attribute name="slider5" value="/WEB-INF/views/epOnline/slider2.jsp"></put-attribute>
+		<put-attribute name="slider6" value="/WEB-INF/views/epOnline/slider2.jsp"></put-attribute>
 		<put-attribute name="footer" value="/WEB-INF/views/footer.jsp"></put-attribute>
 	</definition>
 	
@@ -42,6 +48,31 @@
 	
 	
 </tiles-definitions>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

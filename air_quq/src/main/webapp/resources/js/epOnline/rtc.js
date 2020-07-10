@@ -29,8 +29,9 @@ let pcConfig = {
 
 let room = 'foo';
 
-//let socket = io.connect();
-let socket = io("http://192.168.0.2:3000");
+let socket = io.connect('https://192.168.0.2:3000',{secure: true});
+//let socket = io();
+//let socket = io("https://192.168.0.2:3000");
 //let socket = io("http://localhost:3000");
 
   if(room !==''){

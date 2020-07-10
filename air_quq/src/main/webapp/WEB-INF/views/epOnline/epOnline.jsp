@@ -8,7 +8,7 @@
 		<video class="remoteVideo" id="remoteVideo" autoplay></video>
 	</div>
 </div>
-<script src="http://192.168.0.2:3000/socket.io/socket.io.js"></script>
+<script src="https://192.168.0.2:3000/socket.io/socket.io.js"></script>
 <!-- <script src="http://localhost:3000/socket.io/socket.io.js"></script> -->
 <script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
 <script src="/resources/js/epOnline/rtc.js"></script>

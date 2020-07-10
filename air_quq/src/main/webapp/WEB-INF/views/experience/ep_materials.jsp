@@ -1,10 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 	<%@taglib prefix="ep" uri="http://java.sun.com/jsp/jstl/core" %>
-<a href="#"
-			class="btn btn-primary btn-icon-split" style="float:right; width: 8%; height:30px;"><div>저장 </div></a>
-<a href="#"
-			class="btn btn-primary btn-icon-split" style="float:right; width: 8%; height:30px;margin-right: 10px;"><div>나가기</div></a>
+<input type="button" onclick="ep_model()"
+			class="btn btn-danger btn-icon-split" style="float:right; width: 8%; height:30px;margin-right: 10px;" value="나가기">
 <!-- Page Heading -->
 <h1 class="h3 mb-4 text-gray-800">게스트 준비물</h1>
 <div class="ep_type">
@@ -20,14 +18,18 @@
 		</p>
 		<p>한 번에 하나씩 추가하거나 비슷한 항목을 함께 묶으세요.</p>
 		<form action="/experience/ep_insert/materials">
-			<div id="materials_div1"></div>
 			<ep:forEach var="i" items="${ep_mater}">
-				<input type='text' class='form-control bg-light border-0 small' name='value' value="${i}" placeholder='여기에 항목을 입력하세요'><br>
+				<div><i class='fas fa-times ep_mater_icon'></i><br><input type='text' class='form-control bg-light border-0 small ep_mater_ic' name='value' value="${i }" placeholder='여기에 항목을 입력하세요'><br></div>
 			</ep:forEach>
+			<div></div>
+			<div id="materials_div1"></div>
+			
 			<a href="#" id="materials_div">+ 항목 추가하기</a><br>
+			<br>
+			<br>
 			<div>
 				<input type="submit" value="선택하기"
-					class="btn btn-primary btn-icon-split" id="ep_type_materials">
+					class="btn btn-danger btn-icon-split" id="ep_type_mater">
 			</div>
 		</form>
 	</div>

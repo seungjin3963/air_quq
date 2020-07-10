@@ -46,4 +46,19 @@
 	<update id="ep_pricetimes" parameterType="hashmap">
 		update experience_info set price=#{price} ,times=#{times} where hinum=#{hinum}
 	</update>
+	<update id="ep_mater" parameterType="hashmap">
+		update experience_info set mater=#{mater} where hinum=#{hinum}
+	</update>
+	<delete id="ep_deleteexper" parameterType="int">
+		delete from experience_info where hinum=#{hinum}
+	</delete>
+	<delete id="ep_deletehous" parameterType="int">
+		delete from house_info where hinum=#{hinum}
+	</delete>
+	<update id="ep_updatediv" parameterType="int">
+		update experience_info set div_type=32 where hinum=#{hinum}
+	</update>
+	<update id="ep_sessnum" parameterType="hashmap">
+		update experience_info set sessionnum=#{sessnum} where hinum=#{hinum}
+	</update>
 </mapper>
