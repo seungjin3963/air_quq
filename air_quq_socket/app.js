@@ -1,10 +1,16 @@
-const http = require('http');
+const http = require('https');
 const os = require('os');
 const socketIO = require('socket.io');
 const nodeStatic = require('node-static');
+const fs = require('fs');
+
+const options = {
+	key: fs.readFileSync('keys/private.pem'),
+	cert: fs.readFileSync('keys/public.pem')
+};
 
 let fileServer = new(nodeStatic.Server)();
-let app = http.createServer((req,res)=>{
+let app = http.createServer(options,(req,res)=>{
     fileServer.serve(req,res);
 }).listen(3000);
 
