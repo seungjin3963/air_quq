@@ -24,7 +24,7 @@ public class MemberLoginController {
     private KakaoAPI kakao;
 	
 	@PostMapping("/member/login")
-	public String login(String idl, String pwdl, Model model) {
+	public String login(String idl, String pwdl, Model model,HttpSession session) {
 		HashMap<String, Object> map = new HashMap<String, Object>();
 		System.out.println("id:"+idl+", pwd:"+pwdl);
 		map.put("id", idl);
@@ -35,6 +35,7 @@ public class MemberLoginController {
 		
 		if(cnt > 0) {
 			System.out.println("조회된 아이디 있음");
+			session.setAttribute("id", idl);
 			model.addAttribute("logind", true);
 			return ".home";
 		} else {

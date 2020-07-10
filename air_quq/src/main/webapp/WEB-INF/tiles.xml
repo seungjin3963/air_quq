@@ -33,6 +33,7 @@
 	<definition name=".epOnline.layout" template="/WEB-INF/views/epOnline/layout.jsp">
 		<put-attribute name="header" value="/WEB-INF/views/header.jsp"></put-attribute>
 		<put-attribute name="nav" value="/WEB-INF/views/epOnline/navbar.jsp"></put-attribute>
+		<put-attribute name="slider" value="/WEB-INF/views/epOnline/slider.jsp"></put-attribute>
 		<put-attribute name="footer" value="/WEB-INF/views/footer.jsp"></put-attribute>
 	</definition>
 	
@@ -42,6 +43,31 @@
 	
 	
 </tiles-definitions>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
