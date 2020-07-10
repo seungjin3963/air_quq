@@ -133,6 +133,7 @@
 		<div class="modal-content">
 			<div class="modal-header">
 				<h3 class="modal-title">예약 정보 수정</h3>
+				<button class="close" data-dismiss="modal" style="outline: none;">X</button>
 			</div>
 			<div class="modal-body" style="height: 300px; margin: auto; font-size: 20px;">
 				<div style="display: inline-block; height: 100%; width: 100%;">
@@ -149,7 +150,7 @@
 					<div id="bundle" style="position: absolute; display: none; background-color: #eeeeee">
 						<div id="cal"></div>
 						<div>
-							<input type="button" value="닫기" class="btn btn-danger btn-icon-split" style="float: right;">					
+							<input type="button" value="닫기" class="btn btn-danger btn-icon-split" style="float: right; width: 70px; margin: 10px;">					
 						</div>
 					</div>
 					<div>
@@ -167,6 +168,23 @@
 						<input type="button" value="수정" class="btn btn-danger btn-icon-split" style="width: 100px;">
 					</div>
 				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="modal fade" id="alert" role="dialog">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h3 class="modal-title">정보 확인</h3>
+				<button class="close" data-dismiss="modal" style="outline: none;">X</button>
+			</div>
+			<div class="modal-body">
+				이전 날짜 입니다.	
+			</div>
+			<div class="modal-footer">
+				<input type="button" value="확인" class="btn btn-danger btn-icon-split" id="alertclose" style="width: 70px; margin:10px;">
 			</div>
 		</div>
 	</div>
@@ -203,6 +221,7 @@
 			
 			if(onswitch){
 				startmodified.val(d);
+				endmodified.val("");
 				onswitch=false;
 				tempdate=d;
 			}else{
@@ -219,7 +238,7 @@
 					onswitch=true;
 					$("#bundle").css({display: "none"});
 				}else{
-					alert("이전날짜 입니다.");
+					$("#alert").modal();
 				}
 			}
 		}
@@ -232,6 +251,10 @@
 	$("input[value='닫기']").click(function(){
 		$("#bundle").css({display: "none"});
 	})
+	
+	$("#alertclose").click(function(){
+		$("#alert").modal("hide");
+	});
 	
 	var container = document.getElementById('map'); //지도를 담을 영역의 DOM 레퍼런스
 	var options = { //지도를 생성할 때 필요한 기본 옵션
