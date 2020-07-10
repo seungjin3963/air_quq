@@ -5,7 +5,12 @@
 		<video id="localVideo" autoplay></video>
 	</div>
 	<div class="row justify-content-center" id="remoteContainer">
-		<video class="remoteVideo" id="remoteVideo" autoplay></video>
+		<!-- <video class="remoteVideo" id="remoteVideo" autoplay></video> -->
+		<video class="remoteVideo" autoplay id="remoteVideo1"></video>
+		<video class="remoteVideo" autoplay id="remoteVideo2"></video>
+		<video class="remoteVideo" autoplay id="remoteVideo3"></video>
+		<video class="remoteVideo" autoplay></video>
+		<video class="remoteVideo" autoplay></video>
 	</div>
 </div>
 <script src="https://192.168.0.2:3000/socket.io/socket.io.js"></script>

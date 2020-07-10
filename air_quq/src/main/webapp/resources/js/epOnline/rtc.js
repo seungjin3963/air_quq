@@ -1,13 +1,18 @@
 "use strict";
 
 let localVideo = document.getElementById("localVideo");
-let remoteVideo = document.getElementById("remoteVideo");
+/*let remoteVideo = document.getElementById("remoteVideo");*/
+let remoteVideo1 = document.getElementById("remoteVideo1");
+let remoteVideo2 = document.getElementById("remoteVideo2");
+let remoteVideo3 = document.getElementById("remoteVideo3");
 let isInitiator = false;
 let isChannelReady = false;
 let isStarted = false;
 let localStream;
 let remoteStream;
 let pc;
+
+let userCount = 0;
 
 let pcConfig = {
 		'iceServers': [
@@ -138,7 +143,14 @@ function handleCreateOfferError(event) {
 function handleRemoteStreamAdded(event) {
   console.log("remote stream added");
   remoteStream = event.stream;
-  remoteVideo.srcObject = remoteStream;
+  userCount++;
+  if(userCount == 1){
+	  remoteVideo1.srcObject = remoteStream;
+  }else{
+	  remoteVideo2.srcObject = remoteStream;
+  }
+  /*remoteStream = event.stream;
+  remoteVideo.srcObject = remoteStream;*/
 }
 
 function maybeStart() {
