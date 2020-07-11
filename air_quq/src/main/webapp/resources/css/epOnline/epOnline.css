@@ -1,13 +1,17 @@
-#localContainer {
-	background-color: aqua;
+.localContainer {
+	text-align: center;
 }
 
 #localVideo {
-	width: 50%;
+	width: 70%;
 	height: 400px;
 }
 
-.remoteVideo {
-	width: 20%;
-	height: 200px;
+.remoteContainer{
+	width:100%;
+}
+
+.remoteContainer > video{
+	width:20%;
+	border: 2px solid black;
 }
