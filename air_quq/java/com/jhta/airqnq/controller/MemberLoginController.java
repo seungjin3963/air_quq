@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.jhta.airqnq.service.KakaoAPI;
 import com.jhta.airqnq.service.MemberFunctionService;
+import com.jhta.airqnq.vo.JoinVo;
 
 @Controller
 public class MemberLoginController {
@@ -30,33 +31,52 @@ public class MemberLoginController {
 		map.put("pwd", pwdl);
 		int cnt = service.loginCheck(map);
 		
-		System.out.println(cnt);
 		
 		if(cnt > 0) {
-			System.out.println("조회된 아이디 있음");
 			session.setAttribute("id", idl);
-			model.addAttribute("logind", true);
+			session.setAttribute("logind", true);
 			return ".home";
 		} else {
-			model.addAttribute("logind", false);
+			session.setAttribute("logind", false);
 			return ".login";
 		}
 	}
+	
+	@GetMapping("/logout")
+	public String logoutPage() {
+		String client_id = "f5b5ae84edd2bb27cfdebdebaa48bc3f";
+		String logout_redirect_uri = "http://localhost:8090/kakao/logout";
+		String path = "https://kauth.kakao.com/oauth/logout?client_id="+ client_id + "&logout_redirect_uri=" + logout_redirect_uri + "&state=?";
+		return "redirect:" + path;
+	}
+	
 	
 	@GetMapping("/kakao/login")
 	public String kakaoLogin(String code, HttpSession session) {
 		String access_Token = kakao.getAccessToken(code);
         
         HashMap<String, Object> userInfo = kakao.getUserInfo(access_Token);
+        System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>" + userInfo);
         
-        
-        //    클라이언트의 이메일이 존재할 때 모델에 해당 이메일과 토큰 등록
         if (userInfo.get("nickname") != null) {
         	session.setAttribute("userInfo", userInfo);
         	session.setAttribute("access_Token", access_Token);
         	session.setAttribute("logind", true);
         } else {
         	session.setAttribute("logind", false);
+        }
+        
+        String kakao_id = (String)userInfo.get("kakao_id");
+        String email = (String)userInfo.get("email");
+        String nickname = (String)userInfo.get("nickname");
+        
+        
+        int n = service.selectKakaoUser(Integer.parseInt(kakao_id));
+        
+        //카카오 가입안한 서비스 회원일경우 최초로 DB에 등록됨
+        if(n==0) {
+        	JoinVo vo = new JoinVo(0, kakao_id, "", "", email, "", "", null, 0, 1, nickname);
+        	service.insertJoin(vo);
         }
         
 		return ".home";

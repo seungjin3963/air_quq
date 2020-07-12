@@ -28,6 +28,9 @@
 				<a href="/user/apply" class="btn btn-light align-self-center">
 					<span class="text">예약 신청하기(테스트)</span>
 				</a>
+				<a href="/host/home" class="btn btn-light align-self-center">
+					<span class="text">숙소 호스트 되기</span>
+				</a>
 
 				<!-- Nav Item - Search Dropdown (Visible Only XS) -->
 				<li class="nav-item dropdown no-arrow d-sm-none">
@@ -160,7 +163,7 @@
 					</a>
 					</c:when>
 					<c:otherwise>
-					<a href="https://kauth.kakao.com/oauth/logout?client_id=f5b5ae84edd2bb27cfdebdebaa48bc3f&logout_redirect_uri=http://localhost:8090/kakao/logout&state=?" class="align-self-center">
+					<a href="/logout" class="align-self-center">
 						<button type="button" class="btn">Logout</button>
 					</a>
 					</c:otherwise>

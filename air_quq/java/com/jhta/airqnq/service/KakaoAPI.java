@@ -100,7 +100,7 @@ public class KakaoAPI {
 		        while ((line = br.readLine()) != null) {
 		            result += line;
 		        }
-		        System.out.println("response body : " + result);
+		        //System.out.println("response body : " + result);
 		        
 		        JsonParser parser = new JsonParser();
 		        JsonElement element = parser.parse(result);
@@ -109,17 +109,32 @@ public class KakaoAPI {
 		        JsonObject kakao_account = element.getAsJsonObject().get("kakao_account").getAsJsonObject();
 		        
 		        String nickname = properties.getAsJsonObject().get("nickname").getAsString();
+		        String profile_image = "";
 		        String email = "";
 		        if(kakao_account.getAsJsonObject().get("email") != null) {
 		        	email = kakao_account.getAsJsonObject().get("email").getAsString();
 		        }
 		        
+		        if(kakao_account.getAsJsonObject().get("profile_image") != null) {
+		        	profile_image = kakao_account.getAsJsonObject().get("profile_image").getAsString();
+		        }
+		        
 		        userInfo.put("nickname", nickname);
+		        
 		        if(email != null) {
 		        	userInfo.put("email", email);
 		        } else {
 		        	userInfo.put("email", null);
 		        }
+		        
+		        if(profile_image != null) {
+		        	userInfo.put("profile_image", profile_image);
+		        } else {
+		        	userInfo.put("profile_image", null);
+		        }
+		        
+		        String id = element.getAsJsonObject().get("id").getAsString();
+		        userInfo.put("kakao_id", id);
 		        
 		    } catch (IOException e) {
 		        // TODO Auto-generated catch block

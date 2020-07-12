@@ -12,8 +12,12 @@
 	</select>
 	
 	<insert id="insertMember" parameterType="join">
-		insert into member values(0, #{id}, #{pwd}, #{addr}, #{email}, #{phone}, #{gender}, #{profile_img})
+		insert into member values(0, #{id}, #{pwd}, #{addr}, #{email}, #{phone}, #{gender}, #{profile_img}, #{identi_user}, #{identi_kakao}, #{nickname})
 	</insert>
+	
+	<select id="kakaoSelectUser" parameterType="int" resultType="int">
+		select count(*) cnt from member where id=#{id} and identi_kakao=1
+	</select>
 	
 	<update id="updateMember" parameterType="hashmap">
 		update member set pwd=#{pwd} where email=#{email}

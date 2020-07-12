@@ -9,12 +9,14 @@ public class JoinVo {
 	private String phone;
 	private String gender;
 	private byte[] profile_img;
+	private int identi_user;
+	private int identi_kakao;
+	private String nickname;
 
 	public JoinVo() {}
 
 	public JoinVo(int memun, String id, String pwd, String addr, String email, String phone, String gender,
-			byte[] profile_img) {
-		super();
+			byte[] profile_img, int identi_user, int identi_kakao, String nickname) {
 		this.memun = memun;
 		this.id = id;
 		this.pwd = pwd;
@@ -23,6 +25,34 @@ public class JoinVo {
 		this.phone = phone;
 		this.gender = gender;
 		this.profile_img = profile_img;
+		this.identi_user = identi_user;
+		this.identi_kakao = identi_kakao;
+		this.nickname = nickname;
+	}
+
+	
+	public int getIdenti_user() {
+		return identi_user;
+	}
+
+	public void setIdenti_user(int identi_user) {
+		this.identi_user = identi_user;
+	}
+
+	public int getIdenti_kakao() {
+		return identi_kakao;
+	}
+
+	public void setIdenti_kakao(int identi_kakao) {
+		this.identi_kakao = identi_kakao;
+	}
+
+	public String getNickname() {
+		return nickname;
+	}
+
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
 	}
 
 	public int getMemun() {

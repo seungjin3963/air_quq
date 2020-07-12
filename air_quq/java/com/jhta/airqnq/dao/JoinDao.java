@@ -29,4 +29,8 @@ public class JoinDao {
 	public int emailChk(String email) {
 		return sqlSessionTemplate.selectOne(NAMESPACE + ".selectEmail", email);
 	}
+	
+	public int selectKakaoUser(int id) {
+		return sqlSessionTemplate.selectOne(NAMESPACE + ".kakaoSelectUser", id);
+	}
 }

@@ -24,6 +24,10 @@
 		<put-attribute name="main" value="/WEB-INF/views/join/forgot-password-reset.jsp"></put-attribute>
 	</definition>
 	
+	<definition name=".hosthome" extends=".home">
+		<put-attribute name="main" value="/WEB-INF/views/host/home.jsp"></put-attribute>
+	</definition>
+	
 	<definition name=".experience.ep_insert.*" template="/WEB-INF/views/experience/ep_layout.jsp">	
 		<put-attribute name="header" value="/WEB-INF/views/header.jsp"></put-attribute>
 		<put-attribute name="footer" value="/WEB-INF/views/footer.jsp"></put-attribute>

@@ -33,4 +33,9 @@ public class HomeController {
 	public String loginForgotPassword() {
 		return ".loginforgotpw";
 	}
+	
+	@RequestMapping(value = "host/home", method = RequestMethod.GET)
+	public String hostHome() {
+		return ".hosthome";
+	}
 }

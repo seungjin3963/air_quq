@@ -38,4 +38,8 @@ public class MemberFunctionService {
 	public int loginCheck(HashMap<String, Object> map) {
 		return loginDao.loginCheck(map);
 	}
+	
+	public int selectKakaoUser(int id) {
+		return joinDao.selectKakaoUser(id);
+	}
 }
