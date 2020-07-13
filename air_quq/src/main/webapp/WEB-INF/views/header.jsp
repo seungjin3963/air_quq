@@ -15,6 +15,11 @@
 			<div class="navbar-collapse collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav ml-auto">
 					<li class="nav-item">
+						<a href="/admin" class="align-self-center">
+							<button type="button" class="btn btn-light align-self-center">관리자 페이지</button>
+						</a>
+					</li>
+					<li class="nav-item">
 						<a href="/host/epOnlineList" class="align-self-center">
 							<button type="button" class="btn btn-light align-self-center">온라인 체험(테스트)</button>
 						</a>
