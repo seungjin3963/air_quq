@@ -15,4 +15,8 @@ public class LoginDao {
 	public int loginCheck(HashMap<String, Object> map) {
 		return sqlSessionTemplate.selectOne(NAMESPACE + ".loginCheck", map);
 	}
+	
+	public int kakaoCheck(String menum) {
+		return sqlSessionTemplate.selectOne(NAMESPACE + ".kakaoCheck", menum);
+	}
 }

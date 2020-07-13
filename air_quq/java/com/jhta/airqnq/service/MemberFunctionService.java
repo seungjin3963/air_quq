@@ -42,4 +42,8 @@ public class MemberFunctionService {
 	public int selectKakaoUser(int id) {
 		return joinDao.selectKakaoUser(id);
 	}
+	
+	public int kakaoCheck(String menum) {
+		return loginDao.kakaoCheck(menum);
+	}
 }
