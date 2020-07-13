@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<!-- 우편번호 passport.js 로딩 -->
+<script type="text/javascript" src="/resources/js/main/passport.js"></script>
 <div class="container">
 	<div class="jumbotron">
 		<h1 class="display-4">에어비앤비 호스트가 되어 수입을 올려보세요</h1>

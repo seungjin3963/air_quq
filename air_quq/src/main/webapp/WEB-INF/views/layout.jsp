@@ -29,6 +29,10 @@
 <script src="/resources/vendor/jquery/jquery.min.js"></script>
 <script src="/resources/js/jquery/jquery-ui.js"></script>
 
+<!-- 우편번호 서비스 -->
+<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+
+
 </head>
 <body id="page-top">
 	<div id="wrapper">
