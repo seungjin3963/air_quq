@@ -21,9 +21,13 @@
 <link href="/resources/css/home.css" rel="stylesheet">
 <link href="/resources/css/header.css" rel="stylesheet">
 
-<link href="/resources/css/experience.css" rel="stylesheet"><!--  영노 -->
+<!-- Custom styles for this page -->
+<link href="/resources/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
-<!-- jquery --> 
+<link href="/resources/css/experience.css" rel="stylesheet">
+<!--  영노 -->
+
+<!-- jquery -->
 <link rel="stylesheet" type="text/css" href="/resources/css/jquery-ui.css">
 <!-- <script src="/resources/js/jquery/jquery-3.5.1.js"></script> -->
 <script src="/resources/vendor/jquery/jquery.min.js"></script>
@@ -32,7 +36,7 @@
 </head>
 <body id="page-top">
 	<div id="wrapper">
-		
+
 		<div id="header">
 			<tiles:insertAttribute name="header" />
 		</div>
@@ -52,7 +56,7 @@
 	</div>
 
 	<!-- Bootstrap core JavaScript-->
-	
+
 	<script src="/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 
@@ -61,7 +65,14 @@
 
 	<!-- Custom scripts for all pages-->
 	<script src="/resources/js/sb-admin-2.min.js"></script>
-	
+
+	<!-- Page level plugins -->
+	<script src="/resources/vendor/datatables/jquery.dataTables.min.js"></script>
+	<script src="/resources/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+	<!-- Page level custom scripts -->
+	<script src="/resources/js/demo/datatables-demo.js"></script>
+
 	<!-- 회원가입 관련 js -->
 	<script type="text/javascript" src="/resources/js/main/join.js"></script>
 </body>
