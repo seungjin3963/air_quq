@@ -18,6 +18,8 @@
 <!-- Custom styles for this template-->
 <link href="/resources/css/sb-admin-2.min.css" rel="stylesheet">
 
+<link href="/resources/css/home.css" rel="stylesheet">
+
 <link href="/resources/css/experience.css" rel="stylesheet"><!--  영노 -->
 
 <!-- jquery --> 
