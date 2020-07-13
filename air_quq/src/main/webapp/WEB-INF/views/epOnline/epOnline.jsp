@@ -14,8 +14,8 @@
 	<br />
 	<div id="connections"></div>
 
-	<!-- <script src="https://192.168.0.2:3000/socket.io/socket.io.js"></script> -->
-	<script src="https://localhost:3000/socket.io/socket.io.js"></script>
+	<script src="https://192.168.0.2:3000/socket.io/socket.io.js"></script>
+	<!-- <script src="https://https://192.168.0.2:3000/socket.io/socket.io.js"></script> -->
 	<script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
 	<script src="/resources/js/epOnline/rtc.js"></script>
 	<script type="text/javascript">

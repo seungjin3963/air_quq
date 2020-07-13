@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<link href="/resources/css/home.css" rel="stylesheet">
 <div class="container">
 	<div class="navbar navbar-expand-lg navbar-light bg-light mb-5">
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -49,7 +50,7 @@
 		</div>
 	</div>
 	<h1 class="text-danger">이제 가까운 곳에서 소중한 것들을 찾아보세요.</h1>
-	
+
 	<div class="row">
 		<div class="col-md-4">
 			<a href="" class="text-decoration-none">

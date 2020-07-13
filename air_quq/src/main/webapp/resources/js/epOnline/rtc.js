@@ -25,7 +25,8 @@ function pageReady() {
             .then(getUserMediaSuccess)
             .then(function(){
             	//socket = io.connect("https://localhost:3000/", {secure: true});
-            	socket = io.connect("https://192.168.219.100:3000/", {secure: true});
+            	//socket = io.connect("https://192.168.219.100:3000/", {secure: true});
+            	socket = io.connect("https://192.168.0.2:3000/", {secure: true});
                 socket.on('signal', gotMessageFromServer);    
                 socket.on('connect', function(){
                     socketId = socket.id;
