@@ -15,4 +15,9 @@ public class EpOnlineController {
 	public String epOnLine() {
 		return ".epOnline.epOnline";
 	}
+	
+	@GetMapping(value="/epOnline/modify")
+	public String modify(){
+		return "";
+	}
 }
