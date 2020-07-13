@@ -32,9 +32,8 @@ public class MemberLoginController {
 		map.put("pwd", pwdl);
 		int menum = service.idChk(idl);
 		if(menum > 0) {
-			session.setAttribute("id", idl);
+			session.setAttribute("menum", menum);
 			session.setAttribute("logind", true);
-			session.setAttribute("id", idl);
 			return ".home";
 		} else {
 			session.setAttribute("logind", false);
@@ -78,8 +77,13 @@ public class MemberLoginController {
         //카카오 가입안한 서비스 회원일경우 최초로 DB에 등록됨
         if(n==0) {
         	JoinVo vo = new JoinVo(0, kakao_id, "", "", email, "", "", null, 0, 1, nickname);
-        	service.insertJoin(vo);
+        	int r = service.insertJoin(vo);
         }
+
+        int menum = service.kakaoCheck(kakao_id);
+        System.out.println(menum);
+        session.setAttribute("menum", menum);
+        
         
 		return ".home";
 	}
