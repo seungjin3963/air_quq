@@ -1,5 +1,9 @@
 @charset "UTF-8";
 
+body {
+	font-family: 'Jua', sans-serif;
+}
+
 .divider {
 	width: 0;
 	border-right: 1px solid #e3e6f0;

@@ -27,6 +27,9 @@
 <link href="/resources/css/experience.css" rel="stylesheet">
 <!--  영노 -->
 
+<!-- 폰트 -->
+<link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
+
 <!-- jquery -->
 <link rel="stylesheet" type="text/css" href="/resources/css/jquery-ui.css">
 <!-- <script src="/resources/js/jquery/jquery-3.5.1.js"></script> -->

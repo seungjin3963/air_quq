@@ -7,8 +7,7 @@
 		<hr class="my-4">
 		<p>숙소에 대해 간략하게 알려주세요.</p>
 		<p>
-			<input class="form-control form-control-lg" type="text"
-				placeholder="검색하기">
+			<input class="form-control form-control-lg" type="text" placeholder="검색하기">
 		</p>
 
 		<div class="row">
@@ -34,8 +33,6 @@
 						<option>숙박인원 8명</option>
 						<option>숙박인원 9명</option>
 						<option>숙박인원 10명</option>
-						<option>숙박인원 11명</option>
-						<option>숙박인원 12명</option>
 					</select>
 				</p>
 			</div>

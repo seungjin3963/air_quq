@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <div class="container">
 	<!-- DataTales Example -->
 	<div class="card shadow mb-4">
@@ -23,7 +24,20 @@
 						</tr>
 					</thead>
 					<tbody>
-						
+						<c:forEach var="list" items="${list }">
+							<tr>
+								<td>${list.hinum }</td>
+								<td>${list.title }</td>
+								<td>${list.addr } ${list.addr_detail }</td>
+								<td>${list.price }</td>
+								<td>${list.checkin_time }</td>
+								<td>${list.startdate }</td>
+								<td>${list.enddate }</td>
+								<td><a href="/"><i class="fa fa-camera"></i></a></td>
+								<td><a href="/"><i class="fa fa-folder-open fa-2x"></i></a></td>
+								<td></td>
+							</tr>
+						</c:forEach>
 					</tbody>
 				</table>
 			</div>
