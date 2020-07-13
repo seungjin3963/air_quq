@@ -25,8 +25,15 @@ public class ExperiencePageController {
 
 	@RequestMapping("/experience/myexperience") // 등록 전 화면
 	public String experiencePage(HttpSession session) {
-		session.setAttribute("sessionnum", 8);
-		return ".experience.myexperience";
+		String  checkid=(String)session.getAttribute("id");
+		if(checkid==null) {
+			return ".login";
+		}else {
+			int loginnum=service.selectloginnum(checkid);
+			session.setAttribute("loginnum", loginnum);
+			session.setAttribute("sessionnum", 8);
+			return ".experience.myexperience";
+		}	
 	}
 	//////////////////////////////////////////////////////////
 
@@ -42,9 +49,12 @@ public class ExperiencePageController {
 			session.setAttribute("sessionnum", 8);
 		}
 		if (num == 1) {
-			int loginnum = 999; // 회원번호
-			int housenum = service.temporary(loginnum);
-			int n = service.insertexperience(housenum);
+			HashMap<String, Object> map=new HashMap<String, Object>();
+			int loginnum=(int)session.getAttribute("loginnum");
+			int housenum = service.temporary(loginnum);	
+			map.put("loginnum", loginnum);
+			map.put("hinum", housenum);
+			int n = service.insertexperience(map);
 			session.setAttribute("ep_housenum", housenum);
 			return ".experience.ep_insert.ep_type";
 		} else {

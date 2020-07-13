@@ -6,23 +6,25 @@
 	<!-- 영노 -->
 	<select id="ep_subject"
 		resultType="com.jhta.airqnq.vo.ExperienceVo">
-		select * from subject where expernum!=26
+		select * from subject where expernum!=27
 	</select>
 	<select id="ep_detailsub" parameterType="int"
 		resultType="com.jhta.airqnq.vo.ExperienceVo">
 		select sunum expernum, subname from subDetail where
 		expernum=#{num}
 	</select>
-
+	<select id="ep_loginnum" parameterType="string" resultType="int">
+		select menum from member where id=#{id}
+	</select>
 	
 	<insert id="ep_temporary" parameterType="int">
-		insert into house_info(hinum,menum) values(0,#{loginum})
+		insert into house_info(hinum,menum,`div`) values(0,#{loginum},3)
 	</insert>
 	<select id="ep_hinum" resultType="int">
-		SELECT * FROM house_info order by hinum desc LIMIT 1
+		SELECT hinum FROM house_info order by hinum desc LIMIT 1
 	</select>
-	<insert id="insertexperience" parameterType="int">
-		insert into experience_info(einum,hinum,sunum) values(0,#{hinum},163)
+	<insert id="insertexperience" parameterType="hashmap">
+		insert into experience_info(einum,hinum,sunum,memnum) values(0,#{hinum},163,#{loginnum})
 	</insert>
 	
 	<update id="ep_type" parameterType="hashmap">

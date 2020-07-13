@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<link href="/resources/css/experience.css" rel="stylesheet"><!--  영노 -->
 <div class="experience_page">
 	<div><h6>에어큐유큐 체험</h6></div>
 	<div><h1>체험 및 온라인 체험 호스팅</h1></div>

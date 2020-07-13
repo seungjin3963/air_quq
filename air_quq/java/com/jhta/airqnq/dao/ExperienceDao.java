@@ -22,12 +22,16 @@ public class ExperienceDao {
 	public List<ExperienceVo> detailsub(int num){
 		return sqlSessionTemplate.selectList(NAMESPACE+".ep_detailsub" , num);
 	}
+	public int selectloginnum(String id) {
+		return sqlSessionTemplate.selectOne(NAMESPACE+".ep_loginnum" , id);
+	}
+	
 	public int temporary(int loginnum) {	
 		sqlSessionTemplate.insert(NAMESPACE+".ep_temporary" , loginnum);
 		return sqlSessionTemplate.selectOne(NAMESPACE+".ep_hinum");
 	}
-	public int insertexperience(int hinum) {
-		return sqlSessionTemplate.insert(NAMESPACE+".insertexperience",hinum);
+	public int insertexperience(HashMap<String,Object> map) {
+		return sqlSessionTemplate.insert(NAMESPACE+".insertexperience",map);
 	}
 	public int inserttype(HashMap<String, Object> map) {
 		return sqlSessionTemplate.update(NAMESPACE+".ep_type", map);

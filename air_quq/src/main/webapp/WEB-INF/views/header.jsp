@@ -34,6 +34,11 @@
 							<span class="text">숙소 호스트 되기</span>
 						</a>
 					</li>
+					<li class="nav-item">
+						<a href="/ep_management/ep_list" class="btn btn-light align-self-center">
+							<span class="text">등록 중인 체험(테스트)</span>
+						</a>
+					</li>
 				</ul>
 				<ul class="navbar-nav">
 					<div class="divider d-none d-sm-block"></div>

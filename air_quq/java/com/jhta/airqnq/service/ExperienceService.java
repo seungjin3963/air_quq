@@ -21,12 +21,15 @@ public class ExperienceService {
 	public List<ExperienceVo> detailsub(int num){
 		return dao.detailsub(num);
 	}
+	public int selectloginnum(String id) {
+		return dao.selectloginnum(id);
+	}
 	
 	public int temporary(int loginnum) { //임시 저장
 		return dao.temporary(loginnum);
 	}
-	public int insertexperience(int hinum) {
-		return dao.insertexperience(hinum);
+	public int insertexperience(HashMap<String, Object> map) {
+		return dao.insertexperience(map);
 	}
 	public int inserttype(HashMap<String, Object> map) {//div 설정
 		return dao.inserttype(map);
