@@ -1,39 +1,39 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<style>
-	.ui-datepicker{ font-size: 18px;}
-	.ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active, .ui-widget-content .ui-state-hover{color : #FF0000; border: 1px solid #FF0000;}
-	.ui-widget-content .ui-state-highlight{color:#FF0000;}
-</style>
+
+<link href="/resources/css/userapply/userapply.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=asd"></script>
+<script src="/resources/js/userapply/userapply.js"></script>
+
 <div class="container">
 	<h1>house_info title가져오기</h1>
 	<div class="row">
 		<div class="col-md-6">
-			<img src="/resources/img/Jellyfish.jpg" style="width: 100%; height: 400px; margin: 10px 0px; border-radius: 10px;">
+			<img src="/resources/img/1.jpg" id="bigphoto">
 		</div>
-		<div class="col-md-6">
+		<div class="col-md-6" id="smallphoto">
 			<div class="row">
-				<img src="/resources/img/Jellyfish.jpg" style="width: 46%; height: 190px; margin: 10px; border-radius: 10px;">
-				<img src="/resources/img/Jellyfish.jpg" style="width: 46%; height: 190px; margin: 10px; border-radius: 10px;"> 
+				<img src="/resources/img/1.jpg">
+				<img src="/resources/img/1.jpg"> 
 			</div>
 			<div class="row">
-				<img src="/resources/img/Jellyfish.jpg" style="width: 46%; height: 190px; margin: 10px; border-radius: 10px;"> 
-				<img src="/resources/img/Jellyfish.jpg" style="width: 46%; height: 190px; margin: 10px; border-radius: 10px;">
+				<img src="/resources/img/1.jpg"> 
+				<img src="/resources/img/1.jpg">
 			</div>
 		</div>
 	</div>
 
-	<div class="row" style="border-bottom: #c4c4c4 1px solid; padding: 10px 0px;">
-		<div class="col-md-11" style="font-weight: bold; font-size: 30px;">
+	<div class="row" id="applydivision">
+		<div class="col-md-11" id="usernumber">
 			<span>인원 house_info h_cnt</span>
 		</div>
 
 		<div class="col-md-1">
-			<img src="/resources/img/Jellyfish.jpg" style="width: 50px; height: 50px; border-radius: 100%;">
+			<img src="/resources/img/1.jpg" id="applypofile">
 		</div>
 	</div>
 
-	<div class="row" style="border-bottom: #c4c4c4 1px solid; padding: 10px 0px;">
+	<div class="row" id="applydivision">
 		<div class="col-md-12">
 			1977년부터 지역의 대표숙소로소 다양한 여행자들을 품어온 '미도장'이
 			40년의 세월을 거쳐 '미도호스텔'로 거듭났습니다. 최신식 호텔보다는 조금 불편할 지도 모릅니다. 하지만 서귀포의 오랜
@@ -69,59 +69,59 @@
 			‘보다’, ‘말하다’, ‘끌다’, ‘지나가다’ 등 문장마다 다른 서술어를 사용하려고 했다. 쓰다 보니 그렇게 된 것이 아니라
 			의도적으로 그렇게 썼다. 금방 지루해하는 독자의 집중력을 조금이라도 유지하려면 이 정도의 수고는 해야 한다.</div>
 	</div>
-	<div class="row" style="border-bottom: #c4c4c4 1px solid; padding: 10px 0px; text-align: center;">
+	<div class="row" id="applydivision2">
 		<div class="col-md-12">
 			<h3>편의 기능</h3>
 			<input type="button" value="편의시설 conven 갯수" class="btn btn-danger btn-icon-split">	
 		</div>
 	</div>
-		<div class="row" style="border-bottom: #c4c4c4 1px solid; padding: 10px 0px;">
+		<div class="row" id="applydivision1">
 			<div class="col-md-12" style="text-align: center;" id="usecal">
-				<div style="display: inline-block; text-align: center; font-weight: bold; font-size: 50px;">O박O일</div><br>
+				<div id="rentdate">O박O일</div><br>
 				<div>사용자가 입력한 시작날짜 - 사용자가 입력한 끝날짜</div>
 				<div>인원수</div>
 				<input type="button" value="수정하기" class="btn btn-danger btn-icon-split" data-toggle="modal" data-target="#myModal">
 			</div>
 		</div>
-	<div class="row" style="border-bottom: #c4c4c4 1px solid;"></div>
-	<div class="row" style="border-bottom: #c4c4c4 1px solid; padding: 10px 0px; font-weight: bold; font-size: 30px;">
+	<div class="row" id="applydivision"></div>
+	<div class="row" id="applydivision3">
 		<div class="col-md-12">
 			첫 후기를 남겨 주세요!!
 		</div>
 	</div>
 
-	<div class="row" style="border-bottom: #c4c4c4 1px solid; padding: 10px 0px;">
+	<div class="row" id="applydivision1">
 		<div class="col-md-12">
-			<div style="font-weight: bold; font-size: 30px;">위치</div>
+			<div id="locationfont">위치</div>
 			<div>주소</div>
-			<div id="map" style="width:100%;height:550px;"></div>
+			<div id="map"></div>
 		</div>
 	</div>
-	<div class="row" style="border-bottom: #c4c4c4 1px solid; padding: 10px 0px; font-weight: bold; font-size: 30px;">
+	<div class="row" id="applydivision4">
 		<div class="col-md-12">
-			<img src="/resources/img/Jellyfish.jpg" style="width: 50px; height: 50px; border-radius: 100%;"> member id님<br>
+			<img src="/resources/img/1.jpg" id="applypofile"> member id님<br>
 			<input type="button" value="호스트에게 연락하기" class="btn btn-danger btn-icon-split">
 		</div>
 	</div>
 	</div>
-<div style="width: 240px; height: 500px; position: fixed; right: 80px; top: 150px; border: gray 1px solid; text-align: center;">
-	<div style="margin: 10px 0px;">
+<div id="quickmenu">
+	<div id="quickmenulayer">
 		<i class="far fa-calendar-alt fa-3x"></i><br>체크인<br>
-		<input type="text" value="2020/07/19" readonly="readonly" id="checkin" style="text-align: center;">
+		<input type="text" value="2020/07/19" readonly="readonly" id="checkin" class="quickmenufont">
 	</div>
-	<div style="margin: 10px 0px;">
+	<div id="quickmenulayer">
 		<i class="fa fa-calendar-alt fa-3x"></i><br>체크아웃<br>
-		<input type="text" value="2020/07/22" readonly="readonly" id="checkout" style="text-align: center;">
+		<input type="text" value="2020/07/22" readonly="readonly" id="checkout" class="quickmenufont">
 	</div>
-	<div style="margin: 10px 0px;">
+	<div id="quickmenulayer">
 		<i class="fas fa-users fa-3x"></i><br>인원수<br>
-		<input type="text" value="5" readonly="readonly" id="checkcnt" style="text-align: center;">
+		<input type="text" value="5" readonly="readonly" id="checkcnt" class="quickmenufont">
 	</div>
-	<div style="margin: 10px 0px;">
-		<i class="fas fa-coins fa-3x"></i><br>총금액
-		<input type="text" readonly="readonly" style="text-align: center;" id="summoney">
+	<div id="quickmenulayer">
+		<i class="fas fa-coins fa-3x"></i><br>총금액<br>
+		<input type="text" readonly="readonly" id="summoney" class="quickmenufont">
 	</div>
-	<div style="margin: 10px 0px;">
+	<div id="quickmenulayer">
 		<input type="button" value="예약하기" class="btn btn-danger btn-icon-split">
 		<input type="button" value="수정하기" class="btn btn-danger btn-icon-split" data-toggle="modal" data-target="#myModal">
 	</div>
@@ -131,40 +131,40 @@
 		<div class="modal-content">
 			<div class="modal-header">
 				<h3 class="modal-title">예약 정보 수정</h3>
-				<button type="button" class="close" data-dismiss="modal" style="outline: none;">X</button>
+				<button type="button" class="close" data-dismiss="modal" id="modalexit">X</button>
 			</div>
-			<div class="modal-body" style="height: 330px; margin: auto; font-size: 20px;">
-				<div id="calclick" style="display: inline-block; height: 100%; width: 100%;">
-					<div style="display: inline-block; width: 162px; text-align: center;">
+			<div class="modal-body" id="mymodalborder">
+				<div id="calclick">
+					<div id="mymodallayer">
 						체크인<br>
-						<input type="text" id="startmodified" readonly="readonly" style="border: none; outline:none; text-align: center; width: 70%;">
+						<input type="text" id="startmodified" readonly="readonly" class="checkdate">
 						<i class="far fa-calendar-alt fa-1x" id="startcal"></i>
 					</div>
-					<div style="display: inline-block; width: 162px; text-align: center;">
+					<div id="mymodallayer">
 						체크아웃<br>
-						<input type="text" id="endmodified" readonly="readonly" style="border: none; outline:none; text-align: center; width: 70%;">
+						<input type="text" id="endmodified" readonly="readonly" class="checkdate">
 						<i class="fa fa-calendar-alt fa-1x" id="endcal"></i>
 					</div>
-					<div id="bundle" style="position: absolute; display: none; background-color: #eeeeee">
+					<div id="bundle">
 						<div id="cal"></div>
 						<div>
-							<input type="button" value="닫기" class="btn btn-danger btn-icon-split" style="float: right; width: 70px; margin: 10px;">					
+							<input type="button" value="닫기" class="btn btn-danger btn-icon-split" id="userapplybuttonOk">					
 						</div>
 					</div>
 					<div>
 						인원<br>
-						<button type="button" id="manusbutton" style="border: none; outline: none; background:none;"><i class="fas fa-minus-circle" id="manus"></i></button>
-						<input type="text" id="h-cnt" readonly="readonly" style="border: none; outline:none; text-align: center;">
-						<button type="button" id="addbutton" style="border: none; outline: none; background:none;"><i class="fas fa-plus-circle" id="add"></i></button>
+						<button type="button" id="manusbutton" class="usercount"><i class="fas fa-minus-circle" id="manus"></i></button>
+						<input type="text" id="h-cnt" readonly="readonly">
+						<button type="button" id="addbutton" class="usercount"><i class="fas fa-plus-circle" id="add"></i></button>
 					</div>
 					<div id="totmoney">
-						일일금액<span style="float:right;">30000</span><br>
-						숙박일<span style="float:right;">선택한 숙박일</span><br>
+						일일금액<span>30000</span><br>
+						숙박일<span>선택한 숙박일</span><br>
 						<hr>
-						총금액<span style="float:right;">숙박금액*숙박일</span>
+						총금액<span>숙박금액*숙박일</span>
 					</div>
-					<div style="text-align: center; margin: 20px;">
-						<input type="button" value="수정" class="btn btn-danger btn-icon-split" style="width: 100px;">
+					<div id="modalbuttonOk1">
+						<input type="button" value="수정" class="btn btn-danger btn-icon-split" id="modalbuttonOk2">
 					</div>
 				</div>
 			</div>
@@ -177,171 +177,14 @@
 		<div class="modal-content">
 			<div class="modal-header">
 				<h3 class="modal-title">정보 확인</h3>
-				<button type="button" class="close" data-dismiss="modal" style="outline: none;">X</button>
+				<button type="button" class="close" data-dismiss="modal" id="modalexit">X</button>
 			</div>
 			<div class="modal-body">
 				이전 날짜 입니다.	
 			</div>
 			<div class="modal-footer">
-				<input type="button" value="확인" class="btn btn-danger btn-icon-split" id="alertclose" style="width: 70px; margin:10px;">
+				<input type="button" value="확인" class="btn btn-danger btn-icon-split" id="alertclose">
 			</div>
 		</div>
 	</div>
 </div>
-
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=asd"></script>
-<script>
-	//시작일 마지막일 사이 구하는 함수
-	var between=function(startdate,enddate){
-		var startarr=startdate.split("/");
-		var endarr=enddate.split("/");
-		
-		var startobj=new Date(startarr[0], Number(startarr[1])-1, startarr[2]);
-		var endobj=new Date(endarr[0], Number(endarr[1])-1, endarr[2]);
-		
-		var betweendate=(endobj.getTime()-startobj.getTime())/1000/60/60/24;
-		
-		return betweendate;
-	}
-
-	//퀵메뉴 총금액 뽑기
-	var betweenday=between($("#checkin").val(),$("#checkout").val());
-	$("#summoney").val(betweenday*30000);
-	
-	//페이지 수정 페이지 값 채우기
-	$("#usecal").children().eq(2).text($("#checkin").val()+"-");
-	$("#usecal").children().eq(2).append($("#checkout").val());
-	$("#usecal").children().eq(3).text($("#checkcnt").val());
-	$("#usecal").children().eq(0).text(betweenday+"박"+(betweenday+1)+"일");
-	
-	//수정하기를 눌렀을때 modal로 값 넘겨주는 것
-	$("input[value='수정하기']").click(function(){
-		var checkin=$("#checkin").val();
-		var checkout=$("#checkout").val();
-		var checkcnt=$("#checkcnt").val();
-		var summoney=$("#summoney").val();
-		
-		$("#startmodified").val(checkin);
-		$("#endmodified").val(checkout);
-		$("#h-cnt").val(checkcnt);
-		$("#totmoney").children().eq(2).text(betweenday);
-		$("#totmoney").children().eq(5).text(summoney);
-	})
-	
-	//수정 눌렀을때 퀵메뉴, 수정페이지로 값 보내기
-	$("input[value='수정']").click(function(){
-		var startmodified=$("#startmodified").val();
-		var endmodified=$("#endmodified").val();
-		var cnt=$("#h-cnt").val();
-		var totmoney=$("#totmoney").children().eq(5).text();
-		
-		$("#checkin").val(startmodified);
-		$("#checkout").val(endmodified);
-		$("#checkcnt").val(cnt);
-		$("#summoney").val(totmoney);
-		
-		$("#usecal").children().eq(2).text(startmodified+"-");
-		$("#usecal").children().eq(2).append(endmodified);
-		$("#usecal").children().eq(3).text(cnt);
-		var modifiedday=Number($("#totmoney").children().eq(2).text());
-		$("#usecal").children().eq(0).text(modifiedday+"박"+(modifiedday+1)+"일");
-		
-		$("#myModal").modal("hide");
-	});
-	
-	//datepicker
-	var onswitch=true;
-	var tempdate;
-	$("#cal").datepicker({
-		showOn: "both",
-		closeText: "Close",
-		numberOfMonths: [1,2],
-		buttonText: "Calendar",
-		dateFormat: "yy/mm/dd",
-		yearSuffix: "년",
-		showMonthAfterYear: true,
-		dayNamesMin:["일","월","화","수","목","금","토"],
-		monthNames: ["1월","2월","3월","4월","5월","6월","7월","8월","9월","10월","11월","12월"],
-		minDate : 0,
-		onSelect:function(d){
-			
-			if(onswitch){
-				$("#startmodified").val(d);
-				$("#endmodified").val("");
-				onswitch=false;
-				tempdate=d;
-			}else{
-				if(tempdate<d){
-					$("#endmodified").val(d);
-					
-					var betweendate=between(tempdate,d);
-					
-					$("#totmoney").children().eq(2).text(betweendate);
-					
-					var price=$("#totmoney").children().eq(0).text();
-					var tot=Number(price)*betweendate;
-					$("#totmoney").children().eq(5).text(tot);
-					
-					onswitch=true;
-					$("#bundle").css({display: "none"});
-				}else{
-					$("#alert").modal();
-				}
-			}
-		}
-	});	
-		
-	//캘러리 아이콘을 눌렀을 때 달력 나오게 하기
-	$("#startcal").click(function(){
-		$("#bundle").css({display: "block"});	
-	})
-
-	$("#endcal").click(function(){
-		$("#bundle").css({display: "block"});	
-	})
-	
-	//캘러리 닫기
-	$("input[value='닫기']").click(function(){
-		$("#bundle").css({display: "none"});
-	})
-	
-	//이전 날짜 modal 닫기
-	$("#alertclose").click(function(){
-		$("#alert").modal("hide");
-	});
-	
-	//인원수 추가
-	$("#addbutton").click(function(){
-		var maxcnt=Number($("#h-cnt").val())+1
-		if(maxcnt>10){
-			$("#add").css({opacity:0.5});
-			$(this).disabled="disabled";
-		}else{
-			$("#h-cnt").val(maxcnt);
-			$("#manusbutton").disabled="none";
-			$("#manus").css({opacity:1});
-		}
-	}); 
-	
-	//인원수 빼기
-	$("#manusbutton").click(function(){
-		var mincnt=Number($("#h-cnt").val())-1
-		if(mincnt<1){
-			$("#manus").css({opacity:0.5});
-			$(this).disabled="disabled";
-		}else{
-			$("#h-cnt").val(mincnt);
-			$("#plusbutton").disabled="none";
-			$("#add").css({opacity:1});
-		}
-	});
-	
-	//kakao 맵 
-	var container = document.getElementById('map'); //지도를 담을 영역의 DOM 레퍼런스
-	var options = { //지도를 생성할 때 필요한 기본 옵션
-		center: new kakao.maps.LatLng(33.450701, 126.570667), //지도의 중심좌표.
-		level: 3 //지도의 레벨(확대, 축소 정도)
-	};
-
-	var map = new kakao.maps.Map(container, options); //지도 생성 및 객체 리턴
-</script>
