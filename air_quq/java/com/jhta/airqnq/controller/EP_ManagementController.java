@@ -37,7 +37,7 @@ public class EP_ManagementController {
 		session.setAttribute("ep_type", vo.getDiv_type());
 		session.setAttribute("ep_intr", vo.getIntr());
 		session.setAttribute("ep_loc", vo.getLoc());
-		session.setAttribute("ep_program", vo.getProgram());
+		session.setAttribute("ep_pro", vo.getProgram());
 		session.setAttribute("ep_mater", vo.getMater());
 		session.setAttribute("ep_price", vo.getPrice());
 		session.setAttribute("ep_times", vo.getTimes());

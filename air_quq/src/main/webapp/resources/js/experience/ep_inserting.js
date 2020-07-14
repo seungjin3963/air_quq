@@ -14,21 +14,21 @@
 	document.ManagementFrom[index].submit();
 });
 */
-$('.actionA').click(function() {
+$('.actionA').click(function(event) {
 
 	var index = $('.actionA').index(this);
 	console.log(index);
 	console.log("Aaaaa");
-	var Management = document.ManagementFrom[index];
+	var Management = document.getElementsByName("ManagementFrom")[index];         
 	Management.action="/ep_management/ep_list";
 	Management.submit();
 });
 
-$('.actionB').click(function() {
+$('.actionB').click(function(event) {
 
-	var index = $('.actionB').index(this);
+	var index =$('.actionB').index(this);
 	console.log(index);
-	var Management = document.ManagementFrom[index];
+	var Management = document.getElementsByName("ManagementFrom")[index];
 	Management.action="/ep_management/ep_delete";
 	Management.submit();
 });
