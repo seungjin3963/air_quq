@@ -32,9 +32,6 @@
 <script src="/resources/vendor/jquery/jquery.min.js"></script>
 <script src="/resources/js/jquery/jquery-ui.js"></script>
 
-<!-- 우편번호 서비스 -->
-<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-
 
 </head>
 <body id="page-top">
@@ -78,5 +75,16 @@
 
 	<!-- 회원가입 관련 js -->
 	<script type="text/javascript" src="/resources/js/main/join.js"></script>
+
+	<!-- textchange plugin -->
+	<script type="text/javascript" src="/resources/js/main/jquery.textchange.min.js"></script>
+	<!-- 우편번호 서비스 -->
+	<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+	<!-- 우편번호 passport.js 로딩 -->
+	<script type="text/javascript" src="/resources/js/passport/passport.js"></script>
+	<!-- 우편번호 Form Check -->
+	<script type="text/javascript" src="/resources/js/passport/formCheck.js"></script>
+	<!-- 영노 -->
+	<script type="text/javascript" src="/resources/js/experience/ep_inserting.js"></script>
 </body>
 </html>

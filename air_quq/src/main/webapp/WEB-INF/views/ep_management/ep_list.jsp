@@ -16,8 +16,10 @@
 		</div>
 	</div>
 	<ep:forEach var="i" items="${vo }">
-		<form action="/ep_management/ep_list" method="post">
-			<input type="hidden" name="hinum" value="${i.hinum }">
+		${i.hinum }
+		<form  method="post" name="ManagementFrom" action="">
+			<input type="hidden" name="hinum" value="${i.hinum }" class="ep_hinum_val">
+			<input type="hidden" name="sessionnum" value="${i.sessionnum }">
 			<div class="row ep_mangement_list">
 
 				<div class="col-md-9">
@@ -46,9 +48,10 @@
 				</div>
 			</div>
 			<div class="row ep_mangement_list_btn">
-				<input type="button" value="계속"
-					class="btn btn-danger btn-icon-split"> <input type="button"
-					value="삭제" class="btn btn-danger btn-icon-split">
+				
+				<input type="button" value="계속" class="btn btn-danger btn-icon-split actionA"  > 
+				
+				<input type="button" value="삭제" class="btn btn-danger btn-icon-split actionB" >
 			</div>
 			
 		</form>

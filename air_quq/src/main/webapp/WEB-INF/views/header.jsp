@@ -47,7 +47,7 @@
 						</a>
 					</li>
 					<li class="nav-item">
-						<a href="/ep_management/ep_list" class="btn btn-light align-self-center">
+						<a href="/ep_management/ep_listg" class="btn btn-light align-self-center">
 							<span class="text">등록 중인 체험(테스트)</span>
 						</a>
 					</li>

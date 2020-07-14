@@ -18,4 +18,10 @@ public class EP_ManagementService {
 	public List<EP_ManagementVo> ep_insertlist(int loginnum){
 		return dao.ep_insertlist(loginnum);
 	}
+	public EP_ManagementVo ep_management(int hinum) {
+		return dao.ep_management(hinum);
+	}
+	public int ep_list_delete(int hinum) {
+		return dao.ep_list_delete(hinum);
+	}
 }

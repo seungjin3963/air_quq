@@ -26,39 +26,33 @@
 	background-image: none;
 }
 
-#wrapper {
-	display: block;
-}
-
 </style>
 </head>
 <body>
 <div id="header">
 	<tiles:insertAttribute name="header" />
 </div>
-<div style="margin-top: 78px;">
-	<div>
+<div class="row" style="margin-top: 70px;">
+	<div class="col-md-2">
 		<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+		<li class="nav-item">
+			<a class="nav-link" href="/admin/member/list"> 
+				<i class="fas fa-users"></i> 
+				<span>회원 정보</span>
+			</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link" href="#"> 
+				<i class="fas fa-list"></i> 
+				<span>예약 목록</span>
+			</a>
+		</li>
 			<li class="nav-item">
-				<a class="nav-link" href="/admin/member/list"> 
-					<i class="fas fa-users"></i> 
-					<span>회원 정보</span>
-				</a>
-			</li>
-			<li class="nav-item">
-				<a class="nav-link" href="#"> 
-					<i class="fas fa-list"></i> 
-					<span>예약 목록</span>
-				</a>
-			</li>
-
-			<li class="nav-item">
-				<a class="nav-link" href="#"> 
-					<i class="fas fa-home"></i> 
-					<span>호스트하우스목록</span>
-				</a>
-			</li>
-
+			<a class="nav-link" href="#"> 
+				<i class="fas fa-home"></i> 
+				<span>호스트하우스목록</span>
+			</a>
+		</li>
 			<li class="nav-item">
 				<a class="nav-link" href="#"> 
 					<i class="fas fa-fw fa-tachometer-alt"></i> 
@@ -94,13 +88,24 @@
 				</a>
 			</li>
 		</ul>
-	</div>
-	<div id="detail">
-		<tiles:insertAttribute name="detail" />
-	</div>
-</div>
+		</div>
+		<div class="col-md-10">
+			<tiles:insertAttribute name="detail"/>
+			asdasdasdasdasdasdasd
+		</div>
+    </div>
 <div id="footer">
 	<tiles:insertAttribute name="footer" />
 </div>
 </body>
+<script>
+	$(window).resize(function(){
+		console.log($(this).width());
+		if($(this).width() < 1350){
+			$("#detail").css("display","none");
+		}else{
+			$("#detail").css("display","block");
+		}
+	});
+</script>
 </html>
