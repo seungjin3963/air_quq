@@ -1,6 +1,7 @@
 package com.jhta.airqnq.controller;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,9 +22,7 @@ public class EpOnlineController {
 	@RequestMapping("/online/home")
 	public String goHome(Model model) {
 		//여기서 각각 리스트 매퍼연결해서 어떤거 가져와야하는지 검색조건(유명셰프,6시간이내,서울인기체험,새로등록된체험(3시간이내),저렴한 가격,베스트체험(별높은 순),전체)
-		HashMap<String, SliderVo> imglist= new HashMap<String,SliderVo>();
-		imglist.put("outslider", (SliderVo)service.outslider());
-		model.addAttribute("list1", imglist);
+		model.addAttribute("list1",service.outslider());
 		return  ".epOnline.layout";
 	}
 	
