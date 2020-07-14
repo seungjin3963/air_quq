@@ -18,7 +18,6 @@ public class EpOnlineController {
 	@Autowired
 	private EpOnlineService service;
 	
-	
 	@RequestMapping("/online/home")
 	public String goHome(Model model) {
 		//여기서 각각 리스트 매퍼연결해서 어떤거 가져와야하는지 검색조건(유명셰프,6시간이내,서울인기체험,새로등록된체험(3시간이내),저렴한 가격,베스트체험(별높은 순),전체)

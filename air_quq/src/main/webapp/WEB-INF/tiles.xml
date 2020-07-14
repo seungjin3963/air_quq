@@ -46,12 +46,6 @@
 		<put-attribute name="detail" value="/WEB-INF/views/admin/{1}.jsp"></put-attribute>
 	</definition>
 	<!-- 정욱 -->
-	<definition name=".epOnline.details.*" template="/WEB-INF/views/epOnline/layout.jsp">
-		<put-attribute name="header" value="/WEB-INF/views/header.jsp"></put-attribute>
-		<put-attribute name="content" value="/WEB-INF/views/epOnline/{1}"></put-attribute>
-		<put-attribute name="footer" value="/WEB-INF/views/footer.jsp"></put-attribute>
-	</definition>
-	
 	<definition name=".epOnline.layout" template="/WEB-INF/views/epOnline/layout2.jsp">
 		<put-attribute name="header" value="/WEB-INF/views/header.jsp"></put-attribute>
 		<put-attribute name="nav" value="/WEB-INF/views/epOnline/navbar.jsp"></put-attribute>
@@ -64,6 +58,12 @@
 		<put-attribute name="footer" value="/WEB-INF/views/footer.jsp"></put-attribute>
 	</definition>
 	
+		<definition name=".epOnline.details.*" template="/WEB-INF/views/epOnline/layout.jsp">
+		<put-attribute name="header" value="/WEB-INF/views/header.jsp"></put-attribute>
+		<put-attribute name="content" value="/WEB-INF/views/epOnline/{1}"></put-attribute>
+		<put-attribute name="footer" value="/WEB-INF/views/footer.jsp"></put-attribute>
+	</definition>
+		
 	<definition name=".*.*" extends=".home">	
 		<put-attribute name="main" value="/WEB-INF/views/{1}/{2}.jsp"></put-attribute>
 	</definition>
