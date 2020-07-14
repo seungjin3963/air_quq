@@ -34,6 +34,10 @@
 
 <!-- Font Awesome! -->
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<!-- Host CSS load -->
+<link href="/resources/css/host/main.css" rel="stylesheet">
+
 </head>
 <body id="page-top">
 	<div id="wrapper">
@@ -55,6 +59,7 @@
 			<i class="fas fa-angle-up"></i>
 		</a>
 	</div>
+	
 
 	<!-- Bootstrap core JavaScript-->
 

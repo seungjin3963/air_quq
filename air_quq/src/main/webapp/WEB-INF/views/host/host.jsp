@@ -92,13 +92,10 @@
 		<hr class="my-4">
 		<p>가격 및 상세주소를 입력해 주세요.</p>
 		<form action="/host/regist/2" method="post" id="host_regist3">
-			<div class="input-group">
-				<input type="text" class="form-control" aria-label="Dollar amount (with dot and two decimal places)">
-				<div class="input-group-append">
-					<span class="input-group-text">￦</span>
-					<span class="input-group-text">0.00</span>
-				</div>
-			</div>
+			<div class="form-group col-md-2">
+	      		<label for="inputZip">가격</label>
+	      		<input type="text" class="form-control" id="host_grade">
+    		</div>
 			<br>
 			<input type="hidden" value="3" name="next">
 			<input type="submit" class="btn btn-outline-primary" role="button" value="다음 단계로 진행">
