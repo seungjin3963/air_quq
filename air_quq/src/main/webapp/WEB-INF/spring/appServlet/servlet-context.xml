@@ -80,7 +80,6 @@
 
 
 	<!-- 웹소켓 -->
-	
 	<websocket:handlers>
 	<websocket:mapping handler="echoHandler" path="/echo"/>
 	<websocket:sockjs/>

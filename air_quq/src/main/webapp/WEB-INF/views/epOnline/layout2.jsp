@@ -44,21 +44,6 @@
 			<div id="content" class="main-content">
 				<tiles:insertAttribute name="slider" />
 			</div>
-			<div id="content" class="main-content">
-				<tiles:insertAttribute name="slider2" />
-			</div>
-			<div id="content" class="main-content">
-				<tiles:insertAttribute name="slider3" />
-			</div>
-			<div id="content" class="main-content">
-				<tiles:insertAttribute name="slider4" />
-			</div>
-			<div id="content" class="main-content">
-				<tiles:insertAttribute name="slider5" />
-			</div>
-			<div id="content" class="main-content">
-				<tiles:insertAttribute name="slider6" />
-			</div>
 			<div id="footer" class="sticky-footer bg-white">
 				<tiles:insertAttribute name="footer" />
 			</div>

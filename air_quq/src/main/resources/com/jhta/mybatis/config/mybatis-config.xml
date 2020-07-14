@@ -6,6 +6,7 @@
  <typeAliases>
  	<typeAlias type="com.jhta.airqnq.vo.JoinVo" alias="join"/>
  	<typeAlias type="com.jhta.airqnq.vo.HouseInfoVo" alias="house_info"/>
+ 	<typeAlias type="com.jhta.airqnq.vo.SliderVo" alias="slinfo"/>
  </typeAliases>
  <mappers>
      <mapper resource="com/jhta/mybatis/mapper/JoinMapper.xml"/>
@@ -14,5 +15,6 @@
   	<mapper resource="com/jhta/mybatis/mapper/EP_ManagementMapper.xml"/>
     <mapper resource="com/jhta/mybatis/mapper/hostMapper.xml"/>
     <mapper resource="com/jhta/mybatis/mapper/MemberMapper.xml"/>
+    <mapper resource="com/jhta/mybatis/mapper/epOnlineMapper.xml"/>
   </mappers>
 </configuration>

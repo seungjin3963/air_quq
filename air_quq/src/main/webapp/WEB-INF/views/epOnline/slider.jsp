@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css"> 
 
 <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script> 
@@ -7,11 +8,29 @@
 <script src="/resources/js/epOnline/slider.js"></script> 
 
 <div class="home__slider"> 
-    <div class="bxslider" style="width: 1358px;
-	    height: 583px;"> 
-        <div><img src="/resources/img/3.jpg" alt="±×¸²1"><img src="/resources/img/1.jpg" alt="±×¸²1"><img src="/resources/img/2.jpg" alt="±×¸²1"></div>
-        <div><img src="/resources/img/2.jpg" alt="±×¸²1"><img src="/resources/img/1.jpg" alt="±×¸²1"><img src="/resources/img/2.jpg" alt="±×¸²1"></div>
-        <div><img src="/resources/img/1.jpg" alt="±×¸²1"><img src="/resources/img/1.jpg" alt="±×¸²1"><img src="/resources/img/3.jpg" alt="±×¸²1"></div>
+    <div class="bxslider" style="width: 1358px; height: 583px;"> 
+        <div>
+        	<table>
+		        <c:forEach var="img" items="${list1 }">
+		        	<tr>
+		        		<a href="/online/details?einum=${img.outslider.einum }"><img src="${img.outslider.img }"></a>
+		        	</tr>
+		        	<tr>
+		        		${img.outslider.loc }
+		        	</tr>
+		        	<tr>
+		        		${img.outslider.title }
+		        	</tr>
+		        	<tr>
+		        		1ì¸ë‹¹ ${img.outslider.price }ì› ,${img.outslider.times }ì‹œê°„
+		        	</tr>
+		        	<tr>
+		        		ë³„ ${img.outslider.score }
+		        	</tr>
+		        </c:forEach>
+		        	<tr>ë³´ê¸°(<c:out value="${list1.outslider.total }"></c:out>)</tr>
+	        </table>
+        </div>
     </div> 
 </div> 
 
