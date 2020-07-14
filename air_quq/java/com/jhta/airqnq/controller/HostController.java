@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.jhta.airqnq.service.HostService;
 import com.jhta.airqnq.vo.HouseInfoVo;
@@ -28,10 +29,16 @@ public class HostController {
 		return ".host.epOnlineList";
 	}
 	
-	@PostMapping(value = "/host/regist/")
-	public String hostRegist(String addr, String roomStatus, String clientCount) {
-		System.out.println("주소" + addr + ", 집상태:" + roomStatus + ", 숙박인원" + clientCount);
-		
+	@RequestMapping(value = "/host/regist/1")
+	public String hostRegist1(String addr, String roomStatus, String clientCount, HttpSession session, int next) {
+		System.out.println("주소" + addr + ", 집상태:" + roomStatus + ", 숙박인원" + clientCount + "다음단계:" + next);
+		session.setAttribute("hostStep", next);
+		return ".hostRegist";
+	}
+	@RequestMapping(value = "/host/regist/2")
+	public String hostRegist2(String hostTitle, String hostContent, HttpSession session, int next) {
+		System.out.println("제목:" + hostTitle + ", 내용:" + hostContent + "다음단계:" + next);
+		session.setAttribute("hostStep", next);
 		return ".hostRegist";
 	}
 }

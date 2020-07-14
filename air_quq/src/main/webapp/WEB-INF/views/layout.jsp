@@ -36,7 +36,8 @@
 <script src="/resources/vendor/jquery/jquery.min.js"></script>
 <script src="/resources/js/jquery/jquery-ui.js"></script>
 
-
+<!-- Font Awesome! -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body id="page-top">
 	<div id="wrapper">
