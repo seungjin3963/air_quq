@@ -30,7 +30,8 @@ public class MemberLoginController {
 		System.out.println("id:"+idl+", pwd:"+pwdl);
 		map.put("id", idl);
 		map.put("pwd", pwdl);
-		int menum = service.idChk(idl);
+		int menum = service.loginCheck(map);
+		System.out.println(menum + "<<<<<<<<<<<<<<<<<<<<<<<<<<<");
 		if(menum > 0) {
 			session.setAttribute("menum", menum);
 			session.setAttribute("logind", true);
