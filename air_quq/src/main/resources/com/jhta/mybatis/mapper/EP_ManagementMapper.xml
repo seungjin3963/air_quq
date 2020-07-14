@@ -7,6 +7,15 @@
 		select menum  from member where id=#{id};
 	</select>
 	<select id="ep_insertlist" parameterType="int" resultType="com.jhta.airqnq.vo.EP_ManagementVo">
-		select * from experience_info where memnum=#{loginnum} and div_type=31 or div_type=41
+		select * from experience_info where memnum=#{loginnum} and ( div_type=31 or div_type=41 )
 	</select>
+	<select id="ep_management" parameterType="int" resultType="com.jhta.airqnq.vo.EP_ManagementVo">
+		select * from experience_info where hinum=#{hinum}
+	</select>
+	<delete id="ep_list_delete" parameterType="int">
+		delete from experience_info where hinum=#{hinum}
+	</delete>
+	<delete id="ep_list_delete1" parameterType="int">
+		delete from house_info where hinum=#{hinum}
+	</delete>
 </mapper>

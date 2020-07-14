@@ -19,4 +19,11 @@ public class EP_ManagementDao {
 	public List<EP_ManagementVo> ep_insertlist(int loginnum) {
 		return sqlSessionTemplate.selectList(NAMESPACE+".ep_insertlist" , loginnum);
 	}
+	public EP_ManagementVo ep_management(int hinum) {
+		return sqlSessionTemplate.selectOne(NAMESPACE+".ep_management" , hinum);
+	}
+	public int ep_list_delete(int hinum) {
+		 sqlSessionTemplate.delete(NAMESPACE+".ep_list_delete" , hinum);
+		return sqlSessionTemplate.delete(NAMESPACE+".ep_list_delete1" , hinum);
+	}
 }
