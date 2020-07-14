@@ -88,5 +88,7 @@
 	<script type="text/javascript" src="/resources/js/passport/passport.js"></script>
 	<!-- 우편번호 Form Check -->
 	<script type="text/javascript" src="/resources/js/passport/formCheck.js"></script>
+	<!-- 영노 -->
+	<script type="text/javascript" src="/resources/js/experience/ep_inserting.js"></script>
 </body>
 </html>

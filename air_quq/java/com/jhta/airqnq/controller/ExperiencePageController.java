@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.jhta.airqnq.service.ExperienceService;
+import com.jhta.airqnq.vo.EP_ManagementVo;
 import com.jhta.airqnq.vo.ExperienceInfoVo;
 import com.jhta.airqnq.vo.ExperienceVo;
 
@@ -25,15 +26,12 @@ public class ExperiencePageController {
 
 	@RequestMapping("/experience/myexperience") // 등록 전 화면
 	public String experiencePage(HttpSession session) {
-		String  checkid=(String)session.getAttribute("id");
-		if(checkid==null) {
+		if(session.getAttribute("logind") == null) {
 			return ".login";
 		}else {
-			int loginnum=service.selectloginnum(checkid);
-			session.setAttribute("loginnum", loginnum);
 			session.setAttribute("sessionnum", 8);
 			return ".experience.myexperience";
-		}	
+		}
 	}
 	//////////////////////////////////////////////////////////
 
@@ -50,7 +48,7 @@ public class ExperiencePageController {
 		}
 		if (num == 1) {
 			HashMap<String, Object> map=new HashMap<String, Object>();
-			int loginnum=(int)session.getAttribute("loginnum");
+			int loginnum=(int)session.getAttribute("menum");
 			int housenum = service.temporary(loginnum);	
 			map.put("loginnum", loginnum);
 			map.put("hinum", housenum);
