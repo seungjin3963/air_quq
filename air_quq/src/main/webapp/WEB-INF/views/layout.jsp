@@ -19,16 +19,12 @@
 <link href="/resources/css/sb-admin-2.min.css" rel="stylesheet">
 
 <link href="/resources/css/home.css" rel="stylesheet">
-<link href="/resources/css/header.css" rel="stylesheet">
 
 <!-- Custom styles for this page -->
 <link href="/resources/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
 <link href="/resources/css/experience.css" rel="stylesheet">
 <!--  영노 -->
-
-<!-- 폰트 -->
-<link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
 
 <!-- jquery -->
 <link rel="stylesheet" type="text/css" href="/resources/css/jquery-ui.css">

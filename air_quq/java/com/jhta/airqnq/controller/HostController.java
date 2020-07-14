@@ -18,12 +18,17 @@ public class HostController {
 	@Autowired
 	private HostService service;
 	
-	@GetMapping(value="/host/epOnlineList")
+	@GetMapping(value="/host/epOnline/list")
 	public String epOnlineList(Model model, HttpSession session) {
 		//int menum = (int)session.getAttribute("menum");
 		int menum = 1000;
 		List<HouseInfoVo> list = service.list(menum);
 		model.addAttribute("list", list);
-		return ".host.epOnlineList";
+		return ".host.epOnline.list";
+	}
+	
+	@GetMapping(value="/host/epOnline/modify")
+	public String modifyView() {
+		return ".host.epOnline.modify";
 	}
 }
