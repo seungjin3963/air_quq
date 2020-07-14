@@ -11,4 +11,5 @@
 	<select id="kakaoCheck" parameterType="string" resultType="int">
 		select menum from member where id = #{id}
 	</select>
+	
 </mapper>

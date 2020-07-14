@@ -1,5 +1,6 @@
 package com.jhta.airqnq.controller;
 
+import java.math.BigDecimal;
 import java.util.HashMap;
 
 import javax.servlet.http.HttpSession;
@@ -29,11 +30,9 @@ public class MemberLoginController {
 		System.out.println("id:"+idl+", pwd:"+pwdl);
 		map.put("id", idl);
 		map.put("pwd", pwdl);
-		int cnt = service.loginCheck(map);
-		
-		
-		if(cnt > 0) {
-			session.setAttribute("id", idl);
+		int menum = service.idChk(idl);
+		if(menum > 0) {
+			session.setAttribute("menum", menum);
 			session.setAttribute("logind", true);
 			return ".home";
 		} else {
@@ -54,19 +53,21 @@ public class MemberLoginController {
 	@GetMapping("/kakao/login")
 	public String kakaoLogin(String code, HttpSession session) {
 		String access_Token = kakao.getAccessToken(code);
-        
         HashMap<String, Object> userInfo = kakao.getUserInfo(access_Token);
         System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>" + userInfo);
+        
+        String kakao_id = (String)userInfo.get("kakao_id");
+        
         
         if (userInfo.get("nickname") != null) {
         	session.setAttribute("userInfo", userInfo);
         	session.setAttribute("access_Token", access_Token);
+        	session.setAttribute("id", kakao_id);
         	session.setAttribute("logind", true);
         } else {
         	session.setAttribute("logind", false);
         }
         
-        String kakao_id = (String)userInfo.get("kakao_id");
         String email = (String)userInfo.get("email");
         String nickname = (String)userInfo.get("nickname");
         
@@ -76,8 +77,13 @@ public class MemberLoginController {
         //카카오 가입안한 서비스 회원일경우 최초로 DB에 등록됨
         if(n==0) {
         	JoinVo vo = new JoinVo(0, kakao_id, "", "", email, "", "", null, 0, 1, nickname);
-        	service.insertJoin(vo);
+        	int r = service.insertJoin(vo);
         }
+
+        int menum = service.kakaoCheck(kakao_id);
+        System.out.println(menum);
+        session.setAttribute("menum", menum);
+        
         
 		return ".home";
 	}

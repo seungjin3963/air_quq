@@ -111,6 +111,13 @@
 		//캘러리 닫기
 		$("input[value='닫기']").click(function(){
 			$("#bundle").css({display: "none"});
+			onswitch=true;
+			
+			var checkin=$("#checkin").val();
+			var checkout=$("#checkout").val();
+
+			$("#startmodified").val(checkin);
+			$("#endmodified").val(checkout);
 		})
 		
 		//이전 날짜 modal 닫기

@@ -5,12 +5,14 @@
 <configuration>
  <typeAliases>
  	<typeAlias type="com.jhta.airqnq.vo.JoinVo" alias="join"/>
+ 	<typeAlias type="com.jhta.airqnq.vo.HouseInfoVo" alias="house_info"/>
  </typeAliases>
  <mappers>
-    <mapper resource="com/jhta/mybatis/mapper/JoinMapper.xml"/>
+     <mapper resource="com/jhta/mybatis/mapper/JoinMapper.xml"/>
     <mapper resource="com/jhta/mybatis/mapper/LoginMapper.xml"/>
     <mapper resource="com/jhta/mybatis/mapper/experienceMapper.xml"/>
   	<mapper resource="com/jhta/mybatis/mapper/EP_ManagementMapper.xml"/>
     <mapper resource="com/jhta/mybatis/mapper/hostMapper.xml"/>
+    <mapper resource="com/jhta/mybatis/mapper/MemberMapper.xml"/>
   </mappers>
 </configuration>

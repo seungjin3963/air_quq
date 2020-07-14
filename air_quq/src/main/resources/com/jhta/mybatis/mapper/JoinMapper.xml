@@ -30,4 +30,5 @@
 	<select id="ep_detailsub" parameterType="int" resultType="com.jhta.airqnq.vo.ExperienceVo">
 		select sunum expernum, subname from subDetail where expernum=#{num}
 	</select>
+	
 </mapper>

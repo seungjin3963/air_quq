@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<!-- 우편번호 passport.js 로딩 -->
+<script type="text/javascript" src="/resources/js/main/passport.js"></script>
 <div class="container">
 	<div class="jumbotron">
 		<h1 class="display-4">에어비앤비 호스트가 되어 수입을 올려보세요</h1>
@@ -7,8 +9,7 @@
 		<hr class="my-4">
 		<p>숙소에 대해 간략하게 알려주세요.</p>
 		<p>
-			<input class="form-control form-control-lg" type="text"
-				placeholder="검색하기">
+			<input class="form-control form-control-lg" type="text" placeholder="검색하기">
 		</p>
 
 		<div class="row">
@@ -34,8 +35,6 @@
 						<option>숙박인원 8명</option>
 						<option>숙박인원 9명</option>
 						<option>숙박인원 10명</option>
-						<option>숙박인원 11명</option>
-						<option>숙박인원 12명</option>
 					</select>
 				</p>
 			</div>
