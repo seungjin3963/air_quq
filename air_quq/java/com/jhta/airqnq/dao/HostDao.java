@@ -12,10 +12,18 @@ import com.jhta.airqnq.vo.HouseInfoVo;
 public class HostDao {
 	@Autowired
 	private SqlSessionTemplate session;
-	
+
 	private final String NAMESPACE = "mybatis.hostMapper";
 
 	public List<HouseInfoVo> list(int menum) {
 		return session.selectList(NAMESPACE + ".list", menum);
+	}
+
+	public HouseInfoVo getEpOnlineInfo(int hinum) {
+		return session.selectOne(NAMESPACE + ".getEpOnlineInfo", hinum);
+	}
+
+	public int modify(HouseInfoVo vo) {
+		return session.update(NAMESPACE + ".modify", vo);
 	}
 }

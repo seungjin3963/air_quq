@@ -49,7 +49,10 @@ public class HouseInfoVo {
     // 종료일 
     private Date enddate;
 
-    public HouseInfoVo(Integer hinum, Integer menum, String title, String content, String addr, String addr_detail,
+    public HouseInfoVo() {
+	}
+
+	public HouseInfoVo(Integer hinum, Integer menum, String title, String content, String addr, String addr_detail,
 			Integer price, Integer max_n, Integer bedroom, String checkin_time, Integer div, String lat, String lnt,
 			Date startdate, Date enddate) {
 		this.hinum = hinum;

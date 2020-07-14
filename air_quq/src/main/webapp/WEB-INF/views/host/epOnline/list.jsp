@@ -14,7 +14,6 @@
 						<tr>
 							<th>번호</th>
 							<th>제목</th>
-							<th>주소</th>
 							<th>가격</th>
 							<th>체크인 시간</th>
 							<th>시작일</th>
@@ -29,7 +28,6 @@
 							<tr>
 								<td>${list.hinum }</td>
 								<td>${list.title }</td>
-								<td>${list.addr }-${list.addr_detail }</td>
 								<td>${list.price }</td>
 								<td>${list.checkin_time }</td>
 								<td>${list.startdate }</td>
@@ -40,7 +38,7 @@
 									</a>
 								</td>
 								<td>
-									<a href="/host/epOnline/modify" class="modiIcon">
+									<a href="/host/epOnline/modify?hinum=${list.hinum }" class="modiIcon">
 										<i class="fa fa-folder-open fa-2x"></i>
 									</a>
 								</td>

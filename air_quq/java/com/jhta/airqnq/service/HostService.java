@@ -16,4 +16,12 @@ public class HostService {
 	public List<HouseInfoVo> list(int menum) {
 		return dao.list(menum);
 	}
+
+	public HouseInfoVo getEpOnlineInfo(int hinum) {
+		return dao.getEpOnlineInfo(hinum);
+	}
+
+	public int modify(HouseInfoVo vo) {
+		return dao.modify(vo);
+	}
 }
