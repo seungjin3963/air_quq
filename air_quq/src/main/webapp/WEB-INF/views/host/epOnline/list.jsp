@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<link href="/resources/css/host/epOnlineList.css" rel="stylesheet">
+<link href="/resources/css/host/epOnline/list.css" rel="stylesheet">
 <div class="container">
 	<!-- DataTales Example -->
 	<div class="card shadow mb-4">
@@ -29,7 +29,7 @@
 							<tr>
 								<td>${list.hinum }</td>
 								<td>${list.title }</td>
-								<td>${list.addr }- ${list.addr_detail }</td>
+								<td>${list.addr }-${list.addr_detail }</td>
 								<td>${list.price }</td>
 								<td>${list.checkin_time }</td>
 								<td>${list.startdate }</td>
@@ -40,7 +40,7 @@
 									</a>
 								</td>
 								<td>
-									<a href="#" class="modiIcon" data-toggle="modal" data-target="#ModifyModal">
+									<a href="/host/epOnline/modify" class="modiIcon">
 										<i class="fa fa-folder-open fa-2x"></i>
 									</a>
 								</td>
@@ -66,9 +66,7 @@
 						<span aria-hidden="true">×</span>
 					</button>
 				</div>
-				<div class="modal-body">
-					<input type="text">
-				</div>
+				<div class="modal-body text-center align-middle"></div>
 				<div class="modal-footer">
 					<button class="btn btn-secondary" type="button" data-dismiss="modal">닫기</button>
 					<a class="btn btn-danger" href="login.html">수정</a>

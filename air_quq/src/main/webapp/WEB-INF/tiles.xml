@@ -34,7 +34,6 @@
 		<put-attribute name="type" value="/WEB-INF/views/experience/{1}.jsp"></put-attribute>
 	</definition>
 	
-	
 	<!-- 승진 -->
 	<definition name=".admin" template="/WEB-INF/views/admin/admin.jsp">
 		<put-attribute name="header" value="/WEB-INF/views/header.jsp"></put-attribute>
@@ -46,8 +45,6 @@
 		<put-attribute name="detail" value="/WEB-INF/views/admin/{1}.jsp"></put-attribute>
 	</definition>
 	
-	
-	
 	<definition name=".epOnline.layout" template="/WEB-INF/views/epOnline/layout2.jsp">
 		<put-attribute name="header" value="/WEB-INF/views/header.jsp"></put-attribute>
 		<put-attribute name="nav" value="/WEB-INF/views/epOnline/navbar.jsp"></put-attribute>
@@ -58,6 +55,10 @@
 		<put-attribute name="slider5" value="/WEB-INF/views/epOnline/slider2.jsp"></put-attribute>
 		<put-attribute name="slider6" value="/WEB-INF/views/epOnline/slider2.jsp"></put-attribute>
 		<put-attribute name="footer" value="/WEB-INF/views/footer.jsp"></put-attribute>
+	</definition>
+	
+	<definition name=".*.*.*" extends=".home">	
+		<put-attribute name="main" value="/WEB-INF/views/{1}/{2}/{3}.jsp"></put-attribute>
 	</definition>
 	
 	<definition name=".*.*" extends=".home">	
