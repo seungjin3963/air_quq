@@ -13,22 +13,21 @@
         	<table>
 		        <c:forEach var="img" items="${list1 }">
 		        	<tr>
-		        		<a href="/online/details?einum=${img.outslider.einum }"><img src="${img.outslider.img }"></a>
+		        		<a href="/online/details?einum=${img.hinum }"><img src="${img.img }"></a>
 		        	</tr>
 		        	<tr>
-		        		${img.outslider.loc }
+		        		${img.loc }
 		        	</tr>
 		        	<tr>
-		        		${img.outslider.title }
+		        		${img.title }
 		        	</tr>
 		        	<tr>
-		        		1인당 ${img.outslider.price }원 ,${img.outslider.times }시간
+		        		1�몃�� ${img.price }�� ,${img.times }��媛�
 		        	</tr>
 		        	<tr>
-		        		별 ${img.outslider.score }
+		        		蹂� ${img.score }
 		        	</tr>
 		        </c:forEach>
-		        	<tr>보기(<c:out value="${list1.outslider.total }"></c:out>)</tr>
 	        </table>
         </div>
     </div> 
