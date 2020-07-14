@@ -42,8 +42,8 @@
 		<put-attribute name="footer" value="/WEB-INF/views/footer.jsp"></put-attribute>
 	</definition>
 
-	<definition name=".amdin.*" extends=".admin">
-		<put-attribute name="detail" value="/WEB-INF/views/admin/*.jsp"></put-attribute>
+	<definition name=".admin.*" extends=".admin">
+		<put-attribute name="detail" value="/WEB-INF/views/admin/{1}.jsp"></put-attribute>
 	</definition>
 	
 	

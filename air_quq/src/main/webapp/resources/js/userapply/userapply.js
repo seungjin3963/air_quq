@@ -115,9 +115,12 @@
 			
 			var checkin=$("#checkin").val();
 			var checkout=$("#checkout").val();
+			var betweendate=between(checkin,checkout);
 
 			$("#startmodified").val(checkin);
 			$("#endmodified").val(checkout);
+			$("#totmoney").children().eq(2).text(betweendate);
+			
 		})
 		
 		//이전 날짜 modal 닫기
