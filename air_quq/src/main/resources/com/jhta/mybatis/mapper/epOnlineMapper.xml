@@ -7,8 +7,25 @@
 		<if test="field!=null and field!=''">
 			where ${field} like '%'||#{keyword}||'%'
 		</if>
-	<!-- 유명셰프,6시간이내,서울인기체험,새로등록된체험(3시간이내),저렴한 가격,베스트체험(별높은 순),전체 -->
-	</sql><!-- 전체 -->
+	</sql>
+	<!-- 6시간이내(만들어진것) -->
+	<select id="within6" resultType="slinfo">
+		<![CDATA[select regdate from experience_info
+		where TIMESTAMPDIFF(minute, regdate, current_date())<=-180;]]>
+	</select>
+	<!-- 서울인기체험 -->
+	<select id="inSeoul" resultType="slinfo">
+		select loc from experience_info where loc like '||'%'||서울||'%'||';
+	</select>
+	<!-- 저렴한 가격 -->
+	<select id="cheap" resultType="slinfo">
+		select * from experience_info order by price asc;
+	</select>
+	<!-- 베스트체험(별 높은 순 ) -->
+	<select id="beststar" resultType="slinfo">
+		select ei.*,re.score from experience_info as ei join review as re on re.hinum=ei.hinum;
+	</select>
+	<!-- 전체 -->
 	<select id="outslider" resultType="slinfo">
 		Select ei.hinum,ei.memnum,hi.img,ei.title,ei.loc,ei.times,ei.price,re.score From experience_info ei left JOIN house_img hi
 		ON ei.hinum = hi.hinum
@@ -16,6 +33,7 @@
 		ON ei.hinum = re.hinum 
 		where ei.div_type=3;
 	</select>
+	<!-- 디테일 -->
 	<select id="inslider" resultType="slinfo" parameterType="int"><!-- 상세화면 -->
 		Select ei.hinum,ei.memnum,hi.img,ei.title,ei.loc,ei.times,ei.price,re.score,ei.intr,ei.mater,ei.program From experience_info ei left JOIN house_img hi
 		ON ei.hinum = hi.hinum

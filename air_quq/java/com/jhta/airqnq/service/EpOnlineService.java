@@ -19,4 +19,16 @@ public class EpOnlineService {
 	public List<SliderVo> inslider(int einum){
 		return dao.inslider(einum);
 	}
+	public List<SliderVo> inSeoul(){
+		return dao.inSeoul();
+	}
+	public List<SliderVo> within6(){
+		return dao.within6();
+	}
+	public List<SliderVo> cheap(){
+		return dao.cheap();
+	}
+	public List<SliderVo> beststar(){
+		return dao.beststar();
+	}
 }

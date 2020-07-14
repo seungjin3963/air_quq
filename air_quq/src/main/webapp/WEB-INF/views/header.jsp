@@ -26,7 +26,7 @@
 						</a>
 					</li>
 					<li class="nav-item">
-						<a href="/host/epOnlineList" class="align-self-center">
+						<a href="/host/epOnline/list" class="align-self-center">
 							<button type="button" class="btn btn-light align-self-center">온라인 체험(테스트)</button>
 						</a>
 					</li>

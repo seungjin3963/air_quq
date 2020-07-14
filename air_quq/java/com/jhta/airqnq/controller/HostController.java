@@ -30,8 +30,19 @@ public class HostController {
 	}
 	
 	@GetMapping(value="/host/epOnline/modify")
-	public String modifyView() {
+	public String modifyView(Model model, int hinum) {
+		System.out.println(hinum);
+		model.addAttribute("vo", service.getEpOnlineInfo(hinum));
 		return ".host.epOnline.modify";
+	}
+	
+	@PostMapping(value="/host/epOnline/modify")
+	public String modify(HouseInfoVo vo) {
+		if(service.modify(vo) > 0) {
+			return "redirect:/host/epOnline/list";
+		}else {
+			return "error";
+		}
 	}
 	
 	@RequestMapping(value = "/host/regist/1")

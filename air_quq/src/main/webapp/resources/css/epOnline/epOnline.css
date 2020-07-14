@@ -7,11 +7,11 @@
 	height: 400px;
 }
 
-.remoteContainer{
-	width:100%;
+.remoteContainer {
+	width: 100%;
 }
 
-.remoteContainer > video{
-	width:20%;
+.remoteContainer>video {
+	width: 20%;
 	border: 2px solid black;
 }
