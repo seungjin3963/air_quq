@@ -41,6 +41,7 @@ public class AdminController {
 		
 		List<JoinVo> Memberlist = service.Memberlist(map);
 		
+		model.addAttribute("pu", pu);
 		model.addAttribute("Memberlist", Memberlist);
 		
 		return ".admin.memberadmin";
