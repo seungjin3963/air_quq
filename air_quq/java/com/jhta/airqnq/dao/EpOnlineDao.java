@@ -22,5 +22,18 @@ public class EpOnlineDao {
 	public List<SliderVo> inslider(int hinum){
 		return sql.selectList(NAMESPACE+".inslider",hinum);
 	}
+	public List<SliderVo> inSeoul(){ 
+		return sql.selectList(NAMESPACE+".inSeoul");
+	}
+	public List<SliderVo> within6(){
+		return sql.selectList(NAMESPACE+".within6");
+	}
+	public List<SliderVo> cheap(){
+		return sql.selectList(NAMESPACE+".cheap");
+	}
+	public List<SliderVo> beststar(){
+		return sql.selectList(NAMESPACE+".beststar");
+	}
+	
 
 }

@@ -15,7 +15,7 @@
 	</select>
 	<!-- 서울인기체험 -->
 	<select id="inSeoul" resultType="slinfo">
-		select loc from experience_info where loc like ||'%'||서울||'%'||;
+		select loc from experience_info where loc like '||'%'||서울||'%'||';
 	</select>
 	<!-- 저렴한 가격 -->
 	<select id="cheap" resultType="slinfo">
