@@ -22,10 +22,10 @@
 		        		${img.title }
 		        	</tr>
 		        	<tr>
-		        		1�몃�� ${img.price }�� ,${img.times }��媛�
+		        		가격 ${img.price }원 ,${img.times }시간
 		        	</tr>
 		        	<tr>
-		        		蹂� ${img.score }
+		        		별점${img.score }
 		        	</tr>
 		        </c:forEach>
 	        </table>
