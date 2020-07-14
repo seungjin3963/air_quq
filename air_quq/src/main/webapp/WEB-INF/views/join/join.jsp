@@ -55,7 +55,7 @@
 	            <div class="form-group">
                  	 <b>프로필 사진&nbsp;&nbsp;&nbsp;<input type="file" name="file1">
                 </div>
-                <input type="submit" id="search" value="회원가입 하기" class="btn btn-primary btn-user btn-block">
+                <input type="submit" value="회원가입 하기" class="btn btn-primary btn-user btn-block">
               </form>
                 <hr>
                 <div class="text-center">

@@ -75,6 +75,6 @@ function checkedForm(){
 
 
 $("#jid").submit(function(){
-	alert(checkedForm());
+	//alert(checkedForm());
 	return checkedForm();
 });
