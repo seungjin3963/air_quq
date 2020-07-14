@@ -7,9 +7,9 @@
 		<p class="lead"></p>
 		<hr class="my-4">
 		<p>숙소에 대해 간략하게 알려주세요.</p>
-		<form action="/host/regist/step/1" method="post" id="host_regist">
+		<form action="/host/regist/" method="post" id="host_regist">
 		<p>
-			<input class="form-control form-control-lg" type="text" placeholder="주소 검색하기" id="searchPassport">
+			<input class="form-control form-control-lg" type="text" placeholder="주소 검색하기" id="searchPassport" name="addr">
 		</p>
 
 		<div class="row">
