@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import com.jhta.airqnq.service.HostService;
 import com.jhta.airqnq.vo.HouseInfoVo;
@@ -25,5 +26,12 @@ public class HostController {
 		List<HouseInfoVo> list = service.list(menum);
 		model.addAttribute("list", list);
 		return ".host.epOnlineList";
+	}
+	
+	@PostMapping(value = "/host/regist/")
+	public String hostRegist(String addr, String roomStatus, String clientCount) {
+		System.out.println("주소" + addr + ", 집상태:" + roomStatus + ", 숙박인원" + clientCount);
+		
+		return ".hostRegist";
 	}
 }

@@ -69,7 +69,7 @@ public class JoinController {
 	
 	@PostMapping("/upload/memberjoin")
 	public String memberJoinOk(HttpSession session, MultipartFile file1, JoinVo jvo) {
-		
+		System.out.println(jvo.getGender());
 		try {
 			byte[] profile_img = file1.getBytes();
 			
