@@ -15,7 +15,8 @@
 	<select id="listMember" resultType="join" parameterType="hashmap">
 		select * from member 
 		<include refid="search"/>
-		limit #{startRow}, #{endRow}
+		order by menum desc
+		limit #{startRow}, #{rowblockcount}
 	</select>
 	
 	<select id="membercnt" resultType="int" parameterType="hashmap">

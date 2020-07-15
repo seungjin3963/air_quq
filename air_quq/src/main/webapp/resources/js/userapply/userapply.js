@@ -131,26 +131,38 @@
 		//인원수 추가
 		$("#addbutton").click(function(){
 			var maxcnt=Number($("#h-cnt").val())+1
+			
 			if(maxcnt>10){
 				$("#add").css({opacity:0.5});
-				$(this).disabled="disabled";
+				$(this).attr("disabled",true);
 			}else{
 				$("#h-cnt").val(maxcnt);
-				$("#manusbutton").disabled="none";
+				$("#manusbutton").attr("disabled",false);
 				$("#manus").css({opacity:1});
+			}
+			
+			if(maxcnt==10){
+				$("#add").css({opacity:0.5});
+				$(this).attr("disabled",true);
 			}
 		}); 
 		
 		//인원수 빼기
 		$("#manusbutton").click(function(){
 			var mincnt=Number($("#h-cnt").val())-1
+
 			if(mincnt<1){
 				$("#manus").css({opacity:0.5});
-				$(this).disabled="disabled";
+				$(this).attr("disabled",true);
 			}else{
 				$("#h-cnt").val(mincnt);
-				$("#plusbutton").disabled="none";
+				$("#addbutton").attr("disabled",false);
 				$("#add").css({opacity:1});
+			}
+			
+			if(mincnt==1){
+				$("#manus").css({opacity:0.5});
+				$(this).attr("disabled",true);
 			}
 		});
 		

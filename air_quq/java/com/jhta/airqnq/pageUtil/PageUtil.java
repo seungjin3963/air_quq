@@ -3,7 +3,6 @@ package com.jhta.airqnq.pageUtil;
 public class PageUtil {
 	private int pageNum;
 	private int startRow;
-	private int endRow;
 	private int totalPageCount;
 	private int startPageNum;
 	private int endPageNum;
@@ -19,8 +18,7 @@ public class PageUtil {
 		this.totalRowCount=totalRowCount;
 		this.rowBlockCount=rowBlockCount;
 		this.pageBlockCount=pageBlockCount;
-		startRow=(pageNum-1)*rowBlockCount+1;
-		endRow=startRow+rowBlockCount-1;
+		startRow=(pageNum-1)*rowBlockCount;
 		totalPageCount=(int)Math.ceil(totalRowCount/(double)rowBlockCount);
 		startPageNum=(pageNum-1)/pageBlockCount*pageBlockCount+1;
 		endPageNum=startPageNum+pageBlockCount-1;
@@ -43,14 +41,6 @@ public class PageUtil {
 
 	public void setStartRow(int startRow) {
 		this.startRow = startRow;
-	}
-
-	public int getEndRow() {
-		return endRow;
-	}
-
-	public void setEndRow(int endRow) {
-		this.endRow = endRow;
 	}
 
 	public int getTotalPageCount() {

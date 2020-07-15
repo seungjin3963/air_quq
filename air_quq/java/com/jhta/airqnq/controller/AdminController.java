@@ -28,6 +28,8 @@ public class AdminController {
 	public String memberlist(Model model, @RequestParam(value="pageNum",defaultValue = "1")int pageNum,String field,String keyword) {
 
 		HashMap<String, Object> map=new HashMap<String, Object>();
+		
+		System.out.println(pageNum);
 
 		map.put("keyword", keyword);
 		map.put("field",field);
@@ -37,7 +39,8 @@ public class AdminController {
 		PageUtil pu=new PageUtil(pageNum, totalRowCount, 10, 2);
 		
 		map.put("startRow",pu.getStartRow());
-		map.put("endRow",pu.getEndRow());
+		
+		map.put("rowblockcount",pu.getRowBlockCount());
 		
 		List<JoinVo> Memberlist = service.Memberlist(map);
 		

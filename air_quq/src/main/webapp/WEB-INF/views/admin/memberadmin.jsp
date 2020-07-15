@@ -4,13 +4,11 @@
 <div class="container" style="margin-top: 20px;">
 	<h1 style="text-align: center;">회원정보</h1>
 <div style="float: right;">
-	<select name="memberfield" class="form-control" style="width: 120px; display: inline-block;">
+	<select name="field" class="form-control" style="width: 120px; display: inline-block;">
 		<option value="id" selected="selected">아이디</option>
-		<option value="addr">주소</option>				
 		<option value="email">이메일</option>
-		<option value="phone">전화번호</option>
 	</select>
-	<input type="text" name="memberkeyword" class="form-control form-control" style="width: 200px; display: inline-block; border: none;">
+	<input type="text" name="keyword" class="form-control form-control" style="width: 200px; display: inline-block; border: none;">
 </div>
 	<table class="table table-striped">
 	  <tr>
@@ -39,4 +37,40 @@
 		</tr>	
 	  </c:forEach>
 	</table>
-</div>
+	<div style="text-align: center;">
+		<button id="previous" style="border: none; outline: none; background: none">
+			<i class="fas fa-backward"></i>
+		</button>
+		<c:forEach var="i" begin="${pu.startPageNum }" end="${pu.endPageNum }" >
+			<span><a href="/admin/member/list?pageNum=${i}">[${i}]</a></span>
+		</c:forEach>
+		<button id="next" style="border: none; outline: none; background: none">
+			<i class="fas fa-forward"></i>
+		</button>
+	</div>
+</div> 
+<script>
+	if(${pu.pageNum} == 1){
+		$("#previous").attr('disabled',true);
+	}else{
+		$("#previous").attr('disabled',false);
+	};
+	
+	if(${pu.pageNum} == ${pu.totalPageCount}){
+		$("#next").attr('disabled',true);
+	}else{
+		$("#next").attr('disabled',false);
+	};
+	
+	$("#previous").click(function(){
+		location.href="/admin/member/list?pageNum=${pu.pageNum-1}";
+	});
+
+	$("#next").click(function(){
+		location.href="/admin/member/list?pageNum=${pu.pageNum+1}";
+	});
+	
+	$("input[name='memberkeyword']").change(function(){
+		
+	})
+</script>
