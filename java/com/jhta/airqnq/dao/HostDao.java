@@ -26,24 +26,4 @@ public class HostDao {
 	public int modify(HouseInfoVo vo) {
 		return session.update(NAMESPACE + ".modify", vo);
 	}
-
-	public void delEpOnline(int hinum) {
-		session.delete(NAMESPACE + ".delEpOnline", hinum);
-	}
-
-	public void delConven(int hinum) {
-		session.delete(NAMESPACE + ".delConven", hinum);
-	}
-
-	public void delReview(int hinum) {
-		session.delete(NAMESPACE + ".delReview", hinum);
-	}
-
-	public void delBasket(int hinum) {
-		session.delete(NAMESPACE + ".delBasket", hinum);
-	}
-
-	public void delHouseImg(int hinum) {
-		session.delete(NAMESPACE + ".delHouseImg", hinum);
-	}
 }

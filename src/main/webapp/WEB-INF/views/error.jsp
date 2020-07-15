@@ -1,7 +1,12 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<div class="text-center">
-	<div class="error mx-auto" data-text="404">404</div>
-	<p class="lead text-gray-800 mb-5">Page Not Found</p>
-	<p class="text-gray-500 mb-0">It looks like you found a glitch in the matrix...</p>
-	<a href="index.html">&larr; Back to Dashboard</a>
-</div>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>에러 페이지</title>
+</head>
+<body>
+	<h1>잘못된 이메일주소이거나 잘못된 키값입니다.</h1>
+</body>
+</html>
