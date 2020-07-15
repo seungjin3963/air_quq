@@ -87,11 +87,57 @@
 		</form>
 	</c:if>
 	<c:if test="${ hostStep == 3 }">
-		<h1 class="display-4">숙소의 위치와 서비스될 가격을 알려주세요.</h1>
+		<h1 class="display-4">숙소의 서비스될 가격및 기타 설정</h1>
 		<p class="lead"></p>
 		<hr class="my-4">
-		<p>가격 및 상세주소를 입력해 주세요.</p>
+		<p>가격, 최대인원수, 침대개수, 체크아웃시간 입력, 시작일, 종료일</p>
 		<form action="/host/regist/2" method="post" id="host_regist3">
+		<div class="input-group">
+		  <input type="text" class="col-xs-3" placeholder="가격을 입력해주세요." id="host_grade">&nbsp;
+		  <div class="input-group-append">
+		    <span class="input-group-text">￦</span>
+		    <span class="input-group-text"></span>
+		  </div>
+		</div>
+		<br>
+		
+		<div class="container">
+		  <div class="row">
+		    <div class="col-sm">
+			    <div class="card border-primary mb-3" style="max-width: 18rem;">
+					  <div class="card-header">최대 숙박 인원수</div>
+						  <div class="card-body text-primary">
+						    <button type="button" class="btn btn-outline-info rounded-circle" id="pcount_minus">-</button>
+						    	&nbsp;&nbsp;<label id="pcount">1</label>&nbsp;&nbsp;
+						    <button type="button" class="btn btn-outline-info rounded-circle" id="pcount_plus">+</button>
+						  </div>
+					  </div>
+			    </div>
+		    <div class="col-sm">
+		      <div class="card border-primary mb-3" style="max-width: 18rem;">
+				  <div class="card-header">침대 개수</div>
+					  <div class="card-body text-primary">
+					    <button type="button" class="btn btn-outline-info rounded-circle" id="bcount_minus">-</button>
+					    	&nbsp;&nbsp;<label id="bcount">1</label>&nbsp;&nbsp;
+					    <button type="button" class="btn btn-outline-info rounded-circle" id="bcount_plus">+</button>
+					  </div>
+			  </div>
+		    </div>
+		    <div class="col-sm">
+		       <div class="card border-primary mb-3" style="max-width: 18rem;">
+				  <div class="card-header">체크아웃 시간</div>
+					  <div class="card-body text-primary"> 
+					  	시간
+						<select class="form-control" id="checkout_clock">
+						</select>
+						분
+						<select class="form-control" id="checkout_min">
+						</select>
+					  </div>
+			  </div>
+		    </div>
+		  </div>
+		</div>
 			<br>
 			<input type="hidden" value="4" name="next">
 			<input type="submit" class="btn btn-outline-primary" role="button" value="다음 단계로 진행">

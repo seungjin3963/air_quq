@@ -10,7 +10,6 @@
 <meta name="author" content="">
 
 <title>AIR_qUq</title>
-
 <!-- Custom fonts for this template-->
 <link href="/resources/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
 <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
@@ -31,12 +30,15 @@
 <!-- <script src="/resources/js/jquery/jquery-3.5.1.js"></script> -->
 <script src="/resources/vendor/jquery/jquery.min.js"></script>
 <script src="/resources/js/jquery/jquery-ui.js"></script>
-<script src="/resources/js/host/host.js"></script>
+
 <!-- Font Awesome! -->
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <!-- Host CSS load -->
 <link href="/resources/css/host/main.css" rel="stylesheet">
+
+<!-- Vue.js 로딩 -->
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 
 </head>
 <body id="page-top">
@@ -92,5 +94,7 @@
 	<script type="text/javascript" src="/resources/js/passport/formCheck.js"></script>
 	<!-- 영노 -->
 	<script type="text/javascript" src="/resources/js/experience/ep_inserting.js"></script>
+	
+	<script src="/resources/js/host/host.js"></script>
 </body>
 </html>
