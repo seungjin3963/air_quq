@@ -6,7 +6,6 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -32,6 +31,7 @@ public class HostController {
 	
 	@GetMapping(value="/host/epOnline/modify")
 	public String modifyView(Model model, int hinum) {
+		System.out.println(hinum);
 		model.addAttribute("vo", service.getEpOnlineInfo(hinum));
 		return ".host.epOnline.modify";
 	}
@@ -41,18 +41,7 @@ public class HostController {
 		if(service.modify(vo) > 0) {
 			return "redirect:/host/epOnline/list";
 		}else {
-			return "/error";
-		}
-	}
-	
-	@GetMapping(value="/host/epOnline/delete")
-	public String delete(int hinum) {
-		try {
-			service.delEpOnline(hinum);
-			return ".host.epOnline.modify";
-		}catch(Exception e) {
-			System.out.println(e.getMessage());
-			return "/error";
+			return "error";
 		}
 	}
 	
