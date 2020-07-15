@@ -104,6 +104,9 @@
 </div>
 </body>
 <script>
+	$( function() {
+    $( "#tabs" ).tabs();
+ 	 } );
 	$(window).resize(function(){
 		if($(this).width() < 1350){
 			$("#detail").css('display','none');
