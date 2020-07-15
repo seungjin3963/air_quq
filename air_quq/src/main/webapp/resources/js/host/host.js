@@ -59,6 +59,30 @@ function bcountDisable(bcount){
 
 
 //금액 숫자만 입력가능
-$("#host_grade").on("keyup", function() {
-    $(this).val($(this).val().replace(/[^0-9]/g,""));
+var value = $("#host_grade").val();
+new Vue({
+	el: '#host-ig',
+	data: {
+		message: value
+	},
+	watch: {
+		message: function(){
+			var regexp = /\B(?=(\d{3})+(?!\d))/g;
+			this.message = this.message.replace(/[^0-9]/g, '').replace(regexp, ',');
+		}
+	}
+});
+
+
+//달력
+const startDay = new Vue({
+  el: '#app',
+  data() {
+	return{
+		fr: vdp_translation_fr.js
+	}
+  },
+  components: {
+  	vuejsDatepicker
+  }
 });

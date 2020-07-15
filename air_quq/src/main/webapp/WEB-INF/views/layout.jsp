@@ -39,7 +39,10 @@
 
 <!-- Vue.js 로딩 -->
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-
+<!-- vue.js Datepicker CDN -->
+<script src="https://unpkg.com/vue"></script>
+<script src="https://unpkg.com/vuejs-datepicker"></script>
+<script src="/resources/js/host/translation.js"></script>
 </head>
 <body id="page-top">
 	<div id="wrapper">
@@ -94,7 +97,8 @@
 	<script type="text/javascript" src="/resources/js/passport/formCheck.js"></script>
 	<!-- 영노 -->
 	<script type="text/javascript" src="/resources/js/experience/ep_inserting.js"></script>
-	
+	<!-- host JS 파일 -->
 	<script src="/resources/js/host/host.js"></script>
+	
 </body>
 </html>

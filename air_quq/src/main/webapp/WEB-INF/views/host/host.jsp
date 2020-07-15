@@ -87,16 +87,16 @@
 		</form>
 	</c:if>
 	<c:if test="${ hostStep == 3 }">
-		<h1 class="display-4">숙소의 서비스될 가격및 기타 설정</h1>
+		<h1 class="display-4">숙소의 가격및 기타 설정</h1>
 		<p class="lead"></p>
 		<hr class="my-4">
 		<p>가격, 최대인원수, 침대개수, 체크아웃시간 입력, 시작일, 종료일</p>
 		<form action="/host/regist/2" method="post" id="host_regist3">
-		<div class="input-group">
-		  <input type="text" class="col-xs-3" placeholder="가격을 입력해주세요." id="host_grade">&nbsp;
+		<div class="input-group" id="host-ig">
+		  <input type="text" class="col-xs-3" placeholder="가격을 입력해주세요." id="host_grade" v-model="message">&nbsp;
 		  <div class="input-group-append">
 		    <span class="input-group-text">￦</span>
-		    <span class="input-group-text"></span>
+		    <span class="input-group-text" id="v_grade" name="v_grade">{{message}} 원</span>
 		  </div>
 		</div>
 		<br>
@@ -137,6 +137,9 @@
 			  </div>
 		    </div>
 		  </div>
+		</div>
+		<div id="app">
+  			<vuejs-datepicker :language="fr"></vuejs-datepicker>
 		</div>
 			<br>
 			<input type="hidden" value="4" name="next">
