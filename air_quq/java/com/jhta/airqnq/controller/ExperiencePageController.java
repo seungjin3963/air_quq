@@ -1,8 +1,12 @@
 package com.jhta.airqnq.controller;
 
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.UUID;
 
 import javax.mail.Session;
 import javax.servlet.http.HttpSession;
@@ -10,9 +14,11 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.jhta.airqnq.service.ExperienceService;
 import com.jhta.airqnq.vo.EP_ManagementVo;
@@ -331,10 +337,41 @@ public class ExperiencePageController {
 			return ".home";
 		}else if(num==3) {
 			// 최종 제출 div_type 변경
-			int n=service.ep_updatediv(hinum);
-			session.removeAttribute("ep_housenum");
+			
 			return ".home";
 		}
 		return null;
+	}
+	@RequestMapping("/ep/modalImg") /*파일 이미지 저장                      //////////////////////////////////////////// */
+	public String InsertEpImg(MultipartFile[] EpImgfile ,HttpSession session) {
+		int hinum=(int)session.getAttribute("ep_housenum"); // house_info 번호
+		String uploadPath=
+				session.getServletContext().getRealPath("/resources/img/house_img");
+		System.out.println(uploadPath+ "       ㅎㅎㅎㅎㅎ");
+		for (int i = 0; i < EpImgfile.length; i++) {
+			String ep_OrigonalFileName=EpImgfile[i].getOriginalFilename();
+			String savefileName=UUID.randomUUID()+"_" + ep_OrigonalFileName;
+			try {
+				
+				InputStream fis=EpImgfile[i].getInputStream();
+				
+				FileOutputStream fos=
+						new FileOutputStream(uploadPath+"\\" + savefileName);
+				
+				FileCopyUtils.copy(fis,fos);
+				fis.close();
+				fos.close();
+				HashMap<String, Object> map=new HashMap<String, Object>();
+				map.put("hinum", hinum);
+				map.put("file", savefileName);
+				service.epImgFile(map);
+			}catch(IOException ie) {
+				System.out.println(ie.getMessage());
+				return ".error";
+			}
+		}
+		int n=service.ep_updatediv(hinum);
+		session.removeAttribute("ep_housenum");
+		return ".home";
 	}
 }

@@ -20,6 +20,7 @@ public class EP_ManagementController {
 
 	@GetMapping("/ep_management/ep_listg")
 	public String ep_management(HttpSession session, Model model) {
+		System.out.println("ㅗㅗㅗㅗㅗㅗㅗㅗㅗㅗㅗㅗㅗㅗㅗㅗㅗㅗㅗㅗㅗㅗㅗㅗㅗㅗㅗㅗㅗㅗㅗㅗㅗㅗㅗㅗㅗㅗㅗ");
 		if(session.getAttribute("logind") == null) {
 			return ".login";
 		}else {

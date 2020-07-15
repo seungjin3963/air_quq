@@ -24,7 +24,7 @@
 		SELECT hinum FROM house_info order by hinum desc LIMIT 1
 	</select>
 	<insert id="insertexperience" parameterType="hashmap">
-		insert into experience_info(einum,hinum,sunum,memnum) values(0,#{hinum},163,#{loginnum})
+		insert into experience_info(einum,hinum,sunum,memnum,people) values(0,#{hinum},163,#{loginnum},0)
 	</insert>
 	
 	<update id="ep_type" parameterType="hashmap">
@@ -63,4 +63,7 @@
 	<update id="ep_sessnum" parameterType="hashmap">
 		update experience_info set sessionnum=#{sessnum} where hinum=#{hinum}
 	</update>
+	<insert id="ep_imgfile" parameterType="hashmap">
+		insert into house_img values(0,#{hinum},#{file});
+	</insert>
 </mapper>

@@ -67,4 +67,7 @@ public class ExperienceDao {
 	public int ep_insertsession(HashMap<String, Object> map) {
 		return sqlSessionTemplate.update(NAMESPACE+".ep_sessnum", map);
 	}
+	public int epImgFile(HashMap<String, Object> map) {
+		return sqlSessionTemplate.insert(NAMESPACE+".ep_imgfile" ,map);
+	}
 } 

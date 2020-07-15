@@ -60,7 +60,7 @@
 				</a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link" href="#"> 
+				<a class="nav-link" href="/admin/approve"> <!-- 영노 -->
 					<i class="far fa-check-circle"></i>
 					<span>승인/취소</span>
 				</a>

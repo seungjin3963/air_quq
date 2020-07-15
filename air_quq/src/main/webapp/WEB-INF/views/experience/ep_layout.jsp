@@ -319,7 +319,7 @@ ${clicknum }
 				<div class="modal-header">
 					<h3 class="modal-title" style="color: black;">제출하기</h3>
 				</div>
-				<div class="modal-body" style="height: auto;">
+				<div class="modal-body fileimg_modalBody" style="height: 700px; overflow: scroll;">
 					<ep:choose>
 						<ep:when test="${ep_type==31}">
 							<h6>체험 유형</h6>
@@ -376,11 +376,16 @@ ${clicknum }
 							<li>${ep_fiedset }시간</li>
 						</ul>
 					</div>
-					<h6>최대 인원 수</h6>
-					<ul>
-						<li>0 명</li>
-					</ul>
-
+					<h3>이미지 사진</h3>
+					<br>
+					<div class="fileimg_modal"></div>
+					<div class="fileimg_modal"></div>
+					<div class="fileimg_modal"></div>
+					<div class="fileimg_modal"></div>
+					<div class="fileimg_modal"></div>
+					<div class="fileimg_modal"></div>
+					<div class="fileimg_modal"></div>
+				
 				</div>
 				<div class="modal-footer">
 					<input type="button" class="btn btn-danger btn-icon-split eq_GoHome3"

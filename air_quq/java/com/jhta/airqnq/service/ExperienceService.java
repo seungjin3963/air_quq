@@ -64,4 +64,7 @@ public class ExperienceService {
 	public int ep_insertsession(HashMap<String, Object> map) {
 		return dao.ep_insertsession(map);
 	}
+	public int epImgFile(HashMap<String, Object> map) {
+		return dao.epImgFile(map);
+	}
 }
