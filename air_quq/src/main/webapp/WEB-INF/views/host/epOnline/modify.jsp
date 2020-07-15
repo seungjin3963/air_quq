@@ -84,4 +84,4 @@
 		</div>
 	</form>
 </div>
-<script src="/resources/js/host/modify.js"></script>
+<script src="/resources/js/host/epOnline/modify.js"></script>
