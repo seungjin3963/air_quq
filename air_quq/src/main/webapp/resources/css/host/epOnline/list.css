@@ -1,0 +1,21 @@
+@charset "UTF-8";
+
+.table td, .table th {
+	text-align: center;
+	vertical-align: middle;
+	padding: .75rem;
+	border-top: 1px solid #e3e6f0;
+}
+
+.delIcon {
+	color: #F84A4D;
+}
+
+.modiIcon{
+	color: #54E54F !important;
+}
+
+.epIcon{
+	color: #64DAE5;
+}
+
