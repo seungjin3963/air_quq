@@ -1,0 +1,19 @@
+@charset "UTF-8";
+
+textarea {
+	resize: none;
+}
+
+h4 {
+	margin-top: 10px;
+}
+
+.form-group .form-control-user {
+	font-size: 1.5rem;
+	border-radius: 10rem;
+	padding: 1.5rem 1rem;
+}
+
+textarea {
+	font-size: 1.5rem;
+}

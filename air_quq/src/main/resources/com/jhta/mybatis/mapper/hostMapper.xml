@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mybatis.hostMapper">
+	<select id="list" parameterType="int" resultType="house_info">
+		select * from house_info where menum = #{menum} and `div` = 4
+	</select>
+	<select id="getEpOnlineInfo" parameterType="int" resultType="house_info">
+		select * from house_info where hinum = #{hinum}
+	</select>
+	<update id="modify" parameterType="house_info">
+		update house_info 
+		set title = #{title}, content = #{content}, price = #{price}, max_n = #{max_n}, bedroom = #{bedroom}, checkin_time = #{checkin_time}, startdate = #{startdate}, enddate = #{enddate} 
+		where hinum = #{hinum} 
+	</update>
+	<delete id="delEpOnline" parameterType="int">
+		delete from house_info where hinum = #{hinum}
+	</delete>
+	<delete id="delConven" parameterType="int">
+		delete from conven where hinum = #{hinum}
+	</delete>
+	<delete id="delBasket" parameterType="int">
+		delete from basket where hinum = #{hinum}
+	</delete>
+	<delete id="delHouseImg" parameterType="int">
+		delete from house_img where hinum = #{hinum}
+	</delete>
+</mapper>

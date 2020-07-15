@@ -7,7 +7,7 @@
 			var startobj=new Date(startarr[0], Number(startarr[1])-1, startarr[2]);
 			var endobj=new Date(endarr[0], Number(endarr[1])-1, endarr[2]);
 			
-			var betweendate=(endobj.getTime()-startobj.getTime())/1000/60/60/24; 
+			var betweendate=(endobj.getTime()-startobj.getTime())/1000/60/60/24;
 			
 			return betweendate;
 		} 
@@ -53,6 +53,7 @@
 			$("#usecal").children().eq(3).text(cnt);
 			var modifiedday=Number($("#totmoney").children().eq(2).text());
 			$("#usecal").children().eq(0).text(modifiedday+"박"+(modifiedday+1)+"일");
+			
 			$("#myModal").modal("hide");
 		});
 		

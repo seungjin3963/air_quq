@@ -34,7 +34,6 @@ public class MemberLoginController {
 		System.out.println(menum + "<<<<<<<<<<<<<<<<<<<<<<<<<<<");
 		if(menum > 0) {
 			session.setAttribute("menum", menum);
-			System.out.println(menum);
 			session.setAttribute("logind", true);
 			return ".home";
 		} else {
