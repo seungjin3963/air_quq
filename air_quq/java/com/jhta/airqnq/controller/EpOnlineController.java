@@ -23,6 +23,10 @@ public class EpOnlineController {
 	public String goHome(Model model) {
 		//여기서 각각 리스트 매퍼연결해서 어떤거 가져와야하는지 검색조건(유명셰프,6시간이내,서울인기체험,새로등록된체험(3시간이내),저렴한 가격,베스트체험(별높은 순),전체)
 		model.addAttribute("list1",service.outslider());
+		model.addAttribute("inSeoul",service.inSeoul());
+		model.addAttribute("beststar",service.beststar());
+		model.addAttribute("cheap",service.cheap());
+		model.addAttribute("within6",service.within6());
 		return  ".epOnline.layout";
 	}
 	

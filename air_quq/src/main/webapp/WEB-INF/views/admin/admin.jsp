@@ -59,6 +59,12 @@
 					<span>체험목록</span>
 				</a>
 			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="#"> 
+					<i class="far fa-check-circle"></i>
+					<span>승인/취소</span>
+				</a>
+			</li>
 
 			<li class="nav-item">
 				<a class="nav-link" href="#">
@@ -89,9 +95,8 @@
 			</li>
 		</ul>
 		</div>
-		<div class="col-md-10">
+		<div class="col-md-10" id="detail">
 			<tiles:insertAttribute name="detail"/>
-			asdasdasdasdasdasdasd
 		</div>
     </div>
 <div id="footer">
@@ -100,11 +105,10 @@
 </body>
 <script>
 	$(window).resize(function(){
-		console.log($(this).width());
 		if($(this).width() < 1350){
-			$("#detail").css("display","none");
+			$("#detail").css('display','none');
 		}else{
-			$("#detail").css("display","block");
+			$("#detail").css('display','block');
 		}
 	});
 </script>

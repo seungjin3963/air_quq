@@ -23,11 +23,7 @@
 	<definition name=".pwdresetForm" extends=".home">
 		<put-attribute name="main" value="/WEB-INF/views/join/forgot-password-reset.jsp"></put-attribute>
 	</definition>
-	
-	<definition name=".hosthome" extends=".home">
-		<put-attribute name="main" value="/WEB-INF/views/host/home.jsp"></put-attribute>
-	</definition>
-	
+
 	<definition name=".hostRegist" extends=".home">
 		<put-attribute name="main" value="/WEB-INF/views/host/host.jsp"></put-attribute>
 	</definition>

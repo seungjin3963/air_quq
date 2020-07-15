@@ -4,7 +4,23 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  <!-- 승진 -->
  <mapper namespace="com.jhta.airqnq.mapper.MemberMapper">	
-	<select id="listMember" resultType="join">
-		select * from member
-	</select>	
+	<sql id="search">
+		<if test="field != null and field != ''">
+			<where>
+				${field} like '%'||#{keyword}||'%'
+			</where>
+		</if>
+	</sql>
+
+	<select id="listMember" resultType="join" parameterType="hashmap">
+		select * from member 
+		<include refid="search"/>
+		limit #{startRow}, #{endRow}
+	</select>
+	
+	<select id="membercnt" resultType="int" parameterType="hashmap">
+		select ifnull(count(*),0) from member
+		<include refid="search"/>
+	</select>
+	
 </mapper>
