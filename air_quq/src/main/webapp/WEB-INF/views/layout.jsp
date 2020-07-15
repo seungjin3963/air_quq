@@ -31,7 +31,7 @@
 <!-- <script src="/resources/js/jquery/jquery-3.5.1.js"></script> -->
 <script src="/resources/vendor/jquery/jquery.min.js"></script>
 <script src="/resources/js/jquery/jquery-ui.js"></script>
-
+<script src="/resources/js/host/host.js"></script>
 <!-- Font Awesome! -->
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
