@@ -13,7 +13,7 @@
         	<table>
 		        <c:forEach var="img" items="${list1 }">
 		        	<tr>
-		        		<a href="/online/details?einum=${img.hinum }"><img src="${img.img }"></a>
+		        		<a href="/online/details?hinum=${img.hinum }"><img src="${img.img }"></a>
 		        	</tr>
 		        	<tr>
 		        		${img.loc }

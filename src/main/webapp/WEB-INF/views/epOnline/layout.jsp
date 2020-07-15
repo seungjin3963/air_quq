@@ -39,7 +39,9 @@
 		</div>
 		<div id="content-wrapper" class="d-flex flex-column">
 			<!-- 이미지 -->
-			
+			<div id="content" class="sticky-footer bg-white mt-5">
+				<tiles:insertAttribute name="content" />
+			</div>
 			<div id="footer" class="sticky-footer bg-white">
 				<tiles:insertAttribute name="footer" />
 			</div>
@@ -51,12 +53,8 @@
 		</a>
 	</div>
   
-
   <script src="/resources/vendor/jquery-easing/jquery.easing.min.js"></script>
   <script src="/resources/js/sb-admin-2.min.js"></script>
-  <script src="/resources/vendor/chart.js/Chart.min.js"></script>
-  <script src="/resources/js/demo/chart-area-demo.js"></script>
-  <script src="/resources/js/demo/chart-pie-demo.js"></script>
   <script type="text/javascript" src="/resources/js/main/join.js"></script>
 </body>
 
