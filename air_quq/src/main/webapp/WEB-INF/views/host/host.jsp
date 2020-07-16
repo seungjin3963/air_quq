@@ -141,14 +141,14 @@
 		
 
 		<div class="row">
-		    <div class="col" class="form-control">
+		    <div class="col">
 			    <div id="d-start">
-			  		<vuejs-datepicker :language="ko" :format="customFormatter" :disabled-dates="disabledDates" placeholder="시작일" :bootstrap-styling="true" id="sdate"></vuejs-datepicker>
+			  		<vuejs-datepicker :language="ko" :format="customFormatter" :disabled-dates="disabledDates" placeholder="시작일" name="sdate"></vuejs-datepicker>
 				</div>
 		    </div>
 		    <div class="col">
 		      <div id="e-start">
-			  		<vuejs-datepicker :language="ko" :format="customFormatter" :disabled-dates="disabledDates" placeholder="종료일" :bootstrap-styling="true" id="edate"></vuejs-datepicker>
+			  		<vuejs-datepicker :language="ko" :format="customFormatter" :disabled-dates="disabledDates" placeholder="종료일" name="edate"></vuejs-datepicker>
 				</div>
 		    </div>
 		</div>
