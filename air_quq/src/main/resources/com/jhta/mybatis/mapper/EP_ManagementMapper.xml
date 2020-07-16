@@ -18,4 +18,12 @@
 	<delete id="ep_list_delete1" parameterType="int">
 		delete from house_info where hinum=#{hinum}
 	</delete>
+	
+	
+	<select id="approvelist" resultType="com.jhta.airqnq.vo.EP_ManagementVo">
+		SELECT e.memnum , e.div_type ,e.title, e.hinum ,s.subname FROM experience_info e INNER JOIN subDetail s ON e.sunum = s.sunum and (e.div_type=32  or e.div_type=42)
+	</select>
+	<select id="apappimg" parameterType="int" resultType="com.jhta.airqnq.vo.EP_ManagementVo">
+		select img from house_img where hinum=#{hinum}
+	</select>
 </mapper>

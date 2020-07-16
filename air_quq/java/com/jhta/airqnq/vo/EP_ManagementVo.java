@@ -1,5 +1,7 @@
 package com.jhta.airqnq.vo;
 
+import java.util.Date;
+
 public class EP_ManagementVo {
 	private int einum;
 	private int sunum;
@@ -14,11 +16,30 @@ public class EP_ManagementVo {
 	private String mater;
 	private int sessionnum;
 	private int hinum;
+	private Date regdate;
+	private int people;
+	private String subname;
+	private String img;
 	
 	public EP_ManagementVo() {}
 	
+	public EP_ManagementVo(String img) {
+		this.img=img;
+	}
+	
+	public EP_ManagementVo(int memnum, int div_type, String title, int hinum, String subname) {
+		super();
+		this.memnum = memnum;
+		this.div_type = div_type;
+		this.title = title;
+		this.hinum = hinum;
+		this.subname = subname;
+	}
+
+
+
 	public EP_ManagementVo(int einum, int sunum, int memnum, int div_type, String loc, String intr, String program,
-			String title, String price, String times, String mater, int sessionnum, int hinum) {
+			String title, String price, String times, String mater, int sessionnum, int hinum,Date regdate , int people) {
 		super();
 		this.einum = einum;
 		this.sunum = sunum;
@@ -33,6 +54,8 @@ public class EP_ManagementVo {
 		this.mater = mater;
 		this.sessionnum = sessionnum;
 		this.hinum = hinum;
+		this.regdate = regdate;
+		this.people= people;
 	}
 
 	public int getEinum() {
@@ -138,5 +161,39 @@ public class EP_ManagementVo {
 	public void setHinum(int hinum) {
 		this.hinum = hinum;
 	}
+
+	public Date getRegdate() {
+		return regdate;
+	}
+
+	public void setRegdate(Date regdate) {
+		this.regdate = regdate;
+	}
+
+	public int getPeople() {
+		return people;
+	}
+
+	public void setPeople(int people) {
+		this.people = people;
+	}
+
+
+
+	public String getSubname() {
+		return subname;
+	}
+	public void setSubname(String subname) {
+		this.subname = subname;
+	}
+
+	public String getImg() {
+		return img;
+	}
+
+	public void setImg(String img) {
+		this.img = img;
+	}
+	
 	
 }

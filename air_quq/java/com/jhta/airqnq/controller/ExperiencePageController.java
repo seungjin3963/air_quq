@@ -347,7 +347,7 @@ public class ExperiencePageController {
 		int hinum=(int)session.getAttribute("ep_housenum"); // house_info 번호
 		String uploadPath=
 				session.getServletContext().getRealPath("/resources/img/house_img");
-		System.out.println(uploadPath+ "       ㅎㅎㅎㅎㅎ");
+		
 		for (int i = 0; i < EpImgfile.length; i++) {
 			String ep_OrigonalFileName=EpImgfile[i].getOriginalFilename();
 			String savefileName=UUID.randomUUID()+"_" + ep_OrigonalFileName;

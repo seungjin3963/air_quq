@@ -26,4 +26,7 @@ public class EP_ManagementDao {
 		 sqlSessionTemplate.delete(NAMESPACE+".ep_list_delete" , hinum);
 		return sqlSessionTemplate.delete(NAMESPACE+".ep_list_delete1" , hinum);
 	}
+	
+	
+	
 }
