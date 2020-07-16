@@ -15,8 +15,14 @@
 </body>
 <script type="text/javascript">
 	$("#sendBtn").click(function(){
+		var text=$("#message").val();
 		sendMessage();
 		$('#message').val('')//메세지보내도 빈칸유지
+		$.ajax({
+			url:"/echo/addcontent",
+			data: {"content":text},
+			success:function(data){}
+		});
 	})
 	let sock = new SockJS("http://localhost:8090/echo");
 	sock.onmessage=onMessage;

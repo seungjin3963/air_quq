@@ -46,4 +46,7 @@ public class EpOnlineDao {
 	public int addChat(HashMap<String, Object> hash) {
 		return sql.insert(NAMESPACE+".addChat",hash);
 	}
+	public int addcontent(HashMap<String, Object> hash) {
+		return sql.insert(NAMESPACE+".addcontent",hash);
+	}
 }
