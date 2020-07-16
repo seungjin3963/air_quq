@@ -1,0 +1,194 @@
+@charset "UTF-8";
+
+* {
+	margin: 0px;
+	padding: 0px;
+}
+
+/* datepicker css 수정 */
+.ui-datepicker {
+	font-size: 18px;
+}
+
+.ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active,
+	.ui-widget-content .ui-state-hover {
+	color: #FF0000;
+	border: 1px solid #FF0000;
+}
+
+.ui-widget-content .ui-state-highlight {
+	color: #FF0000;
+}
+
+/* 사진css */
+#bigphoto {
+	width: 100%;
+	height: 400px;
+	margin: 10px 0px;
+	border-radius: 10px;
+}
+
+#smallphoto div img {
+	width: 46%;
+	height: 190px;
+	margin: 10px;
+	border-radius: 10px;
+}
+
+#applypofile {
+	width: 50px;
+	height: 50px;
+	border-radius: 100%
+}
+
+/* rowcss */
+#applydivision {
+	border-bottom: #c4c4c4 1px solid;
+	padding: 10px 0px;
+}
+
+#applydivision1 {
+	border-bottom: #c4c4c4 1px solid;
+	padding: 10px 0px;
+}
+
+#applydivision2 {
+	border-bottom: #c4c4c4 1px solid;
+	padding: 10px 0px;
+	text-align: center;
+}
+
+#applydivision3 {
+	border-bottom: #c4c4c4 1px solid;
+	padding: 10px 0px;
+	font-weight: bold;
+	font-size: 30px;
+}
+
+#applydivision4 {
+	border-bottom: #c4c4c4 1px solid;
+	padding: 10px 0px;
+	font-weight: bold;
+	font-size: 30px;
+}
+
+/* 인원수 */
+#usernumber {
+	font-weight: bold;
+	font-size: 30px;
+}
+
+/* 숙박일 */
+#rentdate {
+	display: inline-block;
+	text-align: center;
+	font-weight: bold;
+	font-size: 50px;
+}
+
+/*위치*/
+#locationfont {
+	font-weight: bold;
+	font-size: 30px;
+}
+
+#map {
+	width: 100%;
+	height: 550px;
+}
+
+/* 퀵메뉴 */
+#quickmenu {
+	width: 190px;
+	height: 500px;
+	position: fixed;
+	right: 80px;
+	top: 150px;
+	border: gray 1px solid;
+	text-align: center;
+}
+
+#quickmenulayer {
+	margin: 10px 0px;
+}
+
+.quickmenufont {
+	text-align: center;
+	border: none;
+	outline: none;
+	background: none;
+}
+
+/* 예약정보 수정 */
+#modalexit {
+	outline: none;
+}
+
+#mymodalborder {
+	height: 330px;
+	margin: auto;
+	font-size: 20px;
+}
+
+#calclick {
+	display: inline-block;
+	height: 100%;
+	width: 100%;
+}
+
+#mymodallayer {
+	display: inline-block;
+	width: 162px;
+	text-align: center;
+}
+
+.checkdate {
+	border: none;
+	outline: none;
+	text-align: center;
+	width: 70%;
+}
+
+.usercount {
+	border: none;
+	outline: none;
+	background: none;
+}
+
+#h-cnt {
+	border: none;
+	outline: none;
+	text-align: center;
+}
+
+#totmoney span {
+	float: right;
+}
+
+#modalbuttonOk1 {
+	text-align: center;
+	margin: 20px;
+}
+
+#modalbuttonOk2 {
+	width: 100px;
+}
+
+/* datepicker */
+#bundle {
+	position: absolute;
+	display: none;
+	background-color: #eeeeee
+}
+
+#userapplybuttonOk {
+	float: right;
+	width: 70px;
+	margin: 10px;
+}
+
+/* 확인창 */
+#alertclose {
+	width: 80px;
+	margin: 10px;
+}
