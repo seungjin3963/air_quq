@@ -48,17 +48,6 @@ public class EchoHandler extends TextWebSocketHandler{
 		for(WebSocketSession sess:sessionList) {
 			sess.sendMessage(new TextMessage(session.getId()+"이 :"+message.getPayload()));
 		}
-		/*
-		 * HashMap<String,Object> hash =(HashMap<String, Object>)
-		 * session.getAttributes();
-		 * 
-		 * hash.put("chat_no",session.getAttributes().get("chat_no"));
-		 * hash.put("content",message.getPayload());
-		 * hash.put("mnum",session.getAttributes().get("menum"));
-		 * System.out.println(session.getAttributes().get("chat_no")+" : chat_no "
-		 * +message.getPayload()+" : content "+session.getAttributes().get("menum")+
-		 * " : mnum"); service.addcontent(hash);
-		 */
 	}
 	//종료직후
 	@Override

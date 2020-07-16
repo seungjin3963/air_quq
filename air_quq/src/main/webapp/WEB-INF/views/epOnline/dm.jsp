@@ -11,6 +11,11 @@
 <body>
 	<input type="text" id="message"/>
 	<input type="button" id="sendBtn" value="submit"/>
+	<div id="recallMessage">
+		<c:forEach var="chat" items="${chat }">
+			${chat.step } : ${chat.content }<br>
+		</c:forEach>
+	</div>
 	<div id="messageArea"></div>
 </body>
 <script type="text/javascript">
