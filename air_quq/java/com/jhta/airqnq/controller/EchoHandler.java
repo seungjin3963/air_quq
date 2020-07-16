@@ -47,7 +47,6 @@ public class EchoHandler extends TextWebSocketHandler{
 		//모든 사람에게
 		for(WebSocketSession sess:sessionList) {
 			sess.sendMessage(new TextMessage(message.getPayload()));
-			
 		}
 	}
 	//종료직후
