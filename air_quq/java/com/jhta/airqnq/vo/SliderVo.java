@@ -2,25 +2,32 @@ package com.jhta.airqnq.vo;
 
 import java.sql.Blob;
 
-//슬라이더 저장공간
+//�뒳�씪�씠�뜑 ���옣怨듦컙
 public class SliderVo {
-	private int hinum;//체험번호
-	private int memnum;//호스트번호
-	//-------------메인-----------------//
-	private Blob img;//이미지
-	private String title;//제목
-	private String loc;//지역
-	private String times;//시간
-	private String price;//가격
-	private int score;//평점
-	//-------------상세-----------------//
-	private String program;//프로그램 소개
-	private String intr;//호스트자기소개
-	private String mater;//준비물
-	
+	private int einum;//ei踰덊샇
+	private int hinum;//泥댄뿕踰덊샇
+	private int memnum;//�샇�뒪�듃踰덊샇
+	//-------------硫붿씤-----------------//
+	private String img;//�씠誘몄�
+	private String title;//�젣紐�
+	private String loc;//吏��뿭
+	private String times;//�떆媛�
+	private String price;//媛�寃�
+	private int score;//�룊�젏
+	//-------------�긽�꽭-----------------//
+	private String id;//�븘�씠�뵒
+	private String addr;//二쇱냼
+	private String email;//�씠硫붿씪
+	private String phone;//�쟾�솕踰덊샇
+	private byte[] profile_img;//�봽濡쒗븘�씠誘몄�
+	private String nickname;//�땳�꽕�엫
+	private String program;//�봽濡쒓렇�옩 �냼媛�
+	private String intr;//�샇�뒪�듃�옄湲곗냼媛�
+	private String mater;//以�鍮꾨Ъ
+	private int people;//�씤�썝�닔
 	public SliderVo() {};
-	//메인화면
-	public SliderVo(int score,int hinum,int memnum,Blob img,String title,String loc,String times,String price) {
+	//硫붿씤�솕硫�
+	public SliderVo(int score,int hinum,int memnum,String img,String title,String loc,String times,String price) {
 		this.hinum=hinum;
 		this.memnum=memnum;
 		this.img=img;
@@ -30,19 +37,79 @@ public class SliderVo {
 		this.price=price;
 		this.score=score;
 	}
-	//상세화면
-	public SliderVo(int hinum,int memnum,Blob img, String title, String loc, String times, String price, String program, String intr,
-			String mater) {
-		this.img = img;
-		this.title = title;
-		this.loc = loc;
-		this.times = times;
-		this.price = price;
-		this.program = program;
-		this.intr = intr;
-		this.mater = mater;
+	//�긽�꽭�솕硫�
+	public SliderVo(int einum,int hinum,int memnum,String img, String title, String loc,
+			String times, String price,int score ,String id ,String addr,
+			String email,String phone,byte[] profile_img,String nickname,
+			String program,String intr,String mater,int people
+			) {
+		this.einum=einum;
 		this.hinum=hinum;
 		this.memnum=memnum;
+		this.img=img;
+		this.title=title;
+		this.loc=loc;
+		this.times=times;
+		this.price=price;
+		this.score=score;
+		this.id=id;
+		this.addr=addr;
+		this.email=email;
+		this.phone=phone;
+		this.profile_img=profile_img;
+		this.nickname=nickname;
+		this.program=program;
+		this.intr=intr;
+		this.mater=mater;
+		this.people=people;
+	}
+	public int getEinum() {
+		return einum;
+	}
+	public void setEinum(int einum) {
+		this.einum = einum;
+	}
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
+	public String getAddr() {
+		return addr;
+	}
+	public void setAddr(String addr) {
+		this.addr = addr;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public String getPhone() {
+		return phone;
+	}
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+	public byte[] getProfile_img() {
+		return profile_img;
+	}
+	public void setProfile_img(byte[] profile_img) {
+		this.profile_img = profile_img;
+	}
+	public String getNickname() {
+		return nickname;
+	}
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
+	}
+	public int getPeople() {
+		return people;
+	}
+	public void setPeople(int people) {
+		this.people = people;
 	}
 	public void setScore(int score) {
 		this.score = score;
@@ -62,10 +129,10 @@ public class SliderVo {
 	public void setMemnum(int memnum) {
 		this.memnum = memnum;
 	}
-	public Blob getImg() {
+	public String getImg() {
 		return img;
 	}
-	public void setImg(Blob img) {
+	public void setImg(String img) {
 		this.img = img;
 	}
 	public String getTitle() {

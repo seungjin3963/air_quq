@@ -35,11 +35,22 @@
 	</select>
 	<!-- 디테일 -->
 	<select id="inslider" resultType="slinfo" parameterType="int"><!-- 상세화면 -->
-		Select ei.hinum,ei.memnum,hi.img,ei.title,ei.loc,ei.times,ei.price,re.score,ei.intr,ei.mater,ei.program From experience_info ei left JOIN house_img hi
+		Select ei.einum,ei.hinum,ei.memnum,hi.img,ei.title,ei.loc,ei.times,ei.price,re.score,me.id,me.addr,me.email,me.phone,me.profile_img,me.nickname,ei.program,ei.intr,ei.mater,ei.people From experience_info ei
+		left JOIN house_img hi
 		ON ei.hinum = hi.hinum
 		left JOIN review re
 		ON ei.hinum = re.hinum 
-		where  ei.hinum=#{hinum} and ei.div_type=3;
+        left join member me
+        on ei.memnum=me.menum
+		where  ei.hinum=11 and ei.div_type=3;
 	</select>
+	<select id="findRoom" parameterType="hashmap" resultType="int">
+		select chat_no from chat_select where menum=#{memnum} and younum=#{id};
+	</select>
+	<select id="chatLog" resultType="chatLog" parameterType="int">
+		select * from chatting where chat_no=#{number}
+	</select>
+	<insert id="addChat" parameterType="hashmap">
+		insert into chat_select values(0,#{memnum},#{id})
+	</insert>
 </mapper>
-  

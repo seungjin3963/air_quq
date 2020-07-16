@@ -6,9 +6,7 @@
  <mapper namespace="com.jhta.airqnq.mapper.MemberMapper">	
 	<sql id="search">
 		<if test="field != null and field != ''">
-			<where>
-				${field} like '%'||#{keyword}||'%'
-			</where>
+			where ${field} like '%${keyword}%'
 		</if>
 	</sql>
 

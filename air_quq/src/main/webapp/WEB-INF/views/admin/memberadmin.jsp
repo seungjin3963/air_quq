@@ -5,10 +5,10 @@
 	<h1 style="text-align: center;">회원정보</h1>
 <div style="float: right;">
 	<select name="field" class="form-control" style="width: 120px; display: inline-block;">
-		<option value="id" selected="selected">아이디</option>
+		<option value="id">아이디</option>
 		<option value="email">이메일</option>
 	</select>
-	<input type="text" name="keyword" class="form-control form-control" style="width: 200px; display: inline-block; border: none;">
+	<input type="text" name="keyword" class="form-control form-control" style="width: 200px; display: inline-block;">
 </div>
 	<table class="table table-striped">
 	  <tr>
@@ -21,7 +21,7 @@
 	  </tr>
 	  <c:forEach var="vo" items="${ Memberlist }">
 		<tr style="font-weight:bold;">
-			<td>${ vo.memun }</td>
+			<td>${vo.menum }</td>
 			<td>${vo.id}</td>
 			<td>${vo.pwd}</td>
 			<td>${vo.email}</td>
@@ -42,13 +42,20 @@
 			<i class="fas fa-backward"></i>
 		</button>
 		<c:forEach var="i" begin="${pu.startPageNum }" end="${pu.endPageNum }" >
-			<span><a href="/admin/member/list?pageNum=${i}">[${i}]</a></span>
+			<c:choose>
+				<c:when test="${pu.pageNum == i }">
+					<a href="/admin/member/list?pageNum=${i}"><span style="color: red;">[${i}]</span></a>
+				</c:when>
+				<c:otherwise>
+					<span><a href="/admin/member/list?pageNum=${i}">[${i}]</a></span>
+				</c:otherwise>
+			</c:choose>
 		</c:forEach>
 		<button id="next" style="border: none; outline: none; background: none">
 			<i class="fas fa-forward"></i>
 		</button>
 	</div>
-</div> 
+</div>  
 <script>
 	if(${pu.pageNum} == 1){
 		$("#previous").attr('disabled',true);
@@ -70,7 +77,55 @@
 		location.href="/admin/member/list?pageNum=${pu.pageNum+1}";
 	});
 	
-	$("input[name='memberkeyword']").change(function(){
+	$("input[name='keyword']").keyup(function() {
+		var fielddata=$("select[name='field']").val();
+		var keyworddata=$("input[name='keyword']").val();
 		
+	$.ajax({
+		url:"/json/memberlistfind",
+		dataType:"json",
+		data:{"keyword":keyworddata,"field":fielddata},
+		success:function(data){
+		 	$.each(data,function(key,value){
+		 		if(key == "Memberlist"){
+			 		var kakaocheck;
+			 		for (var i = 0; i < 10; i++) {
+				 		$("tr").first().next().remove();
+					}
+				 	for (var i = 0; i < value.length; i++) {
+						if(value[i].identi_kakao == 1){
+								kakaocheck="카카오아이디";
+							}else{
+								kakaocheck="일반아이디";
+							}
+				 			$("table").append("<tr><td>"+value[i].menum+"</td><td>"+value[i].id+"</td><td>"+value[i].pwd+"</td><td>"+value[i].email+"</td><td>"+value[i].gender+"</td><td>"+kakaocheck+"</td></tr>")
+						}
+			 		}
+				}) 
+			}
+		})
 	})
+	
+	var postSend=function (path,field,keyword){
+		var form= document.createElement("form");
+		form.setAttribute("charset", "UTF-8");
+		form.setAttribute("method", "Post");
+		form.setAttribute("action", path);
+		
+		var hiddenfield=document.createElement("input");
+		hiddenfield.setAttribute("type", "hidden");
+		hiddenfield.setAttribute("name", "field");
+		hiddenfield.setAttribute("value", field);
+
+		var hiddenkeyword=document.createElement("input");
+		hiddenkeyword.setAttribute("type", "hidden");
+		hiddenkeyword.setAttribute("name", "keyword");
+		hiddenkeyword.setAttribute("value", keyword);
+		
+		form.appendChild(hiddenfield);
+		form.appendChild(hiddenkeyword);
+		
+		document.body.appendChild(form);
+		form.submit();
+	}
 </script>
