@@ -31,7 +31,7 @@
 		<p>숙소에 대해 간략하게 알려주세요.</p>
 		<form action="/host/regist/1" method="post" id="host_regist">
 		<p>
-			<input class="form-control form-control-lg" type="text" placeholder="주소 검색하기" id="searchPassport" name="addr">
+			<input class="form-control form-control-lg" type="text" placeholder="주소 검색하기" id="searchPassport" name="addr" readonly="readonly">
 		</p>
 
 		<div class="row">
@@ -138,9 +138,21 @@
 		    </div>
 		  </div>
 		</div>
-		<div id="app">
-  			<vuejs-datepicker :language="fr"></vuejs-datepicker>
+		
+
+		<div class="row">
+		    <div class="col" class="form-control">
+			    <div id="d-start">
+			  		<vuejs-datepicker :language="ko" :format="customFormatter" :disabled-dates="disabledDates" placeholder="시작일" :bootstrap-styling="true" id="sdate"></vuejs-datepicker>
+				</div>
+		    </div>
+		    <div class="col">
+		      <div id="e-start">
+			  		<vuejs-datepicker :language="ko" :format="customFormatter" :disabled-dates="disabledDates" placeholder="종료일" :bootstrap-styling="true" id="edate"></vuejs-datepicker>
+				</div>
+		    </div>
 		</div>
+	    
 			<br>
 			<input type="hidden" value="4" name="next">
 			<input type="submit" class="btn btn-outline-primary" role="button" value="다음 단계로 진행">

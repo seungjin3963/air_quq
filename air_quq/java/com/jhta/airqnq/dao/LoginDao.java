@@ -16,6 +16,10 @@ public class LoginDao {
 		return sqlSessionTemplate.selectOne(NAMESPACE + ".loginCheck", map);
 	}
 	
+	public int getMenum(HashMap<String, Object> map) {
+		return sqlSessionTemplate.selectOne(NAMESPACE + ".getMenum", map);
+	}
+	
 	public int kakaoCheck(String menum) {
 		return sqlSessionTemplate.selectOne(NAMESPACE + ".kakaoCheck", menum);
 	}

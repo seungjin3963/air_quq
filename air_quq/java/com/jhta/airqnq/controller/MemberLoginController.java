@@ -30,9 +30,10 @@ public class MemberLoginController {
 		map.put("id", idl);
 		map.put("pwd", pwdl);
 		int menum = service.loginCheck(map);
-		System.out.println(menum + "<<<<<<<<<<<<<<<<<<<<<<<<<<<");
 		if(menum > 0) {
-			session.setAttribute("menum", menum);
+			int rnum = service.getMenum(map);
+			System.out.println(rnum + "<<<<<<<<<<<<<<<<<<<<<<<<<<<");
+			session.setAttribute("menum", rnum);
 			session.setAttribute("logind", true);
 			return ".home";
 		} else {

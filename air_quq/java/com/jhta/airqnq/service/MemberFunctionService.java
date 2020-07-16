@@ -39,6 +39,10 @@ public class MemberFunctionService {
 		return loginDao.loginCheck(map);
 	}
 	
+	public int getMenum(HashMap<String, Object> map) {
+		return loginDao.getMenum(map);
+	}
+	
 	public int selectKakaoUser(int id) {
 		return joinDao.selectKakaoUser(id);
 	}

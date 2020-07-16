@@ -1,5 +1,5 @@
 //체크아웃 시간
-for(var i=0; i<=24; i++){
+for(var i=0; i<=23; i++){
 	$("#checkout_clock").append(`<option>${i}</option>`);
 }
 for(var i=0; i<=59; i++){
@@ -73,16 +73,57 @@ new Vue({
 	}
 });
 
+Date.prototype.yyyymmdd = function() {
+  var mm = this.getMonth() + 1;
+  var dd = this.getDate();
+
+  return [this.getFullYear(),
+          (mm>9 ? '' : '0') + mm,
+          (dd>9 ? '' : '0') + dd
+         ].join('');
+};
+
 
 //달력
-const startDay = new Vue({
-  el: '#app',
+new Vue({
+  el: '#d-start',
   data() {
 	return{
-		fr: vdp_translation_fr.js
+		ko: vdp_translation_ko.js,
+		disabledDates: {
+			to: new Date(Date.now() - 8640000)
+		}
 	}
   },
+  methods: {
+	customFormatter(date){
+		return date.yyyymmdd();
+	}
+  },
+
   components: {
   	vuejsDatepicker
   }
 });
+
+new Vue({
+  el: '#e-start',
+  data() {
+	return{
+		ko: vdp_translation_ko.js,
+		disabledDates: {
+			to: new Date(Date.now() + 8640000)
+		}
+	}
+  },
+  methods: {
+	customFormatter(date){
+		return date.yyyymmdd();
+	}
+  },
+
+  components: {
+  	vuejsDatepicker
+  }
+});
+

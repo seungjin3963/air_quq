@@ -42,7 +42,11 @@
 <!-- vue.js Datepicker CDN -->
 <script src="https://unpkg.com/vue"></script>
 <script src="https://unpkg.com/vuejs-datepicker"></script>
-<script src="/resources/js/host/translation.js"></script>
+<script src="https://unpkg.com/vuejs-datepicker/dist/locale/translations/ko.js"></script>
+
+<!-- 부트스트랩 뷰 -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-vue/2.15.0/bootstrap-vue.min.js"></script>
+
 </head>
 <body id="page-top">
 	<div id="wrapper">
