@@ -1,7 +1,7 @@
 package com.jhta.airqnq.vo;
 
 public class JoinVo {
-	private int memun;
+	private int menum;
 	private String id;
 	private String pwd;
 	private String addr;
@@ -15,9 +15,9 @@ public class JoinVo {
 
 	public JoinVo() {}
 
-	public JoinVo(int memun, String id, String pwd, String addr, String email, String phone, String gender,
+	public JoinVo(int menum, String id, String pwd, String addr, String email, String phone, String gender,
 			byte[] profile_img, int identi_user, int identi_kakao, String nickname) {
-		this.memun = memun;
+		this.menum = menum;
 		this.id = id;
 		this.pwd = pwd;
 		this.addr = addr;
@@ -55,12 +55,12 @@ public class JoinVo {
 		this.nickname = nickname;
 	}
 
-	public int getMemun() {
-		return memun;
+	public int getMenum() {
+		return menum;
 	}
 
-	public void setMemun(int memun) {
-		this.memun = memun;
+	public void setMenum(int menum) {
+		this.menum = menum;
 	}
 
 	public String getId() {
