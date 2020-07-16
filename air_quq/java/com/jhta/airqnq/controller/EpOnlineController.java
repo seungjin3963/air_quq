@@ -1,17 +1,23 @@
 package com.jhta.airqnq.controller;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.jhta.airqnq.service.EpOnlineService;
-import com.jhta.airqnq.vo.SliderVo;
+import com.jhta.airqnq.vo.ChatLogVo;
 
 @Controller
 public class EpOnlineController {
@@ -31,12 +37,41 @@ public class EpOnlineController {
 	}
 	
 	@RequestMapping("/online/details")
-	public String goDetails(int einum,Model model) {
-		Map<String, SliderVo> details= new HashMap<String,SliderVo>();
-		System.out.println(service.inslider(einum));
-		details.put("details",(SliderVo)service.inslider(einum));
-		model.addAttribute("list2",details);
-		return ".epOnline.details.detail";
+	public String goDetails(int hinum,Model model,HttpServletResponse response) throws IOException {
+		model.addAttribute("list2",service.inslider(hinum));
+		return ".epOnline.detail";
+	}
+	
+	@RequestMapping(value="/online/image",method = RequestMethod.GET)
+	public void showImage(@RequestParam("hinum") Integer hinum,HttpServletResponse response,HttpServletRequest request) throws IOException {
+		response.setContentType("image/jpeg, image/jpg, image/png, image/gif");
+		response.getOutputStream().write(service.inslider(hinum).getProfile_img());
+		response.getOutputStream().close();
+	}
+	
+	@RequestMapping(value = "/online/dm",method = RequestMethod.GET)
+	public String dm(int hinum,int memnum,int einum,HttpSession session,Model model) {
+//		System.out.println(hinum+" :hinum" +einum+" : einum" +memnum+" : memnum");
+		//회원-호스트 // 다른 방식은 modal로 안되게 처리
+		int menum3=(int) session.getAttribute("menum");//아이디
+		HashMap<String, Object> hash = new HashMap<String, Object>();
+		hash.put("memnum", memnum);
+		hash.put("id",menum3);
+//		System.out.println("들어옴");
+		int n=0;
+		try {
+			n=service.findRoom(hash);
+		}catch(NullPointerException ne){}
+		
+		if(n!=0) {//방 있음 ,내역 불러와야함
+			List<ChatLogVo> chat=service.chatlog(n);
+			model.addAttribute("chat",chat);
+		}else {//chat목록에 추가하도록 chat_no만들기
+			hash.put("n",n);
+			System.out.println(hash.get("n") +"," +hash.get("memnum")+" ,"+hash.get("id")+"asdasd");
+			service.addChat(hash);
+		}
+		return ".epOnline.dm";
 	}
 	
 	@GetMapping(value="/epOnline/epOnline")
@@ -49,5 +84,3 @@ public class EpOnlineController {
 		return "";
 	}
 }
-
-
