@@ -22,11 +22,14 @@ public class HostController {
 
 	@GetMapping(value = "/host/epOnline/list")
 	public String epOnlineList(Model model, HttpSession session) {
-		// int menum = (int)session.getAttribute("menum");
-		int menum = 1000;
-		List<HouseInfoVo> list = service.list(menum);
-		model.addAttribute("list", list);
-		return ".host.epOnline.list";
+		if(session.getAttribute("logind") == null) {
+			return ".login";
+		}else {
+			int menum = (int)session.getAttribute("menum");
+			List<HouseInfoVo> list = service.list(menum);
+			model.addAttribute("list", list);
+			return ".host.epOnline.list";
+		}
 	}
 
 	@GetMapping(value = "/host/epOnline/modify")
