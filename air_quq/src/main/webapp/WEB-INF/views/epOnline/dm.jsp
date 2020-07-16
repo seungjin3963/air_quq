@@ -11,12 +11,23 @@
 <body>
 	<input type="text" id="message"/>
 	<input type="button" id="sendBtn" value="submit"/>
+	<div id="recallMessage">
+		<c:forEach var="chat" items="${chat }">
+			${chat.step } : ${chat.content }<br>
+		</c:forEach>
+	</div>
 	<div id="messageArea"></div>
 </body>
 <script type="text/javascript">
 	$("#sendBtn").click(function(){
+		var text=$("#message").val();
 		sendMessage();
 		$('#message').val('')//메세지보내도 빈칸유지
+		$.ajax({
+			url:"/echo/addcontent",
+			data: {"content":text},
+			success:function(data){}
+		});
 	})
 	let sock = new SockJS("http://localhost:8090/echo");
 	sock.onmessage=onMessage;

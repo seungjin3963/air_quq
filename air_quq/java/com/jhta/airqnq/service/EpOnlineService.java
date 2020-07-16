@@ -42,4 +42,7 @@ public class EpOnlineService {
 	public int addChat(HashMap<String, Object> hash) {
 		return dao.addChat(hash);
 	}
+	public int addcontent(HashMap<String, Object> hash){
+		return dao.addcontent(hash);
+	}
 }

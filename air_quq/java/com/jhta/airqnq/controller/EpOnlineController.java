@@ -68,6 +68,7 @@ public class EpOnlineController {
 			System.out.println(hash.get("n") +"," +hash.get("memnum")+" ,"+hash.get("id")+"asdasd");
 			service.addChat(hash);
 		}
+		session.setAttribute("chat_no", n);
 		return ".epOnline.dm";
 	}
 	
