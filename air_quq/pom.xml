@@ -5,7 +5,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.jhta</groupId>
 	<artifactId>airqnq</artifactId>
-	<name>air_qnq</name>
+	<name>air_qnq</name> 
 	<packaging>war</packaging>
 	<version>1.0.0-BUILD-SNAPSHOT</version>
 	<properties>
