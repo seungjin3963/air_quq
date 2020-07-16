@@ -32,6 +32,7 @@ public class HostService {
 		dao.delReview(hinum);
 		dao.delBasket(hinum);
 		dao.delHouseImg(hinum);
+		dao.delExpInfo(hinum);
 		dao.delEpOnline(hinum);
 	}
 }

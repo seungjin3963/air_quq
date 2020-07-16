@@ -46,4 +46,8 @@ public class HostDao {
 	public void delHouseImg(int hinum) {
 		session.delete(NAMESPACE + ".delHouseImg", hinum);
 	}
+
+	public void delExpInfo(int hinum) {
+		session.delete(NAMESPACE + ".delExpInfo", hinum);
+	}
 }

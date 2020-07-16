@@ -48,11 +48,11 @@ public class HostController {
 	public String delEpOnline(int hinum) {
 		try {
 			service.delEpOnline(hinum);
-			return ".host.epOnline.modify";
+			return "redirect:/host/epOnline/list";
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 			return ".error";
-		} 
+		}
 	}
 
 	@RequestMapping(value = "/host/regist/1")

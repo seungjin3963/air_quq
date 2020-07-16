@@ -14,8 +14,11 @@
 		set title = #{title}, content = #{content}, price = #{price}, max_n = #{max_n}, bedroom = #{bedroom}, checkin_time = #{checkin_time}, startdate = #{startdate}, enddate = #{enddate} 
 		where hinum = #{hinum} 
 	</update>
-		<delete id="delEpOnline" parameterType="int">
+	<delete id="delEpOnline" parameterType="int">
 		delete from house_info where hinum = #{hinum}
+	</delete>
+	<delete id="delReview" parameterType="int">
+		delete from review where hinum = #{hinum}
 	</delete>
 	<delete id="delConven" parameterType="int">
 		delete from conven where hinum = #{hinum}
@@ -25,5 +28,8 @@
 	</delete>
 	<delete id="delHouseImg" parameterType="int">
 		delete from house_img where hinum = #{hinum}
+	</delete>
+	<delete id="delExpInfo" parameterType="int">
+		delete from experience_info where hinum = #{hinum}
 	</delete>
 </mapper>
