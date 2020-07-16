@@ -14,7 +14,7 @@ public class ChatLogVo {
 			this.chat_no = chat_no;
 			this.content = content;
 			this.mnum = mnum;
-			this.step = step;
+			this.step = step; 
 		}
 
 		public int getChat_no() {
