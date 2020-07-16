@@ -63,6 +63,7 @@ public class EpOnlineController {
 		if(n!=0) {//방 있음 ,내역 불러와야함
 			List<ChatLogVo> chat=service.chatlog(n);
 			model.addAttribute("chat",chat);
+			System.out.println(chat.get(0).getStep()+"asdasd");
 		}else {//chat목록에 추가하도록 chat_no만들기
 			hash.put("n",n);
 			System.out.println(hash.get("n") +"," +hash.get("memnum")+" ,"+hash.get("id")+"asdasd");

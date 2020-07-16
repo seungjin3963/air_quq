@@ -36,7 +36,7 @@ public class EchoHandler extends TextWebSocketHandler{
 		String enterOne=session.getId();
 		logger.info("{} 여기에아이디",session.getId());
 		for(WebSocketSession sess:sessionList) {
-			sess.sendMessage(new TextMessage(" "+enterOne+"등장"));
+			sess.sendMessage(new TextMessage("입장하셨습니다"));
 		}
 	}
 	//메세지 보낸것
@@ -46,7 +46,8 @@ public class EchoHandler extends TextWebSocketHandler{
 		//여기에 DB접속해서 몇개의 row있는지 확인 다르면, 알림가게
 		//모든 사람에게
 		for(WebSocketSession sess:sessionList) {
-			sess.sendMessage(new TextMessage(session.getId()+"이 :"+message.getPayload()));
+			sess.sendMessage(new TextMessage(message.getPayload()));
+			
 		}
 	}
 	//종료직후
@@ -56,7 +57,7 @@ public class EchoHandler extends TextWebSocketHandler{
 		String lostone=session.getId();
 		logger.info("{} 님퇴장.",session.getId());
 		for(WebSocketSession sess:sessionList) {
-			sess.sendMessage(new TextMessage(lostone+" 님퇴장이라 알림"));
+			sess.sendMessage(new TextMessage("퇴장하셨습니다."));
 		}
 	}
 }

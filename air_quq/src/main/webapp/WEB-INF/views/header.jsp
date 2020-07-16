@@ -3,7 +3,7 @@
 
 <!-- 폰트 -->
 <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
-
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <link href="/resources/css/header.css" rel="stylesheet">
 
 <!-- Content Wrapper -->
