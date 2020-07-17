@@ -7,6 +7,7 @@
 
 	<security:http>
 		<security:intercept-url pattern="/test/" access="hasRole('ROLE_MEMBER')"/>
+		<security:intercept-url pattern="/test/" access="hasRole('ROLE_LOGGEDIN')"/>
 		<security:form-login login-page="/login" username-parameter="idl" password-parameter="pwdl"/>
 		<security:logout logout-url="/logout" invalidate-session="true"/>
 		<security:csrf disabled="true"/>
@@ -15,6 +16,7 @@
 		<security:authentication-provider>
 			<security:user-service>
 				<security:user name="admin" password="{noop}admin" authorities="ROLE_MEMBER"/>
+				<security:user name="loggedInuser" password="{noop}user" authorities="ROLE_LOGGEDIN"/>
 			</security:user-service>
 		</security:authentication-provider>
 	</security:authentication-manager>

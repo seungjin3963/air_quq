@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -45,7 +46,7 @@ public class EpOnlineController {
 		response.getOutputStream().write(service.inslider(hinum).getProfile_img());
 		response.getOutputStream().close();
 	}
-	
+	@Secured("ROLE_")
 	@RequestMapping(value = "/online/dm",method = RequestMethod.GET)
 	public String dm(int hinum,int memnum,int einum,HttpSession session,Model model) {
 //		System.out.println(hinum+" :hinum" +einum+" : einum" +memnum+" : memnum");

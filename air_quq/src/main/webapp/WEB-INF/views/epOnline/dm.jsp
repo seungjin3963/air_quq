@@ -58,6 +58,7 @@
 	sock.onclose=onClose;
 	//메시지 전송
 	function sendMessage(){
+			
 			sock.send("<span class='material-icons'>mood</span> : "+$("#message").val()); //send가 Handler(컨트롤러,서버)에 데이터 전송 
 	}
 	//서버로부터 메세지를 받았을 때
