@@ -155,7 +155,6 @@
 						</div>
 					</div>
 				</div>
-
 				<hr class="my-4">
 				<div id="d-start" style="display: inline-block;">
 					<vuejs-datepicker :language="ko" :format="customFormatter"

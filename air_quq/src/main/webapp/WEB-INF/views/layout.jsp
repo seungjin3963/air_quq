@@ -44,8 +44,6 @@
 <script src="https://unpkg.com/vuejs-datepicker"></script>
 <script src="https://unpkg.com/vuejs-datepicker/dist/locale/translations/ko.js"></script>
 
-<!-- Vuetify CDN -->
-<link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet">
 </head>
 <body id="page-top">
 	<div id="wrapper">
@@ -67,11 +65,7 @@
 			<i class="fas fa-angle-up"></i>
 		</a>
 	</div>
-	<!-- Vuetify CDN -->
-	<script src="https://cdn.jsdelivr.net/npm/vue@2.x/dist/vue.js"></script>
-  	<script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
 	<!-- Bootstrap core JavaScript-->
-
 	<script src="/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 
