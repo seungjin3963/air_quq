@@ -1,6 +1,7 @@
 package com.jhta.airqnq.dao;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -19,5 +20,14 @@ public class AdminApproveDao {
 	}
 	public List<EP_ManagementVo> epappImg(int hinum) {
 		return sqlSessionTemplate.selectList(NAMESPACE+".apappimg" , hinum);
+	}
+	public EP_ManagementVo epappinfo(int hinum) {
+		return sqlSessionTemplate.selectOne(NAMESPACE+".epappinfo" , hinum);
+	}
+	public int epappOk(int hinum) {
+		return sqlSessionTemplate.update(NAMESPACE+".epappOk" , hinum);
+	}
+	public int epappNo(HashMap<String, Object> map) {
+		return sqlSessionTemplate.update(NAMESPACE+".epappNo" , map);
 	}
 }

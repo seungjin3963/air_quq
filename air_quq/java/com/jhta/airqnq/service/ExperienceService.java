@@ -58,8 +58,8 @@ public class ExperienceService {
 	public int ep_delete(int hinum) {
 		return dao.ep_delete(hinum);
 	}
-	public int ep_updatediv(int hinum) {
-		return dao.ep_updatediv(hinum);
+	public int ep_updatediv(HashMap<String, Object> map) {
+		return dao.ep_updatediv(map);
 	}
 	public int ep_insertsession(HashMap<String, Object> map) {
 		return dao.ep_insertsession(map);

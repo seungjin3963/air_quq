@@ -7,7 +7,7 @@
 		select menum  from member where id=#{id};
 	</select>
 	<select id="ep_insertlist" parameterType="int" resultType="com.jhta.airqnq.vo.EP_ManagementVo">
-		select * from experience_info where memnum=#{loginnum} and ( div_type=31 or div_type=41 )
+		select * from experience_info where memnum=#{loginnum} and ( div_type=31 or div_type=41 or div_type=39 or div_type=49)
 	</select>
 	<select id="ep_management" parameterType="int" resultType="com.jhta.airqnq.vo.EP_ManagementVo">
 		select * from experience_info where hinum=#{hinum}
@@ -15,15 +15,29 @@
 	<delete id="ep_list_delete" parameterType="int">
 		delete from experience_info where hinum=#{hinum}
 	</delete>
+	<delete id="ep_list_delete2" parameterType="int">
+		delete from house_img where hinum=#{hinum}
+	</delete>
 	<delete id="ep_list_delete1" parameterType="int">
 		delete from house_info where hinum=#{hinum}
 	</delete>
 	
 	
 	<select id="approvelist" resultType="com.jhta.airqnq.vo.EP_ManagementVo">
-		SELECT e.memnum , e.div_type ,e.title, e.hinum ,s.subname FROM experience_info e INNER JOIN subDetail s ON e.sunum = s.sunum and (e.div_type=32  or e.div_type=42)
+		SELECT e.memnum , e.div_type ,e.title, e.hinum ,s.subname ,e.loc , e.intr , e.program , e.price, e.times , e.mater
+		FROM experience_info e INNER JOIN subDetail s ON e.sunum = s.sunum and (e.div_type=32  or e.div_type=42)
 	</select>
 	<select id="apappimg" parameterType="int" resultType="com.jhta.airqnq.vo.EP_ManagementVo">
-		select img from house_img where hinum=#{hinum}
+		select img , ordernum from house_img where hinum=#{hinum}
 	</select>
+	<select id="epappinfo" parameterType="int" resultType="com.jhta.airqnq.vo.EP_ManagementVo">
+		SELECT e.memnum , e.div_type ,e.title, e.hinum ,s.subname ,e.loc , e.intr , e.program , e.price, e.times , e.mater
+		FROM experience_info e INNER JOIN subDetail s ON e.sunum = s.sunum and (e.div_type=32  or e.div_type=42) and hinum=#{hinum};
+	</select>
+	<update id="epappOk" parameterType="int">
+		update experience_info set div_type=3 , regdate=now() where hinum=#{hinum}
+	</update>
+	<update id="epappNo" parameterType="hashmap">
+		update experience_info set div_type=${divtype} where hinum=#{hinum}
+	</update>
 </mapper>

@@ -86,11 +86,19 @@ public class ExperiencePageController {
 		if (type == "" || type == null) {
 			return ".experience.ep_insert.ep_subject";
 		} else {
-			session.setAttribute("ep_type", type);
+			String num="";
+			if(session.getAttribute("ep_type") != null) {
+				String div_type=(String)session.getAttribute("ep_type");
+				session.setAttribute("ep_type", div_type);
+				num=div_type;
+			}else {
+				session.setAttribute("ep_type", type);
+				num=type;
+			}
 			int housenum = (int) session.getAttribute("ep_housenum");
 			HashMap<String, Object> map = new HashMap<String, Object>();
 			map.put("hinum", housenum);
-			map.put("div", Integer.parseInt(type));
+			map.put("div", num);
 			int n = service.inserttype(map);
 
 			return ".experience.ep_insert.ep_subject";
@@ -344,7 +352,19 @@ public class ExperiencePageController {
 	}
 	@RequestMapping("/ep/modalImg") /*파일 이미지 저장                      //////////////////////////////////////////// */
 	public String InsertEpImg(MultipartFile[] EpImgfile ,HttpSession session) {
+		String num="";
+		int ordernum=0;
+		session.removeAttribute("subjectname");
+		session.removeAttribute("subjectdename");
+		session.removeAttribute("ep_title");
+		session.removeAttribute("ep_loc");
+		session.removeAttribute("ep_intr");
+		session.removeAttribute("ep_pro");
+		session.removeAttribute("ep_price");
+		session.removeAttribute("ep_mater");
+		session.removeAttribute("ep_fiedset");
 		int hinum=(int)session.getAttribute("ep_housenum"); // house_info 번호
+		String divtype=(String)session.getAttribute("ep_type");
 		String uploadPath=
 				session.getServletContext().getRealPath("/resources/img/house_img");
 		
@@ -362,6 +382,8 @@ public class ExperiencePageController {
 				fis.close();
 				fos.close();
 				HashMap<String, Object> map=new HashMap<String, Object>();
+				ordernum+=1;
+				map.put("ordernum", ordernum);
 				map.put("hinum", hinum);
 				map.put("file", savefileName);
 				service.epImgFile(map);
@@ -370,8 +392,18 @@ public class ExperiencePageController {
 				return ".error";
 			}
 		}
-		int n=service.ep_updatediv(hinum);
+		if(divtype.equals("31")) {
+			num="32";
+		}
+		if(divtype.equals("41")) {
+			num="42";
+		}
+		HashMap<String, Object> map1=new HashMap<String, Object>();
+		map1.put("hinum", hinum);
+		map1.put("divtype", num);
+		int n=service.ep_updatediv(map1);
 		session.removeAttribute("ep_housenum");
+		session.removeAttribute("div_type");
 		return ".home";
 	}
 }

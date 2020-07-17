@@ -6,7 +6,7 @@
 	<!-- 영노 -->
 	<select id="ep_subject"
 		resultType="com.jhta.airqnq.vo.ExperienceVo">
-		select * from subject where expernum!=27
+		select * from subject where expernum!=1
 	</select>
 	<select id="ep_detailsub" parameterType="int"
 		resultType="com.jhta.airqnq.vo.ExperienceVo">
@@ -18,13 +18,13 @@
 	</select>
 	
 	<insert id="ep_temporary" parameterType="int">
-		insert into house_info(hinum,menum,`div`) values(0,#{loginum},3)
+		insert into house_info(hinum,menum,`div`,del_yn) values(0,#{loginum},3,'y')
 	</insert>
 	<select id="ep_hinum" resultType="int">
 		SELECT hinum FROM house_info order by hinum desc LIMIT 1
 	</select>
 	<insert id="insertexperience" parameterType="hashmap">
-		insert into experience_info(einum,hinum,sunum,memnum,people) values(0,#{hinum},163,#{loginnum},0)
+		insert into experience_info(einum,hinum,sunum,memnum,people,del_yn) values(0,#{hinum},175,#{loginnum},0,'y')
 	</insert>
 	
 	<update id="ep_type" parameterType="hashmap">
@@ -57,13 +57,16 @@
 	<delete id="ep_deletehous" parameterType="int">
 		delete from house_info where hinum=#{hinum}
 	</delete>
-	<update id="ep_updatediv" parameterType="int">
-		update experience_info set div_type=32 where hinum=#{hinum}
+	<delete id="ep_deletehousimh" parameterType="int">
+		delete from house_img where hinum=#{hinum}
+	</delete>
+	<update id="ep_updatediv" parameterType="hashmap">
+		update experience_info set div_type=#{divtype} , sessionnum=24 where hinum=#{hinum}
 	</update>
 	<update id="ep_sessnum" parameterType="hashmap">
 		update experience_info set sessionnum=#{sessnum} where hinum=#{hinum}
 	</update>
 	<insert id="ep_imgfile" parameterType="hashmap">
-		insert into house_img values(0,#{hinum},#{file});
+		insert into house_img values(0,#{hinum},#{file},'y',#{ordernum});
 	</insert>
 </mapper>

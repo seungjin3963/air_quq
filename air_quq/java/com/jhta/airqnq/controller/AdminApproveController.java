@@ -1,6 +1,7 @@
 package com.jhta.airqnq.controller;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -28,19 +29,65 @@ public class AdminApproveController {
 		return ".admin.adminapprove";
 	}
 	
-	@RequestMapping("/admin/ep_getinfo")
+	@RequestMapping(value = "/admin/ep_getinfo" ,produces = "application/json;charset=utf-8")
 	@ResponseBody
-	public String adminEp_getinfo(int hinum ,HttpSession session) { //hinum의 정보,이미지 뽑아오기
+	public String adminEp_getinfo(int hinum ,HttpSession session ) { //hinum의 정보,이미지 뽑아오기
 		String uploadPath=
 				session.getServletContext().getRealPath("/resources/img/house_img");
-		
-		List<EP_ManagementVo> list=service.epappImg(hinum);	
-		System.out.println(list+"  확인");
 		JSONObject json=new JSONObject();
-		json.put("uploadPath", uploadPath);
+		List<EP_ManagementVo> list=service.epappImg(hinum);	
 		json.put("list", list);
+		EP_ManagementVo listinfo=service.epappinfo(hinum);
 		
-		
+		json.put("div_type", listinfo.getDiv_type());
+		json.put("title",  listinfo.getTitle());		
+		json.put("subname", listinfo.getSubname());		
+		json.put("loc", listinfo.getLoc());	
+		json.put("intr", listinfo.getIntr());
+		json.put("program", listinfo.getProgram());
+		json.put("price", listinfo.getPrice());
+		json.put("times", listinfo.getTimes());
+		json.put("mater", listinfo.getMater());
 		return  json.toString();
+	}
+	
+	@RequestMapping(value = "/admin/epapproveOk" ,produces = "application/json;charset=utf-8")
+	@ResponseBody
+	public String adminepappOk(int hinum) {
+		String value="aa";
+		JSONObject json=new JSONObject();
+		
+		int n=service.epappOk(hinum);
+		if(n==1) {
+			 value="승인 완료 되었습니다";
+		}else {
+			value="오류!";
+		}
+		json.put("value", value);
+		return json.toString();
+	}
+	
+	@RequestMapping(value = "/admin/epapproveNo" ,produces = "application/json;charset=utf-8")
+	@ResponseBody
+	public String adminepappNo(int hinum , int epappdivtype) {
+		String value="aa";
+		int divtype=0;
+		if(epappdivtype==32) {
+			divtype=39;
+		}else {
+			divtype=49;
+		}
+		HashMap<String, Object> map=new HashMap<String, Object>();
+		map.put("divtype", divtype);
+		map.put("hinum", hinum);
+		int n=service.epappNo(map);
+		if(n==1) {
+			value="반려 되엇습니다";
+		}else {
+			value="실패 하였습니다.";
+		}
+		JSONObject json=new JSONObject();
+		json.put("value", value);
+		return json.toString();
 	}
 }

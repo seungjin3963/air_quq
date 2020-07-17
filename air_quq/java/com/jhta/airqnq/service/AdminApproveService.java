@@ -1,6 +1,7 @@
 package com.jhta.airqnq.service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,5 +18,14 @@ public class AdminApproveService {
 	}
 	public List<EP_ManagementVo> epappImg(int hinum) {
 		return dao.epappImg(hinum);
+	}
+	public EP_ManagementVo epappinfo(int hinum) {
+		return dao.epappinfo(hinum);
+	}
+	public int epappOk(int hinum) {
+		return dao.epappOk(hinum);
+	}
+	public int epappNo(HashMap<String, Object> map) {
+		return dao.epappNo(map);
 	}
 }

@@ -16,7 +16,6 @@
 		</div>
 	</div>
 	<ep:forEach var="i" items="${vo }">
-		${i.hinum }
 		<form  method="post" name="ManagementFrom" action="">
 			<input type="hidden" name="hinum" value="${i.hinum }" class="ep_hinum_val">
 			<input type="hidden" name="sessionnum" value="${i.sessionnum }">
@@ -25,10 +24,20 @@
 				<div class="col-md-9">
 					<br>
 					<div class="border-left-danger">
-						등록 중 >
-						<ep:if test="${i.div_type==31 }">온라인 체험</ep:if>
-						<ep:if test="${i.div_type==41 }">대면 체험</ep:if>
+						&nbsp;&nbsp;상태 >
+						<ep:choose>
+							<ep:when test="${i.div_type==39 || i.div_type==49}">
+								&nbsp;&nbsp;반 려 ㅜㅜ
+							</ep:when>
+							<ep:otherwise>
+								&nbsp;&nbsp;등록 중
+							</ep:otherwise>
+						</ep:choose>
 					</div>
+						<br>
+						<ep:if test="${i.div_type==31 || i.div_type==39}">▶ 온라인 체험</ep:if>
+						<ep:if test="${i.div_type==41 || i.div_type==49}">▶ 대면 체험</ep:if>
+					<br>
 					<br>
 					<h4>
 						<ep:choose>

@@ -20,14 +20,17 @@ public class EP_ManagementVo {
 	private int people;
 	private String subname;
 	private String img;
+	private int ordernum;
 	
 	public EP_ManagementVo() {}
 	
-	public EP_ManagementVo(String img) {
+	public EP_ManagementVo(String img , int ordernum) {
 		this.img=img;
+		this.ordernum=ordernum;
 	}
 	
-	public EP_ManagementVo(int memnum, int div_type, String title, int hinum, String subname) {
+	public EP_ManagementVo(int memnum, int div_type, String title, int hinum, String subname,String loc,String intr,String program,String price
+			) {
 		super();
 		this.memnum = memnum;
 		this.div_type = div_type;
@@ -193,6 +196,14 @@ public class EP_ManagementVo {
 
 	public void setImg(String img) {
 		this.img = img;
+	}
+
+	public int getOrdernum() {
+		return ordernum;
+	}
+
+	public void setOrdernum(int ordernum) {
+		this.ordernum = ordernum;
 	}
 	
 	

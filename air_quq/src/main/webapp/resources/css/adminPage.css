@@ -1,8 +1,10 @@
 @charset "UTF-8";
-.container, .container-fluid, .container-lg, .container-md, .container-sm, .container-xl {
-    
-    margin: 0px;
+/*영노*/
+.container, .container-fluid, .container-lg, .container-md,
+	.container-sm, .container-xl {
+	margin: 0px;
 }
+
 .ui-widget-header {
 	background: white;
 	border: 0px;
@@ -36,3 +38,35 @@
 	width: 90%;
 	margin: auto;
 }
+/* 모달css */
+#epappModal{
+	height: 900px;
+}
+.modal-dialog {
+    max-width:1000px;
+    margin: 1.75rem auto;
+}
+#epappModalBody img{
+	width: 30%;
+	height:300px;
+	margin-left: 20px;
+	margin-top: 20px;
+}
+.epappinfo {
+	display: inline-block;
+}
+#epappModalBody h5{
+	display: inline;
+}
+#epappModal h4{
+	margin: auto;
+}
+#epappmainimg img{
+	margin: 80px;
+	width: 80%;
+	height: auto;
+}
+.modal-body{ 
+	 overflow: scroll;}
+
+/*------------------------------------------------------------------------------------ */

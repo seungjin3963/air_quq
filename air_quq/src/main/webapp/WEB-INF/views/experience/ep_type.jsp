@@ -19,7 +19,7 @@
 			진행됩니다. <br> <br>
 		</p>
 		<ep:choose>
-			<ep:when test="${ep_type==31}">
+			<ep:when test="${ep_type==31 || ep_type==39}">
 				<a href="#" class="btn btn-danger btn-icon-split" id="ep_info_type">
 			</ep:when>
 			<ep:otherwise>
