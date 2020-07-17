@@ -2,8 +2,13 @@
 	pageEncoding="UTF-8"%>
 
 <link href="/resources/css/userapply/userapply.css" rel="stylesheet" type="text/css">
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=asd"></script>
+<!-- <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=asd"></script> -->
+
+<!-- 결제 API(아임포트)  -->
+<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
+
 <script src="/resources/js/userapply/userapply.js"></script>
+
 
 <div class="container">
 	<h1>house_info title가져오기</h1>
@@ -120,9 +125,10 @@
 	<div id="quickmenulayer">
 		<i class="fas fa-coins fa-3x"></i><br>총금액<br>
 		<input type="text" readonly="readonly" id="summoney" class="quickmenufont">
+		<input type="hidden" value="1">
 	</div>
 	<div id="quickmenulayer">
-		<input type="button" value="예약하기" class="btn btn-danger btn-icon-split">
+		<input type="button" value="예약하기" class="btn btn-danger btn-icon-split" id="btnApply">
 		<input type="button" value="수정하기" class="btn btn-danger btn-icon-split" data-toggle="modal" data-target="#myModal">
 	</div>
 </div>

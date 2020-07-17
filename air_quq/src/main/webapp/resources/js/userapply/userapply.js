@@ -1,5 +1,5 @@
 	$(function(){
-		//시작일 마지막일 사이 구하는 함수
+		// 시작일 마지막일 사이 구하는 함수
 		var between=function(startdate,enddate){
 			var startarr=startdate.split("/");
 			var endarr=enddate.split("/");
@@ -12,17 +12,17 @@
 			return betweendate;
 		} 
 
-		//퀵메뉴 총금액 뽑기
+		// 퀵메뉴 총금액 뽑기
 		var betweenday=between($("#checkin").val(),$("#checkout").val());
 		$("#summoney").val(betweenday*30000);
 		
-		//페이지 수정 페이지 값 채우기
+		// 페이지 수정 페이지 값 채우기
 		$("#usecal").children().eq(2).text($("#checkin").val()+"-");
 		$("#usecal").children().eq(2).append($("#checkout").val());
 		$("#usecal").children().eq(3).text($("#checkcnt").val());
 		$("#usecal").children().eq(0).text(betweenday+"박"+(betweenday+1)+"일");
 		
-		//수정하기를 눌렀을때 modal로 값 넘겨주는 것
+		// 수정하기를 눌렀을때 modal로 값 넘겨주는 것
 		$("input[value='수정하기']").click(function(){
 			var checkin=$("#checkin").val();
 			var checkout=$("#checkout").val();
@@ -36,7 +36,7 @@
 			$("#totmoney").children().eq(5).text(summoney);
 		})
 		
-		//수정 눌렀을때 퀵메뉴, 수정페이지로 값 보내기
+		// 수정 눌렀을때 퀵메뉴, 수정페이지로 값 보내기
 		$("input[value='수정']").click(function(){
 			var startmodified=$("#startmodified").val();
 			var endmodified=$("#endmodified").val();
@@ -57,7 +57,7 @@
 			$("#myModal").modal("hide");
 		});
 		
-		//datepicker
+		// datepicker
 		var onswitch=true;
 		var tempdate;
 		$("#cal").datepicker({
@@ -99,7 +99,7 @@
 			}
 		});	
 			
-		//캘러리 아이콘을 눌렀을 때 달력 나오게 하기
+		// 캘러리 아이콘을 눌렀을 때 달력 나오게 하기
 		$("#startcal").click(function(){
 			$("#bundle").css({display: "block"});	
 		})
@@ -108,7 +108,7 @@
 			$("#bundle").css({display: "block"});	
 		})
 		
-		//캘러리 닫기
+		// 캘러리 닫기
 		$("input[value='닫기']").click(function(){
 			$("#bundle").css({display: "none"});
 			onswitch=true;
@@ -123,12 +123,12 @@
 			
 		})
 		
-		//이전 날짜 modal 닫기
+		// 이전 날짜 modal 닫기
 		$("#alertclose").click(function(){
 			$("#alert").modal("hide");
 		});
 		
-		//인원수 추가
+		// 인원수 추가
 		$("#addbutton").click(function(){
 			var maxcnt=Number($("#h-cnt").val())+1
 			
@@ -147,7 +147,7 @@
 			}
 		}); 
 		
-		//인원수 빼기
+		// 인원수 빼기
 		$("#manusbutton").click(function(){
 			var mincnt=Number($("#h-cnt").val())-1
 
@@ -166,13 +166,47 @@
 			}
 		});
 		
-		//kakao 맵 
-		var container = document.getElementById('map'); //지도를 담을 영역의 DOM 레퍼런스
-		var options = { //지도를 생성할 때 필요한 기본 옵션
-			center: new kakao.maps.LatLng(33.450701, 126.570667), //지도의 중심좌표.
-			level: 3 //지도의 레벨(확대, 축소 정도)
-		};
-
-		var map = new kakao.maps.Map(container, options); //지도 생성 및 객체 리턴
+		// kakao 맵
+// var container = document.getElementById('map'); // 지도를 담을 영역의 DOM 레퍼런스
+// var options = { // 지도를 생성할 때 필요한 기본 옵션
+// center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표.
+// level: 3 // 지도의 레벨(확대, 축소 정도)
+// };
+//
+// var map = new kakao.maps.Map(container, options); // 지도 생성 및 객체 리턴
+		
+		
+		// 권준범
+		// 결제 API(아임포트)
+		$("#btnApply").click(()=>{
+			var IMP = window.IMP; // 생략가능
+			IMP.init('iamport'); // 'iamport' 대신 부여받은 "가맹점 식별코드"를 사용
+			
+			IMP.request_pay({
+				pg : 'inicis', // version 1.1.0부터 지원.
+				pay_method : 'card',
+				merchant_uid : 'merchant_' + new Date().getTime(),
+				name : 'Airquq',
+				amount : 100,
+				buyer_email : 'iamport@siot.do',
+				buyer_name : '구매자이름',
+				buyer_tel : '010-1234-5678',
+				buyer_addr : '서울특별시 강남구 삼성동',
+				buyer_postcode : '123-456',
+				m_redirect_url : 'https://www.yourdomain.com/payments/complete'
+			}, function(rsp) {
+				if ( rsp.success ) {
+					var msg = '결제가 완료되었습니다.';
+					msg += '고유ID : ' + rsp.imp_uid + '<br>';
+					msg += '상점 거래ID : ' + rsp.merchant_uid + '<br>';
+					msg += '결제 금액 : ' + rsp.paid_amount + '<br>';
+					msg += '카드 승인번호 : ' + rsp.apply_num;
+				} else {
+					var msg = '결제에 실패하였습니다.';
+					msg += '에러내용 : ' + rsp.error_msg;
+				}
+				alert(msg);
+			});
+		});
 	})
 	

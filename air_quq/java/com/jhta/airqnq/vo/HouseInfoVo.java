@@ -2,59 +2,63 @@ package com.jhta.airqnq.vo;
 
 import java.sql.Date;
 
+//숙소 
 public class HouseInfoVo {
 
-    // 번호 
-    private Integer hinum;
+	// 숙소번호
+	private Integer hinum;
 
-    // 회원 번호 
-    private Integer menum;
+	// 멤버 번호
+	private Integer menum;
 
-    // 제목 
-    private String title;
+	// 제목
+	private String title;
 
-    // 내용 
-    private String content;
+	// 내용
+	private String content;
 
-    // 주소 
-    private String addr;
+	// 주소
+	private String addr;
 
-    // 주소2 
-    private String addr_detail;
+	// 주소2
+	private String addr_detail;
 
-    // 일일 가격 
-    private Integer price;
+	// 일일 가격
+	private Integer price;
 
-    // 인원수 
-    private Integer max_n;
+	// 인원수
+	private Integer max_n;
 
-    // 침대 수 
-    private Integer bedroom;
+	// 침대 수
+	private Integer bedroom;
 
-    // 체크인 시간 
-    private String checkin_time;
+	// 체크인 시간
+	private String checkinTime;
 
-    // 구분 
-    private Integer div;
+	// 구분
+	private Integer div;
 
-    // 위도 
-    private String lat;
+	// 위도
+	private String lat;
 
-    // 경도 
-    private String lnt;
+	// 경도
+	private String lnt;
 
-    // 시작일 
-    private Date startdate;
+	// 시작일
+	private Date startdate;
 
-    // 종료일 
-    private Date enddate;
+	// 종료일
+	private Date enddate;
 
-    public HouseInfoVo() {
+	// 삭제여부
+	private String del_yn;
+
+	public HouseInfoVo() {
 	}
 
 	public HouseInfoVo(Integer hinum, Integer menum, String title, String content, String addr, String addr_detail,
-			Integer price, Integer max_n, Integer bedroom, String checkin_time, Integer div, String lat, String lnt,
-			Date startdate, Date enddate) {
+			Integer price, Integer max_n, Integer bedroom, String checkinTime, Integer div, String lat, String lnt,
+			Date startdate, Date enddate, String del_yn) {
 		this.hinum = hinum;
 		this.menum = menum;
 		this.title = title;
@@ -64,12 +68,13 @@ public class HouseInfoVo {
 		this.price = price;
 		this.max_n = max_n;
 		this.bedroom = bedroom;
-		this.checkin_time = checkin_time;
+		this.checkinTime = checkinTime;
 		this.div = div;
 		this.lat = lat;
 		this.lnt = lnt;
 		this.startdate = startdate;
 		this.enddate = enddate;
+		this.del_yn = del_yn;
 	}
 
 	public Integer getHinum() {
@@ -144,12 +149,12 @@ public class HouseInfoVo {
 		this.bedroom = bedroom;
 	}
 
-	public String getCheckin_time() {
-		return checkin_time;
+	public String getCheckinTime() {
+		return checkinTime;
 	}
 
-	public void setCheckin_time(String checkin_time) {
-		this.checkin_time = checkin_time;
+	public void setCheckinTime(String checkinTime) {
+		this.checkinTime = checkinTime;
 	}
 
 	public Integer getDiv() {
@@ -190,5 +195,13 @@ public class HouseInfoVo {
 
 	public void setEnddate(Date enddate) {
 		this.enddate = enddate;
+	}
+
+	public String getDel_yn() {
+		return del_yn;
+	}
+
+	public void setDel_yn(String del_yn) {
+		this.del_yn = del_yn;
 	}
 }
