@@ -16,14 +16,12 @@ $("#pcount_plus").click(function(){
 	pcount++;
 	pcountDisable(pcount);
 	$("#pcount").text(pcount);
-	console.log(pcount);
 });
 
 $("#bcount_plus").click(function(){
 	bcount++;
 	bcountDisable(bcount);
 	$("#bcount").text(bcount);
-	console.log(bcount);
 });
 
 
@@ -31,14 +29,12 @@ $("#pcount_minus").click(function(){
 	pcount--;
 	pcountDisable(pcount);
 	$("#pcount").text(pcount);
-	console.log(pcount);
 });
 
 $("#bcount_minus").click(function(){
 	bcount--;
 	bcountDisable(bcount);
 	$("#bcount").text(bcount);
-	console.log(bcount);
 });
 
 function pcountDisable(pcount){

@@ -44,9 +44,8 @@
 <script src="https://unpkg.com/vuejs-datepicker"></script>
 <script src="https://unpkg.com/vuejs-datepicker/dist/locale/translations/ko.js"></script>
 
-<!-- 부트스트랩 뷰 -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-vue/2.15.0/bootstrap-vue.min.js"></script>
-
+<!-- Vuetify CDN -->
+<link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet">
 </head>
 <body id="page-top">
 	<div id="wrapper">
@@ -68,8 +67,9 @@
 			<i class="fas fa-angle-up"></i>
 		</a>
 	</div>
-	
-
+	<!-- Vuetify CDN -->
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.x/dist/vue.js"></script>
+  	<script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
 	<!-- Bootstrap core JavaScript-->
 
 	<script src="/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -101,8 +101,7 @@
 	<script type="text/javascript" src="/resources/js/passport/formCheck.js"></script>
 	<!-- 영노 -->
 	<script type="text/javascript" src="/resources/js/experience/ep_inserting.js"></script>
-	<!-- host JS 파일 -->
-	<script src="/resources/js/host/host.js"></script>
+	
 	
 </body>
 </html>

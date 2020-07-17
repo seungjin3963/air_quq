@@ -11,11 +11,11 @@
 		</div>
 		<div class="row">
 			<div class="col-md-12">
-				<span>☆권준범★</span>
-				<span>신정욱</span>
-				<span>김0노</span>
-				<span>갓승진</span>
-				<span>5재식</span>
+				<span>☆권준범(호랑이)★</span>
+				<span>신정욱(dobby)</span>
+				<span>김영노</span>
+				<span>갓승(진)</span>
+				<span>오재식</span>
 			</div>
 		</div>
 	</div>
