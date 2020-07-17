@@ -24,4 +24,11 @@ public class MemberDao {
 		return sqlSessionTemplate.selectOne(NAMESPACE+".membercnt", map);
 	}
 	
+	public JoinVo MemberOne(int menum) {
+		return sqlSessionTemplate.selectOne(NAMESPACE+".memberone", menum);
+	}
+	
+	public int MemberImgReset(int menum) {
+		return sqlSessionTemplate.update(NAMESPACE+".memberimgreset", menum);
+	}
 }

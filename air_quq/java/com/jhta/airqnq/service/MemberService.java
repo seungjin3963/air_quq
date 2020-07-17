@@ -21,4 +21,12 @@ public class MemberService {
 	public int MemberCnt(HashMap<String, Object> map) {
 		return dao.MemberCnt(map);
 	}
+	
+	public JoinVo MemberOne(int menum) {
+		return dao.MemberOne(menum);
+	}
+	
+	public int MemberImgReset(int menum) {
+		return dao.MemberImgReset(menum);
+	}
 }

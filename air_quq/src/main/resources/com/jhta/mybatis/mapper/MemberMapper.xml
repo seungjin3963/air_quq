@@ -5,10 +5,14 @@
  <!-- 승진 -->
  <mapper namespace="com.jhta.airqnq.mapper.MemberMapper">	
 	<sql id="search">
-		<if test="field != null and field != ''">
+		<if test="keyword != null and keyword != ''">
 			where ${field} like '%${keyword}%'
 		</if>
 	</sql>
+	
+	<select id="memberone" resultType="join" parameterType="int">
+		select * from member where menum=#{menum}
+	</select>
 
 	<select id="listMember" resultType="join" parameterType="hashmap">
 		select * from member 
@@ -21,5 +25,9 @@
 		select ifnull(count(*),0) from member
 		<include refid="search"/>
 	</select>
+	
+	<update id="memberimgreset" parameterType="int">
+		update member set profile_img = null where menum=#{menum}
+	</update>
 	
 </mapper>
