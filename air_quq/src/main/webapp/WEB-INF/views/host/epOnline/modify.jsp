@@ -77,7 +77,6 @@
 				</div>
 			</div>
 		</div>
-
 		<div class="modal-footer">
 			<input type="submit" class="btn btn-danger" value="수정">
 			<a class="btn btn-secondary" href="/host/epOnline/list">돌아가기</a>
