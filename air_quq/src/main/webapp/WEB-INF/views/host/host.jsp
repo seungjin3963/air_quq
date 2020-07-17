@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
 <c:if test="${ hostStep == 1 }">
 	<div class="progress">
 		<div class="progress-bar progress-bar-striped progress-bar-animated"
@@ -101,6 +100,8 @@
 			</form>
 		</c:if>
 		<c:if test="${ hostStep == 3 }">
+			<link rel="stylesheet" type="text/css" media="screen"
+				href="http://tarruda.github.com/bootstrap-datetimepicker/assets/css/bootstrap-datetimepicker.min.css">
 			<h1 class="display-4">숙소의 가격및 기타 설정</h1>
 			<p class="lead"></p>
 			<hr class="my-4">
@@ -146,34 +147,53 @@
 						<div class="col-sm">
 							<div class="card border-primary mb-3" style="max-width: 18rem;">
 								<div class="card-header">체크아웃 시간</div>
-								<div class="card-body text-primary">
-									시간 <select class="form-control" id="checkout_clock">
-									</select> 분 <select class="form-control" id="checkout_min">
-									</select>
+								<div class="well">
+									<div id="datetimepicker3" class="input-append">
+										<input data-format="HH:mm:ss PP" type="text"
+											style="border: none; text-align: center; display: inline-block;"></input>
+										<span class="add-on"> <i data-time-icon="icon-time"
+											data-date-icon="icon-calendar"><i class="fa fa-clock-o"
+												aria-hidden="true"></i></i>
+										</span>
+									</div>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
+
 				<hr class="my-4">
-				<div id="d-start" style="display: inline-block;">
-					<vuejs-datepicker :language="ko" :format="customFormatter"
-						:disabled-dates="disabledDates" placeholder="시작일" name="sdate"
-						:inline="true"></vuejs-datepicker>
-				</div>
-				<div id="e-start" style="display: inline-block;">
-					<vuejs-datepicker :language="ko" :format="customFormatter"
-						:disabled-dates="disabledDates" placeholder="종료일" name="edate"
-						:inline="true"></vuejs-datepicker>
-				</div>
-				<input class="col-xs-2" type="text" placeholder="시작일" id="start-d">
-				<input class="col-xs-2" type="text" placeholder="종료일" id="end-d">
-				<br> <br> <input type="hidden" value="4" name="next">
-				<input type="submit" class="btn btn-outline-primary" role="button"
-					value="다음 단계로 진행">
+				<div class="container">
+					<div id="d-start" style="display: inline-block; width: 18rem">
+						<vuejs-datepicker :language="ko" :format="customFormatter"
+							:disabled-dates="disabledDates" placeholder="시작일" name="sdate"
+							:inline="true"></vuejs-datepicker>
+					</div>
+					<div id="e-start" style="display: inline-block; width: 18rem">
+						<vuejs-datepicker :language="ko" :format="customFormatter"
+							:disabled-dates="disabledDates" placeholder="종료일" name="edate"
+							:inline="true"></vuejs-datepicker>
+					</div>
+					<br><br>
+					<div>시작일</div>
+					<div id="result-start"></div>
+					<div>종료일</div>
+					<div id="result-end"></div>
+					<div id="result-dday"></div>
+					
+					<br> <br> <input type="hidden" value="4" name="next">
+					<input type="submit" class="btn btn-outline-primary" role="button"
+						value="다음 단계로 진행">
 			</form>
-		<!-- host JS 파일 -->
-	<script src="/resources/js/host/host.js"></script>
+			<div class="container">
+				<script type="text/javascript" src="/resources/js/host/host.js"></script>
+				<script type="text/javascript"
+					src="http://tarruda.github.com/bootstrap-datetimepicker/assets/js/bootstrap-datetimepicker.min.js">
+					
+				</script>
+				<script type="text/javascript"
+					src="http://tarruda.github.com/bootstrap-datetimepicker/assets/js/bootstrap-datetimepicker.pt-BR.js">
+				</script>
 		</c:if>
 	</div>
 </div>

@@ -39,15 +39,15 @@
 
 <!-- Vue.js 로딩 -->
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script type="text/javascript" src="https://unpkg.com/@popperjs/core@2"></script>
+
 <!-- vue.js Datepicker CDN -->
 <script src="https://unpkg.com/vue"></script>
 <script src="https://unpkg.com/vuejs-datepicker"></script>
 <script src="https://unpkg.com/vuejs-datepicker/dist/locale/translations/ko.js"></script>
-
 </head>
 <body id="page-top">
 	<div id="wrapper">
-
 		<div id="header">
 			<tiles:insertAttribute name="header" />
 		</div>
@@ -59,12 +59,12 @@
 				<tiles:insertAttribute name="footer" />
 			</div>
 		</div>
-
 		<!-- Scroll to Top Button-->
 		<a class="scroll-to-top rounded" href="#page-top">
 			<i class="fas fa-angle-up"></i>
 		</a>
 	</div>
+	
 	<!-- Bootstrap core JavaScript-->
 	<script src="/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
