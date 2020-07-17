@@ -78,7 +78,7 @@ public class JoinController {
 //			System.out.println(">>>>>>>>>>>>>>>>>>>>>" + jvo.getGender());
 			if(profile_img.length <= 16777215) { //MEDIUMBLOB 최대사이즈보다 작을경우에만..
 				JoinVo vo = new JoinVo(0, jvo.getId(), jvo.getPwd(), jvo.getAddr(),
-						jvo.getEmail(), jvo.getPhone(), jvo.getGender(), profile_img, 0, 0, null);
+						jvo.getEmail(), jvo.getPhone(), jvo.getGender(), profile_img, 0, 0, null, "n");
 				
 				n = service.insertJoin(vo);
 			} else {

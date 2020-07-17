@@ -73,6 +73,8 @@ new Vue({
 	}
 });
 
+
+
 Date.prototype.yyyymmdd = function() {
   var mm = this.getMonth() + 1;
   var dd = this.getDate();
@@ -91,12 +93,13 @@ new Vue({
 	return{
 		ko: vdp_translation_ko.js,
 		disabledDates: {
-			to: new Date(Date.now() - 8640000)
+			to: new Date(Date.now() + 8640000)
 		}
 	}
   },
   methods: {
 	customFormatter(date){
+		$("#start-d").val(date.yyyymmdd());
 		return date.yyyymmdd();
 	}
   },
@@ -118,6 +121,7 @@ new Vue({
   },
   methods: {
 	customFormatter(date){
+		$("#end-d").val(date.yyyymmdd());
 		return date.yyyymmdd();
 	}
   },

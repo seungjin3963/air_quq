@@ -71,7 +71,7 @@ public class MemberLoginController {
 
 		// 카카오 가입안한 서비스 회원일경우 최초로 DB에 등록됨
 		if (n == 0) {
-			JoinVo vo = new JoinVo(0, kakao_id, "", "", email, "", "", null, 0, 1, nickname);
+			JoinVo vo = new JoinVo(0, kakao_id, "", "", email, "", "", null, 0, 1, nickname, "n");
 			int r = service.insertJoin(vo);
 		}
 

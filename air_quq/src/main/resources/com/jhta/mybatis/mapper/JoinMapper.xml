@@ -12,7 +12,7 @@
 	</select>
 	
 	<insert id="insertMember" parameterType="join">
-		insert into member values(0, #{id}, #{pwd}, #{addr}, #{email}, #{phone}, #{gender}, #{profile_img}, #{identi_user}, #{identi_kakao}, #{nickname})
+		insert into member values(0, #{id}, #{pwd}, #{addr}, #{email}, #{phone}, #{gender}, #{profile_img}, #{identi_user}, #{identi_kakao}, #{nickname}, "n")
 	</insert>
 	
 	<select id="kakaoSelectUser" parameterType="int" resultType="int">

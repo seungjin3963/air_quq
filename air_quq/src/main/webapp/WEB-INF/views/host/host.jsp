@@ -166,10 +166,10 @@
 						:disabled-dates="disabledDates" placeholder="종료일" name="edate"
 						:inline="true"></vuejs-datepicker>
 				</div>
-
-				<br>
-				<br> <input type="hidden" value="4" name="next"> <input
-					type="submit" class="btn btn-outline-primary" role="button"
+				<input class="col-xs-2" type="text" placeholder="시작일" id="start-d">
+				<input class="col-xs-2" type="text" placeholder="종료일" id="end-d">
+				<br> <br> <input type="hidden" value="4" name="next">
+				<input type="submit" class="btn btn-outline-primary" role="button"
 					value="다음 단계로 진행">
 			</form>
 		</c:if>

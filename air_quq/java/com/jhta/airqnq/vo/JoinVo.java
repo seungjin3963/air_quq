@@ -12,11 +12,12 @@ public class JoinVo {
 	private int identi_user;
 	private int identi_kakao;
 	private String nickname;
+	private String del_yn;
 
 	public JoinVo() {}
 
 	public JoinVo(int menum, String id, String pwd, String addr, String email, String phone, String gender,
-			byte[] profile_img, int identi_user, int identi_kakao, String nickname) {
+			byte[] profile_img, int identi_user, int identi_kakao, String nickname, String del_yn) {
 		this.menum = menum;
 		this.id = id;
 		this.pwd = pwd;
@@ -28,9 +29,18 @@ public class JoinVo {
 		this.identi_user = identi_user;
 		this.identi_kakao = identi_kakao;
 		this.nickname = nickname;
+		this.del_yn = del_yn;
 	}
 
 	
+	public String getDel_yn() {
+		return del_yn;
+	}
+
+	public void setDel_yn(String del_yn) {
+		this.del_yn = del_yn;
+	}
+
 	public int getIdenti_user() {
 		return identi_user;
 	}
