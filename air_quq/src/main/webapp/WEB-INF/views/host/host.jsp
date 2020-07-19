@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <c:if test="${ hostStep == 1 }">
 	<div class="progress">
 		<div class="progress-bar progress-bar-striped progress-bar-animated"
@@ -39,9 +40,7 @@
 			<p>숙소에 대해 간략하게 알려주세요.</p>
 			<form action="/host/regist/1" method="post" id="host_regist">
 				<p>
-					<input class="form-control form-control-lg" type="text"
-						placeholder="주소 검색하기" id="searchPassport" name="addr"
-						readonly="readonly">
+					<input class="form-control form-control-lg" type="text" placeholder="주소 검색하기" id="searchPassport" name="addr" readonly="readonly">
 				</p>
 
 				<div class="row">
@@ -71,9 +70,8 @@
 						</p>
 					</div>
 				</div>
-				<input type="hidden" value="2" name="next"> <input
-					type="submit" class="btn btn-outline-primary" role="button"
-					value="시작하기">
+				<input type="hidden" value="2" name="next"> 
+				<input type="submit" class="btn btn-outline-primary" role="button" value="시작하기">
 			</form>
 		</c:if>
 		<c:if test="${ hostStep == 2 }">
@@ -106,14 +104,11 @@
 			<p class="lead"></p>
 			<hr class="my-4">
 			<p>일일 숙박 가격, 최대인원수, 침대개수, 체크아웃시간 입력, 시작일, 종료일</p>
-			<form action="/host/regist/2" method="post" id="host_regist3">
+			<form action="/host/regist/3" method="post" id="host_regist3">
 				<div class="input-group" id="host-ig">
-					<input type="text" class="col-xs-3" placeholder="가격을 입력해주세요."
-						id="host_grade" v-model="message">&nbsp;
+					<input type="text" class="col-xs-3" name="v_grade" placeholder="가격을 입력해주세요." id="host_grade" v-model="message">&nbsp;
 					<div class="input-group-append">
-						<span class="input-group-text">￦</span> <span
-							class="input-group-text" id="v_grade" name="v_grade">{{message}}
-							원</span>
+						<span class="input-group-text">￦</span> <span class="input-group-text" id="v_grade" >{{message}} 원</span>
 					</div>
 				</div>
 				<br>
@@ -123,24 +118,23 @@
 						<div class="col-sm">
 							<div class="card border-primary mb-3" style="max-width: 18rem;">
 								<div class="card-header">최대 숙박 인원수</div>
+								<input type="hidden" name="pcount" id="hpnt" value="1">
 								<div class="card-body text-primary">
 									<button type="button"
 										class="btn btn-outline-info rounded-circle" id="pcount_minus">-</button>
 									&nbsp;&nbsp;<label id="pcount">1</label>&nbsp;&nbsp;
-									<button type="button"
-										class="btn btn-outline-info rounded-circle" id="pcount_plus">+</button>
+									<button type="button" class="btn btn-outline-info rounded-circle" id="pcount_plus">+</button>
 								</div>
 							</div>
 						</div>
 						<div class="col-sm">
 							<div class="card border-primary mb-3" style="max-width: 18rem;">
 								<div class="card-header">침대 개수</div>
+								<input type="hidden" name="bcount" id="hbnt" value="1">
 								<div class="card-body text-primary">
-									<button type="button"
-										class="btn btn-outline-info rounded-circle" id="bcount_minus">-</button>
+									<button type="button" class="btn btn-outline-info rounded-circle" id="bcount_minus">-</button>
 									&nbsp;&nbsp;<label id="bcount">1</label>&nbsp;&nbsp;
-									<button type="button"
-										class="btn btn-outline-info rounded-circle" id="bcount_plus">+</button>
+									<button type="button" class="btn btn-outline-info rounded-circle" id="bcount_plus">+</button>
 								</div>
 							</div>
 						</div>
@@ -148,12 +142,9 @@
 							<div class="card border-primary mb-3" style="max-width: 18rem;">
 								<div class="card-header">체크아웃 시간</div>
 								<div class="well">
-									<div id="datetimepicker3" class="input-append">
-										<input data-format="HH:mm:ss PP" type="text"
-											style="border: none; text-align: center; display: inline-block;"></input>
-										<span class="add-on"> <i data-time-icon="icon-time"
-											data-date-icon="icon-calendar"><i class="fa fa-clock-o"
-												aria-hidden="true"></i></i>
+									<div id="datetimepicker3" class="input-append" style="text-align: center;">
+										<input data-format="HH:mm:ss PP" type="text" style="text-align: center; display: inline-block;" name="oclick"></input>
+										 <span class="add-on"> <i data-time-icon="icon-time" data-date-icon="icon-calendar"><i class="fa fa-clock-o" aria-hidden="true"></i></i>
 										</span>
 									</div>
 								</div>
@@ -161,39 +152,56 @@
 						</div>
 					</div>
 				</div>
-
 				<hr class="my-4">
 				<div class="container">
-					<div id="d-start" style="display: inline-block; width: 18rem">
-						<vuejs-datepicker :language="ko" :format="customFormatter"
-							:disabled-dates="disabledDates" placeholder="시작일" name="sdate"
-							:inline="true"></vuejs-datepicker>
+					<div id="app" style="display: inline-block; width: 18rem">
+						<!-- 달력 모듈 -->
+						<label>시작날짜:</label>
+						<vuejs-datepicker :language="ko" :format="customFormatter" :disabled-dates="disabledDates" name="startDay"></vuejs-datepicker>
 					</div>
-					<div id="e-start" style="display: inline-block; width: 18rem">
-						<vuejs-datepicker :language="ko" :format="customFormatter"
-							:disabled-dates="disabledDates" placeholder="종료일" name="edate"
-							:inline="true"></vuejs-datepicker>
+					<div id="endPicker">
+						<label>종료날짜:</label>
+						<vuejs-datepicker :language="ko" :format="customFormatter" :disabled-dates="disabledDates" name="endDay"></vuejs-datepicker>
 					</div>
-					<br><br>
-					<div>시작일</div>
-					<div id="result-start"></div>
-					<div>종료일</div>
-					<div id="result-end"></div>
-					<div id="result-dday"></div>
-					
 					<br> <br> <input type="hidden" value="4" name="next">
-					<input type="submit" class="btn btn-outline-primary" role="button"
-						value="다음 단계로 진행">
+					<input type="submit" class="btn btn-outline-primary" role="button" value="다음 단계로 진행">
 			</form>
-			<div class="container">
-				<script type="text/javascript" src="/resources/js/host/host.js"></script>
-				<script type="text/javascript"
-					src="http://tarruda.github.com/bootstrap-datetimepicker/assets/js/bootstrap-datetimepicker.min.js">
-					
-				</script>
-				<script type="text/javascript"
-					src="http://tarruda.github.com/bootstrap-datetimepicker/assets/js/bootstrap-datetimepicker.pt-BR.js">
-				</script>
+			<script type="text/javascript" src="/resources/js/host/host.js"></script>
+			<script type="text/javascript"
+				src="http://tarruda.github.com/bootstrap-datetimepicker/assets/js/bootstrap-datetimepicker.min.js">
+				
+			</script>
+			<script type="text/javascript"
+				src="http://tarruda.github.com/bootstrap-datetimepicker/assets/js/bootstrap-datetimepicker.pt-BR.js">
+			</script>
+		</c:if>
+		<c:if test="${ hostStep == 4 }">
+			<h1 class="display-4">상세 주소 및 숙소 사진 입력해주세요.</h1>
+			<p class="lead">숙소에대한 상세한 주소입력</p>
+			<hr class="my-4">
+				<div class="form-group col-md-6">
+			      <label for="detailAdress">주소</label>
+			      <input type="text" class="form-control" id="searchDetail" placeholder="클릭하여 검색하기">
+			    </div>
+			    <div class="form-group col-md-6">
+			      <label for="detailAdress">상세 주소 입력</label>
+			      <input type="text" class="form-control" placeholder="동/호 까지포함된 상세한 주소입력">
+			    </div>
+			    <div class="form-group col-md-6">
+			      <label for="adress">도로명 주소</label>
+			      <input type="text" class="form-control" id="roadAddr">
+			    </div>
+			    <div class="form-group col-md-2">
+			      <label for="zipcode">우편번호</label>
+			      <input type="text" class="form-control" id="zipcode">
+			    </div>
+			    
+			<hr class="my-4">
+				<p class="lead">숙소 이미지를 올려주세요.</p>
+				
+				<br> <input type="hidden" value="4" name="next"> <input type="submit" class="btn btn-outline-primary" role="button" value="완료">
+			</form>
+			<script type="text/javascript" src="/resources/js/passport/passportDetail.js"></script>
 		</c:if>
 	</div>
 </div>

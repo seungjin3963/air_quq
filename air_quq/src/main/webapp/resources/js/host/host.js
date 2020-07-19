@@ -1,10 +1,10 @@
 //체크아웃 시간
-for (var i = 0; i <= 23; i++) {
+/*for (var i = 0; i <= 23; i++) {
 	$("#checkout_clock").append(`<option>${i}</option>`);
 }
 for (var i = 0; i <= 59; i++) {
 	$("#checkout_min").append(`<option>${i}</option>`);
-}
+}*/
 
 //최대숙박 인원수
 var pcount = $("#pcount").text();
@@ -16,12 +16,14 @@ $("#pcount_plus").click(function () {
 	pcount++;
 	pcountDisable(pcount);
 	$("#pcount").text(pcount);
+	$("#hpnt").val(pcount);
 });
 
 $("#bcount_plus").click(function () {
 	bcount++;
 	bcountDisable(bcount);
 	$("#bcount").text(bcount);
+	$("#hbnt").val(bcount);
 });
 
 
@@ -29,12 +31,14 @@ $("#pcount_minus").click(function () {
 	pcount--;
 	pcountDisable(pcount);
 	$("#pcount").text(pcount);
+	$("#hpnt").val(pcount);
 });
 
 $("#bcount_minus").click(function () {
 	bcount--;
 	bcountDisable(bcount);
 	$("#bcount").text(bcount);
+	$("#hbnt").val(bcount);
 });
 
 function pcountDisable(pcount) {
@@ -52,9 +56,27 @@ function bcountDisable(bcount) {
 		$("#bcount_minus").attr("disabled", false);
 	}
 }
+// //////////////////////////////////////////////////////////////////////////////////////////////////////////
+//유효성 체크
 
+function checkFromRegist3(){
+	//공백 체크
+	var sp = $("#host_grade").val();
+	
+	
+	if(sp != null && sp != ''){
+		return true;
+	} else {
+		alert("금액에 공백을 입력할수없습니다.");
+		return false;
+	}
+}
 
-//금액 숫자만 입력가능
+$("#host_regist3").submit(function(){
+	return checkFromRegist3();
+});
+
+// 금액 숫자만 입력가능
 var value = $("#host_grade").val();
 new Vue({
 	el: '#host-ig',
@@ -81,37 +103,33 @@ Date.prototype.yyyymmdd = function () {
 	].join('');
 };
 
-
-//달력
-new Vue({
-	el: '#d-start',
-	data() {
-		return {
-			ko: vdp_translation_ko.js,
-			disabledDates: {
-				to: new Date(Date.now() + 8640000)
-			}
-		}
-	},
-	methods: {
-		customFormatter(date) {
-			$("#start-d").val(date.yyyymmdd());
-			return date.yyyymmdd();
-		}
-	},
-
-	components: {
-		vuejsDatepicker
-	}
-});
-
+// bootstrap date time
 $(function () {
 	$('#datetimepicker3').datetimepicker({
 		pickDate: false
 	});
 });
+
+
+function addDays(date, days) {
+    var result = new Date(date);
+    result.setDate(result.getDate() + days);
+    return result; 
+}
+// vuejs datepicker
+var startDay = "";
+var endDay = "";
+
+var state = {
+	highlighted: {
+		to: new Date(2016, 0, 5),
+		from: new Date(2016, 0, 26)
+	}
+}
+
+
 new Vue({
-	el: '#e-start',
+	el: '#app',
 	data() {
 		return {
 			ko: vdp_translation_ko.js,
@@ -122,13 +140,40 @@ new Vue({
 	},
 	methods: {
 		customFormatter(date) {
-			$("#end-d").val(date.yyyymmdd());
-			return date.yyyymmdd();
+			var sdate = date.yyyymmdd();
+			startDay = sdate;
+			return startDay;
 		}
 	},
-
+	
 	components: {
 		vuejsDatepicker
 	}
 });
 
+new Vue({
+	el: '#endPicker',
+	data() {
+		return {
+			ko: vdp_translation_ko.js,
+			disabledDates: {
+				to: new Date(Date.now() + 8640000)
+			}
+		}
+	},
+	methods: {
+		customFormatter(date) {
+			var sdate = date.yyyymmdd();
+			if(startDay != '' && startDay < sdate){
+				endDay = sdate;
+				return endDay;
+			} else {
+				alert('시작일보다 작은날짜는 선택할수없습니다.');
+			}
+		}
+	},
+	
+	components: {
+		vuejsDatepicker
+	}
+});

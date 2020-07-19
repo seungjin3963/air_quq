@@ -60,12 +60,26 @@ public class HostController {
 
 	@RequestMapping(value = "/host/regist/1")
 	public String hostRegist1(String addr, String roomStatus, String clientCount, HttpSession session, int next) {
+		//System.out.println("주소" + addr + ", 집상태:" + roomStatus + ", 숙박인원" + clientCount + "다음단계:" + next);
 		session.setAttribute("hostStep", next);
 		return ".hostRegist";
 	}
 
 	@RequestMapping(value = "/host/regist/2")
 	public String hostRegist2(String hostTitle, String hostContent, HttpSession session, int next) {
+		//System.out.println("제목:" + hostTitle + ", 내용:" + hostContent + "다음단계:" + next);
+		session.setAttribute("hostStep", next);
+		return ".hostRegist";
+	}
+	
+	@RequestMapping(value = "/host/regist/3")
+	public String hostRegist3(String v_grade, String pcount, String bcount, String oclick, String startDay, String endDay, HttpSession session, int next) {
+		System.out.println("가격:" + v_grade);
+		System.out.println("최대인원수:" + pcount);
+		System.out.println("침대개수:" + bcount);
+		System.out.println("체크아웃시간:" + oclick);
+		System.out.println("시작일:" + startDay);
+		System.out.println("종료일:" + endDay);
 		session.setAttribute("hostStep", next);
 		return ".hostRegist";
 	}
