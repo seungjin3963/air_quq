@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.jhta.airqnq.dao.JoinDao;
 import com.jhta.airqnq.dao.LoginDao;
 import com.jhta.airqnq.vo.JoinVo;
+import com.jhta.airqnq.vo.MemberVo;
 
 @Service
 public class MemberFunctionService {
@@ -49,5 +50,9 @@ public class MemberFunctionService {
 	
 	public int kakaoCheck(String menum) {
 		return loginDao.kakaoCheck(menum);
+	}
+
+	public MemberVo getMemberInfo(HashMap<String, Object> map) {
+		return loginDao.getMemberInfo(map);
 	}
 }

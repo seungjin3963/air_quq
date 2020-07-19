@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.jhta.airqnq.service.KakaoAPI;
 import com.jhta.airqnq.service.MemberFunctionService;
 import com.jhta.airqnq.vo.JoinVo;
+import com.jhta.airqnq.vo.MemberVo;
 
 @Controller
 public class MemberLoginController {
@@ -30,8 +31,15 @@ public class MemberLoginController {
 		map.put("pwd", pwdl);
 		int menum = service.loginCheck(map);
 		if (menum > 0) {
-			int rnum = service.getMenum(map);
-			session.setAttribute("menum", rnum);
+//			int rnum = service.getMenum(map);
+//			session.setAttribute("menum", rnum);
+			
+			//권준범
+			//session에 회원 정보 set
+			MemberVo memberVo = service.getMemberInfo(map);
+			session.setAttribute("menum", memberVo.getMenum());
+			session.setAttribute("memberVo", memberVo);
+			
 			session.setAttribute("logind", true);
 			return ".home";
 		} else {
@@ -44,8 +52,7 @@ public class MemberLoginController {
 	public String logoutPage() {
 		String client_id = "f5b5ae84edd2bb27cfdebdebaa48bc3f";
 		String logout_redirect_uri = "http://localhost:8090/kakao/logout";
-		String path = "https://kauth.kakao.com/oauth/logout?client_id=" + client_id + "&logout_redirect_uri="
-				+ logout_redirect_uri + "&state=?";
+		String path = "https://kauth.kakao.com/oauth/logout?client_id="+ client_id + "&logout_redirect_uri=" + logout_redirect_uri + "&state=?";
 		return "redirect:" + path;
 	}
 

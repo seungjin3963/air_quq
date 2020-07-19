@@ -8,6 +8,7 @@
  	<typeAlias type="com.jhta.airqnq.vo.HouseInfoVo" alias="house_info"/>
  	<typeAlias type="com.jhta.airqnq.vo.SliderVo" alias="slinfo"/>
  	<typeAlias alias="chatLog" type="com.jhta.airqnq.vo.ChatLogVo"/>
+ 	<typeAlias type="com.jhta.airqnq.vo.MemberVo" alias="member"/>
  </typeAliases>
  <mappers>
      <mapper resource="com/jhta/mybatis/mapper/JoinMapper.xml"/>

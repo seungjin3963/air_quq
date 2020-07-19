@@ -6,6 +6,8 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.jhta.airqnq.vo.MemberVo;
+
 @Repository
 public class LoginDao {
 	@Autowired
@@ -22,5 +24,9 @@ public class LoginDao {
 	
 	public int kakaoCheck(String menum) {
 		return sqlSessionTemplate.selectOne(NAMESPACE + ".kakaoCheck", menum);
+	}
+
+	public MemberVo getMemberInfo(HashMap<String, Object> map) {
+		return sqlSessionTemplate.selectOne(NAMESPACE + ".getMemberInfo", map);
 	}
 }

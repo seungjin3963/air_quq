@@ -1,14 +1,31 @@
 package com.jhta.airqnq.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.jhta.airqnq.vo.ApplyVo;
 
 @Controller
 public class UserApplyController {
-	
+
 	@GetMapping("/user/apply")
 	public String userapply(Model model) {
 		return ".apply.userapply";
+	}
+
+	@PostMapping(value = "/user/apply/setApply")
+	@ResponseBody
+	public void totmoney(HttpSession session, ApplyVo vo) {
+		session.setAttribute("applyVo", vo);
+	}
+	
+	@GetMapping(value="/user/applyCheck")
+	public String apply(){
+		return ".apply.applyCheck";
 	}
 }

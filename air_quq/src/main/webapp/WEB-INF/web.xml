@@ -47,19 +47,13 @@
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
 	
-	<!-- 시큐리티 로그인 -->
+	<!-- 세션 리셋 필터 -->
 	<filter>
-		<filter-name>springSecurityFilterChain</filter-name>
-		<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+		<filter-name>sessionResetFilter</filter-name>
+		<filter-class>com.jhta.airqnq.filter.SessionResetFilter</filter-class>
 	</filter>
 	<filter-mapping>
-		<filter-name>springSecurityFilterChain</filter-name>
+		<filter-name>sessionResetFilter</filter-name>
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
-	<context-param>
-		<param-name>contextConfigLocation</param-name>
-		<param-value>/WEB-INF/spring/root-context.xml
-		/WEB-INF/spring/security-context.xml
-		</param-value>
-	</context-param>
 </web-app>

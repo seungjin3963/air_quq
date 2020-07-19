@@ -11,6 +11,9 @@
 	<select id="getMenum" parameterType="hashmap" resultType="int">
 		select menum from member where id = #{id} and pwd = #{pwd} 
 	</select>
+	<select id="getMemberInfo" parameterType="hashmap" resultType="member">
+		select * from member where id = #{id} and pwd = #{pwd} 
+	</select>
 	
 	<select id="kakaoCheck" parameterType="string" resultType="int">
 		select menum from member where id = #{id}
