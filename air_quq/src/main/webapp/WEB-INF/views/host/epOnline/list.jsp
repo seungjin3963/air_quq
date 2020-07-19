@@ -15,9 +15,7 @@
 							<th>번호</th>
 							<th>제목</th>
 							<th>가격</th>
-							<th>체크인 시간</th>
-							<th>시작일</th>
-							<th>종료일</th>
+							<th>시간</th>
 							<th>체험 시작</th>
 							<th>수정</th>
 							<th>삭제</th>
@@ -29,21 +27,19 @@
 								<td>${list.hinum }</td>
 								<td>${list.title }</td>
 								<td>${list.price }</td>
-								<td>${list.checkin_time }</td>
-								<td>${list.startdate }</td>
-								<td>${list.enddate }</td>
+								<td>${list.times }</td>
 								<td>
 									<a href="/epOnline/epOnline" class="epIcon">
 										<i class="fas fa-photo-video fa-2x"></i>
 									</a>
 								</td>
 								<td>
-									<a href="/host/epOnline/modify?hinum=${list.hinum }" class="modiIcon">
+									<a href="/host/epOnline/modify?einum=${list.einum }" class="modiIcon">
 										<i class="fa fa-folder-open fa-2x"></i>
 									</a>
 								</td>
 								<td>
-									<a href="/host/epOnline/delete?hinum=${list.hinum }" class="delIcon">
+									<a href="/host/epOnline/delete?einum=${list.einum }" class="delIcon">
 										<i class="far fa-trash-alt fa-2x"></i>
 									</a>
 								</td>

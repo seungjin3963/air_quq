@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.jhta.airqnq.service.HostService;
-import com.jhta.airqnq.vo.HouseInfoVo;
+import com.jhta.airqnq.vo.ExpInfoVo;
 
 @Controller
 public class HostController {
@@ -26,20 +26,20 @@ public class HostController {
 			return ".login";
 		}else {
 			int menum = (int)session.getAttribute("menum");
-			List<HouseInfoVo> list = service.list(menum);
+			List<ExpInfoVo> list = service.list(menum);
 			model.addAttribute("list", list);
 			return ".host.epOnline.list";
 		}
 	}
 
 	@GetMapping(value = "/host/epOnline/modify")
-	public String modifyView(Model model, int hinum) {
-		model.addAttribute("vo", service.getEpOnlineInfo(hinum));
+	public String modifyView(Model model, int einum) {
+		model.addAttribute("vo", service.getEpOnlineInfo(einum));
 		return ".host.epOnline.modify";
 	}
 
 	@PostMapping(value = "/host/epOnline/modify")
-	public String modify(HouseInfoVo vo) {
+	public String modify(ExpInfoVo vo) {
 		if (service.modify(vo) > 0) {
 			return "redirect:/host/epOnline/list";
 		} else {
@@ -48,9 +48,9 @@ public class HostController {
 	}
 
 	@GetMapping(value = "/host/epOnline/delete")
-	public String delEpOnline(int hinum) {
+	public String delEpOnline(int einum) {
 		try {
-			service.delEpOnline(hinum);
+			service.delEpOnline(einum);
 			return "redirect:/host/epOnline/list";
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
@@ -60,14 +60,12 @@ public class HostController {
 
 	@RequestMapping(value = "/host/regist/1")
 	public String hostRegist1(String addr, String roomStatus, String clientCount, HttpSession session, int next) {
-		System.out.println("주소" + addr + ", 집상태:" + roomStatus + ", 숙박인원" + clientCount + "다음단계:" + next);
 		session.setAttribute("hostStep", next);
 		return ".hostRegist";
 	}
 
 	@RequestMapping(value = "/host/regist/2")
 	public String hostRegist2(String hostTitle, String hostContent, HttpSession session, int next) {
-		System.out.println("제목:" + hostTitle + ", 내용:" + hostContent + "다음단계:" + next);
 		session.setAttribute("hostStep", next);
 		return ".hostRegist";
 	}

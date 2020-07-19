@@ -7,22 +7,22 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.jhta.airqnq.dao.HostDao;
-import com.jhta.airqnq.vo.HouseInfoVo;
+import com.jhta.airqnq.vo.ExpInfoVo;
 
 @Service
 public class HostService {
 	@Autowired
 	private HostDao dao;
 
-	public List<HouseInfoVo> list(int menum) {
+	public List<ExpInfoVo> list(int menum) {
 		return dao.list(menum);
 	}
 
-	public HouseInfoVo getEpOnlineInfo(int hinum) {
+	public ExpInfoVo getEpOnlineInfo(int hinum) {
 		return dao.getEpOnlineInfo(hinum);
 	}
 
-	public int modify(HouseInfoVo vo) {
+	public int modify(ExpInfoVo vo) {
 		return dao.modify(vo);
 	}
 

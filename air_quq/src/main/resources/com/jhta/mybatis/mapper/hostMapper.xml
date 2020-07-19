@@ -3,33 +3,45 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="mybatis.hostMapper">
-	<select id="list" parameterType="int" resultType="house_info">
-		select * from house_info where menum = #{menum} and `div` = 4
+	<select id="list" parameterType="int" resultType="expInfo">
+		<!-- select * from house_info where menum = #{menum} and `div` = 4 -->
+		select *
+		from experience_info
+		where memnum = #{menum}
+		and div_type = 32
+		and del_yn = 'N'
 	</select>
-	<select id="getEpOnlineInfo" parameterType="int" resultType="house_info">
-		select * from house_info where hinum = #{hinum}
+	<select id="getEpOnlineInfo" parameterType="int" resultType="expInfo">
+		<!-- select * from house_info where hinum = #{hinum} -->
+		select * from experience_info where einum = #{einum}
 	</select>
-	<update id="modify" parameterType="house_info">
-		update house_info 
-		set title = #{title}, content = #{content}, price = #{price}, max_n = #{max_n}, bedroom = #{bedroom}, checkin_time = #{checkin_time}, startdate = #{startdate}, enddate = #{enddate} 
-		where hinum = #{hinum} 
+	<update id="modify" parameterType="expInfo">
+		update experience_info 
+		set loc = #{loc}, intr = #{intr}, program = #{program}, title = #{title}, price = #{price}, times = #{times}, people = #{people}  
+		where einum = #{einum} 
 	</update>
 	<delete id="delEpOnline" parameterType="int">
-		delete from house_info where hinum = #{hinum}
+		<!-- delete from house_info where hinum = #{hinum} -->
+		update experience_info set del_yn = 'Y'
 	</delete>
 	<delete id="delReview" parameterType="int">
-		delete from review where hinum = #{hinum}
+		<!-- delete from review where hinum = #{hinum} -->
+		update review set del_yn = 'Y'
 	</delete>
 	<delete id="delConven" parameterType="int">
-		delete from conven where hinum = #{hinum}
+		<!-- delete from conven where hinum = #{hinum} -->
+		update conven set del_yn = 'Y'
 	</delete>
 	<delete id="delBasket" parameterType="int">
-		delete from basket where hinum = #{hinum}
+		<!-- delete from basket where hinum = #{hinum} -->
+		update basket set del_yn = 'Y'
 	</delete>
 	<delete id="delHouseImg" parameterType="int">
-		delete from house_img where hinum = #{hinum}
+		<!-- delete from house_img where hinum = #{hinum} -->
+		update house_img set del_yn = 'Y'
 	</delete>
 	<delete id="delExpInfo" parameterType="int">
-		delete from experience_info where hinum = #{hinum}
+		<!-- delete from experience_info where hinum = #{hinum} -->
+		update experience_info set del_yn = 'Y'
 	</delete>
 </mapper>
