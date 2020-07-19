@@ -1,9 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <style>
-	.backcolor:hover{
-		background-color: #3a3b45 !important;
-	}
 	label{
 		width: 130px;
 		text-align: left;
@@ -22,19 +19,16 @@
 		<tr>
 			<th>회원번호</th>
 			<th>아이디</th>
-			<th>비밀번호</th>
-			<th>이메일</th>
 			<th>성별</th>
 			<th>회원상태</th>
 			<th>카카오아이디 여부</th>
-			<th>멤버상태</th>
+			<th>회원 프로필 사진</th>
+			<th>회원 정보 상세 보기</th>
 		</tr>
 		<c:forEach var="vo" items="${ Memberlist }">
-			<tr class="backcolor" onclick="membermodified(this)">
+			<tr>
 				<td>${vo.menum }</td>
 				<td>${vo.id}</td>
-				<td>${vo.pwd}</td>
-				<td>${vo.email}</td>
 				<td>${vo.gender}</td>
 				<c:choose>
 					<c:when test="${vo.del_yn == 'n'}">
@@ -52,6 +46,8 @@
 						<td>일반아이디</td>
 					</c:otherwise>
 				</c:choose>
+				<td><input type="button" value="프로필 보기" class="btn btn-danger" onclick="memberprofile(${vo.menum },'${vo.del_yn}')"></td>
+				<td><input type="button" value="상세보기" class="btn btn-danger" onclick="memberdetail"></td>
 			</tr>
 		</c:forEach>
 	</table>
@@ -84,15 +80,36 @@
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h3 class="modal-title">회원 정보 수정하기</h3>
+				<h3 class="modal-title">회원 프로필</h3>
 				<button type="button" class="close" data-dismiss="modal" style="outline: none;">X</button>
 			</div>
 			<div class="modal-body" style="text-align: center;">
-				<img onerror="this.src='/resources/img/적분이_001.JPG';" src="" id="memberimg" style="width: 150px; height: 150px; border-radius: 100%; margin-bottom: 20px;"><br>
-				<div style="text-align: center; margin: 20px;">
-					<input type="button" value="초기화" style="width: 100px;">
-					<input type="button" value="취소" style="width: 100px;">
+				<img onerror="this.src='/resources/img/적분이_001.JPG';" src="" id="memberimg" style="width: 150px; height: 150px; border-radius: 100%;"><br>
+				<i class="fas fa-exclamation-circle fa-2x" id="photochange" style="position: relative; left: 60px; bottom: 35px;"></i>
+				<input type="hidden"><br>
+				<div style="text-align: center; margin-bottom: 20px;">
+					<input type="button" value="강퇴" id="memberexit" style="width: 100px;">
+				    <input type="button" value="복구"  style="width: 100px;">
 				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="modal fade" id="memberdetail" role="dialog">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h3 class="modal-title">회원 정보 상세보기</h3>
+				<button type="button" class="close" data-dismiss="modal" style="outline: none;">X</button>
+			</div>
+			<div class="modal-body" style="text-align: center;">
+				<label>아이디</label><span></span><br>
+				<label>비밀번호</label><span></span><br>
+				<label>주소</label><span></span><br>
+				<label>이메일</label><span></span><br>
+				<label>전화번호</label><span></span><br>
+				<label>성별</label><span></span><br>
 			</div>
 		</div>
 	</div>
@@ -129,12 +146,11 @@
 					memberstate = "삭제";
 				}
 				$("table").append(
-						"<tr class='backcolor' onclick='membermodified(this)'><td>" + value[i].menum + "</td><td>" + value[i].id
-								+ "</td><td>" + value[i].pwd + "</td><td>"
-								+ value[i].email + "</td><td>"
-								+ value[i].gender + "</td><td>" + memberstate +"</td><td>" + kakaocheck
-								+ "</td></tr>")
-			};
+						"<tr class='backcolor'><td>" + value[i].menum + "</td><td>" + value[i].id
+								+ "</td><td>" + value[i].gender + "</td><td>" + memberstate +"</td><td>" + kakaocheck
+								+ "</td><td><button type='button' class='btn btn-danger' onclick='memberprofile("+value[i].menum+")'>프로필 보기</button><td><button type='button' class='btn btn-danger' onclick=''>상세보기</button></tr>"
+								)
+			}
 		}
 	}
 
@@ -178,12 +194,20 @@
 
 	}
 	/* 프로필 확인 */
-	function membermodified(data){
-		var menum=$(data).children().first().html();
-		$("#memberimg").prop("src","/memberimg?menum="+data.menum);
+	function memberprofile(menum,del_yn){
+		$("#memberimg").prop("src","/memberimg?menum="+menum);
+		$("#photochange").next().val(menum);
+		/* console.log(typeof(del_yn));
+		console.log(del_yn);
+		console.log(del_yn.length);
+		if(del_yn == 'n'){
+			$("#memberexit").prop("disabled","disabled")
+		}else{
+			$("#memberexit").next().prop("disabled","disabled")
+		} */ 
 		$("#membermodal").modal();
 	}
-
+	
 	paging('${pu.pageNum}', '${pu.totalPageCount}');
 	
 	/* 페이징 버튼 처리 */
@@ -248,7 +272,7 @@
 				})
 			}
 		})
-	}
+	};
 
 	/* 검색 ajax */
 	$("input[name='keyword']").keyup(function() {
@@ -269,6 +293,13 @@
 				})
 			}
 		})
-	})
+	});
+	
+	/* 프로필사진 초기화*/
+$("#photochange").click(function(){
+	var menum=$(this).next().val();
+	location.href="/admin/memberimgreset?menum="+menum;
+});
+	
 	
 </script>
