@@ -37,8 +37,7 @@
 <!-- Host CSS load -->
 <link href="/resources/css/host/main.css" rel="stylesheet">
 
-<!-- Vue.js 로딩 -->
-<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
 <script type="text/javascript" src="https://unpkg.com/@popperjs/core@2"></script>
 
 <!-- vue.js Datepicker CDN -->
@@ -96,6 +95,7 @@
 	<!-- 영노 -->
 	<script type="text/javascript" src="/resources/js/experience/ep_inserting.js"></script>
 	
-	
+	<!-- Vue.js 로딩 -->
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 </body>
 </html>
