@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jhta.airqnq.mapper.HostInfoMapper">	
+	<insert id="hostInsert" parameterType="house_info">
+		insert into house_info values(0, #{menum}, #{title},
+		 #{content}, #{addr}, #{addr_detail}, #{price}, #{max_n}, #{bedroom}, #{checkin_time}, #{div}, #{lat}, #{lnt}, #{startdate}, #{enddate}, "n")
+	</insert>
+</mapper>

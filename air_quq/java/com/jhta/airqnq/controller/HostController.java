@@ -1,5 +1,8 @@
 package com.jhta.airqnq.controller;
 
+import java.sql.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.List;
 
@@ -15,6 +18,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.jhta.airqnq.service.HostService;
 import com.jhta.airqnq.vo.ExpInfoVo;
+import com.jhta.airqnq.vo.HouseInfoVo;
 
 @Controller
 public class HostController {
@@ -125,6 +129,58 @@ public class HostController {
 		
 		System.out.println("마지막 단계 : " + address + ", " + addressDetail + ", " + lat + ", " + lnt);
 		
+//		Integer hinum, Integer menum, String title, String content, String addr, String addr_detail,
+//		Integer price, Integer max_n, Integer bedroom, String checkinTime, Integer div, String lat, String lnt,
+//		Date startdate, Date enddate, String del_yn
+		Integer menum = (Integer) session.getAttribute("memun");
+		
+		HashMap<String, Object> regist1 = (HashMap<String, Object>)session.getAttribute("regist1");
+		HashMap<String, Object> regist2 = (HashMap<String, Object>)session.getAttribute("regist2");
+		HashMap<String, Object> regist3 = (HashMap<String, Object>)session.getAttribute("regist3");
+		
+		String title = (String)regist2.get("hostTitle");
+		String content = (String)regist2.get("hostContent");
+		int price = Integer.parseInt(regist3.get("v_grade").toString().replace(",", ""));
+		int max_n = Integer.parseInt(regist3.get("pcount").toString());
+		int bedroom = Integer.parseInt(regist3.get("bcount").toString());
+		String checkinTime = (String)regist3.get("oclick");
+		int div = 1;
+		
+		
+		Date startdate = transformDate((String)regist3.get("startDay"));
+		Date enddate = transformDate((String)regist3.get("endDay"));
+		String del_yn = "n";
+		
+		
+		HouseInfoVo vo = new HouseInfoVo(0, menum, title, content, address, addressDetail, price, max_n,
+				bedroom, checkinTime, div, lat, lnt, startdate, enddate, del_yn);
+		
 		return "redirect:/";
 	}
+	
+	// 날짜가 yyyymmdd 형식으로 입력되었을 경우 Date로 변경하는 메서드
+    public Date transformDate(String date) {
+    	SimpleDateFormat beforeFormat = new SimpleDateFormat("yyyymmdd");
+        
+        // Date로 변경하기 위해서는 날짜 형식을 yyyy-mm-dd로 변경해야 한다.
+        SimpleDateFormat afterFormat = new SimpleDateFormat("yyyy-mm-dd");
+        
+        java.util.Date tempDate = null;
+        
+        try {
+            // 현재 yyyymmdd로된 날짜 형식으로 java.util.Date객체를 만든다.
+            tempDate = beforeFormat.parse(date);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        
+        // java.util.Date를 yyyy-mm-dd 형식으로 변경하여 String로 반환한다.
+        String transDate = afterFormat.format(tempDate);
+        
+        // 반환된 String 값을 Date로 변경한다.
+        Date d = Date.valueOf(transDate);
+        
+        return d;
+
+    }
 }
