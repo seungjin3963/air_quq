@@ -16,10 +16,15 @@ public class HostInfoService {
 	private HostInfoImageDao hostInfoImageDao;
 
 	
-	public int houseInsert(HouseInfoVo hvo, HouseImgVo ivo) {
+	public int insertHouse(HouseInfoVo hvo, HouseImgVo ivo) {
 		hostInfoDao.insertHouse(hvo);
 		hostInfoImageDao.insertHouseImg(ivo);
 		
 		return 1; //성공시 1리턴
+	}
+	
+	//하우스번호구하기
+	public int selectHouseNumber(int menum) {
+		return hostInfoDao.selectHouseNumber(menum);
 	}
 }

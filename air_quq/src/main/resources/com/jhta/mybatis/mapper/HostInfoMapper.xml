@@ -15,4 +15,8 @@
 	<select id="hostselect" resultType="house_info">
 		select * from house_info
 	</select>
+	
+	<select id="hostNumSelect" parameterType="int">
+		select hinum from house_info where menum=#{menum}
+	</select>
 </mapper>

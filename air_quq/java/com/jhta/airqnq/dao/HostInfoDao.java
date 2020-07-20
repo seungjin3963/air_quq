@@ -16,4 +16,8 @@ public class HostInfoDao {
 	public int insertHouse(HouseInfoVo vo) {
 		return session.insert(NAMESPACE + ".hostInsert");
 	}
+	
+	public int selectHouseNumber(int menum) {
+		return session.selectOne(NAMESPACE + ".hostNumSelect", menum);
+	}
 }

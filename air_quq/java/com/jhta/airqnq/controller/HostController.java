@@ -16,8 +16,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.jhta.airqnq.service.HostInfoService;
 import com.jhta.airqnq.service.HostService;
 import com.jhta.airqnq.vo.ExpInfoVo;
+import com.jhta.airqnq.vo.HouseImgVo;
 import com.jhta.airqnq.vo.HouseInfoVo;
 
 @Controller
@@ -25,6 +27,9 @@ public class HostController {
 
 	@Autowired
 	private HostService service;
+	
+	@Autowired
+	private HostInfoService hostService;
 
 	@GetMapping(value = "/host/epOnline/list")
 	public String epOnlineList(Model model, HttpSession session) {
@@ -152,8 +157,18 @@ public class HostController {
 		String del_yn = "n";
 		
 		
-		HouseInfoVo vo = new HouseInfoVo(0, menum, title, content, address, addressDetail, price, max_n,
+		HouseInfoVo hvo = new HouseInfoVo(0, menum, title, content, address, addressDetail, price, max_n,
 				bedroom, checkinTime, div, lat, lnt, startdate, enddate, del_yn, 0);
+		
+		//int imgnum, int hinum, String img, String del_yn, int ordernum
+		
+		//하우스 번호 가져오기
+		int hinum = hostService.selectHouseNumber(menum);
+		
+		//HouseImgVo ivo = new HouseImgVo(0, );
+		
+		//hostService.houseInsert(hvo, ivo);
+		
 		
 		return "redirect:/";
 	}
