@@ -52,13 +52,17 @@ public class HouseInfoVo {
 
 	// 삭제여부
 	private String del_yn;
+	
+	//관리자 승인 여부
+	private int manager_check;
 
 	public HouseInfoVo() {
 	}
 	
 	public HouseInfoVo(Integer hinum, Integer menum, String title, String content, String addr, String addr_detail,
 			Integer price, Integer max_n, Integer bedroom, String checkinTime, Integer div, String lat, String lnt,
-			Date startdate, Date enddate, String del_yn) {
+			Date startdate, Date enddate, String del_yn, int manager_check) {
+		super();
 		this.hinum = hinum;
 		this.menum = menum;
 		this.title = title;
@@ -75,7 +79,9 @@ public class HouseInfoVo {
 		this.startdate = startdate;
 		this.enddate = enddate;
 		this.del_yn = del_yn;
+		this.manager_check = manager_check;
 	}
+
 
 	public Integer getHinum() {
 		return hinum;
@@ -204,4 +210,13 @@ public class HouseInfoVo {
 	public void setDel_yn(String del_yn) {
 		this.del_yn = del_yn;
 	}
+
+	public int getManager_check() {
+		return manager_check;
+	}
+
+	public void setManager_check(int manager_check) {
+		this.manager_check = manager_check;
+	}
+	
 }
