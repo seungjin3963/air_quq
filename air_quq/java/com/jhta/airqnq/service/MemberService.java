@@ -6,13 +6,13 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.jhta.airqnq.dao.MemberDao;
+import com.jhta.airqnq.dao.MemberAdminDao;
 import com.jhta.airqnq.vo.JoinVo;
 
 @Service
 public class MemberService {
 	@Autowired
-	private MemberDao dao;
+	private MemberAdminDao dao;
 	
 	public List<JoinVo> Memberlist(HashMap<String, Object> map){
 		return dao.Memberlist(map);

@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 import com.jhta.airqnq.vo.JoinVo;
 
 @Repository
-public class MemberDao {
+public class MemberAdminDao {
 	@Autowired
 	private SqlSessionTemplate sqlSessionTemplate;
 	
