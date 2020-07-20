@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.jhta.airqnq.vo.ApplyVo;
+import com.jhta.airqnq.vo.MemberVo;
 
 @Controller
 public class UserApplyController {
@@ -27,5 +28,11 @@ public class UserApplyController {
 	@GetMapping(value="/user/applyCheck")
 	public String apply(){
 		return ".apply.applyCheck";
+	}
+	
+	@GetMapping("/user/applyCheck/getMemberInfo")
+	@ResponseBody
+	public MemberVo getMemberInfo(HttpSession session) {
+		return (MemberVo) session.getAttribute("memberVo");
 	}
 }

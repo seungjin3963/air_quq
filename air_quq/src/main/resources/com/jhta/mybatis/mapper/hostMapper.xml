@@ -8,7 +8,7 @@
 		select *
 		from experience_info
 		where memnum = #{menum}
-		and div_type = 32
+		and div_type = 3
 		and del_yn = 'N'
 	</select>
 	<select id="getEpOnlineInfo" parameterType="int" resultType="expInfo">
