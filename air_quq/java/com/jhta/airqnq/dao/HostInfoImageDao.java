@@ -8,4 +8,8 @@ import org.springframework.stereotype.Repository;
 public class HostInfoImageDao {
 	@Autowired
 	private SqlSessionTemplate session;
+	
+	private final String NAMESPACE = "com.jhta.airqnq.mapper.HostInfoMapper";
+	
+	
 }

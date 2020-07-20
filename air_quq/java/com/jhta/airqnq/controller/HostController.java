@@ -153,7 +153,7 @@ public class HostController {
 		
 		
 		HouseInfoVo vo = new HouseInfoVo(0, menum, title, content, address, addressDetail, price, max_n,
-				bedroom, checkinTime, div, lat, lnt, startdate, enddate, del_yn);
+				bedroom, checkinTime, div, lat, lnt, startdate, enddate, del_yn, 0);
 		
 		return "redirect:/";
 	}
