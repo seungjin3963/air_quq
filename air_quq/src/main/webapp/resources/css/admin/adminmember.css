@@ -1,0 +1,69 @@
+@charset "UTF-8";
+
+label {
+	width: 130px;
+	text-align: center;
+}
+
+/* 최상의 div 위로 올리기 */
+#divmain {
+	margin-top: 20px;
+}
+
+/* 글자 가운데 */
+#fontcenter, #medetail {
+	text-align: center;
+}
+
+/* 검색 */
+#selectdiv {
+	float: right;
+	margin-bottom: 10px;
+}
+
+#selectoption {
+	width: 120px;
+	display: inline-block;
+}
+
+#selecttext {
+	width: 200px;
+	display: inline-block;
+}
+
+/* 이전,다음 버튼 */
+#previous, #next, .exitbutton {
+	border: none;
+	outline: none;
+	background: none;
+	text-align: center;
+}
+
+/* 페이징 숫자 정렬 */
+#pagingborder {
+	display: inline-block;
+}
+
+#fontred {
+	color: red;
+}
+
+/* 프로필 이미지 */
+#memberimg {
+	width: 150px;
+	height: 150px;
+	border-radius: 100%;
+}
+
+/* 프로필 초기화 */
+#photochange {
+	position: relative;
+	left: 60px;
+	bottom: 35px;
+}
+
+/* 버튼정렬 */
+#buttonsort {
+	width: 100px;
+	margin: auto;
+}

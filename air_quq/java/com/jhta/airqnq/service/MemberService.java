@@ -29,4 +29,5 @@ public class MemberService {
 	public int MemberImgReset(int menum) {
 		return dao.MemberImgReset(menum);
 	}
+	
 }

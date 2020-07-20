@@ -31,4 +31,5 @@ public class MemberDao {
 	public int MemberImgReset(int menum) {
 		return sqlSessionTemplate.update(NAMESPACE+".memberimgreset", menum);
 	}
+	
 }

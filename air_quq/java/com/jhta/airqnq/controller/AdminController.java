@@ -94,10 +94,11 @@ public class AdminController {
 	public void memberimg(int menum, HttpServletResponse resp) {
 		resp.setContentType("image/jpeg");
 
-		JoinVo vo = service.MemberOne(menum);
-		
-		ByteArrayInputStream data =new ByteArrayInputStream(vo.getProfile_img());
 		try {
+			JoinVo vo = service.MemberOne(menum);
+	
+			ByteArrayInputStream data =new ByteArrayInputStream(vo.getProfile_img());
+		
 			ServletOutputStream os=resp.getOutputStream();
 			
 			int dataReader=0;
@@ -107,13 +108,19 @@ public class AdminController {
 			}
 		} catch (IOException ie) {
 			System.out.println(ie.getMessage());
-		}
+		} catch (NullPointerException np) {}
 	}
 	
 	@GetMapping("/admin/memberimgreset")
 	public String memberupdate(int menum) {
 		
 		int n=service.MemberImgReset(menum);
+		
+		System.out.println("이미지"+menum);
+		
+		if(menum == 0) {
+			return "redirect:/admin/member/list";
+		}
 		
 		if(n>0) {
 			return "redirect:/admin/member/list";
