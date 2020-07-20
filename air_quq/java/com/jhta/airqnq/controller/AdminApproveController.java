@@ -53,23 +53,35 @@ public class AdminApproveController {
 	
 	@RequestMapping(value = "/admin/epapproveOk" ,produces = "application/json;charset=utf-8")
 	@ResponseBody
-	public String adminepappOk(int hinum) {
-		String value="aa";
+	public String adminepappOk(int hinum ,int div_type) {
+		System.out.println(div_type);
+		/*	System.out.println(div_type + "           홛ㄱ인 ㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴ");
+		if(div_type==32) {
+			div_type=3;
+		}
+		if(div_type==42) {
+			div_type=4;
+		}*/
+		HashMap<String, Object> map=new HashMap<String, Object>();
+		map.put("hinum", hinum);
+	//	map.put("div_type", div_type);
 		JSONObject json=new JSONObject();
 		
-		int n=service.epappOk(hinum);
+		int n=1; //service.epappOk(map);
 		if(n==1) {
-			 value="승인 완료 되었습니다";
+			String value="승인 완료 되었습니다";
+			json.put("value", value);
 		}else {
-			value="오류!";
+			String value="오류!";
+			json.put("value", value);
 		}
-		json.put("value", value);
 		return json.toString();
 	}
 	
 	@RequestMapping(value = "/admin/epapproveNo" ,produces = "application/json;charset=utf-8")
 	@ResponseBody
 	public String adminepappNo(int hinum , int epappdivtype) {
+		
 		String value="aa";
 		int divtype=0;
 		if(epappdivtype==32) {

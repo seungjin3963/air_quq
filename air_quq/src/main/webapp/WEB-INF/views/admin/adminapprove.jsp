@@ -35,7 +35,7 @@
 			<table class="table eplisttable">
 				<thead>
 					<tr>
-						
+
 						<th>회원 번호</th>
 						<th>체험 유형</th>
 						<th>체험 주제</th>
@@ -48,7 +48,7 @@
 				<tbody>
 					<c:forEach var="i" items="${eplist }">
 						<tr class="epappTr">
-							
+
 							<td>${i.memnum }</td>
 							<c:choose>
 								<c:when test="${i.div_type==32 || i.div_type==39}">
@@ -64,7 +64,8 @@
 								class="btn btn-danger btn-icon-split epgetinfo"><input
 								type="hidden" value="${i.hinum }" class="epapphinum"></td>
 							<td><input type="button" value="승인 완료"
-								class="btn btn-danger btn-icon-split epapproveOk"></td>
+								class="btn btn-danger btn-icon-split epapproveOk"> <input
+								type="hidden" value="${i.div_type }" class="epappdivtype1"></td>
 							<td><input type="button" value="반려 하기"
 								class="btn btn-danger btn-icon-split epapproveNo"><input
 								type="hidden" value="${i.div_type }" class="epappdivtype"></td>
@@ -72,100 +73,67 @@
 					</c:forEach>
 				</tbody>
 			</table>
-			
+
 		</div>
 	</div>
-	
+
 	<!-- 상세보기 modal  영노-->
-	
-	<div class="modal fade" id="epappModal" role="dialog" >
+
+	<div class="modal fade" id="epappModal" role="dialog">
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">
 					<h3 class="modal-title">상세 보기</h3>
 				</div>
 				<div class="modal-body" id="epappModalBody">
-					<h3>체험 정보</h3><br>
+					<h3>체험 정보</h3>
+					<br>
 					<h5>▶&nbsp;&nbsp;체험 유형</h5>
-					<div class="epappinfo">
-						
-					</div>
-					<br>
-					<br>
+					<div class="epappinfo"></div>
+					<br> <br>
 					<h5>▶&nbsp;&nbsp;체험 주제</h5>
-					<div class="epappinfo">
-						
-					</div>
-						
-					<br>
-					<br>
+					<div class="epappinfo"></div>
+
+					<br> <br>
 					<h5>▶&nbsp;&nbsp;체험 제목</h5>
-					<div class="epappinfo">
-						
-					</div>
-						
-					<br>
-					<br>
+					<div class="epappinfo"></div>
+
+					<br> <br>
 					<h5>▶&nbsp;&nbsp;체험 주소</h5>
-					<div class="epappinfo">
-						
-					</div>
-						
-					<br>
-					<br>
+					<div class="epappinfo"></div>
+
+					<br> <br>
 					<h5>▶&nbsp;&nbsp;프로그램 설명</h5>
-					<div class="epappinfo">
-						
-					</div>
-						
-					<br>
-					<br>
+					<div class="epappinfo"></div>
+
+					<br> <br>
 					<h5>▶&nbsp;&nbsp;자기소개</h5>
-					<div class="epappinfo">
-						
-					</div>
-						
-					<br>
-					<br>
+					<div class="epappinfo"></div>
+
+					<br> <br>
 					<h5>▶&nbsp;&nbsp;체험 가격</h5>
-					<div class="epappinfo">
-						
-					</div>
-						
-					<br>
-					<br>
+					<div class="epappinfo"></div>
+
+					<br> <br>
 					<h5>▶&nbsp;&nbsp;체험 준비물</h5>
-					<div class="epappinfo">
-						
-					</div>
-					<br>
-					<br>
+					<div class="epappinfo"></div>
+					<br> <br>
 					<h5>▶&nbsp;&nbsp;진행 시간</h5>
-					<div class="epappinfo">
-						
-					</div>
-						
-					<br>
-					<br>
+					<div class="epappinfo"></div>
+
+					<br> <br>
 					<h3>커버 사진</h3>
-					<div id="epappmainimg" > 
-					
-					</div>
+					<div id="epappmainimg"></div>
 					<h3>갤러리 사진</h3>
-					
-					<br>
-					<br>	
-					<div id="epappModalimg">
-					
-					</div>
+
+					<br> <br>
+					<div id="epappModalimg"></div>
 				</div>
-				<div class="modal-footer">
-					
-				</div>
+				<div class="modal-footer"></div>
 			</div>
 		</div>
 	</div>
-	
+
 
 	<script type="text/javascript"
 		src="/resources/js/experience/ep_approve.js"></script>

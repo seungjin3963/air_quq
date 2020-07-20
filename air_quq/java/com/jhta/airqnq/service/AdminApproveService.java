@@ -22,8 +22,8 @@ public class AdminApproveService {
 	public EP_ManagementVo epappinfo(int hinum) {
 		return dao.epappinfo(hinum);
 	}
-	public int epappOk(int hinum) {
-		return dao.epappOk(hinum);
+	public int epappOk(HashMap<String, Object> map) {
+		return dao.epappOk(map);
 	}
 	public int epappNo(HashMap<String, Object> map) {
 		return dao.epappNo(map);

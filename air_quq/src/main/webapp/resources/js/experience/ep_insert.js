@@ -119,10 +119,19 @@ $(".ep_mater_icon").click(function(e) {
 });
 
 $(".eq_GoHome1").click(function() {
-	location.href = "/ep/GoHome?num=1";
+	$.ajax({
+		url:"/ep_insert",
+		dataType :"json",
+		success : function(data){
+			$('#ep_colse_modal').modal('hide');
+		},
+		error : function(err){
+			alert(err);
+		}
+	})
 });
 $(".eq_GoHome2").click(function() {
-	location.href = "/ep/GoHome?num=2";
+	location.href = "/ep/GoHome";
 });
 $(".eq_GoHome3").click(function() {
 	                       ////////////////////////////////////// 
@@ -148,7 +157,7 @@ function readInputFile(input, index) { /* 3  */
 		var reader = new FileReader();
 		reader.onload = function(e) {
 			$('.ep_file_label').eq(index).html(
-					"<img src=" + e.target.result + " name='srcvalue'>");
+					"<img src=" + e.target.result + " name='srcvalue'> <input type='hidden' name='index' value="+parseInt(index)+">");
 			$('.fileimg_modal').eq(index).html(
 					"<img src=" + e.target.result + " name='srcvalue'>");
 		}

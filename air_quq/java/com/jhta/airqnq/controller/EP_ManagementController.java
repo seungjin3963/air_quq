@@ -2,6 +2,8 @@ package com.jhta.airqnq.controller;
 
 import java.util.List;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.jhta.airqnq.service.AdminApproveService;
 import com.jhta.airqnq.service.EP_ManagementService;
 import com.jhta.airqnq.vo.EP_ManagementVo;
 
@@ -18,6 +21,7 @@ public class EP_ManagementController {
 	@Autowired
 	private EP_ManagementService service;
 
+	@Autowired private AdminApproveService imgservice;
 	@GetMapping("/ep_management/ep_listg")
 	public String ep_management(HttpSession session, Model model) {
 		
@@ -26,26 +30,20 @@ public class EP_ManagementController {
 		}else {
 			int menum = (int)session.getAttribute("menum");
 			List<EP_ManagementVo> vo = service.ep_insertlist(menum);
+			List<EP_ManagementVo> imgvo=service.ep_imglimit(menum);
 			model.addAttribute("vo", vo);
+			model.addAttribute("imgvo", imgvo);
 			return ".ep_management.ep_list";
 		}
 	}
 
 	@PostMapping("/ep_management/ep_list")
-	public String ep_management(int hinum, int sessionnum, HttpSession session, Model model) {
-		
-		EP_ManagementVo vo = service.ep_management(hinum);
-		session.setAttribute("ep_type", vo.getDiv_type());
-		session.setAttribute("ep_intr", vo.getIntr());
-		session.setAttribute("ep_loc", vo.getLoc());
-		session.setAttribute("ep_pro", vo.getProgram());
-		session.setAttribute("ep_mater", vo.getMater());
-		session.setAttribute("ep_price", vo.getPrice());
-		session.setAttribute("ep_times", vo.getTimes());
-		session.setAttribute("ep_title", vo.getTitle());
-		session.setAttribute("ep_housenum", hinum);
-		session.setAttribute("sessionnum", sessionnum);
-		model.addAttribute("ep_num", sessionnum);
+	public String ep_management(int hinum, int sessionnum, HttpSession session, Model model , HttpServletResponse response) {
+		int num=0;
+		EP_ManagementVo vo = service.ep_management(hinum);	
+		session.setAttribute("sessionVo", vo);	
+		List<EP_ManagementVo> epimglist=service.epimglist(hinum);
+		session.setAttribute("epimglist", epimglist);	
 		return ".experience.ep_insert.ep_type";
 	}
 	

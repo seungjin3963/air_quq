@@ -14,7 +14,7 @@
 		<form action="/experience/ep_insert/price_time" name="price_timeFrom">
 		<br> <input type="text" cols="10"
 			class="form-control bg-light border-3 small"
-			placeholder="평균 25.000원" name="price" value="${ep_price }"> <br>
+			placeholder="평균 25.000원" name="price" value="${sessionVo.price }"> <br>
 		<h2>클래스 이용 시간</h2>
 		<br>
 		<p>해당 체험 및 클래스를 이용하는데에 걸리는 시간을 설정해주세요.</p><br>
@@ -22,10 +22,10 @@
 			<legend>선택</legend>
 			<br>
 			
-			<input type="checkbox" name="ep_fiedset" value="2" <ep:if test="${ep_fiedset==2 }">checked="checked"</ep:if> onclick="doOpenCheck(this);">&nbsp; 2시간
-			<input type="checkbox" name="ep_fiedset" value="3" <ep:if test="${ep_fiedset==3 }">checked="checked"</ep:if> onclick="doOpenCheck(this);">&nbsp; 3시간
-			<input type="checkbox" name="ep_fiedset" value="5" <ep:if test="${ep_fiedset==5 }">checked="checked"</ep:if> onclick="doOpenCheck(this);">&nbsp; 5시간
-			<input type="checkbox" name="ep_fiedset" value="6" <ep:if test="${ep_fiedset==6 }">checked="checked"</ep:if> onclick="doOpenCheck(this);">&nbsp; 5시간 이상
+			<input type="checkbox" name="ep_fiedset" value="2" <ep:if test="${sessionVo.times==2 }">checked="checked"</ep:if> onclick="doOpenCheck(this);">&nbsp; 2시간
+			<input type="checkbox" name="ep_fiedset" value="3" <ep:if test="${sessionVo.times==3 }">checked="checked"</ep:if> onclick="doOpenCheck(this);">&nbsp; 3시간
+			<input type="checkbox" name="ep_fiedset" value="5" <ep:if test="${sessionVo.times==5 }">checked="checked"</ep:if> onclick="doOpenCheck(this);">&nbsp; 5시간
+			<input type="checkbox" name="ep_fiedset" value="6" <ep:if test="${sessionVo.times==6 }">checked="checked"</ep:if> onclick="doOpenCheck(this);">&nbsp; 5시간 이상
 		</fieldset>
 		<div>
 				<input type="button" value="선택하기" onclick="check_price_time()"

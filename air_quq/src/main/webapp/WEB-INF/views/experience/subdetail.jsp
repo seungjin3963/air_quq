@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<input type="button" onclick="ep_model()"
-			class="btn btn-danger btn-icon-split" style="float:right; width: 8%; height:30px;margin-right: 10px;" value="나가기">
+
 <!-- Page Heading -->
 <h1 class="h3 mb-4 text-gray-800">주제</h1>
 <div class="ep_type">

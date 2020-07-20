@@ -20,7 +20,7 @@
 			<br>
 			<input type="text" cols="10"
 				class="form-control bg-light border-3 small"
-				placeholder="게스트에게 자기 소개와 함께 체험 진행에 있어 나만의 특별함을 알려주세요" id="ep_info_intr" name="value" value="${ep_intr}">
+				placeholder="게스트에게 자기 소개와 함께 체험 진행에 있어 나만의 특별함을 알려주세요" id="ep_info_intr" name="value" value="${sessionVo.intr}">
 			<br>
 			<p>참고: 게스트는 해당 분야의 전문가를 찾고 있습니다. 전문성 기준에 대해 자세히 알아보세요.</p>
 

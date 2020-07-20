@@ -2,11 +2,10 @@
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="ep" uri="http://java.sun.com/jsp/jstl/core"%>
 
+
+
 <!-- Page Heading -->
-<input type="button" onclick="ep_model()"
-	class="btn btn-danger btn-icon-split"
-	style="float: right; width: 8%; height: 30px; margin-right: 10px;"
-	value="나가기">
+
 <h1 class="h3 mb-4 text-gray-800">체험 유형</h1>
 <div class="ep_type">
 	<div id="ep_type_div">
@@ -19,7 +18,7 @@
 			진행됩니다. <br> <br>
 		</p>
 		<ep:choose>
-			<ep:when test="${ep_type==31 || ep_type==39}">
+			<ep:when test="${sessionVo.div_type==31 || sessionVo.div_type==39}">
 				<a href="#" class="btn btn-danger btn-icon-split" id="ep_info_type">
 			</ep:when>
 			<ep:otherwise>
@@ -36,7 +35,7 @@
 		</div>
 		</a>
 		<ep:choose>
-			<ep:when test="${ep_type==41}">
+			<ep:when test="${sessionVo.div_type==41 || sessionVo.div_type==49}">
 				<a href="#" class="btn btn-danger btn-icon-split" id="ep_info_type1">
 			</ep:when>
 			<ep:otherwise>

@@ -13,7 +13,7 @@
 		<br>
 		<form action="/experience/ep_insert/location" name="locFrom">
 			<input type="text" class="form-control bg-light border-3 small"
-				id="ep_info_loc" placeholder="서울특별시, 서울특별시, 대한민국" name="value" value="${ep_loc }">
+				id="ep_info_loc" placeholder="서울특별시, 서울특별시, 대한민국" name="value" value="${sessionVo.loc }">
 
 			<br>
 			<p>회원님의 지역에서 호스팅하실 수 있어요!</p>

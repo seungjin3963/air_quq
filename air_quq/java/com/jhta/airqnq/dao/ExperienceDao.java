@@ -9,6 +9,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.jhta.airqnq.vo.EP_ManagementVo;
 import com.jhta.airqnq.vo.ExperienceVo;
 
 @Repository
@@ -70,5 +71,17 @@ public class ExperienceDao {
 	}
 	public int epImgFile(HashMap<String, Object> map) {
 		return sqlSessionTemplate.insert(NAMESPACE+".ep_imgfile" ,map);
+	}
+	public int epImgFileUpdate(HashMap<String, Object> map) {
+		return sqlSessionTemplate.update(NAMESPACE+".epImgFileUpdate",map);
+	}
+	
+	
+	
+	public int experienceInsert(EP_ManagementVo vo) {
+		return sqlSessionTemplate.insert(NAMESPACE + ".experienceInsert" , vo);
+	}
+	public int experienceUpdate(EP_ManagementVo vo) {
+		return sqlSessionTemplate.update(NAMESPACE+ ".experienceUpdate" , vo);
 	}
 } 

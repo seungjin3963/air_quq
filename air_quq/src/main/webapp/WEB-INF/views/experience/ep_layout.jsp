@@ -76,7 +76,7 @@ ${clicknum }
 						<!-- Nav Item - Utilities Collapse Menu -->
 
 						<ep:choose>
-							<ep:when test="${7<ep_num }">
+							<ep:when test="${7<sessionVo.sessionnum }">
 								<li class="nav-item"><a class="nav-link collapsed a_click"
 									style="pointer-events: auto; color: white; font-weight: bold;"
 									href="/experience/ep_insert/ep"> <span>체험 유형</span><i
@@ -91,7 +91,7 @@ ${clicknum }
 							</ep:otherwise>
 						</ep:choose>
 						<ep:choose>
-							<ep:when test="${9<ep_num }">
+							<ep:when test="${9<sessionVo.sessionnum }">
 								<li class="nav-item"><a class="nav-link collapsed a_click"
 									style="pointer-events: auto; color: white; font-weight: bold;"
 									href="/experience/ep_insert/type"> <span>주제</span><i
@@ -106,7 +106,7 @@ ${clicknum }
 							</ep:otherwise>
 						</ep:choose>
 						<ep:choose>
-							<ep:when test="${11<ep_num }">
+							<ep:when test="${11<sessionVo.sessionnum }">
 								<li class="nav-item"><a class="nav-link collapsed a_click"
 									style="pointer-events: auto; color: white; font-weight: bold;"
 									href="/experience/ep_insert/subject"> <span>위치</span><i
@@ -121,7 +121,7 @@ ${clicknum }
 							</ep:otherwise>
 						</ep:choose>
 						<ep:choose>
-							<ep:when test="${13<ep_num }">
+							<ep:when test="${13<sessionVo.sessionnum }">
 								<li class="nav-item"><a class="nav-link collapsed a_click"
 									style="pointer-events: auto; color: white; font-weight: bold;"
 									href="/experience/ep_insert/location"> <span>자기소개</span><i
@@ -136,7 +136,7 @@ ${clicknum }
 							</ep:otherwise>
 						</ep:choose>
 						<ep:choose>
-							<ep:when test="${15<ep_num }">
+							<ep:when test="${15<sessionVo.sessionnum }">
 								<li class="nav-item"><a class="nav-link collapsed a_click"
 									style="pointer-events: auto; color: white; font-weight: bold;"
 									href="/experience/ep_insert/introduce"> <span>프로그램
@@ -152,7 +152,7 @@ ${clicknum }
 							</ep:otherwise>
 						</ep:choose>
 						<ep:choose>
-							<ep:when test="${17<ep_num }">
+							<ep:when test="${17<sessionVo.sessionnum }">
 								<li class="nav-item"><a class="nav-link collapsed a_click"
 									style="pointer-events: auto; color: white; font-weight: bold;"
 									href="/experience/ep_insert/program"> <span>게스트 준비물</span><i
@@ -167,7 +167,7 @@ ${clicknum }
 							</ep:otherwise>
 						</ep:choose>
 						<ep:choose>
-							<ep:when test="${19<ep_num }">
+							<ep:when test="${19<sessionVo.sessionnum }">
 								<li class="nav-item"><a class="nav-link collapsed a_click"
 									style="pointer-events: auto; color: white; font-weight: bold;"
 									href="/experience/ep_insert/materials"> <span>제목</span><i
@@ -182,7 +182,7 @@ ${clicknum }
 							</ep:otherwise>
 						</ep:choose>
 						<ep:choose>
-							<ep:when test="${21<ep_num }">
+							<ep:when test="${21<sessionVo.sessionnum }">
 								<li class="nav-item"><a class="nav-link collapsed a_click"
 									style="pointer-events: auto; color: white; font-weight: bold;"
 									href="/experience/ep_insert/title"> <span>가격 및 체험시간</span><i
@@ -197,7 +197,7 @@ ${clicknum }
 							</ep:otherwise>
 						</ep:choose>
 						<ep:choose>
-							<ep:when test="${23<ep_num }">
+							<ep:when test="${23<sessionVo.sessionnum }">
 								<li class="nav-item"><a class="nav-link collapsed a_click"
 									style="pointer-events: auto; color: white; font-weight: bold;"
 									href="/experience/ep_insert/price_time"> <span>사진</span><i
@@ -321,7 +321,7 @@ ${clicknum }
 				</div>
 				<div class="modal-body fileimg_modalBody" style="height: 700px; overflow: scroll;">
 					<ep:choose>
-						<ep:when test="${ep_type==31}">
+						<ep:when test="${sessionVo.div_type==31 || sessionVo.div_type==39}">
 							<h6>체험 유형</h6>
 							<ul>
 								<li>온라인 체험</li>
@@ -336,35 +336,35 @@ ${clicknum }
 					</ep:choose>
 					<h6>체험 주제</h6>
 					<ul>
-						<li>${subjectname} > ${subjectdename }</li>
+						<li>${sessionVo.subname}</li>
 					</ul>
 					<h6>제목</h6>
 					<ul>
-						<li style="margin: auto;">${ep_title }</li>
+						<li style="margin: auto;">${sessionVo.title }</li>
 					</ul>
 					<h6>상세 주소</h6>
 					<ul>
-						<li>${ep_loc }</li>
+						<li>${sessionVo.loc }</li>
 					</ul>
 					<h6>자기 소개</h6>
 					<ul>
-						<li>${ep_intr }</li>
+						<li>${sessionVo.intr }</li>
 					</ul>
 					<h6>프로그램 설명</h6>
 					<ul>
-						<li>${ep_pro }</li>
+						<li>${sessionVo.program }</li>
 					</ul>
 					<div>
 						<div>
 							<h6>가격</h6>
 							<ul>
-								<li>${ep_price }</li>
+								<li>${sessionVo.price }</li>
 							</ul>
 						</div>
 						<div>
 							<h6>프로그램 준비물</h6>
 							<ul>
-								<ep:forEach var="i" items="${ep_mater }">
+								<ep:forEach var="i" items="${sessionVo.mater }">
 									<li>${i }</li>
 								</ep:forEach>
 							</ul>
@@ -373,18 +373,18 @@ ${clicknum }
 					<div>
 						<h6>진행 시간</h6>
 						<ul>
-							<li>${ep_fiedset }시간</li>
+							<li>${sessionVo.times }시간</li>
 						</ul>
 					</div>
 					<h3>이미지 사진</h3>
 					<br>
-					<div class="fileimg_modal"></div>
-					<div class="fileimg_modal"></div>
-					<div class="fileimg_modal"></div>
-					<div class="fileimg_modal"></div>
-					<div class="fileimg_modal"></div>
-					<div class="fileimg_modal"></div>
-					<div class="fileimg_modal"></div>
+					<div class="fileimg_modal"><ep:if test="${!empty epimglist }"><img src="/resources/img/house_img/${epimglist[0].img}"></ep:if></div>
+					<div class="fileimg_modal"><ep:if test="${!empty epimglist }"><img src="/resources/img/house_img/${epimglist[1].img}"></ep:if></div>
+					<div class="fileimg_modal"><ep:if test="${!empty epimglist }"><img src="/resources/img/house_img/${epimglist[2].img}"></ep:if></div>
+					<div class="fileimg_modal"><ep:if test="${!empty epimglist }"><img src="/resources/img/house_img/${epimglist[3].img}"></ep:if></div>
+					<div class="fileimg_modal"><ep:if test="${!empty epimglist }"><img src="/resources/img/house_img/${epimglist[4].img}"></ep:if></div>
+					<div class="fileimg_modal"><ep:if test="${!empty epimglist }"><img src="/resources/img/house_img/${epimglist[5].img}"></ep:if></div>
+					<div class="fileimg_modal"><ep:if test="${!empty epimglist }"><img src="/resources/img/house_img/${epimglist[6].img}"></ep:if></div>
 				
 				</div>
 				<div class="modal-footer">

@@ -16,9 +16,10 @@
 		</div>
 	</div>
 	<ep:forEach var="i" items="${vo }">
-		<form  method="post" name="ManagementFrom" action="">
-			<input type="hidden" name="hinum" value="${i.hinum }" class="ep_hinum_val">
-			<input type="hidden" name="sessionnum" value="${i.sessionnum }">
+		<form method="post" name="ManagementFrom" action="">
+			<input type="hidden" name="hinum" value="${i.hinum }"
+				class="ep_hinum_val"> <input type="hidden" name="sessionnum"
+				value="${i.sessionnum }">
 			<div class="row ep_mangement_list">
 
 				<div class="col-md-9">
@@ -34,11 +35,11 @@
 							</ep:otherwise>
 						</ep:choose>
 					</div>
-						<br>
-						<ep:if test="${i.div_type==31 || i.div_type==39}">▶ 온라인 체험</ep:if>
-						<ep:if test="${i.div_type==41 || i.div_type==49}">▶ 대면 체험</ep:if>
 					<br>
-					<br>
+					
+					<ep:if test="${i.div_type==31 || i.div_type==39}">▶ 온라인 체험</ep:if>
+					<ep:if test="${i.div_type==41 || i.div_type==49}">▶ 대면 체험</ep:if>
+					<br> <br>
 					<h4>
 						<ep:choose>
 							<ep:when test="${i.title==null }">
@@ -53,16 +54,23 @@
 					<br>
 				</div>
 				<div class="col-md-3">
-					<div class="ep_mangement_list_img"></div>
+					<div class="ep_mangement_list_img">
+						<ep:forEach var="img" items="${imgvo }">
+							<ep:if test="${i.hinum==img.hinum }">
+								<img src="/resources/img/house_img/${img.img }" />
+							</ep:if>
+						</ep:forEach>
+					</div>
 				</div>
 			</div>
 			<div class="row ep_mangement_list_btn">
-				
-				<input type="button" value="계속" class="btn btn-danger btn-icon-split actionA"  > 
-				
-				<input type="button" value="삭제" class="btn btn-danger btn-icon-split actionB" >
+
+				<input type="button" value="계속"
+					class="btn btn-danger btn-icon-split actionA"> <input
+					type="button" value="삭제"
+					class="btn btn-danger btn-icon-split actionB">
 			</div>
-			
+
 		</form>
 	</ep:forEach>
 </div>

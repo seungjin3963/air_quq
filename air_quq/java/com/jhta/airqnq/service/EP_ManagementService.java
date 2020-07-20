@@ -24,4 +24,10 @@ public class EP_ManagementService {
 	public int ep_list_delete(int hinum) {
 		return dao.ep_list_delete(hinum);
 	}
+	public List<EP_ManagementVo> ep_imglimit(int memnum){
+		return dao.ep_imglimit(memnum);
+	}
+	public List<EP_ManagementVo> epimglist(int hinum) {
+		return dao.epimglist(hinum);
+	}
 }

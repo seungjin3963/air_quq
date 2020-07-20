@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.jhta.airqnq.dao.ExperienceDao;
+import com.jhta.airqnq.vo.EP_ManagementVo;
 import com.jhta.airqnq.vo.ExperienceVo;
 
 @Service
@@ -66,5 +67,17 @@ public class ExperienceService {
 	}
 	public int epImgFile(HashMap<String, Object> map) {
 		return dao.epImgFile(map);
+	}
+	public int epImgFileUpdate(HashMap<String, Object> map) {
+		return dao.epImgFileUpdate(map);
+	}
+	
+	
+	
+	public int experienceInsert(EP_ManagementVo vo) {
+		return dao.experienceInsert(vo);
+	}
+	public int experienceUpdate(EP_ManagementVo vo) {
+		return dao.experienceUpdate(vo);
 	}
 }

@@ -24,8 +24,8 @@ public class AdminApproveDao {
 	public EP_ManagementVo epappinfo(int hinum) {
 		return sqlSessionTemplate.selectOne(NAMESPACE+".epappinfo" , hinum);
 	}
-	public int epappOk(int hinum) {
-		return sqlSessionTemplate.update(NAMESPACE+".epappOk" , hinum);
+	public int epappOk(HashMap<String, Object> map) {
+		return sqlSessionTemplate.update(NAMESPACE+".epappOk" , map);
 	}
 	public int epappNo(HashMap<String, Object> map) {
 		return sqlSessionTemplate.update(NAMESPACE+".epappNo" , map);

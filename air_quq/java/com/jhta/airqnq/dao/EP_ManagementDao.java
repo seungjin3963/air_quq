@@ -27,6 +27,12 @@ public class EP_ManagementDao {
 		 sqlSessionTemplate.delete(NAMESPACE+".ep_list_delete2" , hinum);
 		return sqlSessionTemplate.update(NAMESPACE+".ep_list_delete1" , hinum);
 	}
+	public List<EP_ManagementVo> ep_imglimit(int memnum){
+		return sqlSessionTemplate.selectList(NAMESPACE+".ep_imglimit",memnum);
+	}
+	public List<EP_ManagementVo> epimglist(int hinum) {
+		return sqlSessionTemplate.selectList(NAMESPACE+".apappimg",hinum);
+	}
 	
 	
 	

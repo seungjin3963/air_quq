@@ -18,7 +18,7 @@
 		</p>
 		<p>한 번에 하나씩 추가하거나 비슷한 항목을 함께 묶으세요.</p>
 		<form action="/experience/ep_insert/materials">
-			<ep:forEach var="i" items="${ep_mater}">
+			<ep:forEach var="i" items="${sessionVo.mater}">
 				<div><i class='fas fa-times ep_mater_icon'></i><br><input type='text' class='form-control bg-light border-0 small ep_mater_ic' name='value' value="${i }" placeholder='여기에 항목을 입력하세요'><br></div>
 			</ep:forEach>
 			<div></div>

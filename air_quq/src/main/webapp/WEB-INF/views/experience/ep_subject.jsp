@@ -2,8 +2,6 @@
 	pageEncoding="UTF-8"%>
 	<%@taglib prefix="ep" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<input type="button" onclick="ep_model()"
-			class="btn btn-danger btn-icon-split" style="float:right; width: 8%; height:30px;margin-right: 10px;" value="나가기">
 <h1 class="h3 mb-4 text-gray-800">주요 주제 선택</h1>
 <br>
 

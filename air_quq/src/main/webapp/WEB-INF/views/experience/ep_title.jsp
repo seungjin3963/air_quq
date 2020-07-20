@@ -12,7 +12,7 @@
 		<br>
 		<form action="/experience/ep_insert/title" name="titleFrom">
 			<input type="text" class="form-control bg-light border-3 small"
-				placeholder="체험 제목을 입력하세요" id="ep_info_title" name="value" value="${ep_title }"> <br>
+				placeholder="체험 제목을 입력하세요" id="ep_info_title" name="value" value="${sessionVo.title }"> <br>
 			<p>체험의 제목을 입력하세요.</p>
 			<div>
 				<input type="button" value="선택하기" onclick="check_title()"

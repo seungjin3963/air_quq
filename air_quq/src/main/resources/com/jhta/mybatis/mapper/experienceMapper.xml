@@ -18,14 +18,12 @@
 	</select>
 	
 	<insert id="ep_temporary" parameterType="int">
-		insert into house_info(hinum,menum,`div`,del_yn) values(0,#{loginum},3,'y')
+		insert into house_info(hinum,menum,`div`,del_yn,manager_check) values(0,#{loginum},3,'n',1)
 	</insert>
 	<select id="ep_hinum" resultType="int">
 		SELECT hinum FROM house_info order by hinum desc LIMIT 1
 	</select>
-	<insert id="insertexperience" parameterType="hashmap">
-		insert into experience_info(einum,hinum,sunum,memnum,people,del_yn) values(0,#{hinum},175,#{loginnum},0,'y')
-	</insert>
+
 	
 	<update id="ep_type" parameterType="hashmap">
 		update experience_info set div_type=#{div} where hinum=#{hinum}
@@ -67,6 +65,23 @@
 		update experience_info set sessionnum=#{sessnum} where hinum=#{hinum}
 	</update>
 	<insert id="ep_imgfile" parameterType="hashmap">
-		insert into house_img values(0,#{hinum},#{file},'y',#{ordernum});
+		insert into house_img values(0,#{hinum},#{file},'n',#{ordernum});
+	</insert>
+	<update id="epImgFileUpdate" parameterType="hashmap">
+		update house_img set img=#{file} where hinum=#{hinum} and ordernum=#{ordernum}
+	</update>
+	
+	
+	
+	
+	
+	
+	<insert id="experienceInsert" parameterType="com.jhta.airqnq.vo.ExperienceVo">
+		insert into experience_info(einum,hinum,sunum,memnum,people,del_yn,div_type,loc,intr,program,title,price,times,sessionnum,mater) 
+		values(0,#{hinum},#{sunum},#{memnum},0,'n',#{div_type},#{loc} ,#{intr},#{program},#{title},#{price},#{times},#{sessionnum},#{mater})
+	</insert>
+	<insert id="experienceUpdate" parameterType="com.jhta.airqnq.vo.ExperienceVo">
+		update experience_info set div_type=#{div_type},sunum=#{sunum},loc=#{loc},intr=#{intr},program=#{program},title=#{title},mater=#{mater},
+		price=#{price},times=#{times},sessionnum=#{sessionnum} where hinum=#{hinum}
 	</insert>
 </mapper>

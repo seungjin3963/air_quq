@@ -60,13 +60,14 @@ $(".epgetinfo").click(function(e) {
 
 
 $(".epapproveOk").click(function(){
-	var index = $(".epapproveOk").index(this);
+	var index = $(".epapproveOk").index(this);	
 	var eplisttable=$(this).parent().parent();
 	var hinum = document.getElementsByClassName("epapphinum")[index].value;
+	var epappdivtype = document.getElementsByClassName("epappdivtype")[index].value;	
 	$.ajax({
 		url : '/admin/epapproveOk',
 		dataType : 'json',
-		data : {hinum : hinum},
+		data : {hinum : hinum, epappdivtype : epappdivtype},
 		success : function(data){	
 			alert(data.value);
 			eplisttable.remove()
@@ -75,7 +76,8 @@ $(".epapproveOk").click(function(){
 			alert(err);
 		}
 	});
-});
+})
+
 
 $(".epapproveNo").click(function(){
 	var index = $(".epapproveNo").index(this);	
