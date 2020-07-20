@@ -29,7 +29,7 @@
 								<td>${list.price }</td>
 								<td>${list.times }</td>
 								<td>
-									<a href="/epOnline/epOnline" class="epIcon">
+									<a href="/epOnline/epOnline?einum=${list.einum }" class="epIcon">
 										<i class="fas fa-photo-video fa-2x"></i>
 									</a>
 								</td>
