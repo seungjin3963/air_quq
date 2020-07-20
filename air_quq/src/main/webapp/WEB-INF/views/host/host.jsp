@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
+<link rel="stylesheet" type="text/css" href="/resources/css/host/fileupload.css">
 <c:if test="${ hostStep == 1 }">
 	<div class="progress">
 		<div class="progress-bar progress-bar-striped progress-bar-animated"
@@ -92,9 +92,8 @@
 					<textarea class="form-control" aria-label="With textarea"
 						name="hostContent" rows="16"></textarea>
 				</div>
-				<br> <input type="hidden" value="3" name="next"> <input
-					type="submit" class="btn btn-outline-primary" role="button"
-					value="다음 단계로 진행">
+				<br> <input type="hidden" value="3" name="next"> 
+				<input type="submit" class="btn btn-outline-primary" role="button" value="다음 단계로 진행">
 			</form>
 		</c:if>
 		<c:if test="${ hostStep == 3 }">
@@ -176,32 +175,55 @@
 			</script>
 		</c:if>
 		<c:if test="${ hostStep == 4 }">
+		<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=406ad69f366b925b30509f2bc766e47f&libraries=services"></script>
 			<h1 class="display-4">상세 주소 및 숙소 사진 입력해주세요.</h1>
 			<p class="lead">숙소에대한 상세한 주소입력</p>
 			<hr class="my-4">
-				<div class="form-group col-md-6">
-			      <label for="detailAdress">주소</label>
-			      <input type="text" class="form-control" id="searchDetail" placeholder="클릭하여 검색하기">
-			    </div>
-			    <div class="form-group col-md-6">
-			      <label for="detailAdress">상세 주소 입력</label>
-			      <input type="text" class="form-control" placeholder="동/호 까지포함된 상세한 주소입력">
-			    </div>
-			    <div class="form-group col-md-6">
-			      <label for="adress">도로명 주소</label>
-			      <input type="text" class="form-control" id="roadAddr">
-			    </div>
-			    <div class="form-group col-md-2">
-			      <label for="zipcode">우편번호</label>
-			      <input type="text" class="form-control" id="zipcode">
-			    </div>
-			    
+			<form action="/host/regist/4" method="post" enctype="multipart/form-data" id="host_regist4">
+			<div class="row">
+				<div class="col-xs-8 col-sm-6">
+					<div class="form-group col-md-8">
+				      <label for="detailAdress">주소</label>
+				      <input type="text" class="form-control" id="searchDetail" placeholder="클릭하여 검색하기" name="address">
+				    </div>
+				    <div class="form-group col-md-8">
+				      <label for="detailAdress">상세 주소 입력</label>
+				      <input type="text" class="form-control" placeholder="동/호 까지포함된 상세한 주소입력" name="addressDetail">
+				    </div>
+				    <div class="form-group col-md-8">
+				      <label for="adress">도로명 주소</label>
+				      <input type="text" class="form-control" id="roadAddr">
+				    </div>
+				    <div class="form-group col-md-4">
+				      <label for="zipcode">우편번호</label>
+				      <input type="text" class="form-control" id="zipcode">
+				    </div>
+				</div>
+				<div class="col-xs-8 col-sm-6">
+					<div id="map" style="width:500px;height:400px;border: 1px solid;"></div>
+				</div>
+			</div>
+			<input type="hidden" name="lat">
+			<input type="hidden" name="lnt">
 			<hr class="my-4">
 				<p class="lead">숙소 이미지를 올려주세요.</p>
+				<br>
+				<div class="container">
+					<div class="row">
+						<div class="col-sm-2 imgUp">
+							<div class="imagePreview"></div>
+								<label class="btn btn-primary">
+									Upload<input multiple="multiple" type="file" class="uploadFile img" value="Upload Photo" style="width: 0px;height: 0px;overflow: hidden;" name="file1">
+								</label>
+							</div><!-- col-2 -->
+						<i class="fa fa-plus imgAdd"></i>
+					</div><!-- row -->
+				</div><!-- container -->
 				
 				<br> <input type="hidden" value="4" name="next"> <input type="submit" class="btn btn-outline-primary" role="button" value="완료">
 			</form>
 			<script type="text/javascript" src="/resources/js/passport/passportDetail.js"></script>
+			<script type="text/javascript" src="/resources/js/host/fileupload.js"></script>
 		</c:if>
 	</div>
 </div>
