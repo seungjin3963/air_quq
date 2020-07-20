@@ -8,6 +8,10 @@
 		 #{content}, #{addr}, #{addr_detail}, #{price}, #{max_n}, #{bedroom}, #{checkin_time}, #{div}, #{lat}, #{lnt}, #{startdate}, #{enddate}, "n")
 	</insert>
 	
+	<insert id="hostImgInsert" parameterType="house_img">
+		insert into house_img  values(0, #{hinum}, #{img}, #{del_yn}, #{ordernum})
+	</insert>
+	
 	<select id="hostselect" resultType="house_info">
 		select * from house_info
 	</select>
