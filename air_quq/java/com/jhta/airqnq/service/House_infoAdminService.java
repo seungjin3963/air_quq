@@ -22,7 +22,15 @@ public class House_infoAdminService {
 		return dao.HouseCnt(map);
 	}
 	
-	public HouseInfoVo OneInfoSelect(int hinum) {
-		return dao.OneInfoSelect(hinum);
+	public HouseInfoVo HostOne(int hinum) {
+		return dao.HostOne(hinum);
+	}
+	
+	public String HouseImgOne(HashMap<String, Object> map) {
+		return dao.HouseImgOne(map);
+	}
+
+	public List<String> HouseImglist(HashMap<String, Object> map) {
+		return dao.HouseImglist(map);
 	}
 }

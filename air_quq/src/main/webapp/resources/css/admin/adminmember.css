@@ -2,7 +2,6 @@
 
 label {
 	width: 130px;
-	text-align: center;
 }
 
 /* 최상의 div 위로 올리기 */
@@ -36,7 +35,6 @@ label {
 	border: none;
 	outline: none;
 	background: none;
-	text-align: center;
 }
 
 /* 페이징 숫자 정렬 */

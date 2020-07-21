@@ -2,6 +2,11 @@
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <style>
+	label {
+		width: 225px;
+		text-align: left;
+	}
+	
 	/* 최상의 div 위로 올리기 */
 	#divmain {
 		margin-top: 20px;
@@ -52,8 +57,27 @@
 		border: none;
 		outline: none;
 		background: none;
-		text-align: center;
 	}
+	
+	/* 상세정보 정렬 */
+	#modalscroll input {
+		width: 230px;
+	}
+	
+	/* 스크롤 */
+	#modalscroll{
+		overflow: auto; 
+		width: 700px; 
+		height: 900px;
+	}
+	
+	#contentscroll{
+		overflow:auto; 
+		width: 465px; 
+		height: 300px;
+		color: black;
+	}
+	
 </style>
 <div class="container" id="divmain">
 	<h1 id="fontcenter">호스트가 등록한 집 목록</h1>
@@ -76,6 +100,7 @@
 			<th>가격</th>
 			<th>시작날짜</th>
 			<th>마지막날짜</th>
+			<th>삭제여부</th>
 		</tr>
 		<c:forEach var="vo" items="${list }">
 			<tr class="hovertr">
@@ -85,6 +110,14 @@
 				<td>${vo.price }</td>
 				<td>${vo.startdate }</td>
 				<td>${vo.enddate }</td>
+				<c:choose>
+					<c:when test="${vo.del_yn == 'n'}">
+						<td>일반</td>
+					</c:when>
+					<c:otherwise>
+						<td>삭제</td>
+					</c:otherwise>
+				</c:choose>
 			</tr>
 		</c:forEach>
 	</table>
@@ -114,13 +147,34 @@
 
 <div class="modal fade" id="house_infomodal" role="dialog">
 	<div class="modal-dialog">
-		<div class="modal-content">
+		<div class="modal-content" id="modalscroll">
 			<div class="modal-header">
 				<h3 class="modal-title">상세보기</h3>
 				<button type="button" class="close" data-dismiss="modal" class="exitbutton">X</button>
 			</div>
-			<div class="modal-body" id="fontcenter">
-				
+			<div class="modal-body">
+				<img src=""><br>
+				<label>제목</label><br>
+				<input type="text" readonly="readonly" class="exitbutton"><br>
+				<label>내용</label>
+				<div id="contentscroll"></div>
+				<label>주소</label><br>
+				<input type="text" readonly="readonly" class="exitbutton"><br>
+				<input type="text" readonly="readonly" class="exitbutton"><br>
+				<label>가격</label><br>
+				<input type="text" readonly="readonly" class="exitbutton"><br>
+				<label>침대수</label><br>
+				<input type="text" readonly="readonly" class="exitbutton"><br>
+				<label>체크인 시간</label><br>
+				<input type="text" readonly="readonly" class="exitbutton"><br>
+				<label>시작날짜</label><br>
+				<input type="text" readonly="readonly" class="exitbutton"><br>
+				<label>마지막날짜</label><br>
+				<input type="text" readonly="readonly" class="exitbutton"><br>
+				<div id="fontcenter">
+					<button type="button" class="btn btn-danger">삭제</button>
+					<button type="button" class="btn btn-danger">취소</button>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -134,7 +188,7 @@
 	});
 	
 	$("#previous").click(function(){
-		var totalpage=$("#pagetotal").val();
+		var pagenum=$("#pageNum").val();
 		location.href="/admin/house_info/list?pageNum="+(Number(pagenum)-1);
 	});
 	
@@ -150,9 +204,43 @@
 		$("#selecttext").val("");
 	});
 	
+	/* 대한민국 표준시 yyy-mm-dd로 변경 */
+	var datechange=function(datetime){
+		return datetime.toISOString().slice(0, 10);
+	}
+	
 	/* 상세정보 modal 나오게 하기 */
 	$(".hovertr").click(function(){
 		var hinum=$(this).children().eq(0).html();
+		
+		$.get("/json/houseone", {"hinum":hinum}, function(data) {
+				console.log(data);
+			$.each(data, function(key, value) {
+				if(key == "houseimg"){
+					console.log(value);
+					$(".modal-body").children().eq(0).prop("src",value)
+				}
+				if(key == "vo"){
+					var starttemp=new Date(value.startdate);
+					var endtemp=new Date(value.enddate);
+					
+					var startdate=datechange(starttemp);
+					var enddate=datechange(endtemp);
+					
+					$(".modal-body").children().eq(4).val(value.title);
+					$(".modal-body").children().eq(7).text(value.content);
+					$(".modal-body").children().eq(10).val(value.addr);
+					$(".modal-body").children().eq(12).val(value.addr_detail);
+					$(".modal-body").children().eq(16).val(value.price);
+					$(".modal-body").children().eq(20).val(value.bedroom);
+					$(".modal-body").children().eq(24).val(value.checkin_time);
+					$(".modal-body").children().eq(28).val(startdate);
+					$(".modal-body").children().eq(32).val(enddate);	
+				}
+				
+			});
+		
+		}, "json")
 		
 		$("#house_infomodal").modal();
 	});

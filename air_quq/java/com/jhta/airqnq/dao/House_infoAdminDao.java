@@ -24,8 +24,16 @@ public class House_infoAdminDao {
 		return sqlsessiontemplate.selectOne(NAMESPACE+".hostcnt", map);
 	}
 	
-	public HouseInfoVo OneInfoSelect(int hinum) {
-		return sqlsessiontemplate.selectOne(NAMESPACE+".hostNumSelect", hinum);
+	public HouseInfoVo HostOne(int hinum) {
+		return sqlsessiontemplate.selectOne(NAMESPACE+".hostone", hinum);
+	}
+	
+	public String HouseImgOne(HashMap<String, Object> map) {
+		return sqlsessiontemplate.selectOne(NAMESPACE+".houseimg", map);
+	}
+	
+	public List<String> HouseImglist(HashMap<String, Object> map){
+		return sqlsessiontemplate.selectList(NAMESPACE+"..houseimg", map);
 	}
 
 }

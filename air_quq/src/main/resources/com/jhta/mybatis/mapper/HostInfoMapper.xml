@@ -43,4 +43,18 @@
 		<include refid="search"/>
 	</select>
 	
+	<select id="hostone" parameterType="int" resultType="house_info">
+		select * from house_info where hinum=#{hinum} and manager_check=1
+	</select>
+	
+	<select id="houseimg" parameterType="hashmap" resultType="String">
+		select img from house_img 
+		<if test="ordernum == 1">
+			where hinum=#{hinum} and ordernum=1;
+		</if>
+		<if test="ordernum != 1">
+			where hinum=#{hunum}
+		</if>		
+	</select>
+	
 </mapper>
