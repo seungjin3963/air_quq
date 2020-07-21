@@ -60,15 +60,14 @@
 							</c:choose>
 							<td>${i.subname }</td>
 							<td>${i.title }</td>
+							<input type="hidden" value="${i.hinum }" class="epapphinum">
+							<input type="hidden" value="${i.div_type }" class="epappdivtype">
 							<td><input type="button" value="상세 보기"
-								class="btn btn-danger btn-icon-split epgetinfo"><input
-								type="hidden" value="${i.hinum }" class="epapphinum"></td>
+								class="btn btn-danger btn-icon-split epgetinfo"></td>
 							<td><input type="button" value="승인 완료"
-								class="btn btn-danger btn-icon-split epapproveOk"> <input
-								type="hidden" value="${i.div_type }" class="epappdivtype1"></td>
+								class="btn btn-danger btn-icon-split epapproveOk"></td>
 							<td><input type="button" value="반려 하기"
-								class="btn btn-danger btn-icon-split epapproveNo"><input
-								type="hidden" value="${i.div_type }" class="epappdivtype"></td>
+								class="btn btn-danger btn-icon-split epapproveNo"></td>
 						</tr>
 					</c:forEach>
 				</tbody>
@@ -76,7 +75,33 @@
 
 		</div>
 	</div>
-
+	<!-- 반려 이유  modal  영노-->
+	<div class="modal fade" id="reasonModal" role="dialog">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h3 class="modal-title">반려 사유</h3>
+				</div>
+			
+				<div class="modal-body">
+					<form >
+						<br>
+						<h4>반려 사유를 적어주세요</h4>
+						<br>
+						<div class="form-group">
+							<label for="message-text" class="col-form-label">Message:</label><br>
+							<textarea class="form-control" rows="8" id="message-text"></textarea>
+						</div>
+					</form>
+					<div id="reasonModalB"></div>
+				</div>
+				<div class="modal-footer">
+					<input type="button" value="취 소" class="btn btn-danger btn-icon-split epappmodalBtn" id="reasonModalC">
+					<input type="button" value="반려 등록" class="btn btn-danger btn-icon-split epappmodalBtn" id="reasonModalO"> 
+				</div>
+			</div>
+		</div>
+	</div>
 	<!-- 상세보기 modal  영노-->
 
 	<div class="modal fade" id="epappModal" role="dialog">

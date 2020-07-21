@@ -283,6 +283,7 @@ public class ExperiencePageController {
 	@RequestMapping("/ep/GoHome")
 	public  String epGoHome( HttpSession session) {
 		session.removeAttribute("sessionVo");
+		session.removeAttribute("epimglist");
 			return ".home";
 	}
 	
@@ -315,10 +316,10 @@ public class ExperiencePageController {
 		int num = 0;
 		int ordernum = 0;
 		EP_ManagementVo sessionVo = (EP_ManagementVo) session.getAttribute("sessionVo");
-		if (sessionVo.getDiv_type()==31) {
+		if (sessionVo.getDiv_type()==31 || sessionVo.getDiv_type()==39) {
 			sessionVo.setDiv_type(32);
 		}
-		if (sessionVo.getDiv_type()==41) {
+		if (sessionVo.getDiv_type()==41 || sessionVo.getDiv_type()==49) {
 			sessionVo.setDiv_type(42);
 		}
 		if(sessionVo.getHinum()==0 ) {
@@ -383,8 +384,8 @@ public class ExperiencePageController {
 			}
 		}
 		
-		
 		session.removeAttribute("sessionVo");
+		session.removeAttribute("epimglist");
 		return ".home";
 	}
 }

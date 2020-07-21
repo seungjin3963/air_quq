@@ -53,21 +53,19 @@ public class AdminApproveController {
 	
 	@RequestMapping(value = "/admin/epapproveOk" ,produces = "application/json;charset=utf-8")
 	@ResponseBody
-	public String adminepappOk(int hinum ,int div_type) {
-		System.out.println(div_type);
-		/*	System.out.println(div_type + "           홛ㄱ인 ㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴ");
-		if(div_type==32) {
-			div_type=3;
+	public String adminepappOk(int hinum ,int epappdivtype) {
+		if(epappdivtype==32 || epappdivtype==39) {
+			epappdivtype=3;
 		}
-		if(div_type==42) {
-			div_type=4;
-		}*/
+		if(epappdivtype==42 || epappdivtype==49) {
+			epappdivtype=4;
+		}
 		HashMap<String, Object> map=new HashMap<String, Object>();
 		map.put("hinum", hinum);
-	//	map.put("div_type", div_type);
+		map.put("div_type", epappdivtype);
 		JSONObject json=new JSONObject();
 		
-		int n=1; //service.epappOk(map);
+		int n=service.epappOk(map);
 		if(n==1) {
 			String value="승인 완료 되었습니다";
 			json.put("value", value);
@@ -80,9 +78,9 @@ public class AdminApproveController {
 	
 	@RequestMapping(value = "/admin/epapproveNo" ,produces = "application/json;charset=utf-8")
 	@ResponseBody
-	public String adminepappNo(int hinum , int epappdivtype) {
+	public String adminepappNo(int hinum , int epappdivtype , String textAreavalue) {
 		
-		String value="aa";
+		String value="";
 		int divtype=0;
 		if(epappdivtype==32) {
 			divtype=39;
@@ -92,6 +90,7 @@ public class AdminApproveController {
 		HashMap<String, Object> map=new HashMap<String, Object>();
 		map.put("divtype", divtype);
 		map.put("hinum", hinum);
+		map.put("text", textAreavalue);
 		int n=service.epappNo(map);
 		if(n==1) {
 			value="반려 되엇습니다";

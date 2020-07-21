@@ -59,16 +59,19 @@ $(".epgetinfo").click(function(e) {
 });
 
 
-$(".epapproveOk").click(function(){
-	var index = $(".epapproveOk").index(this);	
+$(".epapproveOk").click(function(e){
+	
+	var index = $(e.target).index(this);	
+	
 	var eplisttable=$(this).parent().parent();
 	var hinum = document.getElementsByClassName("epapphinum")[index].value;
 	var epappdivtype = document.getElementsByClassName("epappdivtype")[index].value;	
 	$.ajax({
 		url : '/admin/epapproveOk',
 		dataType : 'json',
-		data : {hinum : hinum, epappdivtype : epappdivtype},
+		data : {hinum : hinum ,epappdivtype:epappdivtype},
 		success : function(data){	
+			alert(epappdivtype);
 			alert(data.value);
 			eplisttable.remove()
 		},
@@ -76,10 +79,21 @@ $(".epapproveOk").click(function(){
 			alert(err);
 		}
 	});
-})
-
-
+});
 $(".epapproveNo").click(function(){
+	var index = $(".epapproveNo").index(this);	
+	var hinum = document.getElementsByClassName("epapphinum")[index].value;
+	var epappdivtype = document.getElementsByClassName("epappdivtype")[index].value;
+	$('#reasonModalB').empty();
+	$('#reasonModalB').append("<input type='hidden' value="+hinum+" id='apphinumvalue'>");
+	$('#reasonModalB').append("<input type='hidden' value="+epappdivtype+" id='epappdivtylevalue'>");
+	$('#reasonModalB').append("<input type='hidden' value="+index+" id='epappindex'>");
+	$('#reasonModal').modal('show');
+});
+$("#reasonModalC").click(function(){	
+	$('#reasonModal').modal('hide');
+});
+/*$(".reasonModalO").click(function(){
 	var index = $(".epapproveNo").index(this);	
 	var eplisttable=$(this).parent().parent();
 	var hinum = document.getElementsByClassName("epapphinum")[index].value;
@@ -96,4 +110,26 @@ $(".epapproveNo").click(function(){
 			alert(err);
 		}
 	});
-})
+});*/
+$("#reasonModalO").click(function(){
+	
+	
+	var hinum = document.getElementById("apphinumvalue").value;
+	var epappdivtype = document.getElementById("epappdivtylevalue").value;	
+	var textAreavalue = document.getElementById("message-text").value;
+	var epappindex = document.getElementById("epappindex").value;
+	var eplisttable=$(".epapproveNo").eq(epappindex).parent().parent();
+	
+	$.ajax({
+		url : '/admin/epapproveNo',
+		dataType : 'json',
+		data : {hinum : hinum, epappdivtype : epappdivtype , textAreavalue:textAreavalue},
+		success : function(data){	
+			eplisttable.remove();
+			$('#reasonModal').modal('hide');
+		},
+		error: function(err){
+			alert(err);
+		}
+	});
+});

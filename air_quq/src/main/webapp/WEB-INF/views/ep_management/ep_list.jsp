@@ -36,7 +36,7 @@
 						</ep:choose>
 					</div>
 					<br>
-					
+
 					<ep:if test="${i.div_type==31 || i.div_type==39}">▶ 온라인 체험</ep:if>
 					<ep:if test="${i.div_type==41 || i.div_type==49}">▶ 대면 체험</ep:if>
 					<br> <br>
@@ -50,8 +50,16 @@
 					</ep:otherwise>
 						</ep:choose>
 					</h4>
-					<p>제출하기 전에 몇가지 정보를 추가 작성하여야 합니다.</p>
 					<br>
+					<ep:choose>
+						<ep:when test="${i.div_type==39 || i.div_type==49}">
+							<p>반려 사유: ${i.reason }</p>
+						</ep:when>
+						<ep:otherwise>
+							<p>제출하기 전에 몇가지 정보를 추가 작성하여야 합니다.</p>
+						</ep:otherwise>
+					</ep:choose>
+					
 				</div>
 				<div class="col-md-3">
 					<div class="ep_mangement_list_img">

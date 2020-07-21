@@ -21,6 +21,7 @@ public class EP_ManagementVo {
 	private String subname;
 	private String img;
 	private int ordernum;
+	private String reason;
 	
 	public EP_ManagementVo() {}
 	
@@ -42,7 +43,7 @@ public class EP_ManagementVo {
 
 
 	public EP_ManagementVo(int einum, int sunum, int memnum, int div_type, String loc, String intr, String program,
-			String title, String price, String times, String mater, int sessionnum, int hinum,Date regdate , int people) {
+			String title, String price, String times, String mater, int sessionnum, int hinum,Date regdate , int people ,String reason) {
 		super();
 		this.einum = einum;
 		this.sunum = sunum;
@@ -59,6 +60,7 @@ public class EP_ManagementVo {
 		this.hinum = hinum;
 		this.regdate = regdate;
 		this.people= people;
+		this.reason=reason;
 	}
 	
 	
@@ -208,6 +210,14 @@ public class EP_ManagementVo {
 
 	public void setOrdernum(int ordernum) {
 		this.ordernum = ordernum;
+	}
+
+	public String getReason() {
+		return reason;
+	}
+
+	public void setReason(String reason) {
+		this.reason = reason;
 	}
 	
 	

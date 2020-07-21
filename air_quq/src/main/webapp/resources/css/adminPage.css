@@ -42,7 +42,7 @@
 #epappModal{
 	height: 900px;
 }
-.modal-dialog {
+#epappModal .modal-dialog {
     max-width:1000px;
     margin: 1.75rem auto;
 }
@@ -66,7 +66,23 @@
 	width: 80%;
 	height: auto;
 }
-.modal-body{ 
+#epappModal .modal-body{ 
 	 overflow: scroll;}
+.form-control{
+	width: 80%;
+	margin: auto;
+}
 
+#reasonModal .modal-dialog {
+    max-width:700px;
+    margin: 1.75rem auto;
+}
+#reasonModal .col-form-label{
+	margin-left: 70px;
+}
+
+#reasonModal .modal-footer>* {
+    margin: .50rem;
+    width: 20%;
+}
 /*------------------------------------------------------------------------------------ */
