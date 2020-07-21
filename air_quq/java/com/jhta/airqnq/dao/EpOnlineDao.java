@@ -7,6 +7,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.jhta.airqnq.vo.AdminInfoVo;
 import com.jhta.airqnq.vo.ChatLogVo;
 import com.jhta.airqnq.vo.SliderVo;
 
@@ -48,5 +49,14 @@ public class EpOnlineDao {
 	}
 	public int addcontent(HashMap<String, Object> hash) {
 		return sql.insert(NAMESPACE+".addcontent",hash);
+	}
+	public List<AdminInfoVo> hostinfo() {
+		return sql.selectList(NAMESPACE+".hostInfo");
+	}
+	public List<AdminInfoVo> userinfo() {
+		return sql.selectList(NAMESPACE+".userInfo");
+	}
+	public int count(HashMap<String, Object> hash) {
+		return sql.selectOne(NAMESPACE+".count",hash);
 	}
 }

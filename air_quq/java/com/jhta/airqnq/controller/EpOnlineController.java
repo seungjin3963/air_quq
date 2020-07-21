@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import com.jhta.airqnq.pageUtil.PageUtil;
 import com.jhta.airqnq.service.EpOnlineService;
 import com.jhta.airqnq.vo.ChatLogVo;
 
@@ -83,5 +85,19 @@ public class EpOnlineController {
 	@GetMapping(value="/epOnline/modify")
 	public String modify(){
 		return "";
+	}
+	
+	@GetMapping(value = "/admin/adminQ")
+	public String adminQinfo(
+			@RequestParam(value = "pageNum",defaultValue = "1")int pageNum,String field,String keyword,
+			Model model,HttpSession session) {
+		PageUtil page = new PageUtil();
+		HashMap<String, Object> hash = new HashMap<String, Object>();
+		service.count(hash);
+//		MemberVo vo=(MemberVo)session.getAttribute("memberVo");
+//		vo.getMenum();
+		model.addAttribute("user",service.userinfo());
+		model.addAttribute("host",service.hostinfo());
+		return ".admin.adminQ";
 	}
 }

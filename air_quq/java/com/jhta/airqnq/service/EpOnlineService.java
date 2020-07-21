@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.jhta.airqnq.dao.EpOnlineDao;
+import com.jhta.airqnq.vo.AdminInfoVo;
 import com.jhta.airqnq.vo.ChatLogVo;
 import com.jhta.airqnq.vo.SliderVo;
 
@@ -44,5 +45,15 @@ public class EpOnlineService {
 	}
 	public int addcontent(HashMap<String, Object> hash){
 		return dao.addcontent(hash);
+	}
+	public List<AdminInfoVo> hostinfo(){
+		return dao.hostinfo();
+	}
+	public List<AdminInfoVo> userinfo(){
+		return dao.userinfo();
+	}
+	
+	public int count(HashMap<String, Object> hash) {
+		return dao.count(hash);
 	}
 }

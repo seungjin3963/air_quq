@@ -11,6 +11,7 @@
  	<typeAlias type="com.jhta.airqnq.vo.MemberVo" alias="member"/>
  	<typeAlias type="com.jhta.airqnq.vo.ExpInfoVo" alias="expInfo"/>
  	<typeAlias type="com.jhta.airqnq.vo.HouseImgVo" alias="house_img"/>
+ 	<typeAlias type="com.jhta.airqnq.vo.AdminInfoVo" alias="adminInfo"/>
  </typeAliases>
  <mappers>
     <mapper resource="com/jhta/mybatis/mapper/JoinMapper.xml"/>
