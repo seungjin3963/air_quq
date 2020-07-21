@@ -27,4 +27,12 @@ public class HostInfoService {
 	public int selectHouseNumber(int menum) {
 		return hostInfoDao.selectHouseNumber(menum);
 	}
+	
+	public int insertHouseImg(HouseImgVo vo) {
+		return hostInfoImageDao.insertHouseImg(vo);
+	}
+	
+	public int insertHouse(HouseInfoVo vo) {
+		return hostInfoDao.insertHouse(vo);
+	}
 }

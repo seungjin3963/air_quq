@@ -1,16 +1,21 @@
 package com.jhta.airqnq.controller;
 
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.List;
+import java.util.UUID;
 
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -101,7 +106,8 @@ public class HostController {
 	}
 	
 	@RequestMapping(value = "/host/regist/3")
-	public String hostRegist3(String v_grade, String pcount, String bcount, String oclick, String startDay, String endDay, HttpSession session, int next) {
+	public String hostRegist3(String v_grade, String pcount, String bcount, String oclick, String startDay,
+			String endDay, HttpSession session, int next) {
 		HashMap<String, Object> map = new HashMap<String, Object>();
 		map.put("v_grade", v_grade);
 		map.put("pcount", pcount);
@@ -124,26 +130,22 @@ public class HostController {
 		map.put("addressDetail", addressDetail);
 		map.put("lat", lat);
 		map.put("lnt", lnt);
-		System.out.println(file1.length);
-		for(MultipartFile f : file1) {
-			System.out.println(f.getOriginalFilename());
-		}
+		
 		
 		session.setAttribute("regist4", map);
 		session.setAttribute("hostStep", next);
 		
 		System.out.println("마지막 단계 : " + address + ", " + addressDetail + ", " + lat + ", " + lnt);
 		
-//		Integer hinum, Integer menum, String title, String content, String addr, String addr_detail,
-//		Integer price, Integer max_n, Integer bedroom, String checkinTime, Integer div, String lat, String lnt,
-//		Date startdate, Date enddate, String del_yn
-		Integer menum = (Integer) session.getAttribute("memun");
+		Integer menum = (Integer)session.getAttribute("menum");
+		System.out.println(menum + "<<<<<<<<<<<<<<<<<<<<");
+		
 		
 		HashMap<String, Object> regist1 = (HashMap<String, Object>)session.getAttribute("regist1");
 		HashMap<String, Object> regist2 = (HashMap<String, Object>)session.getAttribute("regist2");
 		HashMap<String, Object> regist3 = (HashMap<String, Object>)session.getAttribute("regist3");
 		
-		String title = (String)regist2.get("hostTitle");
+		String title = (String)regist2.get("hostTitle"); 
 		String content = (String)regist2.get("hostContent");
 		int price = Integer.parseInt(regist3.get("v_grade").toString().replace(",", ""));
 		int max_n = Integer.parseInt(regist3.get("pcount").toString());
@@ -156,19 +158,53 @@ public class HostController {
 		Date enddate = transformDate((String)regist3.get("endDay"));
 		String del_yn = "n";
 		
-		
 		HouseInfoVo hvo = new HouseInfoVo(0, menum, title, content, address, addressDetail, price, max_n,
 				bedroom, checkinTime, div, lat, lnt, startdate, enddate, del_yn, 0);
 		
-		//int imgnum, int hinum, String img, String del_yn, int ordernum
+		int cnt = 1;
 		
-		//하우스 번호 가져오기
-		int hinum = hostService.selectHouseNumber(menum);
+		int result = hostService.insertHouse(hvo);
+		System.out.println("집등록 결과 <<" + result);
 		
-		//HouseImgVo ivo = new HouseImgVo(0, );
-		
-		//hostService.houseInsert(hvo, ivo);
-		
+		if(result > 0) {
+			//하우스 번호 가져오기
+			int hinum = hostService.selectHouseNumber(menum);
+			System.out.println("하우스 번호 : " + hinum);
+			
+			for(MultipartFile f : file1) {
+				//전송된 파일명
+				String orgfilename = f.getOriginalFilename();
+				
+				//실제 저장할 파일명(중복되지 않도록)
+				String savefileName = UUID.randomUUID() + "_" + orgfilename;
+				
+//				//업로드할 폴더 경로 얻어오기
+				String uploadPath = session.getServletContext().getRealPath("resources/img/house_img");
+				try {
+//					//전송된 파일을 읽어오는 스트림 
+					InputStream fis = f.getInputStream(); 
+					
+//					//전송된 파일을 서버에 복사(업로드) 하기위한 출력 스트림
+					FileOutputStream fos = new FileOutputStream(uploadPath + "//" + savefileName);
+//					
+//					//파일복사하기
+					FileCopyUtils.copy(fis, fos);
+					fis.close();
+					fos.close();
+					
+//					//실제 DB에 넣기
+					HouseImgVo ivo = new HouseImgVo(0, hinum, savefileName, "n", cnt);
+					hostService.insertHouseImg(ivo);
+					
+					cnt++;
+					
+				} catch(IOException io) {
+					System.out.println(io.getMessage());
+				}
+			}
+		} else {
+			System.out.println("호스트 등록 에러!");
+		}
 		
 		return "redirect:/";
 	}
