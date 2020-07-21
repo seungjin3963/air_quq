@@ -82,9 +82,9 @@
 										<i class="fas fa-cogs fa-fw mr-2"></i>
 										Settings
 									</a>
-									<a class="dropdown-item" href="#">
+									<a class="dropdown-item" href="/user/apply/list">
 										<i class="fas fa-list fa-fw mr-2"></i>
-										Activity Log
+										예약 현황
 									</a>
 									<div class="dropdown-divider"></div>
 									<a class="dropdown-item" href="/logout">

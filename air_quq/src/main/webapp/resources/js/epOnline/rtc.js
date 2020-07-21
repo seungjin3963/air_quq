@@ -5,7 +5,6 @@ let isInitiator = false;
 let isChannelReady = false;
 let isStarted = false;
 let localStream;
-let remoteStream;
 let pc;
 
 let pcConfig = {

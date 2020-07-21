@@ -12,6 +12,7 @@
  	<typeAlias type="com.jhta.airqnq.vo.ExpInfoVo" alias="expInfo"/>
  	<typeAlias type="com.jhta.airqnq.vo.HouseImgVo" alias="house_img"/>
  	<typeAlias type="com.jhta.airqnq.vo.AdminInfoVo" alias="adminInfo"/>
+ 	<typeAlias type="com.jhta.airqnq.vo.Rent" alias="rent"/>
  </typeAliases>
  <mappers>
     <mapper resource="com/jhta/mybatis/mapper/JoinMapper.xml"/>
@@ -22,5 +23,6 @@
     <mapper resource="com/jhta/mybatis/mapper/HostInfoMapper.xml"/>
     <mapper resource="com/jhta/mybatis/mapper/MemberMapper.xml"/>
     <mapper resource="com/jhta/mybatis/mapper/epOnlineMapper.xml"/>
+    <mapper resource="com/jhta/mybatis/mapper/rentMapper.xml"/>
   </mappers>
 </configuration>
