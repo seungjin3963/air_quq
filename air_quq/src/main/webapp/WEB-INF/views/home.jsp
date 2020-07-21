@@ -21,26 +21,26 @@
 	<div class="row mb-5">
 		<div class="col-md-12">
 			<!-- Topbar Search -->
-			<form class="border-left-danger rounded">
+			<form class="border-left-danger rounded" method="post" action="/search/host" id="host_form">
 				<div class="form-group input-group">
 					<div class="col-md-3">
 						<div class="text-xs font-weight-bold text-danger text-uppercase mb-1">위치</div>
-						<input type="text" class="form-control bg-light border-0 small" placeholder="어디로 여행가세요?">
+						<input type="text" class="form-control bg-light border-0 small" placeholder="어디로 여행가세요?" id="searchPassport2">
 					</div>
 					<div class="col-md-3">
 						<div class="text-xs font-weight-bold text-danger text-uppercase mb-1">체크인</div>
-						<input type="date" class="form-control bg-light border-0 small" placeholder="날짜 추가">
+						<input type="date" class="form-control bg-light border-0 small" placeholder="날짜 추가" id="start_day">
 					</div>
 					<div class="col-md-3">
 						<div class="text-xs font-weight-bold text-danger text-uppercase mb-1">체크아웃</div>
-						<input type="date" class="form-control bg-light border-0 small" placeholder="날짜 추가">
+						<input type="date" class="form-control bg-light border-0 small" placeholder="날짜 추가" id="end_day">
 					</div>
 					<div class="col-md-2">
 						<div class="text-xs font-weight-bold text-danger text-uppercase mb-1">인원</div>
-						<input type="text" class="form-control bg-light border-0 small" placeholder="게스트 추가">
+						<input type="number" class="form-control bg-light border-0 small" placeholder="게스트 추가" id="people_count">
 					</div>
 					<div class="input-group-append">
-						<button class="btn btn-danger" type="button">
+						<button class="btn btn-danger" type="submit">
 							<i class="fas fa-search fa-sm"> 검색</i>
 						</button>
 					</div>
@@ -49,7 +49,8 @@
 		</div>
 	</div>
 	<h1 class="text-danger">이제 가까운 곳에서 소중한 것들을 찾아보세요.</h1>
-
+	<script type="text/javascript" src="/resources/js/hostFormValidation.js"></script>
+	<script type="text/javascript" src="/resources/js/passport/passport_main.js"></script>
 	<div class="row">
 		<div class="col-md-4">
 			<a href="" class="text-decoration-none">

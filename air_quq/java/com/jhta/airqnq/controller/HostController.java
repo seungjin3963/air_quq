@@ -158,13 +158,13 @@ public class HostController {
 		Date enddate = transformDate((String)regist3.get("endDay"));
 		String del_yn = "n";
 		
-		HouseInfoVo hvo = new HouseInfoVo(0, menum, title, content, address, addressDetail, price, max_n,
+		HouseInfoVo hvo = new HouseInfoVo(0, 1, title, content, address, addressDetail, price, max_n,
 				bedroom, checkinTime, div, lat, lnt, startdate, enddate, del_yn, 0);
-		
-		int cnt = 1;
 		
 		int result = hostService.insertHouse(hvo);
 		System.out.println("집등록 결과 <<" + result);
+		int cnt = 1;
+		
 		
 		if(result > 0) {
 			//하우스 번호 가져오기
