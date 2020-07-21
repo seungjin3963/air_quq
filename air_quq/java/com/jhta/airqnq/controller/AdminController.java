@@ -141,7 +141,6 @@ public class AdminController {
 		
 		map.put("keyword", keyword);
 		map.put("field",field);
-		
 		int totalRowCount=host_infoService.HouseCnt(map);
 		
 		PageUtil pu=new PageUtil(pageNum, totalRowCount, 10, 2);
