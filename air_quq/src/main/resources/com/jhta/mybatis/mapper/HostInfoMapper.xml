@@ -16,8 +16,8 @@
 		select * from house_info
 	</select>
 	
-	<select id="hostNumSelect" parameterType="int">
-		select hinum from house_info where menum=#{menum}
+	<select id="hostNumSelect" parameterType="int" resultType="int">
+		SELECT hinum FROM house_info where menum=#{menum} order by hinum desc LIMIT 1
 	</select>
 	
 	<!-- 승진 -->

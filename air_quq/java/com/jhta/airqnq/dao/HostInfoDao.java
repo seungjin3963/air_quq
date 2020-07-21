@@ -14,7 +14,7 @@ public class HostInfoDao {
 	private final String NAMESPACE = "com.jhta.airqnq.mapper.HostInfoMapper";
 	
 	public int insertHouse(HouseInfoVo vo) {
-		return session.insert(NAMESPACE + ".hostInsert");
+		return session.insert(NAMESPACE + ".hostInsert", vo);
 	}
 	
 	public int selectHouseNumber(int menum) {
