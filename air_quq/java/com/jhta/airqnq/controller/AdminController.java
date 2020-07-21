@@ -19,7 +19,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.jhta.airqnq.pageUtil.PageUtil;
+import com.jhta.airqnq.service.House_infoAdminService;
 import com.jhta.airqnq.service.MemberService;
+import com.jhta.airqnq.vo.HouseInfoVo;
 import com.jhta.airqnq.vo.JoinVo;
 
 @Controller
@@ -28,6 +30,10 @@ public class AdminController {
 	@Autowired
 	private MemberService service;
 	
+	@Autowired
+	private House_infoAdminService host_infoservice;
+	
+	/* 관리자 회원관리 */
 	@GetMapping("/admin")
 	public String admin() {
 		return ".admin";
@@ -116,8 +122,6 @@ public class AdminController {
 		
 		int n=service.MemberImgReset(menum);
 		
-		System.out.println("이미지"+menum);
-		
 		if(menum == 0) {
 			return "redirect:/admin/member/list";
 		}
@@ -127,5 +131,31 @@ public class AdminController {
 		}else {
 			return ".error";
 		}
+	}
+	
+	/* 관리자 호스트 하우스 목록 회원관리 */
+	@RequestMapping("/admin/house_info/list")
+	public String houseSelect(Model model,@RequestParam(value="pageNum",defaultValue = "1")int pageNum, String keyword,String field) {
+		
+		HashMap<String, Object> map=new HashMap<String, Object>();
+		
+		map.put("keyword", keyword);
+		map.put("field",field);
+		
+		int totalRowCount=host_infoservice.HouseCnt(map);
+		
+		PageUtil pu=new PageUtil(pageNum, totalRowCount, 10, 2);
+		
+		map.put("startRow", pu.getStartRow());
+		map.put("rowblockcount", pu.getRowBlockCount());
+				
+		List<HouseInfoVo> house_infolist = host_infoservice.HouseSelect(map);
+		
+		model.addAttribute("pu", pu);
+		model.addAttribute("list", house_infolist);
+		model.addAttribute("field", field);
+		model.addAttribute("keyword", keyword);
+		
+		return ".admin.house_infoAdmin";
 	}
 }

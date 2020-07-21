@@ -19,4 +19,28 @@
 	<select id="hostNumSelect" parameterType="int">
 		select hinum from house_info where menum=#{menum}
 	</select>
+	
+	<!-- 승진 -->
+	<sql id="search">
+		<if test="field != null and field != ''">
+			 where manager_check=1 and ${field} like '%${keyword}%'
+		</if>
+		
+		<if test="field == null or field == ''">
+			where manager_check=1
+		</if>
+	</sql>
+	
+	<select id="hostselectpaging" resultType="house_info" parameterType="hashmap">
+		select * from house_info 
+		<include refid="search"/>
+		order by hinum desc 
+		limit #{startRow}, #{rowblockcount}
+	</select>
+	
+	<select id="hostcnt" resultType="int" parameterType="hashmap">
+		select ifnull(count(*),0) from house_info
+		<include refid="search"/>
+	</select>
+	
 </mapper>

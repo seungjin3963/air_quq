@@ -49,7 +49,7 @@
 			</a>
 		</li>
 			<li class="nav-item">
-			<a class="nav-link" href="#"> 
+			<a class="nav-link" href="/admin/house_info/list"> 
 				<i class="fas fa-home"></i> 
 				<span>호스트하우스목록</span>
 			</a>

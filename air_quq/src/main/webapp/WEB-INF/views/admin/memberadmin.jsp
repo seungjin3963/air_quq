@@ -50,7 +50,7 @@
 		</c:forEach>
 	</table>
 	<div id="fontcenter">
-		<button id="previous">
+		<button id="previous" disabled="disabled">
 			<i class="fas fa-backward"></i>
 		</button>
 		<div id="pagingborder">
@@ -66,6 +66,7 @@
 			</c:forEach>
 		</div>
 		<input type="hidden" value="${pu.pageNum}" id="pageNum">
+		<input type="hidden" value="${pu.totalPageCount}" id="pagetotal">
 		<input type="hidden" id="fieldcopy"> 
 		<input type="hidden" id="keywordcopy"> 
 		<button id="next">

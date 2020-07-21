@@ -122,8 +122,6 @@
 		})
 	}
 	
-	paging('${pu.pageNum}', '${pu.totalPageCount}');
-	
 	/* 페이징 버튼 처리 */
 	$("#previous").click(function(e) {
 		e.preventDefault();
@@ -219,7 +217,7 @@ $("#photochange").click(function(){
 $("input[value='확인']").click(function(){
 	$("#membermodal").modal("hide");
 });
-
+/*상세정보 모달 나가기*/
 $("input[value='닫기']").click(function(){
 	$("#memberdetail").modal("hide");
 });
