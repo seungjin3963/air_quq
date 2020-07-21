@@ -31,7 +31,7 @@ public class AdminController {
 	private MemberService service;
 	
 	@Autowired
-	private House_infoAdminService host_infoservice;
+	private House_infoAdminService host_infoService;
 	
 	/* 관리자 회원관리 */
 	@GetMapping("/admin")
@@ -142,14 +142,14 @@ public class AdminController {
 		map.put("keyword", keyword);
 		map.put("field",field);
 		
-		int totalRowCount=host_infoservice.HouseCnt(map);
+		int totalRowCount=host_infoService.HouseCnt(map);
 		
 		PageUtil pu=new PageUtil(pageNum, totalRowCount, 10, 2);
 		
 		map.put("startRow", pu.getStartRow());
 		map.put("rowblockcount", pu.getRowBlockCount());
 				
-		List<HouseInfoVo> house_infolist = host_infoservice.HouseSelect(map);
+		List<HouseInfoVo> house_infolist = host_infoService.HouseSelect(map);
 		
 		model.addAttribute("pu", pu);
 		model.addAttribute("list", house_infolist);
@@ -157,5 +157,12 @@ public class AdminController {
 		model.addAttribute("keyword", keyword);
 		
 		return ".admin.house_infoAdmin";
+	}
+	
+	@GetMapping("/json/houseone")
+	@ResponseBody
+	public HouseInfoVo houseOneSelect(int hinum){
+		HouseInfoVo vo=host_infoService.OneInfoSelect(hinum);
+		return vo;
 	}
 }

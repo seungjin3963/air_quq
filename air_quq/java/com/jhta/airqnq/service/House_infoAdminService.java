@@ -21,4 +21,8 @@ public class House_infoAdminService {
 	public int HouseCnt(HashMap<String, Object> map) {
 		return dao.HouseCnt(map);
 	}
+	
+	public HouseInfoVo OneInfoSelect(int hinum) {
+		return dao.OneInfoSelect(hinum);
+	}
 }

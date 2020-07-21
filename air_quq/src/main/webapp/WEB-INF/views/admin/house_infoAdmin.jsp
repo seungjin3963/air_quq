@@ -43,8 +43,16 @@
 		color: red;
 	}
 	
-	#hovertr:hover{
-		background-color: #cfd1d6;
+	.hovertr:hover{
+		background-color: #cfd1d6 !important;
+	}
+	
+	/* 버튼 css 설정 */
+	.exitbutton {
+		border: none;
+		outline: none;
+		background: none;
+		text-align: center;
 	}
 </style>
 <div class="container" id="divmain">
@@ -70,7 +78,7 @@
 			<th>마지막날짜</th>
 		</tr>
 		<c:forEach var="vo" items="${list }">
-			<tr id="hovertr">
+			<tr class="hovertr">
 				<td>${vo.hinum }</td>
 				<td>${vo.title }</td>
 				<td>${vo.addr }</td>
@@ -83,7 +91,7 @@
 </div>
 
 <div id="fontcenter">
-		<button id="previous">
+		<button id="previous" <c:if test="${pu.pageNum == 1 }">disabled="disabled"</c:if>>
 			<i class="fas fa-backward"></i>
 		</button>
 		<div id="pagingborder">
@@ -98,7 +106,55 @@
 				</c:choose>
 			</c:forEach>
 		</div>
-		<button id="next">
+		<button id="next" <c:if test="${pu.pageNum == pu.totalPageCount }">disabled="disabled"</c:if>>
 			<i class="fas fa-forward"></i>
 		</button>
+		<input type="hidden" value="${pu.pageNum }" id="pageNum">
 </div>
+
+<div class="modal fade" id="house_infomodal" role="dialog">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h3 class="modal-title">상세보기</h3>
+				<button type="button" class="close" data-dismiss="modal" class="exitbutton">X</button>
+			</div>
+			<div class="modal-body" id="fontcenter">
+				
+			</div>
+		</div>
+	</div>
+</div>
+
+<script>
+	/* paging button 페이지 이동으로 처리 */
+	$("#next").click(function(){
+		var pagenum=$("#pageNum").val();
+		location.href="/admin/house_info/list?pageNum="+(Number(pagenum)+1);
+	});
+	
+	$("#previous").click(function(){
+		var totalpage=$("#pagetotal").val();
+		location.href="/admin/house_info/list?pageNum="+(Number(pagenum)-1);
+	});
+	
+	/* 검색창 type 변경 */
+	$("#selectoption").change(function(){
+		var option=$(this).val();
+		
+		if(option == 'startdate' || option == 'enddate'){
+			$("#selecttext").prop("type","date");
+		}else{
+			$("#selecttext").prop("type","text");
+		}
+		$("#selecttext").val("");
+	});
+	
+	/* 상세정보 modal 나오게 하기 */
+	$(".hovertr").click(function(){
+		var hinum=$(this).children().eq(0).html();
+		
+		$("#house_infomodal").modal();
+	});
+	
+</script>

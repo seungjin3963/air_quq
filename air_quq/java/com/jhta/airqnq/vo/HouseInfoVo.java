@@ -33,7 +33,7 @@ public class HouseInfoVo {
 	private Integer bedroom;
 
 	// 체크인 시간
-	private String checkinTime;
+	private String checkin_time;
 
 	// 구분
 	private Integer div;
@@ -58,9 +58,9 @@ public class HouseInfoVo {
 
 	public HouseInfoVo() {
 	}
-	
+
 	public HouseInfoVo(Integer hinum, Integer menum, String title, String content, String addr, String addr_detail,
-			Integer price, Integer max_n, Integer bedroom, String checkinTime, Integer div, String lat, String lnt,
+			Integer price, Integer max_n, Integer bedroom, String checkin_time, Integer div, String lat, String lnt,
 			Date startdate, Date enddate, String del_yn, int manager_check) {
 		super();
 		this.hinum = hinum;
@@ -72,7 +72,7 @@ public class HouseInfoVo {
 		this.price = price;
 		this.max_n = max_n;
 		this.bedroom = bedroom;
-		this.checkinTime = checkinTime;
+		this.checkin_time = checkin_time;
 		this.div = div;
 		this.lat = lat;
 		this.lnt = lnt;
@@ -81,7 +81,6 @@ public class HouseInfoVo {
 		this.del_yn = del_yn;
 		this.manager_check = manager_check;
 	}
-
 
 	public Integer getHinum() {
 		return hinum;
@@ -155,12 +154,12 @@ public class HouseInfoVo {
 		this.bedroom = bedroom;
 	}
 
-	public String getCheckinTime() {
-		return checkinTime;
+	public String getCheckin_time() {
+		return checkin_time;
 	}
 
-	public void setCheckinTime(String checkinTime) {
-		this.checkinTime = checkinTime;
+	public void setCheckin_time(String checkin_time) {
+		this.checkin_time = checkin_time;
 	}
 
 	public Integer getDiv() {
