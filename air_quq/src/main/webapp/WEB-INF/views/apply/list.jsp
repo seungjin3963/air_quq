@@ -50,7 +50,7 @@
 							<td>
 								<c:choose>
 									<c:when test="${endrant - now > 0 }">
-										<a class="text-success" href="#" data-toggle="modal" data-target="#ReviewAndGradeModal">
+										<a class="text-success openReviewAndGrade" href="#" data-toggle="modal" data-target="#reviewAndGradeModal" data-rtnum="${list.rtnum }" data-hinum="${list.hinum }">
 											<i class="fa fa-thumbs-up fa-2x"></i>
 										</a>
 									</c:when>
@@ -85,7 +85,7 @@
 	</div>
 </div>
 
-<div class="modal fade" id="ReviewAndGradeModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="reviewAndGradeModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
@@ -95,31 +95,155 @@
 				</button>
 			</div>
 			<div class="modal-body">
+				<input type="hidden" id="rtnum">
+				<input type="hidden" id="hinum">
 				<div class="container">
 					<div class="row">
-						<div class="col-md-6 marginAuto">
+						<div class="col-md-5 text-center align-self-center">
+							<p class="h4 mt-3">청결도</p>
+						</div>
+						<div class="col-md-5 marginAuto">
 							<div class="starRev">
+								<input type="hidden" value="clean">
 								<span class="starR1 on">0.5</span>
-								<span class="starR2">1.0</span>
-								<span class="starR1">1.5</span>
-								<span class="starR2">2.0</span>
-								<span class="starR1">2.5</span>
-								<span class="starR2">3.0</span>
-								<span class="starR1">3.5</span>
-								<span class="starR2">4.0</span>
-								<span class="starR1">4.5</span>
-								<span class="starR2">5.0</span>
+								<span class="starR2 on">1.0</span>
+								<span class="starR1 on">1.5</span>
+								<span class="starR2 on">2.0</span>
+								<span class="starR1 on">2.5</span>
+								<span class="starR2 on">3.0</span>
+								<span class="starR1 on">3.5</span>
+								<span class="starR2 on">4.0</span>
+								<span class="starR1 on">4.5</span>
+								<span class="starR2 on">5.0</span>
 							</div>
 						</div>
-						<div class="col-md-6 text-center marginAuto">
-							<div class="font-weight-bold text-danger display-4">5.0</div>
+						<div class="col-md-2 text-center marginAuto">
+							<p class="h3 mt-3 text-danger" id="cleanGrade">5.0</p>
 						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-5 text-center align-self-center">
+							<p class="h4 mt-3">정확성</p>
+						</div>
+						<div class="col-md-5 marginAuto">
+							<div class="starRev">
+								<input type="hidden" value="accuracy">
+								<span class="starR1 on">0.5</span>
+								<span class="starR2 on">1.0</span>
+								<span class="starR1 on">1.5</span>
+								<span class="starR2 on">2.0</span>
+								<span class="starR1 on">2.5</span>
+								<span class="starR2 on">3.0</span>
+								<span class="starR1 on">3.5</span>
+								<span class="starR2 on">4.0</span>
+								<span class="starR1 on">4.5</span>
+								<span class="starR2 on">5.0</span>
+							</div>
+						</div>
+						<div class="col-md-2 text-center marginAuto">
+							<p class="h3 mt-3 text-danger" id="accuracyGrade">5.0</p>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-5 text-center align-self-center">
+							<p class="h4 mt-3">의사소통</p>
+						</div>
+						<div class="col-md-5 marginAuto">
+							<div class="starRev">
+								<input type="hidden" value="commu">
+								<span class="starR1 on">0.5</span>
+								<span class="starR2 on">1.0</span>
+								<span class="starR1 on">1.5</span>
+								<span class="starR2 on">2.0</span>
+								<span class="starR1 on">2.5</span>
+								<span class="starR2 on">3.0</span>
+								<span class="starR1 on">3.5</span>
+								<span class="starR2 on">4.0</span>
+								<span class="starR1 on">4.5</span>
+								<span class="starR2 on">5.0</span>
+							</div>
+						</div>
+						<div class="col-md-2 text-center marginAuto">
+							<p class="h3 mt-3 text-danger" id="commuGrade">5.0</p>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-5 text-center align-self-center">
+							<p class="h4 mt-3">위치</p>
+						</div>
+						<div class="col-md-5 marginAuto">
+							<div class="starRev">
+								<input type="hidden" value="position">
+								<span class="starR1 on">0.5</span>
+								<span class="starR2 on">1.0</span>
+								<span class="starR1 on">1.5</span>
+								<span class="starR2 on">2.0</span>
+								<span class="starR1 on">2.5</span>
+								<span class="starR2 on">3.0</span>
+								<span class="starR1 on">3.5</span>
+								<span class="starR2 on">4.0</span>
+								<span class="starR1 on">4.5</span>
+								<span class="starR2 on">5.0</span>
+							</div>
+						</div>
+						<div class="col-md-2 text-center marginAuto">
+							<p class="h3 mt-3 text-danger" id="positionGrade">5.0</p>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-5 text-center align-self-center">
+							<p class="h4 mt-3">체크인</p>
+						</div>
+						<div class="col-md-5 marginAuto">
+							<div class="starRev">
+								<input type="hidden" value="checkin">
+								<span class="starR1 on">0.5</span>
+								<span class="starR2 on">1.0</span>
+								<span class="starR1 on">1.5</span>
+								<span class="starR2 on">2.0</span>
+								<span class="starR1 on">2.5</span>
+								<span class="starR2 on">3.0</span>
+								<span class="starR1 on">3.5</span>
+								<span class="starR2 on">4.0</span>
+								<span class="starR1 on">4.5</span>
+								<span class="starR2 on">5.0</span>
+							</div>
+						</div>
+						<div class="col-md-2 text-center marginAuto">
+							<p class="h3 mt-3 text-danger" id="checkinGrade">5.0</p>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-5 text-center align-self-center">
+							<p class="h4 mt-3">가격 대비 만족도</p>
+						</div>
+						<div class="col-md-5 marginAuto">
+							<div class="starRev">
+								<input type="hidden" value="satis">
+								<span class="starR1 on">0.5</span>
+								<span class="starR2 on">1.0</span>
+								<span class="starR1 on">1.5</span>
+								<span class="starR2 on">2.0</span>
+								<span class="starR1 on">2.5</span>
+								<span class="starR2 on">3.0</span>
+								<span class="starR1 on">3.5</span>
+								<span class="starR2 on">4.0</span>
+								<span class="starR1 on">4.5</span>
+								<span class="starR2 on">5.0</span>
+							</div>
+						</div>
+						<div class="col-md-2 text-center marginAuto">
+							<p class="h3 mt-3 text-danger" id="satisGrade">5.0</p>
+						</div>
+					</div>
+					<div class="row">
+						<textarea class="form-control" rows="5" id="reviewContent"></textarea>
 					</div>
 				</div>
 			</div>
 			<div class="modal-footer">
 				<button class="btn btn-secondary" type="button" data-dismiss="modal">취소</button>
-				<button class="btn btn-danger">저장</button>
+				<button class="btn btn-danger" id="btnReviewAndGradeSave">저장</button>
 			</div>
 		</div>
 	</div>

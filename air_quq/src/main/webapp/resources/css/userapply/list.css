@@ -48,3 +48,7 @@ table td, table th {
 .marginAuto {
 	margin: auto;
 }
+
+textarea{
+	resize: none;
+}

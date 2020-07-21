@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jhta.airqnq.mapper.ReviewAndGradeMapper">
+	<insert id="reviewSave" parameterType="map">
+		insert into review
+		values(0, #{menum}, #{rtnum}, #{hinum},
+			(#{cleanGrade} + #{accuracyGrade} + #{commuGrade} + #{positionGrade} + #{checkinGrade} +
+			#{satisGrade}) / 6,
+			2, #{content}, 'n')
+	</insert>
+	<insert id="gradeSave" parameterType="map">
+		insert into grade values(0, LAST_INSERT_ID(), #{cleanGrade}, #{accuracyGrade}, #{commuGrade}, #{positionGrade}, #{checkinGrade}, #{satisGrade}, 'n')
+	</insert>
+</mapper>

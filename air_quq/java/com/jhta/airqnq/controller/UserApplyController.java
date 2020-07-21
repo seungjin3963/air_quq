@@ -40,11 +40,4 @@ public class UserApplyController {
 	public MemberVo getMemberInfo(HttpSession session) {
 		return (MemberVo) session.getAttribute("memberVo");
 	}
-
-	@GetMapping("/user/apply/list")
-	public String list(Model model, HttpSession session) {
-		int menum = (int) session.getAttribute("menum");
-		model.addAttribute("list", service.applyList(menum));
-		return ".apply.list";
-	}
 }
