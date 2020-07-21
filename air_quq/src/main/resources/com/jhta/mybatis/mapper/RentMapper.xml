@@ -3,7 +3,10 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.jhta.airqnq.mapper.RentMapper">
-	<select id="list" parameterType="int" resultType="rent">
-		select * from rent where menum = #{menum}
+	<select id="list" parameterType="int" resultType="rentList">
+		select rtnum,hinum,startrent,endrent,status,person,pay_price
+			,(select title from house_info where hinum = a.hinum) title
+		from rent a
+		where menum = #{menum}
 	</select>
 </mapper>

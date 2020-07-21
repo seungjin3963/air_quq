@@ -2,7 +2,7 @@ package com.jhta.airqnq.vo;
 
 import java.sql.Date;
 
-public class RentVo {
+public class RentListVo {
 
     // 예약번호 
     private Integer rtnum;
@@ -33,6 +33,17 @@ public class RentVo {
 
     // 삭제여부 
     private String del_yn;
+    
+    // 숙소 제목
+    private String title;
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
 
 	public Integer getRtnum() {
 		return rtnum;

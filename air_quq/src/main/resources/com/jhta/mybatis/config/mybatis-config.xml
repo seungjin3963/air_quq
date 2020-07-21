@@ -7,12 +7,12 @@
  	<typeAlias type="com.jhta.airqnq.vo.JoinVo" alias="join"/>
  	<typeAlias type="com.jhta.airqnq.vo.HouseInfoVo" alias="house_info"/>
  	<typeAlias type="com.jhta.airqnq.vo.SliderVo" alias="slinfo"/>
- 	<typeAlias alias="chatLog" type="com.jhta.airqnq.vo.ChatLogVo"/>
+ 	<typeAlias type="com.jhta.airqnq.vo.ChatLogVo" alias="chatLog"/>
  	<typeAlias type="com.jhta.airqnq.vo.MemberVo" alias="member"/>
  	<typeAlias type="com.jhta.airqnq.vo.ExpInfoVo" alias="expInfo"/>
  	<typeAlias type="com.jhta.airqnq.vo.HouseImgVo" alias="house_img"/>
  	<typeAlias type="com.jhta.airqnq.vo.AdminInfoVo" alias="adminInfo"/>
- 	<typeAlias type="com.jhta.airqnq.vo.RentVo" alias="rent"/> 
+ 	<typeAlias type="com.jhta.airqnq.vo.RentListVo" alias="rentList"/> 
  </typeAliases>
  <mappers>
     <mapper resource="com/jhta/mybatis/mapper/JoinMapper.xml"/>

@@ -74,6 +74,10 @@
 										<i class="fas fa-photo-video fa-fw mr-2"></i>
 										내가 등록한 온라인 체험
 									</a>
+									<a class="dropdown-item" href="/user/apply/list">
+										<i class="fas fa-list fa-fw mr-2"></i>
+										예약 현황
+									</a>
 									<a class="dropdown-item" href="#">
 										<i class="fas fa-user fa-fw mr-2"></i>
 										Profile
@@ -81,10 +85,6 @@
 									<a class="dropdown-item" href="#">
 										<i class="fas fa-cogs fa-fw mr-2"></i>
 										Settings
-									</a>
-									<a class="dropdown-item" href="/user/apply/list">
-										<i class="fas fa-list fa-fw mr-2"></i>
-										예약 현황
 									</a>
 									<div class="dropdown-divider"></div>
 									<a class="dropdown-item" href="/logout">
