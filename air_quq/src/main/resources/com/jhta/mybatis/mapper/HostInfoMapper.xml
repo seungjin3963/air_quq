@@ -5,7 +5,7 @@
 <mapper namespace="com.jhta.airqnq.mapper.HostInfoMapper">	
 	<insert id="hostInsert" parameterType="house_info">
 		insert into house_info values(0, #{menum}, #{title},
-		 #{content}, #{addr}, #{addr_detail}, #{price}, #{max_n}, #{bedroom}, #{checkin_time}, #{div}, #{lat}, #{lnt}, #{startdate}, #{enddate}, "n")
+		 #{content}, #{addr}, #{addr_detail}, #{price}, #{max_n}, #{bedroom}, #{checkin_time}, #{div}, #{lat}, #{lnt}, #{startdate}, #{enddate}, "n", 0)
 	</insert>
 	
 	<insert id="hostImgInsert" parameterType="house_img">
