@@ -9,18 +9,14 @@
 <div class="container">
 	<h1>house_info title가져오기</h1>
 	<div class="row">
-		<div class="col-md-6">
+		<div class="col-md-1">
+		
+		</div>
+		<div class="col-md-10">
 			<img src="/resources/img/1.jpg" id="bigphoto">
 		</div>
-		<div class="col-md-6" id="smallphoto">
-			<div class="row">
-				<img src="/resources/img/1.jpg">
-				<img src="/resources/img/1.jpg"> 
-			</div>
-			<div class="row">
-				<img src="/resources/img/1.jpg"> 
-				<img src="/resources/img/1.jpg">
-			</div>
+		<div class="col-md-1">
+		
 		</div>
 	</div>
 
