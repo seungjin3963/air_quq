@@ -13,7 +13,7 @@
 					<a class="nav-link" href="/home/experience">체험</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="/online/home">온라인 체험</a>
+					<a class="nav-link" href="/ep_OnlineList">온라인 체험</a><!-- /online/home -->
 				</li>
 			</ul>
 		</div>

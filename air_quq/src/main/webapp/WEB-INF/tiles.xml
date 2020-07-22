@@ -66,15 +66,16 @@
 		<put-attribute name="footer" value="/WEB-INF/views/footer.jsp"></put-attribute>
 	</definition>
 	
-	<definition name=".*.*.*" extends=".home">	
-		<put-attribute name="main" value="/WEB-INF/views/{1}/{2}/{3}.jsp"></put-attribute>
-	</definition>
-	
 	<definition name=".epOnline.details.*" template="/WEB-INF/views/epOnline/layout.jsp">
 		<put-attribute name="header" value="/WEB-INF/views/header.jsp"></put-attribute>
 		<put-attribute name="content" value="/WEB-INF/views/epOnline/{1}"></put-attribute>
 		<put-attribute name="footer" value="/WEB-INF/views/footer.jsp"></put-attribute>
 	</definition>
+	
+	<definition name=".*.*.*" extends=".home">	
+		<put-attribute name="main" value="/WEB-INF/views/{1}/{2}/{3}.jsp"></put-attribute>
+	</definition>
+	
 		
 	<definition name=".*.*" extends=".home">	
 		<put-attribute name="main" value="/WEB-INF/views/{1}/{2}.jsp"></put-attribute>

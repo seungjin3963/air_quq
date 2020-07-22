@@ -105,3 +105,6 @@
 		</div>
 	</div>
 </div>
+
+<!-- home  js -->
+	<script type="text/javascript" src="/resources/js/home.js"></script>
