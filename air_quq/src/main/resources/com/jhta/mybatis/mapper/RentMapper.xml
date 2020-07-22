@@ -10,4 +10,27 @@
 		from rent a
 		where menum = #{menum}
 	</select>
+	<update id="delGrade" parameterType="map">
+		update grade
+		set del_yn = 'y'
+		where renum in(select renum
+						from review
+		                where rtnum = #{rtnum}
+		                and menum = #{menum}
+		                and del_yn = 'n')
+	</update>
+	<update id="delReview" parameterType="map">
+		update review
+		set del_yn = 'y'
+		where rtnum = #{rtnum}
+		and menum = #{menum}
+		and del_yn = 'n'
+	</update>
+	<update id="delRent">
+		update rent
+		set del_yn = 'y'
+			, status = 2
+		where rtnum = #{rtnum}
+		and del_yn = 'n'
+	</update>
 </mapper>

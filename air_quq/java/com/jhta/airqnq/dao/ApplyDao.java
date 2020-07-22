@@ -19,4 +19,16 @@ public class ApplyDao {
 	public List<RentListVo> applyList(int menum) {
 		return session.selectList(NAMESPACE + ".list", menum);
 	}
+
+	public void delGrade(Map<String, Object> map) {
+		session.update(NAMESPACE + ".delGrade", map);
+	}
+
+	public void delReview(Map<String, Object> map) {
+		session.update(NAMESPACE + ".delReview", map);
+	}
+
+	public void delRent(Map<String, Object> map) {
+		session.update(NAMESPACE + ".delRent", map);
+	}
 }

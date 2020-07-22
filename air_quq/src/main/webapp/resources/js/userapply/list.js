@@ -48,6 +48,7 @@ $("#btnReviewAndGradeSave").click( () => {
 		}
 	});
 	
+	//리뷰 작성 후 '리뷰 작성 여부' 아이콘 수정
 	let tr = $("#dataTable tbody tr").eq(rowIndex);
 	tr.children().eq(8).empty();
 	
@@ -56,6 +57,7 @@ $("#btnReviewAndGradeSave").click( () => {
 });
 
 $("#dataTable tbody td").click(function() {
+	//테이블 선택 row 저장
 	rowIndex = $(this).parent().index();
 });
 
@@ -63,6 +65,19 @@ function applyCancel(rtnum){
 	if(confirm("선택하신 예약을 취소하시겠습니까?") === true){
 		$.post("/user/apply/cencel", {rtnum}, (data) => {
 			console.log(data);
+			if(data === 'success'){
+				alert("예약 취소 완료");
+				
+				//삭제한 row(tr)에 class 추가(배경색 변경)
+				let tr = $("#dataTable tbody tr").eq(rowIndex);
+				tr.addClass("cencelBackColor");
+				
+				//테이블의 '상태' text 수정
+				tr.children().eq(5).empty();
+				tr.children().eq(5).html("취소");
+			}else{
+				location.href = "/error";
+			}
 		});
 	}else{
 		return;

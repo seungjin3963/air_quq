@@ -1,5 +1,8 @@
 package com.jhta.airqnq.controller;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -54,12 +57,16 @@ public class UserApplyController {
 	
 	@PostMapping("/user/apply/cencel")
 	@ResponseBody
-	public String applyCencel(int rtnum) {
+	public String applyCencel(HttpSession session, int rtnum) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("menum", session.getAttribute("menum"));
+		map.put("rtnum", rtnum);
 		try {
-			service.applyCencel(rtnum);
+			service.applyCencel(map);
+			return "success";
 		}catch (Exception e) {
 			System.out.println(e.getMessage());
+			return "error";
 		}
-		return "success";
 	}
 }
