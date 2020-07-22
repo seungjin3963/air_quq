@@ -2,11 +2,13 @@ package com.jhta.airqnq.controller;
 
 import java.util.List;
 
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Repository;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.jhta.airqnq.pageUtil.PageUtilForMySql;
 import com.jhta.airqnq.service.OnlineListServer;
@@ -36,5 +38,17 @@ public class OnlineListController {
 		
 		
 		return ".ep_SearchList.OnlineAllList";
+	}
+	
+	
+	@RequestMapping(value = "/ep_regdate" ,produces = "application/json;charset=utf-8")
+	@ResponseBody
+	public String Ep_regdate() {
+		
+		JSONObject json=new JSONObject();
+		
+		json.put("mater", 1);
+		return  json.toString();
+		
 	}
 }

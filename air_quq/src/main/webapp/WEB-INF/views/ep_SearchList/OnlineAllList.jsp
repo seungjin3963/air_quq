@@ -63,7 +63,7 @@
 				<br>
 				<br>
 				<br>
-				<div class="onlinePageBtn"><input type="button" value="-">&nbsp;<span>${regdatePageUtil.pageNum } / ${regdatePageUtil.totalPageCount}</span>&nbsp;<input type="button" value="+"></div>
+				<div class="onlinePageBtn"><input type="button" value="-">&nbsp;<span>${regdatePageUtil.pageNum } / ${regdatePageUtil.totalPageCount}</span>&nbsp;<input type="button" value="+" id="Ep_regdateBtnP"></div>
 				<h2>신규 등록한 온라인 체험</h2>
 				<br>
 				<ep:forEach var="i" items="${regdatelist }">
