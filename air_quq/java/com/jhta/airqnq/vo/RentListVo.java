@@ -36,17 +36,6 @@ public class RentListVo {
     
     // 숙소 제목
     private String title;
-    
-    // 리뷰&평점 작성 여부
-    private String rag_yn;
-
-	public String getRag_yn() {
-		return rag_yn;
-	}
-
-	public void setRag_yn(String rag_yn) {
-		this.rag_yn = rag_yn;
-	}
 
 	public String getTitle() {
 		return title;

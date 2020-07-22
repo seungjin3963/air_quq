@@ -205,8 +205,8 @@ public class ExperiencePageController {
 	}
 
 	@RequestMapping("/experience/ep_insert/title") // 체험 제목 설정 7
-	public String experienceInserttitle(Model model, String value, HttpSession session , int ep_people) {
-		
+	public String experienceInserttitle(Model model, String value, HttpSession session) {
+
 		EP_ManagementVo sessionVo = (EP_ManagementVo) session.getAttribute("sessionVo");
 		if (sessionVo.getSessionnum() > 22) {
 			model.addAttribute("sessionVo", sessionVo);
@@ -218,8 +218,7 @@ public class ExperiencePageController {
 			return ".experience.ep_insert.ep_price_time";
 		} else {
 			sessionVo.setTitle(value);
-			sessionVo.setPeople(ep_people);
-			
+
 			return ".experience.ep_insert.ep_price_time";
 		}
 	}

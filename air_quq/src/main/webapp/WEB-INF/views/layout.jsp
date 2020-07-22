@@ -22,6 +22,9 @@
 <!-- Custom styles for this page -->
 <link href="/resources/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
+<link href="/resources/css/experience.css" rel="stylesheet">
+<!--  영노 -->
+
 <!-- jquery -->
 <link rel="stylesheet" type="text/css" href="/resources/css/jquery-ui.css">
 <!-- <script src="/resources/js/jquery/jquery-3.5.1.js"></script> -->
@@ -89,8 +92,8 @@
 	<script type="text/javascript" src="/resources/js/passport/passport.js"></script>
 	<!-- 우편번호 Form Check -->
 	<script type="text/javascript" src="/resources/js/passport/formCheck.js"></script>
-	
-	
+	<!-- 영노 -->
+	<script type="text/javascript" src="/resources/js/experience/ep_inserting.js"></script>
 	
 	<!-- Vue.js 로딩 -->
 	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>

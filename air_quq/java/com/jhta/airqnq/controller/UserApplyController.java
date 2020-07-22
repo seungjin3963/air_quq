@@ -7,30 +7,20 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.jhta.airqnq.service.ApplyService;
-import com.jhta.airqnq.service.House_infoAdminService;
 import com.jhta.airqnq.vo.ApplyVo;
-import com.jhta.airqnq.vo.HouseInfoVo;
 import com.jhta.airqnq.vo.MemberVo;
 
 @Controller
 public class UserApplyController {
 
 	@Autowired
-	private ApplyService Applyservice;
-	
-	@Autowired
-	private House_infoAdminService house_infoService;
+	private ApplyService service;
 
-	@RequestMapping("/user/apply")
-	public String userapply(Model model,int hinum) {
-		
-		HouseInfoVo infovo= house_infoService.HinumSelect(hinum);
-		
-		model.addAttribute("infovo", infovo);
+	@GetMapping("/user/apply")
+	public String userapply(Model model) {
 		return ".apply.userapply";
 	}
 

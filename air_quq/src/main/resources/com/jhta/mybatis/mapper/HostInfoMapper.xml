@@ -53,12 +53,8 @@
 			where hinum=#{hinum} and ordernum=1;
 		</if>
 		<if test="ordernum != 1">
-			where hinum=#{hinum}
+			where hinum=#{hunum}
 		</if>		
-	</select>
-	
-	<select id="hinumselect" parameterType="int" resultType="house_info">
-	 	select * from house_info where hinum=#{hinum}
 	</select>
 	
 </mapper>

@@ -1,5 +1,5 @@
-$(function(){
-	// 시작일 마지막일 사이 구하는 함수
+	$(function(){
+		// 시작일 마지막일 사이 구하는 함수
 		var between=function(startdate,enddate){
 			var startarr=startdate.split("/");
 			var endarr=enddate.split("/");

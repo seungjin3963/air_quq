@@ -242,16 +242,4 @@
 	height: 50px;
 	margin: auto;
 }
-#ep_maxpeople{
-	width: 40%; 
-	height: 50px; 	
-	
-}
-#ep_maxpeople div{
-	width: 8%;
-	 height: auto;
-	 margin: auto;
-}
-#ep_maxpeople div span{
-	font-size: 30px;
-}
+

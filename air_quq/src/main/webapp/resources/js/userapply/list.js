@@ -1,5 +1,3 @@
-let rowIndex = 0;
-
 $('.starRev span').click(function() {
 	$(this).parent().children('span').removeClass('on');
 	$(this).addClass('on').prevAll('span').addClass('on');
@@ -36,21 +34,6 @@ $("#btnReviewAndGradeSave").click( () => {
 			, checkinGrade:parseFloat($("#checkinGrade").text())
 			, satisGrade:parseFloat($("#satisGrade").text())};
 	$.post("/user/apply/reviewAndGradeSave", vo, (data) => {
-		if(data === "success"){
-			alert("리뷰 및 평점 저장 성공");
-			$("#reviewAndGradeModal").modal("hide");
-		}else{
-			location.href = "/error";
-		}
+		alert(data);
 	});
-	
-	let tr = $("#dataTable tbody tr").eq(rowIndex);
-	tr.children().eq(8).empty();
-	
-	let html = "<i class='fa fa-check text-info fa-2x'></i>";
-	tr.children().eq(8).html(html);
-});
-
-$("#dataTable tbody td").click(function() {
-	rowIndex = $(this).parent().index();
 });

@@ -7,7 +7,6 @@ $("#searchPassport").click(function () {
       onsearch: function (data) {
          // console.log(data);
          $("#searchPassport").val(data.q);
-        
       }
    }).open();
 });

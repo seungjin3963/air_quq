@@ -1,5 +1,8 @@
 package com.jhta.airqnq.controller;
 
+import javax.servlet.http.HttpSession;
+
+import org.json.JSONObject;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -41,12 +44,15 @@ public class HomeController {
 	}
 	
 	@RequestMapping(value="search/host", method=RequestMethod.POST)
-	public String hostSearch() {
+	public String hostSearch(String locationAdress, String start_day, String end_day, int people_count, HttpSession session) {
+		JSONObject json = new JSONObject();
+		json.put("locationAdress", locationAdress);
+		json.put("start_day", start_day);
+		json.put("end_day", end_day);
+		json.put("people_count", people_count);
+		
+		
+		session.setAttribute("hostSearch", json);
 		return ".hostsearch";
-	}
-	
-	@RequestMapping(value = "home/experience", method = RequestMethod.GET)
-	public String homeexperience() {
-		return ".home1";
 	}
 }

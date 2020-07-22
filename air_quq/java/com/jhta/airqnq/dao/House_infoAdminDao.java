@@ -33,10 +33,7 @@ public class House_infoAdminDao {
 	}
 	
 	public List<String> HouseImglist(HashMap<String, Object> map){
-		return sqlsessiontemplate.selectList(NAMESPACE+".houseimg", map);
+		return sqlsessiontemplate.selectList(NAMESPACE+"..houseimg", map);
 	}
-	
-	public HouseInfoVo HinumSelect(int hinum) {
-		return sqlsessiontemplate.selectOne(NAMESPACE+".hinumselect", hinum);
-	}
+
 }

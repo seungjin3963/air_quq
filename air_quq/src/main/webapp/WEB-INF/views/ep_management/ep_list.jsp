@@ -83,5 +83,4 @@
 	</ep:forEach>
 </div>
 
-<!-- 영노 -->
-	<script type="text/javascript" src="/resources/js/experience/ep_inserting.js"></script>
+
