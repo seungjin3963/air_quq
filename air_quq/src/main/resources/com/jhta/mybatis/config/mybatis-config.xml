@@ -27,5 +27,6 @@
     <mapper resource="com/jhta/mybatis/mapper/epOnlineMapper.xml"/>
     <mapper resource="com/jhta/mybatis/mapper/RentMapper.xml"/>
     <mapper resource="com/jhta/mybatis/mapper/ReviewAndGradeMapper.xml"/>
+     <mapper resource="com/jhta/mybatis/mapper/OnlineListMapper.xml"/>
   </mappers>
 </configuration>

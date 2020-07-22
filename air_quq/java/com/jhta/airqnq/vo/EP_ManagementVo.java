@@ -25,23 +25,25 @@ public class EP_ManagementVo {
 	
 	public EP_ManagementVo() {}
 	
-	public EP_ManagementVo(int hinum ,String img , int ordernum) {
+	public EP_ManagementVo(int hinum ,String img , int ordernum) { 
 		this.img=img;
 		this.ordernum=ordernum;
+		this.img=img;
 	}
-	
-	public EP_ManagementVo(int memnum, int div_type, String title, int hinum, String subname,String loc,String intr,String program,String price
-		,String times	) {
-		super();
+	public EP_ManagementVo(int memnum, int div_type, String loc, String intr, String program, String title,String subname,
+			String price, String times, int hinum) {
+		
 		this.memnum = memnum;
 		this.div_type = div_type;
+		this.loc = loc;
+		this.intr = intr;
+		this.program = program;
 		this.title = title;
+		this.price = price;
+		this.times = times;
 		this.hinum = hinum;
-		this.subname = subname;
+		this.subname=subname;
 	}
-
-
-
 	public EP_ManagementVo(int einum, int sunum, int memnum, int div_type, String loc, String intr, String program,
 			String title, String price, String times, String mater, int sessionnum, int hinum,Date regdate , int people ,String reason) {
 		super();
@@ -66,6 +68,16 @@ public class EP_ManagementVo {
 	
 
 	
+
+	public EP_ManagementVo(String title, String price, String times, int hinum, String img , String subname) { // 온라인 체험 list 뽑아오는 vo
+		
+		this.title = title;
+		this.price = price;
+		this.times = times;
+		this.hinum = hinum;
+		this.img = img;
+		this.subname=subname;
+	}
 
 	public int getEinum() {
 		return einum;

@@ -1,0 +1,73 @@
+@charset "UTF-8";
+
+
+
+.OnlineList_img #OnLinediv1 {
+	position: relative;
+}
+
+.OnlineList_img #OnLinediv2 {
+	position: absolute;
+	top: 50%;
+	left: 13%;
+	transform: translate(-50%, -50%);
+	font-size: 5rem;
+	color: black;
+	z-index: 2;
+	text-align: center;
+}
+
+.OnlineList_img #OnLinediv2 h1 {
+	color: black;
+	font-size: 80px;
+}
+
+.OnlineList_img #OnLinediv2 h3 {
+	color: black;
+}
+
+.OnlineList_img img {
+	width: 100%;
+	height: 600px;
+}
+
+
+
+
+.onlinecooklist	{
+	display: inline-block;
+	width: 19%;
+	height: 400px;
+		
+}
+.onlinecooklist_div{
+	width: 90%; 
+	height: 100%; 
+	margin: auto;
+	color: black;
+}
+.onlinecooklist_div img{
+	height: 75%; 
+	width: 100%;
+	border-radius: 20px;
+}
+
+
+
+
+.onlinecooklist_div{
+	width: 90%; 
+	height: 100%; 
+	margin: auto;
+	color: black;
+	
+}
+.onlinecooklist_div img{
+	height: 75%; 
+	width: 100%;
+	border-radius: 20px;
+}
+.onlinePageBtn{
+	float: right;
+	 margin-right: 100px;
+}
