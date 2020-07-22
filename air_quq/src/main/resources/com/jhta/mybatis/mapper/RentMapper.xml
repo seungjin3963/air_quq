@@ -6,6 +6,7 @@
 	<select id="list" parameterType="int" resultType="rentList">
 		select rtnum,hinum,startrent,endrent,status,person,pay_price
 			,(select title from house_info where hinum = a.hinum) title
+			,(select case when count(*) = 0 then 'n' else 'y' end as rag_yn from review where rtnum = a.rtnum) rag_yn
 		from rent a
 		where menum = #{menum}
 	</select>

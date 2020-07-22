@@ -13,14 +13,15 @@
 			<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
 				<thead>
 					<tr>
-						<th>예약 번호</th>
-						<th>숙소 번호</th>
+						<th class="d-none">예약 번호</th>
+						<th class="d-none">숙소 번호</th>
 						<th>숙소 제목</th>
 						<th>시작 날짜</th>
 						<th>종료 날짜</th>
 						<th>상태</th>
 						<th>인원 수</th>
 						<th>결제 금액</th>
+						<th>리뷰 작성 여부</th>
 						<th>리뷰 & 평점</th>
 						<th>예약 취소</th>
 					</tr>
@@ -37,14 +38,24 @@
 							</c:when>
 						</c:choose>
 						<tr class=${statusBackColor }>
-							<td>${list.rtnum }</td>
-							<td>${list.hinum }</td>
+							<td class="d-none">${list.rtnum }</td>
+							<td class="d-none">${list.hinum }</td>
 							<td>${list.title }</td>
 							<td>${list.startrent }</td>
 							<td>${list.endrent }</td>
 							<td>${status }</td>
 							<td>${list.person }</td>
 							<td>${list.pay_price }</td>
+							<td>
+								<c:choose>
+									<c:when test="${list.rag_yn == 'n'}">
+										<i class="fa fa-times text-danger fa-2x"></i>
+									</c:when>
+									<c:otherwise>
+										<i class="fa fa-check text-info fa-2x"></i>
+									</c:otherwise>
+								</c:choose>
+							</td>
 
 							<fmt:formatDate var="endrant" type="date" value="${list.endrent}" pattern="yyyyMMdd" />
 							<td>

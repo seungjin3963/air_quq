@@ -34,6 +34,12 @@ $("#btnReviewAndGradeSave").click( () => {
 			, checkinGrade:parseFloat($("#checkinGrade").text())
 			, satisGrade:parseFloat($("#satisGrade").text())};
 	$.post("/user/apply/reviewAndGradeSave", vo, (data) => {
-		alert(data);
+		if(data === "success"){
+			alert("리뷰 및 평점 저장 성공");
+			$("#reviewAndGradeModal").modal("hide");
+		}else{
+			location.href = "/error";
+		}
 	});
 });
+
