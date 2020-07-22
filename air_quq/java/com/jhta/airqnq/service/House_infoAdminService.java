@@ -33,4 +33,8 @@ public class House_infoAdminService {
 	public List<String> HouseImglist(HashMap<String, Object> map) {
 		return dao.HouseImglist(map);
 	}
+	
+	public HouseInfoVo HinumSelect(int hinum) {
+		return dao.HinumSelect(hinum);
+	}
 }
