@@ -1,12 +1,13 @@
 package com.jhta.airqnq.dao;
 
+import java.util.List;
 import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.jhta.airqnq.vo.ReviewAndGradeVo;
+import com.jhta.airqnq.vo.GradeOneVo;
 
 @Repository
 public class ReviewAndGradeDao {
@@ -35,7 +36,7 @@ public class ReviewAndGradeDao {
 		session.update(NAMESPACE + ".updGrade", map);
 	}
 
-	public ReviewAndGradeVo selReviewGrade(Map<String, Object> map) {
-		return session.selectOne(NAMESPACE + ".selReviewGrade", map);
+	public List<GradeOneVo> selReviewGrade(Map<String, Object> map) {
+		return session.selectList(NAMESPACE + ".selReviewGrade", map);
 	}
 }

@@ -21,7 +21,28 @@ $('#reviewAndGradeModal').on('show.bs.modal', (event) => {
 	$("#hinum").val(hinum);
 	
 	$.post("/user/selReviewGrade",{rtnum,hinum},(data) => {
+		$("#reviewContent").text(data.content);
 		
+		$(data).each(function(key, value){
+//			if(value.gradeName === "cleanGrade"){
+//				$("#cleanGrade").parent().parent().find("span").each(function(){
+//					if(value.grade == $(this).text()){
+//						return false;
+//					}
+//					if($(this).hasClass() === false){
+//						$(this).trigger("click");
+//					}
+//				});
+//			}
+			$(`#${value.gradeName}`).parent().parent().find("span").each(function(){
+				if(value.grade == $(this).text()){
+					return false;
+				}
+				if($(this).hasClass() === false){
+					$(this).trigger("click");
+				}
+			});
+		});
 	});
 });
 

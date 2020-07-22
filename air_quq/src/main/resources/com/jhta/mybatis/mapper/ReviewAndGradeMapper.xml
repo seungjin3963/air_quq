@@ -26,21 +26,59 @@
 		checkin = #{checkinGrade}, satis = #{satisGrade}
 		where renum = #{renum}
 	</update>
-	<select id="selReviewGrade" parameterType="map" resultType="reviewAndGrade">
-		select a.rtnum
-			, a.hinum
-		    , a.content
-		    , b.clean
-		    , b.accuracy
-		    , b.commu
-		    , b.position
-		    , b.checkin
-		    , b.satis
+	<select id="selReviewGrade" parameterType="map" resultType="gradeOne">
+		select 'cleanGrade' gradeName
+				, b.clean grade
 		from review a inner join grade b
-		on a.renum = b.renum
-		where a.del_yn = 'n'
-		and b.del_yn = 'n'
-		and a.rtnum = #{rtnum}
-		and a.hinum = #{hinum}
+				on a.renum = b.renum
+				where a.del_yn = 'n'
+				and b.del_yn = 'n'
+				and a.rtnum = #{rtnum}
+				and a.hinum = #{hinum}
+		union all
+		select 'accuracyGrade' gradeName
+				, b.accuracy grade
+		from review a inner join grade b
+				on a.renum = b.renum
+				where a.del_yn = 'n'
+				and b.del_yn = 'n'
+				and a.rtnum = #{rtnum}
+				and a.hinum = #{hinum}
+		union all
+		select 'commuGrade' gradeName
+				, b.commu grade
+		from review a inner join grade b
+				on a.renum = b.renum
+				where a.del_yn = 'n'
+				and b.del_yn = 'n'
+				and a.rtnum = #{rtnum}
+				and a.hinum = #{hinum}
+		union all
+		select 'positionGrade' gradeName
+				, b.position grade
+		from review a inner join grade b
+				on a.renum = b.renum
+				where a.del_yn = 'n'
+				and b.del_yn = 'n'
+				and a.rtnum = #{rtnum}
+				and a.hinum = #{hinum}
+		union all
+		select 'checkinGrade' gradeName
+				, b.checkin grade
+		from review a inner join grade b
+				on a.renum = b.renum
+				where a.del_yn = 'n'
+				and b.del_yn = 'n'
+				and a.rtnum = #{rtnum}
+				and a.hinum = #{hinum}
+		union all
+		select 'satisGrade' gradeName
+				, b.satis grade
+		from review a inner join grade b
+				on a.renum = b.renum
+				where a.del_yn = 'n'
+				and b.del_yn = 'n'
+				and a.rtnum = #{rtnum}
+				and a.hinum = #{hinum}
 	</select>
 </mapper>

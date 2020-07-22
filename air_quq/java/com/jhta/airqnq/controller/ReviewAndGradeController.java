@@ -1,6 +1,7 @@
 package com.jhta.airqnq.controller;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpSession;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.jhta.airqnq.service.ApplyService;
 import com.jhta.airqnq.service.ReviewAndGradeService;
+import com.jhta.airqnq.vo.GradeOneVo;
 import com.jhta.airqnq.vo.ReviewAndGradeVo;
 
 @Controller
@@ -56,11 +58,11 @@ public class ReviewAndGradeController {
 	
 	@PostMapping("/user/selReviewGrade")
 	@ResponseBody
-	public ReviewAndGradeVo selReviewGrade(int rtnum, int hinum) {
+	public List<GradeOneVo> selReviewGrade(int rtnum, int hinum) {
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("rtnum", rtnum);
 		map.put("hinum", hinum);
-		ReviewAndGradeVo vo = ragService.selReviewGrade(map);
-		return vo;
+		List<GradeOneVo> gradeList = ragService.selReviewGrade(map);
+		return gradeList;
 	}
 }

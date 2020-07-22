@@ -1,5 +1,6 @@
 package com.jhta.airqnq.service;
 
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,7 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.jhta.airqnq.dao.ReviewAndGradeDao;
-import com.jhta.airqnq.vo.ReviewAndGradeVo;
+import com.jhta.airqnq.vo.GradeOneVo;
 
 @Service
 public class ReviewAndGradeService {
@@ -27,7 +28,7 @@ public class ReviewAndGradeService {
 		}
 	}
 
-	public ReviewAndGradeVo selReviewGrade(Map<String, Object> map) {
+	public List<GradeOneVo> selReviewGrade(Map<String, Object> map) {
 		return dao.selReviewGrade(map);
 	}
 }

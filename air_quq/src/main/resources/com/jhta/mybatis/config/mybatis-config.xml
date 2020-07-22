@@ -14,6 +14,7 @@
  	<typeAlias type="com.jhta.airqnq.vo.AdminInfoVo" alias="adminInfo"/>
  	<typeAlias type="com.jhta.airqnq.vo.RentListVo" alias="rentList"/>
  	<typeAlias type="com.jhta.airqnq.vo.ReviewAndGradeVo" alias="reviewAndGrade"/>
+ 	<typeAlias type="com.jhta.airqnq.vo.GradeOneVo" alias="gradeOne"/>
  </typeAliases>
  <mappers>
     <mapper resource="com/jhta/mybatis/mapper/JoinMapper.xml"/>
