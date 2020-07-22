@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.jhta.airqnq.dao.ApplyDao;
 import com.jhta.airqnq.vo.RentListVo;
@@ -15,5 +16,10 @@ public class ApplyService {
 
 	public List<RentListVo> applyList(int menum) {
 		return dao.applyList(menum);
+	}
+
+	@Transactional
+	public void applyCencel(int rtnum) {
+		
 	}
 }

@@ -51,4 +51,15 @@ public class UserApplyController {
 	public MemberVo getMemberInfo(HttpSession session) {
 		return (MemberVo) session.getAttribute("memberVo");
 	}
+	
+	@PostMapping("/user/apply/cencel")
+	@ResponseBody
+	public String applyCencel(int rtnum) {
+		try {
+			service.applyCencel(rtnum);
+		}catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		return "success";
+	}
 }

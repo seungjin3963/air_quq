@@ -53,4 +53,14 @@ public class ReviewAndGradeController {
 			return "error";
 		}
 	}
+	
+	@PostMapping("/user/selReviewGrade")
+	@ResponseBody
+	public ReviewAndGradeVo selReviewGrade(int rtnum, int hinum) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("rtnum", rtnum);
+		map.put("hinum", hinum);
+		ReviewAndGradeVo vo = ragService.selReviewGrade(map);
+		return vo;
+	}
 }

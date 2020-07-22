@@ -13,4 +13,34 @@
 	<insert id="gradeSave" parameterType="map">
 		insert into grade values(0, LAST_INSERT_ID(), #{cleanGrade}, #{accuracyGrade}, #{commuGrade}, #{positionGrade}, #{checkinGrade}, #{satisGrade}, 'n')
 	</insert>
+	<select id="selReviewAndGrade" parameterType="map" resultType="int">
+		select nvl(max(renum),-1) from review where menum = #{menum} and rtnum = #{rtnum} and hinum = #{hinum} and del_yn = 'n'
+	</select>
+	<update id="updReview" parameterType="map">
+		update review set score = (#{cleanGrade} + #{accuracyGrade} + #{commuGrade} + #{positionGrade} + #{checkinGrade} +
+			#{satisGrade}) / 6, content = #{content}
+		where renum = #{renum}
+	</update>
+	<update id="updGrade">
+		update grade set clean = #{cleanGrade}, accuracy = #{accuracyGrade}, commu = #{commuGrade}, position = #{positionGrade},
+		checkin = #{checkinGrade}, satis = #{satisGrade}
+		where renum = #{renum}
+	</update>
+	<select id="selReviewGrade" parameterType="map" resultType="reviewAndGrade">
+		select a.rtnum
+			, a.hinum
+		    , a.content
+		    , b.clean
+		    , b.accuracy
+		    , b.commu
+		    , b.position
+		    , b.checkin
+		    , b.satis
+		from review a inner join grade b
+		on a.renum = b.renum
+		where a.del_yn = 'n'
+		and b.del_yn = 'n'
+		and a.rtnum = #{rtnum}
+		and a.hinum = #{hinum}
+	</select>
 </mapper>

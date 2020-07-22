@@ -1,3 +1,5 @@
+let rowIndex = 0;
+
 $('.starRev span').click(function() {
 	$(this).parent().children('span').removeClass('on');
 	$(this).addClass('on').prevAll('span').addClass('on');
@@ -17,6 +19,10 @@ $('#reviewAndGradeModal').on('show.bs.modal', (event) => {
 	
 	$("#rtnum").val(rtnum);
 	$("#hinum").val(hinum);
+	
+	$.post("/user/selReviewGrade",{rtnum,hinum},(data) => {
+		
+	});
 });
 
 $('#reviewAndGradeModal').on('hidden.bs.modal', function () {
@@ -34,6 +40,31 @@ $("#btnReviewAndGradeSave").click( () => {
 			, checkinGrade:parseFloat($("#checkinGrade").text())
 			, satisGrade:parseFloat($("#satisGrade").text())};
 	$.post("/user/apply/reviewAndGradeSave", vo, (data) => {
-		alert(data);
+		if(data === "success"){
+			alert("리뷰 및 평점 저장 성공");
+			$("#reviewAndGradeModal").modal("hide");
+		}else{
+			location.href = "/error";
+		}
 	});
+	
+	let tr = $("#dataTable tbody tr").eq(rowIndex);
+	tr.children().eq(8).empty();
+	
+	let html = "<i class='fa fa-check text-info fa-2x'></i>";
+	tr.children().eq(8).html(html);
 });
+
+$("#dataTable tbody td").click(function() {
+	rowIndex = $(this).parent().index();
+});
+
+function applyCancel(rtnum){
+	if(confirm("선택하신 예약을 취소하시겠습니까?") === true){
+		$.post("/user/apply/cencel", {rtnum}, (data) => {
+			console.log(data);
+		});
+	}else{
+		return;
+	}
+}
