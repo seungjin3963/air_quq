@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<link href="/resources/css/home1.css" rel="stylesheet">
 <div class="container">
 	<div class="navbar navbar-expand-lg navbar-light bg-light mb-5">
 		<button class="navbar-toggler" type="button" data-toggle="collapse"
@@ -37,18 +38,18 @@
 								role="button" id="dropdownMenuLink" data-toggle="dropdown"
 								aria-haspopup="true" aria-expanded="false" placeholder="게스트 추가">
 
-							<div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+							<div class="dropdown-menu ep_searchdropdown-menu" aria-labelledby="dropdownMenuLink">
 								<br>
 								<div >
-									<input type="button" class="btn adultBtnM" value="-"><span id="adultCount">0</span>
-									<input class="btn adultBtnP" type="button" value="+">
+									<input type="button" class="btn adultBtnM homeinput" value="-"><span id="adultCount" class="countspan">0</span>
+									<input class="btn adultBtnP homeinput" type="button" value="+">
 								</div>
 								<h5>성인</h5>
 								<p>만 13세 이상</p>
 								<div>
 									<br>
-									<input type="button" class="btn childBtnM" value="-"><span id="childCount">0</span>
-									<input class="btn childBtnP" type="button" value="+">
+									<input type="button" class="btn childBtnM homeinput" value="-"><span id="childCount" class="countspan">0</span>
+									<input class="btn childBtnP homeinput" type="button" value="+">
 								</div>
 								<br>
 								<h5>어린이</h5>

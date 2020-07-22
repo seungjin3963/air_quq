@@ -13,6 +13,6 @@ public class EP_SearchController {
 	
 	@RequestMapping("/ep_OnlineList")
 	public String Ep_OnlineList() {
-		return "ep_SearchList.OnlineAllList";
+		return ".ep_SearchList.OnlineAllList";
 	}
 }
