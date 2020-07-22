@@ -14,20 +14,25 @@ public class OnlineListDao {
 	
 	private final String NAMESPACE ="com.jhta.airqnq.mapper.OnlineListMapper";
 	
-	public List<EP_ManagementVo> onlineCookList(){
-		
-		return sqlsessiontemplate.selectList(NAMESPACE + ".OnlineCookList");
+	public List<EP_ManagementVo> onlineCookList(int row){	
+		return sqlsessiontemplate.selectList(NAMESPACE + ".OnlineCookList" , row);
 	}
-	public List<EP_ManagementVo> onlineSportList(){
-		
-		return sqlsessiontemplate.selectList(NAMESPACE + ".OnlineSportList");
+	public int onlineCookListC(){
+		return sqlsessiontemplate.selectOne(NAMESPACE + ".onlineCookListC");
 	}
-	public List<EP_ManagementVo> OnlineRegdateList(int row){
-		
+	
+	public List<EP_ManagementVo> onlineSportList(int row){
+		return sqlsessiontemplate.selectList(NAMESPACE + ".OnlineSportList" , row);
+	}
+	public int onlineSportListC(){
+		return sqlsessiontemplate.selectOne(NAMESPACE + ".OnlineSportListC");
+	}
+	
+	
+	public List<EP_ManagementVo> OnlineRegdateList(int row){	
 		return sqlsessiontemplate.selectList(NAMESPACE + ".OnlineRegdateList" , row);
 	}
-	public int OnlineRegdateListC(){
-		
+	public int OnlineRegdateListC(){	
 		return sqlsessiontemplate.selectOne(NAMESPACE + ".OnlineRegdateListC");
 	}
 }

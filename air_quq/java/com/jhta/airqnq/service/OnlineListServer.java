@@ -12,13 +12,21 @@ import com.jhta.airqnq.vo.EP_ManagementVo;
 public class OnlineListServer {
 	@Autowired private OnlineListDao dao;
 	
-	public List<EP_ManagementVo> onlineCookList(){ // 요리
-		return dao.onlineCookList();
+	public List<EP_ManagementVo> onlineCookList(int row){ // 요리
+		return dao.onlineCookList( row);
+	}
+	public int onlineCookListC(){ // 요리
+		return dao.onlineCookListC();
 	}
 	
-	public List<EP_ManagementVo> onlineSportList(){ // 스포츠
-		return dao.onlineSportList();
+	public List<EP_ManagementVo> onlineSportList(int row){ // 스포츠
+		return dao.onlineSportList(row);
 	}
+	public int onlineSportListC(){ // 스포츠
+		return dao.onlineSportListC();
+	}
+	
+	
 	
 	public List<EP_ManagementVo> OnlineRegdateList(int row){ // 최근 가입
 		return dao.OnlineRegdateList(row);

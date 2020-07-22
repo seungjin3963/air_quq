@@ -20,12 +20,24 @@ public class OnlineListController {
 	
 	@RequestMapping("/ep_OnlineList")
 	public String Ep_OnlineList(Model model) {
-		List<EP_ManagementVo> cooklist=service.onlineCookList(); 
+		
+		int CookListC=service.onlineCookListC();
+		PageUtilForMySql cookPageUtil=new PageUtilForMySql(1,CookListC,5,1);
+		
+		List<EP_ManagementVo> cooklist=service.onlineCookList(cookPageUtil.getStartRow()); 
 		model.addAttribute("CookList" ,cooklist);//요리
+		model.addAttribute("cookPageUtil" ,cookPageUtil);//요리
 		
 		
-		List<EP_ManagementVo> sportlist=service.onlineSportList();
+		
+		int sportlistC=service.onlineSportListC();
+		PageUtilForMySql sportPageUtil=new PageUtilForMySql(1,sportlistC,5,1);
+		
+		List<EP_ManagementVo> sportlist=service.onlineSportList(sportPageUtil.getStartRow());
 		model.addAttribute("sportlist" ,sportlist);//스포츠
+		model.addAttribute("sportPageUtil" ,sportPageUtil);//스포츠
+		
+		
 		
 		
 		int regdatelistC=service.OnlineRegdateListC();
@@ -41,13 +53,36 @@ public class OnlineListController {
 	}
 	
 	
+	@RequestMapping(value = "/ep_sport" ,produces = "application/json;charset=utf-8")
+	@ResponseBody
+	public String Ep_regdate(int pagenum, int sporttotalR) {
+		System.out.println(pagenum);
+		System.out.println(sporttotalR);
+		JSONObject json=new JSONObject();
+		PageUtilForMySql sportPageUtil=new PageUtilForMySql(pagenum,sporttotalR,5,1);
+		List<EP_ManagementVo> sportlist=service.onlineSportList(sportPageUtil.getStartRow());
+		
+		
+		
+		json.put("sportlist", sportlist);
+		json.put("sportPageUtil", sportPageUtil);
+		return  json.toString();
+		
+	}
+	
+	
 	@RequestMapping(value = "/ep_regdate" ,produces = "application/json;charset=utf-8")
 	@ResponseBody
-	public String Ep_regdate() {
-		
+	public String Ep_sport(int pagenum, int regdatetotalR) {
 		JSONObject json=new JSONObject();
 		
-		json.put("mater", 1);
+		PageUtilForMySql regdatePageUtil=new PageUtilForMySql(pagenum,regdatetotalR,5,1);
+		List<EP_ManagementVo> regdatelist=service.OnlineRegdateList(regdatePageUtil.getStartRow());
+		
+		
+		
+		json.put("regdatelist", regdatelist);
+		json.put("regdatePageUtil", regdatePageUtil);
 		return  json.toString();
 		
 	}
