@@ -26,7 +26,7 @@
 		</div>
 
 		<div class="col-md-1">
-			<img src="/resources/img/1.jpg" id="applypofile">
+			<img src="${infovo.profile_img }" id="applypofile">
 		</div>
 	</div>
 

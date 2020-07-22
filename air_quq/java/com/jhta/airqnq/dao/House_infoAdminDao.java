@@ -7,6 +7,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.jhta.airqnq.vo.Apply_infoVo;
 import com.jhta.airqnq.vo.HouseInfoVo;
 
 @Repository
@@ -33,7 +34,11 @@ public class House_infoAdminDao {
 	}
 	
 	public List<String> HouseImglist(HashMap<String, Object> map){
-		return sqlsessiontemplate.selectList(NAMESPACE+"..houseimg", map);
+		return sqlsessiontemplate.selectList(NAMESPACE+".houseimg", map);
+	}
+	
+	public Apply_infoVo HinumSelect(int hinum) {
+		return sqlsessiontemplate.selectOne(NAMESPACE+".applyselect", hinum);
 	}
 
 }

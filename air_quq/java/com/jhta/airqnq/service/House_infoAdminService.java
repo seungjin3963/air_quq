@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.jhta.airqnq.dao.House_infoAdminDao;
+import com.jhta.airqnq.vo.Apply_infoVo;
 import com.jhta.airqnq.vo.HouseInfoVo;
 
 @Service
@@ -32,5 +33,9 @@ public class House_infoAdminService {
 
 	public List<String> HouseImglist(HashMap<String, Object> map) {
 		return dao.HouseImglist(map);
+	}
+	
+	public Apply_infoVo HinumSelect(int hinum) {
+		return dao.HinumSelect(hinum);
 	}
 }

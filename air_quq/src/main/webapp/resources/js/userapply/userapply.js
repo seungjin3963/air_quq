@@ -1,4 +1,4 @@
-	$(function(){
+$(function(){
 		// 시작일 마지막일 사이 구하는 함수
 		var between=function(startdate,enddate){
 			var startarr=startdate.split("/");
@@ -183,10 +183,14 @@
 // var map = new kakao.maps.Map(container, options); // 지도 생성 및 객체 리턴
 		
 		
+		console.log($("#applydivision div img").prop(src));
+		console.log("출력");
+		
 		// 권준범
 		// 결제 API(아임포트)
 		$("#btnApply").click(()=>{
 			location.href = "/user/applyCheck";
 		});
+		
+		
 	})
-	

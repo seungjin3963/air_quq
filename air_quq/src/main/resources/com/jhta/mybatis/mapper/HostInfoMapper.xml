@@ -57,4 +57,9 @@
 		</if>		
 	</select>
 	
+
+	<select id="applyselect" parameterType="int" resultType="com.jhta.airqnq.vo.Apply_infoVo">
+	 	select hinum,h.menum,title,content,h.addr,addr_detail,price,max_n,bedroom,checkin_time,startdate,enddate,profile_img from house_info h,member m where hinum=#{hinum} and h.menum=m.menum
+	</select>
+
 </mapper>
