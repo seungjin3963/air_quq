@@ -4,7 +4,7 @@
 	h2{float:left; width:100%; color:#fff; margin-bottom:40px; font-size: 14px; position:relartive; z-index:3; margin-top:30px}
 	h2 a{color:#fff; font-weight:bold;}
 	.search-box{width:95%; margin:0 auto 40px; box-shadow:20px 20px 0 rgba(0,0,0,0.2);}
-	.listing-block{background:#fff; height:100%; padding-top:20px; overflow-y:scroll;}
+	.listing-block{background:#fff; height:750px; padding-top:20px; overflow-y:scroll;}
 .media {background:#fff; position:relative; margin-bottom:15px;}
 .media img{width:200px;margin:0; height:136px;}
 .media-body{border:1px solid #bcbcbc; border-left:0; height:136px;}
@@ -24,7 +24,7 @@
 		<div class="col-md-5 listing-block">
         <div class="media">
             <div class="fav-box"><i class="fa fa-heart-o" aria-hidden="true"></i>
-</div>
+		</div>
               <img class="d-flex align-self-start" src="https://images.pexels.com/photos/186077/pexels-photo-186077.jpeg?h=350&auto=compress&cs=tinysrgb" alt="Generic placeholder image">
               <div class="media-body pl-3">
                 <div class="price">$799,000<small>New York</small></div>
@@ -38,7 +38,7 @@
             </div>
         <div class="media">
             <div class="fav-box"><i class="fa fa-heart-o" aria-hidden="true"></i>
-</div>
+		</div>
               <img class="d-flex align-self-start" src="https://images.pexels.com/photos/106399/pexels-photo-106399.jpeg?h=350&auto=compress&cs=tinysrgb" alt="Generic placeholder image">
               <div class="media-body pl-3">
                 <div class="price">$506,400<small>New York</small></div>
@@ -52,7 +52,7 @@
             </div>
         <div class="media">
             <div class="fav-box"><i class="fa fa-heart-o" aria-hidden="true"></i>
-</div>
+		</div>
               <img class="d-flex align-self-start" src="https://images.pexels.com/photos/358636/pexels-photo-358636.jpeg?h=350&auto=compress&cs=tinysrgb" alt="Generic placeholder image">
               <div class="media-body pl-3">
                 <div class="price">$506,400<small>New York</small></div>
@@ -66,7 +66,7 @@
             </div>
         <div class="media">
             <div class="fav-box"><i class="fa fa-heart-o" aria-hidden="true"></i>
-</div>
+		</div>
               <img class="d-flex align-self-start" src="https://images.pexels.com/photos/186077/pexels-photo-186077.jpeg?h=350&auto=compress&cs=tinysrgb" alt="Generic placeholder image">
               <div class="media-body pl-3">
                 <div class="price">$799,000<small>New York</small></div>
@@ -80,7 +80,7 @@
             </div>
         <div class="media">
             <div class="fav-box"><i class="fa fa-heart-o" aria-hidden="true"></i>
-</div>
+		</div>
               <img class="d-flex align-self-start" src="https://images.pexels.com/photos/106399/pexels-photo-106399.jpeg?h=350&auto=compress&cs=tinysrgb" alt="Generic placeholder image">
               <div class="media-body pl-3">
                 <div class="price">$506,400<small>New York</small></div>
@@ -94,7 +94,7 @@
             </div>
         <div class="media">
             <div class="fav-box"><i class="fa fa-heart-o" aria-hidden="true"></i>
-</div>
+		</div>
               <img class="d-flex align-self-start" src="https://images.pexels.com/photos/358636/pexels-photo-358636.jpeg?h=350&auto=compress&cs=tinysrgb" alt="Generic placeholder image">
               <div class="media-body pl-3">
                 <div class="price">$506,400<small>New York</small></div>
@@ -102,8 +102,7 @@
                     <span><i class="fa fa-arrows-alt"></i>1678 Sq ft</span>
                     <span><i class="fa fa-bath"></i>2 Beadrooms</span>
                 </div>
-                <div class="address">4062 Walnut Hill Drive
-            Cincinnati</div>
+                <div class="address">4062 Walnut Hill Drive Cincinnati</div>
               </div>
             </div>
 		</div>
@@ -112,6 +111,7 @@
 		</div>
 	</div>
 </div>
+<input type="hidden" value="${ hostSearch.locationAdress }" id="locationAdress">
 
 <%-- <input type="hidden" value="${ hostSearch.locationAdress }" id="keyword"> --%>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=406ad69f366b925b30509f2bc766e47f&libraries=services"></script>

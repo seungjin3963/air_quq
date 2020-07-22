@@ -1,5 +1,7 @@
 package com.jhta.airqnq.controller;
 
+import java.util.HashMap;
+
 import javax.servlet.http.HttpSession;
 
 import org.json.JSONObject;
@@ -45,14 +47,14 @@ public class HomeController {
 	
 	@RequestMapping(value="search/host", method=RequestMethod.POST)
 	public String hostSearch(String locationAdress, String start_day, String end_day, int people_count, HttpSession session) {
-		JSONObject json = new JSONObject();
-		json.put("locationAdress", locationAdress);
-		json.put("start_day", start_day);
-		json.put("end_day", end_day);
-		json.put("people_count", people_count);
 		
+		HashMap<String, Object> map =new HashMap<String, Object>();
 		
-		session.setAttribute("hostSearch", json);
+		map.put("locationAdress", locationAdress);
+		map.put("start_day", start_day);
+		map.put("end_day", end_day);
+		map.put("people_count", people_count);
+		session.setAttribute("hostSearch", map);
 		return ".hostsearch";
 	}
 }

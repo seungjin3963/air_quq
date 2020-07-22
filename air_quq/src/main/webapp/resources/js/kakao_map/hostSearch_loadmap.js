@@ -18,7 +18,7 @@ var map = new kakao.maps.Map(mapContainer, mapOption);
 var ps = new kakao.maps.services.Places(); 
 
 //넘어온 검색 키워드
-var keyword = '서울 특별시';
+var keyword = $("#locationAdress").val();
 
 // 키워드로 장소를 검색합니다
 ps.keywordSearch(keyword, placesSearchCB); 
