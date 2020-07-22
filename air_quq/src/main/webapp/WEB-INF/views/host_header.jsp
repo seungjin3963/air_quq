@@ -14,13 +14,13 @@
 			<a href="/" class="ml-5 mr-5">
 				<img src="/resources/img/logo.png" id="logo">
 			</a>
+			<input type="text" placeholder="Search.."><button type="submit"><i class="fa fa-search"></i></button>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="true" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
-
+			
 			<div class="navbar-collapse collapse" id="navbarSupportedContent">
-				<ul class="navbar-nav ml-auto">
-					
+				<ul class="navbar-nav ml-auto">				
 				</ul>
 				<ul class="navbar-nav">
 					<div class="divider d-none d-sm-block"></div>

@@ -10,10 +10,10 @@
 					<a class="nav-link" href="#"> 숙소 </a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="/home/experience">체험</a>
+					<a class="nav-link" href="#">체험</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="/ep_OnlineList">온라인 체험</a><!-- /online/home -->
+					<a class="nav-link" href="/online/home">온라인 체험</a>
 				</li>
 			</ul>
 		</div>
@@ -25,22 +25,22 @@
 				<div class="form-group input-group">
 					<div class="col-md-3">
 						<div class="text-xs font-weight-bold text-danger text-uppercase mb-1">위치</div>
-						<input type="text" class="form-control bg-light border-0 small" placeholder="어디로 여행가세요?">
+						<input type="text" class="form-control bg-light border-0 small" placeholder="어디로 여행가세요?" id="searchPassport2" name="locationAdress">
 					</div>
 					<div class="col-md-3">
 						<div class="text-xs font-weight-bold text-danger text-uppercase mb-1">체크인</div>
-						<input type="date" class="form-control bg-light border-0 small" placeholder="날짜 추가">
+						<input type="date" class="form-control bg-light border-0 small" placeholder="날짜 추가" id="start_day" name="start_day">
 					</div>
 					<div class="col-md-3">
 						<div class="text-xs font-weight-bold text-danger text-uppercase mb-1">체크아웃</div>
-						<input type="date" class="form-control bg-light border-0 small" placeholder="날짜 추가">
+						<input type="date" class="form-control bg-light border-0 small" placeholder="날짜 추가" id="end_day" name="end_day">
 					</div>
 					<div class="col-md-2">
 						<div class="text-xs font-weight-bold text-danger text-uppercase mb-1">인원</div>
-						<input type="number" class="form-control bg-light border-0 small" placeholder="게스트 추가">
+						<input type="number" class="form-control bg-light border-0 small" placeholder="게스트 추가" id="people_count" name="people_count">
 					</div>
 					<div class="input-group-append">
-						<button class="btn btn-danger" type="button">
+						<button class="btn btn-danger" type="submit">
 							<i class="fas fa-search fa-sm"> 검색</i>
 						</button>
 					</div>
