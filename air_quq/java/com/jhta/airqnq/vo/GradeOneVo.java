@@ -3,6 +3,15 @@ package com.jhta.airqnq.vo;
 public class GradeOneVo {
 	private String gradeName;
 	private int grade;
+	private String content;
+
+	public String getContent() {
+		return content;
+	}
+
+	public void setContent(String content) {
+		this.content = content;
+	}
 
 	public String getGradeName() {
 		return gradeName;

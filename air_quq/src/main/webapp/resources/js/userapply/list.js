@@ -21,20 +21,12 @@ $('#reviewAndGradeModal').on('show.bs.modal', (event) => {
 	$("#hinum").val(hinum);
 	
 	$.post("/user/selReviewGrade",{rtnum,hinum},(data) => {
-		$("#reviewContent").text(data.content);
-		
 		$(data).each(function(key, value){
-//			if(value.gradeName === "cleanGrade"){
-//				$("#cleanGrade").parent().parent().find("span").each(function(){
-//					if(value.grade == $(this).text()){
-//						return false;
-//					}
-//					if($(this).hasClass() === false){
-//						$(this).trigger("click");
-//					}
-//				});
-//			}
-			$(`#${value.gradeName}`).parent().parent().find("span").each(function(){
+			if(value.gradeName == "content"){
+				$("#reviewContent").text(value.content);
+			}
+			
+			$(`#${value.gradeName}`).parent().parent().find("span[class^=star]").each(function(){
 				if(value.grade == $(this).text()){
 					return false;
 				}
@@ -44,10 +36,6 @@ $('#reviewAndGradeModal').on('show.bs.modal', (event) => {
 			});
 		});
 	});
-});
-
-$('#reviewAndGradeModal').on('hidden.bs.modal', function () {
-	$("#reviewContent").val("");
 });
 
 $("#btnReviewAndGradeSave").click( () => {
@@ -85,7 +73,6 @@ $("#dataTable tbody td").click(function() {
 function applyCancel(rtnum){
 	if(confirm("선택하신 예약을 취소하시겠습니까?") === true){
 		$.post("/user/apply/cencel", {rtnum}, (data) => {
-			console.log(data);
 			if(data === 'success'){
 				alert("예약 취소 완료");
 				

@@ -29,6 +29,7 @@
 	<select id="selReviewGrade" parameterType="map" resultType="gradeOne">
 		select 'cleanGrade' gradeName
 				, b.clean grade
+				, '' content
 		from review a inner join grade b
 				on a.renum = b.renum
 				where a.del_yn = 'n'
@@ -38,6 +39,7 @@
 		union all
 		select 'accuracyGrade' gradeName
 				, b.accuracy grade
+				, '' content
 		from review a inner join grade b
 				on a.renum = b.renum
 				where a.del_yn = 'n'
@@ -47,6 +49,7 @@
 		union all
 		select 'commuGrade' gradeName
 				, b.commu grade
+				, '' content
 		from review a inner join grade b
 				on a.renum = b.renum
 				where a.del_yn = 'n'
@@ -56,6 +59,7 @@
 		union all
 		select 'positionGrade' gradeName
 				, b.position grade
+				, '' content
 		from review a inner join grade b
 				on a.renum = b.renum
 				where a.del_yn = 'n'
@@ -65,6 +69,7 @@
 		union all
 		select 'checkinGrade' gradeName
 				, b.checkin grade
+				, '' content
 		from review a inner join grade b
 				on a.renum = b.renum
 				where a.del_yn = 'n'
@@ -74,6 +79,17 @@
 		union all
 		select 'satisGrade' gradeName
 				, b.satis grade
+				, '' content
+		from review a inner join grade b
+				on a.renum = b.renum
+				where a.del_yn = 'n'
+				and b.del_yn = 'n'
+				and a.rtnum = #{rtnum}
+				and a.hinum = #{hinum}
+		union all
+		select 'content' gradeName
+				, -1 grade
+				, a.content content
 		from review a inner join grade b
 				on a.renum = b.renum
 				where a.del_yn = 'n'
