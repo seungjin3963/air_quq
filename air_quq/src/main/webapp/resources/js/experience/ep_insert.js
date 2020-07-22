@@ -226,3 +226,21 @@ function readInputFile1(input) { /* 3
 	}
 }
 */
+
+$(".epPeoeleP").click(function(){
+	var value=$('#epPeoeleS').text();
+	var plus=parseInt(value)+1;
+	
+	$('#epPeoeleS').html(plus);
+	$('#ep_peopleV').val(plus);
+});
+$(".epPeoeleM").click(function(){
+	var value=$('#epPeoeleS').text();
+	var maius=parseInt(value)-1;
+	if(maius==0){
+		return;
+	}else{
+	$('#epPeoeleS').html(maius);
+	$('#ep_peopleV').val(maius);
+	}
+});

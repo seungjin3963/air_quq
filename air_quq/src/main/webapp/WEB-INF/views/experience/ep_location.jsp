@@ -9,12 +9,13 @@
 
 		<h1>위치</h1>
 		<br>
-		<p>체험을 호스팅할 도시를 입력하세요.</p>
+		<p>체험을 호스팅할 주소를 입력하세요.</p>
 		<br>
 		<form action="/experience/ep_insert/location" name="locFrom">
 			<input type="text" class="form-control bg-light border-3 small"
 				id="ep_info_loc" placeholder="서울특별시, 서울특별시, 대한민국" name="value" value="${sessionVo.loc }">
-
+				<br>
+			<input type="button" value="검 색" class="form-control bg-light border-3 small" id="ep_searchPassport"> 
 			<br>
 			<p>회원님의 지역에서 호스팅하실 수 있어요!</p>
 

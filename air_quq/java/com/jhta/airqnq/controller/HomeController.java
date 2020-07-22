@@ -44,4 +44,9 @@ public class HomeController {
 	public String hostSearch() {
 		return ".hostsearch";
 	}
+	
+	@RequestMapping(value = "home/experience", method = RequestMethod.GET)
+	public String homeexperience() {
+		return ".home1";
+	}
 }
