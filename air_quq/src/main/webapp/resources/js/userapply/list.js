@@ -1,3 +1,5 @@
+let rowIndex = 0;
+
 $('.starRev span').click(function() {
 	$(this).parent().children('span').removeClass('on');
 	$(this).addClass('on').prevAll('span').addClass('on');
@@ -41,5 +43,14 @@ $("#btnReviewAndGradeSave").click( () => {
 			location.href = "/error";
 		}
 	});
+	
+	let tr = $("#dataTable tbody tr").eq(rowIndex);
+	tr.children().eq(8).empty();
+	
+	let html = "<i class='fa fa-check text-info fa-2x'></i>";
+	tr.children().eq(8).html(html);
 });
 
+$("#dataTable tbody td").click(function() {
+	rowIndex = $(this).parent().index();
+});
