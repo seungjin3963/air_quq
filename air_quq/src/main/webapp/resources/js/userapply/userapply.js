@@ -14,7 +14,7 @@ $(function(){
 
 		// 퀵메뉴 총금액 뽑기
 		var betweenday=between($("#checkin").val(),$("#checkout").val());
-		$("#summoney").val(betweenday*30000);
+		$("#summoney").val(betweenday*Number($("#totmoney").children().eq(0).html()));
 		
 		// 페이지 수정 페이지 값 채우기
 		$("#usecal").children().eq(2).text($("#checkin").val()+"-");
@@ -173,6 +173,8 @@ $(function(){
 			}
 		});
 		
+		
+		
 		// kakao 맵
 // var container = document.getElementById('map'); // 지도를 담을 영역의 DOM 레퍼런스
 // var options = { // 지도를 생성할 때 필요한 기본 옵션
@@ -182,15 +184,9 @@ $(function(){
 //
 // var map = new kakao.maps.Map(container, options); // 지도 생성 및 객체 리턴
 		
-		
-		console.log($("#applydivision div img").prop(src));
-		console.log("출력");
-		
 		// 권준범
 		// 결제 API(아임포트)
 		$("#btnApply").click(()=>{
 			location.href = "/user/applyCheck";
 		});
-		
-		
 	})

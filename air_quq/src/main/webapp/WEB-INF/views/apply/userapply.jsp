@@ -5,9 +5,8 @@
 <!-- <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=asd"></script> -->
 
 <script src="/resources/js/userapply/userapply.js"></script>
-
 <div class="container">
-	<h1>house_info title가져오기</h1>
+	<h1>${infovo.title }</h1>
 	<div class="row">
 		<div class="col-md-1">
 		
@@ -22,17 +21,17 @@
 
 	<div class="row" id="applydivision">
 		<div class="col-md-11" id="usernumber">
-			<span>인원 house_info h_cnt</span>
+			<span>최대 인원 ${infovo.max_n }명 · 침실${infovo.bedroom }</span>
 		</div>
 
 		<div class="col-md-1">
-			<img src="${infovo.profile_img }" id="applypofile">
+			<img onerror="this.src='/resources/img/1.jpg';" src="/memberimg?menum=${infovo.menum }" class="applypofile" id="memberprofile1">
 		</div>
 	</div>
 
 	<div class="row" id="applydivision">
 		<div class="col-md-12">
-			1977년부터 지역의 대표숙소로소 다양한 여행자들을 품어온 '미도장'이
+<!-- 			1977년부터 지역의 대표숙소로소 다양한 여행자들을 품어온 '미도장'이
 			40년의 세월을 거쳐 '미도호스텔'로 거듭났습니다. 최신식 호텔보다는 조금 불편할 지도 모릅니다. 하지만 서귀포의 오랜
 			정취를 고스란히 느낄 수 있는 '분위기있는 숙소', 그리고 여행자의 마음을 이해하는 특화된 서비스와 시설을 겸비한 '리얼
 			여행자숙소'를 찾으신다면 미도호스텔이 정답입니다. 우리는 어떤 사실을 알게 되거나 사건을 직접 경험한 후 글을 써야겠다고
@@ -64,7 +63,9 @@
 			결정한다. 못 쓴 글은 말 그대로 개념이 없다. 반면 잘 쓴 글에는 적절한 개념을 의도적으로 선택한 흔적이 드러난다. 짧게
 			쓰더라도 다양한 단어를 사용해야 한다. 윗글에서도 ‘열다’, ‘피우다’, ‘다가오다’, ‘타다/태우다’, ‘물러서다’,
 			‘보다’, ‘말하다’, ‘끌다’, ‘지나가다’ 등 문장마다 다른 서술어를 사용하려고 했다. 쓰다 보니 그렇게 된 것이 아니라
-			의도적으로 그렇게 썼다. 금방 지루해하는 독자의 집중력을 조금이라도 유지하려면 이 정도의 수고는 해야 한다.</div>
+			의도적으로 그렇게 썼다. 금방 지루해하는 독자의 집중력을 조금이라도 유지하려면 이 정도의 수고는 해야 한다. -->
+			${infovo.content }
+		</div>
 	</div>
 	<div class="row" id="applydivision2">
 		<div class="col-md-12">
@@ -96,7 +97,7 @@
 	</div>
 	<div class="row" id="applydivision4">
 		<div class="col-md-12">
-			<img src="/resources/img/1.jpg" id="applypofile"> member id님<br>
+			<img onerror="this.src='/resources/img/1.jpg';" src="/memberimg?menum=${infovo.menum }" class="applypofile" id="memberprofile2">${infovo.id }<br>
 			<input type="button" value="호스트에게 연락하기" class="btn btn-danger btn-icon-split">
 		</div>
 	</div>
@@ -104,15 +105,15 @@
 <div id="quickmenu">
 	<div id="quickmenulayer">
 		<i class="far fa-calendar-alt fa-3x"></i><br>체크인<br>
-		<input type="text" value="2020/07/19" readonly="readonly" id="checkin" class="quickmenufont">
+		<input type="text" value="${usercheck.checkIn }" readonly="readonly" id="checkin" class="quickmenufont">
 	</div>
 	<div id="quickmenulayer">
 		<i class="fa fa-calendar-alt fa-3x"></i><br>체크아웃<br>
-		<input type="text" value="2020/07/22" readonly="readonly" id="checkout" class="quickmenufont">
+		<input type="text" value="${usercheck.checkOut }" readonly="readonly" id="checkout" class="quickmenufont">
 	</div>
 	<div id="quickmenulayer">
 		<i class="fas fa-users fa-3x"></i><br>인원수<br>
-		<input type="text" value="5" readonly="readonly" id="checkcnt" class="quickmenufont">
+		<input type="text" value="${usercheck.max_n }" readonly="readonly" id="checkcnt" class="quickmenufont">
 	</div>
 	<div id="quickmenulayer">
 		<i class="fas fa-coins fa-3x"></i><br>총금액<br>
@@ -156,7 +157,7 @@
 						<button type="button" id="addbutton" class="usercount"><i class="fas fa-plus-circle" id="add"></i></button>
 					</div>
 					<div id="totmoney">
-						일일금액<span>30000</span><br>
+						일일금액<span>${infovo.price }</span><br>
 						숙박일<span>선택한 숙박일</span><br>
 						<hr>
 						총금액<span>숙박금액*숙박일</span>

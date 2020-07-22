@@ -5,6 +5,15 @@ public class ApplyVo {
 	private String checkOut;
 	private int max_n;
 	private int totmoney;
+	
+	public ApplyVo() {}
+	
+	public ApplyVo(String checkIn, String checkOut, int max_n, int totmoney) {
+		this.checkIn = checkIn;
+		this.checkOut = checkOut;
+		this.max_n = max_n;
+		this.totmoney = totmoney;
+	}
 
 	public String getCheckIn() {
 		return checkIn;

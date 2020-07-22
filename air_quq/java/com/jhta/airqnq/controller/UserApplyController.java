@@ -1,5 +1,8 @@
 package com.jhta.airqnq.controller;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -28,12 +31,42 @@ public class UserApplyController {
 	@Autowired
 	private House_infoAdminService house_infoService;
 
-	@RequestMapping("/user/apply")
-	public String userapply(Model model,int hinum) {
-		
+	@RequestMapping(value="/user/apply")
+	public String userapply(Model model,HttpSession session) {
+		int hinum=136;
 		Apply_infoVo infovo= house_infoService.HinumSelect(hinum);
+		HashMap<String, String> usercheck=new HashMap<String, String>();
+		
+		
+		String start="2020/07/22";
+		String end="2020/07/24";
+		int memberCNT=5;
+
+		usercheck.put("checkIn", start);
+		usercheck.put("checkOut", end);
+		usercheck.put("max_n", memberCNT+"");
+		
+		try {
+			
+			SimpleDateFormat format=new SimpleDateFormat("yyyy/MM/dd");
+			
+			Date start2=(Date) format.parse(start);
+			Date end2=(Date) format.parse(end);
+			
+			long timebetween1=end2.getTime()-start2.getTime();
+			
+			long timebetween2=timebetween1/(24*60*60*1000);
+			
+			long timebetween3=timebetween2*infovo.getPrice();
+			
+			ApplyVo vo=new ApplyVo(start, end, memberCNT, (int)timebetween3);
+			session.setAttribute("applyVo", vo);
+		} catch (ParseException pe) {
+			System.out.println("날짜 오류 :"+pe);
+		}
 		
 		model.addAttribute("infovo", infovo);
+		model.addAttribute("usercheck", usercheck);
 
 		return ".apply.userapply";
 	}
@@ -41,7 +74,9 @@ public class UserApplyController {
 	@PostMapping(value = "/user/apply/setApply")
 	@ResponseBody
 	public void totmoney(HttpSession session, ApplyVo vo) {
+		System.out.println(session.getAttribute("applyVo"));
 		session.setAttribute("applyVo", vo);
+		System.out.println(session.getAttribute("applyVo"));
 	}
 
 	@GetMapping(value = "/user/applyCheck")

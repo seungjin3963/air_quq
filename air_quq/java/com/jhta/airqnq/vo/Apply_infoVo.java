@@ -18,13 +18,13 @@ public class Apply_infoVo {
 	private String lnt;
 	private Date startdate;
 	private Date enddate;
-	private Byte[] profile_img;
+	private String id;
 	
 	public Apply_infoVo() {}
 
 	public Apply_infoVo(Integer menum, Integer hinum, String title, String content, String addr, String addr_detail,
 			Integer price, Integer max_n, Integer bedroom, String checkin_time, String lat, String lnt, Date startdate,
-			Date enddate, Byte[] profile_img) {
+			Date enddate, String id) {
 		super();
 		this.menum = menum;
 		this.hinum = hinum;
@@ -40,7 +40,7 @@ public class Apply_infoVo {
 		this.lnt = lnt;
 		this.startdate = startdate;
 		this.enddate = enddate;
-		this.profile_img = profile_img;
+		this.id = id;
 	}
 
 	public Integer getMenum() {
@@ -155,12 +155,12 @@ public class Apply_infoVo {
 		this.enddate = enddate;
 	}
 
-	public Byte[] getProfile_img() {
-		return profile_img;
+	public String getId() {
+		return id;
 	}
 
-	public void setProfile_img(Byte[] profile_img) {
-		this.profile_img = profile_img;
+	public void setId(String id) {
+		this.id = id;
 	}
 
 }
