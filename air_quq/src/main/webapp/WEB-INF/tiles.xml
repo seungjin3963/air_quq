@@ -79,7 +79,9 @@
 	<definition name=".*.*" extends=".home">	
 		<put-attribute name="main" value="/WEB-INF/views/{1}/{2}.jsp"></put-attribute>
 	</definition>
-	
+	<definition name=".*" extends=".home">	
+		<put-attribute name="main" value="/WEB-INF/views/{1}.jsp"></put-attribute>
+	</definition>
 	
 </tiles-definitions>
 

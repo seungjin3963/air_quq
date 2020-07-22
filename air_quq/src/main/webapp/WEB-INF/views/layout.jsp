@@ -94,6 +94,8 @@
 	<script type="text/javascript" src="/resources/js/passport/formCheck.js"></script>
 	<!-- 영노 -->
 	<script type="text/javascript" src="/resources/js/experience/ep_inserting.js"></script>
+	<!-- home  js -->
+	<script type="text/javascript" src="/resources/js/home.js"></script>
 	
 	<!-- Vue.js 로딩 -->
 	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>

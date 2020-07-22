@@ -75,6 +75,7 @@
 
 		</div>
 	</div>
+</div>
 	<!-- 반려 이유  modal  영노-->
 	<div class="modal fade" id="reasonModal" role="dialog">
 		<div class="modal-dialog">
