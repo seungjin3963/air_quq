@@ -25,7 +25,12 @@
 		<div class="col-md-5 listing-block">
 <!--//////////  -->
 	<c:forEach items="${ hostSearch }" var="hitem">
-
+	<a href="/user/apply" onclick='submitPostData(event)'>
+	<form action="/user/apply" method="post" id="formId">
+	<input type="hidden" value="${ start_day }" name="stary_day">
+	<input type="hidden" value="${ end_day }" name="end_day">
+	<input type="hidden" value="${ hitem.price }" name="price">
+	<input type="hidden" value="${ people_count }" name="people_count">
         <div class="media">
             <div class="fav-box"><i class="fa fa-heart-o" aria-hidden="true"></i>
 		</div>
@@ -39,7 +44,8 @@
                 </div>
               </div>
             </div>
-            
+     </form>
+     </a>    
    </c:forEach>
    <!--//////////  -->
      
@@ -52,3 +58,9 @@
 <%-- <input type="hidden" value="${ hostSearch.hinum }" id="locationAdress"> --%>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=406ad69f366b925b30509f2bc766e47f&libraries=services"></script>
 <script type="text/javascript" src="/resources/js/kakao_map/hostSearch_loadmap.js"></script>
+<script type="text/javascript">
+	function submitPostData(event){
+		event.preventDefault();
+		$("#formId").submit();
+	}
+</script>

@@ -42,7 +42,10 @@ public class UserApplyController {
 	private House_infoAdminService house_infoService;
 
 	@RequestMapping(value="/user/apply")
-	public String userapply(Model model,HttpSession session) {
+	public String userapply(Model model,HttpSession session, String stary_day, String end_day, int price, int people_count) {
+		
+		System.out.println("넘어온 데이터:" + stary_day + ", " + end_day + ", " + price + ", " + people_count);
+		
 		int hinum=5;
 		Apply_infoVo infovo= house_infoService.HinumSelect(hinum);
 		HashMap<String, String> usercheck=new HashMap<String, String>();

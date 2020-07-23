@@ -63,7 +63,9 @@ public class HomeController{
 		List<MainHouseInfoVo> list = getHouseInfo(vo);
 		
 		session.setAttribute("hostSearch", list);
-		
+		session.setAttribute("start_day", start_day);
+		session.setAttribute("end_day", end_day);
+		session.setAttribute("people_count", people_count);
 		
 		return ".hostsearch";
 	}
