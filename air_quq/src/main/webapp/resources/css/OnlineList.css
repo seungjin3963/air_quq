@@ -30,15 +30,16 @@
 	width: 100%;
 	height: 600px;
 }
-
+.OnlineList_img h2 {
+	color: black;
+}
 
 
 
 .onlinecooklist	{
 	display: inline-block;
 	width: 19%;
-	height: 400px;
-		
+	height: 400px;	
 }
 .onlinecooklist_div{
 	width: 90%; 

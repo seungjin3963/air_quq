@@ -90,8 +90,47 @@
 					</div>
 				</div>			
 				</ep:forEach>
-				 </div>
-			
+				</div>
+				<br>
+				<br>
+				<br>
+				<h2>전체 온라인 체험  ${AllListPageUtil.totalRowCount} 개</h2>
+				<br>
+				<div id="Alllist">
+				<ep:forEach var="i" items="${Alllist }">
+					
+				<div class="onlinecooklist">
+					<div class="onlinecooklist_div">
+						<input type="hidden" value="${i.hinum }">
+						<img src="/resources/img/house_img/${i.img }">
+						${i.subname}
+						<br>
+						<br>
+						<h5>${i.title } </h5>
+						1인당 ￦${i.price }원 부터  。${i.times } 시간<br>
+						별점
+						
+					</div>
+				</div>			
+				</ep:forEach>
+				</div>
+				<br>
+				<br>
+				<div class="container">
+					<div class="row">
+					<div class="col-md-5"></div>
+					<div class="col-md-3">
+						<input type="hidden" value="${AllListPageUtil.totalRowCount }" id="AllListtotal">
+						<input type="hidden" value="${AllListPageUtil.pageNum }" id="AllListpageNum">
+						<input type="hidden" value="${AllListPageUtil.totalPageCount }" id="AllListtotalPageC">
+						
+						
+						<input type="button" value="<<이전 페이지" <ep:if test="${AllListPageUtil.pageNum==1}">style="display: none;"</ep:if> id="Ep_AllListBtnM">&nbsp;
+						&nbsp;<input type="button" value="다음 페이지>>" id="Ep_AllListBtnP">
+					</div>
+					<div class="col-md-5"></div>	
+					</div>		
+				</div>
 			</div>
 			<div class="col-md-1"></div>
 		</div>

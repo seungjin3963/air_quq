@@ -12,6 +12,16 @@ import com.jhta.airqnq.vo.EP_ManagementVo;
 public class OnlineListServer {
 	@Autowired private OnlineListDao dao;
 	
+	public List<EP_ManagementVo> OnlineAlllList(int row){ // 요리
+		return dao.OnlineAlllList( row);
+	}
+	public int OnlineAllListC(){ // 전체
+		return dao.OnlineAllListC();
+	}
+	
+	
+	
+	
 	public List<EP_ManagementVo> onlineCookList(int row){ // 요리
 		return dao.onlineCookList( row);
 	}

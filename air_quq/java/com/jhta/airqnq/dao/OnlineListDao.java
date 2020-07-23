@@ -14,6 +14,15 @@ public class OnlineListDao {
 	
 	private final String NAMESPACE ="com.jhta.airqnq.mapper.OnlineListMapper";
 	
+	public List<EP_ManagementVo> OnlineAlllList(int row){	
+		return sqlsessiontemplate.selectList(NAMESPACE + ".OnlineAlllList" , row);
+	}
+	public int OnlineAllListC(){
+		return sqlsessiontemplate.selectOne(NAMESPACE + ".OnlineAllListC");
+	}
+	
+	
+	
 	public List<EP_ManagementVo> onlineCookList(int row){	
 		return sqlsessiontemplate.selectList(NAMESPACE + ".OnlineCookList" , row);
 	}
