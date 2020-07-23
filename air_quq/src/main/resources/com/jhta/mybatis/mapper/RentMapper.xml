@@ -33,4 +33,8 @@
 		where rtnum = #{rtnum}
 		and del_yn = 'n'
 	</update>
+	
+	<!-- 승진 -->
+	
+	<insert id="rentinsert" param
 </mapper>
