@@ -31,7 +31,7 @@ public class RentVo {
     private String del_yn;
 
     // 결제고유id 
-    private String img_uid;
+    private String imp_uid;
 
     // 상점거래id 
     private String merchant_uid;
@@ -39,7 +39,7 @@ public class RentVo {
     public RentVo() {}
 
 	public RentVo(Integer rtnum, Integer hinum, Integer menum, Date startrent, Date endrent, Integer status,
-			Integer person, Integer pay_price, String del_yn, String img_uid, String merchant_uid) {
+			Integer person, Integer pay_price, String del_yn, String imp_uid, String merchant_uid) {
 		super();
 		this.rtnum = rtnum;
 		this.hinum = hinum;
@@ -50,7 +50,7 @@ public class RentVo {
 		this.person = person;
 		this.pay_price = pay_price;
 		this.del_yn = del_yn;
-		this.img_uid = img_uid;
+		this.imp_uid = imp_uid;
 		this.merchant_uid = merchant_uid;
 	}
 
@@ -126,12 +126,12 @@ public class RentVo {
 		this.del_yn = del_yn;
 	}
 
-	public String getImg_uid() {
-		return img_uid;
+	public String getImp_uid() {
+		return imp_uid;
 	}
 
-	public void setImg_uid(String img_uid) {
-		this.img_uid = img_uid;
+	public void setImp_uid(String imp_uid) {
+		this.imp_uid = imp_uid;
 	}
 
 	public String getMerchant_uid() {
@@ -141,5 +141,5 @@ public class RentVo {
 	public void setMerchant_uid(String merchant_uid) {
 		this.merchant_uid = merchant_uid;
 	}
-    
+
 }
