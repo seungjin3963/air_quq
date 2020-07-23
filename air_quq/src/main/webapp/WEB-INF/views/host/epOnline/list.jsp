@@ -13,9 +13,8 @@
 					<thead>
 						<tr>
 							<th>번호</th>
+							<th>구분</th>
 							<th>제목</th>
-							<th>가격</th>
-							<th>시간</th>
 							<th>체험 시작</th>
 							<th>수정</th>
 							<th>삭제</th>
@@ -25,13 +24,21 @@
 						<c:forEach var="list" items="${list }">
 							<tr>
 								<td>${list.hinum }</td>
+								<c:choose>
+									<c:when test="${list.div_type == 3 }">
+										<td>온라인 체험</td>
+									</c:when>
+									<c:otherwise>
+										<td>체험</td>
+									</c:otherwise>
+								</c:choose>
 								<td>${list.title }</td>
-								<td>${list.price }</td>
-								<td>${list.times }</td>
 								<td>
+								<c:if test="${list.div_type == 3 }">
 									<a href="/epOnline/epOnline?einum=${list.einum }" class="epIcon">
 										<i class="fas fa-photo-video fa-2x"></i>
 									</a>
+								</c:if>
 								</td>
 								<td>
 									<a href="/host/epOnline/modify?einum=${list.einum }" class="modiIcon">

@@ -2,17 +2,14 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="mybatis.hostMapper">
+<mapper namespace="mybatis.HostMapper">
 	<select id="list" parameterType="int" resultType="expInfo">
-		<!-- select * from house_info where menum = #{menum} and `div` = 4 -->
 		select *
 		from experience_info
 		where memnum = #{menum}
-		and div_type = 3
 		and del_yn = 'N'
 	</select>
 	<select id="getEpOnlineInfo" parameterType="int" resultType="expInfo">
-		<!-- select * from house_info where hinum = #{hinum} -->
 		select * from experience_info where einum = #{einum}
 	</select>
 	<update id="modify" parameterType="expInfo">

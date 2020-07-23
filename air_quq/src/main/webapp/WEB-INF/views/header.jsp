@@ -77,11 +77,11 @@
 								<div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
 									<a class="dropdown-item" href="/host/epOnline/list">
 										<i class="fas fa-photo-video fa-fw mr-2"></i>
-										내가 등록한 온라인 체험
+										호스트-등록한 체험
 									</a>
 									<a class="dropdown-item" href="/user/apply/list">
 										<i class="fas fa-list fa-fw mr-2"></i>
-										예약 현황
+										유저-예약 현황
 									</a>
 									<a class="dropdown-item" href="#">
 										<i class="fas fa-user fa-fw mr-2"></i>

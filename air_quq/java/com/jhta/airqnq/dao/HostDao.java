@@ -13,7 +13,7 @@ public class HostDao {
 	@Autowired
 	private SqlSessionTemplate session;
 
-	private final String NAMESPACE = "mybatis.hostMapper";
+	private final String NAMESPACE = "mybatis.HostMapper";
 
 	public List<ExpInfoVo> list(int menum) {
 		return session.selectList(NAMESPACE + ".list", menum);
