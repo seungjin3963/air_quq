@@ -27,6 +27,7 @@ import com.jhta.airqnq.vo.ApplyVo;
 import com.jhta.airqnq.vo.Apply_infoVo;
 import com.jhta.airqnq.vo.JoinVo;
 import com.jhta.airqnq.vo.MemberVo;
+import com.jhta.airqnq.vo.RentVo;
 
 @Controller
 public class UserApplyController {
@@ -42,10 +43,9 @@ public class UserApplyController {
 
 	@RequestMapping(value="/user/apply")
 	public String userapply(Model model,HttpSession session) {
-		int hinum=136;
+		int hinum=5;
 		Apply_infoVo infovo= house_infoService.HinumSelect(hinum);
 		HashMap<String, String> usercheck=new HashMap<String, String>();
-		
 		
 		String start="2020/07/22";
 		String end="2020/07/24";
@@ -62,6 +62,9 @@ public class UserApplyController {
 			Date start2=(Date) format.parse(start);
 			Date end2=(Date) format.parse(end);
 			
+			java.sql.Date rentstart=new java.sql.Date(start2.getTime());
+			java.sql.Date rentend=new java.sql.Date(end2.getTime());
+			
 			long timebetween1=end2.getTime()-start2.getTime();
 			
 			long timebetween2=timebetween1/(24*60*60*1000);
@@ -69,8 +72,10 @@ public class UserApplyController {
 			long timebetween3=timebetween2*infovo.getPrice();
 			
 			ApplyVo vo=new ApplyVo(start, end, memberCNT, (int)timebetween3);
+			RentVo rentvo=new RentVo(0, hinum, infovo.getMenum(), rentstart, rentend, 1, memberCNT, (int)timebetween3, "n", null, null);
 			
 			session.setAttribute("applyVo", vo);
+			session.setAttribute("rentVo", rentvo);
 			
 		} catch (ParseException pe) {
 			System.out.println("날짜 오류 :"+pe);
@@ -78,7 +83,6 @@ public class UserApplyController {
 		
 		model.addAttribute("infovo", infovo);
 		model.addAttribute("usercheck", usercheck);
-
 		return ".apply.userapply";
 	}
 	
@@ -106,7 +110,31 @@ public class UserApplyController {
 	@PostMapping(value = "/user/apply/setApply")
 	@ResponseBody
 	public void totmoney(HttpSession session, ApplyVo vo) {
-		session.setAttribute("applyVo", vo);
+		RentVo rent=(RentVo)session.getAttribute("rentVo");
+		
+		try {
+			String start=vo.getCheckIn();
+			String end=vo.getCheckIn();
+			
+			SimpleDateFormat format=new SimpleDateFormat("yyyy/MM/dd");
+			
+			Date start2=(Date) format.parse(start);
+			Date end2=(Date) format.parse(end);
+			
+			java.sql.Date rentstart=new java.sql.Date(start2.getTime());
+			java.sql.Date rentend=new java.sql.Date(end2.getTime());
+			
+			rent.setStartrent(rentstart);
+			rent.setEndrent(rentend);
+			rent.setPay_price(vo.getTotmoney());
+			rent.setPerson(vo.getMax_n());
+			
+			session.setAttribute("rentVo", rent);
+			session.setAttribute("applyVo", vo);
+			
+		} catch (ParseException pe) {
+			System.out.println("수정 날짜 오류"+pe.getMessage());
+		}
 	}
 
 	@GetMapping(value = "/user/applyCheck")
