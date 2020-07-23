@@ -41,14 +41,14 @@ public class LoginFilter implements Filter {
 		// place your code here
 
 		// pass the request along the filter chain
-//		HttpServletRequest req = (HttpServletRequest) request;
-//		HttpSession session = req.getSession();
-//		if (session.getAttribute("logind") == null && excludeUrl(req)) {
-//			req.getRequestDispatcher("/login").forward(request, response);
-//		} else {
-//			chain.doFilter(request, response);
-//		}
-		chain.doFilter(request, response);
+		HttpServletRequest req = (HttpServletRequest) request;
+		HttpSession session = req.getSession();
+		if (!excludeUrl(req) && session.getAttribute("logind") == null) {
+			req.getRequestDispatcher("/login").forward(request, response);
+		} else {
+			chain.doFilter(request, response);
+		}
+//		chain.doFilter(request, response);
 	}
 
 	/**
@@ -60,12 +60,25 @@ public class LoginFilter implements Filter {
 
 	private boolean excludeUrl(HttpServletRequest request) {
 		String uri = request.getRequestURI().toString().trim();
-		if (uri.startsWith("/")) {
+		if (uri.equals("/")) {
 			return true;
-		} else if (uri.startsWith("/")) {
+		} else if (uri.startsWith("/login")) {
 			return true;
-		} else {
-			return false;
+		} else if (uri.startsWith("/resources")) {
+			return true;
+		} else if (uri.startsWith("/favicon.ico")) {
+			return true;
+		} else if (uri.startsWith("/member")) {
+			return true;
+		} else if (uri.startsWith("/report")) {
+			return true;
+		} else if (uri.startsWith("/search")) {
+			return true;
+		} else if (uri.startsWith("/user")) {
+			return true;
+		} else if (uri.startsWith("/upload")) {
+			return true;
 		}
+		return false;
 	}
 }
