@@ -21,6 +21,11 @@
 			<div class="navbar-collapse collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav ml-auto">
 					<li class="nav-item">
+						<a href="#" class="align-self-center" data-toggle="modal" data-target="#houseReportModal">
+							<button type="button" class="btn btn-light align-self-center">신고 모달(테스트)</button>
+						</a>
+					</li>
+					<li class="nav-item">
 						<a href="/admin" class="align-self-center">
 							<button type="button" class="btn btn-light align-self-center">관리자 페이지</button>
 						</a>

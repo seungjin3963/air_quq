@@ -1,0 +1,35 @@
+p {
+	margin: 20px 0px;
+}
+
+.custom-control-label::before {
+    position: absolute;
+    top: .25rem;
+    left: -1.5rem;
+    display: block;
+    width: 1.5rem;
+    height: 1.5rem;
+    pointer-events: none;
+    content: "";
+    background-color: #fff;
+    border: #b7b9cc solid 1px;
+}
+
+.custom-control-label::after {
+	position: absolute;
+	top: .25rem;
+	left: -1.5rem;
+	display: block;
+	width: 1.5rem;
+	height: 1.5rem;
+	content: "";
+	background: no-repeat 50%/50% 50%;
+}
+
+.custom-control-label {
+    position: relative;
+    margin-bottom: 0;
+    vertical-align: top;
+    padding-left: 15px;
+    font-size: 20px;
+}
