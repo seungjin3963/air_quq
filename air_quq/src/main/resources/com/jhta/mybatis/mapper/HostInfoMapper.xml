@@ -66,7 +66,7 @@
 			 SELECT * FROM house_info WHERE
 			 addr LIKE CONCAT('%', #{addr}, '%')
 		 <![CDATA[
-			 AND max_n<=#{max_n}
+			 AND max_n>=#{max_n}
 			 AND `div`=#{div}
 			 AND startdate>=#{startdate}
 			 AND enddate>=#{enddate}
@@ -75,6 +75,24 @@
 			 AND manager_check=#{manager_check}
 	</select>
 	
+	<!-- house main img 포함 vo -->
+	<select id="mainHouseGetList" parameterType="house_info" resultType="main_houseinfo">
+		SELECT h.hinum, h.addr, h.max_n, h.addr_detail, h.price, h.lat, h.lnt, h.startdate, h.enddate, i.img
+		FROM house_info h, house_img i 
+		WHERE
+			h.addr LIKE CONCAT('%', #{addr}, '%')
+			<![CDATA[
+				AND h.max_n<=#{max_n}
+				AND h.`div`=#{div}
+				AND h.startdate>=#{startdate}
+				AND h.enddate>=#{enddate}
+			]]>
+				AND h.del_yn=#{del_yn}
+				AND h.manager_check=#{manager_check}
+				AND i.ordernum =1
+				AND h.hinum = i.hinum
+	</select>
+		
 	<!-- house 검색 이미지 가져오기 -->
 	<select id="houseGetImg" parameterType="int" resultType="string">
 		select img from house_img where hinum=#{hinum} and ordernum=1

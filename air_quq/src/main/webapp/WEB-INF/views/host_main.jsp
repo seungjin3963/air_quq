@@ -24,20 +24,19 @@
 	<div class="row">
 		<div class="col-md-5 listing-block">
 <!--//////////  -->
-${ img }
 	<c:forEach items="${ hostSearch }" var="hitem">
 
         <div class="media">
             <div class="fav-box"><i class="fa fa-heart-o" aria-hidden="true"></i>
 		</div>
-              <img class="d-flex align-self-start" src="/resources/img/house_img/498d3cb7-1cbe-49ed-9a34-a071d5c928ca_Penguins.jpg">
+              <img class="d-flex align-self-start" src="/resources/img/house_img/${ hitem.img }">
               <div class="media-body pl-3">
                 <div class="price">￦${ hitem.price }원<small>${ hitem.addr }</small></div>
+                <div class="address">${ hitem.addr_detail }</div>
                 <div class="stats">
                     <span><i class="fa fa-users" aria-hidden="true"></i>${ hitem.max_n }</span>
                     <span><i class="fa fa-calendar" aria-hidden="true"></i>${ hitem.startdate } ~ ${ hitem.enddate }</span>
                 </div>
-                <div class="address">${ hitem.addr_detail }</div>
               </div>
             </div>
             
@@ -50,7 +49,6 @@ ${ img }
 		</div>
 	</div>
 </div>
-<%-- <input type="hidden" value="${ hostSearch }" id="locationAdress"> --%>
-<%-- <input type="hidden" value="${ hostSearch.locationAdress }" id="keyword"> --%>
+<%-- <input type="hidden" value="${ hostSearch.hinum }" id="locationAdress"> --%>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=406ad69f366b925b30509f2bc766e47f&libraries=services"></script>
 <script type="text/javascript" src="/resources/js/kakao_map/hostSearch_loadmap.js"></script>

@@ -72,7 +72,7 @@ public class UserApplyController {
 			long timebetween3=timebetween2*infovo.getPrice();
 			
 			ApplyVo vo=new ApplyVo(start, end, memberCNT, (int)timebetween3);
-			RentVo rentvo=new RentVo(0, hinum, infovo.getMenum(), rentstart, rentend, 1, memberCNT, (int)timebetween3, "n", null, null);
+			RentVo rentvo=new RentVo(0, hinum, infovo.getMenum(), rentstart, rentend, 1, 0, (int)timebetween3, "n", null, null);
 			
 			session.setAttribute("applyVo", vo);
 			session.setAttribute("rentVo", rentvo);
@@ -126,7 +126,6 @@ public class UserApplyController {
 			
 			rent.setStartrent(rentstart);
 			rent.setEndrent(rentend);
-			rent.setPay_price(vo.getTotmoney());
 			rent.setPerson(vo.getMax_n());
 			
 			session.setAttribute("rentVo", rent);
