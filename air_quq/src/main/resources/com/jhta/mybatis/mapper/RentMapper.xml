@@ -35,6 +35,7 @@
 	</update>
 	
 	<!-- 승진 -->
-	
-	<insert id="rentinsert" param
+	<insert id="rentinsert" parameterType="rentVo">
+		insert into rent valuse(0,#{hinum},#{menum},#{startrent},#{endrent},#{status},#{person},#{pay_price},'n',#{img_uid},#{merchant_uid})
+	</insert>
 </mapper>
