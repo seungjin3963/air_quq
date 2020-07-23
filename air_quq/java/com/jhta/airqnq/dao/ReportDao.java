@@ -1,6 +1,7 @@
 package com.jhta.airqnq.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,5 +18,9 @@ public class ReportDao {
 	
 	public List<ReportTypeVo> selType() {
 		return session.selectList(NAMESPACE + ".selType");
+	}
+
+	public int save(Map<String, Object> map) {
+		return session.insert(NAMESPACE + ".save", map);
 	}
 }
