@@ -5,6 +5,12 @@
 	padding: 0px;
 }
 
+/* 부트스트랩 css 변경 */
+
+.form-control-user{
+	width: 300px;
+}
+
 /* datepicker css 수정 */
 .ui-datepicker {
 	font-size: 18px;

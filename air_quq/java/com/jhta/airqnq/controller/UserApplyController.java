@@ -1,11 +1,15 @@
 package com.jhta.airqnq.controller;
 
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.servlet.ServletOutputStream;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,8 +22,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.jhta.airqnq.service.ApplyService;
 import com.jhta.airqnq.service.House_infoAdminService;
+import com.jhta.airqnq.service.MemberService;
 import com.jhta.airqnq.vo.ApplyVo;
 import com.jhta.airqnq.vo.Apply_infoVo;
+import com.jhta.airqnq.vo.JoinVo;
 import com.jhta.airqnq.vo.MemberVo;
 
 @Controller
@@ -27,6 +33,9 @@ public class UserApplyController {
 
 	@Autowired
 	private ApplyService service;
+	
+	@Autowired
+	private MemberService memberservice;
 
 	@Autowired
 	private House_infoAdminService house_infoService;
@@ -60,7 +69,9 @@ public class UserApplyController {
 			long timebetween3=timebetween2*infovo.getPrice();
 			
 			ApplyVo vo=new ApplyVo(start, end, memberCNT, (int)timebetween3);
+			
 			session.setAttribute("applyVo", vo);
+			
 		} catch (ParseException pe) {
 			System.out.println("날짜 오류 :"+pe);
 		}
@@ -70,18 +81,43 @@ public class UserApplyController {
 
 		return ".apply.userapply";
 	}
+	
+	@GetMapping("/user/apply/memberimg")
+	public void memberimg(int menum, HttpServletResponse resp) {
+		resp.setContentType("image/jpeg");
+
+		try {
+			JoinVo vo = memberservice.MemberOne(menum);
+	
+			ByteArrayInputStream data =new ByteArrayInputStream(vo.getProfile_img());
+		
+			ServletOutputStream os=resp.getOutputStream();
+			
+			int dataReader=0;
+			
+			while((dataReader=data.read()) != -1) {
+				os.write(dataReader);
+			}
+		} catch (IOException ie) {
+			System.out.println(ie.getMessage());
+		} catch (NullPointerException np) {}
+	}
 
 	@PostMapping(value = "/user/apply/setApply")
 	@ResponseBody
 	public void totmoney(HttpSession session, ApplyVo vo) {
-		System.out.println(session.getAttribute("applyVo"));
 		session.setAttribute("applyVo", vo);
-		System.out.println(session.getAttribute("applyVo"));
 	}
 
 	@GetMapping(value = "/user/applyCheck")
-	public String apply() {
-		return ".apply.applyCheck";
+	public String apply(HttpSession session) {
+		MemberVo vo=(MemberVo) session.getAttribute("memberVo");
+		
+		if(vo != null) {
+			return ".apply.applyCheck";
+		}else {
+			return ".login";
+		}
 	}
 
 	@GetMapping("/user/applyCheck/getMemberInfo")

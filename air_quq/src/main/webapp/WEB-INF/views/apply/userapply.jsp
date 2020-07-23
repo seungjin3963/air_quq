@@ -2,6 +2,8 @@
 	pageEncoding="UTF-8"%>
 
 <link href="/resources/css/userapply/userapply.css" rel="stylesheet" type="text/css">
+
+<!-- 카카오 맵 api -->
 <!-- <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=asd"></script> -->
 
 <script src="/resources/js/userapply/userapply.js"></script>
@@ -25,7 +27,7 @@
 		</div>
 
 		<div class="col-md-1">
-			<img onerror="this.src='/resources/img/1.jpg';" src="/memberimg?menum=${infovo.menum }" class="applypofile" id="memberprofile1">
+			<img onerror="this.src='/resources/img/1.jpg';" src="/user/apply/memberimg?menum=${infovo.menum }" class="applypofile" id="memberprofile1">
 		</div>
 	</div>
 
@@ -97,7 +99,7 @@
 	</div>
 	<div class="row" id="applydivision4">
 		<div class="col-md-12">
-			<img onerror="this.src='/resources/img/1.jpg';" src="/memberimg?menum=${infovo.menum }" class="applypofile" id="memberprofile2">${infovo.id }<br>
+			<img onerror="this.src='/resources/img/1.jpg';" src="/user/apply/memberimg?menum=${infovo.menum }" class="applypofile" id="memberprofile2">${infovo.id }<br>
 			<input type="button" value="호스트에게 연락하기" class="btn btn-danger btn-icon-split">
 		</div>
 	</div>
