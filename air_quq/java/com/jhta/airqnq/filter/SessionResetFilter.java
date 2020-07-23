@@ -46,6 +46,7 @@ public class SessionResetFilter implements Filter {
 		
 		if(!url.startsWith("/user/apply")) {
 			session.removeAttribute("applyVo");
+			session.removeAttribute("rentVo");
 		}
 		chain.doFilter(request, response);
 	}
