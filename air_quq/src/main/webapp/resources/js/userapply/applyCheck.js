@@ -47,8 +47,6 @@ $("#btnApply").click(()=>{
 		 imp_uid.setAttribute("name", "imp_uid");
 		 imp_uid.setAttribute("value", rsp.imp_uid);
 
-		 alert(rsp.imp_uid+"/"+rsp.merchant_uid+"/"+rsp.paid_amount);
-
 		 var merchant_uid=document.createElement("input");
 		 merchant_uid.setAttribute("type", "hidden");
 		 merchant_uid.setAttribute("name", "merchant_uid");

@@ -79,6 +79,10 @@
 										<i class="fas fa-photo-video fa-fw mr-2"></i>
 										호스트-등록한 체험
 									</a>
+									<a class="dropdown-item" href="/host/ResCheck">
+										<i class="fas fa-list fa-fw mr-2"></i>
+										내 집에 온다는 사람들
+									</a>
 									<a class="dropdown-item" href="/user/apply/list">
 										<i class="fas fa-list fa-fw mr-2"></i>
 										유저-예약 현황

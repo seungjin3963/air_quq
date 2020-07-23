@@ -32,3 +32,5 @@
 	</div>
 
 </div>
+
+<script type="text/javascript" src="/resources/js/experience/ep_addr.js"></script>

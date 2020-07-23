@@ -22,6 +22,8 @@ public class EP_ManagementVo {
 	private String img;
 	private int ordernum;
 	private String reason;
+	private int count;
+	private int checkNum;
 	
 	public EP_ManagementVo() {}
 	
@@ -77,6 +79,16 @@ public class EP_ManagementVo {
 		this.hinum = hinum;
 		this.img = img;
 		this.subname=subname;
+	}
+	public EP_ManagementVo(String title, String price, String times, int hinum, String img , String subname ,int count, int checkNum) { // 온라인 체험 list 뽑아오는 vo
+		this.count=count;
+		this.title = title;
+		this.price = price;
+		this.times = times;
+		this.hinum = hinum;
+		this.img = img;
+		this.subname=subname;
+		this.checkNum=checkNum;
 	}
 
 	public int getEinum() {
@@ -230,6 +242,22 @@ public class EP_ManagementVo {
 
 	public void setReason(String reason) {
 		this.reason = reason;
+	}
+
+	public int getCount() {
+		return count;
+	}
+
+	public void setCount(int count) {
+		this.count = count;
+	}
+
+	public int getCheckNum() {
+		return checkNum;
+	}
+
+	public void setCheckNum(int checkNum) {
+		this.checkNum = checkNum;
 	}
 	
 	
