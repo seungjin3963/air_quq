@@ -25,7 +25,7 @@ public class MemberLoginController {
 	private KakaoAPI kakao;
 
 	@PostMapping("/member/login")
-	public String login(String idl, String pwdl, Model model, HttpSession session) {
+	public String login(String idl, String pwdl, HttpSession session) {
 		HashMap<String, Object> map = new HashMap<String, Object>();
 		map.put("id", idl);
 		map.put("pwd", pwdl);
