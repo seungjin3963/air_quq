@@ -60,5 +60,23 @@
 	<select id="applyselect" parameterType="int" resultType="com.jhta.airqnq.vo.Apply_infoVo">
 	 	select hinum,h.menum,id,title,content,h.addr,addr_detail,price,max_n,bedroom,checkin_time,startdate,enddate from house_info h,member m where hinum=#{hinum} and h.menum=m.menum
 	</select>
-
+	
+	<!-- house 검색 후.. -->
+	<select id="houseGetList" parameterType="house_info" resultType="house_info">
+			 SELECT * FROM house_info WHERE
+			 addr LIKE CONCAT('%', #{addr}, '%')
+		 <![CDATA[
+			 AND max_n<=#{max_n}
+			 AND `div`=#{div}
+			 AND startdate>=#{startdate}
+			 AND enddate>=#{enddate}
+		 ]]>
+			 AND del_yn=#{del_yn}
+			 AND manager_check=#{manager_check}
+	</select>
+	
+	<!-- house 검색 이미지 가져오기 -->
+	<select id="houseGetImg" parameterType="int" resultType="string">
+		select img from house_img where hinum=#{hinum} and ordernum=1
+	</select>
 </mapper>

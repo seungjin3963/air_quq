@@ -138,7 +138,7 @@ public class HostController {
 		System.out.println("마지막 단계 : " + address + ", " + addressDetail + ", " + lat + ", " + lnt);
 		
 		Integer menum = (Integer)session.getAttribute("menum");
-		System.out.println(menum + "<<<<<<<<<<<<<<<<<<<<");
+		System.out.println(menum + "<<<<<<<멤버번호");
 		
 		
 		HashMap<String, Object> regist1 = (HashMap<String, Object>)session.getAttribute("regist1");
@@ -158,7 +158,7 @@ public class HostController {
 		Date enddate = transformDate((String)regist3.get("endDay"));
 		String del_yn = "n";
 		
-		HouseInfoVo hvo = new HouseInfoVo(0, 1, title, content, address, addressDetail, price, max_n,
+		HouseInfoVo hvo = new HouseInfoVo(0, menum, title, content, address, addressDetail, price, max_n,
 				bedroom, checkinTime, div, lat, lnt, startdate, enddate, del_yn, 0);
 		
 		int result = hostService.insertHouse(hvo);
@@ -172,15 +172,16 @@ public class HostController {
 			System.out.println("하우스 번호 : " + hinum);
 			
 			for(MultipartFile f : file1) {
+				try {
 				//전송된 파일명
 				String orgfilename = f.getOriginalFilename();
 				
 				//실제 저장할 파일명(중복되지 않도록)
 				String savefileName = UUID.randomUUID() + "_" + orgfilename;
-				
 //				//업로드할 폴더 경로 얻어오기
 				String uploadPath = session.getServletContext().getRealPath("resources/img/house_img");
-				try {
+				
+				System.out.println(uploadPath);
 //					//전송된 파일을 읽어오는 스트림 
 					InputStream fis = f.getInputStream(); 
 					
@@ -234,4 +235,5 @@ public class HostController {
         return d;
 
     }
+    
 }

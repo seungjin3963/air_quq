@@ -62,7 +62,6 @@ public class HouseInfoVo {
 	public HouseInfoVo(Integer hinum, Integer menum, String title, String content, String addr, String addr_detail,
 			Integer price, Integer max_n, Integer bedroom, String checkin_time, Integer div, String lat, String lnt,
 			Date startdate, Date enddate, String del_yn, int manager_check) {
-		super();
 		this.hinum = hinum;
 		this.menum = menum;
 		this.title = title;
