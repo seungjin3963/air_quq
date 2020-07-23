@@ -17,3 +17,40 @@
 #loginBtn {
 	margin-top:auto;
 }
+.homeImg{
+	height: 320px;
+	width: 100%;
+}
+
+.UseWay {
+	position: relative;
+	border-radius: 50px;
+	overflow: hidden;
+}
+.UseWay #UseWayImg{
+	height: 500px;
+	width: 100%;
+}
+.UseWay  div{
+	left: 100px; 
+	width: 450px; 
+	bottom: 300px; 
+	font-weight:bold ;
+	
+	position: absolute;
+	color: black;
+}
+
+.UseWayImg1{
+	width: 100%;
+}
+
+
+
+
+
+
+
+
+
+
