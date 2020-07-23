@@ -17,35 +17,30 @@ on e.hinum=h.hinum where e.div_type=3 and ordernum=1 )a inner join subDetail s o
 	</select>
 	
 	
-	
-	
-	
-	
-	
+
 	<select id="OnlineCookList" resultType="com.jhta.airqnq.vo.EP_ManagementVo" parameterType="int">
 		select a.img , a.hinum , a.title , a.price , a.times , subname from (
 select img,e.hinum,title,price,times ,sunum from experience_info e inner join house_img h 
-on e.hinum=h.hinum where e.div_type=3 and ordernum=1 and (sunum=177 or sunum=178 or sunum=176 or sunum=140 or sunum=139 or sunum=138))a inner join subDetail s on a.sunum=s.sunum limit #{row}, 5;
+on e.hinum=h.hinum where e.div_type=3 and ordernum=1 and (sunum=167 or sunum=166 or sunum=164 or sunum=165 or sunum=136 or sunum=135 or sunum=134))a inner join subDetail s on a.sunum=s.sunum limit #{row}, 5;
 	</select>
 	<select id="onlineCookListC" resultType="int">
 	select count(*) from(
 		select a.img , a.hinum , a.title , a.price , a.times , subname from (
 select img,e.hinum,title,price,times ,sunum from experience_info e inner join house_img h 
-on e.hinum=h.hinum where e.div_type=3 and ordernum=1 and (sunum=177 or sunum=178 or sunum=176 or sunum=140 or sunum=139 or sunum=138))a inner join subDetail s on a.sunum=s.sunum) s;
+on e.hinum=h.hinum where e.div_type=3 and ordernum=1 and (sunum=167 or sunum=166 or sunum=164 or sunum=165 or sunum=136 or sunum=135 or sunum=134))a inner join subDetail s on a.sunum=s.sunum) s;
 	</select>
 	
-	
-	
+
 	<select id="OnlineSportList" resultType="com.jhta.airqnq.vo.EP_ManagementVo">
 		select a.img , a.hinum , a.title , a.price , a.times , subname from (
 select img,e.hinum,title,price,times ,sunum from experience_info e inner join house_img h 
-on e.hinum=h.hinum where e.div_type=3 and ordernum=1 and (<![CDATA[(sunum<78 and sunum>50) or(sunum<103 and sunum>93)]]>))a inner join subDetail s on a.sunum=s.sunum limit #{row}, 5;
+on e.hinum=h.hinum where e.div_type=3 and ordernum=1 and (<![CDATA[(sunum<75 and sunum>46) or(sunum>89 and sunum<127)]]>))a inner join subDetail s on a.sunum=s.sunum limit #{row}, 5;
 	</select>
 	<select id="OnlineSportListC" resultType="int">
 		select count(*) from (
 select a.img , a.hinum , a.title , a.price , a.times , subname from (
 select img,e.hinum,title,price,times ,sunum from experience_info e inner join house_img h 
-on e.hinum=h.hinum where e.div_type=3 and ordernum=1 and (<![CDATA[(sunum<78 and sunum>50) or(sunum<103 and sunum>93)]]>))a inner join subDetail s on a.sunum=s.sunum) s;
+on e.hinum=h.hinum where e.div_type=3 and ordernum=1 and (<![CDATA[(sunum<75 and sunum>46) or(sunum>89 and sunum<127)]]>))a inner join subDetail s on a.sunum=s.sunum) s;
 	</select>
 	
 	

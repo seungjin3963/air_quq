@@ -406,11 +406,12 @@ ${clicknum }
 
 	<!-- Custom scripts for all pages-->
 	<script src="/resources/js/sb-admin-2.min.js"></script>
-
+	<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 	<!-- 회원가입 관련 js -->
 	<script type="text/javascript" src="/resources/js/main/main.js"></script>
 	
 	<script type="text/javascript" src="/resources/js/experience/ep_insert.js"></script>
+	
 </body>
 
 </html>

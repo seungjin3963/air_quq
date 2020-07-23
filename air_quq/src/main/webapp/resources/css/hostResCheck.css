@@ -1,0 +1,55 @@
+@charset "UTF-8";
+
+.ui-widget-header {
+	background: #f8f9fc;
+	border: 0px;
+}
+
+.ui-state-default a, .ui-state-default a:link, .ui-state-default a:visited
+	{
+	color: black;
+}
+
+.ui-state-active, .ui-widget-content 
+	.ui-state-active, .ui-widget-header 
+	.ui-state-active {
+	border: 0px;
+}
+
+.ui-widget {
+	font-family: jua;
+}
+
+.ui-widget-content {
+	border: 0px;
+	background: #f8f9fc;
+}
+
+.ui-tabs .ui-tabs-panel {
+	background: #f8f9fc;
+}
+
+
+
+
+
+
+
+.HostResCheckImg{
+	width: 90%;
+	height: 250px;
+	margin-left:15px;
+	border-radius: 30px;
+
+}
+.spanbadge{
+	position:absolute;
+	border-radius:120px;
+	font-size: 20px;
+	top: -20px;
+	right: -20p;
+	
+}
+.HostCheckdiv{
+	height: 450px;
+}
