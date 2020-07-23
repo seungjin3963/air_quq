@@ -49,6 +49,7 @@ public class UserApplyController {
 		int hinum=5;
 		Apply_infoVo infovo= house_infoService.HinumSelect(hinum);
 		HashMap<String, String> usercheck=new HashMap<String, String>();
+		int menum=(int)session.getAttribute("menum");
 		
 		String start=stary_day.replace("-", "/");
 		String end=end_day.replace("-", "/");
@@ -76,7 +77,7 @@ public class UserApplyController {
 			long timebetween3=timebetween2*infovo.getPrice();
 			
 			ApplyVo vo=new ApplyVo(start, end, memberCNT, (int)timebetween3);
-			RentVo rentvo=new RentVo(0, hinum, infovo.getMenum(), rentstart, rentend, 1, 0, (int)timebetween3, "n", null, null);
+			RentVo rentvo=new RentVo(0, hinum, menum, rentstart, rentend, 1, people_count, (int)timebetween3, "n", null, null);
 			
 			session.setAttribute("applyVo", vo);
 			session.setAttribute("rentVo", rentvo);
