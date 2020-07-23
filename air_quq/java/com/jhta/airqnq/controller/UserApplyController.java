@@ -50,13 +50,14 @@ public class UserApplyController {
 		Apply_infoVo infovo= house_infoService.HinumSelect(hinum);
 		HashMap<String, String> usercheck=new HashMap<String, String>();
 		
-		String start="2020/07/22";
-		String end="2020/07/24";
+		String start=stary_day.replace("-", "/");
+		String end=end_day.replace("-", "/");
+		
 		int memberCNT=5;
 
 		usercheck.put("checkIn", start);
 		usercheck.put("checkOut", end);
-		usercheck.put("max_n", memberCNT+"");
+		usercheck.put("max_n", people_count+"");
 		
 		try {
 			

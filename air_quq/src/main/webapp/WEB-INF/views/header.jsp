@@ -35,11 +35,11 @@
 							<span class="text">체험 호스팅하기</span>
 						</a>
 					</li>
-					<li class="nav-item">
+					<!-- <li class="nav-item">
 						<a href="/user/apply" class="btn btn-light align-self-center">
 							<span class="text">예약 신청하기(테스트)</span>
 						</a>
-					</li>
+					</li> -->
 					<li class="nav-item">
 						<a href="/host/regist/1?next=1" class="btn btn-light align-self-center">
 							<span class="text">숙소 호스트 되기</span>
