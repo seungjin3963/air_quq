@@ -38,6 +38,7 @@
               <div class="media-body pl-3">
                 <div class="price">￦${ hitem.price }원<small>${ hitem.addr }</small></div>
                 <div class="address">${ hitem.addr_detail }</div>
+                <div type="hidden" value="${ hitem.addr_detail }" id="locationAdress"></div>
                 <div class="stats">
                     <span><i class="fa fa-users" aria-hidden="true"></i>${ hitem.max_n }</span>
                     <span><i class="fa fa-calendar" aria-hidden="true"></i>${ hitem.startdate } ~ ${ hitem.enddate }</span>
