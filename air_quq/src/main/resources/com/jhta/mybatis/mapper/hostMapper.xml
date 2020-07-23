@@ -22,26 +22,26 @@
 	</update>
 	<delete id="delEpOnline" parameterType="int">
 		<!-- delete from house_info where hinum = #{hinum} -->
-		update experience_info set del_yn = 'Y'
+		update experience_info set del_yn = 'Y' where hinum = #{hinum}
 	</delete>
 	<delete id="delReview" parameterType="int">
 		<!-- delete from review where hinum = #{hinum} -->
-		update review set del_yn = 'Y'
+		update review set del_yn = 'Y' where hinum = #{hinum}
 	</delete>
 	<delete id="delConven" parameterType="int">
 		<!-- delete from conven where hinum = #{hinum} -->
-		update conven set del_yn = 'Y'
+		update conven set del_yn = 'Y' where hinum = #{hinum}
 	</delete>
 	<delete id="delBasket" parameterType="int">
 		<!-- delete from basket where hinum = #{hinum} -->
-		update basket set del_yn = 'Y'
+		update basket set del_yn = 'Y' where hinum = #{hinum}
 	</delete>
 	<delete id="delHouseImg" parameterType="int">
 		<!-- delete from house_img where hinum = #{hinum} -->
-		update house_img set del_yn = 'Y'
+		update house_img set del_yn = 'Y' where hinum = #{hinum}
 	</delete>
 	<delete id="delExpInfo" parameterType="int">
 		<!-- delete from experience_info where hinum = #{hinum} -->
-		update experience_info set del_yn = 'Y'
+		update experience_info set del_yn = 'Y' where hinum = #{hinum}
 	</delete>
 </mapper>
