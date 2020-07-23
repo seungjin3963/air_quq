@@ -91,3 +91,64 @@ function applyCancel(rtnum){
 		return;
 	}
 }
+
+/*승진*/
+
+$("#refundcheck").click(function(){
+	rtnum=$("#rtnumhidden").val();
+});
+
+/*계좌 선택하기*/
+$("#selectaccount").change(function(){
+	var check=$(this).prop("checked");
+	if(check){
+		$("#diffrentaccount").css('display','block');
+	}else{
+		$("#accountname").val("");
+		$("#accountnumber").val("");
+		$("#diffrentaccount").css('display','none');
+	}
+})
+
+/*환불 모달 나오게 하기*/
+function refundmodal(rtnum){
+	$("#rtnumhidden").val(rtnum);
+	$("#refunddata").modal();
+}
+
+var refund=function(merchant_uid,amount,reason,banknumber,accountname,accountnumber){
+	$.ajax({
+	    "url": "http://www.myservice.com/payments/cancel",
+	    "type": "POST",
+	    "contentType": "application/json",
+	    "data": JSON.stringify({
+	      "merchant_uid": merchant_uid, // 주문번호
+	      "cancel_request_amount": amount, // 환불금액
+	      "reason": reason // 환불사유
+	      "refund_holder": accountname, // [가상계좌 환불시 필수입력] 환불 수령계좌 예금주
+	      "refund_bank": banknumber // [가상계좌 환불시 필수입력] 환불 수령계좌 은행코드(ex. KG이니시스의 경우 신한은행은 88번)
+	      "refund_account": accountnumber // [가상계좌 환불시 필수입력] 환불 수령계좌 번호
+	    }),
+	    "dataType": "json"
+	  });
+	}
+}
+
+$("#refundcheck").click(function(){
+	var rtnum=$("#rtnumhidden").val();
+	var reason=$("#rtnumhidden").next().val();
+	var banknumber=$("#banknumber").val();
+	var accountname=$("#accountname").val();
+	var accountnumber=$("#accountnumber").val();
+
+	
+	$.ajax({
+		url : "/rent/select",
+		dataType : "json",
+		data : {"rtnum" : rtnum,},
+		success : function(data) {
+			/*refund(data.merchant_uid,data.pay_price,reason,banknumber,accountname,accountnumber);*/
+		}
+	})
+	
+});

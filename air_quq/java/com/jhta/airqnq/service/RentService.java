@@ -14,4 +14,8 @@ public class RentService {
 	public int rentinsert(RentVo vo) {
 		return dao.rentinsert(vo);
 	}
+	
+	public RentVo rentselect(int rtnum) {
+		return dao.rentselect(rtnum);
+	}
 }

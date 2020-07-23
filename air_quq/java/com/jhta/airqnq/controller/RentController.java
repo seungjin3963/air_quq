@@ -5,6 +5,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.jhta.airqnq.service.RentService;
 import com.jhta.airqnq.vo.RentVo;
@@ -30,5 +31,11 @@ public class RentController {
 		}else {
 			return ".error";
 		}
+	}
+	
+	@RequestMapping(value="/rent/select")
+	@ResponseBody
+	public RentVo rentselect(int rtnum) {
+		 return rentservice.rentselect(rtnum);
 	}
 }

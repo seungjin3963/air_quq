@@ -16,4 +16,8 @@ public class RentDao {
 	public int rentinsert(RentVo vo) {
 		return sqlsessiontemplate.insert(NAMESPACE+".rentinsert", vo);
 	}
+	
+	public RentVo rentselect(int rtnum) {
+		return sqlsessiontemplate.selectOne(NAMESPACE+".rentselect", rtnum);
+	}
 }

@@ -259,4 +259,64 @@
 		</div>
 	</div>
 </div>
+<!-- 승진 -->
+<div class="modal fade" id="refunddata" role="dialog">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">환불하기</h5>
+				<button class="close" type="button" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">×</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<div class="container">
+					<input type="hidden" id="rtnumhidden">
+					<textarea rows="10" cols="50" placeholder="환불 사유를 써주세요"></textarea><br>
+					<input type="checkbox" id="selectaccount">다른 계좌로 환불 받기<br>
+					<div id="diffrentaccount">
+						<select id="banknumber">
+							<option value="03">기업은행</option>
+							<option value="04">국민은행</option>
+							<option value="05">외한은행</option>
+							<option value="07">수협중앙회</option>
+							<option value="11">농형중앙회</option>
+							<option value="20">우리은행</option>
+							<option value="23">sc제일은행</option>
+							<option value="31">대구은행</option>
+							<option value="32">부산은행</option>
+							<option value="34">광주은행</option>
+							<option value="37">전북은행</option>
+							<option value="39">경남은행</option>
+							<option value="53">한국씨티은행</option>
+							<option value="71">우체국</option>
+							<option value="81">하나은행</option>
+							<option value="88">통합신한은행(신한,조흥)</option>
+						</select>
+						<div class="row">
+							<div class="col-md-3">
+								예금주
+							</div>
+							<div class="col-md-9">
+								<input type="text" id="accountname">
+							</div>
+						</div>
+						<div class="row" id="accountdiv">
+							<div class="col-md-3">
+								계좌번호
+							</div>
+							<div class="col-md-9">
+								<input type="text" id="accountnumber" placeholder="숫자로만 입력해 주세요">
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button class="btn btn-secondary" type="button" data-dismiss="modal">취소</button>
+				<button class="btn btn-danger" id="refundcheck">환불</button>
+			</div>
+		</div>
+	</div>
+</div>
 <script src="/resources/js/userapply/list.js"></script>

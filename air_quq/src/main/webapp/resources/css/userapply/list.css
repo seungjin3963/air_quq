@@ -52,3 +52,13 @@ table td, table th {
 textarea{
 	resize: none;
 }
+
+/* 승진 */
+
+#diffrentaccount{
+	display: none;
+}
+
+#accountdiv{
+	margin: 10px 0px;
+}

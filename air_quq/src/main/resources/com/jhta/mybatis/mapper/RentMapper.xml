@@ -38,4 +38,8 @@
 	<insert id="rentinsert" parameterType="rentVo">
 		insert into rent values(0,#{hinum},#{menum},#{startrent},#{endrent},#{status},#{person},#{pay_price},'n',#{imp_uid},#{merchant_uid},1)
 	</insert>
+	
+	<select id="rentselect" parameterType="int" resultType="rentVo">
+		select * from rent where rtnum=#{rtnum}	
+	</select>
 </mapper>
