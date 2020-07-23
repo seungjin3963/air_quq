@@ -172,7 +172,6 @@ public class HostController {
 			System.out.println("하우스 번호 : " + hinum);
 			
 			for(MultipartFile f : file1) {
-				try {
 				//전송된 파일명
 				String orgfilename = f.getOriginalFilename();
 				
@@ -182,6 +181,7 @@ public class HostController {
 				String uploadPath = session.getServletContext().getRealPath("resources/img/house_img");
 				
 				System.out.println(uploadPath);
+				try {
 //					//전송된 파일을 읽어오는 스트림 
 					InputStream fis = f.getInputStream(); 
 					
