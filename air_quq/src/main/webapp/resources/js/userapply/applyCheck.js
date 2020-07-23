@@ -36,17 +36,18 @@ $("#btnApply").click(()=>{
 		 msg += '결제 금액 : ' + rsp.paid_amount;
 		 msg += '카드 승인번호 : ' + rsp.apply_num;*/
 	
-		 console.log("이전출력");
 		 
 		 var form =document.createElement("form");
 		 form.setAttribute("charset", "UTF-8");
-		 form.setAttribute("method", "post");
-		 form.setAttribute("action", "/rent/insert");
+		 form.setAttribute("method", "POST");
+		 form.setAttribute("action", "/user/apply/rent/insert");
 		 
 		 var imp_uid=document.createElement("input");
 		 imp_uid.setAttribute("type", "hidden");
 		 imp_uid.setAttribute("name", "imp_uid");
 		 imp_uid.setAttribute("value", rsp.imp_uid);
+
+		 alert(rsp.imp_uid+"/"+rsp.merchant_uid+"/"+rsp.paid_amount);
 
 		 var merchant_uid=document.createElement("input");
 		 merchant_uid.setAttribute("type", "hidden");
@@ -54,9 +55,9 @@ $("#btnApply").click(()=>{
 		 merchant_uid.setAttribute("value", rsp.merchant_uid);
 		 
 		 var paid_amount=document.createElement("input");
-		 imp_uid.setAttribute("type", "hidden");
-		 imp_uid.setAttribute("name", "paid_amount");
-		 imp_uid.setAttribute("value", rsp.paid_amount);
+		 paid_amount.setAttribute("type", "hidden");
+		 paid_amount.setAttribute("name", "paid_amount");
+		 paid_amount.setAttribute("value", rsp.paid_amount);
 		 
 		 form.appendChild(imp_uid);
 		 form.appendChild(merchant_uid);
@@ -64,8 +65,7 @@ $("#btnApply").click(()=>{
 		 
 		 document.body.appendChild(form);
 		 form.submit();
-		 
-		 console.log("이후출력");
+
 	 } else {
 		 var msg = '결제에 실패하였습니다.';
 		 msg += '에러내용 : ' + rsp.error_msg;

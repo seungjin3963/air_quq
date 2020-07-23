@@ -14,7 +14,7 @@ public class RentController {
 	@Autowired
 	private RentService rentservice;
 	
-	@RequestMapping(value="/rent/insert")
+	@RequestMapping(value="/user/apply/rent/insert")
 	public String rentinsert(String imp_uid,String merchant_uid,int paid_amount,HttpSession session) {
 		
 		RentVo vo = (RentVo)session.getAttribute("rentVo");
