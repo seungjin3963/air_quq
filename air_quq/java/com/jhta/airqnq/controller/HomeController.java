@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.jhta.airqnq.service.HostInfoService;
 import com.jhta.airqnq.vo.HouseInfoVo;
+import com.jhta.airqnq.vo.MainHouseInfoVo;
 
 /**
  * Handles requests for the application home page.
@@ -57,23 +58,17 @@ public class HomeController{
 	@RequestMapping(value="search/host", method=RequestMethod.POST)
 	public String hostSearch(String locationAdress, Date start_day, Date end_day, int people_count, HttpSession session) {
 		
-
-		HouseInfoVo vo = new HouseInfoVo(0, 0, "", "", locationAdress, "", 0, people_count, 0, "", 1, "","", start_day, end_day, "n", 1);
-		List<HouseInfoVo> list = getHouseInfo(vo);
-		
-		
-		for(HouseInfoVo hvo : list) {
-			String path = hostService.getHouseImg(hvo.getHinum());
-			HashMap<String, Object> map = new HashMap<String, Object>();
-			map.put(hvo.getHinum().toString(), path);
-			session.setAttribute("img", map);
-		}
+		//테스트위해서 매니져체크 0으로줬음
+		HouseInfoVo vo = new HouseInfoVo(0, 0, "", "", locationAdress, "", 0, people_count, 0, "", 1, "","", start_day, end_day, "n", 0);
+		List<MainHouseInfoVo> list = getHouseInfo(vo);
 		
 		session.setAttribute("hostSearch", list);
+		
+		
 		return ".hostsearch";
 	}
 	
-	public List<HouseInfoVo> getHouseInfo(HouseInfoVo vo){
-		return hostService.getHouseInfoList(vo);
+	public List<MainHouseInfoVo> getHouseInfo(HouseInfoVo vo){
+		return hostService.getMainHouseInfoList(vo);
 	}
 }

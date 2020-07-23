@@ -15,6 +15,7 @@
  	<typeAlias type="com.jhta.airqnq.vo.RentListVo" alias="rentList"/>
  	<typeAlias type="com.jhta.airqnq.vo.ReviewAndGradeVo" alias="reviewAndGrade"/>
  	<typeAlias type="com.jhta.airqnq.vo.GradeOneVo" alias="gradeOne"/>
+ 	<typeAlias type="com.jhta.airqnq.vo.MainHouseInfoVo" alias="main_houseinfo"/>
  </typeAliases>
  <mappers>
     <mapper resource="com/jhta/mybatis/mapper/JoinMapper.xml"/>
@@ -27,6 +28,6 @@
     <mapper resource="com/jhta/mybatis/mapper/epOnlineMapper.xml"/>
     <mapper resource="com/jhta/mybatis/mapper/RentMapper.xml"/>
     <mapper resource="com/jhta/mybatis/mapper/ReviewAndGradeMapper.xml"/>
-     <mapper resource="com/jhta/mybatis/mapper/OnlineListMapper.xml"/>
+    <mapper resource="com/jhta/mybatis/mapper/OnlineListMapper.xml"/>
   </mappers>
 </configuration>

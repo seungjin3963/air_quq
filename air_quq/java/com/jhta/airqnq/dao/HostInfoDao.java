@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.jhta.airqnq.vo.HouseInfoVo;
+import com.jhta.airqnq.vo.MainHouseInfoVo;
 
 @Repository
 public class HostInfoDao {
@@ -32,5 +33,10 @@ public class HostInfoDao {
 	//하우스 이미지 가져오기
 	public String getHouseImg(int hinum) {
 		return session.selectOne(NAMESPACE + ".houseGetImg", hinum);
+	}
+	
+	//하우스 검색된 객체 반환
+	public List<MainHouseInfoVo> getMainHouseInfoList(HouseInfoVo vo){
+		return session.selectList(NAMESPACE + ".mainHouseGetList", vo);
 	}
 }

@@ -9,6 +9,7 @@ import com.jhta.airqnq.dao.HostInfoDao;
 import com.jhta.airqnq.dao.HostInfoImageDao;
 import com.jhta.airqnq.vo.HouseImgVo;
 import com.jhta.airqnq.vo.HouseInfoVo;
+import com.jhta.airqnq.vo.MainHouseInfoVo;
 
 @Service
 public class HostInfoService {
@@ -39,5 +40,9 @@ public class HostInfoService {
 	//하우스 이미지 가져오기
 	public String getHouseImg(int hinum) {
 		return hostInfoDao.getHouseImg(hinum);
+	}
+	
+	public List<MainHouseInfoVo> getMainHouseInfoList(HouseInfoVo vo){
+		return hostInfoDao.getMainHouseInfoList(vo);
 	}
 }
