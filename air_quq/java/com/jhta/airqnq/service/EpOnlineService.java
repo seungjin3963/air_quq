@@ -1,6 +1,6 @@
 package com.jhta.airqnq.service;
 
-import java.util.HashMap;
+import java.util.HashMap; 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +19,7 @@ public class EpOnlineService {
 	public List<SliderVo> outslider(){
 		return dao.outslider();
 	}
-	public SliderVo inslider(int hinum){
+	public List<SliderVo> inslider(int hinum){
 		return dao.inslider(hinum);
 	}
 	public List<SliderVo> inSeoul(){

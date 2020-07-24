@@ -3,11 +3,9 @@ package com.jhta.airqnq.controller;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
@@ -21,6 +19,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.jhta.airqnq.pageUtil.PageUtil;
 import com.jhta.airqnq.service.EpOnlineService;
 import com.jhta.airqnq.vo.ChatLogVo;
+import com.jhta.airqnq.vo.SliderVo;
 
 @Controller
 public class EpOnlineController {
@@ -41,17 +40,22 @@ public class EpOnlineController {
 	
 	@RequestMapping("/online/details")
 	public String goDetails(int hinum,Model model,HttpServletResponse response) throws IOException {
+		System.out.println(hinum);
 		model.addAttribute("list2",service.inslider(hinum));
+		List<SliderVo> list=service.inslider(hinum);
+		for (int i=0; i<list.size(); i++) {
+			SliderVo str = list.get(i);
+			System.out.println(str.getTitle() +"asd");
+		}
 		return ".epOnline.detail";
 	}
 	
 	@RequestMapping(value="/online/image",method = RequestMethod.GET)
 	public void showImage(@RequestParam("hinum") Integer hinum,HttpServletResponse response,HttpServletRequest request) throws IOException {
 		response.setContentType("image/jpeg, image/jpg, image/png, image/gif");
-		response.getOutputStream().write(service.inslider(hinum).getProfile_img());
+//		response.getOutputStream().write(service.inslider(hinum).getProfile_img());
 		response.getOutputStream().close();
 	}
-	@Secured("ROLE_")
 	@RequestMapping(value = "/online/dm",method = RequestMethod.GET)
 	public String dm(int hinum,int memnum,int einum,HttpSession session,Model model) {
 //		System.out.println(hinum+" :hinum" +einum+" : einum" +memnum+" : memnum");

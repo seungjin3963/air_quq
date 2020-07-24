@@ -14,35 +14,63 @@ $(function(){
 			}
 		})
 	})
-//	$("#nav-tab").children('a').on("click",function(){
-//		console.log('눌렀습니다');
-//	})
-	$("#paging ,#nav-tab").children('a').on("click",function(){
-		console.log('들어왔습니다.')
-		var active=$("#nav-tab").children('a').attr('class')=='nav-item nav-link active';
-		console.log(active);
-//		var text=active.text();
-		if(active==false){//호스트
+	$("#nav-tab").on('show.bs.tab',(event)=>{
+		console.log("변경");
+		console.log("사용자 "
+				+$("#nav-tab a:nth-child(1)").attr('aria-selected')+",,"+$("#nav-tab a:nth-child(1)").attr('href')+","+$("#nav-tab a:nth-child(1)").attr('aria-controls')
+				+"호스트,"+$("#nav-tab a:nth-child(2)").attr('aria-selected')+",,"+$("#nav-tab a:nth-child(2)").attr('href')+","+$("#nav-tab a:nth-child(2)").attr('aria-controls'));
+		var user=$("#nav-tab a:nth-child(1)").attr('href');
+		var host=$("#nav-tab a:nth-child(2)").attr('href');
+		if(host=='#nav-profile'){//호스트
 			$.ajax({
 				url:"/admin/nav",
 				dataType: "json",
 				data:{"div":1},
 				success: function(data){
-					console.log(data.div+": div, change :"+data.change)
+					console.log(data.div+": div, change :"+data.change+"이건  ajax호스트")
 				}
 			})
-		}else if(active==true){//사용자
+		}else if(user=='#nav-home'){//사용자
 			$.ajax({
 				url:"/admin/nav",
 				data:{"div":2},
 				success: function(data){
-					console.log(data.div+": div, change :"+data.change)
+					console.log(data.div+": div, change :"+data.change +"이건  ajax사용자")
 					$("nav-tab a:nth-child(2)").click();
 					console.log(data.pu.startPageNum+"start, end: "+data.pu.endPageNum);
 				}
 			})
 		}
 	})
+//	$("#paging ,#nav-tab").children('a').on("click",function(){
+//		console.log('들어왔습니다.')
+//		var user=$("#nav-tab a:nth-child(1)").attr('href');
+//		var host=$("#nav-tab a:nth-child(2)").attr('href');
+//		var href=$("#nav-tab").children().attr('href');
+//		console.log("사용자 "
+//				+$("#nav-tab a:nth-child(1)").attr('aria-selected')+",,"+$("#nav-tab a:nth-child(1)").attr('href')+","+$("#nav-tab a:nth-child(1)").attr('aria-controls')
+//				+"호스트,"+$("#nav-tab a:nth-child(2)").attr('aria-selected')+",,"+$("#nav-tab a:nth-child(2)").attr('href')+","+$("#nav-tab a:nth-child(2)").attr('aria-controls'));
+//		if(host=='#nav-profile'){//호스트
+//			$.ajax({
+//				url:"/admin/nav",
+//				dataType: "json",
+//				data:{"div":1},
+//				success: function(data){
+//					console.log(data.div+": div, change :"+data.change+"이건  ajax호스트")
+//				}
+//			})
+//		}else if(user=='#nav-home'){//사용자
+//			$.ajax({
+//				url:"/admin/nav",
+//				data:{"div":2},
+//				success: function(data){
+//					console.log(data.div+": div, change :"+data.change +"이건  ajax사용자")
+//					$("nav-tab a:nth-child(2)").click();
+//					console.log(data.pu.startPageNum+"start, end: "+data.pu.endPageNum);
+//				}
+//			})
+//		}
+//	})
 })
 
 //nav tab구분		

@@ -28,7 +28,7 @@
 				<div class="onlinecooklist">
 					<div class="onlinecooklist_div">
 						<input type="hidden" value="${i.hinum }">
-						<img src="/resources/img/house_img/${i.img }">
+						<a href="/online/details?hinum=${i.hinum }"><img src="/resources/img/house_img/${i.img }"></a>
 						${i.subname}
 						<br>
 						<br>

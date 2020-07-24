@@ -66,7 +66,7 @@
 		ON ei.hinum = re.hinum 
         left join member me
         on ei.memnum=me.menum
-		where  ei.hinum=11 and ei.div_type=3;
+		where  ei.hinum=#{hinum} and ei.div_type=3;
 	</select>
 	<select id="findRoom" parameterType="hashmap" resultType="int">
 		select chat_no from chat_select where menum=#{memnum} and younum=#{id};

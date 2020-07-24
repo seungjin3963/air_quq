@@ -22,8 +22,8 @@ public class EpOnlineDao {
 	public List<SliderVo> outslider(){
 		return sql.selectList(NAMESPACE+".outslider");
 	}
-	public SliderVo inslider(int hinum){
-		return sql.selectOne(NAMESPACE+".inslider",hinum);
+	public List<SliderVo> inslider(int hinum){
+		return sql.selectList(NAMESPACE+".inslider",hinum);
 	}
 	public List<SliderVo> inSeoul(){ 
 		return sql.selectList(NAMESPACE+".inSeoul");
