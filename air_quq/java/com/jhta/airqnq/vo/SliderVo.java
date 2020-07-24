@@ -1,7 +1,5 @@
 package com.jhta.airqnq.vo;
 
-import java.sql.Blob;
-
 //�뒳�씪�씠�뜑 ���옣怨듦컙
 public class SliderVo {
 	private int einum;//ei踰덊샇

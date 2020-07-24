@@ -163,4 +163,12 @@ public class Apply_infoVo {
 		this.id = id;
 	}
 
+	@Override
+	public String toString() {
+		return "Apply_infoVo [menum=" + menum + ", hinum=" + hinum + ", title=" + title + ", content=" + content
+				+ ", addr=" + addr + ", addr_detail=" + addr_detail + ", price=" + price + ", max_n=" + max_n
+				+ ", bedroom=" + bedroom + ", checkin_time=" + checkin_time + ", lat=" + lat + ", lnt=" + lnt
+				+ ", startdate=" + startdate + ", enddate=" + enddate + ", id=" + id + "]";
+	}
+
 }
