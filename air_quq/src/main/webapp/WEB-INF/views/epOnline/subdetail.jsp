@@ -10,13 +10,7 @@
 </head>
 <body>
 	<div class="container body-content">
-
-
-
-
 		<div class="container">
-
-
 			<div class="row justify-content-start" style="padding-top: 10px;">
 
 				<div class="col" style="padding-top: 10px;">

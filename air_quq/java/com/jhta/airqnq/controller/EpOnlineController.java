@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.jhta.airqnq.pageUtil.PageUtil;
 import com.jhta.airqnq.service.EpOnlineService;
@@ -86,18 +87,78 @@ public class EpOnlineController {
 	public String modify(){
 		return "";
 	}
+//		MemberVo vo=(MemberVo)session.getAttribute("memberVo");
+//		vo.getMenum();
 	
 	@GetMapping(value = "/admin/adminQ")
 	public String adminQinfo(
-			@RequestParam(value = "pageNum",defaultValue = "1")int pageNum,String field,String keyword,
-			Model model,HttpSession session) {
-		PageUtil page = new PageUtil();
-		HashMap<String, Object> hash = new HashMap<String, Object>();
-		service.count(hash);
-//		MemberVo vo=(MemberVo)session.getAttribute("memberVo");
-//		vo.getMenum();
-		model.addAttribute("user",service.userinfo());
-		model.addAttribute("host",service.hostinfo());
+			@RequestParam(value="pageNum",defaultValue = "1")int pageNum,
+			String field,String keyword,@RequestParam(value="div",defaultValue = "1")int div,
+			Model model) 
+	{
+		HashMap<String, Object> input = new HashMap<String, Object>();
+		input.put("div",div);
+		input.put("keyword", keyword);
+		input.put("field", field);
+
+		int count=service.count(input);
+		PageUtil pu=new PageUtil(pageNum,count,10,5);
+		
+		input.put("startRow",pu.getStartRow());
+		input.put("RowsinPage",pu.getRowBlockCount());
+		
+		model.addAttribute("divide", div);
+		model.addAttribute("pu",pu);
+		model.addAttribute("user",service.userinfo(input));
+		model.addAttribute("host",service.hostinfo(input));
 		return ".admin.adminQ";
+	}
+	
+	@RequestMapping(value = "/admin/search", produces = "application/json;charset=utf-8")
+	@ResponseBody
+	public HashMap<String, Object> selected (@RequestParam(value="pageNum",defaultValue = "1")int pageNum,
+		String field,String keyword,
+		@RequestParam(value="div",defaultValue = "1")int div){
+		
+		HashMap<String, Object> input = new HashMap<String, Object>();
+		input.put("div",div);
+		input.put("keyword", keyword);
+		input.put("field", field);
+
+		int count=service.count(input);
+		PageUtil pu=new PageUtil(pageNum,count,10,5);
+		input.put("divide",div);
+		input.put("pu",pu);
+		input.put("startRow",pu.getStartRow());
+		input.put("RowsinPage",pu.getRowBlockCount());
+		if(div==1) {
+			input.put("user",service.userinfo(input));
+		}else if(div==2) {
+			input.put("host",service.hostinfo(input));
+		}
+		
+		return input;
+	}
+	@RequestMapping(value = "/admin/nav" , produces = "application/json;charset=utf-8")
+	@ResponseBody
+	public HashMap<String, Object> navDetected(int div) {
+		HashMap<String, Object> hash=new HashMap<String, Object>();
+		hash.put("div",div);
+		int count=service.count(hash);
+		PageUtil pu=new PageUtil(1,count,10,5);
+		hash.put("pu",pu);
+		hash.put("startRow",pu.getStartRow());
+		hash.put("RowsinPage",pu.getRowBlockCount());
+		System.out.println("div :" +div +", pu.getStartRow() :"+pu.getStartRow() +", RowsinPage :"+pu.getRowBlockCount()+" count :"+count);
+		hash.put("user",service.userinfo(hash));
+		hash.put("host",service.hostinfo(hash));
+		if(div==1) {
+			hash.put("change","#nav-home");
+			hash.put("div",1);
+		}else if(div==2){
+			hash.put("change","#nav-profile");
+			hash.put("div",2);
+		}
+		return hash;
 	}
 }
