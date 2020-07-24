@@ -28,7 +28,7 @@
 	<a href="/user/apply" onclick='submitPostData(event)'>
 	<form action="/user/apply" method="post" class="formId">
 	
-	<input type="hidden" value="${ hitem.addr_detail }" name="addr_detail">
+	<input type="hidden" value="${ hitem.road_addr }" name="addr_detail">
 	<input type="hidden" value="${ hitem.lat }" name="lat">
 	<input type="hidden" value="${ hitem.lnt }" name="lnt">
 	<input type="hidden" value="${ hitem.hinum }" name="hinum">

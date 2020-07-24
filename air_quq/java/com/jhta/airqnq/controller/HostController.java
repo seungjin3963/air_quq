@@ -131,6 +131,7 @@ public class HostController {
 		map.put("lat", lat);
 		map.put("lnt", lnt);
 		
+		String addr_detail = roadAddr;
 		
 		session.setAttribute("regist4", map);
 		session.setAttribute("hostStep", next);

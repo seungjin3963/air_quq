@@ -7,6 +7,7 @@ public class MainHouseInfoVo {
 	private String addr;
 	private int max_n;
 	private String addr_detail;
+	private String road_addr;
 	private int price;
 	private double lat;
 	private double lnt;
@@ -16,13 +17,14 @@ public class MainHouseInfoVo {
 	
 	public MainHouseInfoVo() {}
 
-	public MainHouseInfoVo(int hinum, String addr, int max_n, String addr_detail, int price, double lat, double lnt,
-			Date startdate, Date enddate, String img) {
+	public MainHouseInfoVo(int hinum, String addr, int max_n, String addr_detail, String road_addr, int price,
+			double lat, double lnt, Date startdate, Date enddate, String img) {
 		super();
 		this.hinum = hinum;
 		this.addr = addr;
 		this.max_n = max_n;
 		this.addr_detail = addr_detail;
+		this.road_addr = road_addr;
 		this.price = price;
 		this.lat = lat;
 		this.lnt = lnt;
@@ -61,6 +63,14 @@ public class MainHouseInfoVo {
 
 	public void setAddr_detail(String addr_detail) {
 		this.addr_detail = addr_detail;
+	}
+
+	public String getRoad_addr() {
+		return road_addr;
+	}
+
+	public void setRoad_addr(String road_addr) {
+		this.road_addr = road_addr;
 	}
 
 	public int getPrice() {
@@ -110,7 +120,5 @@ public class MainHouseInfoVo {
 	public void setImg(String img) {
 		this.img = img;
 	}
-	
-	
 }
 
