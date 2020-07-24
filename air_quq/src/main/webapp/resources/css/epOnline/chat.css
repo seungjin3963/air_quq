@@ -12,7 +12,9 @@ body {
 	color: #999999;
 	word-wrap: break-word;
 }
-
+#dmdm{
+	visibility:hidden;
+}
 ul {
 	list-style: none;
 }

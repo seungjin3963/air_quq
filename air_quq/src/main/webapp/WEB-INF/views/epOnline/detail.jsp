@@ -7,7 +7,7 @@
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
 	integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
 	crossorigin="anonymous">
-
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <div class="container body-content">
 	<div class="container">
 		<div class="row justify-content-start"
@@ -226,7 +226,7 @@
 				in The Ritz-Carlton NYC. As head chef, he received accolades from
 				major New York food critics & major food and wine publication.</div>
 		</div>
-		<button type="button" class="btn btn-light">
+		<button type="button" class="btn btn-light" id="dmcall">
 			<b>호스트에게 연락하기</b>
 		</button>
 		<img src="/resources/img/pic/shield.png" viewBox="0 0 30 30"
@@ -526,13 +526,12 @@
 						</div>
 					</div>
 				</div>
-		</div>
 		<br> 
 		<br>
 	</div>
 </div>
-<div class="chatbox-holder">
-	<div class="chatbox">
+<div class="chatbox-holder" id="dmdm">
+	<div class="chatbox" id="dmdm2">
 		<!-- 헤더 -->
 		<div class="chatbox-top">
 			<!-- 이미지 -->
@@ -547,12 +546,12 @@
 			</div>
 			<!-- 아이콘 -->
 			<div class="chatbox-icons">
-				<i class="fa fa-minus"><span class="material-icons">arrow_drop_down</span></i>
-				<i class="fa fa-close"><span class="material-icons">close</span></i>
+				<i class="fa fa-minus"><span class="material-icons">arrow_drop_down_circle</span></i>
+				<i class="fa fa-close"><span class="material-icons">cancel</span></i>
 			</div>
 		</div>
 		<!-- 메시지 -->
-		<div class="chat-messages">
+		<div class="chat-messages" id="messageArea">
 			<div class="message-box-holder">
 				<!-- 나 -->
 				<div class="message-sender">Tae Hee</div>
@@ -567,8 +566,8 @@
 		</div>
 
 		<div class="chat-input-holder">
-			<textarea class="chat-input"></textarea>
-			<input type="submit" value="Send" class="message-send" />
+			<textarea class="chat-input" id="message"></textarea>
+			<input type="submit" value="Send" class="message-send" id="sendText"/>
 		</div>
 	</div>
 </div>
