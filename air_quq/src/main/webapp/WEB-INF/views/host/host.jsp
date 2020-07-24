@@ -192,7 +192,7 @@
 				    </div>
 				    <div class="form-group col-md-8">
 				      <label for="adress">도로명 주소</label>
-				      <input type="text" class="form-control" id="roadAddr">
+				      <input type="text" class="form-control" id="roadAddr" name="roadAddr">
 				    </div>
 				    <div class="form-group col-md-4">
 				      <label for="zipcode">우편번호</label>

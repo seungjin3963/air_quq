@@ -124,9 +124,9 @@ public class HostController {
 	}
 	
 	@RequestMapping(value = "/host/regist/4")
-	public String hostRegist4(MultipartFile[] file1, String address, String addressDetail, String lat, String lnt, HttpSession session, int next) {
+	public String hostRegist4(MultipartFile[] file1, String roadAddr, String addressDetail, String lat, String lnt, HttpSession session, int next) {
 		HashMap<String, Object> map = new HashMap<String, Object>();
-		map.put("address", address);
+		map.put("address", roadAddr);
 		map.put("addressDetail", addressDetail);
 		map.put("lat", lat);
 		map.put("lnt", lnt);
@@ -135,7 +135,7 @@ public class HostController {
 		session.setAttribute("regist4", map);
 		session.setAttribute("hostStep", next);
 		
-		System.out.println("마지막 단계 : " + address + ", " + addressDetail + ", " + lat + ", " + lnt);
+		System.out.println("마지막 단계 : " + roadAddr + ", " + addressDetail + ", " + lat + ", " + lnt);
 		
 		Integer menum = (Integer)session.getAttribute("menum");
 		System.out.println(menum + "<<<<<<<멤버번호");
@@ -158,7 +158,7 @@ public class HostController {
 		Date enddate = transformDate((String)regist3.get("endDay"));
 		String del_yn = "n";
 		
-		HouseInfoVo hvo = new HouseInfoVo(0, menum, title, content, address, addressDetail, price, max_n,
+		HouseInfoVo hvo = new HouseInfoVo(0, menum, title, content, roadAddr, addressDetail, price, max_n,
 				bedroom, checkinTime, div, lat, lnt, startdate, enddate, del_yn, 0);
 		
 		int result = hostService.insertHouse(hvo);

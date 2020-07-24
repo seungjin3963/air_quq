@@ -11,8 +11,10 @@ import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.jhta.airqnq.service.HostInfoService;
 import com.jhta.airqnq.vo.HouseInfoVo;
@@ -82,6 +84,14 @@ public class HomeController{
 		session.setAttribute("getHouseInfo", jarr);
 		
 		return ".hostsearch";
+	}
+	
+	//AJAX로 카카오맵 마커 뿌려주기
+	@GetMapping("search/kakao/marker")
+	@ResponseBody
+	public void setKakaoMarker() {
+		//System.out.println("동작");
+		
 	}
 	
 	public List<MainHouseInfoVo> getHouseInfo(HouseInfoVo vo){

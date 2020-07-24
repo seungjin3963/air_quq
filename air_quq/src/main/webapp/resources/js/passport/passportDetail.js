@@ -17,7 +17,7 @@ $("#searchDetail").click(function () {
 
       onsearch: function (data) {
 //          console.log(data);
-         $("#searchDetail").val(data.q);
+         $("#searchDetail").val(data.roadAddress);
       }
    }).open();
 });
