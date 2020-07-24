@@ -121,6 +121,7 @@ var refund=function(merchant_uid,amount,reason,banknumber,accountname,accountnum
 	    "url": "http://www.myservice.com/payments/cancel",
 	    "type": "POST",
 	    "contentType": "application/json",
+	    "dataType": "json",
 	    "data": JSON.stringify({
 	      "merchant_uid": merchant_uid, // 주문번호
 	      "cancel_request_amount": amount, // 환불금액
@@ -129,10 +130,19 @@ var refund=function(merchant_uid,amount,reason,banknumber,accountname,accountnum
 	      "refund_bank": banknumber, // [가상계좌 환불시 필수입력] 환불 수령계좌 은행코드(ex. KG이니시스의 경우 신한은행은 88번)
 	      "refund_account": accountnumber // [가상계좌 환불시 필수입력] 환불 수령계좌 번호
 	    }),
-	    "dataType": "json"
+	    success : function(data){
+	    	console.log(data)
+	    },
+	    error : function(request,status,error){
+	    	alert("code = "+request.status +" /message ="+request.responseText + "/error="+error );
+	    	alert(merchant_uid+","+amount+","+reason+","+banknumber+","+accountname+","+accountnumber);
+	    },
+	    complete : function(data){
+	    	console.log("실패했어도 출력"+data);
+	    }
 	});
+	console.log("출력");
 }
-
 
 $("#refundcheck").click(function(){
 	var rtnum=$("#rtnumhidden").val();
@@ -148,7 +158,58 @@ $("#refundcheck").click(function(){
 		data : {"rtnum" : rtnum,},
 		success : function(data) {
 			/*refund(data.merchant_uid,data.pay_price,reason,banknumber,accountname,accountnumber);*/
+			accesstoken(data.imp_uid,data.pay_price,reason,banknumber,accountname,accountnumber);
 		}
 	})
 	
 });
+
+var accesstoken=function(imp_uid,amount,reason,banknumber,accountname,accountnumber){
+	var access_token=null;
+	$.ajax({
+	    url: "/refund/access_token",
+	    type: "POST",
+	    dataType: "json",
+	    data: ({
+	      "imp_key": "2639303209953632", // [아임포트 관리자] REST API키
+	      "imp_secret": "kZf9sSdHyBBVFUbIP6g8JEqhzCSKvM3PLiZebcVJNxFtrQchWsqF7QXGsPrXCuMnMMBXYxHM4ngwdsNa" // [아임포트 관리자] REST API Secret
+	    }),
+	    success : function(data){
+	    	$.each(data, function(key, value) {
+	    		if(key == "response"){
+	    			refunduse(imp_uid,amount,reason,banknumber,accountname,accountnumber,value.access_token);
+	    		}
+	    	})
+	    },
+	    error : function(request,status,error){
+	    	alert("code = "+request.status +" /message ="+request.responseText + "/error="+error );
+	    }
+	});
+}
+
+var refunduse=function(imp_uid,amount,reason,banknumber,accountname,accountnumber,access_token){
+	$.ajax({
+	    url: "/refund/use",
+	    type: "POST",
+	    dataType: "json",
+	    data: ({
+	      "Authorization": access_token, 
+	      "reason":reason,
+	      "imp_uid": imp_uid,
+	      "amount":amount,
+	      "refund_holder":accountname,
+	      "refund_bank":banknumber,
+	      "refund_account":accountnumber
+	    }),
+	    success : function(data){
+	    	console.log(data);
+	    },
+	    error : function(request,status,error){
+	    	alert("code = "+request.status +" /message ="+request.responseText + "/error="+error );
+	    }
+	});
+}
+
+
+
+

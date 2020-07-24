@@ -41,4 +41,5 @@ public class RentController {
 	public RentVo rentselect(int rtnum) {
 		 return rentservice.rentselect(rtnum);
 	}
+	
 }

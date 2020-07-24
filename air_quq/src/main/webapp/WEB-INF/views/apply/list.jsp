@@ -77,7 +77,7 @@
 							<td>
 								<c:choose>
 									<c:when test="${startrent - now > 0 && list.status == 1 }">
-										<a href="javascript:applyCancel(${list.rtnum })" class="text-warning">
+										<a href="javascript:refundmodal(${list.rtnum })" class="text-warning">
 											<i class="fa fa-calendar-times-o fa-2x"></i>
 										</a>
 									</c:when>
