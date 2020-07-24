@@ -47,7 +47,7 @@ public class UserApplyController {
 		
 		Apply_infoVo infovo= house_infoService.HinumSelect(hinum);
 		HashMap<String, String> usercheck=new HashMap<String, String>();
-		
+	
 		String start=stary_day.replace("-", "/");
 		String end=end_day.replace("-", "/");
 		
@@ -106,7 +106,7 @@ public class UserApplyController {
 			System.out.println(ie.getMessage());
 		} catch (NullPointerException np) {}
 	}
-
+// 환불기능 포기
 //	@RequestMapping("/refund/access_token")
 //	@ResponseBody
 //	public HashMap<String, Object> updateSpittle(String imp_key,String imp_secret) {
@@ -174,9 +174,11 @@ public class UserApplyController {
 
 	@GetMapping(value = "/user/applyCheck")
 	public String apply(HttpSession session) {
-		if ((boolean) session.getAttribute("logind")) {
+		MemberVo vo=(MemberVo) session.getAttribute("memberVo");
+		
+		if(vo != null) {
 			return ".apply.applyCheck";
-		} else {
+		}else {
 			return ".login";
 		}
 	}

@@ -10,8 +10,8 @@ $(function(){
 			var betweendate=(endobj.getTime()-startobj.getTime())/1000/60/60/24;
 			
 			return betweendate;
-		} 
-
+		}
+		
 		// 퀵메뉴 총금액 뽑기
 		var betweenday=between($("#checkin").val(),$("#checkout").val());
 		$("#summoney").val(betweenday*Number($("#totmoney").children().eq(0).html()));
@@ -67,6 +67,7 @@ $(function(){
 		// datepicker
 		var onswitch=true;
 		var tempdate;
+		
 		$("#cal").datepicker({
 			showOn: "both",
 			closeText: "Close",
