@@ -60,6 +60,7 @@ function passwordCheckForm(){
 	if(pwd == pwd_repeat && pwd != "" && pwd_repeat != ""){
 		return true;
 	} else {
+		alert('비밀번호가 다릅니다.!');
 		return false;
 	}
 }
@@ -70,11 +71,11 @@ function checkedForm(){
 	if(emailchk == true && idchk == true && chk == true && checkGender != null){
 		return true;
 	}
+	alert("폼에 빈값이 들어갈수없습니다.");
 	return false;
 }
 
 
 $("#jid").submit(function(){
-	//alert(checkedForm());
 	return checkedForm();
 });
