@@ -82,7 +82,7 @@
 		WHERE
 			h.addr LIKE CONCAT('%', #{addr}, '%')
 			<![CDATA[
-				AND h.max_n<=#{max_n}
+				AND h.max_n>=#{max_n}
 				AND h.`div`=#{div}
 				AND h.startdate>=#{startdate}
 				AND h.enddate>=#{enddate}
