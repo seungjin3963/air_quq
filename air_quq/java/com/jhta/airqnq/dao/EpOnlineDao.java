@@ -50,11 +50,11 @@ public class EpOnlineDao {
 	public int addcontent(HashMap<String, Object> hash) {
 		return sql.insert(NAMESPACE+".addcontent",hash);
 	}
-	public List<AdminInfoVo> hostinfo() {
-		return sql.selectList(NAMESPACE+".hostInfo");
+	public List<AdminInfoVo> hostinfo(HashMap<String, Object> hash) {
+		return sql.selectList(NAMESPACE+".hostInfo",hash);
 	}
-	public List<AdminInfoVo> userinfo() {
-		return sql.selectList(NAMESPACE+".userInfo");
+	public List<AdminInfoVo> userinfo(HashMap<String, Object> hash) {
+		return sql.selectList(NAMESPACE+".userInfo",hash);
 	}
 	public int count(HashMap<String, Object> hash) {
 		return sql.selectOne(NAMESPACE+".count",hash);
