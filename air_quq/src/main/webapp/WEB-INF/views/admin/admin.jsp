@@ -68,7 +68,7 @@
 			</li>
 
 			<li class="nav-item">
-				<a class="nav-link" href="#">
+				<a class="nav-link" href="/admin/adminQ">
 					<i class="fas fa-question"></i> 
 					<span>QnA</span>
 				</a>

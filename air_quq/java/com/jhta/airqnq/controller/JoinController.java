@@ -2,13 +2,8 @@ package com.jhta.airqnq.controller;
 
 import java.io.IOException;
 import java.util.HashMap;
-import java.util.Properties;
 import java.util.Random;
 
-import javax.mail.Message;
-import javax.mail.Session;
-import javax.mail.Transport;
-import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpSession;
 

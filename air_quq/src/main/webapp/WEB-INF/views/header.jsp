@@ -24,36 +24,15 @@
 						<c:choose>
 							<c:when test="${sessionScope.memberVo.identi_user == 1 }">
 								<a href="/admin" class="align-self-center">
-									<button type="button" class="btn btn-light align-self-center">관리자 페이지</button>
+									<button type="button" class="btn btn-light align-self-center bg-gradient-warning">관리자 페이지</button>
 								</a>
 							</c:when>
 							<c:otherwise></c:otherwise>
 						</c:choose>
-						
 					</li>
 					<li class="nav-item">
 						<a href="#" class="align-self-center" data-toggle="modal" data-target="#houseReportModal">
 							<button type="button" class="btn btn-light align-self-center">신고 모달(테스트)</button>
-						</a>
-					</li>
-					<li class="nav-item">
-						<a href="/experience/myexperience" class="btn btn-light align-self-center">
-							<span class="text">체험 호스팅하기</span>
-						</a>
-					</li>
-					<!-- <li class="nav-item">
-						<a href="/user/apply" class="btn btn-light align-self-center">
-							<span class="text">예약 신청하기(테스트)</span>
-						</a>
-					</li> -->
-					<li class="nav-item">
-						<a href="/host/regist/1?next=1" class="btn btn-light align-self-center">
-							<span class="text">숙소 호스트 되기</span>
-						</a>
-					</li>
-					<li class="nav-item">
-						<a href="/ep_management/ep_listg" class="btn btn-light align-self-center">
-							<span class="text">등록 중인 체험(테스트)</span>
 						</a>
 					</li>
 					<c:if test="${ logind == false || logind == null }">
@@ -87,19 +66,27 @@
 									</a>
 									<a class="dropdown-item" href="/host/ResCheck">
 										<i class="fas fa-list fa-fw mr-2"></i>
-										내 집에 온다는 사람들
+										호스트-내 집에 온다는 사람들
 									</a>
 									<a class="dropdown-item" href="/user/apply/list">
 										<i class="fas fa-list fa-fw mr-2"></i>
 										유저-예약 현황
 									</a>
+									<a class="dropdown-item" href="/experience/myexperience">
+										<i class="fas fa-list fa-fw mr-2"></i>
+										유저-체험 호스팅하기
+									</a>
+									<a class="dropdown-item" href="/ep_management/ep_listg">
+										<i class="fas fa-list fa-fw mr-2"></i>
+										유저-등록 중인 체험(테스트)
+									</a>
+									<a class="dropdown-item" href="/host/regist/1?next=1">
+										<i class="fas fa-list fa-fw mr-2"></i>
+										유저-숙소 호스트 되기
+									</a>
 									<a class="dropdown-item" href="#">
 										<i class="fas fa-user fa-fw mr-2"></i>
 										Profile
-									</a>
-									<a class="dropdown-item" href="#">
-										<i class="fas fa-cogs fa-fw mr-2"></i>
-										Settings
 									</a>
 									<div class="dropdown-divider"></div>
 									<a class="dropdown-item" href="/logout">

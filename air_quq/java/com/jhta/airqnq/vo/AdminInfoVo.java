@@ -11,11 +11,11 @@ public class AdminInfoVo {
 	private int level;
 	private int step;
 	private String del_yn;
-	private Date date;
+	private Date regdate;
 	
 	public AdminInfoVo() {};
 	
-	public AdminInfoVo(int bnum, String title, String content, int div, int ref, int level, int step, String del_yn,Date date) {
+	public AdminInfoVo(int bnum, String title, String content, int div, int ref, int level, int step, String del_yn,Date regdate) {
 		super();
 		this.bnum = bnum;
 		this.title = title;
@@ -25,15 +25,15 @@ public class AdminInfoVo {
 		this.level = level;
 		this.step = step;
 		this.del_yn = del_yn;
-		this.date=date;
+		this.regdate=regdate;
 	}
 	
-	public Date getDate() {
-		return date;
+	public Date getRegdate() {
+		return regdate;
 	}
 
-	public void setDate(Date date) {
-		this.date = date;
+	public void setRegdate(Date regdate) {
+		this.regdate = regdate;
 	}
 
 	public int getBnum() {

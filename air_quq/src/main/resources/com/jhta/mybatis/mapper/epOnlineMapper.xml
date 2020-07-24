@@ -5,20 +5,33 @@
 <mapper namespace="com.jhta.mybatis.mapper.epOnlineMapper">
 	<sql id="search"><!-- 검색조건 -->
 		<if test="field!=null and field!=''">
-			where ${field} like '%'||#{keyword}||'%'
+			and ${field} like '%'||#{keyword}||'%'
 		</if>
 	</sql>
-	<select id="count" parameterType="hashmap">
-		select * from qna where div=#{div}
+	<!-- admin글갯수 -->
+	<select id="count" parameterType="hashmap" resultType="int">
+		select ifnull(count(*),0) from qna
+		where  `div`=#{div}
+		<include refid="search"></include>
 	</select>
 	<!-- admin/Q&A 사용자 -->
-	<select id="userInfo" resultType="adminInfo">
-		select q.bnum,q.title,q.content,q.div,q.ref,q.level,q.step,q.del_yn,q.date from qna q left join member mem on mem.menum=q.menum where q.div=1 order by date desc limit #{startNum}, 10;
+	<select id="userInfo" resultType="adminInfo" parameterType="hashmap">
+		select q.bnum,q.title,q.content,q.div,q.ref,q.level,q.step,q.del_yn,q.regdate from qna q left join member mem on mem.menum=q.menum
+		where q.`div`=1 
+		<include refid="search"></include> 
+		order by regdate desc 
+		limit #{startRow}, #{RowsinPage}
 	</select>
 	<!-- admin/Q&A 호스트 -->
-	<select id="hostInfo" resultType="adminInfo">
-		select q.bnum,q.title,q.content,q.div,q.ref,q.level,q.step,q.del_yn,q.date from qna q left join member mem on mem.menum=q.menum where q.div=2 order by date desc;
+	<select id="hostInfo" resultType="adminInfo" parameterType="hashmap">
+		select q.bnum,q.title,q.content,q.div,q.ref,q.level,q.step,q.del_yn,q.regdate from qna q left join member mem on mem.menum=q.menum
+		where q.`div`=2 
+		<include refid="search"></include> 
+		order by regdate desc
+		limit #{startRow}, #{RowsinPage}
 	</select>
+	
+	
 	<!-- 6시간이내(만들어진것) -->
 	<select id="within6" resultType="slinfo">
 		<![CDATA[select regdate from experience_info

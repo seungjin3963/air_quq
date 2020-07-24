@@ -45,7 +45,7 @@ $("#btnHouseReport").click(function(){
 });
 
 function houseReportSave(target){
-	let hinum = 0;
+	let hinum = $("#hinum").val();
 	let content;
 	if(target.prop("id") === "jb-radio-etc"){
 		let contentText = $("#reportContent").val();

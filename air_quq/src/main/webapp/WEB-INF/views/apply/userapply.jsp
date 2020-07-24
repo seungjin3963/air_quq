@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <link href="/resources/css/userapply/userapply.css" rel="stylesheet" type="text/css">
 
@@ -7,18 +6,15 @@
 <!-- <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=asd"></script> -->
 
 <script src="/resources/js/userapply/userapply.js"></script>
+<input type="hidden" id="hinum" value="${infovo.hinum }">
 <div class="container">
 	<h1>${infovo.title }</h1>
 	<div class="row">
-		<div class="col-md-1">
-		
-		</div>
+		<div class="col-md-1"></div>
 		<div class="col-md-10">
 			<img src="/resources/img/1.jpg" id="bigphoto">
 		</div>
-		<div class="col-md-1">
-		
-		</div>
+		<div class="col-md-1"></div>
 	</div>
 
 	<div class="row" id="applydivision">
@@ -33,7 +29,7 @@
 
 	<div class="row" id="applydivision">
 		<div class="col-md-12">
-<!-- 			1977년부터 지역의 대표숙소로소 다양한 여행자들을 품어온 '미도장'이
+			<!-- 			1977년부터 지역의 대표숙소로소 다양한 여행자들을 품어온 '미도장'이
 			40년의 세월을 거쳐 '미도호스텔'로 거듭났습니다. 최신식 호텔보다는 조금 불편할 지도 모릅니다. 하지만 서귀포의 오랜
 			정취를 고스란히 느낄 수 있는 '분위기있는 숙소', 그리고 여행자의 마음을 이해하는 특화된 서비스와 시설을 겸비한 '리얼
 			여행자숙소'를 찾으신다면 미도호스텔이 정답입니다. 우리는 어떤 사실을 알게 되거나 사건을 직접 경험한 후 글을 써야겠다고
@@ -72,22 +68,21 @@
 	<div class="row" id="applydivision2">
 		<div class="col-md-12">
 			<h3>편의 기능</h3>
-			<input type="button" value="편의시설 conven 갯수" class="btn btn-danger btn-icon-split">	
+			<input type="button" value="편의시설 conven 갯수" class="btn btn-danger btn-icon-split">
 		</div>
 	</div>
-		<div class="row" id="applydivision1">
-			<div class="col-md-12" style="text-align: center;" id="usecal">
-				<div id="rentdate">O박O일</div><br>
-				<div>사용자가 입력한 시작날짜 - 사용자가 입력한 끝날짜</div>
-				<div>인원수</div>
-				<input type="button" value="수정하기" class="btn btn-danger btn-icon-split" data-toggle="modal" data-target="#myModal">
-			</div>
+	<div class="row" id="applydivision1">
+		<div class="col-md-12" style="text-align: center;" id="usecal">
+			<div id="rentdate">O박O일</div>
+			<br>
+			<div>사용자가 입력한 시작날짜 - 사용자가 입력한 끝날짜</div>
+			<div>인원수</div>
+			<input type="button" value="수정하기" class="btn btn-danger btn-icon-split" data-toggle="modal" data-target="#myModal">
 		</div>
+	</div>
 	<div class="row" id="applydivision"></div>
 	<div class="row" id="applydivision3">
-		<div class="col-md-12">
-			첫 후기를 남겨 주세요!!
-		</div>
+		<div class="col-md-12">첫 후기를 남겨 주세요!!</div>
 	</div>
 
 	<div class="row" id="applydivision1">
@@ -103,22 +98,36 @@
 			<input type="button" value="호스트에게 연락하기" class="btn btn-danger btn-icon-split">
 		</div>
 	</div>
-	</div>
+</div>
 <div id="quickmenu">
+	<a href="#" class="align-self-center bg-gradient-warning text-gray-900" data-toggle="modal" data-target="#houseReportModal"> 숙소 신고하기 </a>
+	<br>
 	<div id="quickmenulayer">
-		<i class="far fa-calendar-alt fa-3x"></i><br>체크인<br>
+		<i class="far fa-calendar-alt fa-3x"></i>
+		<br>
+		체크인
+		<br>
 		<input type="text" value="${usercheck.checkIn }" readonly="readonly" id="checkin" class="quickmenufont">
 	</div>
 	<div id="quickmenulayer">
-		<i class="fa fa-calendar-alt fa-3x"></i><br>체크아웃<br>
+		<i class="fa fa-calendar-alt fa-3x"></i>
+		<br>
+		체크아웃
+		<br>
 		<input type="text" value="${usercheck.checkOut }" readonly="readonly" id="checkout" class="quickmenufont">
 	</div>
 	<div id="quickmenulayer">
-		<i class="fas fa-users fa-3x"></i><br>인원수<br>
+		<i class="fas fa-users fa-3x"></i>
+		<br>
+		인원수
+		<br>
 		<input type="text" value="${usercheck.max_n }" readonly="readonly" id="checkcnt" class="quickmenufont">
 	</div>
 	<div id="quickmenulayer">
-		<i class="fas fa-coins fa-3x"></i><br>총금액<br>
+		<i class="fas fa-coins fa-3x"></i>
+		<br>
+		총금액
+		<br>
 		<input type="text" readonly="readonly" id="summoney" class="quickmenufont">
 		<input type="hidden" value="1">
 	</div>
@@ -137,32 +146,44 @@
 			<div class="modal-body" id="mymodalborder">
 				<div id="calclick">
 					<div id="mymodallayer">
-						체크인<br>
+						체크인
+						<br>
 						<input type="text" id="startmodified" readonly="readonly" class="checkdate">
 						<i class="far fa-calendar-alt fa-1x" id="startcal"></i>
 					</div>
 					<div id="mymodallayer">
-						체크아웃<br>
+						체크아웃
+						<br>
 						<input type="text" id="endmodified" readonly="readonly" class="checkdate">
 						<i class="fa fa-calendar-alt fa-1x" id="endcal"></i>
 					</div>
 					<div id="bundle">
 						<div id="cal"></div>
 						<div>
-							<input type="button" value="닫기" class="btn btn-danger btn-icon-split" id="userapplybuttonOk">					
+							<input type="button" value="닫기" class="btn btn-danger btn-icon-split" id="userapplybuttonOk">
 						</div>
 					</div>
 					<div>
-						인원<br>
-						<button type="button" id="manusbutton" class="usercount"><i class="fas fa-minus-circle" id="manus"></i></button>
+						인원
+						<br>
+						<button type="button" id="manusbutton" class="usercount">
+							<i class="fas fa-minus-circle" id="manus"></i>
+						</button>
 						<input type="text" id="h-cnt" readonly="readonly">
-						<button type="button" id="addbutton" class="usercount"><i class="fas fa-plus-circle" id="add"></i></button>
+						<button type="button" id="addbutton" class="usercount">
+							<i class="fas fa-plus-circle" id="add"></i>
+						</button>
 					</div>
 					<div id="totmoney">
-						일일금액<span>${infovo.price }</span><br>
-						숙박일<span>선택한 숙박일</span><br>
+						일일금액
+						<span>${infovo.price }</span>
+						<br>
+						숙박일
+						<span>선택한 숙박일</span>
+						<br>
 						<hr>
-						총금액<span>숙박금액*숙박일</span>
+						총금액
+						<span>숙박금액*숙박일</span>
 					</div>
 					<div id="modalbuttonOk1">
 						<input type="button" value="수정" class="btn btn-danger btn-icon-split" id="modalbuttonOk2">
@@ -180,9 +201,7 @@
 				<h3 class="modal-title">정보 확인</h3>
 				<button type="button" class="close" data-dismiss="modal" id="modalexit">X</button>
 			</div>
-			<div class="modal-body">
-				이전 날짜 입니다.	
-			</div>
+			<div class="modal-body">이전 날짜 입니다.</div>
 			<div class="modal-footer">
 				<input type="button" value="확인" class="btn btn-danger btn-icon-split" id="alertclose">
 			</div>

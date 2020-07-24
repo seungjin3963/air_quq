@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.jhta.airqnq.service.ReportService;
+import com.jhta.airqnq.vo.Apply_infoVo;
 import com.jhta.airqnq.vo.ReportTypeVo;
 
 @Controller
