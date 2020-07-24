@@ -3,11 +3,24 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="mybatis.HostResCheckMapper">
-	<select id="ResListE" parameterType="int" resultType="com.jhta.airqnq.vo.EP_ManagementVo">
+	<select id="ResListE" parameterType="int" resultType="com.jhta.airqnq.vo.EP_ManagementVo"> <!-- 체험 -->
 		select a.img , a.hinum , a.title , a.price , a.times , subname 
 	,(select count(*) from rent where hinum = a.hinum) count, (select sum(`check`) from rent where hinum = a.hinum) checkNum
 from (
 select img,e.hinum,title,price,times ,sunum from experience_info e inner join house_img h 
 on e.hinum=h.hinum where memnum=#{menum} and (e.div_type=3 or div_type=4) and ordernum=1)a inner join subDetail s on a.sunum=s.sunum;
 	</select>
+	<select id="ResPeople" parameterType="int" resultType="rentVo">
+		select * from rent where hinum=#{hinum}
+	</select>
+	<update id="ResCheckUpdate" parameterType="int">
+		update rent set `check`=0 where hinum=#{hinum}
+	</update>
+	
+	<select id="ResListH" parameterType="int" resultType="com.jhta.airqnq.vo.EP_ManagementVo"> <!-- 숙소 -->
+		select a.img , a.hinum , a.title ,a.price , (select count(*) from rent where hinum = a.hinum) count , (select sum(`check`) from rent where hinum = a.hinum) checkNum from(
+	select img,e.hinum,title,price from house_info e inner join house_img h 
+on e.hinum=h.hinum where menum=#{menum} and (`div`=1 or `div`=2) and ordernum=1) a;
+	</select>
+	
 </mapper>

@@ -71,7 +71,7 @@ public class UserApplyController {
 			long timebetween3=timebetween2*infovo.getPrice();
 			
 			ApplyVo vo=new ApplyVo(start, end, people_count, (int)timebetween3);
-			RentVo rentvo=new RentVo(0, hinum, 0, rentstart, rentend, 1, people_count, (int)timebetween3, "n", null, null);
+			RentVo rentvo=new RentVo(0, hinum, 0, rentstart, rentend, 1, people_count, (int)timebetween3, "n", null, null,1);
 			
 			session.setAttribute("applyVo", vo);
 			session.setAttribute("rentVo", rentvo);

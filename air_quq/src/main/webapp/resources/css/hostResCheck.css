@@ -51,5 +51,31 @@
 	
 }
 .HostCheckdiv{
-	height: 450px;
+	border:1PX solid white;
+	height: 420px;
+	border-radius: 40px;
 }
+
+#resTable{
+	width:100%;
+	margin: auto;
+	border: black;
+}
+
+.modal{
+	color: black;
+}
+.modal-content{
+	width: 700px;
+	margin-right: 500PX;
+} 
+
+
+
+.HostCheckdivHouse{
+	border:1PX solid white;
+	height: 420px;
+	border-radius: 40px;
+}
+
+

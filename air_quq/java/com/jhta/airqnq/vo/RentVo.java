@@ -36,11 +36,15 @@ public class RentVo {
     // 상점거래id 
     private String merchant_uid;
     
+    // 호스트 확인 여부
+    private int check;
+    
     public RentVo() {}
 
 	public RentVo(Integer rtnum, Integer hinum, Integer menum, Date startrent, Date endrent, Integer status,
-			Integer person, Integer pay_price, String del_yn, String imp_uid, String merchant_uid) {
+			Integer person, Integer pay_price, String del_yn, String imp_uid, String merchant_uid ,int check) {
 		super();
+		this.check=check;
 		this.rtnum = rtnum;
 		this.hinum = hinum;
 		this.menum = menum;
@@ -142,4 +146,12 @@ public class RentVo {
 		this.merchant_uid = merchant_uid;
 	}
 
+	public int getCheck() {
+		return check;
+	}
+
+	public void setCheck(int check) {
+		this.check = check;
+	}
+	
 }
