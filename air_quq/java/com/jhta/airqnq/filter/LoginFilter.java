@@ -44,11 +44,11 @@ public class LoginFilter implements Filter {
 		HttpServletRequest req = (HttpServletRequest) request;
 		HttpSession session = req.getSession();
 		if (!excludeUrl(req) && session.getAttribute("logind") == null) {
+			req.setAttribute("filterUrl", req.getRequestURI().toString().trim());
 			req.getRequestDispatcher("/login").forward(request, response);
 		} else {
 			chain.doFilter(request, response);
 		}
-//		chain.doFilter(request, response);
 	}
 
 	/**
@@ -74,9 +74,13 @@ public class LoginFilter implements Filter {
 			return true;
 		} else if (uri.startsWith("/search")) {
 			return true;
-		} else if (uri.startsWith("/user")) {
+		} else if (uri.equals("/user/apply")) {
 			return true;
 		} else if (uri.startsWith("/upload")) {
+			return true;
+		} else if (uri.startsWith("/idchk")) {
+			return true;
+		} else if (uri.startsWith("/emailchk")) {
 			return true;
 		}
 		return false;

@@ -25,7 +25,7 @@ public class MemberLoginController {
 	private KakaoAPI kakao;
 
 	@PostMapping("/member/login")
-	public String login(String idl, String pwdl, HttpSession session) {
+	public String login(String idl, String pwdl, HttpSession session, String filterUrl) {
 		HashMap<String, Object> map = new HashMap<String, Object>();
 		map.put("id", idl);
 		map.put("pwd", pwdl);
@@ -41,7 +41,11 @@ public class MemberLoginController {
 			session.setAttribute("memberVo", memberVo);
 			
 			session.setAttribute("logind", true);
-			return ".home";
+			if(filterUrl.equals("")) {
+				return ".home";
+			}else {
+				return "redirect:" + filterUrl;
+			}
 		} else {
 			session.setAttribute("logind", false);
 			return ".login";
@@ -89,9 +93,10 @@ public class MemberLoginController {
 
 	@RequestMapping(value = "/kakao/logout")
 	public String logout(HttpSession session) {
-		session.removeAttribute("access_Token");
-		session.removeAttribute("userInfo");
-		session.removeAttribute("logind");
+//		session.removeAttribute("access_Token");
+//		session.removeAttribute("userInfo");
+//		session.removeAttribute("logind");
+		session.invalidate();
 		return ".home";
 	}
 }
