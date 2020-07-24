@@ -137,11 +137,9 @@ public class UserApplyController {
 
 	@GetMapping(value = "/user/applyCheck")
 	public String apply(HttpSession session) {
-		MemberVo vo=(MemberVo) session.getAttribute("memberVo");
-		
-		if(vo != null) {
+		if ((boolean) session.getAttribute("logind")) {
 			return ".apply.applyCheck";
-		}else {
+		} else {
 			return ".login";
 		}
 	}

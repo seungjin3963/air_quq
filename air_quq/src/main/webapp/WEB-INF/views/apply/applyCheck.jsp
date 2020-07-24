@@ -7,6 +7,10 @@
 
 <link href="/resources/css/userapply/userapply.css" rel="stylesheet" type="text/css">
 
+<input type="text" id="start_day" value="${sessionScope.rentVo.startrent }">
+<input type="text" id="end_day" value="${sessionScope.rentVo.endrent }">
+<input type="text" id="hinum" value="${sessionScope.rentVo.hinum }">
+<input type="text" id="people_count" value="${sessionScope.rentVo.person }">
 <div class="container text-center">
 	<h1>예약 확인</h1>
 	<hr>
