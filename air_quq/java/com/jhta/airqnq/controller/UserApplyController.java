@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.client.RestTemplate;
 
 import com.jhta.airqnq.service.ApplyService;
 import com.jhta.airqnq.service.House_infoAdminService;
@@ -106,6 +107,42 @@ public class UserApplyController {
 		} catch (NullPointerException np) {}
 	}
 
+//	@RequestMapping("/refund/access_token")
+//	@ResponseBody
+//	public HashMap<String, Object> updateSpittle(String imp_key,String imp_secret) {
+//	    
+//		HashMap<String, Object> request = new HashMap<String, Object>();
+//		request.put("imp_key", imp_key);
+//		request.put("imp_secret",imp_secret);
+//		
+//		RestTemplate rest = new RestTemplate();
+//		System.out.println(rest.postForObject("https://api.iamport.kr/users/getToken", request,request.getClass()));
+//		return rest.postForObject("https://api.iamport.kr/users/getToken", request,request.getClass());
+//	}
+//	
+//	@RequestMapping("/refund/use")
+//	@ResponseBody
+//	public HashMap<String, Object> refunttest(String imp_uid,String reason,int amount,String accountname,String banknumber,String accountnumber,String Authorization) {
+//		
+//		RestTemplate rest = new RestTemplate();
+//		
+//		HashMap<String, Object> postrequest=new HashMap<String, Object>();
+//		
+//		postrequest.put("Content-Type", "application/json");
+//		postrequest.put("access_token", Authorization);
+//		postrequest.put("imp_uid", imp_uid);
+//		postrequest.put("amount", amount);
+//		if(accountname != null) {
+//			postrequest.put("refund_holder",accountname);
+//			postrequest.put("refund_bank",banknumber);
+//			postrequest.put("refund_account",accountnumber);
+//		}
+//		
+//		rest.postForObject("https://api.iamport.kr/payments/cancel", postrequest, postrequest.getClass());
+//		return rest.postForObject("https://api.iamport.kr/payments/cancel", postrequest, postrequest.getClass());
+//	}
+	
+	/* 준범 */
 	@PostMapping(value = "/user/apply/setApply")
 	@ResponseBody
 	public void totmoney(HttpSession session, ApplyVo vo) {

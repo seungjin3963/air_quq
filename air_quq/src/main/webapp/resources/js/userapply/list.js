@@ -116,7 +116,7 @@ function refundmodal(rtnum){
 	$("#refunddata").modal();
 }
 
-var refund=function(merchant_uid,amount,reason,banknumber,accountname,accountnumber){
+/*var refund=function(merchant_uid,amount,reason,banknumber,accountname,accountnumber){
 	$.ajax({
 	    "url": "http://www.myservice.com/payments/cancel",
 	    "type": "POST",
@@ -157,7 +157,7 @@ $("#refundcheck").click(function(){
 		dataType : "json",
 		data : {"rtnum" : rtnum,},
 		success : function(data) {
-			/*refund(data.merchant_uid,data.pay_price,reason,banknumber,accountname,accountnumber);*/
+			refund(data.merchant_uid,data.pay_price,reason,banknumber,accountname,accountnumber);
 			accesstoken(data.imp_uid,data.pay_price,reason,banknumber,accountname,accountnumber);
 		}
 	})
@@ -177,6 +177,7 @@ var accesstoken=function(imp_uid,amount,reason,banknumber,accountname,accountnum
 	    success : function(data){
 	    	$.each(data, function(key, value) {
 	    		if(key == "response"){
+	    			console.log(value.access_token);
 	    			refunduse(imp_uid,amount,reason,banknumber,accountname,accountnumber,value.access_token);
 	    		}
 	    	})
@@ -208,7 +209,7 @@ var refunduse=function(imp_uid,amount,reason,banknumber,accountname,accountnumbe
 	    	alert("code = "+request.status +" /message ="+request.responseText + "/error="+error );
 	    }
 	});
-}
+}*/
 
 
 

@@ -84,7 +84,7 @@
 			<![CDATA[
 				AND h.max_n>=#{max_n}
 				AND h.`div`=#{div}
-				AND h.startdate>=#{startdate}
+				AND h.startdate<=#{startdate}
 				AND h.enddate>=#{enddate}
 			]]>
 				AND h.del_yn=#{del_yn}

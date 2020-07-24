@@ -57,7 +57,8 @@ public class EpOnlineController {
 	}
 	@RequestMapping(value = "/online/dm",method = RequestMethod.GET)
 	public String dm(int hinum,int memnum,int einum,HttpSession session,Model model) {
-//		System.out.println(hinum+" :hinum" +einum+" : einum" +memnum+" : memnum");
+//		memnum =회원번호,  hinum==게시물번호
+		System.out.println(hinum+" :hinum" +einum+" : einum" +memnum+" : memnum");
 		//회원-호스트 // 다른 방식은 modal로 안되게 처리
 		int menum3=(int) session.getAttribute("menum");//아이디
 		HashMap<String, Object> hash = new HashMap<String, Object>();
