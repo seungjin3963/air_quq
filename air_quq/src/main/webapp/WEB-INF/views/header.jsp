@@ -21,9 +21,15 @@
 			<div class="navbar-collapse collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav ml-auto">
 					<li class="nav-item">
-						<a href="/admin" class="align-self-center">
-							<button type="button" class="btn btn-light align-self-center">관리자 페이지</button>
-						</a>
+						<c:choose>
+							<c:when test="${sessionScope.memberVo.identi_user == 1 }">
+								<a href="/admin" class="align-self-center">
+									<button type="button" class="btn btn-light align-self-center">관리자 페이지</button>
+								</a>
+							</c:when>
+							<c:otherwise></c:otherwise>
+						</c:choose>
+						
 					</li>
 					<li class="nav-item">
 						<a href="#" class="align-self-center" data-toggle="modal" data-target="#houseReportModal">

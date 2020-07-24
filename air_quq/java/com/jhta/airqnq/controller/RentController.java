@@ -20,6 +20,9 @@ public class RentController {
 		
 		RentVo vo = (RentVo)session.getAttribute("rentVo");
 		
+		int menum=(int)session.getAttribute("menum");
+		
+		vo.setMenum(menum);
 		vo.setImp_uid(imp_uid);
 		vo.setMerchant_uid(merchant_uid);
 		vo.setPay_price(paid_amount);
