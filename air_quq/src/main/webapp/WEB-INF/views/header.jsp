@@ -30,11 +30,6 @@
 							<c:otherwise></c:otherwise>
 						</c:choose>
 					</li>
-					<li class="nav-item">
-						<a href="#" class="align-self-center" data-toggle="modal" data-target="#houseReportModal">
-							<button type="button" class="btn btn-light align-self-center">신고 모달(테스트)</button>
-						</a>
-					</li>
 					<c:if test="${ logind == false || logind == null }">
 						<li class="nav-item">
 							<a href="/member/join" class="btn btn-light align-self-center">
@@ -61,37 +56,37 @@
 								<!-- Dropdown - User Information -->
 								<div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
 									<a class="dropdown-item" href="/host/epOnline/list">
-										<i class="fas fa-photo-video fa-fw mr-2"></i>
-										호스트-등록한 체험
+										<i class="fas fa-photo-video menu-icon-size mr-2"></i>
+										<h6 class="d-inline-block">호스트-등록한 체험</h6>
 									</a>
 									<a class="dropdown-item" href="/host/ResCheck">
-										<i class="fas fa-list fa-fw mr-2"></i>
-										호스트-내 집에 온다는 사람들
+										<i class="fas fa-list menu-icon-size mr-3"></i>
+										<h6 class="d-inline-block">호스트-내 집에 온다는 사람들</h6>
 									</a>
 									<a class="dropdown-item" href="/user/apply/list">
-										<i class="fas fa-list fa-fw mr-2"></i>
-										유저-예약 현황
+										<i class="fas fa-list menu-icon-size mr-3"></i>
+										<h6 class="d-inline-block">유저-예약 현황</h6>
 									</a>
 									<a class="dropdown-item" href="/experience/myexperience">
-										<i class="fas fa-list fa-fw mr-2"></i>
-										유저-체험 호스팅하기
+										<i class="fas fa-list menu-icon-size mr-3"></i>
+										<h6 class="d-inline-block">유저-체험 호스팅하기</h6>
 									</a>
 									<a class="dropdown-item" href="/ep_management/ep_listg">
-										<i class="fas fa-list fa-fw mr-2"></i>
-										유저-등록 중인 체험(테스트)
+										<i class="fas fa-list menu-icon-size mr-3"></i>
+										<h6 class="d-inline-block">유저-등록 중인 체험(테스트)</h6>
 									</a>
 									<a class="dropdown-item" href="/host/regist/1?next=1">
-										<i class="fas fa-list fa-fw mr-2"></i>
-										유저-숙소 호스트 되기
+										<i class="fas fa-list menu-icon-size mr-3"></i>
+										<h6 class="d-inline-block">유저-숙소 호스트 되기</h6>
 									</a>
 									<a class="dropdown-item" href="#">
-										<i class="fas fa-user fa-fw mr-2"></i>
-										Profile
+										<i class="fas fa-user menu-icon-size mr-3"></i>
+										<h6 class="d-inline-block">Profile</h6>
 									</a>
 									<div class="dropdown-divider"></div>
 									<a class="dropdown-item" href="/logout">
-										<i class="fas fa-sign-out-alt fa-fw mr-2"></i>
-										로그아웃
+										<i class="fas fa-sign-out-alt menu-icon-size mr-3"></i>
+										<h6 class="d-inline-block">로그아웃</h6>
 									</a>
 								</div>
 							</li>
