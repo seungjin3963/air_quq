@@ -27,9 +27,10 @@
 	<c:forEach items="${ hostSearch }" var="hitem">
 	<a href="/user/apply" onclick='submitPostData(event)'>
 	<form action="/user/apply" method="post" id="formId">
+	
+	<input type="hidden" value="${ hitem.hinum }" name="hinum">
 	<input type="hidden" value="${ start_day }" name="stary_day">
 	<input type="hidden" value="${ end_day }" name="end_day">
-	<input type="hidden" value="${ hitem.price }" name="price">
 	<input type="hidden" value="${ people_count }" name="people_count">
         <div class="media">
             <div class="fav-box"><i class="fa fa-heart-o" aria-hidden="true"></i>

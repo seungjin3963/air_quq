@@ -55,6 +55,7 @@ public class HomeController{
 		return ".hosthome";
 	}
 	
+	//홈에서 하우스검색하는 맵핑
 	@RequestMapping(value="search/host", method=RequestMethod.POST)
 	public String hostSearch(String locationAdress, Date start_day, Date end_day, int people_count, HttpSession session) {
 		
