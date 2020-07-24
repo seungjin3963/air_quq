@@ -14,7 +14,11 @@
 			<a href="/" class="ml-5 mr-5">
 				<img src="/resources/img/logo.png" id="logo">
 			</a>
-			<input type="text" placeholder="Search.."><button type="submit"><i class="fa fa-search"></i></button>
+			<form>
+				<input type="text" placeholder="검색.."><button type="submit"><i class="fa fa-search"></i></button>
+				<input type="date" placeholder="시작일" name="sdate">
+				<input type="date" placeholder="종료일" name="edate">
+			</form>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="true" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>

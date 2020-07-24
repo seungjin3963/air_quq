@@ -50,7 +50,7 @@
 	</div>
 	<h1 class="text-danger">이제 가까운 곳에서 소중한 것들을 찾아보세요.</h1>
 	<script type="text/javascript" src="/resources/js/hostFormValidation.js"></script>
-	<script type="text/javascript" src="/resources/js/passport/passport_main.js"></script>
+	<!-- <script type="text/javascript" src="/resources/js/passport/passport_main.js"></script> -->
 	<br>
 	<div class="row">
 		<div class="col-md-4">
