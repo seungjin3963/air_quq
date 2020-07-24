@@ -42,11 +42,8 @@ public class UserApplyController {
 	private House_infoAdminService house_infoService;
 
 	@RequestMapping(value="/user/apply")
-	public String userapply(Model model,HttpSession session, String stary_day, String end_day, int price, int people_count) {
+	public String userapply(Model model,HttpSession session, String stary_day, String end_day, int hinum, int people_count) {
 		
-		System.out.println("넘어온 데이터:" + stary_day + ", " + end_day + ", " + price + ", " + people_count);
-		
-		int hinum=5;
 		Apply_infoVo infovo= house_infoService.HinumSelect(hinum);
 		HashMap<String, String> usercheck=new HashMap<String, String>();
 		int menum=(int)session.getAttribute("menum");
@@ -54,8 +51,6 @@ public class UserApplyController {
 		String start=stary_day.replace("-", "/");
 		String end=end_day.replace("-", "/");
 		
-		int memberCNT=5;
-
 		usercheck.put("checkIn", start);
 		usercheck.put("checkOut", end);
 		usercheck.put("max_n", people_count+"");
@@ -76,7 +71,7 @@ public class UserApplyController {
 			
 			long timebetween3=timebetween2*infovo.getPrice();
 			
-			ApplyVo vo=new ApplyVo(start, end, memberCNT, (int)timebetween3);
+			ApplyVo vo=new ApplyVo(start, end, people_count, (int)timebetween3);
 			RentVo rentvo=new RentVo(0, hinum, menum, rentstart, rentend, 1, people_count, (int)timebetween3, "n", null, null);
 			
 			session.setAttribute("applyVo", vo);

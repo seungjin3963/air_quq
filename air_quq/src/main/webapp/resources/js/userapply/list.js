@@ -124,15 +124,15 @@ var refund=function(merchant_uid,amount,reason,banknumber,accountname,accountnum
 	    "data": JSON.stringify({
 	      "merchant_uid": merchant_uid, // 주문번호
 	      "cancel_request_amount": amount, // 환불금액
-	      "reason": reason // 환불사유
+	      "reason": reason, // 환불사유
 	      "refund_holder": accountname, // [가상계좌 환불시 필수입력] 환불 수령계좌 예금주
-	      "refund_bank": banknumber // [가상계좌 환불시 필수입력] 환불 수령계좌 은행코드(ex. KG이니시스의 경우 신한은행은 88번)
+	      "refund_bank": banknumber, // [가상계좌 환불시 필수입력] 환불 수령계좌 은행코드(ex. KG이니시스의 경우 신한은행은 88번)
 	      "refund_account": accountnumber // [가상계좌 환불시 필수입력] 환불 수령계좌 번호
 	    }),
 	    "dataType": "json"
-	  });
-	}
+	});
 }
+
 
 $("#refundcheck").click(function(){
 	var rtnum=$("#rtnumhidden").val();
