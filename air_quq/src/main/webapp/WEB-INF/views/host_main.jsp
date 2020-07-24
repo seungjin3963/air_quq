@@ -32,7 +32,7 @@
 	<input type="hidden" value="${ hitem.lat }" name="lat">
 	<input type="hidden" value="${ hitem.lnt }" name="lnt">
 	<input type="hidden" value="${ hitem.hinum }" name="hinum">
-	<input type="hidden" value="${ start_day }" name="stary_day">
+	<input type="hidden" value="${ start_day }" name="start_day">
 	<input type="hidden" value="${ end_day }" name="end_day">
 	<input type="hidden" value="${ people_count }" name="people_count">
         <div class="media">

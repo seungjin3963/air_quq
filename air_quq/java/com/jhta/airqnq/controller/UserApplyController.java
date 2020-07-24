@@ -19,7 +19,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.client.RestTemplate;
 
 import com.jhta.airqnq.service.ApplyService;
 import com.jhta.airqnq.service.House_infoAdminService;
@@ -43,12 +42,12 @@ public class UserApplyController {
 	private House_infoAdminService house_infoService;
 
 	@RequestMapping(value="/user/apply")
-	public String userapply(Model model,HttpSession session, String stary_day, String end_day, int hinum, int people_count) {
+	public String userapply(Model model,HttpSession session, String start_day, String end_day, int hinum, int people_count) {
 		
 		Apply_infoVo infovo= house_infoService.HinumSelect(hinum);
 		HashMap<String, String> usercheck=new HashMap<String, String>();
 	
-		String start=stary_day.replace("-", "/");
+		String start=start_day.replace("-", "/");
 		String end=end_day.replace("-", "/");
 		
 		usercheck.put("checkIn", start);
@@ -77,12 +76,14 @@ public class UserApplyController {
 			session.setAttribute("applyVo", vo);
 			session.setAttribute("rentVo", rentvo);
 			
+			session.setAttribute("infovo", infovo);
+			session.setAttribute("usercheck", usercheck);
 		} catch (ParseException pe) {
 			System.out.println("날짜 오류 :"+pe);
 		}
 		
-		model.addAttribute("infovo", infovo);
-		model.addAttribute("usercheck", usercheck);
+//		model.addAttribute("infovo", infovo);
+//		model.addAttribute("usercheck", usercheck);
 		return ".apply.userapply";
 	}
 	
@@ -174,9 +175,15 @@ public class UserApplyController {
 
 	@GetMapping(value = "/user/applyCheck")
 	public String apply(HttpSession session) {
-		MemberVo vo=(MemberVo) session.getAttribute("memberVo");
+//		MemberVo vo=(MemberVo) session.getAttribute("memberVo");
+//		
+//		if(vo != null) {
+//			return ".apply.applyCheck";
+//		}else {
+//			return ".login";
+//		}
 		
-		if(vo != null) {
+		if((boolean) session.getAttribute("logind")) {
 			return ".apply.applyCheck";
 		}else {
 			return ".login";

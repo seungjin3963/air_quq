@@ -24,13 +24,12 @@ import com.jhta.airqnq.vo.MainHouseInfoVo;
  * Handles requests for the application home page.
  */
 @Controller
-public class HomeController{
+public class HomeController {
 	@Autowired
 	private HostInfoService hostService;
-	
+
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home() {
-		
 		return ".home";
 	}
 
@@ -38,63 +37,65 @@ public class HomeController{
 	public String error() {
 		return ".error";
 	}
-	
+
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String login(Model model, HttpServletRequest req) {
 		return ".login";
 	}
-	
+
 	@RequestMapping(value = "/member/join", method = RequestMethod.GET)
 	public String join() {
 		return ".join";
 	}
-	
+
 	@RequestMapping(value = "login/forgotpwd", method = RequestMethod.GET)
 	public String loginForgotPassword() {
 		return ".loginforgotpw";
 	}
-	
+
 	@RequestMapping(value = "host/home", method = RequestMethod.GET)
 	public String hostHome() {
 		return ".hosthome";
 	}
-	
-	//홈에서 하우스검색하는 맵핑
-	@RequestMapping(value="search/host", method=RequestMethod.POST)
-	public String hostSearch(String locationAdress, Date start_day, Date end_day, int people_count, HttpSession session) {
-		
-		//테스트위해서 매니져체크 0으로줬음
-		HouseInfoVo vo = new HouseInfoVo(0, 0, "", "", locationAdress, "", 0, people_count, 0, "", 1, "","", start_day, end_day, "n", 0);
+
+	// 홈에서 하우스검색하는 맵핑
+	@RequestMapping(value = "search/host", method = RequestMethod.POST)
+	public String hostSearch(String locationAdress, Date start_day, Date end_day, int people_count,
+			HttpSession session) {
+
+		// 테스트위해서 매니져체크 0으로줬음
+		HouseInfoVo vo = new HouseInfoVo(0, 0, "", "", locationAdress, "", 0, people_count, 0, "", 1, "", "", start_day,
+				end_day, "n", 0);
 		List<MainHouseInfoVo> list = getHouseInfo(vo);
 
 		session.setAttribute("hostSearch", list);
 		session.setAttribute("start_day", start_day);
 		session.setAttribute("end_day", end_day);
 		session.setAttribute("people_count", people_count);
-		
+
 		JSONArray jarr = new JSONArray();
-		for(MainHouseInfoVo m : list) {
+		for (MainHouseInfoVo m : list) {
 			JSONObject jobj = new JSONObject();
-			
+
 			jobj.put("lat", m.getLat());
 			jobj.put("lnt", m.getLnt());
-			
+
 			jarr.put(jobj);
 		}
 		session.setAttribute("getHouseInfo", jarr);
-		
+
 		return ".hostsearch";
 	}
-	
-	//AJAX로 카카오맵 마커 뿌려주기
+
+	// AJAX로 카카오맵 마커 뿌려주기
 	@GetMapping("search/kakao/marker")
 	@ResponseBody
 	public void setKakaoMarker() {
-		//System.out.println("동작");
-		
+		// System.out.println("동작");
+
 	}
-	
-	public List<MainHouseInfoVo> getHouseInfo(HouseInfoVo vo){
+
+	public List<MainHouseInfoVo> getHouseInfo(HouseInfoVo vo) {
 		return hostService.getMainHouseInfoList(vo);
 	}
 }

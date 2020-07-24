@@ -76,5 +76,11 @@ $("#btnApply").click(()=>{
 });
 
 $("#btnBack").click(()=>{
-	location.href = "/user/apply";
+	/*location.href = "/user/apply";*/
+	
+	let start_day = $("#start_day").val();
+	let end_day = $("#end_day").val();
+	let hinum = $("#hinum").val();
+	let people_count = $("#people_count").val();
+	location.href = `/user/apply?start_day=${start_day}&end_day=${end_day}&hinum=${hinum}&people_count=${people_count}`;
 });
