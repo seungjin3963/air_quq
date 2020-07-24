@@ -73,17 +73,6 @@ public class HomeController {
 		session.setAttribute("end_day", end_day);
 		session.setAttribute("people_count", people_count);
 
-		JSONArray jarr = new JSONArray();
-		for (MainHouseInfoVo m : list) {
-			JSONObject jobj = new JSONObject();
-
-			jobj.put("lat", m.getLat());
-			jobj.put("lnt", m.getLnt());
-
-			jarr.put(jobj);
-		}
-		session.setAttribute("getHouseInfo", jarr);
-
 		return ".hostsearch";
 	}
 
@@ -92,6 +81,19 @@ public class HomeController {
 	@ResponseBody
 	public void setKakaoMarker() {
 		// System.out.println("동작");
+
+	}
+	
+	//금액에 맞게 정규화
+	public String setAmount(String amount) {
+		if (amount == null) {
+			return amount;
+		} else if (amount.equals("")) {
+			return amount;
+		}
+		amount = amount.replaceAll("\\B(?=(\\d{3})+(?!\\d))", ",");
+
+		return amount;
 
 	}
 

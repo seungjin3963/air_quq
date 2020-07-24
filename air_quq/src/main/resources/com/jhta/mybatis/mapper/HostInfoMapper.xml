@@ -77,7 +77,7 @@
 	
 	<!-- house main img 포함 vo -->
 	<select id="mainHouseGetList" parameterType="house_info" resultType="main_houseinfo">
-		SELECT h.hinum, h.addr, h.max_n, h.addr_detail, h.price, h.lat, h.lnt, h.startdate, h.enddate, i.img
+		SELECT h.hinum, h.addr, h.max_n, h.addr_detail, h.price, h.lat, h.lnt, h.startdate, h.enddate, i.img, h.title
 		FROM house_info h, house_img i 
 		WHERE
 			h.addr LIKE CONCAT('%', #{addr}, '%')

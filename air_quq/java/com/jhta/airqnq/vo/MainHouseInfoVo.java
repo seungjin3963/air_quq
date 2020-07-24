@@ -14,11 +14,12 @@ public class MainHouseInfoVo {
 	private Date startdate;
 	private Date enddate;
 	private String img;
+	private String title;
 	
 	public MainHouseInfoVo() {}
 
 	public MainHouseInfoVo(int hinum, String addr, int max_n, String addr_detail, String road_addr, int price,
-			double lat, double lnt, Date startdate, Date enddate, String img) {
+			double lat, double lnt, Date startdate, Date enddate, String img, String title) {
 		super();
 		this.hinum = hinum;
 		this.addr = addr;
@@ -31,6 +32,7 @@ public class MainHouseInfoVo {
 		this.startdate = startdate;
 		this.enddate = enddate;
 		this.img = img;
+		this.title = title;
 	}
 
 	public int getHinum() {
@@ -120,5 +122,15 @@ public class MainHouseInfoVo {
 	public void setImg(String img) {
 		this.img = img;
 	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+	
+	
 }
 
