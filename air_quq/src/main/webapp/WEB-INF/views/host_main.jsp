@@ -117,4 +117,9 @@ for (var i = 0; i < positions.length; i ++) {
         image : markerImage // 마커 이미지 
     });
 }
+
+function submitPostData(event){
+	event.preventDefault();
+	$(".formId").submit();
+}
 </script>
