@@ -7,8 +7,10 @@ import org.springframework.stereotype.Service;
 
 import com.jhta.airqnq.dao.HostInfoDao;
 import com.jhta.airqnq.dao.HostInfoImageDao;
+import com.jhta.airqnq.dao.HouseSearchDao;
 import com.jhta.airqnq.vo.HouseImgVo;
 import com.jhta.airqnq.vo.HouseInfoVo;
+import com.jhta.airqnq.vo.HouseSearchVo;
 import com.jhta.airqnq.vo.MainHouseInfoVo;
 
 @Service
@@ -17,7 +19,8 @@ public class HostInfoService {
 	private HostInfoDao hostInfoDao;
 	@Autowired
 	private HostInfoImageDao hostInfoImageDao;
-
+	@Autowired
+	private HouseSearchDao houstSearchDao;
 	
 	//하우스번호구하기
 	public int selectHouseNumber(int menum) {
@@ -42,7 +45,12 @@ public class HostInfoService {
 		return hostInfoDao.getHouseImg(hinum);
 	}
 	
-	public List<MainHouseInfoVo> getMainHouseInfoList(HouseInfoVo vo){
+	public List<MainHouseInfoVo> getMainHouseInfoList(HouseSearchVo vo){
 		return hostInfoDao.getMainHouseInfoList(vo);
+	}
+	
+	//검색된 하우스 전체 글개수
+	public int getSearchCount(HouseSearchVo vo) {
+		return houstSearchDao.getSearchCount(vo);
 	}
 }

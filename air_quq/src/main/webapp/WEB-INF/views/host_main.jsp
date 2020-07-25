@@ -34,8 +34,7 @@
 <!--//////////  -->
 	<c:forEach items="${ hostSearch }" var="hitem">
 	<a href="/user/apply" onclick='submitPostData(event)'>
-	<form action="/user/apply" method="post" class="formId">
-	
+	<form action="/user/apply?pageNum=1" method="post" class="formId">
 	<input type="hidden" value="${ hitem.road_addr }" name="addr_detail">
 	<input type="hidden" value="${ hitem.title }" name="title">
 	<input type="hidden" value="${ hitem.lat }" name="lat">
@@ -61,8 +60,21 @@
      </form>
      </a>    
    </c:forEach>
+   <!-- Pagning -->
+   <nav aria-label="Page navigation example">
+	  <ul class="pagination justify-content-center">
+	    <li class="page-item disabled">
+	      <a class="page-link" href="#" tabindex="-1">[이전]</a>
+	    </li>
+	    <c:forEach var="i" begin="${ pageUtil.startPageNum }" end="${ pageUtil.endPageNum }">
+	    	<li class="page-item"><a class="page-link" href="#">${ i }</a></li>
+	    </c:forEach>
+	    <li class="page-item disabled">
+	      <a class="page-link" href="#">[다음]</a>
+	    </li>
+	  </ul>
+	</nav>
    <!--//////////  -->
-     
 		</div>
 		<div class="col-md-7 map-box mx-0 px-0">
 			<div id="map" style="width:100%;height:100%;"></div>
@@ -83,7 +95,7 @@
 	console.log($(lnt[0]).val());
     mapOption = { 
         center: new kakao.maps.LatLng($(lat[0]).val(), $(lnt[0]).val()), // 지도의 중심좌표
-        level: 9 // 지도의 확대 레벨
+        level: 6 // 지도의 확대 레벨
     };
 
 var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다

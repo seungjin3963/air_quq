@@ -14,7 +14,7 @@
 			<a href="/" class="ml-5 mr-5">
 				<img src="/resources/img/logo.png" id="logo">
 			</a>
-			<form>
+			<form action="/search/host" method="get">
 				<input type="text" placeholder="검색.."><button type="submit"><i class="fa fa-search"></i></button>
 				<input type="date" placeholder="시작일" name="sdate">
 				<input type="date" placeholder="종료일" name="edate">

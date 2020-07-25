@@ -4,9 +4,9 @@
 	<div class="container my-auto text-center">
 		<div class="row">
 			<div class="col-md-12 copyright my-auto">
-				<h2>
+				<h3>
 					<span>Copyright &copy; JHTA학원 C반 무적 1조</span>
-				</h2>
+				</h3>
 			</div>
 		</div>
 		<div class="row">

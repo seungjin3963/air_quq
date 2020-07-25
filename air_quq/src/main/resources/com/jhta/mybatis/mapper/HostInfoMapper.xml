@@ -61,22 +61,8 @@
 	 	select hinum,h.menum,id,title,content,h.addr,addr_detail,price,max_n,bedroom,checkin_time,startdate,enddate from house_info h,member m where hinum=#{hinum} and h.menum=m.menum
 	</select>
 	
-	<!-- house 검색 후.. -->
-	<select id="houseGetList" parameterType="house_info" resultType="house_info">
-			 SELECT * FROM house_info WHERE
-			 addr LIKE CONCAT('%', #{addr}, '%')
-		 <![CDATA[
-			 AND max_n>=#{max_n}
-			 AND `div`=#{div}
-			 AND startdate>=#{startdate}
-			 AND enddate>=#{enddate}
-		 ]]>
-			 AND del_yn=#{del_yn}
-			 AND manager_check=#{manager_check}
-	</select>
-	
 	<!-- house main img 포함 vo -->
-	<select id="mainHouseGetList" parameterType="house_info" resultType="main_houseinfo">
+	<select id="mainHouseGetList" parameterType="house_search" resultType="main_houseinfo">
 		SELECT h.hinum, h.addr, h.max_n, h.addr_detail, h.price, h.lat, h.lnt, h.startdate, h.enddate, i.img, h.title
 		FROM house_info h, house_img i 
 		WHERE
@@ -91,6 +77,28 @@
 				AND h.manager_check=#{manager_check}
 				AND i.ordernum =1
 				AND h.hinum = i.hinum
+			LIMIT #{startRow}, #{endRow}
+	</select>
+	
+	<!-- house 검색된 글 개수 구하기 -->
+	<select id="houseSearchCount" parameterType="house_search" resultType="int">
+		select count(*) from(
+		SELECT h.hinum, i.img, h.title
+				FROM house_info h, house_img i 	
+				WHERE
+					h.addr LIKE CONCAT('%', #{addr}, '%')
+					<![CDATA[
+						AND h.max_n>=#{max_n}
+						AND h.`div`=#{div}
+						AND h.startdate>=#{startdate}
+						AND h.enddate>=#{enddate}
+					]]>
+						AND h.del_yn=#{del_yn}
+						AND h.manager_check=#{manager_check}
+						AND i.ordernum =1
+						AND h.hinum = i.hinum
+				LIMIT #{startRow}, #{endRow}
+		)ss
 	</select>
 		
 	<!-- house 검색 이미지 가져오기 -->
