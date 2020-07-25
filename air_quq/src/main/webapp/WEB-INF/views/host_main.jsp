@@ -35,7 +35,7 @@
 	<c:forEach items="${ hostSearch }" var="hitem">
 	<a href="/user/apply" onclick='submitPostData(event)'>
 	<form action="/user/apply?pageNum=1" method="post" class="formId">
-	<input type="hidden" value="${ hitem.road_addr }" name="addr_detail">
+	<input type="hidden" value="${ hitem.addr }" name="addr_detail">
 	<input type="hidden" value="${ hitem.title }" name="title">
 	<input type="hidden" value="${ hitem.lat }" name="lat">
 	<input type="hidden" value="${ hitem.lnt }" name="lnt">
@@ -61,17 +61,47 @@
      </a>    
    </c:forEach>
    <!-- Pagning -->
+
    <nav aria-label="Page navigation example">
 	  <ul class="pagination justify-content-center">
-	    <li class="page-item disabled">
-	      <a class="page-link" href="#" tabindex="-1">[이전]</a>
-	    </li>
+	   <c:choose>
+	    	<c:when test="${ pageUtil.pageNum < pageUtil.totalRowCount }">
+		    	<li class="page-item disabled">
+			      <a class="page-link" href="#" tabindex="-1">[이전]</a>
+			    </li>
+	    	</c:when>
+	    	<c:otherwise>
+	    		<li class="page-item">
+			      <a class="page-link" href="/search/host?pageNum=${ pageUtil.endPageNum - 1 }&locationAdress=${addr}&start_day=${start_day}&end_day=${end_day}&people_count=${people_count}" tabindex="-1">[이전]</a>
+			    </li>
+	    	</c:otherwise>
+	   </c:choose>
+	    
 	    <c:forEach var="i" begin="${ pageUtil.startPageNum }" end="${ pageUtil.endPageNum }">
-	    	<li class="page-item"><a class="page-link" href="#">${ i }</a></li>
+    		<c:choose>
+    			<c:when test="${ pageUtil.pageNum == i }">
+    				<li class="page-item active"><a class="page-link" href="/search/host?pageNum=${ i }&locationAdress=${addr}&start_day=${start_day}&end_day=${end_day}&people_count=${people_count}">${ i }</a></li>   	
+    			</c:when>
+    			<c:otherwise>
+    				<li class="page-item"><a class="page-link" href="/search/host?pageNum=${ i }&locationAdress=${addr}&start_day=${start_day}&end_day=${end_day}&people_count=${people_count}">${ i }</a></li>   	
+    			</c:otherwise>
+    		</c:choose>
 	    </c:forEach>
-	    <li class="page-item disabled">
-	      <a class="page-link" href="#">[다음]</a>
-	    </li>
+		<c:if test="${ pageUtil.pageNum == pageUtil.totalPageCount + 1 }">
+			<li class="page-item active"><a class="page-link" href="/search/host?pageNum=${ i }&locationAdress=${addr}&start_day=${start_day}&end_day=${end_day}&people_count=${pageUtil.pageNum}">${ pageUtil.pageNum }</a></li>   	
+		</c:if>
+	    <c:choose>
+	    	<c:when test="${ pageUtil.pageNum < pageUtil.totalPageCount }">
+	    		<li class="page-item page-item">
+			   		<a class="page-link" href="/search/host?pageNum=${ pageUtil.endPageNum + 1 }&locationAdress=${addr}&start_day=${start_day}&end_day=${end_day}&people_count=${people_count}">[다음]</a>
+				</li>
+	    	</c:when>
+	    	<c:otherwise>
+	    		<li class="page-item page-item  disabled">
+			   		<a class="page-link" href="#">[다음]</a>
+				</li>
+	    	</c:otherwise>
+	    </c:choose>
 	  </ul>
 	</nav>
    <!--//////////  -->

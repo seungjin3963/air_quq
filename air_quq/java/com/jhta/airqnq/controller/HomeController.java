@@ -66,11 +66,16 @@ public class HomeController {
 	public String hostSearch(String locationAdress, Date start_day, Date end_day, int people_count,
 			HttpSession session, @RequestParam(value = "pageNum", defaultValue = "1") int pageNum) {
 		
-		System.out.println(pageNum);
-		HouseSearchVo vo = new HouseSearchVo(locationAdress, people_count, 1, start_day, end_day, "n", 0, 0, 4);
+		System.out.println("페이지번호:" + pageNum);
+		
+		int limit = 0 + pageNum-1;
+		int pageCount = 5;
+		
+		HouseSearchVo vo = new HouseSearchVo(locationAdress, people_count, 1, start_day, end_day, "n", 0, limit, pageCount);
 		
 		List<MainHouseInfoVo> list = getHouseInfo(vo);
-
+		
+		session.setAttribute("addr", locationAdress);
 		session.setAttribute("hostSearch", list);
 		session.setAttribute("start_day", start_day);
 		session.setAttribute("end_day", end_day);
@@ -82,8 +87,13 @@ public class HomeController {
 		
 		
 		//페이징 처리를위한 객체
-		PageUtilForMySql pageUtil = new PageUtilForMySql(pageNum, getSearchCount, 5, 5);
+		int rowBlockCount = 5;
+		int pageBlockCount = 5;
+		PageUtilForMySql pageUtil = new PageUtilForMySql(pageNum, getSearchCount, rowBlockCount, pageBlockCount);
 		session.setAttribute("pageUtil", pageUtil);
+		
+		System.out.println(pageUtil.getEndPageNum());
+		System.out.println("전체 페이지 " + pageUtil.getTotalPageCount());
 		
 		return ".hostsearch";
 	}

@@ -97,7 +97,6 @@
 						AND h.manager_check=#{manager_check}
 						AND i.ordernum =1
 						AND h.hinum = i.hinum
-				LIMIT #{startRow}, #{endRow}
 		)ss
 	</select>
 		
