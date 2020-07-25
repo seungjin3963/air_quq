@@ -2,21 +2,20 @@ let roadAddr = "";
 let zipcode = "";
 
 
-
 $("#searchDetail").click(function () {
    new daum.Postcode({
       oncomplete: function (data) {
          // console.log(data);
     	  roadAddr = data.roadAddress;
     	  zipcode = data.zonecode;
-    	  console.log(zipcode);
     	  $("#roadAddr").val(roadAddr);
     	  $("#zipcode").val(zipcode);
+    	  $("#searchDetail").val(roadAddr);
     	  searchKeyword();
       },
 
       onsearch: function (data) {
-//          console.log(data);
+//          console.log(roadAddr);
          $("#searchDetail").val(data.roadAddress);
       }
    }).open();

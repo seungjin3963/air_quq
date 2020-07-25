@@ -1,4 +1,4 @@
-$("#searchPassport").click(function () {
+/*$("#searchPassport").click(function () {
    new daum.Postcode({
       oncomplete: function (data) {
          // console.log(data);
@@ -9,4 +9,4 @@ $("#searchPassport").click(function () {
          $("#searchPassport").val(data.q);
       }
    }).open();
-});
+});*/

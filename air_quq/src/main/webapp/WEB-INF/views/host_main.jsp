@@ -5,8 +5,9 @@
 <style>
 	h2{float:left; width:100%; color:#fff; margin-bottom:40px; font-size: 14px; position:relartive; z-index:3; margin-top:30px}
 	h2 a{color:#fff; font-weight:bold;}
-	.search-box{width:95%; margin:0 auto 40px; box-shadow:20px 20px 0 rgba(0,0,0,0.2);}
-	.listing-block{background:#fff; height:750px; padding-top:20px; overflow-y:scroll;}
+	.search-box{width:95%; margin:0 auto 20px; box-shadow:25px 35px 0 rgba(0,0,0,0.1);}
+	.container-fluid{margin:0;padding: 0}
+	.listing-block{background:#fff; height:750px; padding-top:20px; overflow-x:hidden; overflow-y:scroll;}
 	.media {background:#fff; position:relative; margin-bottom:15px;}
 	.media img{width:200px;margin:0; height:160px;}
 	.media-body{border:1px solid #bcbcbc; border-left:0; height:160px;}

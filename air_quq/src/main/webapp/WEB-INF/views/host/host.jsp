@@ -6,41 +6,64 @@
 	<div class="progress">
 		<div class="progress-bar progress-bar-striped progress-bar-animated"
 			role="progressbar" aria-valuenow="75" aria-valuemin="0"
-			aria-valuemax="100" style="width: 25%"></div>
+			aria-valuemax="100" style="width: 0%" id="progress1"></div>
 	</div>
+	
+	<script type="text/javascript">
+		$( '#progress1' ).animate( {
+		    width: '25%'
+		 } );
+	</script>
 </c:if>
 <c:if test="${ hostStep == 2 }">
 	<div class="progress">
 		<div class="progress-bar progress-bar-striped progress-bar-animated"
 			role="progressbar" aria-valuenow="75" aria-valuemin="0"
-			aria-valuemax="100" style="width: 50%"></div>
+			aria-valuemax="100" style="width: 25%" id="progress2"></div>
 	</div>
+	<script type="text/javascript">
+		$( '#progress2' ).animate( {
+		    width: '50%'
+		 } );
+	</script>
 </c:if>
 <c:if test="${ hostStep == 3 }">
 	<div class="progress">
 		<div class="progress-bar progress-bar-striped progress-bar-animated"
 			role="progressbar" aria-valuenow="75" aria-valuemin="0"
-			aria-valuemax="100" style="width: 75%"></div>
+			aria-valuemax="100" style="width: 50%" id="progress3"></div>
 	</div>
+	<script type="text/javascript">
+		$( '#progress3' ).animate( {
+		    width: '75%'
+		 } );
+	</script>
 </c:if>
 <c:if test="${ hostStep == 4 }">
 	<div class="progress">
 		<div class="progress-bar progress-bar-striped progress-bar-animated"
 			role="progressbar" aria-valuenow="75" aria-valuemin="0"
-			aria-valuemax="100" style="width: 100%"></div>
+			aria-valuemax="100" style="width: 75%" id="progress4"></div>
 	</div>
+	<script type="text/javascript">
+		$( '#progress4' ).animate( {
+		    width: '100%'
+		 } );
+	</script>
 </c:if>
+
+
 <br>
 <div class="container">
 	<div class="jumbotron">
 		<c:if test="${ hostStep == 1 }">
-			<h1 class="display-4">에어비앤비 호스트가 되어 수입을 올려보세요</h1>
+			<h1 class="display-4">에어큐유큐 호스트가 되어 수입을 올려보세요</h1>
 			<p class="lead"></p>
 			<hr class="my-4">
 			<p>숙소에 대해 간략하게 알려주세요.</p>
 			<form action="/host/regist/1" method="post" id="host_regist">
 				<p>
-					<input class="form-control form-control-lg" type="text" placeholder="주소 검색하기" id="searchPassport" name="addr" readonly="readonly">
+					<input class="form-control form-control-lg" type="text" placeholder="간단한 주소입력" id="searchPassport" name="addr">
 				</p>
 
 				<div class="row">
@@ -90,7 +113,7 @@
 						<span class="input-group-text">상세내용</span>
 					</div>
 					<textarea class="form-control" aria-label="With textarea"
-						name="hostContent" rows="16"></textarea>
+						name="hostContent" rows="16" id="hostContent"></textarea>
 				</div>
 				<br> <input type="hidden" value="3" name="next"> 
 				<input type="submit" class="btn btn-outline-primary" role="button" value="다음 단계로 진행">
@@ -142,7 +165,7 @@
 								<div class="card-header">체크아웃 시간</div>
 								<div class="well">
 									<div id="datetimepicker3" class="input-append" style="text-align: center;">
-										<input data-format="HH:mm:ss PP" type="text" style="text-align: center; display: inline-block;" name="oclick"></input>
+										<input data-format="HH:mm:ss PP" type="text" style="text-align: center; display: inline-block;" name="oclick" id="chkout"></input>
 										 <span class="add-on"> <i data-time-icon="icon-time" data-date-icon="icon-calendar"><i class="fa fa-clock-o" aria-hidden="true"></i></i>
 										</span>
 									</div>
@@ -156,11 +179,11 @@
 					<div id="app" style="display: inline-block; width: 18rem">
 						<!-- 달력 모듈 -->
 						<label>시작날짜:</label>
-						<vuejs-datepicker :language="ko" :format="customFormatter" :disabled-dates="disabledDates" name="startDay"></vuejs-datepicker>
+						<vuejs-datepicker :language="ko" :format="customFormatter" :disabled-dates="disabledDates" name="startDay" id="startDay"></vuejs-datepicker>
 					</div>
 					<div id="endPicker">
 						<label>종료날짜:</label>
-						<vuejs-datepicker :language="ko" :format="customFormatter" :disabled-dates="disabledDates" name="endDay"></vuejs-datepicker>
+						<vuejs-datepicker :language="ko" :format="customFormatter" :disabled-dates="disabledDates" name="endDay" id="endDay"></vuejs-datepicker>
 					</div>
 					<br> <br> <input type="hidden" value="4" name="next">
 					<input type="submit" class="btn btn-outline-primary" role="button" value="다음 단계로 진행">
@@ -188,7 +211,7 @@
 				    </div>
 				    <div class="form-group col-md-8">
 				      <label for="detailAdress">상세 주소 입력</label>
-				      <input type="text" class="form-control" placeholder="동/호 까지포함된 상세한 주소입력" name="addressDetail">
+				      <input type="text" class="form-control" placeholder="동/호 까지포함된 상세한 주소입력" name="addressDetail" id="addressDetail">
 				    </div>
 				    <div class="form-group col-md-8">
 				      <label for="adress">도로명 주소</label>
@@ -225,5 +248,59 @@
 			<script type="text/javascript" src="/resources/js/passport/passportDetail.js"></script>
 			<script type="text/javascript" src="/resources/js/host/fileupload.js"></script>
 		</c:if>
+		
 	</div>
+</div>
+
+<!--
+
+//-->
+</script>
+<div class="container">
+  <div class="row">
+  <hr>
+    <div class="col-sm-6">
+      <h3>에어큐유큐 호스팅을 추천하는 이유</h3>
+      <p>에어큐유큐는 호스트가 공유하는 숙소의 유형과 관계없이 게스트를 쉽고 안전하게 호스팅할 수 있도록 해줍니다. </p>
+      <p>예약 가능일, 요금, 숙소 이용규칙, 게스트와의 교류 방식은 전적으로 호스트가 결정합니다.</p>
+    </div>
+    <div class="col-sm-6">
+      <h3>안심하세요</h3>
+      <p>1백만 달러의 재산 피해 보호 프로그램 및 사고에 대비한 별도의 1백만 달러 보험 등 </p>
+      <p>에어큐유큐는 호스트, 호스트의 숙소와 재산 및 게스트를 보호할 수 있는 포괄적인 보호 장치를 마련해두고 있습니다.</p>
+    </div>
+    <hr>
+  </div>
+  <div class="row">
+    <div class="col-sm-12">
+      <img src="/resources/img/host_join/1.jpg" class="mx-auto d-block" width="1092">
+    </div>
+    <hr>
+  </div>
+  <div class="row">
+    <div class="col-sm-12">
+      <h1 style="text-align: center;margin-top: 20px">간편한 결제</h1>
+      <hr>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-4">
+      <h3>원하는 요금을 설정하세요.</h3>
+      <p>언제든지 원하시는 요금을 선택하실 수 있습니다. 도움이 필요하세요? 회원님 지역의 수요에 맞춰 숙소 요금을 조정하는 에어큐유큐 도구를 이용해 보세요.</p>
+    </div>
+    <div class="col-sm-4">
+      <h3>저렴한 수수료</h3>
+      <p>회원 가입과 숙소 등록은 무료입니다. 에어큐유큐 는 호스트가 받는 모든 예약에 3%의 수수료를 동일하게 부과하며, 이는 업계에서 가장 저렴한 수준입니다.</p>
+    </div>
+    <div class="col-sm-4">
+      <h3>신속한 대금 수령</h3>
+      <p>게스트가 체크인하면 페이팔, 계좌 입금 또는 기타 대금 수령 방법으로 대금이 지불됩니다.</p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12">
+      <img src="/resources/img/host_join/2.jpg" class="mx-auto d-block" width="1092">
+    </div>
+    <hr>
+  </div>
 </div>

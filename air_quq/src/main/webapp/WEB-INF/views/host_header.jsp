@@ -30,19 +30,19 @@
 				<div class="form-group input-group">
 					<div class="col-md-3">
 						<div class="text-xs font-weight-bold text-danger text-uppercase mb-1">위치</div>
-						<input type="text" class="form-control bg-light border-0 small" placeholder="어디로 여행가세요?" id="searchPassport2" name="locationAdress">
+						<input type="text" class="form-control bg-light border-0 small" placeholder="어디로 여행가세요?" id="searchPassport2" name="locationAdress" value="${ addr }">
 					</div>
 					<div class="col-md-3">
 						<div class="text-xs font-weight-bold text-danger text-uppercase mb-1">체크인</div>
-						<input type="date" class="form-control bg-light border-0 small" placeholder="날짜 추가" id="start_day" name="start_day">
+						<input type="date" class="form-control bg-light border-0 small" placeholder="날짜 추가" id="start_day" name="start_day" value="${ start_day }">
 					</div>
 					<div class="col-md-3">
 						<div class="text-xs font-weight-bold text-danger text-uppercase mb-1">체크아웃</div>
-						<input type="date" class="form-control bg-light border-0 small" placeholder="날짜 추가" id="end_day" name="end_day">
+						<input type="date" class="form-control bg-light border-0 small" placeholder="날짜 추가" id="end_day" name="end_day" value="${ end_day }">
 					</div>
 					<div class="col-md-2">
 						<div class="text-xs font-weight-bold text-danger text-uppercase mb-1">인원</div>
-						<input type="number" class="form-control bg-light border-0 small" placeholder="게스트 추가" id="people_count" name="people_count">
+						<input type="number" class="form-control bg-light border-0 small" placeholder="게스트 추가" id="people_count" name="people_count" value="${ people_count }">
 					</div>
 					<div class="input-group-append">
 						<button class="btn btn-danger" type="submit">
@@ -78,25 +78,37 @@
 								<!-- Dropdown - User Information -->
 								<div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
 									<a class="dropdown-item" href="/host/epOnline/list">
-										<i class="fas fa-photo-video fa-fw mr-2"></i>
-										내가 등록한 온라인 체험
+										<i class="fas fa-photo-video menu-icon-size mr-2"></i>
+										<h6 class="d-inline-block">호스트-등록한 체험</h6>
+									</a>
+									<a class="dropdown-item" href="/host/ResCheck">
+										<i class="fas fa-list menu-icon-size mr-3"></i>
+										<h6 class="d-inline-block">호스트-내 집에 온다는 사람들</h6>
+									</a>
+									<a class="dropdown-item" href="/user/apply/list">
+										<i class="fas fa-list menu-icon-size mr-3"></i>
+										<h6 class="d-inline-block">유저-예약 현황</h6>
+									</a>
+									<a class="dropdown-item" href="/experience/myexperience">
+										<i class="fas fa-list menu-icon-size mr-3"></i>
+										<h6 class="d-inline-block">유저-체험 호스팅하기</h6>
+									</a>
+									<a class="dropdown-item" href="/ep_management/ep_listg">
+										<i class="fas fa-list menu-icon-size mr-3"></i>
+										<h6 class="d-inline-block">유저-등록 중인 체험(테스트)</h6>
+									</a>
+									<a class="dropdown-item" href="/host/regist/1?next=1">
+										<i class="fas fa-list menu-icon-size mr-3"></i>
+										<h6 class="d-inline-block">유저-숙소 호스트 되기</h6>
 									</a>
 									<a class="dropdown-item" href="#">
-										<i class="fas fa-user fa-fw mr-2"></i>
-										Profile
-									</a>
-									<a class="dropdown-item" href="#">
-										<i class="fas fa-cogs fa-fw mr-2"></i>
-										Settings
-									</a>
-									<a class="dropdown-item" href="#">
-										<i class="fas fa-list fa-fw mr-2"></i>
-										Activity Log
+										<i class="fas fa-user menu-icon-size mr-3"></i>
+										<h6 class="d-inline-block">Profile</h6>
 									</a>
 									<div class="dropdown-divider"></div>
 									<a class="dropdown-item" href="/logout">
-										<i class="fas fa-sign-out-alt fa-fw mr-2"></i>
-										로그아웃
+										<i class="fas fa-sign-out-alt menu-icon-size mr-3"></i>
+										<h6 class="d-inline-block">로그아웃</h6>
 									</a>
 								</div>
 							</li>

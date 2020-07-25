@@ -59,15 +59,19 @@ function bcountDisable(bcount) {
 // //////////////////////////////////////////////////////////////////////////////////////////////////////////
 //유효성 체크
 
+
 function checkFromRegist3(){
 	//공백 체크
 	var sp = $("#host_grade").val();
+	var ckout = $("#chkout").val();
+	var startDay = $("#startDay").val();
+	var endDay = $("#endDay").val();
 	
 	
-	if(sp != null && sp != ''){
+	if(sp != null && sp != '' && ckout != null && ckout != '' && startDay != '' && startDay != null && endDay != '' && endDay != null){
 		return true;
 	} else {
-		alert("금액에 공백을 입력할수없습니다.");
+		alert("모든 항목을 빠짐없이 작성해 주세요.");
 		return false;
 	}
 }
@@ -90,7 +94,6 @@ new Vue({
 		}
 	}
 });
-
 
 
 Date.prototype.yyyymmdd = function () {
