@@ -21,7 +21,7 @@
 	<div class="row mb-5">
 		<div class="col-md-12">
 			<!-- Topbar Search -->
-			<form class="border-left-danger rounded" method="post" action="/search/host" id="host_form">
+			<form class="border-left-danger rounded" method="post" action="/search/host?pageNum=1" id="host_form">
 				<div class="form-group input-group">
 					<div class="col-md-3">
 						<div class="text-xs font-weight-bold text-danger text-uppercase mb-1">위치</div>

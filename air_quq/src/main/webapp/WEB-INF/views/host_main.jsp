@@ -65,7 +65,7 @@
    <nav aria-label="Page navigation example">
 	  <ul class="pagination justify-content-center">
 	   <c:choose>
-	    	<c:when test="${ pageUtil.pageNum < pageUtil.totalRowCount }">
+	    	<c:when test="${ pageUtil.pageNum < pageUtil.totalRowCount || pageUtil.pageNum ==1 }">
 		    	<li class="page-item disabled">
 			      <a class="page-link" href="#" tabindex="-1">[이전]</a>
 			    </li>
