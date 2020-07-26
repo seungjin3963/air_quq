@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.jhta.airqnq.dao.AdminApproveDao;
 import com.jhta.airqnq.vo.EP_ManagementVo;
+import com.jhta.airqnq.vo.HouseInfoVo;
 
 @Service
 public class AdminApproveService {
@@ -26,5 +27,22 @@ public class AdminApproveService {
 	}
 	public int epappNo(HashMap<String, Object> map) {
 		return dao.epappNo(map);
+	}
+	
+	
+	
+	//숙소 호스트 관리자 등록 기능
+	public List<HouseInfoVo> getHostManagerApprovalList(int manager_check){
+		return dao.getHostManagerApprovalList(manager_check);
+	}
+	
+	//숙소 호스트 승인
+	public int updateManagerApproval(int hinum) {
+		return dao.updateManagerApproval(hinum);
+	}
+	
+	//숙소 호스트 거절
+	public int updateManagerApprovalFail(int hinum) {
+		return dao.updateManagerApprovalFail(hinum);
 	}
 }

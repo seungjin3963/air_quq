@@ -252,10 +252,7 @@
 	</div>
 </div>
 
-<!--
-
-//-->
-</script>
+<c:if test="${ hostStep == 1 }">
 <div class="container">
   <div class="row">
   <hr>
@@ -304,3 +301,4 @@
     <hr>
   </div>
 </div>
+</c:if>

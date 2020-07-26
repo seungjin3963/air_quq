@@ -16,16 +16,43 @@
 		<!-- 영노 -->
 
 	</ul>
+	
+	
+	
+	<!-- 호스트 승인 확인 목록 기능 -->
 	<div id="tabs-1">
-		<p>Proin elit arcu, rutrum commodo, vehicula tempus, commodo a,
-			risus. Curabitur nec arcu. Donec sollicitudin mi sit amet mauris. Nam
-			elementum quam ullamcorper ante. Etiam aliquet massa et lorem. Mauris
-			dapibus lacus auctor risus. Aenean tempor ullamcorper leo. Vivamus
-			sed magna quis ligula eleifend adipiscing. Duis orci. Aliquam sodales
-			tortor vitae ipsum. Aliquam nulla. Duis aliquam molestie erat. Ut et
-			mauris vel pede varius sollicitudin. Sed ut dolor nec orci tincidunt
-			interdum. Phasellus ipsum. Nunc tristique tempus lectus.</p>
-	</div>
+	<table class="table">
+	  <thead class="thead-dark">
+	    <tr>
+	      <th scope="col">하우스 번호</th>
+	      <th scope="col">제목</th>
+	      <th scope="col">주소</th>
+	      <th scope="col">가격</th>
+	      <th scope="col"></th>
+	      <th scope="col"></th>
+	    </tr>
+	  </thead>
+	  <tbody>
+	     <c:forEach items="${ hmlist }" var="list">
+		    <tr>
+		      <td>${ list.hinum }</td>
+		      <td>${ list.title }</td>
+		      <td>${ list.addr }</td>
+		      <td>${ list.price }</td>
+		      <td>
+		      	<a href="/admin/approve/rnjOk?hinum=${ list.hinum }"><button type="button" class="btn btn-success">승인</button></a>
+		      </td>
+		      <td>
+		      	<a href="/admin/approve/rnjFail?hinum=${ list.hinum }"><button type="button" class="btn btn-danger">거절</button></a>
+		      </td>
+		    </tr>
+	    </c:forEach>
+	  </tbody>
+  </table>
+
+
+	
+	
 	<div id="tabs-2">
 		<br>
 

@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.jhta.airqnq.service.AdminApproveService;
 import com.jhta.airqnq.vo.EP_ManagementVo;
+import com.jhta.airqnq.vo.HouseInfoVo;
 
 @Controller
 public class AdminApproveController {
@@ -23,7 +24,41 @@ public class AdminApproveController {
 	public String adminapprove(Model model) {
 		List<EP_ManagementVo> eplist=service.approveEp();
 		model.addAttribute("eplist" , eplist);
+		
+		
+		//숙소 호스트 승인 기능 구현
+		List<HouseInfoVo> hmlist = service.getHostManagerApprovalList(0);
+		model.addAttribute("hmlist", hmlist);
+		
 		return ".admin.adminapprove";
+	}
+	
+	//숙소 호스트 승인
+	@RequestMapping(value = "/admin/approve/rnjOk")
+	public String setRegistAndrejection(int hinum) {
+		System.out.println(hinum);
+		
+		int r = service.updateManagerApproval(hinum);
+		if(r>0) {
+			return "redirect:/admin/approve";
+		} else {
+			return ".error";
+		}
+		
+	}
+	
+	//숙소 호스트 승인 거절
+	@RequestMapping(value = "/admin/approve/rnjFail")
+	public String setRegistAndrejectionFail(int hinum) {
+		System.out.println(hinum);
+		
+		int r = service.updateManagerApprovalFail(hinum);
+		if(r>0) {
+			return "redirect:/admin/approve";
+		} else {
+			return ".error";
+		}
+		
 	}
 	
 	@RequestMapping(value = "/admin/ep_getinfo" ,produces = "application/json;charset=utf-8")

@@ -68,12 +68,12 @@
 	   <c:choose>
 	    	<c:when test="${ pageUtil.pageNum < pageUtil.totalRowCount || pageUtil.pageNum ==1 }">
 		    	<li class="page-item disabled">
-			      <a class="page-link" href="#" tabindex="-1">[이전]</a>
+			      <a class="page-link" href="#" tabindex="-1">이전</a>
 			    </li>
 	    	</c:when>
 	    	<c:otherwise>
 	    		<li class="page-item">
-			      <a class="page-link" href="/search/host?pageNum=${ pageUtil.endPageNum - 1 }&locationAdress=${addr}&start_day=${start_day}&end_day=${end_day}&people_count=${people_count}" tabindex="-1">[이전]</a>
+			      <a class="page-link" href="/search/host?pageNum=${ pageUtil.endPageNum - 1 }&locationAdress=${addr}&start_day=${start_day}&end_day=${end_day}&people_count=${people_count}" tabindex="-1">이전</a>
 			    </li>
 	    	</c:otherwise>
 	   </c:choose>
@@ -94,12 +94,12 @@
 	    <c:choose>
 	    	<c:when test="${ pageUtil.pageNum < pageUtil.totalPageCount }">
 	    		<li class="page-item page-item">
-			   		<a class="page-link" href="/search/host?pageNum=${ pageUtil.endPageNum + 1 }&locationAdress=${addr}&start_day=${start_day}&end_day=${end_day}&people_count=${people_count}">[다음]</a>
+			   		<a class="page-link" href="/search/host?pageNum=${ pageUtil.endPageNum + 1 }&locationAdress=${addr}&start_day=${start_day}&end_day=${end_day}&people_count=${people_count}">다음</a>
 				</li>
 	    	</c:when>
 	    	<c:otherwise>
 	    		<li class="page-item page-item  disabled">
-			   		<a class="page-link" href="#">[다음]</a>
+			   		<a class="page-link" href="#">다음</a>
 				</li>
 	    	</c:otherwise>
 	    </c:choose>

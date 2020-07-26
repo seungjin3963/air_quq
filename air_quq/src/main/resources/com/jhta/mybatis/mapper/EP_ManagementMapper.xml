@@ -46,4 +46,21 @@ inner join house_img h on e.hinum=h.hinum order by ordernum asc limit 1;
 	<update id="epappNo" parameterType="hashmap">
 		update experience_info set div_type=#{divtype} , reason=#{text} where hinum=#{hinum}
 	</update>
+	
+	
+	
+	<!-- 숙소 호스트 관리자 등록 기능 -->
+	<select id="setManagerCheck" parameterType="int" resultType="house_info">
+		select * from house_info where manager_check=#{manager_check} and del_yn='n'
+	</select>
+	
+	<!-- 숙소 호스트 관리자 승인 -->
+	<update id="updateManagerCheck" parameterType="int">
+		update house_info set manager_check=1 where hinum = #{hinum}
+	</update>
+	
+	<!-- 숙소 호스트 관리자 승인 거절 -->
+	<update id="updateManagerCheckFail" parameterType="int">
+		update house_info set del_yn='y' where hinum = #{hinum}
+	</update>
 </mapper>
