@@ -1,30 +1,40 @@
 "use strict";
 
 let localVideo = document.getElementById("localVideo");
-let remoteVideo = document.getElementById("remoteVideo");
 let isInitiator = false;
 let isChannelReady = false;
 let isStarted = false;
 let localStream;
-let remoteStream;
 let pc;
 
 let pcConfig = {
-    'iceServers': [{
-        'urls': 'stun:stun.l.google.com:19302'
-      }]
+		'iceServers': [
+		    {
+		      'urls': 'stun:stun.l.google.com:19302'
+		    },
+		    {
+		      'urls': 'turn:192.158.29.39:3478?transport=udp',
+		      'credential': 'JZEOEt2V3Qb0y27GRntt2u2PAYA=',
+		      'username': '28224511:1379330808'
+		    },
+		    {
+		      'urls': 'turn:192.158.29.39:3478?transport=tcp',
+		      'credential': 'JZEOEt2V3Qb0y27GRntt2u2PAYA=',
+		      'username': '28224511:1379330808'
+		    }
+		  ]
 }
 
-/*let room = 'foo';*/
+/* let room = 'foo'; */
 let room = $('#einum').val();
 
-//let socket = io.connect();
-let socket = io.connect("https://localhost:3000/");
+let socket = io.connect("https://localhost:3000/", {secure: true});
+/* let socket = io.connect("https://192.168.0.2:3000/", {secure: true}); */
 
-  if(room !==''){
-    socket.emit('create or join',room);
-    console.log('Attempted to create or join Room',room);
-  }
+if(room !==''){
+  socket.emit('create or join',room);
+  console.log('Attempted to create or join Room',room);
+}
 
 socket.on('created', (room,id)=>{
   console.log('Created room' + room+'socket ID : '+id);
@@ -45,6 +55,7 @@ socket.on('joined',room=>{
   console.log('joined : '+ room );
   isChannelReady= true;
 })
+
 socket.on('log', array=>{
   console.log.apply(console,array);
 });
@@ -54,9 +65,9 @@ socket.on('message', (message)=>{
   if(message === 'got user media'){
     maybeStart();
   }else if(message.type === 'offer'){
-    if(!isInitiator && !isStarted){
-      maybeStart();
-    }
+	  if(!isInitiator && !isStarted){
+		  maybeStart();
+	  }
     pc.setRemoteDescription(new RTCSessionDescription(message));
     doAnswer();
   }else if(message.type ==='answer' && isStarted){
@@ -70,6 +81,7 @@ socket.on('message', (message)=>{
     pc.addIceCandidate(candidate);
   }
 })
+
 function sendMessage(message){
   console.log('Client sending message: ',message);
   socket.emit('message',message);
@@ -124,25 +136,40 @@ function handleCreateOfferError(event) {
 }
 
 function handleRemoteStreamAdded(event) {
-  console.log("remote stream added");
-  remoteStream = event.stream;
-  remoteVideo.srcObject = remoteStream;
+	console.log("asdfasdfasdf");
+	// console.log("remote stream added");
+	// remoteStream = event.stream;
+	// remoteVideo.srcObject = remoteStream;
+	  
+	var video  = document.createElement('video'),
+	div    = document.createElement('div');
+	
+	// video.setAttribute('data-socket', id);
+	// video.src = window.URL.createObjectURL(event.stream);
+	video.srcObject   = event.stream;
+	video.autoplay    = true; 
+	video.muted       = true;
+	video.playsinline = true;
+	
+	// div.appendChild(video);
+	// document.querySelector('.remoteContainer').appendChild(div);
+	document.querySelector('.remoteContainer').appendChild(video);
 }
 
 function maybeStart() {
   console.log(">>MaybeStart() : ", isStarted, localStream, isChannelReady);
-  if (!isStarted && typeof localStream !== "undefined" && isChannelReady) {
-    console.log(">>>>> creating peer connection");
-    createPeerConnection();
-    pc.addStream(localStream);
-    isStarted = true;
-    console.log("isInitiator : ", isInitiator);
-    if (isInitiator) {
-      doCall();
-    }
-  }else{
-    console.error('maybeStart not Started!');
-  }
+	 if (!isStarted && typeof localStream !== "undefined" && isChannelReady) {
+	 console.log(">>>>> creating peer connection");
+	 createPeerConnection();
+	 pc.addStream(localStream);
+	 isStarted = true;
+	 console.log("isInitiator : ", isInitiator);
+	 if (isInitiator) {
+	 doCall();
+	 }
+	 }else{
+	 console.error('maybeStart not Started!');
+	 }
 }
 
 function doCall() {

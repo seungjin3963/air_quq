@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <link href="/resources/css/host/epOnline/list.css" rel="stylesheet">
 <div class="container">
 	<!-- DataTales Example -->
@@ -23,9 +24,11 @@
 					<tbody>
 						<c:forEach var="list" items="${list }">
 							<tr>
+								<c:set var="div_type" value="${list.div_type }"></c:set>
 								<td>${list.hinum }</td>
 								<c:choose>
-									<c:when test="${list.div_type == 3 }">
+									<%-- <c:when test="${list.div_type == 3 }"> --%>
+									<c:when test="${fn:contains(div_type,'3')}">
 										<td>온라인 체험</td>
 									</c:when>
 									<c:otherwise>
@@ -34,11 +37,12 @@
 								</c:choose>
 								<td>${list.title }</td>
 								<td>
-								<c:if test="${list.div_type == 3 }">
-									<a href="/epOnline/epOnline?einum=${list.einum }" class="epIcon">
-										<i class="fas fa-photo-video fa-2x"></i>
-									</a>
-								</c:if>
+									<%-- <c:if test="${list.div_type == 3 }"> --%>
+									<c:if test="${fn:contains(div_type,'3')}">
+										<a href="/epOnline/epOnline?einum=${list.einum }" class="epIcon">
+											<i class="fas fa-photo-video fa-2x"></i>
+										</a>
+									</c:if>
 								</td>
 								<td>
 									<a href="/host/epOnline/modify?einum=${list.einum }" class="modiIcon">
