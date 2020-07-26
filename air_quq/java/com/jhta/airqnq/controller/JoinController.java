@@ -93,7 +93,7 @@ public class JoinController {
 		public String pwdSearch(String email, Model model) {
 			String setfrom = "kurassyio@naver.com"; //관리자 이메일
 			String tomail = email; // 받는 사람 이메일
-			String title = "에어 큐엔큐 비밀번호찾기 확인 이메일 입니다."; // 제목
+			String title = "에어 큐유큐 비밀번호찾기 확인 이메일 입니다."; // 제목
 			String content = ""; // 내용
 			
 			System.out.println("받는사람 이메일주소 : " + email);

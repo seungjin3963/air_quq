@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jhta.airqnq.mapper.profileMapper">	
+	<!-- 프로필 정보 검색 -->
+	<select id="getProfileInfo" parameterType="int" resultType="member">
+		select * from `member` where menum=#{menum} and del_yn='n'
+	</select>
+	
+	<!-- 프로필 사진 가져오기 -->
+	<select id="getProfileImg" parameterType="int" resultType="java.util.Map">
+		select profile_img from `member` where menum=#{menum} and del_yn='n'
+	</select>
+	
+	<!-- 프로필 정보 업데이트 -->
+	<update id="updateProfile" parameterType="member">
+		update `member` set id=#{id}, pwd=#{pwd}, addr=#{addr}, email=#{email}, phone=#{phone} where menum=#{menum} and del_yn='n'
+	</update>
+</mapper>

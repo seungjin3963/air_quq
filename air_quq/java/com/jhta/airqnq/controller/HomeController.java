@@ -1,7 +1,9 @@
 package com.jhta.airqnq.controller;
 
+import java.sql.Blob;
 import java.sql.Date;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -9,8 +11,13 @@ import javax.servlet.http.HttpSession;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -19,9 +26,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.jhta.airqnq.pageUtil.PageUtilForMySql;
 import com.jhta.airqnq.service.HostInfoService;
+import com.jhta.airqnq.service.ProfileService;
 import com.jhta.airqnq.vo.HouseInfoVo;
 import com.jhta.airqnq.vo.HouseSearchVo;
 import com.jhta.airqnq.vo.MainHouseInfoVo;
+import com.jhta.airqnq.vo.MemberVo;
 
 /**
  * Handles requests for the application home page.
@@ -30,6 +39,9 @@ import com.jhta.airqnq.vo.MainHouseInfoVo;
 public class HomeController {
 	@Autowired
 	private HostInfoService hostService;
+	
+	@Autowired
+	private ProfileService profileService;
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home() {
@@ -66,12 +78,13 @@ public class HomeController {
 	public String hostSearch(String locationAdress, Date start_day, Date end_day, int people_count,
 			HttpSession session, @RequestParam(value = "pageNum", defaultValue = "1") int pageNum) {
 		
-		System.out.println("페이지번호:" + pageNum);
+		//System.out.println("페이지번호:" + pageNum);
 		
 		int limit = 0 + pageNum-1;
 		int pageCount = 5;
 		
-		HouseSearchVo vo = new HouseSearchVo(locationAdress, people_count, 1, start_day, end_day, "n", 0, limit, pageCount);
+		//관리자 가 승인한 게시물만 검색
+		HouseSearchVo vo = new HouseSearchVo(locationAdress, people_count, 1, start_day, end_day, "n", 1, limit, pageCount);
 		
 		List<MainHouseInfoVo> list = getHouseInfo(vo);
 		
@@ -83,7 +96,7 @@ public class HomeController {
 		
 		//검색된 전체글 개수
 		int getSearchCount = hostService.getSearchCount(vo);
-		System.out.println("검색된 전체글 개수" + getSearchCount);
+		//System.out.println("검색된 전체글 개수" + getSearchCount);
 		
 		
 		//페이징 처리를위한 객체
@@ -93,7 +106,7 @@ public class HomeController {
 		session.setAttribute("pageUtil", pageUtil);
 		
 		System.out.println(pageUtil.getEndPageNum());
-		System.out.println("전체 페이지 " + pageUtil.getTotalPageCount());
+		//System.out.println("전체 페이지 " + pageUtil.getTotalPageCount());
 		
 		return ".hostsearch";
 	}
@@ -121,5 +134,41 @@ public class HomeController {
 
 	public List<MainHouseInfoVo> getHouseInfo(HouseSearchVo vo) {
 		return hostService.getMainHouseInfoList(vo);
+	}
+	
+	//프로필 정보 페이지
+	@RequestMapping("/member/profile")
+	public String getProfilePage(int menum, Model model) {
+		
+		MemberVo vo = profileService.getProfile(menum);
+		model.addAttribute("member", vo);
+		
+		return ".profile";
+	}
+	
+	//프로필 정보 업데이트
+	@RequestMapping("/profile/updateOk")
+	public String setProfileUpdate(MemberVo vo) {
+		
+		int n = profileService.updateProfile(vo);
+		
+		if(n>0) {
+			return "redirect:/";
+		} else {
+			return "error";
+		}
+	}
+	
+	//프로필 사진 로딩
+	@RequestMapping("/member/profile/img")
+	public ResponseEntity<byte[]> getProfileImg(int menum) {
+		//DB에서 프로필 사진 가져오기
+		Map<String, Object> map = profileService.getByteImage(menum);
+		byte[] blobImg = (byte[])map.get("profile_img");
+		System.out.println(blobImg);
+		final HttpHeaders headers = new HttpHeaders();
+	    headers.setContentType(MediaType.IMAGE_PNG);
+		
+		return new ResponseEntity<byte[]>(blobImg, headers, HttpStatus.OK);
 	}
 }

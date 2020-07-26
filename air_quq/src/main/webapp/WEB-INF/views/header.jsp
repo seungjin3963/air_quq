@@ -79,7 +79,7 @@
 										<i class="fas fa-list menu-icon-size mr-3"></i>
 										<h6 class="d-inline-block">유저-숙소 호스트 되기</h6>
 									</a>
-									<a class="dropdown-item" href="#">
+									<a class="dropdown-item" href="/member/profile?menum=${ menum }">
 										<i class="fas fa-user menu-icon-size mr-3"></i>
 										<h6 class="d-inline-block">Profile</h6>
 									</a>

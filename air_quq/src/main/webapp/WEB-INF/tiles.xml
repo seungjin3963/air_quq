@@ -17,6 +17,10 @@
 		<put-attribute name="main" value="/WEB-INF/views/login/login.jsp"></put-attribute>
 	</definition>
 	
+	<definition name=".profile" extends=".home">
+		<put-attribute name="main" value="/WEB-INF/views/profile.jsp"></put-attribute>
+	</definition>
+	
 	<definition name=".join" extends=".home">
 		<put-attribute name="main" value="/WEB-INF/views/join/join.jsp"></put-attribute>
 	</definition>

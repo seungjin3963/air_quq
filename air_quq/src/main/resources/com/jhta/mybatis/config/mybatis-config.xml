@@ -34,5 +34,6 @@
     <mapper resource="com/jhta/mybatis/mapper/OnlineListMapper.xml"/>
     <mapper resource="com/jhta/mybatis/mapper/ReportMapper.xml"/>
      <mapper resource="com/jhta/mybatis/mapper/HostResCheckMapper.xml"/>
+     <mapper resource="com/jhta/mybatis/mapper/ProfileMapper.xml"/>
   </mappers>
 </configuration>
