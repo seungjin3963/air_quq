@@ -38,4 +38,8 @@ public class House_infoAdminService {
 	public Apply_infoVo HinumSelect(int hinum) {
 		return dao.HinumSelect(hinum);
 	}
+	
+	public List<HouseInfoVo> Okhouseinfo(){
+		return dao.Okhouseinfo();
+	}
 }

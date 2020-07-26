@@ -3,6 +3,7 @@ package com.jhta.airqnq.controller;
 import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.List;
 
@@ -178,6 +179,40 @@ public class AdminController {
 		returndata.put("houseimg",houseimg);
 		
 		return returndata;
+	}
+	
+	/* 데이터 통계 */
+	@GetMapping("/admin/hoststatistics")
+	public String hoststatistics(Model model) {
+		List<HouseInfoVo> houselist = host_infoService.Okhouseinfo();
+		String hostcnttot=null;
+		int hostcnt=0;
+		
+		for (int i = 1; i < 13; i++) {
+			hostcnt=0;
+			for(HouseInfoVo vo: houselist) {
+				if(vo.getStartdate() == null) {
+					
+				}else {
+				SimpleDateFormat sd=new SimpleDateFormat("yyyy-MM-dd"); 
+				String startdate=sd.format(vo.getStartdate());
+				if(startdate.substring(5, 7).contains(i+"")) hostcnt++;
+				}
+			}
+			if(i == 1) {
+				hostcnttot=hostcnt+"/";
+			}else {
+				if(i==12) {
+					hostcnttot+=hostcnt;
+				}else {
+					hostcnttot+=hostcnt+"/";
+				}
+			}
+		}
+		
+		model.addAttribute("hostcnttot", hostcnttot);
+		
+		return ".admin.statisticsadmin";
 	}
 	
 	

@@ -40,5 +40,11 @@ public class House_infoAdminDao {
 	public Apply_infoVo HinumSelect(int hinum) {
 		return sqlsessiontemplate.selectOne(NAMESPACE+".applyselect", hinum);
 	}
+	
+	public List<HouseInfoVo> Okhouseinfo(){
+		return sqlsessiontemplate.selectList(NAMESPACE+".okhouseinfo");
+	}
+	
+	
 
 }

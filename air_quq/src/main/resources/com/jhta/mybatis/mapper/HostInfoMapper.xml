@@ -21,6 +21,7 @@
 	</select>
 	
 	<!-- 승진 -->
+	<!-- house_info 검색 sql -->
 	<sql id="search">
 		<if test="field != null and field != ''">
 			 where manager_check=1 and ${field} like '%${keyword}%'
@@ -31,6 +32,7 @@
 		</if>
 	</sql>
 	
+	<!-- house_info 페이징 처리 -->
 	<select id="hostselectpaging" resultType="house_info" parameterType="hashmap">
 		select * from house_info 
 		<include refid="search"/>
@@ -38,15 +40,18 @@
 		limit #{startRow}, #{rowblockcount}
 	</select>
 	
+	<!-- 선택된 house_info 총 갯수 (페이징 처리 포함) -->
 	<select id="hostcnt" resultType="int" parameterType="hashmap">
 		select ifnull(count(*),0) from house_info
 		<include refid="search"/>
 	</select>
 	
+	<!-- 선택된 house_info data --> 
 	<select id="hostone" parameterType="int" resultType="house_info">
 		select * from house_info where hinum=#{hinum} and manager_check=1
 	</select>
 	
+	<!-- house_info 이미지 뽑기 -->
 	<select id="houseimg" parameterType="hashmap" resultType="String">
 		select img from house_img 
 		<if test="ordernum == 1">
@@ -57,8 +62,14 @@
 		</if>		
 	</select>
 	
+	<!-- 상세 신청 데이터 뽑기 -->
 	<select id="applyselect" parameterType="int" resultType="com.jhta.airqnq.vo.Apply_infoVo">
 	 	select hinum,h.menum,id,title,content,h.addr,addr_detail,price,max_n,bedroom,checkin_time,startdate,enddate from house_info h,member m where hinum=#{hinum} and h.menum=m.menum
+	</select>
+	
+	<!-- 승인된 house_info 뽑기 -->
+	<select id="okhouseinfo" resultType="house_info">
+		select * from house_info where manager_check=1
 	</select>
 	
 	<!-- house main img 포함 vo -->
