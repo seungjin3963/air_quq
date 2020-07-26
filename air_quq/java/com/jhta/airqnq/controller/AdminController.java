@@ -22,8 +22,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.jhta.airqnq.pageUtil.PageUtil;
 import com.jhta.airqnq.service.House_infoAdminService;
 import com.jhta.airqnq.service.MemberService;
+import com.jhta.airqnq.service.RentService;
 import com.jhta.airqnq.vo.HouseInfoVo;
 import com.jhta.airqnq.vo.JoinVo;
+import com.jhta.airqnq.vo.RentVo;
 
 @Controller
 public class AdminController {
@@ -33,6 +35,9 @@ public class AdminController {
 	
 	@Autowired
 	private House_infoAdminService host_infoService;
+	
+	@Autowired
+	private RentService rentservice;
 	
 	/* 관리자 회원관리 */
 	@GetMapping("/admin")
@@ -185,11 +190,17 @@ public class AdminController {
 	@GetMapping("/admin/hoststatistics")
 	public String hoststatistics(Model model) {
 		List<HouseInfoVo> houselist = host_infoService.Okhouseinfo();
+		List<RentVo> rentlist= rentservice.rentdata();
+		
 		String hostcnttot=null;
+		String rentcnttot=null;
+
 		int hostcnt=0;
+		int rentcnt=0;
 		
 		for (int i = 1; i < 13; i++) {
 			hostcnt=0;
+			rentcnt=0;
 			for(HouseInfoVo vo: houselist) {
 				if(vo.getStartdate() == null) {
 					
@@ -199,21 +210,33 @@ public class AdminController {
 				if(startdate.substring(5, 7).contains(i+"")) hostcnt++;
 				}
 			}
+			
+			for(RentVo vo : rentlist) {
+				SimpleDateFormat sd=new SimpleDateFormat("yyyy-MM-dd"); 
+				String startdate=sd.format(vo.getStartrent());
+				if(startdate.substring(5, 7).contains(i+"")) rentcnt++;
+			}
 			if(i == 1) {
 				hostcnttot=hostcnt+"/";
+				rentcnttot=rentcnt+"/";
 			}else {
 				if(i==12) {
 					hostcnttot+=hostcnt;
+					rentcnttot+=rentcnt;
 				}else {
 					hostcnttot+=hostcnt+"/";
+					rentcnttot+=rentcnt+"/";
 				}
 			}
 		}
 		
 		model.addAttribute("hostcnttot", hostcnttot);
+		model.addAttribute("rentcnttot", rentcnttot);
 		
 		return ".admin.statisticsadmin";
 	}
+	
+	
 	
 	
 }
