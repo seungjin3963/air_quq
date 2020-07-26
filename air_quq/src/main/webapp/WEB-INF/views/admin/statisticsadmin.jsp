@@ -17,7 +17,7 @@
 <script src="/resources/js/demo/chart-area-demo.js"></script>
 <script src="/resources/js/demo/chart-bar-demo.js"></script>
 
-<div class="container">
+<%-- <div class="container">
 		<h1 id="fontcenter">통계</h1>
 		<div class="row">
 			<div class="col-8">
@@ -47,14 +47,48 @@
 		</div>
 	</div>
 </div>
-			
+ --%>
+ 
+ <div class="container">
+ 	<h1 id="fontcenter">통계</h1>
+ 	<ul class="nav nav-tabs">
+	    <li class="nav-item">
+	      <a class="nav-link active" href="#hostmonthcnt">월별 호스트 등록수</a>
+	    </li>
+	    <li class="nav-item">
+	      <a class="nav-link" href="#applycntdiv">월별 예약수</a>
+	    </li>
+	    <li class="nav-item">
+	      <a class="nav-link" href="#menu2">지역별 호스트 등록수</a>
+	    </li>
+  	</ul>
+ 
+ <div class="tab-content">
+    <div id="hostmonthcnt" class="container tab-pane active"><br>
+    	<canvas id="hostEnrollment"></canvas>
+		<input type="hidden" value="${hostcnttot }" id="hostcntdata">
+    </div>
+    <div id="applycntdiv" class="container tab-pane fade"><br>
+		<canvas id="applycnt"></canvas>
+		<input type="hidden" value="${rentcnttot }" id="applycntdata">
+    </div>
+    <div id="menu2" class="container tab-pane fade"><br>
+      <h3>Menu 2</h3>
+      asdfjahdfjklhajlskdjk
+    </div>
+  </div>
+</div>
 
 <script>
 var ctx = document.getElementById("hostEnrollment");
 var hostcntdata=$("#hostcntdata").val().split("/");
 var applycntdata=$("#applycntdata").val().split("/");
 
-console.log(hostcntdata);
+$(".nav-tabs a").click(function(){
+    console.log($(this).children().eq(0));
+	$(this).tab('show');
+  });
+
 var myLineChart = new Chart(ctx, {
   type: 'line',
   data: {
@@ -120,60 +154,61 @@ var myLineChart = new Chart(ctx, {
   }
 });
 
-var ctx = document.getElementById("applycnt");
-var myBarChart = new Chart(ctx, {
-  type: 'bar',
-  data: {
-    labels: ["1월", "2월", "3월", "4월", "5월", "6월", "7월", "8월", "9월", "10월", "11월", "12월"],
-    datasets: [{
-      label: "예약자수",
-      backgroundColor: "#4e73df",
-      hoverBackgroundColor: "#2e59d9",
-      borderColor: "#4e73df",
-      data: applycntdata,
-    }],
-  },
-  options: {
-    maintainAspectRatio: false,
-    layout: {
-      padding: {
-        left: 10,
-        right: 25,
-        top: 25,
-        bottom: 0
-      }
-    },
-    scales: {
-      xAxes: [{
-        gridLines: {
-          display: false,
-          drawBorder: false
-        }
-      }],
-      yAxes: [{
-        gridLines: {
-          color: "rgb(234, 236, 244)",
-          zeroLineColor: "rgb(234, 236, 244)",
-          drawBorder: false,
-          borderDash: [2],
-          zeroLineBorderDash: [2]
-        }
-      }],
-    },
-    tooltips: {
-      titleMarginBottom: 10,
-      titleFontColor: '#6e707e',
-      titleFontSize: 14,
-      backgroundColor: "rgb(255,255,255)",
-      bodyFontColor: "#858796",
-      borderColor: '#dddfeb',
-      borderWidth: 1,
-      xPadding: 15,
-      yPadding: 15,
-      displayColors: false,
-      caretPadding: 10,
-    },
-  }
-});
+	var ctx = document.getElementById("applycnt");
+	var myBarChart = new Chart(ctx, {
+	  type: 'bar',
+	  data: {
+	    labels: ["1월", "2월", "3월", "4월", "5월", "6월", "7월", "8월", "9월", "10월", "11월", "12월"],
+	    datasets: [{
+	      label: "예약자수",
+	      backgroundColor: "#4e73df",
+	      hoverBackgroundColor: "#2e59d9",
+	      borderColor: "#4e73df",
+	      data: applycntdata,
+	    }],
+	  },
+	  options: {
+	    maintainAspectRatio: false,
+	    layout: {
+	      padding: {
+	        left: 10,
+	        right: 25,
+	        top: 25,
+	        bottom: 0
+	      }
+	    },
+	    scales: {
+	      xAxes: [{
+	        gridLines: {
+	          display: false,
+	          drawBorder: false
+	        }
+	      }],
+	      yAxes: [{
+	        gridLines: {
+	          color: "rgb(234, 236, 244)",
+	          zeroLineColor: "rgb(234, 236, 244)",
+	          drawBorder: false,
+	          borderDash: [2],
+	          zeroLineBorderDash: [2]
+	        }
+	      }],
+	    },
+	    tooltips: {
+	      titleMarginBottom: 10,
+	      titleFontColor: '#6e707e',
+	      titleFontSize: 14,
+	      backgroundColor: "rgb(255,255,255)",
+	      bodyFontColor: "#858796",
+	      borderColor: '#dddfeb',
+	      borderWidth: 1,
+	      xPadding: 15,
+	      yPadding: 15,
+	      displayColors: false,
+	      caretPadding: 10,
+	    },
+	  }
+	});	
+
 
 </script>
