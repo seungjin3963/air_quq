@@ -35,11 +35,20 @@
 	</update>
 	
 	<!-- 승진 -->
+	<!-- 신청한 정보 db에 넣기 -->
 	<insert id="rentinsert" parameterType="rentVo">
 		insert into rent values(0,#{hinum},#{menum},#{startrent},#{endrent},#{status},#{person},#{pay_price},'n',#{imp_uid},#{merchant_uid},1)
 	</insert>
 	
+	<!-- rtnum에 모든 데이터 가져오기 -->
 	<select id="rentselect" parameterType="int" resultType="rentVo">
 		select * from rent where rtnum=#{rtnum}	
 	</select>
+	
+	<!-- 취소 안된 예약자 데이터 뽑기 -->
+	<select id="rentdata" resultType="rentVo">
+		select * from rent where status=1
+	</select>
+	
+	
 </mapper>
