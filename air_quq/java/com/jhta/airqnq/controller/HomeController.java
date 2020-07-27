@@ -155,9 +155,10 @@ public class HomeController {
 	@RequestMapping("/profile/updateOk")
 	public String setProfileUpdate(JoinVo vo, MultipartFile file1) {
 		int r = 0;
-		System.out.println("file1: >>>>>>>" + file1.getSize());
 		if(file1.getSize() == 0) {
 			System.out.println("file1:" + file1);
+			r = profileService.updateProfile(vo);
+			System.out.println("프로필업데이트 : " + r);
 			return "redirect:/";
 		}
 		try {

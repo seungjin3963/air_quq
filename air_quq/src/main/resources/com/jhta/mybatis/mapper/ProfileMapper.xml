@@ -15,6 +15,10 @@
 	
 	<!-- 프로필 정보 업데이트 -->
 	<update id="updateProfile" parameterType="join">
-		update `member` set id=#{id}, pwd=#{pwd}, addr=#{addr}, email=#{email}, phone=#{phone}, profile_img=#{profile_img} where menum=#{menum} and del_yn='n'
+		update `member` set id=#{id}, pwd=#{pwd}, addr=#{addr}, email=#{email}, phone=#{phone}
+		<if test="profile_img != null">
+			,profile_img=#{profile_img}
+		</if>
+		 where menum=#{menum} and del_yn='n'
 	</update>
 </mapper>
