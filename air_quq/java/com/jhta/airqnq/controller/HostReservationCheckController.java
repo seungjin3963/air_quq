@@ -64,7 +64,7 @@ public class HostReservationCheckController {
 	@ResponseBody
 	public String ResCheckUpateHouse(int hinum , HttpSession session ) {
 		
-	//	int n=service.ResCheckUpdate(hinum);
+		int n=service.ResCheckUpdate(hinum);
 		int menum=(int)session.getAttribute("menum");
 		
 		List<EP_ManagementVo> ResListH=service.ResListH(menum);

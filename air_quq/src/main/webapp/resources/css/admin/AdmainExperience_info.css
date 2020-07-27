@@ -1,0 +1,17 @@
+@charset "UTF-8";
+#host_ep_font{
+	margin: auto;
+}
+.host_ep_btn{
+	width: 75px;
+	float: right;
+}
+#host_ep_select{
+	width: 10%;
+	float: right;
+	margin-right: 10px;
+}
+.host_ep_text{
+	float: right;
+	width: 15%;
+}

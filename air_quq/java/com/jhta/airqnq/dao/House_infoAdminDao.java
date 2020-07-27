@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.jhta.airqnq.vo.Apply_infoVo;
+import com.jhta.airqnq.vo.EP_ManagementVo;
 import com.jhta.airqnq.vo.HouseInfoVo;
 
 @Repository
@@ -16,6 +17,14 @@ public class House_infoAdminDao {
 	private SqlSessionTemplate sqlsessiontemplate;
 	
 	private final String NAMESPACE="com.jhta.airqnq.mapper.HostInfoMapper";
+	
+	public List<EP_ManagementVo> ExperienceSelect(){
+		return sqlsessiontemplate.selectList(NAMESPACE+".host_experienceInfo");
+	}
+	public int ExperienceCnt(HashMap<String, Object> map) {
+		return sqlsessiontemplate.selectOne(NAMESPACE+".experiencecnt", map);
+	}
+	
 	
 	public List<HouseInfoVo> HouseSelect(HashMap<String, Object> map) {
 		return sqlsessiontemplate.selectList(NAMESPACE+".hostselectpaging", map);

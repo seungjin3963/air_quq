@@ -29,7 +29,7 @@ public class AdminApproveController {
 		//숙소 호스트 승인 기능 구현
 		List<HouseInfoVo> hmlist = service.getHostManagerApprovalList(0);
 		model.addAttribute("hmlist", hmlist);
-		
+		System.out.println(eplist);
 		return ".admin.adminapprove";
 	}
 	

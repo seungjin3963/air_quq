@@ -49,7 +49,7 @@
 			</a>
 		</li>
 			<li class="nav-item">
-				<a class="nav-link" href="#"> 
+				<a class="nav-link" href="/admin/ep_info/list"> 
 					<i class="fas fa-fw fa-tachometer-alt"></i> 
 					<span>체험목록</span>
 				</a>

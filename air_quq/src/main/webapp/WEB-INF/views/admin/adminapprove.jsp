@@ -13,6 +13,7 @@
 	<ul>
 		<li><a href="#tabs-1">장기 단기 숙소</a></li>
 		<li><a href="#tabs-2">온라인 ,대면 체험</a></li>
+	
 		<!-- 영노 -->
 
 	</ul>
@@ -49,11 +50,11 @@
 	    </c:forEach>
 	  </tbody>
   </table>
-
+</div>
 
 	
 	
-	<div id="tabs-2">
+	<div id="tabs-2"><!-- id="tabs-2" -->
 		<br>
 
 		<div class="container">
@@ -102,6 +103,7 @@
 
 		</div>
 	</div>
+	
 	<!-- 반려 이유  modal  영노-->
 	<div class="modal fade" id="reasonModal" role="dialog">
 		<div class="modal-dialog">

@@ -1,7 +1,9 @@
 /**
  * 
  */
-$("#ep_searchPassport").click(function() {
+$('#ep_searchPassport').click(function() {
+	
+	
 	new daum.Postcode({
 		oncomplete : function(data) {
 			var ep_addr = data.address + " " + data.buildingName
@@ -9,7 +11,7 @@ $("#ep_searchPassport").click(function() {
 		}
 	}).open();
 });
-$("#ep_info_loc").click(function() {
+$('#ep_info_loc').click(function() {
 	new daum.Postcode({
 		oncomplete : function(data) {
 			var ep_addr = data.address + " " + data.buildingName
@@ -17,3 +19,8 @@ $("#ep_info_loc").click(function() {
 		}
 	}).open();
 });
+
+$('#aaaa').click(function(){
+	
+	alert("Aaaaaa");
+})

@@ -23,6 +23,7 @@ import com.jhta.airqnq.pageUtil.PageUtil;
 import com.jhta.airqnq.service.House_infoAdminService;
 import com.jhta.airqnq.service.MemberService;
 import com.jhta.airqnq.service.RentService;
+import com.jhta.airqnq.vo.EP_ManagementVo;
 import com.jhta.airqnq.vo.HouseInfoVo;
 import com.jhta.airqnq.vo.JoinVo;
 import com.jhta.airqnq.vo.RentVo;
@@ -163,6 +164,28 @@ public class AdminController {
 		
 		return ".admin.house_infoAdmin";
 	}
+	// 영노
+	/* 관리자 호스트 체험 목록 회원관리 */
+	@RequestMapping("/admin/ep_info/list")
+	public String experienceSelect(Model model,@RequestParam(value="pageNum",defaultValue = "1")int pageNum, String keyword,String field) {
+		
+		HashMap<String, Object> map=new HashMap<String, Object>();
+		
+		map.put("keyword", keyword);
+		map.put("field",field);
+		int totalRowCount=host_infoService.ExperienceCnt(map);
+		
+		
+		
+		List<EP_ManagementVo> experience_infolist=host_infoService.ExperienceSelect(); 
+		model.addAttribute("experience_infolist",experience_infolist);
+		//System.out.println(experience_infolist);
+		return ".admin.experience_infoAdmin";
+		
+	}
+	
+	
+	
 	
 	@GetMapping("/json/houseone")
 	@ResponseBody

@@ -299,13 +299,13 @@ ${clicknum }
 					<h5 style="color: black;">저장 하시겠습니까?</h5>
 					<br>
 					<p style="color: black;">
-						저장 후 마이페이지>체험 관리에서<br> 수정 , 확인 하실 수 있습니다
+						저장 후 마이페이지 > 체험 관리에서<br> 수정 , 확인 하실 수 있습니다. 
 					</p>
-					<br>
+					
 				</div>
 				<div class="modal-footer">
 					<input type="button"
-						class="btn btn-danger btn-icon-split eq_GoHome1" value="저장 후 나가기"
+						class="btn btn-danger btn-icon-split eq_GoHome1" value="저 장 "
 						style="width: 120px;"> <input type="button"
 						class="btn btn-danger btn-icon-split eq_GoHome2" value="나가기"
 						style="width: 120px;">
@@ -406,11 +406,16 @@ ${clicknum }
 
 	<!-- Custom scripts for all pages-->
 	<script src="/resources/js/sb-admin-2.min.js"></script>
-	<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+	
+	
+	
 	<!-- 회원가입 관련 js -->
 	<script type="text/javascript" src="/resources/js/main/main.js"></script>
 	
 	<script type="text/javascript" src="/resources/js/experience/ep_insert.js"></script>
+	
+	<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script type="text/javascript" src="/resources/js/experience/ep_addr.js"></script>
 	
 </body>
 

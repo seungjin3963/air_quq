@@ -115,4 +115,10 @@
 	<select id="houseGetImg" parameterType="int" resultType="string">
 		select img from house_img where hinum=#{hinum} and ordernum=1
 	</select>
+	
+	
+	<!-- 영노 -->
+	<select id="host_experienceInfo" resultType="com.jhta.airqnq.vo.EP_ManagementVo">
+		select * from experience_info where div_type=3 or div_type=4
+	</select>
 </mapper>
