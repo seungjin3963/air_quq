@@ -384,4 +384,23 @@ public class ExperiencePageController {
 		session.removeAttribute("epimglist");
 		return ".home";
 	}
+	
+	//체험 검색 기능 페이지 이동
+	@RequestMapping("/experience/search")
+	public String movingSearchPage() {
+		return ".exSearchPage";
+	}
+	
+	//주소로 체험 검색하는 기능
+	@RequestMapping("/experience/search/result")
+	public String searchExList(String addr, String day, int cnt) {
+//		System.out.println(addr);
+//		System.out.println(day);
+//		System.out.println(cnt);
+		
+		
+		
+		
+		return ".exSearchPageResult";
+	}
 }

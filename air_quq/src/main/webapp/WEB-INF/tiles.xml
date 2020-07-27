@@ -17,6 +17,14 @@
 		<put-attribute name="main" value="/WEB-INF/views/login/login.jsp"></put-attribute>
 	</definition>
 	
+	<definition name=".exSearchPage" extends=".home">
+		<put-attribute name="main" value="/WEB-INF/views/experience/ep_search.jsp"></put-attribute>
+	</definition>
+	<definition name=".exSearchPageResult" extends=".home">
+		<put-attribute name="header" value="/WEB-INF/views/ep_header2.jsp"></put-attribute>
+		<put-attribute name="main" value="/WEB-INF/views/ep_searchMain.jsp"></put-attribute>
+	</definition>
+	
 	<definition name=".profile" extends=".home">
 		<put-attribute name="main" value="/WEB-INF/views/profile.jsp"></put-attribute>
 	</definition>

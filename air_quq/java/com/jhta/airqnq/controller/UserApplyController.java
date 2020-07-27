@@ -43,7 +43,7 @@ public class UserApplyController {
 
 	@RequestMapping(value="/user/apply")
 	public String userapply(Model model,HttpSession session, String start_day, String end_day, int hinum, int people_count) {
-		
+		System.out.println(hinum);
 		Apply_infoVo infovo= house_infoService.HinumSelect(hinum);
 		HashMap<String, String> usercheck=new HashMap<String, String>();
 	

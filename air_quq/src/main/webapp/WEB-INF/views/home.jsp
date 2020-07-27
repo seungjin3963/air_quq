@@ -10,7 +10,7 @@
 					<a class="nav-link" href="#"> 숙소 </a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="#">체험</a>
+					<a class="nav-link" href="/experience/search">체험</a>
 				</li>
 				<li class="nav-item">
 					<a class="nav-link" href="/ep_OnlineList">온라인 체험</a>

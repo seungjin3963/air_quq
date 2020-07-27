@@ -72,10 +72,6 @@
 	</update>
 	
 	
-	
-	
-	
-	
 	<insert id="experienceInsert" parameterType="com.jhta.airqnq.vo.ExperienceVo">
 		insert into experience_info(einum,hinum,sunum,memnum,people,del_yn,div_type,loc,intr,program,title,price,times,sessionnum,mater) 
 		values(0,#{hinum},#{sunum},#{memnum},0,'n',#{div_type},#{loc} ,#{intr},#{program},#{title},#{price},#{times},#{sessionnum},#{mater})
