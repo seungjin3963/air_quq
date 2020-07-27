@@ -6,6 +6,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.jhta.airqnq.vo.JoinVo;
 import com.jhta.airqnq.vo.MemberVo;
 
 @Repository
@@ -25,7 +26,7 @@ public class ProfileDao {
 	}
 	
 	//프로필 정보 업데이트
-	public int updateProfile(MemberVo vo) {
+	public int updateProfile(JoinVo vo) {
 		return sqlSessionTemplate.update(NAMESPACE + ".updateProfile", vo);
 	}
 }

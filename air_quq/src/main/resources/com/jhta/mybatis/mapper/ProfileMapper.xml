@@ -14,7 +14,7 @@
 	</select>
 	
 	<!-- 프로필 정보 업데이트 -->
-	<update id="updateProfile" parameterType="member">
-		update `member` set id=#{id}, pwd=#{pwd}, addr=#{addr}, email=#{email}, phone=#{phone} where menum=#{menum} and del_yn='n'
+	<update id="updateProfile" parameterType="join">
+		update `member` set id=#{id}, pwd=#{pwd}, addr=#{addr}, email=#{email}, phone=#{phone}, profile_img=#{profile_img} where menum=#{menum} and del_yn='n'
 	</update>
 </mapper>

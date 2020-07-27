@@ -5,8 +5,6 @@
 		<div class="col-md-3 ">
 		     <div class="list-group ">
               <a href="#" class="list-group-item list-group-item-action active">프로필 정보</a>
-              <a href="#" class="list-group-item list-group-item-action">숙소 이용 내역</a>
-              <a href="#" class="list-group-item list-group-item-action">내가 등록한 숙소</a>
               
               
             </div> 
@@ -22,12 +20,12 @@
 		            </div>
 		            <div class="row">
 		                <div class="col-md-12">
-		                    <form action="/profile/updateOk" method="post">
+		                    <form action="/profile/updateOk" method="post" enctype="multipart/form-data">
 		                    <input type="hidden" name="menum" value="${ menum }">
                               <div class="form-group row">
                                 <label for="id" class="col-4 col-form-label">아이디</label> 
                                 <div class="col-8">
-                                  <input id="id" name="id" placeholder="Username" class="form-control here" required="required" type="text" value="${ member.id }">
+                                  <input id="id" name="id" placeholder="Username" class="form-control here" required="required" type="text" value="${ member.id }" readonly="readonly">
                                 </div>
                               </div>
                               <div class="form-group row">
@@ -54,12 +52,11 @@
                                   <input id="phone" name="phone" placeholder="Email" class="form-control here" required="required" type="text" value="${ member.phone }">
                                 </div>
                               </div>
-                              <div class="form-group row">
-                                <label for="website" class="col-4 col-form-label">프로필 사진</label> 
-                                <img src="/member/profile/img?menum=${ menum }" width="250">
-                                <div class="col-8">
-                                  
-                                </div>
+                              <div class="form-group row" id="profileUp">
+                                <label for="profileImg" class="col-4 col-form-label">프로필 사진</label> 
+                                <img src="/member/profile/img?menum=${ menum }" width="250" id="profileImg">
+                                
+                                <input type=file name='file1' style='display: none;'>
                               </div>
                               <div class="form-group row">
                                 <div class="offset-4 col-8">
@@ -69,9 +66,32 @@
                             </form>
 		                </div>
 		            </div>
-		            
 		        </div>
 		    </div>
 		</div>
 	</div>
 </div>
+
+<script type="text/javascript">
+	//이미지 클릭시 업로드창 실행
+	$("#profileImg").click(function(){
+		//alert('test');
+		$("input[name='file1']").click();
+	});
+	
+	
+	$("input[name='file1']").change(function(){
+		readURL(this);
+	});
+	
+	//이미지 미리보기
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function(e) {
+                $('#profileImg').attr('src', e.target.result);
+            }
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+</script>

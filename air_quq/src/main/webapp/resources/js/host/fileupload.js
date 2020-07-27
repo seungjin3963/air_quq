@@ -5,8 +5,7 @@ $(".imgAdd").click(function(){
 		$(this).parent().remove();
 	});
 	$(function() {
-	    $(document).on("change",".uploadFile", function()
-	    {
+	    $(document).on("change",".uploadFile", function(){
 	    	var uploadFile = $(this);
 	        var files = !!this.files ? this.files : [];
 	        if (!files.length || !window.FileReader) return; // no file selected, or no FileReader support

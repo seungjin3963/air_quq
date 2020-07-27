@@ -1,5 +1,6 @@
 package com.jhta.airqnq.controller;
 
+import java.io.IOException;
 import java.sql.Blob;
 import java.sql.Date;
 import java.util.List;
@@ -23,12 +24,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.jhta.airqnq.pageUtil.PageUtilForMySql;
 import com.jhta.airqnq.service.HostInfoService;
 import com.jhta.airqnq.service.ProfileService;
 import com.jhta.airqnq.vo.HouseInfoVo;
 import com.jhta.airqnq.vo.HouseSearchVo;
+import com.jhta.airqnq.vo.JoinVo;
 import com.jhta.airqnq.vo.MainHouseInfoVo;
 import com.jhta.airqnq.vo.MemberVo;
 
@@ -150,11 +153,26 @@ public class HomeController {
 	
 	//프로필 정보 업데이트
 	@RequestMapping("/profile/updateOk")
-	public String setProfileUpdate(MemberVo vo) {
+	public String setProfileUpdate(JoinVo vo, MultipartFile file1) {
+		int r = 0;
+		try {
+			
+			byte[] profile_img = file1.getBytes();
+			
+			//DB에 값넣기
+//			System.out.println(">>>>>>>>>>>>>>>>>>>>>" + jvo.getGender());
+			if(profile_img.length <= 16777215) { //MEDIUMBLOB 최대사이즈보다 작을경우에만..
+				vo.setProfile_img(profile_img);
+				r = profileService.updateProfile(vo);
+				System.out.println("프로필업데이트 : " + r);
+			} else {
+				return "error";
+			}
+		} catch(IOException e) {
+			e.printStackTrace();
+		}
 		
-		int n = profileService.updateProfile(vo);
-		
-		if(n>0) {
+		if(r>0) {
 			return "redirect:/";
 		} else {
 			return "error";

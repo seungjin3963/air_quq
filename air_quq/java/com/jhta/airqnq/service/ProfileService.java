@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.jhta.airqnq.dao.ProfileDao;
+import com.jhta.airqnq.vo.JoinVo;
 import com.jhta.airqnq.vo.MemberVo;
 
 @Service
@@ -24,7 +25,7 @@ public class ProfileService {
 	}
 	
 	//프로필 정보 업데이트
-	public int updateProfile(MemberVo vo) {
+	public int updateProfile(JoinVo vo) {
 		return dao.updateProfile(vo);
 	}
 }
