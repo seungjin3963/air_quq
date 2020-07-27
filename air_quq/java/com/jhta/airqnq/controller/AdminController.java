@@ -4,6 +4,7 @@ import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -209,57 +210,112 @@ public class AdminController {
 		return returndata;
 	}
 	
-	/* 데이터 통계 */
-	@GetMapping("/admin/hoststatistics")
-	public String hoststatistics(Model model) {
-		List<HouseInfoVo> houselist = host_infoService.Okhouseinfo();
-		List<RentVo> rentlist= rentservice.rentdata();
-		
-		String hostcnttot=null;
-		String rentcnttot=null;
-
-		int hostcnt=0;
-		int rentcnt=0;
-		
-		for (int i = 1; i < 13; i++) {
-			hostcnt=0;
-			rentcnt=0;
-			for(HouseInfoVo vo: houselist) {
-				if(vo.getStartdate() == null) {
-					
-				}else {
-				SimpleDateFormat sd=new SimpleDateFormat("yyyy-MM-dd"); 
-				String startdate=sd.format(vo.getStartdate());
-				if(startdate.substring(5, 7).contains(i+"")) hostcnt++;
-				}
-			}
+	/* 데이터 통계 */	
+	@GetMapping("/admin/hoststatistics")	
+	public String hoststatistics(Model model) {	
+		List<HouseInfoVo> houselist = host_infoService.Okhouseinfo();	
+		List<RentVo> rentlist= rentservice.rentdata();	
 			
-			for(RentVo vo : rentlist) {
-				SimpleDateFormat sd=new SimpleDateFormat("yyyy-MM-dd"); 
-				String startdate=sd.format(vo.getStartrent());
-				if(startdate.substring(5, 7).contains(i+"")) rentcnt++;
-			}
-			if(i == 1) {
-				hostcnttot=hostcnt+"/";
-				rentcnttot=rentcnt+"/";
-			}else {
-				if(i==12) {
-					hostcnttot+=hostcnt;
-					rentcnttot+=rentcnt;
-				}else {
-					hostcnttot+=hostcnt+"/";
-					rentcnttot+=rentcnt+"/";
-				}
-			}
+		String hostcnttot=null;	
+		String rentcnttot=null;	
+		String houseprice=null;	
+		String pricerange=null;	
+		int hostcnt=0;	
+		int rentcnt=0;	
+		int pricecnt=0;	
+			
+		int maxprice=houselist.get(0).getPrice();	
+			
+		ArrayList<Integer> pricelist=new ArrayList<Integer>();	
+		ArrayList<Integer> ranglist=new ArrayList<Integer>();	
+			
+		for (int i = 1; i < 13; i++) {	
+			hostcnt=0;	
+			rentcnt=0;	
+			for(HouseInfoVo vo: houselist) {	
+				if(vo.getStartdate() == null) {	
+						
+				}else {	
+				SimpleDateFormat sd=new SimpleDateFormat("yyyy-MM-dd"); 	
+				String startdate=sd.format(vo.getStartdate());	
+				if(startdate.substring(5, 7).contains(i+"")) hostcnt++;	
+				}	
+			}	
+				
+			for(RentVo vo : rentlist) {	
+				SimpleDateFormat sd=new SimpleDateFormat("yyyy-MM-dd"); 	
+				String startdate=sd.format(vo.getStartrent());	
+				if(startdate.substring(5, 7).contains(i+"")) rentcnt++;	
+			}	
+			if(i == 1) {	
+				hostcnttot=hostcnt+"/";	
+				rentcnttot=rentcnt+"/";	
+			}else {	
+				if(i==12) {	
+					hostcnttot+=hostcnt;	
+					rentcnttot+=rentcnt;	
+				}else {	
+					hostcnttot+=hostcnt+"/";	
+					rentcnttot+=rentcnt+"/";	
+				}	
+			}	
+		}	
+			
+		for(HouseInfoVo vo : houselist) {	
+			if(vo.getPrice() == null) {}	
+			else {	
+				if(maxprice < vo.getPrice()) {	
+					maxprice=vo.getPrice();	
+				}	
+				pricelist.add(vo.getPrice());	
+			}	
+		}	
+		
+		int eachprice=maxprice/10;
+		
+		for (int i = 0; i < maxprice; i=i+eachprice) {	
+			if(i == 0) {	
+				pricerange=i+"원~"+(i+eachprice)+"원/";	
+				ranglist.add(i);
+			}else {	
+				if(i == maxprice) {	
+					pricerange+=i+"원~"+(i+eachprice)+"원";	
+				}else {	
+					if(i == maxprice-eachprice) {
+						pricerange+=i+"원~"+(i+eachprice)+"원";	
+					}else if(i < maxprice-eachprice) {
+						pricerange+=i+"원~"+(i+eachprice)+"원/";	
+					}
+				}	
+				ranglist.add(i);	
+			}	
 		}
 		
-		model.addAttribute("hostcnttot", hostcnttot);
-		model.addAttribute("rentcnttot", rentcnttot);
+		ranglist.add(maxprice);
 		
-		return ".admin.statisticsadmin";
+		for (int i = 0; i < ranglist.size()-1; i++) {	
+			pricecnt=0;	
+			for (int j = 0; j < pricelist.size()-1; j++) {	
+				if(ranglist.get(i)<=pricelist.get(j) && ranglist.get(i+1)>=pricelist.get(j)) {	
+					pricecnt++;	
+				}
+			}	
+			if(i==0) {	
+				houseprice=pricecnt+"/";	
+			}else {	
+				if(i==ranglist.size()-2) {
+					houseprice+=pricecnt;	
+				}else {
+					houseprice+=pricecnt+"/";	
+				}
+			}	
+		}	
+		
+		model.addAttribute("hostcnttot", hostcnttot);	
+		model.addAttribute("rentcnttot", rentcnttot);	
+		model.addAttribute("houseprice", houseprice);	
+		model.addAttribute("pricerange", pricerange);	
+			
+		return ".admin.statisticsadmin";	
 	}
-	
-	
-	
-	
 }

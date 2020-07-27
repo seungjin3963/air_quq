@@ -11,46 +11,19 @@
 		height: 640px;
 	}
 	
+	#hostonemoney{
+		width: 1110px;
+		height: 640px;
+	}
+	
+	#fontcenter{
+		text-align: center;
+		margin-top: 20px;
+	}
 	
 </style>
-<script src="/resources/js/demo/chart.js/Chart.min.js"></script>
-<script src="/resources/js/demo/chart-area-demo.js"></script>
-<script src="/resources/js/demo/chart-bar-demo.js"></script>
 
-<%-- <div class="container">
-		<h1 id="fontcenter">통계</h1>
-		<div class="row">
-			<div class="col-8">
-				<nav>
-					<div class="nav nav-tabs" id="nav-tab" role="tablist">
-  						<a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#hostmonthcnt" role="tab"
-							aria-controls="nav-home" aria-selected="true">월별 호스트 등록수</a>
-						<a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#applycntdiv" role="tab"
-							aria-controls="nav-profile" aria-selected="false">월별 예약수</a>
-						<a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab"
-							aria-controls="nav-profile" aria-selected="false">지역별 호스트 등록수</a>
-					</div>
-				</nav>
-			</div>
-		<div class="tab-content" id="nav-tabContent">
-			<div class="tab-pane fade show active" id="hostmonthcnt" role="tabpanel" aria-labelledby="nav-home-tab">
-				<canvas id="hostEnrollment"></canvas>
-				<input type="hidden" value="${hostcnttot }" id="hostcntdata">
-			</div>
-		</div>
-
-		<div class="tab-content" id="nav-tabContent">
-			<div class="tab-pane fade show active" id="applycntdiv" role="tabpanel" aria-labelledby="nav-home-tab">
-				<canvas id="applycnt"></canvas>
-				<input type="hidden" value="${rentcnttot }" id="applycntdata">
-			</div>
-		</div>
-	</div>
-</div> --%>
- 
- 
- <div class="container">
- 	<h1 id="fontcenter">통계</h1>
+<h1 id="fontcenter">통계</h1>
  	<ul class="nav nav-tabs">
 	    <li class="nav-item">
 	      <a class="nav-link active" href="#applycntdiv">월별 예약자수</a>
@@ -59,7 +32,7 @@
 	      <a class="nav-link" href="#hostmonthcnt">월별 호스트 등록수</a>
 	    </li>
 	    <li class="nav-item">
-	      <a class="nav-link" href="#menu2">지역별 호스트 등록수</a>
+	      <a class="nav-link" href="#hostmoneycnt">금액별 호스트 수</a>
 	    </li>
   	</ul>
  
@@ -72,23 +45,30 @@
     	<canvas id="hostEnrollment"></canvas>
 		<input type="hidden" value="${hostcnttot }" id="hostcntdata">
     </div>
-    <div id="menu2" class="container tab-pane fade"><br>
-      <h3>Menu 2</h3>
-      asdfjahdfjklhajlskdjk
+    <div id="hostmoneycnt" class="container tab-pane fade"><br>
+      <canvas id="hostonemoney"></canvas>
+	  <input type="hidden" value="${houseprice }" id="houseprice">
+	  <input type="hidden" value="${pricerange }" id="pricerange">
     </div>
-  </div>
-</div>
+ </div>
+
+<script src="/resources/js/demo/chart.js/Chart.min.js"></script>
 
 <script>
-var ctx = document.getElementById("hostEnrollment");
+var hostEnrollment = document.getElementById("hostEnrollment");
+var applycnt = document.getElementById("applycnt");
+var hostonemoney = document.getElementById("hostonemoney");
+
 var hostcntdata=$("#hostcntdata").val().split("/");
 var applycntdata=$("#applycntdata").val().split("/");
+var houseprice=$("#houseprice").val().split("/");
+var pricerange=$("#pricerange").val().split("/");
 
 $(".nav-tabs a").click(function(){
 	$(this).tab('show');
   });
 
-var myLineChart = new Chart(ctx, {
+var myLineChart = new Chart(hostEnrollment, {
   type: 'line',
   data: {
     labels: ["1월", "2월", "3월", "4월", "5월", "6월", "7월", "8월", "9월", "10월", "11월", "12월"],
@@ -153,8 +133,8 @@ var myLineChart = new Chart(ctx, {
   }
 });
 
-	var ctx = document.getElementById("applycnt");
-	var myBarChart = new Chart(ctx, {
+	
+	var myBarChart = new Chart(applycnt, {
 	  type: 'bar',
 	  data: {
 	    labels: ["1월", "2월", "3월", "4월", "5월", "6월", "7월", "8월", "9월", "10월", "11월", "12월"],
@@ -208,6 +188,33 @@ var myLineChart = new Chart(ctx, {
 	    },
 	  }
 	});	
+	
+	var myPieChart = new Chart(hostonemoney, {
+	  type: 'doughnut',
+	  data: {
+	    labels: pricerange,
+	    datasets: [{
+	      data: houseprice,
+	      backgroundColor: ['#FF1493', '#FF46C5', '#FF1E9D', '#FF50CF', '#FF28A7', '#FF5AD9', '#FF32B1', '#FF64E3', '#FF3CBB', '#FF6EED'],
+	      hoverBackgroundColor: ['#B9062F', '#CD4275', '#B91A4D', '#D24C7F', '#BE2457', '#D75689', '#2c9faf', '#C32E61', '#DC6093', '#C8386B'],
+	      hoverBorderColor: "rgba(234, 236, 244, 1)",
+	    }],
+	  },
+	  options: {
+		  tooltips: {
+	      backgroundColor: "rgb(255,255,255)",
+	      bodyFontColor: "#858796",
+	      borderColor: '#dddfeb',
+	      FontSize: 15,
+	      borderWidth: 0,
+	      xPadding: 30,
+	      yPadding: 30,
+	      displayColors: false,
+	      caretPadding: 10, 
+	    },
+	    cutoutPercentage: 0
+	  },
+	});
 
 
 </script>

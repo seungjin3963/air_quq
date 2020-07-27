@@ -30,7 +30,7 @@ $(function(){
 		$("#selecttext").val("");
 	});
 
-	/* 대한민국 표준시 yyy-mm-dd로 변경 */
+	/* 대한민국 표준시 yyyy-mm-dd로 변경 */
 	var datechange = function(datetime) {
 		return datetime.toISOString().slice(0, 10);
 	}
