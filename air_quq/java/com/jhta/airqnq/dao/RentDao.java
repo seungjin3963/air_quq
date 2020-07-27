@@ -27,5 +27,8 @@ public class RentDao {
 		return sqlsessiontemplate.selectList(NAMESPACE+".rentdata");
 	}
 	
+	public List<RentVo> hinumrentselect(int hinum){
+		return sqlsessiontemplate.selectList(NAMESPACE+".hinumrentselect", hinum);
+	}
 	
 }

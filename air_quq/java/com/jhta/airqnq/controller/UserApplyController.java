@@ -2,10 +2,14 @@ package com.jhta.airqnq.controller;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
+import java.lang.reflect.Array;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.ServletOutputStream;
@@ -23,6 +27,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.jhta.airqnq.service.ApplyService;
 import com.jhta.airqnq.service.House_infoAdminService;
 import com.jhta.airqnq.service.MemberService;
+import com.jhta.airqnq.service.RentService;
 import com.jhta.airqnq.vo.ApplyVo;
 import com.jhta.airqnq.vo.Apply_infoVo;
 import com.jhta.airqnq.vo.JoinVo;
@@ -40,13 +45,54 @@ public class UserApplyController {
 
 	@Autowired
 	private House_infoAdminService house_infoService;
+	
+	@Autowired
+	private RentService rentservice;
 
 	@RequestMapping(value="/user/apply")
 	public String userapply(Model model,HttpSession session, String start_day, String end_day, int hinum, int people_count) {
-		System.out.println(hinum);
 		Apply_infoVo infovo= house_infoService.HinumSelect(hinum);
 		HashMap<String, String> usercheck=new HashMap<String, String>();
-	
+		List<RentVo> hinumrentlist=rentservice.hinumrentselect(hinum);
+		
+		ArrayList<String> temp=new ArrayList<String>();
+		
+		SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
+		
+		for(RentVo vo : hinumrentlist) {
+			  
+			long timetemp=vo.getEndrent().getTime()-vo.getStartrent().getTime();
+			
+			long daybetween=timetemp/(24*60*60*1000);
+			
+			for (int i = 0; i < temp.size(); i++) {
+				if(!(temp.get(i).equals(sdf.format(vo.getStartrent())))) {
+					temp.add(sdf.format(vo.getStartrent()));
+				}
+			}
+			
+			for (int i = 0; i < daybetween; i++) {
+				Calendar cal = Calendar.getInstance();
+				Date hinumrentdate = vo.getStartrent();
+				
+				cal.setTime(hinumrentdate);
+				cal.add(Calendar.DATE,1);
+				
+				Date tempday=new Date(cal.getTimeInMillis());
+				
+				
+				for (int j = 0; j < temp.size(); j++) {
+					if(!(temp.get(i).equals(sdf.format(vo.getStartrent())))) {
+						temp.add(sdf.format(tempday));
+					}
+				}
+			}
+		}
+		
+		for (int i = 0; i < temp.size(); i++) {
+			System.out.println("출력:"+temp.get(i));
+		}
+		
 		String start=start_day.replace("-", "/");
 		String end=end_day.replace("-", "/");
 		
@@ -82,8 +128,6 @@ public class UserApplyController {
 			System.out.println("날짜 오류 :"+pe);
 		}
 		
-//		model.addAttribute("infovo", infovo);
-//		model.addAttribute("usercheck", usercheck);
 		return ".apply.userapply";
 	}
 	

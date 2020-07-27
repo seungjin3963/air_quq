@@ -58,4 +58,9 @@
 	<select id="rentdata" resultType="rentVo">
 		select * from rent where status=1
 	</select>
+	
+	<!-- 하우스 번호로 예약자 데이터 뽑기 -->	
+	<select id="hinumrentselect" parameterType="int" resultType="rentVo">	
+		select * from rent where hinum=#{hinum}		
+	</select>
 </mapper>

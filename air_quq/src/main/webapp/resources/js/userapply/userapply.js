@@ -65,6 +65,12 @@ $(function(){
 		});
 		
 		// datepicker
+		var hoststartdate=$("#hoststartdate").val().split("-");
+		var hostenddate=$("#hostenddate").val().split("-");
+		
+		var startdatepicker=new Date(hoststartdate[0], Number(hoststartdate[1])-1, hoststartdate[2]);
+		var endtdatepicker=new Date(hostenddate[0], Number(hostenddate[1])-1, hostenddate[2]);
+		
 		var onswitch=true;
 		var tempdate;
 		
@@ -78,7 +84,8 @@ $(function(){
 			showMonthAfterYear: true,
 			dayNamesMin:["일","월","화","수","목","금","토"],
 			monthNames: ["1월","2월","3월","4월","5월","6월","7월","8월","9월","10월","11월","12월"],
-			minDate : 0,
+			minDate : startdatepicker,
+			maxDate: endtdatepicker,
 			onSelect:function(d){
 				
 				if(onswitch){
