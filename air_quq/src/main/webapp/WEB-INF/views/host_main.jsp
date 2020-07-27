@@ -66,7 +66,7 @@
    <nav aria-label="Page navigation example">
 	  <ul class="pagination justify-content-center">
 	   <c:choose>
-	    	<c:when test="${ pageUtil.pageNum < pageUtil.totalRowCount || pageUtil.pageNum ==1 }">
+	    	<c:when test="${ pageUtil.pageBlockCount > pageUtil.totalPageCount || pageUtil.pageNum ==1 }">
 		    	<li class="page-item disabled">
 			      <a class="page-link" href="#" tabindex="-1">이전</a>
 			    </li>
@@ -92,7 +92,7 @@
 			<li class="page-item active"><a class="page-link" href="/search/host?pageNum=${ i }&locationAdress=${addr}&start_day=${start_day}&end_day=${end_day}&people_count=${pageUtil.pageNum}">${ pageUtil.pageNum }</a></li>   	
 		</c:if>
 	    <c:choose>
-	    	<c:when test="${ pageUtil.pageNum < pageUtil.totalPageCount }">
+	    	<c:when test="${ pageUtil.pageBlockCount < pageUtil.totalPageCount }">
 	    		<li class="page-item page-item">
 			   		<a class="page-link" href="/search/host?pageNum=${ pageUtil.endPageNum + 1 }&locationAdress=${addr}&start_day=${start_day}&end_day=${end_day}&people_count=${people_count}">다음</a>
 				</li>

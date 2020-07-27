@@ -80,11 +80,14 @@ public class HomeController {
 		
 		//System.out.println("페이지번호:" + pageNum);
 		
-		int limit = 0 + pageNum-1;
-		int pageCount = 5;
+		int rowBlockCount = 4;
+		int pageBlockCount = 5;
+		
+		int limit = (pageNum-1) * rowBlockCount;
+		System.out.println("limit : " + limit);
 		
 		//관리자 가 승인한 게시물만 검색
-		HouseSearchVo vo = new HouseSearchVo(locationAdress, people_count, 1, start_day, end_day, "n", 1, limit, pageCount);
+		HouseSearchVo vo = new HouseSearchVo(locationAdress, people_count, 1, start_day, end_day, "n", 1, limit, rowBlockCount);
 		
 		List<MainHouseInfoVo> list = getHouseInfo(vo);
 		
@@ -96,17 +99,16 @@ public class HomeController {
 		
 		//검색된 전체글 개수
 		int getSearchCount = hostService.getSearchCount(vo);
-		//System.out.println("검색된 전체글 개수" + getSearchCount);
+		System.out.println("검색된 전체글 개수" + getSearchCount);
 		
 		
 		//페이징 처리를위한 객체
-		int rowBlockCount = 5;
-		int pageBlockCount = 5;
+		
 		PageUtilForMySql pageUtil = new PageUtilForMySql(pageNum, getSearchCount, rowBlockCount, pageBlockCount);
 		session.setAttribute("pageUtil", pageUtil);
 		
 		System.out.println(pageUtil.getEndPageNum());
-		//System.out.println("전체 페이지 " + pageUtil.getTotalPageCount());
+		System.out.println("전체 페이지 " + pageUtil.getTotalPageCount());
 		
 		return ".hostsearch";
 	}
