@@ -31,4 +31,8 @@ public class ApplyDao {
 	public void delRent(Map<String, Object> map) {
 		session.update(NAMESPACE + ".delRent", map);
 	}
+
+	public List<RentListVo> applyExpList(int menum) {
+		return session.selectList(NAMESPACE + ".applyExpList", menum);
+	}
 }

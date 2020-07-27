@@ -19,9 +19,11 @@ public class ReviewAndGradeService {
 	public void reviewAndGradeSave(Map<String, Object> map) {
 		int renum = dao.selReviewAndGrade(map);
 		if(renum == -1) {
+			System.out.println("-1");
 			dao.insReview(map);
 			dao.insGrade(map);
 		}else {
+			System.out.println("update");
 			map.put("renum", renum);
 			dao.updReview(map);
 			dao.updGrade(map);

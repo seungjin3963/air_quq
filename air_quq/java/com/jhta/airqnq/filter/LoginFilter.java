@@ -76,7 +76,7 @@ public class LoginFilter implements Filter {
 			return true;
 		} else if (uri.equals("/user/applyCheck")) {
 			return false;
-		} else if (uri.startsWith("/user/apply")) {
+		} else if (uri.equals("/user/apply")) {
 			return true;
 		} else if (uri.startsWith("/upload")) {
 			return true;

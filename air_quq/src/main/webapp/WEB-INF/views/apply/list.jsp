@@ -8,9 +8,24 @@
 	<div class="row text-center">
 		<h1>예약 현황</h1>
 	</div>
+	<div class="navbar navbar-expand-lg navbar-light bg-light mb-5">
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarNav">
+			<ul class="navbar-nav">
+				<li class="nav-item active border-bottom-danger" id="houseNavItem">
+					<a class="nav-link" href="javascript:houseApplyList();">숙소</a>
+				</li>
+				<li class="nav-item" id="expNavItem">
+					<a class="nav-link" href="javascript:expApplyList()">체험</a>
+				</li>
+			</ul>
+		</div>
+	</div>
 	<div class="row">
 		<div class="col-md-12">
-			<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+			<table class="table table-bordered" id="houseDataTable" width="100%" cellspacing="0">
 				<thead>
 					<tr>
 						<th class="d-none">예약 번호</th>
@@ -27,69 +42,23 @@
 					</tr>
 				</thead>
 				<tbody>
-					<c:forEach var="list" items="${list }">
-						<c:choose>
-							<c:when test="${list.status == 1 }">
-								<c:set var="status" value="미취소"></c:set>
-							</c:when>
-							<c:when test="${list.status == 2 }">
-								<c:set var="status" value="취소"></c:set>
-								<c:set var="statusBackColor" value="cencelBackColor"></c:set>
-							</c:when>
-						</c:choose>
-						<tr class=${statusBackColor }>
-							<td class="d-none">${list.rtnum }</td>
-							<td class="d-none">${list.hinum }</td>
-							<td>${list.title }</td>
-							<td>${list.startrent }</td>
-							<td>${list.endrent }</td>
-							<td>${status }</td>
-							<td>${list.person }</td>
-							<td>${list.pay_price }</td>
-							<td>
-								<c:choose>
-									<c:when test="${list.rag_yn == 'n'}">
-										<i class="fa fa-times text-danger fa-2x"></i>
-									</c:when>
-									<c:otherwise>
-										<i class="fa fa-check text-info fa-2x"></i>
-									</c:otherwise>
-								</c:choose>
-							</td>
-
-							<fmt:formatDate var="endrant" type="date" value="${list.endrent}" pattern="yyyyMMdd" />
-							<td>
-								<c:choose>
-									<c:when test="${endrant - now > 0 }">
-										<a class="text-success openReviewAndGrade" href="#" data-toggle="modal" data-target="#reviewAndGradeModal" data-rtnum="${list.rtnum }" data-hinum="${list.hinum }">
-											<i class="fa fa-thumbs-up fa-2x"></i>
-										</a>
-									</c:when>
-									<c:otherwise>
-										<a class="text-Secondary disable">
-											<i class="fa fa-thumbs-up fa-2x"></i>
-										</a>
-									</c:otherwise>
-								</c:choose>
-							</td>
-
-							<fmt:formatDate var="startrent" type="date" value="${list.startrent}" pattern="yyyyMMdd" />
-							<td>
-								<c:choose>
-									<c:when test="${startrent - now > 0 && list.status == 1 }">
-										<a href="javascript:refundmodal(${list.rtnum })" class="text-warning">
-											<i class="fa fa-calendar-times-o fa-2x"></i>
-										</a>
-									</c:when>
-									<c:otherwise>
-										<a class="text-Secondary disable">
-											<i class="fa fa-calendar-times-o fa-2x"></i>
-										</a>
-									</c:otherwise>
-								</c:choose>
-							</td>
-						</tr>
-					</c:forEach>
+				</tbody>
+			</table>
+			<table class="table table-bordered" id="expDataTable" width="100%" cellspacing="0">
+				<thead>
+					<tr>
+						<th class="d-none">예약 번호</th>
+						<th class="d-none">숙소 번호</th>
+						<th>숙소 제목</th>
+						<th>시작 날짜</th>
+						<th>상태</th>
+						<th>결제 금액</th>
+						<th>리뷰 작성 여부</th>
+						<th>리뷰 & 평점</th>
+						<th>예약 취소</th>
+					</tr>
+				</thead>
+				<tbody>
 				</tbody>
 			</table>
 		</div>
@@ -272,8 +241,11 @@
 			<div class="modal-body">
 				<div class="container">
 					<input type="hidden" id="rtnumhidden">
-					<textarea rows="10" cols="50" placeholder="환불 사유를 써주세요"></textarea><br>
-					<input type="checkbox" id="selectaccount">다른 계좌로 환불 받기<br>
+					<textarea rows="10" cols="50" placeholder="환불 사유를 써주세요"></textarea>
+					<br>
+					<input type="checkbox" id="selectaccount">
+					다른 계좌로 환불 받기
+					<br>
 					<div id="diffrentaccount">
 						<select id="banknumber">
 							<option value="03">기업은행</option>
@@ -294,17 +266,13 @@
 							<option value="88">통합신한은행(신한,조흥)</option>
 						</select>
 						<div class="row">
-							<div class="col-md-3">
-								예금주
-							</div>
+							<div class="col-md-3">예금주</div>
 							<div class="col-md-9">
 								<input type="text" id="accountname">
 							</div>
 						</div>
 						<div class="row" id="accountdiv">
-							<div class="col-md-3">
-								계좌번호
-							</div>
+							<div class="col-md-3">계좌번호</div>
 							<div class="col-md-9">
 								<input type="text" id="accountnumber" placeholder="숫자로만 입력해 주세요">
 							</div>
@@ -319,4 +287,5 @@
 		</div>
 	</div>
 </div>
+<script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script> 
 <script src="/resources/js/userapply/list.js"></script>

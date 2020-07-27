@@ -9,6 +9,7 @@
 			,(select case when count(*) = 0 then 'n' else 'y' end as rag_yn from review where rtnum = a.rtnum) rag_yn
 		from rent a
 		where menum = #{menum}
+		and status = 1
 	</select>
 	<update id="delGrade" parameterType="map">
 		update grade
@@ -33,6 +34,14 @@
 		where rtnum = #{rtnum}
 		and del_yn = 'n'
 	</update>
+	<select id="applyExpList" parameterType="int" resultType="rentList">
+		select rtnum,hinum,startrent,status,pay_price
+			,(select title from house_info where hinum = a.hinum) title
+			,(select case when count(*) = 0 then 'n' else 'y' end as rag_yn from review where rtnum = a.rtnum) rag_yn
+		from rent a
+		where menum = #{menum}
+		and status in(2, 3)
+	</select>
 	
 	<!-- 승진 -->
 	<!-- 신청한 정보 db에 넣기 -->
@@ -49,6 +58,4 @@
 	<select id="rentdata" resultType="rentVo">
 		select * from rent where status=1
 	</select>
-	
-	
 </mapper>

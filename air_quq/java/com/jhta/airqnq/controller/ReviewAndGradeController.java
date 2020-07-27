@@ -6,9 +6,9 @@ import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
+import org.json.JSONArray;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.jhta.airqnq.service.ApplyService;
 import com.jhta.airqnq.service.ReviewAndGradeService;
 import com.jhta.airqnq.vo.GradeOneVo;
+import com.jhta.airqnq.vo.RentListVo;
 import com.jhta.airqnq.vo.ReviewAndGradeVo;
 
 @Controller
@@ -27,10 +28,22 @@ public class ReviewAndGradeController {
 	private ReviewAndGradeService ragService;
 
 	@GetMapping("/user/apply/list")
-	public String list(Model model, HttpSession session) {
-		int menum = (int) session.getAttribute("menum");
-		model.addAttribute("list", applyService.applyList(menum));
+	public String list() {
 		return ".apply.list";
+	}
+
+	@GetMapping("/user/apply/getApplyExpList")
+	@ResponseBody
+	public List<RentListVo> getApplyExpList(HttpSession session) {
+		int menum = (int) session.getAttribute("menum");
+		return applyService.applyExpList(menum);
+	}
+	
+	@GetMapping("/user/apply/getApplyHouseList")
+	@ResponseBody
+	public List<RentListVo> getApplyHouseList(HttpSession session) {
+		int menum = (int) session.getAttribute("menum");
+		return applyService.applyList(menum);
 	}
 
 	@PostMapping("/user/apply/reviewAndGradeSave")
@@ -55,7 +68,7 @@ public class ReviewAndGradeController {
 			return "error";
 		}
 	}
-	
+
 	@PostMapping("/user/selReviewGrade")
 	@ResponseBody
 	public List<GradeOneVo> selReviewGrade(int rtnum, int hinum) {

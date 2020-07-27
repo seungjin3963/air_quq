@@ -25,4 +25,8 @@ public class ApplyService {
 		dao.delReview(map);
 		dao.delRent(map);
 	}
+
+	public List<RentListVo> applyExpList(int menum) {
+		return dao.applyExpList(menum);
+	}
 }
