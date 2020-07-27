@@ -4,6 +4,7 @@
 
 <link href="/resources/css/adminPage.css" rel="stylesheet"
 	type="text/css">
+
 <br>
 <br>
 
@@ -33,9 +34,9 @@
 	      <th scope="col"></th>
 	    </tr>
 	  </thead>
-	  <tbody>
+	  <tbody id="Tablehmlist">
 	     <c:forEach items="${ hmlist }" var="list">
-		    <tr>
+		    <tr >
 		      <td>${ list.hinum }</td>
 		      <td>${ list.title }</td>
 		      <td>${ list.addr }</td>
@@ -50,6 +51,15 @@
 	    </c:forEach>
 	  </tbody>
   </table>
+	  <div class="row">
+		<div class="col-md-5"></div>
+		<div class="col-md-3">
+			<input type="button" class="btn btn-danger btn-icon-split" value="<<" style="width:15%;" id="hm_approveM">
+			<span id="hm_pageNum">${housePage.pageNum }</span> / <span id="hm_totalPageCount">${housePage.totalPageCount}</span>
+			<input type="button" class="btn btn-danger btn-icon-split" value=">>"  style="width:15%;" id="hm_approveP">
+		</div>
+		<div class="col-md-4"></div>
+		</div>
 </div>
 
 	
@@ -73,7 +83,7 @@
 						<th>반 려</th>
 					</tr>
 				</thead>
-				<tbody>
+				<tbody id="Tableeplist">
 					<c:forEach var="i" items="${eplist }">
 						<tr class="epappTr">
 
@@ -101,6 +111,17 @@
 				</tbody>
 			</table>
 
+		</div>
+		<br>
+		<br>
+		<div class="row">
+		<div class="col-md-4"></div>
+		<div class="col-md-3">
+			<input type="button" class="btn btn-danger btn-icon-split" value="<<" style="width:15%;" id="ep_approveM">
+			<span id="ep_pageNum">${experiencePage.pageNum }</span> / <span id="ep_totalPageCount">${experiencePage.totalPageCount}</span>
+			<input type="button" class="btn btn-danger btn-icon-split" value=">>"  style="width:15%;" id="ep_approveP">
+		</div>
+		<div class="col-md-5"></div>
 		</div>
 	</div>
 	
@@ -187,8 +208,7 @@
 			</div>
 		</div>
 	</div>
-
-
-	<script type="text/javascript"
-		src="/resources/js/experience/ep_approve.js"></script>
+	
+	<script type="text/javascript"  src="/resources/js/experience/ep_approve.js"></script>
+	<script type="text/javascript"  src="/resources/js/experience/ep_approve.js"></script>
 	<!-- 영노 -->

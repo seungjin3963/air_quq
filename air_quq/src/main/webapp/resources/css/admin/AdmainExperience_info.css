@@ -15,3 +15,29 @@
 	float: right;
 	width: 15%;
 }
+#ep_pagediv{
+	width: 150px;
+	height: auto;
+	float:right;
+	margin: auto;
+	
+}
+#ep_pageBtnR{
+	float: left;
+}
+#ep_pageBtnL{
+	float: left;
+}
+#ep_pageNum{
+	width: auto;
+
+	margin: auto;
+}
+#ep_pageNum a{
+	float: left;
+}
+
+
+.hovertr:hover {
+	background-color: #cfd1d6 !important;
+}

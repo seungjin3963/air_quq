@@ -28,11 +28,16 @@ select hinum from experience_info where memnum=#{memnum} and (div_type=31 or div
 inner join house_img h on e.hinum=h.hinum order by ordernum asc limit 1;
 	</select>
 	
-	
-	<select id="approvelist" resultType="com.jhta.airqnq.vo.EP_ManagementVo">
+	<select id="approvelist" resultType="com.jhta.airqnq.vo.EP_ManagementVo" parameterType="int">
 		SELECT e.memnum , e.div_type ,e.title, e.hinum ,s.subname ,e.loc , e.intr , e.program , e.price, e.times , e.mater
-		FROM experience_info e INNER JOIN subDetail s ON e.sunum = s.sunum and (e.div_type=32  or e.div_type=42)
+		FROM experience_info e INNER JOIN subDetail s ON e.sunum = s.sunum and (e.div_type=32  or e.div_type=42) limit #{row} , 5
 	</select>
+	<select id="approvelistCount" resultType="int">
+		select count(*) from (
+		SELECT e.memnum , e.div_type ,e.title, e.hinum ,s.subname ,e.loc , e.intr , e.program , e.price, e.times , e.mater
+		FROM experience_info e INNER JOIN subDetail s ON e.sunum = s.sunum and (e.div_type=32  or e.div_type=42) )a
+	</select>
+	
 	<select id="apappimg" parameterType="int" resultType="com.jhta.airqnq.vo.EP_ManagementVo">
 		select hinum, img , ordernum from house_img where hinum=#{hinum}
 	</select>
@@ -40,6 +45,7 @@ inner join house_img h on e.hinum=h.hinum order by ordernum asc limit 1;
 		SELECT e.memnum , e.div_type ,e.title, e.hinum ,s.subname ,e.loc , e.intr , e.program , e.price, e.times , e.mater
 		FROM experience_info e INNER JOIN subDetail s ON e.sunum = s.sunum and (e.div_type=32  or e.div_type=42 or e.div_type=39  or e.div_type=49) and hinum=#{hinum};
 	</select>
+
 	<update id="epappOk" parameterType="hashmap">
 		update experience_info set div_type=#{div_type} , regdate=now() where hinum=#{hinum}
 	</update>
@@ -47,11 +53,14 @@ inner join house_img h on e.hinum=h.hinum order by ordernum asc limit 1;
 		update experience_info set div_type=#{divtype} , reason=#{text} where hinum=#{hinum}
 	</update>
 	
-	
+	<!-- 숙소 호스트 list count -->
+	<select id="approveHmC" resultType="int">
+		select count(*) from house_info where manager_check=#{manager_check} and del_yn='n'
+	</select>
 	
 	<!-- 숙소 호스트 관리자 등록 기능 -->
-	<select id="setManagerCheck" parameterType="int" resultType="house_info">
-		select * from house_info where manager_check=#{manager_check} and del_yn='n'
+	<select id="setManagerCheck" parameterType="hashmap" resultType="house_info">
+		select * from house_info where manager_check=#{manager_check} and del_yn='n' limit #{row} , 5
 	</select>
 	
 	<!-- 숙소 호스트 관리자 승인 -->

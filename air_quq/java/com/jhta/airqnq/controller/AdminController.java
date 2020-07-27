@@ -12,6 +12,7 @@ import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -166,24 +167,51 @@ public class AdminController {
 		return ".admin.house_infoAdmin";
 	}
 	// 영노
-	/* 관리자 호스트 체험 목록 회원관리 */
-	@RequestMapping("/admin/ep_info/list")
-	public String experienceSelect(Model model,@RequestParam(value="pageNum",defaultValue = "1")int pageNum, String keyword,String field) {
-		
-		HashMap<String, Object> map=new HashMap<String, Object>();
-		
-		map.put("keyword", keyword);
-		map.put("field",field);
-		int totalRowCount=host_infoService.ExperienceCnt(map);
-		
-		
-		
-		List<EP_ManagementVo> experience_infolist=host_infoService.ExperienceSelect(); 
-		model.addAttribute("experience_infolist",experience_infolist);
-		//System.out.println(experience_infolist);
-		return ".admin.experience_infoAdmin";
-		
-	}
+		/* 관리자 호스트 체험 목록 회원관리 */
+		@RequestMapping("/admin/ep_info/list")
+		public String experienceSelect(Model model,@RequestParam(value="pageNum",defaultValue = "1")int pageNum, String keyword,String field) {
+			
+			HashMap<String, Object> map=new HashMap<String, Object>();
+			
+			map.put("keyword", keyword);
+			map.put("field",field);
+			int totalRowCount=host_infoService.ExperienceCnt(map);
+			
+			PageUtil pu=new PageUtil(pageNum, totalRowCount, 10, 2);
+			
+			map.put("startRow", pu.getStartRow());
+			map.put("rowblockcount", pu.getRowBlockCount());
+			
+			List<EP_ManagementVo> experience_infolist=host_infoService.ExperienceSelect(map); 
+			model.addAttribute("experience_infolist",experience_infolist);
+			
+			model.addAttribute("pu", pu);
+			model.addAttribute("field", field);
+			model.addAttribute("keyword", keyword);
+			//System.out.println(experience_infolist);
+			return ".admin.experience_infoAdmin";
+			
+		}
+		@RequestMapping(value = "/host/ep_getinfo" ,produces = "application/json;charset=utf-8")
+		@ResponseBody
+		public String hostEp_getinfo(int hinum ,HttpSession session ) { //hinum의 정보,이미지 뽑아오기
+			
+			JSONObject json=new JSONObject();
+			List<EP_ManagementVo> list=host_infoService.epappImg(hinum);	
+			json.put("list", list);
+			EP_ManagementVo listinfo=host_infoService.epappinfo(hinum);
+			
+		//	json.put("div_type", listinfo.getDiv_type());
+			json.put("title",  listinfo.getTitle());		
+			json.put("subname", listinfo.getSubname());		
+			json.put("loc", listinfo.getLoc());	
+			json.put("intr", listinfo.getIntr());
+			json.put("program", listinfo.getProgram());
+			json.put("price", listinfo.getPrice());
+			json.put("times", listinfo.getTimes());
+			json.put("mater", listinfo.getMater());
+			return  json.toString();
+		}
 	
 	
 	

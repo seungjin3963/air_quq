@@ -15,8 +15,11 @@ public class AdminApproveDao {
 	@Autowired
 	private SqlSessionTemplate sqlSessionTemplate;
 	private final String NAMESPACE="mybatis.EP_ManagementMapper"; /* 영노  // 체험 관리mapper*/
-	public List<EP_ManagementVo> approveEp(){
-		return sqlSessionTemplate.selectList(NAMESPACE+".approvelist");
+	public List<EP_ManagementVo> approveEp(int row){
+		return sqlSessionTemplate.selectList(NAMESPACE+".approvelist" , row);
+	}
+	public int approveEpC(){
+		return sqlSessionTemplate.selectOne(NAMESPACE+".approvelistCount");
 	}
 	public List<EP_ManagementVo> epappImg(int hinum) {
 		return sqlSessionTemplate.selectList(NAMESPACE+".apappimg" , hinum);
@@ -24,6 +27,10 @@ public class AdminApproveDao {
 	public EP_ManagementVo epappinfo(int hinum) {
 		return sqlSessionTemplate.selectOne(NAMESPACE+".epappinfo" , hinum);
 	}
+
+	
+	
+	
 	public int epappOk(HashMap<String, Object> map) {
 		return sqlSessionTemplate.update(NAMESPACE+".epappOk" , map);
 	}
@@ -31,9 +38,14 @@ public class AdminApproveDao {
 		return sqlSessionTemplate.update(NAMESPACE+".epappNo" , map);
 	}
 	
+	//숙소 호스트 list count
+	public int approveHmC(int manager_check){
+		return sqlSessionTemplate.selectOne(NAMESPACE+".approveHmC",manager_check);
+	}
+	
 	//숙소 호스트 관리자 등록 기능
-	public List<HouseInfoVo> getHostManagerApprovalList(int manager_check){
-		return sqlSessionTemplate.selectList(NAMESPACE + ".setManagerCheck", manager_check);
+	public List<HouseInfoVo> getHostManagerApprovalList(HashMap<String, Object> map){
+		return sqlSessionTemplate.selectList(NAMESPACE + ".setManagerCheck", map);
 	}
 	
 	//숙소 호스트 승인

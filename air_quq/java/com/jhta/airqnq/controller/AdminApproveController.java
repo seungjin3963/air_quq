@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.jhta.airqnq.pageUtil.PageUtilForMySql;
 import com.jhta.airqnq.service.AdminApproveService;
 import com.jhta.airqnq.vo.EP_ManagementVo;
 import com.jhta.airqnq.vo.HouseInfoVo;
@@ -22,14 +23,24 @@ public class AdminApproveController {
 	
 	@RequestMapping("/admin/approve") // 온라인,체험 승인 기다리는 list
 	public String adminapprove(Model model) {
-		List<EP_ManagementVo> eplist=service.approveEp();
+		int eplistC=service.approveEpC();
+		PageUtilForMySql experiencePage=new PageUtilForMySql(1,eplistC,5,1);
+			
+		List<EP_ManagementVo> eplist=service.approveEp(experiencePage.getStartRow());
 		model.addAttribute("eplist" , eplist);
+		model.addAttribute("experiencePage" ,experiencePage);
 		
 		
 		//숙소 호스트 승인 기능 구현
-		List<HouseInfoVo> hmlist = service.getHostManagerApprovalList(0);
+		int hmlistC=service.approveHmC(0);
+		PageUtilForMySql housePage=new PageUtilForMySql(1,hmlistC,5,1);
+		HashMap<String, Object> map=new HashMap<String, Object>();
+		map.put("manager_check", 0);
+		map.put("row", housePage.getStartRow());
+		List<HouseInfoVo> hmlist = service.getHostManagerApprovalList(map);
 		model.addAttribute("hmlist", hmlist);
-		System.out.println(eplist);
+		model.addAttribute("housePage" ,housePage);
+		
 		return ".admin.adminapprove";
 	}
 	
@@ -71,7 +82,7 @@ public class AdminApproveController {
 		json.put("list", list);
 		EP_ManagementVo listinfo=service.epappinfo(hinum);
 		
-		json.put("div_type", listinfo.getDiv_type());
+	//	json.put("div_type", listinfo.getDiv_type());
 		json.put("title",  listinfo.getTitle());		
 		json.put("subname", listinfo.getSubname());		
 		json.put("loc", listinfo.getLoc());	
@@ -133,4 +144,38 @@ public class AdminApproveController {
 		json.put("value", value);
 		return json.toString();
 	}
+	
+	@RequestMapping(value = "/admin/epapprovePage" ,produces = "application/json;charset=utf-8")
+	@ResponseBody
+	public String epapprovePage(int pageNum , Model model) {
+		int eplistC=service.approveEpC();
+		PageUtilForMySql experiencePage=new PageUtilForMySql(pageNum,eplistC,5,1);	
+		List<EP_ManagementVo> eplist=service.approveEp(experiencePage.getStartRow());	
+		JSONObject json=new JSONObject();
+		json.put("eplist", eplist);	
+		return json.toString();
+		
+	}
+	
+	@RequestMapping(value = "/admin/hmapprovePage" ,produces = "application/json;charset=utf-8")
+	@ResponseBody
+	public String hmapprovePage(int pageNum , Model model) {
+		
+		JSONObject json=new JSONObject();
+		
+		//숙소 호스트 승인 기능 구현
+		int hmlistC=service.approveHmC(0);
+		PageUtilForMySql housePage=new PageUtilForMySql(pageNum,hmlistC,5,1);
+		HashMap<String, Object> map=new HashMap<String, Object>();
+		map.put("manager_check", 0);
+		map.put("row", housePage.getStartRow());
+		List<HouseInfoVo> hmlist = service.getHostManagerApprovalList(map);
+		json.put("hmlist",hmlist );	
+		json.put("housePage",housePage );	
+		
+		
+		return json.toString();
+		
+	}
+	
 }

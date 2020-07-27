@@ -15,11 +15,17 @@ import com.jhta.airqnq.vo.HouseInfoVo;
 public class House_infoAdminService {
 	@Autowired
 	private House_infoAdminDao dao;
-	public List<EP_ManagementVo> ExperienceSelect(){ // 영노
-		return dao.ExperienceSelect();
+	public List<EP_ManagementVo> ExperienceSelect(HashMap<String, Object> map){ // 영노
+		return dao.ExperienceSelect(map);
 	}
 	public int ExperienceCnt(HashMap<String, Object> map) {
 		return dao.ExperienceCnt(map);
+	}
+	public List<EP_ManagementVo> epappImg(int hinum) {
+		return dao.epappImg(hinum);
+	}
+	public EP_ManagementVo epappinfo(int hinum) {
+		return dao.epappinfo(hinum);
 	}
 	
 	

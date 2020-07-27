@@ -18,11 +18,17 @@ public class House_infoAdminDao {
 	
 	private final String NAMESPACE="com.jhta.airqnq.mapper.HostInfoMapper";
 	
-	public List<EP_ManagementVo> ExperienceSelect(){
-		return sqlsessiontemplate.selectList(NAMESPACE+".host_experienceInfo");
+	public List<EP_ManagementVo> ExperienceSelect(HashMap<String, Object> map){
+		return sqlsessiontemplate.selectList(NAMESPACE+".host_experienceInfo" , map);
 	}
 	public int ExperienceCnt(HashMap<String, Object> map) {
 		return sqlsessiontemplate.selectOne(NAMESPACE+".experiencecnt", map);
+	}
+	public List<EP_ManagementVo> epappImg(int hinum) {////////
+		return sqlsessiontemplate.selectList(NAMESPACE+".epappImg",hinum);
+	}
+	public EP_ManagementVo epappinfo(int hinum) {////////
+		return sqlsessiontemplate.selectOne(NAMESPACE+".epappinfo",hinum);
 	}
 	
 	

@@ -33,7 +33,7 @@ public class EP_ManagementVo {
 	public EP_ManagementVo(int hinum ,String img , int ordernum) { 
 		this.img=img;
 		this.ordernum=ordernum;
-		this.img=img;
+		this.hinum=hinum;
 	}
 	public EP_ManagementVo(int memnum, int div_type, String loc, String intr, String program, String title,String subname,
 			String price, String times, int hinum) {

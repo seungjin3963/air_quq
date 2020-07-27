@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <link href="/resources/css/admin/Adminhouse_info.css" rel="stylesheet" type="text/css">
+
 <script src="/resources/js/admin/Adminhouse_info.js"></script>
 <div class="container" id="divmain">
 	<h1 id="fontcenter">호스트가 등록한 집 목록</h1>

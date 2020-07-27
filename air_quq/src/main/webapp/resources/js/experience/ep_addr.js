@@ -20,7 +20,3 @@ $('#ep_info_loc').click(function() {
 	}).open();
 });
 
-$('#aaaa').click(function(){
-	
-	alert("Aaaaaa");
-})

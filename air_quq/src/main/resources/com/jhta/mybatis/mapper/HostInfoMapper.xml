@@ -118,7 +118,31 @@
 	
 	
 	<!-- 영노 -->
-	<select id="host_experienceInfo" resultType="com.jhta.airqnq.vo.EP_ManagementVo">
-		select * from experience_info where div_type=3 or div_type=4
+	<sql id="ep_search">
+		<if test="field != null and field != ''">
+			 and ${field} like '%${keyword}%'
+		</if>
+	</sql>
+	
+	<select id="experiencecnt" resultType="int" parameterType="hashmap">
+		select count(*) from experience_info where (div_type=3 or div_type=4)
+		<include refid="ep_search"/>
 	</select>
+	
+	
+	<select id="host_experienceInfo" resultType="com.jhta.airqnq.vo.EP_ManagementVo" parameterType="hashmap">
+		select * from experience_info where (div_type=3 or div_type=4) 
+		<include refid="ep_search"/>
+		limit #{startRow}, #{rowblockcount}
+	</select>
+	
+	<select id="epappinfo" parameterType="int"  resultType="com.jhta.airqnq.vo.EP_ManagementVo">
+		SELECT e.memnum , e.div_type ,e.title, e.hinum ,s.subname ,e.loc , e.intr , e.program , e.price, e.times , e.mater
+		FROM experience_info e INNER JOIN subDetail s ON e.sunum = s.sunum and (e.div_type=3  or e.div_type=4 ) and hinum=#{hinum};
+	</select>
+	<select id="epappImg" parameterType="int"  resultType="com.jhta.airqnq.vo.EP_ManagementVo">
+		select hinum, img , ordernum from house_img where hinum=#{hinum}
+	</select>
+	
+	<!-- 영노 -->
 </mapper>
