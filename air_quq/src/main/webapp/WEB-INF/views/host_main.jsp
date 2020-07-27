@@ -3,6 +3,7 @@
     <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <link rel="stylesheet" type="text/css" href="/resources/css/kakaomap.css">
+
 <div class="clearfix"></div>
 <section class="search-box">
     <div class="container-fluid">
@@ -11,7 +12,7 @@
 <!--//////////  -->
 	<c:forEach items="${ hostSearch }" var="hitem">
 	<form action="/user/apply?pageNum=1&hinum=${ hitem.hinum }" method="post" class="formId">
-		<button type="submit" style="border:none;">
+		<button type="submit" style="border:none; width:100%; text-align: left;" class="btn btn-light">
 			<input type="hidden" value="${ hitem.addr }" name="addr_detail">
 			<input type="hidden" value="${ hitem.title }" name="title">
 			<input type="hidden" value="${ hitem.lat }" name="lat">
