@@ -48,7 +48,6 @@ public class JoinController {
 	}
 	
 	@RequestMapping(value = "/emailchk", method = RequestMethod.GET)
-	@ResponseBody
 	public String selectEmail(String email) {
 		String chkEmail = "";
 		
