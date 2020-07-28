@@ -44,7 +44,6 @@ public class LoginFilter implements Filter {
 		HttpServletRequest req = (HttpServletRequest) request;
 		HttpSession session = req.getSession();
 		if (!excludeUrl(req) && session.getAttribute("logind") == null) {
-			System.out.println(req.getRequestURI().toString().trim());
 			req.setAttribute("filterUrl", req.getRequestURI().toString().trim());
 			req.getRequestDispatcher("/login").forward(request, response);
 		} else {

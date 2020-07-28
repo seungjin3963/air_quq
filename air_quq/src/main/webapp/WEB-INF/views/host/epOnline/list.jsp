@@ -50,7 +50,7 @@
 									</a>
 								</td>
 								<td>
-									<a href="/host/epOnline/delete?einum=${list.einum }" class="delIcon">
+									<a href="/host/epOnline/delete?hinum=${list.hinum }" class="delIcon">
 										<i class="far fa-trash-alt fa-2x"></i>
 									</a>
 								</td>
