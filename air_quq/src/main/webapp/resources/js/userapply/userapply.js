@@ -1,4 +1,9 @@
 $(function(){
+		/* 대한민국 표준시 yyyy-mm-dd로 변경 */
+		var datechange = function(datetime) {
+			return datetime.toISOString().slice(0, 10);
+		}
+		
 		// 시작일 마지막일 사이 구하는 함수
 		var between=function(startdate,enddate){
 			var startarr=startdate.split("/");
@@ -74,6 +79,8 @@ $(function(){
 		var onswitch=true;
 		var tempdate;
 		
+		var applyday=$("#chekcdatepicker").val().split("/");
+		
 		$("#cal").datepicker({
 			showOn: "both",
 			closeText: "Close",
@@ -86,6 +93,23 @@ $(function(){
 			monthNames: ["1월","2월","3월","4월","5월","6월","7월","8월","9월","10월","11월","12월"],
 			minDate : startdatepicker,
 			maxDate: endtdatepicker,
+			/*beforeShowDay:function(date){
+				var check=false;
+				
+				var datetime=datechange(date)
+				
+				for (var i = 0; i < applyday.length; i++) {
+					if(datetime == applyday[i]){
+						check=true;
+					}
+				}
+				
+				
+				if(check){
+					return [false];
+				}
+				return [true];
+			},*/
 			onSelect:function(d){
 				
 				if(onswitch){
@@ -113,7 +137,25 @@ $(function(){
 				}
 			}
 		});	
+		
+		/*house_img 이미지 변경*/
+		
+		var imgarr=$("#imgarr").val().split("/");
+		var imgcnt=1;
+		
+		$("#bigphoto").prop("src","/resources/img/house_img/"+imgarr[0]);
+		setInterval(function() {
 			
+			$("#bigphoto").prop("src","/resources/img/house_img/"+imgarr[imgcnt]);
+
+			imgcnt++;
+
+			if(imgcnt == imgarr.length){
+				imgcnt=0;
+			}
+			
+		}, 1500)
+		
 		// 캘러리 아이콘을 눌렀을 때 달력 나오게 하기
 		$("#startcal").click(function(){
 			$("#bundle").css({display: "block"});	
@@ -183,18 +225,32 @@ $(function(){
 		
 		
 		
-		// kakao 맵
-// var container = document.getElementById('map'); // 지도를 담을 영역의 DOM 레퍼런스
-// var options = { // 지도를 생성할 때 필요한 기본 옵션
-// center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표.
-// level: 3 // 지도의 레벨(확대, 축소 정도)
-// };
-//
-// var map = new kakao.maps.Map(container, options); // 지도 생성 및 객체 리턴
-		
-		// 권준범
-		// 결제 API(아임포트)
-		$("#btnApply").click(()=>{
-			location.href = "/user/applyCheck";
-		});
-	})
+	/*kakao 맵*/
+	var lat=$("#lat").val();
+	var lnt=$("#lnt").val();
+
+	var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+    mapOption = { 
+        center: new kakao.maps.LatLng(lat, lnt), // 지도의 중심좌표
+        level: 1 // 지도의 확대 레벨
+    };
+
+	var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+	
+	// 마커가 표시될 위치입니다 
+	var markerPosition  = new kakao.maps.LatLng(lat, lnt); 
+	
+	// 마커를 생성합니다
+	var marker = new kakao.maps.Marker({
+	    position: markerPosition
+	});
+	
+	// 마커가 지도 위에 표시되도록 설정합니다
+	marker.setMap(map);
+
+	// 권준범
+	// 결제 API(아임포트)
+	$("#btnApply").click(()=>{
+		location.href = "/user/applyCheck";
+	});
+})
