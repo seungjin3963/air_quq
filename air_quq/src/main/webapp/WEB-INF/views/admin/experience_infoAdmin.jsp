@@ -8,7 +8,7 @@
     <div class="row">
     	<div class="col-md-1"></div>
     	<div class="col-md-10">
-    		<h1 id="host_ep_font">호스트가 등록한 체험 목록</h1>
+    		<h1 id="host_ep_font" class="text-center">호스트가 등록한 체험 목록</h1>
 	<div id="host_ep_div">
 		<form action="/admin/ep_info/list" method="post" >
 			<input type="submit" value="검색" class="btn btn-danger host_ep_btn">

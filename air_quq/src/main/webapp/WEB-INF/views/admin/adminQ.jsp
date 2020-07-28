@@ -6,7 +6,7 @@
 
 
 <div class="container">
-	<h1 id="fontcenter">Q&A</h1>
+	<h1 id="fontcenter" class="text-center">Q&A</h1>
 	<div class="container">
 		<div class="row">
 			<div class="col-8">
