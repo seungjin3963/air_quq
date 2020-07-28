@@ -44,6 +44,7 @@ public class LoginFilter implements Filter {
 		HttpServletRequest req = (HttpServletRequest) request;
 		HttpSession session = req.getSession();
 		if (!excludeUrl(req) && session.getAttribute("logind") == null) {
+			System.out.println(req.getRequestURI().toString().trim());
 			req.setAttribute("filterUrl", req.getRequestURI().toString().trim());
 			req.getRequestDispatcher("/login").forward(request, response);
 		} else {
@@ -85,6 +86,14 @@ public class LoginFilter implements Filter {
 		} else if (uri.startsWith("/emailchk")) {
 			return true;
 		} else if(uri.startsWith("/kakao/login")) {
+			return true;
+		} else if(uri.equals("/ep_OnlineList")) {
+			return true;
+		} else if(uri.startsWith("/experience/search")) {
+			return true;
+		} else if(uri.equals("/online/details")) {
+			return true;
+		} else if(uri.startsWith("/echo")) {
 			return true;
 		}
 		return false;

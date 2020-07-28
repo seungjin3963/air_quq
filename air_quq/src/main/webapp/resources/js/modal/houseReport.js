@@ -5,6 +5,7 @@ $('#houseReportModal').on('show.bs.modal', (event) => {
 	let body = $("#houseReportModalBody");
 	body.empty();
 	$.get("/report/selType", function(data) {
+		console.log(data);
 		$(data).each(function(key, value){
 			let html = "";
 			html += '<div class="custom-control custom-radio">';
