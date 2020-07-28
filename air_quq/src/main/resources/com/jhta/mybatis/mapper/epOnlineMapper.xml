@@ -50,12 +50,9 @@
 		select ei.*,re.score from experience_info as ei join review as re on re.hinum=ei.hinum;
 	</select>
 	<!-- 전체 -->
-	<select id="outslider" resultType="slinfo">
-		Select ei.hinum,ei.memnum,hi.img,ei.title,ei.loc,ei.times,ei.price,re.score From experience_info ei left JOIN house_img hi
-		ON ei.hinum = hi.hinum
-		left JOIN review re
-		ON ei.hinum = re.hinum 
-		where ei.div_type=3;
+	<select id="outslider" resultType="slinfo" parameterType="int">
+		select ee.* , m.profile_img , m.id from (
+select e.memnum,e.hinum , e.div_type , e.loc , e.intr , e.program , e.title , e.price , e.times , e.mater, e.people , s.subname from experience_info e inner join subDetail s on e.sunum=s.sunum) ee inner join member m on ee.memnum=m.menum where ee.hinum=#{hinum};
 	</select>
 	<!-- 디테일 -->
 	<select id="inslider" resultType="slinfo" parameterType="int"><!-- 상세화면 -->

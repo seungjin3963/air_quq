@@ -61,8 +61,7 @@ $(".epgetinfo").click(function(e) {
 
 $(".epapproveOk").click(function(e){
 	
-	var index = $(e.target).index(this);	
-	
+	var index = $(".epapproveOk").index(this);	
 	var eplisttable=$(this).parent().parent();
 	var hinum = document.getElementsByClassName("epapphinum")[index].value;
 	var epappdivtype = document.getElementsByClassName("epappdivtype")[index].value;	
@@ -71,7 +70,6 @@ $(".epapproveOk").click(function(e){
 		dataType : 'json',
 		data : {hinum : hinum ,epappdivtype:epappdivtype},
 		success : function(data){	
-			alert(epappdivtype);
 			alert(data.value);
 			eplisttable.remove()
 		},
@@ -261,11 +259,10 @@ $('#ep_approveP').click(function(){
 
 
 			$(".epapproveOk").click(function(e){
-				
-				var index = $(e.target).index(this);	
-				
+				var index = $(".epapproveOk").index(this);	
 				var eplisttable=$(this).parent().parent();
 				var hinum = document.getElementsByClassName("epapphinum")[index].value;
+				alert(hinum);
 				var epappdivtype = document.getElementsByClassName("epappdivtype")[index].value;	
 				$.ajax({
 					url : '/admin/epapproveOk',
@@ -276,6 +273,8 @@ $('#ep_approveP').click(function(){
 						alert(data.value);
 						eplisttable.remove()
 					},
+					
+					
 					error: function(err){
 						alert(err);
 					}
@@ -408,7 +407,7 @@ $('#ep_approveM').click(function(){
 
 			$(".epapproveOk").click(function(e){
 				
-				var index = $(e.target).index(this);	
+				var index = $(".epapproveOk").index(this);	
 				
 				var eplisttable=$(this).parent().parent();
 				var hinum = document.getElementsByClassName("epapphinum")[index].value;

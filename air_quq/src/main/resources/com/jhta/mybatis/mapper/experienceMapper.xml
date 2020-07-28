@@ -83,7 +83,7 @@
 	
 	
 	<insert id="houseInsert" parameterType="com.jhta.airqnq.vo.ExperienceVo">
-		update house_info set lat=#{up} , lnt= #{down} where hinum=#{hinum}
+		update house_info set lat=#{lat} , lnt= #{lnt} where hinum=#{hinum}
 	</insert>
 	
 	<!-- 체험 검색 기능 -->	

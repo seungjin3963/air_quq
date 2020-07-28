@@ -12,34 +12,34 @@
 <div class="container body-content">
 	<div class="container">
 		<div class="row justify-content-start"
-			style="padding-top: 10px; background-color: black;">
-
+			style="padding-top: 10px; background-color:#f8f9fc;">
+			
 			<div class="col" style="padding-top: 5px;">
 				<img alt="Image html" width="100%" height="100%"
 					style="max-height: 500px; max-width: 500px; border-radius: 10px 10px 10px 10px;"
-					src="/resources/img/pic/1.jpg" />
+					src="/resources/img/house_img/${hinum_Img[0].img } "/>
 			</div>
 			<div class="col" style="padding-top: 5px;">
 				<img alt="Image html" width="100%" height="100%"
 					style="max-height: 500px; max-width: 500px; border-radius: 10px 10px 10px 10px;"
-					src="/resources/img/pic/2.jpg" />
+					src="/resources/img/house_img/${hinum_Img[1].img } "/>
 			</div>
 			<div class="col" style="padding-top: 5px;">
 				<div class="row justify-content-mid">
 					<img alt="Image html" width="90%" height="30%"
 						style="max-height: 120x; max-width: 300px; border-radius: 10px 10px 10px 10px;"
-						src="/resources/img/pic/3.jpg" />
+						src="/resources/img/house_img/${hinum_Img[2].img }" />
 				</div>
 				<div class="row justify-content-mid">
 					<img alt="Image html" width="90%" height="100%"
 						style="max-height: 150px; max-width: 500px; border-radius: 10px 10px 10px 10px;"
-						src="/resources/img/pic/4.jpg" />
+						src="/resources/img/house_img/${hinum_Img[3].img }" />
 				</div>
 			</div>
 			<div class="col" style="padding-top: 5px;">
 				<img alt="Image html" width="100%" height="100%"
 					style="max-height: 500px; max-width: 500px; border-radius: 10px 10px 10px 10px;"
-					src="/resources/img/pic/5.jpg" />
+					src="/resources/img/house_img/${hinum_Img[4].img } "/>
 			</div>
 		</div>
 		<hr>
@@ -48,21 +48,27 @@
 				<div class="col-md-8">
 					<img src="/resources/img/pic/com.svg" viewBox="0 0 16 16"
 						style="display: block; height: 16px; width: 16px; fill: currentcolor; margin-top: 4px;"
-						align="left">온라인 체험1
+						align="left">
+						<c:choose>
+							<c:when test="${experienceInfo.div_type==3}">
+								<h4>온라인 체험</h4>
+							</c:when>
+							<c:otherwise>
+								<h4>대면 체험</h4>
+							</c:otherwise>
+						</c:choose>
 				</div>
 				<div class="col-md-4"></div>
 				<div class="col-md-8">
-					<h4 tabindex="-1">
-						<b>가브리엘 셰프의 알자스 지역 현대식요리</b>
-					</h4>
+					<h3 tabindex="-1">
+						<b>${experienceInfo.title}</b>
+					</h3>
 				</div>
 				<div class="col-md-4"></div>
 				<div class="col-md-8">
 					<img src="/resources/img/pic/star.svg" viewBox="0 0 16 16"
 						style="display: block; height: 16px; width: 16px; fill: currentcolor; margin-top: 4px;"
 						align="left">평점 5.0 (매긴사람갯수) <b><label
-						style="vertical-align: middle;">.</label></b> <b
-						style="text-decoration: underline;">위치, 나라</b> <b><label
 						style="vertical-align: middle;">.</label></b> <b
 						style="text-decoration: underline;">에어비앤비 온라인 체험</b> 에 포함된 체험
 				</div>
@@ -73,7 +79,7 @@
 		<div class="row justify-content-start" style="padding-top: 10px;">
 			<div class="row">
 				<div class="col">
-					<b><label>(호스트이름)님이 호스팅하는 온라인 체험</label></b>
+					<b><label> <h5>${experienceInfo.id}</h5> 님이 호스팅하는 온라인 체험</label></b>
 				</div>
 			</div>
 		</div>
@@ -81,12 +87,12 @@
 			<div class="col">
 				<img src="/resources/img/pic/clock.svg" viewBox="0 0 16 16"
 					style="display: block; height: 16px; width: 16px; fill: currentcolor; margin-top: 4px;"
-					align="left">(진행시간)
+					align="left">진행시간 :  <b>${experienceInfo.times}</b> 시간
 			</div>
 			<div class="col">
 				<img src="/resources/img/pic/people.svg" viewBox="0 0 16 16"
 					style="display: block; height: 16px; width: 16px; fill: currentcolor; margin-top: 4px;"
-					align="left">최대 (사람수)명
+					align="left">최대 인원 수 : <b>${experienceInfo.people}</b> 명
 			</div>
 		</div>
 		<div class="row">
@@ -102,60 +108,21 @@
 			</div>
 		</div>
 		<hr>
+		<br>
 	</div>
 	<!-- 프로그램소개 -->
 	<div class="row justify-content-start" style="padding-top: 10px;">
 		<div class="row">
 			<div class="col">
-				<b><label>프로그램</label></b>
+				<b><label>프로그램 설명</label></b>
 			</div>
 		</div>
 	</div>
 	<div class="container">
-		<div class="row">(프로그램소개)</div>
+		<div class="row">${experienceInfo.program}</div>
 	</div>
 	<hr>
-	<div class="row justify-content-start" style="padding-top: 10px;">
-		<div class="row">
-			<div class="col">
-				<b><label>참여방법</label></b>
-			</div>
-		</div>
-	</div>
-	<div class="container">
-		<div class="row">
-			<div class="col">
-				<div class="card" style="width: 18rem;">
-					<div class="card-body">
-						<h5 class="card-title">
-							<img src="/resources/img/pic/comcom.svg" viewBox="0 0 30 30"
-								style="display: block; height: 30px; width: 30px; fill: currentcolor; margin-top: 4px;">
-						</h5>
-						<h6 class="card-subtitle mb-2 text-muted">영상 통화 참여하기</h6>
-						<p class="card-text">
-							데스크톱 컴퓨터나 모바일 기기에 <a href="https://zoom.us/download?mt=8">줌을
-								무료로 다운로드</a> 하세요. 예약이 확정되면 참여 방법에 대한 자세한 내용과 링크가 담긴 이메일을 보내드립니다.
-						</p>
-						<a href="#" class="card-link">더 보기</a>
-					</div>
-				</div>
-			</div>
-			<div class="col">
-				<div class="card" style="width: 18rem;">
-					<div class="card-body">
-						<h5 class="card-title">
-							<img src="/resources/img/pic/people.svg" viewBox="0 0 30 30"
-								style="display: block; height: 30px; width: 30px; fill: currentcolor; margin-top: 4px;">
-						</h5>
-						<h6 class="card-subtitle mb-2 text-muted">프라이빗 예약하기</h6>
-						<p class="card-text">(호스트이름)님은 최대 (인원수)명의 게스트를 최저 (가격)에 호스팅할 수
-							있습니다. 요청에 따라 최대 (최대인원수)명의 예약이 가능합니다.</p>
-					</div>
-				</div>
-			</div>
-			<div class="col"></div>
-		</div>
-	</div>
+	
 	<hr>
 	<div class="row justify-content-start" style="padding-top: 10px;">
 		<div class="row">
@@ -165,46 +132,30 @@
 		</div>
 	</div>
 	<div class="container">
-		<!-- (jstl써서 갯수만큼 5개이상이면 모두보기 모달창으로) -->
-		<div class="row">
-			<img src="/resources/img/pic/check.svg" viewBox="0 0 30 30"
-				style="display: block; height: 24px; width: 24px; fill: currentcolor; margin-top: 4px; margin-right: 15px; margin-bottom: 5px;">
-			<h6>asdasd</h6>
-		</div>
-		<div class="row">
-			<img src="/resources/img/pic/check.svg" viewBox="0 0 30 30"
-				style="display: block; height: 24px; width: 24px; fill: currentcolor; margin-top: 4px; margin-right: 15px; margin-bottom: 5px;">
-			<h6>asdasd</h6>
-		</div>
-		<div class="row">
-			<img src="/resources/img/pic/check.svg" viewBox="0 0 30 30"
-				style="display: block; height: 24px; width: 24px; fill: currentcolor; margin-top: 4px; margin-right: 15px; margin-bottom: 5px;">
-			<h6>asdasd</h6>
-		</div>
-		<div class="row">
-			<img src="/resources/img/pic/check.svg" viewBox="0 0 30 30"
-				style="display: block; height: 24px; width: 24px; fill: currentcolor; margin-top: 4px; margin-right: 15px; margin-bottom: 5px;">
-			<h6>asdasd</h6>
-		</div>
-		<div class="row">
-			<img src="/resources/img/pic/check.svg" viewBox="0 0 30 30"
-				style="display: block; height: 24px; width: 24px; fill: currentcolor; margin-top: 4px; margin-right: 15px; margin-bottom: 5px;">
-			<h6>asdasd</h6>
-		</div>
+		<c:forEach var="i" items="${mater }">
+			<div class="row">
+				<img src="/resources/img/pic/check.svg" viewBox="0 0 30 30"
+					style="display: block; height: 24px; width: 24px; fill: currentcolor; margin-top: 4px; margin-right: 15px; margin-bottom: 5px;">
+				<h6>${i}</h6>
+			</div>
+		</c:forEach>
 	</div>
 	<hr>
 	<div class="row justify-content-start" style="padding-top: 10px;">
+		
 		<div class="row" style="margin-bottom: 10px;">
 			<div class="col">
-			<!--  영노 -->
-				<a style="float: right;" class="Declaration" ><i class="fas fa-exclamation-circle"></i> 신고하기</a>
-				<input type="hidden" value="${hinum }" id="hinum">
+			
 				
 				<img src="/resources/img/pic/pro.png" viewBox="0 0 70 70"
 					style="display: block; height: 56px; width: 56px; fill: currentcolor; margin-top: 4px; margin-right: 10px; border-radius: 50%;"
-					align="left"> <b><label>호스트 (이름)님을 소개합니다</label></b> <br> 
+					align="left"> <b><label>호스트  ${experienceInfo.id } 님을 소개합니다</label></b> <br> 
 				호스팅 시작 연도:(숫자)년 <br> <br>
 				<div class="container">
+					<div class="row">
+						
+						<h6>● 호스트소개 <br><br>${experienceInfo.intr }</h6>
+					</div>
 					<div class="row">
 						<img src="/resources/img/pic/star.svg" viewBox="0 0 30 30"
 							style="display: block; height: 24px; width: 24px; fill: currentcolor; margin-top: 4px; margin-right: 15px; margin-bottom: 5px;">
@@ -217,27 +168,20 @@
 					</div>
 				</div>
 			</div>
-			<div class="col">(호스트소개) Since 2012, Take a Chef has connected
-				thousands of local chefs and guests in over 100 countries, through
-				private chef experiences at home. Now, we are thrilled to invite
-				some of the best Michelin-starred chefs to your kitchen through a
-				series of interactive online experiences. Learn how to cook some of
-				their emblematic dishes and allow the chefs to guide you through
-				their craft. On this experience, we are excited to present to you
-				Chef Gabriel Kreuther. Posts at Michelin-starred restaurants in
-				France & Switzerland led chef Kreuther to develop a mastery of
-				French cooking using native herbs & other ingredients to enhance
-				flavors. He eventually moved on to his first solo venture at Atelier
-				in The Ritz-Carlton NYC. As head chef, he received accolades from
-				major New York food critics & major food and wine publication.</div>
+			
 		</div>
 		<input type="hidden" value="${hinum }" id="hinumvalue">
 		<button type="button" class="btn btn-light" id="dmcall2">
 			<b>호스트에게 연락하기</b>
 		</button>
+		<!--  영노 -->
+				<a style="float: right;" class="Declaration" ><i class="fas fa-exclamation-circle"></i> 신고하기</a>
+				<input type="hidden" value="${experienceInfo.hinum }" id="hinum">
 		<img src="/resources/img/pic/shield.png" viewBox="0 0 30 30"
 			style="display: block; height: 22px; width: 21px; fill: currentcolor; margin-top: 4px; margin-right: 5px; margin-bottom: 5px; margin-left: 50px;">
 		<h6>안전한 결제를 위해 에어비앤비 웹사이트나 앱 외부에서 송금하거나 대화를 나누지 마세요.</h6>
+		
+		
 	</div>
 	<hr>
 	<div class="row justify-content-start"
@@ -359,94 +303,7 @@
 		<br> <br>
 	</div>
 	<hr>
-	<div class="row justify-content-start"
-		style="padding-top: 10px; margin-bottom: 10px;">
-			<div class="container">
-				<div class="row">
-					<div class="col" style="margin-bottom: 5px;">
-						<h3>
-						<strong>예약 가능한 날짜 선택하기</strong>
-						</h3>
-					</div>
-				</div>
-			</div>
-			<div class="container">
-				<div class="row">
-					<div class="col">(명수)명 예약 가능</div>
-				</div>
-				<div class="row" style="margin-top: 10px;">
-					<div class="col">
-						<div class="card" style="width: 12rem;">
-							<div class="card-body">
-								<h5 class="card-title">날짜</h5>
-								<h6 class="card-subtitle mb-2 text-muted">(날짜)</h6>
-								<p class="card-text">게스트참가형식</p>
-								<br>
-								<br> <b>40.000원</b> <span>/ 인</span>
-								<button type="button" class="btn btn-danger"
-									style="margin-top: 10px;">선택</button>
-							</div>
-						</div>
-					</div>
-					<div class="col">
-						<div class="card" style="width: 12rem;">
-							<div class="card-body">
-								<h5 class="card-title">날짜</h5>
-								<h6 class="card-subtitle mb-2 text-muted">(날짜)</h6>
-								<p class="card-text">게스트참가형식</p>
-								<br>
-								<br> <b>50.000원</b> <span>/ 인</span>
-								<button type="button" class="btn btn-danger"
-									style="margin-top: 10px;">선택</button>
-							</div>
-						</div>
-					</div>
-					<div class="col">
-						<div class="card" style="width: 12rem;">
-							<div class="card-body">
-								<h5 class="card-title">날짜</h5>
-								<h6 class="card-subtitle mb-2 text-muted">(날짜)</h6>
-								<p class="card-text">게스트참가형식</p>
-								<br>
-								<br> <b>60.000원</b> <span>/ 인</span>
-								<button type="button" class="btn btn-danger"
-									style="margin-top: 10px;">선택</button>
-							</div>
-						</div>
-					</div>
-					<div class="col">
-						<div class="card" style="width: 12rem;">
-							<div class="card-body">
-								<h5 class="card-title">날짜</h5>
-								<h6 class="card-subtitle mb-2 text-muted">(날짜)</h6>
-								<p class="card-text">게스트참가형식</p>
-								<br>
-								<br> <b>70.000원</b> <span>/ 인</span>
-								<button type="button" class="btn btn-danger"
-									style="margin-top: 10px;">선택</button>
-							</div>
-						</div>
-					</div>
-					<div class="col">
-						<div class="card" style="width: 12rem;">
-							<div class="card-body">
-								<h5 class="card-title">날짜</h5>
-								<h6 class="card-subtitle mb-2 text-muted">(날짜)</h6>
-								<p class="card-text">게스트참가형식</p>
-								<br>
-								<br> <b>80.000원</b> <span>/ 인</span>
-								<button type="button" class="btn btn-danger"
-									style="margin-top: 10px;">선택</button>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="col">
-				<button type="button" class="btn btn-light"
-					style="margin-top: 20px;">날짜더보기</button>
-			</div>
-		</div>
+
 		<br>
 	</div>
 	<hr>
@@ -577,8 +434,6 @@
 		</div>
 	</div>
 </div>
-<input type="hidden" val="${memnum }" id="mnum">
-<input type="hidden" val="${chat_no }" id="chat_no">
 <script>
 /* $("#dmcall2").on('click',function(){
 	var hinum=$("#hinumvalue").val();

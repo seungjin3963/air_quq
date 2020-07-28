@@ -16,8 +16,8 @@ public class EpOnlineService {
 	@Autowired
 	private EpOnlineDao dao;
 	
-	public List<SliderVo> outslider(){
-		return dao.outslider();
+	public SliderVo outslider(int hinum){
+		return dao.outslider(hinum);
 	}
 	public List<SliderVo> inslider(int hinum){
 		return dao.inslider(hinum);

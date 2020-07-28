@@ -127,8 +127,8 @@ public class ExperiencePageController {
 			return ".experience.ep_insert.ep_introduce";
 		} else {
 			sessionVo.setLoc(value);
-			sessionVo.setUp(up);
-			sessionVo.setDown(down);
+			sessionVo.setLat(up);
+			sessionVo.setLnt(down);
 			int housenum = sessionVo.getHinum();
 			
 			

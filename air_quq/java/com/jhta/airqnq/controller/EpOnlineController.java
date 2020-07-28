@@ -16,8 +16,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.jhta.airqnq.pageUtil.PageUtil;
+import com.jhta.airqnq.service.AdminApproveService;
 import com.jhta.airqnq.service.EpOnlineService;
 import com.jhta.airqnq.vo.ChatLogVo;
+import com.jhta.airqnq.vo.EP_ManagementVo;
 import com.jhta.airqnq.vo.SliderVo;
 
 @Controller
@@ -26,10 +28,13 @@ public class EpOnlineController {
 	@Autowired
 	private EpOnlineService service;
 	
+	@Autowired
+	private AdminApproveService imgService;
+	
 	@RequestMapping("/online/home")
 	public String goHome(Model model) {
 		//여기서 각각 리스트 매퍼연결해서 어떤거 가져와야하는지 검색조건(유명셰프,6시간이내,서울인기체험,새로등록된체험(3시간이내),저렴한 가격,베스트체험(별높은 순),전체)
-		model.addAttribute("list1",service.outslider());
+		//model.addAttribute("list1",service.outslider());
 		model.addAttribute("inSeoul",service.inSeoul());
 		model.addAttribute("beststar",service.beststar());
 		model.addAttribute("cheap",service.cheap());
@@ -40,14 +45,23 @@ public class EpOnlineController {
 	@RequestMapping("/online/details")
 	public String goDetails(int hinum,Model model,HttpServletResponse response) throws IOException {
 		//영노
-		System.out.println(hinum+"hinum확인");
-		model.addAttribute("hinum" , hinum);
-		model.addAttribute("list2",service.inslider(hinum));
+		String[] mater= {};
+		List<EP_ManagementVo> hinum_Img=imgService.epappImg(hinum); // 이미지	
+		model.addAttribute("hinum_Img" , hinum_Img);
+		
+		SliderVo experienceInfo=service.outslider(hinum);
+		String maters= experienceInfo.getMater();
+		
+		mater=maters.split(",");
+		
+		model.addAttribute("mater",maters);
+		model.addAttribute("experienceInfo" , experienceInfo);
+		/*model.addAttribute("list2",service.inslider(hinum));
 		List<SliderVo> list=service.inslider(hinum);
 		for (int i=0; i<list.size(); i++) {
 			SliderVo str = list.get(i);
 			System.out.println(str.getTitle() +"asd");
-		}
+		}*/
 		return ".epOnline.detail";
 	}
 	

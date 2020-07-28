@@ -77,6 +77,7 @@ public class AdminApproveController {
 	public String adminEp_getinfo(int hinum ,HttpSession session ) { //hinum의 정보,이미지 뽑아오기
 		String uploadPath=
 				session.getServletContext().getRealPath("/resources/img/house_img");
+		
 		JSONObject json=new JSONObject();
 		List<EP_ManagementVo> list=service.epappImg(hinum);	
 		json.put("list", list);
