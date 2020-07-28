@@ -98,6 +98,7 @@
 		<input type="hidden" value="1">
 		<input type="hidden" value="${infovo.startdate }" id="hoststartdate">
 		<input type="hidden" value="${infovo.enddate }" id="hostenddate">
+		<input type="hidden" value="${chekcdatepicker }" id="chekcdatepicker">
 	</div>
 	<div id="quickmenulayer">
 		<input type="button" value="예약하기" class="btn btn-danger btn-icon-split" id="btnApply">

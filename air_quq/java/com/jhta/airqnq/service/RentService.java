@@ -26,6 +26,6 @@ public class RentService {
 	}
 	
 	public List<RentVo> hinumrentselect(int hinum){
-		return dao.rentdata();
+		return dao.hinumrentselect(hinum);
 	}
 }
