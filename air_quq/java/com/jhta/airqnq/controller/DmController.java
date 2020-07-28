@@ -18,10 +18,9 @@ public class DmController {
 	
 	@RequestMapping(value = "/echo/addcontent")
 	@ResponseBody
-	public void addContent(String content,HttpSession session,int mnum,int chat_no) {
-		System.out.println("들어옴 ");
+	public void addContent(String content,HttpSession session,int mnum,int chat_no,int hinum) {
 		HashMap<String,Object> hash = new HashMap<String, Object>();
-		session.getAttribute("chat_no");
+		hash.put("hinum",hinum);
 		hash.put("chat_no",chat_no);
 		hash.put("content",content);
 		hash.put("mnum",mnum);

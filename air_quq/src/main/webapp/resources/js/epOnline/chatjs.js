@@ -13,7 +13,8 @@ $(function(){
     	console.log("123");
     	$.get("/online/dm",{hinum},function(data){
     		    $("#dmdm").css('visibility','visible')
-    			$("#mnum").val(data);
+    		    $("#chat_no").val(data.chat_no)
+    			$("#mnum").val(data.memnum);
     	});
 //    	$.ajax({
 //    		url:'/online/dm',
@@ -27,6 +28,7 @@ $(function(){
     let sock = new SockJS("http://localhost:8090/echo");
     sock.onmessage=onMessage;
     sock.onclose=onClose;
+    
     $("#dmclose").click(function(){
     	$("#dmdm").css('visibility','hidden')
     })
@@ -46,13 +48,18 @@ $(function(){
 	})
 	//메시지 전송
 	function sendMessage(){
+    	var hinum=$("#hinumvalue").val();
     	var text=$("#message").val();
     	var mnum=$("#mnum").val();
     	var chat_no=$("#chat_no").val();
-    	
 //		sock.send($("#message").val()+","+mnum+","+chat_no); //send가 Handler(컨트롤러,서버)에 데이터 전송
 		sock.send(text);
-		sock.send(mnum);
+		$.ajax({
+			url:"/echo/addcontent",
+			data:{"content":text,"mnum":
+				mnum,"hinum":hinum,"chat_no":chat_no},
+			success:function(data){}
+		})
 		console.log("text :"+text+", mnum :"+mnum+", chat_no :"+chat_no+", messageval :"+$("#message").val())
 	}
 	//서버로부터 메세지를 받았을 때
