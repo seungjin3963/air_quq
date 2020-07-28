@@ -39,7 +39,8 @@ public class EpOnlineController {
 	
 	@RequestMapping("/online/details")
 	public String goDetails(int hinum,Model model,HttpServletResponse response) throws IOException {
-		System.out.println(hinum);
+		//영노
+		model.addAttribute("hinum" , hinum);
 		model.addAttribute("list2",service.inslider(hinum));
 		List<SliderVo> list=service.inslider(hinum);
 		for (int i=0; i<list.size(); i++) {

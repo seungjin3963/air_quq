@@ -195,9 +195,13 @@
 	<div class="row justify-content-start" style="padding-top: 10px;">
 		<div class="row" style="margin-bottom: 10px;">
 			<div class="col">
+			<!--  영노 -->
+				<a style="float: right;" class="Declaration" ><i class="fas fa-exclamation-circle"></i> 신고하기</a>
+				<input type="hidden" value="${hinum }" id="hinum">
+				
 				<img src="/resources/img/pic/pro.png" viewBox="0 0 70 70"
 					style="display: block; height: 56px; width: 56px; fill: currentcolor; margin-top: 4px; margin-right: 10px; border-radius: 50%;"
-					align="left"> <b><label>호스트 (이름)님을 소개합니다</label></b> <br>
+					align="left"> <b><label>호스트 (이름)님을 소개합니다</label></b> <br> 
 				호스팅 시작 연도:(숫자)년 <br> <br>
 				<div class="container">
 					<div class="row">
