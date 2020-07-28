@@ -38,11 +38,11 @@
 		</div>
 	</div>
 	<div class="row" id="applydivision1">
-		<div class="col-md-12" style="text-align: center;" id="usecal">
-			<div id="rentdate">O박O일</div>
+		<div class="col-md-12" id="usecal" >
+			<div id="rentdate" data-toggle="modal" data-target="#myModal">O박O일</div>
 			<br>
-			<div>사용자가 입력한 시작날짜 - 사용자가 입력한 끝날짜</div>
-			<div>인원수</div>
+			<div class="usercheck" data-toggle="modal" data-target="#myModal">사용자가 입력한 시작날짜 - 사용자가 입력한 끝날짜</div><br>
+			<div class="usercheck" data-toggle="modal" data-target="#myModal">인원수</div><br>
 			<input type="button" value="수정하기" class="btn btn-danger btn-icon-split" data-toggle="modal" data-target="#myModal">
 		</div>
 	</div>
@@ -67,41 +67,41 @@
 <div id="quickmenu">
 	<a href="#" class="align-self-center bg-gradient-warning text-gray-900" data-toggle="modal" data-target="#houseReportModal"> 숙소 신고하기 </a>
 	<br>
-	<div id="quickmenulayer">
+	<div id="quickmenulayer" data-toggle="modal" data-target="#myModal">
 		<i class="far fa-calendar-alt fa-3x"></i>
 		<br>
 		체크인
 		<br>
 		<input type="text" value="${usercheck.checkIn }" readonly="readonly" id="checkin" class="quickmenufont">
 	</div>
-	<div id="quickmenulayer">
+	<div id="quickmenulayer" data-toggle="modal" data-target="#myModal">
 		<i class="fa fa-calendar-alt fa-3x"></i>
 		<br>
 		체크아웃
 		<br>
 		<input type="text" value="${usercheck.checkOut }" readonly="readonly" id="checkout" class="quickmenufont">
 	</div>
-	<div id="quickmenulayer">
+	<div id="quickmenulayer" data-toggle="modal" data-target="#myModal">
 		<i class="fas fa-users fa-3x"></i>
 		<br>
 		인원수
 		<br>
 		<input type="text" value="${usercheck.max_n }" readonly="readonly" id="checkcnt" class="quickmenufont">
 	</div>
-	<div id="quickmenulayer">
+	<div id="quickmenulayer" data-toggle="modal" data-target="#myModal">
 		<i class="fas fa-coins fa-3x"></i>
 		<br>
 		총금액
 		<br>
 		<input type="text" readonly="readonly" id="summoney" class="quickmenufont">
-		<input type="hidden" value="1">
-		<input type="hidden" value="${infovo.startdate }" id="hoststartdate">
-		<input type="hidden" value="${infovo.enddate }" id="hostenddate">
-		<input type="hidden" value="${chekcdatepicker }" id="chekcdatepicker">
-		<input type="hidden" value="${imgarr }" id="imgarr">
-		<input type="hidden" value="${infovo.lat}" id="lat">
-		<input type="hidden" value="${infovo.lnt}" id="lnt">
 	</div>
+	<input type="hidden" value="1">
+	<input type="hidden" value="${infovo.startdate }" id="hoststartdate">
+	<input type="hidden" value="${infovo.enddate }" id="hostenddate">
+	<input type="hidden" value="${chekcdatepicker }" id="chekcdatepicker">
+	<input type="hidden" value="${imgarr }" id="imgarr">
+	<input type="hidden" value="${infovo.lat}" id="lat">
+	<input type="hidden" value="${infovo.lnt}" id="lnt">
 	<div id="quickmenulayer">
 		<input type="button" value="예약하기" class="btn btn-danger btn-icon-split" id="btnApply">
 		<input type="button" value="수정하기" class="btn btn-danger btn-icon-split" data-toggle="modal" data-target="#myModal">
@@ -179,3 +179,19 @@
 		</div>
 	</div>
 </div>
+
+<div class="modal fade" id="houseallimg" role="dialog">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h3 class="modal-title">하우스 모든 사진 보기</h3>
+				<button type="button" class="close" data-dismiss="modal" id="modalexit">X</button>
+			</div>
+			<div class="modal-body" id="houseimgall"></div>
+			<div class="modal-footer">
+				<input type="button" value="확인" class="btn btn-danger btn-icon-split">
+			</div>
+		</div>
+	</div>
+</div>
+

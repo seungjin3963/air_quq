@@ -21,14 +21,8 @@ $(function(){
 		var betweenday=between($("#checkin").val(),$("#checkout").val());
 		$("#summoney").val(betweenday*Number($("#totmoney").children().eq(0).html()));
 		
-		// 페이지 수정 페이지 값 채우기
-		$("#usecal").children().eq(2).text($("#checkin").val()+"-");
-		$("#usecal").children().eq(2).append($("#checkout").val());
-		$("#usecal").children().eq(3).text($("#checkcnt").val());
-		$("#usecal").children().eq(0).text(betweenday+"박"+(betweenday+1)+"일");
-		
-		// 수정하기를 눌렀을때 modal로 값 넘겨주는 것
-		$("input[value='수정하기']").click(function(){
+		//데이터 보내기
+		var datasend=function(){
 			var checkin=$("#checkin").val();
 			var checkout=$("#checkout").val();
 			var checkcnt=$("#checkcnt").val();
@@ -39,6 +33,25 @@ $(function(){
 			$("#h-cnt").val(checkcnt);
 			$("#totmoney").children().eq(2).text(betweenday);
 			$("#totmoney").children().eq(5).text(summoney);
+		}
+		
+		// 페이지 수정 페이지 값 채우기
+		$("#usecal").children().eq(2).text($("#checkin").val()+"-");
+		$("#usecal").children().eq(2).append($("#checkout").val());
+		$("#usecal").children().eq(4).text($("#checkcnt").val());
+		$("#usecal").children().eq(0).text(betweenday+"박"+(betweenday+1)+"일");
+		
+		// 눌렀을때 modal로 값 넘겨주는 것
+		$("input[value='수정하기']").click(function(){
+			datasend();
+		})
+
+		$("#usecal").click(function(){
+			datasend();
+		})
+
+		$("#quickmenu").click(function(){
+			datasend();
 		})
 		
 		// 수정 눌렀을때 퀵메뉴, 수정페이지로 값 보내기
@@ -156,6 +169,14 @@ $(function(){
 			
 		}, 1500)
 		
+		
+		$("#bigphoto").click(function(){
+			for (var i = 0; i < imgarr.length; i++) {
+				$("#houseimgall").append("<img src='/resources/img/house_img/"+imgarr[i]+"' id='houseimgall'>")
+			}
+			$("#houseallimg").modal();
+		});
+		
 		// 캘러리 아이콘을 눌렀을 때 달력 나오게 하기
 		$("#startcal").click(function(){
 			$("#bundle").css({display: "block"});	
@@ -222,8 +243,7 @@ $(function(){
 				$(this).attr("disabled",true);
 			}
 		});
-		
-		
+	
 		
 	/*kakao 맵*/
 	var lat=$("#lat").val();
