@@ -97,7 +97,7 @@ public class LoginFilter implements Filter {
 			return true;
 		} else if(uri.startsWith("/forget")) {
 			return true;
-		}
+		} 
 		return false;
 	}
 }
