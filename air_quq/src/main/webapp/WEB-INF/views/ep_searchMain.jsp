@@ -11,14 +11,14 @@
 <!--//////////  -->
 
 	<c:forEach items="${ exlist }" var="exlist">
-	<form action="/ep/apply" method="post" class="formId2">
-		<button type="submit" style="border:none; width:100%; text-align: left;" class="btn btn-light">
 		<input type="hidden" value="${ addr }" name="addr">
 		<input type="hidden" value="${ day }" name="day">
 		<input type="hidden" value="${ cnt }" name="cnt">
 		<input type="hidden" value="${ exlist.lat }" name="lat">
 		<input type="hidden" value="${ exlist.lnt }" name="lnt">
 		<input type="hidden" value="${ exlist.title }" name="title">
+	<form action="/online/details?hinum=${ exlist.hinum }" method="post" class="formId2">
+		<button type="submit" style="border:none; width:100%; text-align: left;" class="btn btn-light">
 	        <div class="media">
 	              <img class="d-flex align-self-start" src="/resources/img/house_img/${ exlist.img }">
 	              <div class="media-body pl-3">

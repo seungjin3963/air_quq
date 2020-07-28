@@ -43,18 +43,27 @@ public class EpOnlineController {
 	}
 	
 	@RequestMapping("/online/details")
-	public String goDetails(int hinum,Model model,HttpServletResponse response) throws IOException {
+	public String goDetails(int hinum,Model model) throws IOException {
 		//영노
+		
+		
 		String[] mater= {};
+		String Mater="";
 		List<EP_ManagementVo> hinum_Img=imgService.epappImg(hinum); // 이미지	
 		model.addAttribute("hinum_Img" , hinum_Img);
 		
 		SliderVo experienceInfo=service.outslider(hinum);
 		String maters= experienceInfo.getMater();
+		if(maters==null) {
+			Mater= "준비물 없습니다.";
+			model.addAttribute("mater",Mater);
+
+		}else {
+			
+			mater=maters.split(",");
+			model.addAttribute("mater",maters);
+		}
 		
-		mater=maters.split(",");
-		
-		model.addAttribute("mater",maters);
 		model.addAttribute("experienceInfo" , experienceInfo);
 		/*model.addAttribute("list2",service.inslider(hinum));
 		List<SliderVo> list=service.inslider(hinum);
