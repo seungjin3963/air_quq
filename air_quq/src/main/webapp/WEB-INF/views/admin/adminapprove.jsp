@@ -210,5 +210,4 @@
 	</div>
 	
 	<script type="text/javascript"  src="/resources/js/experience/ep_approve.js"></script>
-	<script type="text/javascript"  src="/resources/js/experience/ep_approve.js"></script>
 	<!-- 영노 -->

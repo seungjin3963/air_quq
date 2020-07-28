@@ -52,7 +52,7 @@
 			<tiles:insertAttribute name="header" />
 		</div>
 		<div id="content-wrapper" class="d-flex flex-column">
-			<div id="content" class="main-content">
+			<div id="content" class="main-content min-vh-100">
 				<tiles:insertAttribute name="main" />
 			</div>
 			<div id="footer" class="sticky-footer bg-white">

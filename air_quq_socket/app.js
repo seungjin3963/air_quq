@@ -50,5 +50,8 @@ io.sockets.on('connection',socket=>{
         }
     });
 
-
+    socket.on('roomList', () => {
+    	let rooms = Object.keys(io.sockets.adapter.rooms);
+    	socket.emit('roomList', rooms);
+    });
 });

@@ -7,7 +7,7 @@
 		select *
 		from report_type
 	</select>
-	<insert id="save">
+	<insert id="save" parameterType="map">
 		insert into report 
 		values(0, #{menum}, #{hinum}, #{content}, 'n')
 	</insert>

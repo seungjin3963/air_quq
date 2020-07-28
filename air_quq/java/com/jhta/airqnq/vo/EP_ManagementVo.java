@@ -26,6 +26,9 @@ public class EP_ManagementVo {
 	private int checkNum;
 	private String del_yn;
 	
+	private String lat;
+	private String lnt;
+	
 	
 	
 	public EP_ManagementVo() {}
@@ -50,7 +53,7 @@ public class EP_ManagementVo {
 		this.subname=subname;
 	}
 	public EP_ManagementVo(int einum, int sunum, int memnum, int div_type, String loc, String intr, String program,
-			String title, String price, String times, String mater, int sessionnum, int hinum,Date regdate , int people ,String reason , String del_yn) {
+			String title, String price, String times, String mater, int sessionnum, int hinum,Date regdate , int people ,String reason , String del_yn, String lnt , String lat) {
 		super();
 		this.einum = einum;
 		this.sunum = sunum;
@@ -69,6 +72,8 @@ public class EP_ManagementVo {
 		this.people= people;
 		this.reason=reason;
 		this.del_yn=del_yn;
+		this.lat=lat;
+		this.lnt=lnt;
 	}
 	
 	
@@ -282,6 +287,23 @@ public class EP_ManagementVo {
 	public void setDel_yn(String del_yn) {
 		this.del_yn = del_yn;
 	}
-	
+
+	public String getLat() {
+		return lat;
+	}
+
+	public void setLat(String lat) {
+		this.lat = lat;
+	}
+
+	public String getLnt() {
+		return lnt;
+	}
+
+	public void setLnt(String lnt) {
+		this.lnt = lnt;
+	}
+
+
 	
 }

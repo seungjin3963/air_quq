@@ -106,7 +106,6 @@ public class HomeController {
 		
 		
 		//페이징 처리를위한 객체
-		
 		PageUtilForMySql pageUtil = new PageUtilForMySql(pageNum, getSearchCount, rowBlockCount, pageBlockCount);
 		session.setAttribute("pageUtil", pageUtil);
 		

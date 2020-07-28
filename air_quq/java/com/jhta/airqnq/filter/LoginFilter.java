@@ -84,7 +84,19 @@ public class LoginFilter implements Filter {
 			return true;
 		} else if (uri.startsWith("/emailchk")) {
 			return true;
-		}
+		} else if(uri.startsWith("/kakao/login")) {
+			return true;
+		} else if(uri.equals("/ep_OnlineList")) {
+			return true;
+		} else if(uri.startsWith("/experience/search")) {
+			return true;
+		} else if(uri.equals("/online/details")) {
+			return true;
+		} else if(uri.startsWith("/echo")) {
+			return true;
+		} else if(uri.startsWith("/forget")) {
+			return true;
+		} 
 		return false;
 	}
 }

@@ -44,8 +44,7 @@ $(function(){
 		}, function(data) {
 			$.each(data, function(key, value) {
 				if (key == "houseimg") {
-					console.log(value);
-					$(".modal-body").children().eq(0).prop("src", value)
+					$(".modal-body").children().eq(0).prop("src", "/resources/img/house_img/"+value.houseimg);
 				}
 				if (key == "vo") {
 					var starttemp = new Date(value.startdate);
@@ -53,7 +52,7 @@ $(function(){
 
 					var startdate = datechange(starttemp);
 					var enddate = datechange(endtemp);
-
+					
 					$(".modal-body").children().eq(4).val(value.title);
 					$(".modal-body").children().eq(7).text(value.content);
 					$(".modal-body").children().eq(10).val(value.addr);

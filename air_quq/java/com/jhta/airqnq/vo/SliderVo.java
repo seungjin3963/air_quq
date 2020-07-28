@@ -23,7 +23,36 @@ public class SliderVo {
 	private String intr;//�샇�뒪�듃�옄湲곗냼媛�
 	private String mater;//以�鍮꾨Ъ
 	private int people;//�씤�썝�닔
+	private String subname;
+	private int div_type;
+	
+	
 	public SliderVo() {};
+	
+	
+	
+	
+	public SliderVo(int hinum, int memnum, String title, String loc, String times, String price, byte[] profile_img, //영노
+			String program, String intr, String mater, int people, String subname , String id) {
+		super();
+		this.hinum = hinum;
+		this.memnum = memnum;
+		this.title = title;
+		this.loc = loc;
+		this.times = times;
+		this.price = price;
+		this.profile_img = profile_img;
+		this.program = program;
+		this.intr = intr;
+		this.mater = mater;
+		this.people = people;
+		this.subname = subname;
+		this.id=id;
+	}
+
+
+
+
 	//硫붿씤�솕硫�
 	public SliderVo(int score,int hinum,int memnum,String img,String title,String loc,String times,String price) {
 		this.hinum=hinum;
@@ -174,6 +203,18 @@ public class SliderVo {
 	}
 	public void setMater(String mater) {
 		this.mater = mater;
+	}
+	public String getSubname() {
+		return subname;
+	}
+	public void setSubname(String subname) {
+		this.subname = subname;
+	}
+	public int getDiv_type() {
+		return div_type;
+	}
+	public void setDiv_type(int div_type) {
+		this.div_type = div_type;
 	}
 	
 }

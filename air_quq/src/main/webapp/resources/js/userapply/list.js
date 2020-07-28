@@ -1,4 +1,5 @@
 let rowIndex = 0;
+
 houseApplyList();
 function houseApplyList(){
 	$("#houseNavItem").addClass("active border-bottom-danger");
@@ -75,65 +76,79 @@ function datechange(datetime) {
 }
 
 function expApplyList(){
-	$("#houseDataTable").addClass("d-none");
-	$("#expDataTable").removeClass("d-none");
+	let socket = io.connect("https://localhost:3000/");
+	socket.emit('roomList');
 	
-	$("#houseNavItem").removeClass("active border-bottom-danger");
-	$("#expNavItem").addClass("active border-bottom-danger");
-	
-	let table = $("#expDataTable");
-	table.find("tbody").empty();
-	
-	getApplyExpList().then(function(data){
-		let html = "";
-		$(data).each(function(key ,value){
-			let status;
-			let statusBackColor;
-			if(value.status == 2){
-				status = "체험";
-				statusBackColor = "";
-			}else if(value.status == 3){
-				status = "온라인";
-				statusBackColor = "";
-			}else{
-				status = "취소";
-				statusBackColor = "cencelBackColor";
-			}
-			let startrent = datechange(new Date(value.startrent));
-			let endrent = datechange(new Date(value.endrent));
-			html += `<tr class="${statusBackColor}">`;
-			html += `<td class="d-none">${value.rtnum }</td>`;
-			html += `<td class="d-none">${value.hinum }</td>`;
-			html += `<td>${value.title }</td>`;
-			html += `<td>${startrent}</td>`;
-			html += `<td>${value.status }</td>`;
-			html += `<td>${value.pay_price }</td>`;
-			html += "<td>";
-			if(value.rag_yn = "n"){
-				html += `<i class="fa fa-times text-danger fa-2x"></i>`;
-			}else{
-				html += `<i class="fa fa-check text-info fa-2x"></i>`;
-			}
-			html += "</td>";
-			
-			html += "<td>";
-			let now = new Date();
-			if(endrent <= now){
-				html += `<a class="text-success openReviewAndGrade" href="#" data-toggle="modal" data-target="#reviewAndGradeModal" data-rtnum="${value.rtnum }" data-hinum="${value.hinum }"><i class="fa fa-thumbs-up fa-2x"></i></a>`;
-			}else{
-				html += `<a class="text-Secondary disable"><i class="fa fa-thumbs-up fa-2x"></i></a>`;
-			}
-			html += "</td>";
-			html += "<td>";
-			if(startrent >= now){
-				html += `<a href="javascript:refundmodal(${value.rtnum })" class="text-warning"><i class="fa fa-calendar-times-o fa-2x"></i></a>`;
-			}else{
-				html += `<a class="text-Secondary disable"><i class="fa fa-calendar-times-o fa-2x"></i></a>`;
-			}
-			html += "</td>";
-			html += "</tr>";
+	socket.on('roomList', rooms => {
+		$("#houseDataTable").addClass("d-none");
+		$("#expDataTable").removeClass("d-none");
+		
+		$("#houseNavItem").removeClass("active border-bottom-danger");
+		$("#expNavItem").addClass("active border-bottom-danger");
+		
+		let table = $("#expDataTable");
+		table.find("tbody").empty();
+		
+		getApplyExpList().then(function(data){
+			let html = "";
+			$(data).each(function(key ,value){
+				let status;
+				let statusBackColor;
+				if(value.status == 2){
+					status = "체험";
+					statusBackColor = "";
+				}else if(value.status == 3){
+					status = "온라인";
+					statusBackColor = "";
+				}else{
+					status = "취소";
+					statusBackColor = "cencelBackColor";
+				}
+				let startrent = datechange(new Date(value.startrent));
+				let endrent = datechange(new Date(value.endrent));
+				html += `<tr class="${statusBackColor}">`;
+				html += `<td class="d-none">${value.rtnum }</td>`;
+				html += `<td class="d-none">${value.hinum }</td>`;
+				html += `<td>${value.title }</td>`;
+				html += `<td>${startrent}</td>`;
+				html += `<td>${value.status }</td>`;
+				html += `<td>${value.pay_price }</td>`;
+				html += "<td>";
+				if(value.rag_yn = "n"){
+					html += `<i class="fa fa-times text-danger fa-2x"></i>`;
+				}else{
+					html += `<i class="fa fa-check text-info fa-2x"></i>`;
+				}
+				html += "</td>";
+				
+				html += "<td>";
+				let now = new Date();
+				if(endrent <= now){
+					html += `<a class="text-success openReviewAndGrade" href="#" data-toggle="modal" data-target="#reviewAndGradeModal" data-rtnum="${value.rtnum }" data-hinum="${value.hinum }"><i class="fa fa-thumbs-up fa-2x"></i></a>`;
+				}else{
+					html += `<a class="text-Secondary disable"><i class="fa fa-thumbs-up fa-2x"></i></a>`;
+				}
+				html += "</td>";
+				html += "<td>";
+				if(startrent >= now){
+					html += `<a href="javascript:refundmodal(${value.rtnum })" class="text-warning"><i class="fa fa-calendar-times-o fa-2x"></i></a>`;
+				}else{
+					html += `<a class="text-Secondary disable"><i class="fa fa-calendar-times-o fa-2x"></i></a>`;
+				}
+				html += "</td>";
+				
+				html += "<td>";
+				$(rooms).each(function(key, val){
+					console.log(value.hinum);
+					if(val == value.hinum){
+						html += `<a href="/epOnline/epOnline?hinum=${value.hinum}"><i class="fa fa-sign-in fa-2x"></i></a>`;
+					}
+				});
+				html += "</td>";
+				html += "</tr>";
+			});
+			table.find("tbody").append(html);
 		});
-		table.find("tbody").append(html);
 	});
 }
 

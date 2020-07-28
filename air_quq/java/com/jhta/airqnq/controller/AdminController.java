@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.jhta.airqnq.pageUtil.PageUtil;
+import com.jhta.airqnq.service.AdminApproveService;
 import com.jhta.airqnq.service.House_infoAdminService;
 import com.jhta.airqnq.service.MemberService;
 import com.jhta.airqnq.service.RentService;
@@ -29,6 +30,7 @@ import com.jhta.airqnq.vo.EP_ManagementVo;
 import com.jhta.airqnq.vo.HouseInfoVo;
 import com.jhta.airqnq.vo.JoinVo;
 import com.jhta.airqnq.vo.RentVo;
+import com.jhta.airqnq.vo.ReportTypeVo;
 
 @Controller
 public class AdminController {
@@ -41,6 +43,9 @@ public class AdminController {
 	
 	@Autowired
 	private RentService rentservice;
+	
+	@Autowired
+	private AdminApproveService approveservice;
 	
 	/* 관리자 회원관리 */
 	@GetMapping("/admin")
@@ -222,19 +227,25 @@ public class AdminController {
 		
 		HashMap<String, Object> map=new HashMap<String, Object>();
 		HashMap<String, Object> returndata=new HashMap<String, Object>();
-
+		
 		String path=session.getServletContext().getRealPath("/resources/img/house_img");
 		
 		map.put("hinum",hinum);
 		map.put("ordernum", 1);
 		
 		HouseInfoVo vo=host_infoService.HostOne(hinum);
+		List<EP_ManagementVo> houseimg = approveservice.epappImg(hinum);
 		
-		String houseimg=path+File.separator+host_infoService.HouseImgOne(map);
+		for(EP_ManagementVo imgvo : houseimg) {
+			if(imgvo != null) {
+				if(imgvo.getOrdernum() == 1) {
+					map.put("houseimg", imgvo.getImg());
+				}
+			}
+		}
 		
 		returndata.put("vo",vo);
-		returndata.put("houseimg",houseimg);
-		
+		returndata.put("houseimg",map);
 		return returndata;
 	}
 	
@@ -345,5 +356,16 @@ public class AdminController {
 		model.addAttribute("pricerange", pricerange);	
 			
 		return ".admin.statisticsadmin";	
+	}
+	
+	
+	
+	//////////////////////영노 신고 목록
+	@RequestMapping("/admin/Declaration")
+	public String adminDeclaration(Model model) {
+		List<ReportTypeVo> reportVo=service.reportList();
+		System.out.println(reportVo);
+		model.addAttribute("reportVo" , reportVo);
+		return ".admin.adminDeclaration";
 	}
 }

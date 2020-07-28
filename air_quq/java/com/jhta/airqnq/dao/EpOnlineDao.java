@@ -19,8 +19,8 @@ public class EpOnlineDao {
 	
 	private final String NAMESPACE ="com.jhta.mybatis.mapper.epOnlineMapper";
 	
-	public List<SliderVo> outslider(){
-		return sql.selectList(NAMESPACE+".outslider");
+	public SliderVo outslider(int hinum){
+		return sql.selectOne(NAMESPACE+".outslider" , hinum);
 	}
 	public List<SliderVo> inslider(int hinum){
 		return sql.selectList(NAMESPACE+".inslider",hinum);
@@ -41,8 +41,8 @@ public class EpOnlineDao {
 		System.out.println(sql.selectOne(NAMESPACE+".findRoom",hash)+"값은?");
 		return sql.selectOne(NAMESPACE+".findRoom",hash);
 	}
-	public List<ChatLogVo> chatlog(int number){
-		return sql.selectList(NAMESPACE+".chatLog",number);
+	public ChatLogVo chatlog(int number){
+		return sql.selectOne(NAMESPACE+".chatLog",number);
 	}
 	public int addChat(HashMap<String, Object> hash) {
 		return sql.insert(NAMESPACE+".addChat",hash);

@@ -64,7 +64,7 @@
 	
 	<!-- 상세 신청 데이터 뽑기 -->
 	<select id="applyselect" parameterType="int" resultType="com.jhta.airqnq.vo.Apply_infoVo">
-	 	select hinum,h.menum,id,title,content,h.addr,addr_detail,price,max_n,bedroom,checkin_time,startdate,enddate from house_info h,member m where hinum=#{hinum} and h.menum=m.menum
+	 	select hinum,h.menum,id,title,content,h.addr,addr_detail,price,max_n,bedroom,checkin_time,lat,lnt,startdate,enddate from house_info h,member m where hinum=#{hinum} and h.menum=m.menum
 	</select>
 	
 	<!-- 승인된 house_info 뽑기 -->
@@ -81,14 +81,14 @@
 			<![CDATA[
 				AND h.max_n>=#{max_n}
 				AND h.`div`=#{div}
-				AND h.startdate>=#{startdate}
+				AND h.startdate<=#{startdate}
 				AND h.enddate>=#{enddate}
 			]]>
 				AND h.del_yn=#{del_yn}
 				AND h.manager_check=#{manager_check}
 				AND i.ordernum =1
 				AND h.hinum = i.hinum
-			LIMIT #{startRow}, #{endRow}
+			LIMIT #{startRow}, #{endRow} 
 	</select>
 	
 	<!-- house 검색된 글 개수 구하기 -->
@@ -101,7 +101,7 @@
 					<![CDATA[
 						AND h.max_n>=#{max_n}
 						AND h.`div`=#{div}
-						AND h.startdate>=#{startdate}
+						AND h.startdate<=#{startdate}
 						AND h.enddate>=#{enddate}
 					]]>
 						AND h.del_yn=#{del_yn}

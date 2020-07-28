@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.jhta.airqnq.dao.ExperienceDao;
 import com.jhta.airqnq.vo.EP_ManagementVo;
+import com.jhta.airqnq.vo.ExperienceSearchVo;
 import com.jhta.airqnq.vo.ExperienceVo;
 
 @Service
@@ -79,5 +80,20 @@ public class ExperienceService {
 	}
 	public int experienceUpdate(EP_ManagementVo vo) {
 		return dao.experienceUpdate(vo);
+	}
+	
+	public int houseInsert(EP_ManagementVo vo) {
+		return dao.houseInsert(vo);
+	}
+	
+	
+	//체험 검색하는 기능
+	public List<ExperienceSearchVo> getExSearchList(HashMap<String, Object> map) {
+		return dao.getExSearchList(map);
+	}
+	
+	//검색된 전체글 개수
+	public int getExSearchListCount(String loc) {
+		return dao.getExSearchListCount(loc);
 	}
 }

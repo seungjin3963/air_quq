@@ -80,7 +80,7 @@
 				<button type="button" class="close" data-dismiss="modal" class="exitbutton">X</button>
 			</div>
 			<div class="modal-body">
-				<img src=""><br>
+				<img src="" id="houseimg"><br>
 				<label>제목</label><br> 
 				<input type="text" readonly="readonly" class="exitbutton"><br> 
 				<label>내용</label>

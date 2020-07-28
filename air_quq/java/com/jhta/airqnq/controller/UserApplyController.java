@@ -24,18 +24,22 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.jhta.airqnq.service.AdminApproveService;
 import com.jhta.airqnq.service.ApplyService;
 import com.jhta.airqnq.service.House_infoAdminService;
 import com.jhta.airqnq.service.MemberService;
 import com.jhta.airqnq.service.RentService;
 import com.jhta.airqnq.vo.ApplyVo;
 import com.jhta.airqnq.vo.Apply_infoVo;
+import com.jhta.airqnq.vo.EP_ManagementVo;
 import com.jhta.airqnq.vo.JoinVo;
 import com.jhta.airqnq.vo.MemberVo;
 import com.jhta.airqnq.vo.RentVo;
 
 @Controller
 public class UserApplyController {
+
+	private static final String Date = null;
 
 	@Autowired
 	private ApplyService service;
@@ -48,49 +52,140 @@ public class UserApplyController {
 	
 	@Autowired
 	private RentService rentservice;
+	
+	@Autowired
+	private AdminApproveService approveservice; 
 
 	@RequestMapping(value="/user/apply")
 	public String userapply(Model model,HttpSession session, String start_day, String end_day, int hinum, int people_count) {
 		Apply_infoVo infovo= house_infoService.HinumSelect(hinum);
 		HashMap<String, String> usercheck=new HashMap<String, String>();
 		List<RentVo> hinumrentlist=rentservice.hinumrentselect(hinum);
+		List<EP_ManagementVo> epvo = approveservice.epappImg(hinum);
 		
-		ArrayList<String> temp=new ArrayList<String>();
+		String imgarr=null;
 		
-		SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
+		int cnt=0;
 		
-		for(RentVo vo : hinumrentlist) {
-			  
-			long timetemp=vo.getEndrent().getTime()-vo.getStartrent().getTime();
-			
-			long daybetween=timetemp/(24*60*60*1000);
-			
-			for (int i = 0; i < temp.size(); i++) {
-				if(!(temp.get(i).equals(sdf.format(vo.getStartrent())))) {
-					temp.add(sdf.format(vo.getStartrent()));
-				}
-			}
-			
-			for (int i = 0; i < daybetween; i++) {
-				Calendar cal = Calendar.getInstance();
-				Date hinumrentdate = vo.getStartrent();
-				
-				cal.setTime(hinumrentdate);
-				cal.add(Calendar.DATE,1);
-				
-				Date tempday=new Date(cal.getTimeInMillis());
-				
-				
-				for (int j = 0; j < temp.size(); j++) {
-					if(!(temp.get(i).equals(sdf.format(vo.getStartrent())))) {
-						temp.add(sdf.format(tempday));
+		for(EP_ManagementVo vo: epvo) {
+			if(vo.getImg() != null) {
+				if(vo.getOrdernum() == 1) {
+					imgarr=vo.getImg()+"/";
+					cnt++;
+				}else {
+					if(epvo.size()-1 == cnt) {
+						imgarr+=vo.getImg();
+					}else {
+						imgarr+=vo.getImg()+"/";
+						cnt++;
 					}
 				}
 			}
 		}
 		
-		for (int i = 0; i < temp.size(); i++) {
-			System.out.println("출력:"+temp.get(i));
+		String chekcdatepicker=null;
+		
+		if(hinumrentlist != null) {
+		
+			ArrayList<String> temp=new ArrayList<String>();
+			ArrayList<String> temp2=new ArrayList<String>();
+			
+			SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
+			
+			boolean overlap=true;
+
+			for(RentVo vo : hinumrentlist) {
+				
+				long timetemp=vo.getEndrent().getTime()-vo.getStartrent().getTime();
+				
+				long daybetween=timetemp/(24*60*60*1000);
+				
+				if(overlap) {
+					temp.add(sdf.format(vo.getStartrent()));
+					
+					for (int i = 0; i < daybetween; i++) {
+						boolean overlapcheck=true;
+						
+						Calendar cal = Calendar.getInstance();
+						
+						try {
+							Date hinumrentdate = sdf.parse(temp.get(temp.size()-1));
+							
+							cal.setTime(hinumrentdate);
+							cal.add(Calendar.DATE,1);
+							
+							Date tempday=new Date(cal.getTimeInMillis());
+							
+							for (int j = 0; j < temp.size(); j++) {
+								if(sdf.format(tempday).equals(temp.get(j))) {
+									overlapcheck=false;
+								}
+							}
+							if(overlapcheck) {
+								temp.add(sdf.format(tempday));
+							}
+						} catch (ParseException pe) {
+							System.out.println("String -> date 변경 오류:"+pe.getMessage());
+						}
+					}
+					
+					overlap=false;
+				}else {
+					for (int i = 0; i < daybetween; i++) {
+						boolean overlapcheck=true;
+						
+						Calendar cal = Calendar.getInstance();
+						
+						try {
+							if(temp2.size()==0) {
+								String otherday=sdf.format(vo.getStartrent());
+								
+								temp2.add(otherday);
+								
+								for (int j = 0; j < temp.size(); j++) {
+									if(otherday.equals(temp.get(j))) {
+										overlapcheck=false;
+									}
+								}
+								
+								if(overlapcheck) {
+									temp.add(otherday);
+								}
+							}
+							
+							Date hinumrentdate = sdf.parse(temp2.get(temp2.size()-1));
+							
+							cal.setTime(hinumrentdate);
+							cal.add(Calendar.DATE,1);
+							
+							Date tempday=new Date(cal.getTimeInMillis());
+							
+							for (int j = 0; j < temp.size(); j++) {
+								if(sdf.format(tempday).equals(temp.get(j))) {
+									overlapcheck=false;
+								}
+							}
+							if(overlapcheck) {
+								temp.add(sdf.format(tempday));
+							}
+						} catch (ParseException pe) {
+							System.out.println("String -> date 변경 오류:"+pe.getMessage());
+						}
+					}
+				}
+			}
+			
+			for (int i = 0; i < temp.size(); i++) {
+				if(i == 0) {
+					chekcdatepicker=temp.get(i)+"/";
+				}else {
+					if(i == temp.size()-1) {
+						chekcdatepicker+=temp.get(i);
+					}else {
+						chekcdatepicker+=temp.get(i)+"/";
+					}
+				}
+			}
 		}
 		
 		String start=start_day.replace("-", "/");
@@ -122,8 +217,10 @@ public class UserApplyController {
 			session.setAttribute("applyVo", vo);
 			session.setAttribute("rentVo", rentvo);
 			
-			session.setAttribute("infovo", infovo);
-			session.setAttribute("usercheck", usercheck);
+			model.addAttribute("imgarr", imgarr);
+			model.addAttribute("infovo", infovo);
+			model.addAttribute("usercheck", usercheck);
+			model.addAttribute("chekcdatepicker", chekcdatepicker);
 		} catch (ParseException pe) {
 			System.out.println("날짜 오류 :"+pe);
 		}

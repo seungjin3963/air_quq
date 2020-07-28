@@ -21,19 +21,19 @@
 					</ul>
 				</div>
 			</div>
-			<form class="border-left-danger rounded" method="post" action="/experience/search/result" id="host_form">
+			<form class="border-left-danger rounded" method="post" action="/experience/search/result" id="host_formEx">
 				<div class="form-group input-group">
 					<div class="col-md-5">
 						<div class="text-xs font-weight-bold text-danger text-uppercase mb-1">위치</div>
-						<input type="text" class="form-control bg-light border-0 small" placeholder="어디로 여행가세요?" name="addr">
+						<input type="text" class="form-control bg-light border-0 small" placeholder="어디로 여행가세요?" name="addr" id="addr">
 					</div>
 					<div class="col-md-3">
 						<div class="text-xs font-weight-bold text-danger text-uppercase mb-1">날짜</div>
-						<input type="date" class="form-control bg-light border-0 small" placeholder="날짜 선택" name="day">
+						<input type="date" class="form-control bg-light border-0 small" placeholder="날짜 선택" name="day" id="day">
 					</div>
 					<div class="col-md-2">
 						<div class="text-xs font-weight-bold text-danger text-uppercase mb-1">인원</div>
-						<input type="number" class="form-control bg-light border-0 small" placeholder="인원수" name="cnt">
+						<input type="number" class="form-control bg-light border-0 small" placeholder="인원수" name="cnt" id="cnt">
 					</div>
 					<div class="input-group-append">
 						<button class="btn btn-danger" type="submit">
@@ -45,3 +45,4 @@
 		</div>
 	</div>
 </div>
+<script type="text/javascript" src="/resources/js/exFormCheck.js"></script>

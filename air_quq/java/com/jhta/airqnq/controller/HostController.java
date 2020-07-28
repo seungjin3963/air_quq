@@ -64,9 +64,9 @@ public class HostController {
 	}
 
 	@GetMapping(value = "/host/epOnline/delete")
-	public String delEpOnline(int einum) {
+	public String delEpOnline(int hinum) {
 		try {
-			service.delEpOnline(einum);
+			service.delEpOnline(hinum);
 			return "redirect:/host/epOnline/list";
 		} catch (Exception e) {
 			System.out.println(e.getMessage());

@@ -9,25 +9,30 @@
 	<div class="row">
 		<div class="col-md-5 listing-block">
 <!--//////////  -->
-	<c:forEach items="${ hostSearch }" var="hitem">
-	<a href="/" onclick='submitPostData(event)'>
-	<form action="/user/apply?pageNum=1" method="post" class="formId2">
-	<input type="hidden" value="${ addr }" name="addr">
-	<input type="hidden" value="${ day }" name="day">
-	<input type="hidden" value="${ cnt }" name="cnt">
-        <div class="media">
-              <img class="d-flex align-self-start" src="/resources/img/house_img/${ hitem.img }">
-              <div class="media-body pl-3">
-                <div class="price">￦${ hitem.price }원<small>${ hitem.addr }</small></div>
-                <div class="address">${ hitem.addr_detail }</div>
-                <div class="titlw"><big>${ hitem.title }</big></div>
-                <div type="hidden" value="${ hitem.addr_detail }" id="locationAdress"></div>
-                <div class="stats">
-                    <span><i class="fa fa-users" aria-hidden="true"></i>${ hitem.max_n }</span>
-                    <span><i class="fa fa-calendar" aria-hidden="true"></i>${ hitem.startdate } ~ ${ hitem.enddate }</span>
-                </div>
-              </div>
-            </div>
+
+	<c:forEach items="${ exlist }" var="exlist">
+		<input type="hidden" value="${ addr }" name="addr">
+		<input type="hidden" value="${ day }" name="day">
+		<input type="hidden" value="${ cnt }" name="cnt">
+		<input type="hidden" value="${ exlist.lat }" name="lat">
+		<input type="hidden" value="${ exlist.lnt }" name="lnt">
+		<input type="hidden" value="${ exlist.title }" name="title">
+	<form action="/online/details?hinum=${ exlist.hinum }" method="post" class="formId2">
+		<button type="submit" style="border:none; width:100%; text-align: left;" class="btn btn-light">
+	        <div class="media">
+	              <img class="d-flex align-self-start" src="/resources/img/house_img/${ exlist.img }">
+	              <div class="media-body pl-3">
+	                <div class="price">￦${  exlist.price }원<small>${ exlist.loc }</small></div>
+	                <div class="address"></div>
+	                <div class="titlw"><big>${ exlist.title }</big></div>
+	                <div type="hidden" value="" id="locationAdress"></div>
+	                <div class="stats">
+	                    <span><i class="fa fa-users" aria-hidden="true"></i>${ cnt }</span>
+	                    <span><i class="fa fa-calendar" aria-hidden="true"></i>${ day }</span>
+	                </div>
+	              </div>
+	            </div>
+	     </button>
      </form>
      </a>    
    </c:forEach>
@@ -84,46 +89,65 @@
 </div>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=406ad69f366b925b30509f2bc766e47f&libraries=services"></script>
 <script type="text/javascript">
-var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
-mapOption = {
-    center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
-    level: 3 // 지도의 확대 레벨
-};  
+	var lat = $("input[name='lat']");
+	var lnt = $("input[name='lnt']");
+	var price = $("input[name='price']");
+	var title = $("input[name='title']");
+	
+	var mapContainer = document.getElementById('map'); // 지도를 표시할 div  
+	console.log($(lat[0]).val());
+	console.log($(lnt[0]).val());
+    mapOption = { 
+        center: new kakao.maps.LatLng($(lat[0]).val(), $(lnt[0]).val()), // 지도의 중심좌표
+        level: 6 // 지도의 확대 레벨
+    };
 
-//지도를 생성합니다    
-var map = new kakao.maps.Map(mapContainer, mapOption); 
+var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
 
-//주소-좌표 변환 객체를 생성합니다
-var geocoder = new kakao.maps.services.Geocoder();
+ 
+// 마커를 표시할 위치와 title 객체 배열입니다 
+var positions = [];
 
-//주소로 좌표를 검색합니다
-geocoder.addressSearch('제주특별자치도 제주시 첨단로 242', function(result, status) {
-
-// 정상적으로 검색이 완료됐으면 
- if (status === kakao.maps.services.Status.OK) {
-
-    var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
-
-    // 결과값으로 받은 위치를 마커로 표시합니다
-    var marker = new kakao.maps.Marker({
-        map: map,
-        position: coords
-    });
-
-    // 인포윈도우로 장소에 대한 설명을 표시합니다
-    var infowindow = new kakao.maps.InfoWindow({
-        content: '<div style="width:150px;text-align:center;padding:6px 0;">우리회사</div>'
-    });
-    infowindow.open(map, marker);
-
-    // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
-    map.setCenter(coords);
-} 
-});    
-
-
-function submitPostData(event){
-	event.preventDefault();
-	$(".formId2").submit();
+for(var i=0; i<lat.length; i++){
+	positions.push(
+		{
+			title: $(title[i]).val(),
+			latlng: new kakao.maps.LatLng($(lat[i]).val(), $(lnt[i]).val())
+		}		
+	);
 }
+
+for (var i = 0; i < positions.length; i ++) {
+    // 마커를 생성합니다
+    var marker = new kakao.maps.Marker({
+        map: map, // 마커를 표시할 지도
+        position: positions[i].latlng // 마커의 위치
+    });
+
+    // 마커에 표시할 인포윈도우를 생성합니다 
+    var infowindow = new kakao.maps.InfoWindow({
+        content: positions[i].title // 인포윈도우에 표시할 내용
+    });
+
+    // 마커에 mouseover 이벤트와 mouseout 이벤트를 등록합니다
+    // 이벤트 리스너로는 클로저를 만들어 등록합니다 
+    // for문에서 클로저를 만들어 주지 않으면 마지막 마커에만 이벤트가 등록됩니다
+    kakao.maps.event.addListener(marker, 'mouseover', makeOverListener(map, marker, infowindow));
+    kakao.maps.event.addListener(marker, 'mouseout', makeOutListener(infowindow));
+}
+
+// 인포윈도우를 표시하는 클로저를 만드는 함수입니다 
+function makeOverListener(map, marker, infowindow) {
+    return function() {
+        infowindow.open(map, marker);
+    };
+}
+
+// 인포윈도우를 닫는 클로저를 만드는 함수입니다 
+function makeOutListener(infowindow) {
+    return function() {
+        infowindow.close();
+    };
+}
+
 </script>

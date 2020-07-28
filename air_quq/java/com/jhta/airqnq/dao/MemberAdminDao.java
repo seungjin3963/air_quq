@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.jhta.airqnq.vo.JoinVo;
+import com.jhta.airqnq.vo.ReportTypeVo;
 
 @Repository
 public class MemberAdminDao {
@@ -30,6 +31,10 @@ public class MemberAdminDao {
 	
 	public int MemberImgReset(int menum) {
 		return sqlSessionTemplate.update(NAMESPACE+".memberimgreset", menum);
+	}
+	
+	public List<ReportTypeVo> reportList() {
+		return sqlSessionTemplate.selectList(NAMESPACE+ ".reportList");
 	}
 	
 }

@@ -6,11 +6,12 @@
 		</button>
 		<div class="collapse navbar-collapse" id="navbarNav">
 			<ul class="navbar-nav">
-				<li class="nav-item active border-bottom-danger">
-					<a class="nav-link" href="#"> 숙소 </a>
+				<li class="nav-item active border-bottom-danger" id="houseNav">
+					<a class="nav-link" href="javascript:;" onclick="javascript:houseSearch();"> 숙소 </a>
 				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="/experience/search">체험</a>
+				<li class="nav-item" id="expNav">
+					<!-- <a class="nav-link" href="/experience/search">체험</a> -->
+					<a class="nav-link" href="javascript:;" onclick="javascript:expSearch();">체험</a>
 				</li>
 				<li class="nav-item">
 					<a class="nav-link" href="/ep_OnlineList">온라인 체험</a>
@@ -46,8 +47,99 @@
 					</div>
 				</div>
 			</form>
+			<form class="border-left-danger rounded d-none w-100" method="post" action="/experience/search/result" id="host_formEx">
+				<div class="form-group input-group">
+					<div class="col-md-6">
+						<div class="text-xs font-weight-bold text-danger text-uppercase mb-1">위치</div>
+						<input type="text" class="form-control bg-light border-0 small" placeholder="어디로 여행가세요?" name="addr" id="addr">
+					</div>
+					<div class="col-md-3">
+						<div class="text-xs font-weight-bold text-danger text-uppercase mb-1">날짜</div>
+						<input type="date" class="form-control bg-light border-0 small" placeholder="날짜 선택" name="day" id="day">
+					</div>
+					<div class="col-md-2">
+						<div class="text-xs font-weight-bold text-danger text-uppercase mb-1">인원</div>
+						<input type="number" class="form-control bg-light border-0 small" placeholder="인원수" name="cnt" id="cnt">
+					</div>
+					<div class="input-group-append">
+						<button class="btn btn-danger" type="submit">
+							<i class="fas fa-search fa-sm"> 검색</i>
+						</button>
+					</div>
+				</div>
+			</form>
 		</div>
 	</div>
+	
+	<script type="text/javascript">
+		//오늘날짜 구하기
+		let today = new Date();
+		
+		Date.prototype.format = function (f) {
+
+		    if (!this.valueOf()) return " ";
+
+		    var weekKorName = ["일요일", "월요일", "화요일", "수요일", "목요일", "금요일", "토요일"];
+
+		    var weekKorShortName = ["일", "월", "화", "수", "목", "금", "토"];
+
+		    var weekEngName = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+
+		    var weekEngShortName = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+		    var d = this;
+
+
+
+		    return f.replace(/(yyyy|yy|MM|dd|KS|KL|ES|EL|HH|hh|mm|ss|a\/p)/gi, function ($1) {
+
+		        switch ($1) {
+
+		            case "yyyy": return d.getFullYear(); // 년 (4자리)
+
+		            case "yy": return (d.getFullYear() % 1000).zf(2); // 년 (2자리)
+
+		            case "MM": return (d.getMonth() + 1).zf(2); // 월 (2자리)
+
+		            case "dd": return d.getDate().zf(2); // 일 (2자리)
+
+		            case "KS": return weekKorShortName[d.getDay()]; // 요일 (짧은 한글)
+
+		            case "KL": return weekKorName[d.getDay()]; // 요일 (긴 한글)
+
+		            case "ES": return weekEngShortName[d.getDay()]; // 요일 (짧은 영어)
+
+		            case "EL": return weekEngName[d.getDay()]; // 요일 (긴 영어)
+
+		            case "HH": return d.getHours().zf(2); // 시간 (24시간 기준, 2자리)
+
+		            case "hh": return ((h = d.getHours() % 12) ? h : 12).zf(2); // 시간 (12시간 기준, 2자리)
+
+		            case "mm": return d.getMinutes().zf(2); // 분 (2자리)
+
+		            case "ss": return d.getSeconds().zf(2); // 초 (2자리)
+
+		            case "a/p": return d.getHours() < 12 ? "오전" : "오후"; // 오전/오후 구분
+
+		            default: return $1;
+
+		        }
+
+		    });
+
+		};
+
+
+
+		String.prototype.string = function (len) { var s = '', i = 0; while (i++ < len) { s += this; } return s; };
+		String.prototype.zf = function (len) { return "0".string(len - this.length) + this; };
+		Number.prototype.zf = function (len) { return this.toString().zf(len); };
+		
+		
+		$("#start_day").attr('min', today.format('yyyy-MM-dd'));
+		$("#end_day").attr('min', today.format('yyyy-MM-dd'));
+	</script>
+	
 	<h1 class="text-danger">이제 가까운 곳에서 소중한 것들을 찾아보세요.</h1>
 	<script type="text/javascript" src="/resources/js/hostFormValidation.js"></script>
 	<!-- <script type="text/javascript" src="/resources/js/passport/passport_main.js"></script> -->
@@ -140,6 +232,20 @@
 		</div>
 	</div>
 </div>
+<script>
+	function expSearch(){
+		$("#houseNav").removeClass("active border-bottom-danger");
+		$("#expNav").addClass("active border-bottom-danger");
+		$("#host_form").addClass("d-none");
+		$("#host_formEx").removeClass("d-none");
+	}
 	
+	function houseSearch(){
+		$("#houseNav").addClass("active border-bottom-danger");
+		$("#expNav").removeClass("active border-bottom-danger");
+		$("#host_form").removeClass("d-none");
+		$("#host_formEx").addClass("d-none");
+	}
+</script>
 	
 

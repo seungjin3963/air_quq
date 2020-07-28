@@ -19,6 +19,7 @@
  	<typeAlias type="com.jhta.airqnq.vo.RentVo" alias="rentVo"/>
  	<typeAlias type="com.jhta.airqnq.vo.MainHouseInfoVo" alias="main_houseinfo"/>
  	<typeAlias type="com.jhta.airqnq.vo.HouseSearchVo" alias="house_search"/>
+ 	<typeAlias type="com.jhta.airqnq.vo.ExperienceSearchVo" alias="ex_search"/>
  </typeAliases>
  <mappers>
     <mapper resource="com/jhta/mybatis/mapper/JoinMapper.xml"/>

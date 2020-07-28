@@ -19,8 +19,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.jhta.airqnq.pageUtil.PageUtilForMySql;
 import com.jhta.airqnq.service.ExperienceService;
 import com.jhta.airqnq.vo.EP_ManagementVo;
+import com.jhta.airqnq.vo.ExperienceSearchVo;
 import com.jhta.airqnq.vo.ExperienceVo;
 
 @Controller
@@ -111,7 +113,7 @@ public class ExperiencePageController {
 
 
 	@RequestMapping("/experience/ep_insert/location") // 체험 위치 설정 2
-	public String experienceInsertlocation(Model model, String value, HttpSession session) {
+	public String experienceInsertlocation(Model model, String value, HttpSession session , String up , String down) {
 
 		EP_ManagementVo sessionVo = (EP_ManagementVo) session.getAttribute("sessionVo");
 
@@ -125,6 +127,8 @@ public class ExperiencePageController {
 			return ".experience.ep_insert.ep_introduce";
 		} else {
 			sessionVo.setLoc(value);
+			sessionVo.setLat(up);
+			sessionVo.setLnt(down);
 			int housenum = sessionVo.getHinum();
 			
 			
@@ -294,9 +298,11 @@ public class ExperiencePageController {
 			hinum=service.temporary(sessionVo.getMemnum());
 			sessionVo.setHinum(hinum);	
 			int n=service.experienceInsert(sessionVo);
+			service.houseInsert(sessionVo);
 		}else {
 			hinum=sessionVo.getHinum();
 			int n=service.experienceUpdate(sessionVo);
+			service.houseInsert(sessionVo);
 		}
 		
 		JSONObject json=new JSONObject(); 
@@ -322,9 +328,15 @@ public class ExperiencePageController {
 			hinum=service.temporary(sessionVo.getMemnum());
 			sessionVo.setHinum(hinum);
 			int n=service.experienceInsert(sessionVo);
+			service.houseInsert(sessionVo);
+		/*	HashMap<String , Object> map=new HashMap<String, Object>();
+			map.put("up", sessionVo.getUp());
+			map.put("up", sessionVo.getDown());
+			int n=service.houseInsertloc(map);*/
 		}else {
 			hinum=sessionVo.getHinum();
 			int n=service.experienceUpdate(sessionVo);
+			service.houseInsert(sessionVo);
 		}
 		String uploadPath = session.getServletContext().getRealPath("/resources/img/house_img");
 		if(session.getAttribute("epimglist")==null) {
@@ -393,13 +405,33 @@ public class ExperiencePageController {
 	
 	//주소로 체험 검색하는 기능
 	@RequestMapping("/experience/search/result")
-	public String searchExList(String addr, String day, int cnt) {
+	public String searchExList(String addr, String day, int cnt, Model model, @RequestParam(value = "pageNum", defaultValue = "1") int pageNum) {
 //		System.out.println(addr);
 //		System.out.println(day);
 //		System.out.println(cnt);
+		model.addAttribute("addr", addr);
+		model.addAttribute("day", day);
+		model.addAttribute("cnt", cnt);
 		
+		//페이징 처리를위한 객체
+		int rowBlockCount = 4;
+		int pageBlockCount = 5;
 		
+		//검색된 전체글 개수
+		int getSearchCount = service.getExSearchListCount(addr);
+		System.out.println("검색된 전체글 개수" + getSearchCount);
 		
+		PageUtilForMySql pageUtil = new PageUtilForMySql(pageNum, getSearchCount, rowBlockCount, pageBlockCount);
+		model.addAttribute("pageUtil", pageUtil);
+		
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("loc", addr);
+		map.put("startRow", 0);
+		map.put("endRow", 2);
+		
+		List<ExperienceSearchVo> list = service.getExSearchList(map);
+
+		model.addAttribute("exlist", list);
 		
 		return ".exSearchPageResult";
 	}
