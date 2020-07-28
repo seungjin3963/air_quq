@@ -3,7 +3,7 @@
 <link href="/resources/css/userapply/userapply.css" rel="stylesheet" type="text/css">
 
 <!-- 카카오 맵 api -->
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?asd"></script>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=asd"></script>
 
 <script src="/resources/js/userapply/userapply.js"></script>
 <input type="hidden" id="hinum" value="${infovo.hinum }">
