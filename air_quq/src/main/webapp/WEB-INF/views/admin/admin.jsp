@@ -15,6 +15,8 @@
 <link href="/resources/css/home.css" rel="stylesheet">
 <link href="/resources/css/header.css" rel="stylesheet">
 
+<!-- Font Awesome! -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <!-- jquery --> 
 <link rel="stylesheet" type="text/css" href="/resources/css/jquery-ui.css">
