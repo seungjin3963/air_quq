@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!-- <link rel="stylesheet" type="text/css" href="/resources/css/epOnline/epOnline.css"> -->
 <div class="container">
-	<input type="hidden" id="einum" value="${einum }">
+	<input type="hidden" id="hinum" value="${hinum }">
 	<div>
 		<video id="localVideo" autoplay width="480px"></video>
 		<video id="remoteVideo" width="480px" autoplay></video>

@@ -84,8 +84,8 @@ public class EpOnlineController {
 	}
 	
 	@GetMapping(value="/epOnline/epOnline")
-	public String epOnLine(Model model, int einum) {
-		model.addAttribute("einum", einum);
+	public String epOnLine(Model model, int hinum) {
+		model.addAttribute("hinum", hinum);
 		return ".epOnline.epOnline";
 	}
 	

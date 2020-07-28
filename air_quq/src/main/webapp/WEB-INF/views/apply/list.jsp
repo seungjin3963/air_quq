@@ -56,6 +56,7 @@
 						<th>리뷰 작성 여부</th>
 						<th>리뷰 & 평점</th>
 						<th>예약 취소</th>
+						<th>체험 참여</th>
 					</tr>
 				</thead>
 				<tbody>

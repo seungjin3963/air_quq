@@ -16,7 +16,7 @@ let pcConfig = {
 }
 
 /*let room = 'foo';*/
-let room = $('#einum').val();
+let room = $('#hinum').val();
 
 //let socket = io.connect();
 let socket = io.connect("https://localhost:3000/");
