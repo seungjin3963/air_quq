@@ -54,7 +54,8 @@ public class EchoHandler extends TextWebSocketHandler{
 //		String chat_no=newwone.split(",")[2];
 //		Object newwwwone=(Object)newwwone;
 //		TextMessage message=(TextMessage)newwwwone;
-		
+		int mnum = 0;
+		int chat_no = 0;
 		System.out.println(mnum+", mnum"+message+", message "+chat_no+" chat_no ");
 		HashMap<String, Object> hash = new HashMap<String, Object>();
 		//#{chat_no},#{content},#{mnum}
