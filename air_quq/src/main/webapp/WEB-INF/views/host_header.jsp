@@ -23,7 +23,6 @@
 			</a>
 			
 			
-			
 			<!-- form search -->
 			<div class="center_div">
 			<form class="border-left-danger rounded" method="post" action="/search/host?pageNum=1" id="host_form">
