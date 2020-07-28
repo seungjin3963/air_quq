@@ -18,8 +18,7 @@ let pcConfig = {
 /*let room = 'foo';*/
 let room = $('#hinum').val();
 
-//let socket = io.connect();
-let socket = io.connect("https://localhost:3000/");
+let socket = io.connect("https://192.168.0.2:3000/");
 
   if(room !==''){
     socket.emit('create or join',room);
