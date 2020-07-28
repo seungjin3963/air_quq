@@ -37,6 +37,8 @@ import com.jhta.airqnq.vo.RentVo;
 @Controller
 public class UserApplyController {
 
+	private static final String Date = null;
+
 	@Autowired
 	private ApplyService service;
 	
@@ -55,42 +57,109 @@ public class UserApplyController {
 		HashMap<String, String> usercheck=new HashMap<String, String>();
 		List<RentVo> hinumrentlist=rentservice.hinumrentselect(hinum);
 		
-		ArrayList<String> temp=new ArrayList<String>();
+		String chekcdatepicker=null;
 		
-		SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
+		if(hinumrentlist != null) {
 		
-		for(RentVo vo : hinumrentlist) {
-			  
-			long timetemp=vo.getEndrent().getTime()-vo.getStartrent().getTime();
+			ArrayList<String> temp=new ArrayList<String>();
+			ArrayList<String> temp2=new ArrayList<String>();
 			
-			long daybetween=timetemp/(24*60*60*1000);
+			SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
 			
-			for (int i = 0; i < temp.size(); i++) {
-				if(!(temp.get(i).equals(sdf.format(vo.getStartrent())))) {
+			boolean overlap=true;
+
+			for(RentVo vo : hinumrentlist) {
+				
+				long timetemp=vo.getEndrent().getTime()-vo.getStartrent().getTime();
+				
+				long daybetween=timetemp/(24*60*60*1000);
+				
+				if(overlap) {
 					temp.add(sdf.format(vo.getStartrent()));
-				}
-			}
-			
-			for (int i = 0; i < daybetween; i++) {
-				Calendar cal = Calendar.getInstance();
-				Date hinumrentdate = vo.getStartrent();
-				
-				cal.setTime(hinumrentdate);
-				cal.add(Calendar.DATE,1);
-				
-				Date tempday=new Date(cal.getTimeInMillis());
-				
-				
-				for (int j = 0; j < temp.size(); j++) {
-					if(!(temp.get(i).equals(sdf.format(vo.getStartrent())))) {
-						temp.add(sdf.format(tempday));
+					
+					for (int i = 0; i < daybetween; i++) {
+						boolean overlapcheck=true;
+						
+						Calendar cal = Calendar.getInstance();
+						
+						try {
+							Date hinumrentdate = sdf.parse(temp.get(temp.size()-1));
+							
+							cal.setTime(hinumrentdate);
+							cal.add(Calendar.DATE,1);
+							
+							Date tempday=new Date(cal.getTimeInMillis());
+							
+							for (int j = 0; j < temp.size(); j++) {
+								if(sdf.format(tempday).equals(temp.get(j))) {
+									overlapcheck=false;
+								}
+							}
+							if(overlapcheck) {
+								temp.add(sdf.format(tempday));
+							}
+						} catch (ParseException pe) {
+							System.out.println("String -> date 변경 오류:"+pe.getMessage());
+						}
+					}
+					
+					overlap=false;
+				}else {
+					for (int i = 0; i < daybetween; i++) {
+						boolean overlapcheck=true;
+						
+						Calendar cal = Calendar.getInstance();
+						
+						try {
+							if(temp2.size()==0) {
+								String otherday=sdf.format(vo.getStartrent());
+								
+								temp2.add(otherday);
+								
+								for (int j = 0; j < temp.size(); j++) {
+									if(otherday.equals(temp.get(j))) {
+										overlapcheck=false;
+									}
+								}
+								
+								if(overlapcheck) {
+									temp.add(otherday);
+								}
+							}
+							
+							Date hinumrentdate = sdf.parse(temp2.get(temp2.size()-1));
+							
+							cal.setTime(hinumrentdate);
+							cal.add(Calendar.DATE,1);
+							
+							Date tempday=new Date(cal.getTimeInMillis());
+							
+							for (int j = 0; j < temp.size(); j++) {
+								if(sdf.format(tempday).equals(temp.get(j))) {
+									overlapcheck=false;
+								}
+							}
+							if(overlapcheck) {
+								temp.add(sdf.format(tempday));
+							}
+						} catch (ParseException pe) {
+							System.out.println("String -> date 변경 오류:"+pe.getMessage());
+						}
 					}
 				}
 			}
-		}
-		
-		for (int i = 0; i < temp.size(); i++) {
-			System.out.println("출력:"+temp.get(i));
+			
+			for (int i = 0; i < temp.size(); i++) {
+				if(i == 0) {
+					chekcdatepicker=temp.get(i)+"/";
+				}else {
+					if(i == temp.size()-1) {
+						chekcdatepicker+=temp.get(i);
+					}else {
+						chekcdatepicker+=temp.get(i)+"/";
+					}
+				}
+			}
 		}
 		
 		String start=start_day.replace("-", "/");
@@ -122,8 +191,9 @@ public class UserApplyController {
 			session.setAttribute("applyVo", vo);
 			session.setAttribute("rentVo", rentvo);
 			
-			session.setAttribute("infovo", infovo);
-			session.setAttribute("usercheck", usercheck);
+			model.addAttribute("infovo", infovo);
+			model.addAttribute("usercheck", usercheck);
+			model.addAttribute("chekcdatepicker", chekcdatepicker);
 		} catch (ParseException pe) {
 			System.out.println("날짜 오류 :"+pe);
 		}

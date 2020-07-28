@@ -26,6 +26,9 @@ public class EP_ManagementVo {
 	private int checkNum;
 	private String del_yn;
 	
+	private String up;
+	private String down;
+	
 	
 	
 	public EP_ManagementVo() {}
@@ -281,6 +284,22 @@ public class EP_ManagementVo {
 
 	public void setDel_yn(String del_yn) {
 		this.del_yn = del_yn;
+	}
+
+	public String getUp() {
+		return up;
+	}
+
+	public void setUp(String up) {
+		this.up = up;
+	}
+
+	public String getDown() {
+		return down;
+	}
+
+	public void setDown(String down) {
+		this.down = down;
 	}
 	
 	

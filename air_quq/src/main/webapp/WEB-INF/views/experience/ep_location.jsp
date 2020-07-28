@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=406ad69f366b925b30509f2bc766e47f&libraries=services"></script>
 <input type="button" onclick="ep_model()"
 			class="btn btn-danger btn-icon-split" style="float:right; width: 8%; height:30px;margin-right: 10px;" value="나가기">
 <!-- Page Heading -->
@@ -16,7 +17,8 @@
 				id="ep_info_loc" placeholder="서울특별시, 서울특별시, 대한민국" name="value" value="${sessionVo.loc }">
 				<br>
 			<input type="button" value="검 색" class="form-control bg-light border-3 small" id="ep_searchPassport"> 
-			
+			<input type="hidden" id="ep_loc_up" name="up">
+			<input type="hidden" id="ep_loc_down" name="down">
 			<br>
 			<p>회원님의 지역에서 호스팅하실 수 있어요!</p>
 

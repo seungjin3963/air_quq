@@ -84,6 +84,8 @@ public class LoginFilter implements Filter {
 			return true;
 		} else if (uri.startsWith("/emailchk")) {
 			return true;
+		} else if(uri.startsWith("/kakao/login")) {
+			return true;
 		}
 		return false;
 	}

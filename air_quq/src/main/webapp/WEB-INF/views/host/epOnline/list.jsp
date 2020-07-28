@@ -39,7 +39,7 @@
 								<td>
 									<%-- <c:if test="${list.div_type == 3 }"> --%>
 									<c:if test="${fn:contains(div_type,'3')}">
-										<a href="/epOnline/epOnline?einum=${list.einum }" class="epIcon">
+										<a href="/epOnline/epOnline?hinum=${list.hinum }" class="epIcon">
 											<i class="fas fa-photo-video fa-2x"></i>
 										</a>
 									</c:if>
