@@ -41,8 +41,8 @@ public class EpOnlineDao {
 		System.out.println(sql.selectOne(NAMESPACE+".findRoom",hash)+"값은?");
 		return sql.selectOne(NAMESPACE+".findRoom",hash);
 	}
-	public List<ChatLogVo> chatlog(int number){
-		return sql.selectList(NAMESPACE+".chatLog",number);
+	public ChatLogVo chatlog(int number){
+		return sql.selectOne(NAMESPACE+".chatLog",number);
 	}
 	public int addChat(HashMap<String, Object> hash) {
 		return sql.insert(NAMESPACE+".addChat",hash);

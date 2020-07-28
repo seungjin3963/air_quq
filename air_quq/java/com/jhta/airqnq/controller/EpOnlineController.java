@@ -57,8 +57,9 @@ public class EpOnlineController {
 //		response.getOutputStream().write(service.inslider(hinum).getProfile_img());
 		response.getOutputStream().close();
 	}
+	@ResponseBody
 	@RequestMapping(value = "/online/dm",method = RequestMethod.GET)
-	public String dm(int hinum,HttpSession session,Model model) {
+	public int dm(int hinum,HttpSession session,Model model) {
 		int memnum=(int) session.getAttribute("menum");
 		System.out.println(session.getAttribute("menum"));
 //		memnum =회원번호,  hinum==게시물번호
@@ -75,16 +76,17 @@ public class EpOnlineController {
 		}catch(NullPointerException ne) {}
 		
 		if(n!=0) {//방 있음 ,내역 불러와야함
-			List<ChatLogVo> chat=service.chatlog(n);
+			ChatLogVo chat=service.chatlog(n);
 			model.addAttribute("chat",chat);
-			System.out.println(chat.get(0).getStep()+"asdasd");
+//			System.out.println(chat.getStep()+"asdasd");
 		}else {//chat목록에 추가하도록 chat_no만들기
 			hash.put("n",n);
-			System.out.println(hash.get("n") +"," +hash.get("memnum")+" ,"+hash.get("id")+"asdasd");
+//			System.out.println(hash.get("n") +"," +hash.get("memnum")+" ,"+hash.get("id")+"asdasd");
 			service.addChat(hash);
 		}
 		session.setAttribute("chat_no", n);
-		return ".epOnline.dm";
+		int menum=(int) hash.get("memnum");
+		return menum;
 	}
 	
 	@GetMapping(value="/epOnline/epOnline")
