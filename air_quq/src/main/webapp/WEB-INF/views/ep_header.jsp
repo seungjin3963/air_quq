@@ -26,19 +26,19 @@
 			
 			<!-- form search -->
 			<div class="center_div">
-			<form class="border-left-primary rounded" method="post" action="/experience/search/result" id="host_form">
+			<form class="border-left-primary rounded" method="post" action="/experience/search/result" id="host_formEx">
 				<div class="form-group input-group">
 					<div class="col-md-4">
 						<div class="text-xs font-weight-bold text-primary text-uppercase mb-1">위치</div>
-						<input type="text" class="form-control bg-light border-0 small" placeholder="어디로 여행가세요?" name="addr" value="${ addr }">
+						<input type="text" class="form-control bg-light border-0 small" placeholder="어디로 여행가세요?" name="addr" id="addr" value="${ addr }">
 					</div>
 					<div class="col-md-4">
 						<div class="text-xs font-weight-bold text-primary text-uppercase mb-1">체크인</div>
-						<input type="date" class="form-control bg-light border-0 small" placeholder="날짜 추가"  name="day" value="${ day }">
+						<input type="date" class="form-control bg-light border-0 small" placeholder="날짜 추가"  name="day" id="day" value="${ day }">
 					</div>
 					<div class="col-md-2">
 						<div class="text-xs font-weight-bold text-primary text-uppercase mb-1">인원</div>
-						<input type="number" class="form-control bg-light border-0 small" placeholder="게스트 추가" name="cnt" value="${ cnt }">
+						<input type="number" class="form-control bg-light border-0 small" placeholder="게스트 추가" name="cnt" id="cnt" value="${ cnt }">
 					</div>
 					<div class="input-group-append">
 						<button class="btn btn-primary" type="submit">
@@ -113,6 +113,8 @@
 				</ul>
 			</div>
 		</nav>
+		
+		
 		<!-- Topbar -->
 		<%-- <div class="collapse navbar-collapse" id="sidebar">
 				<!-- Topbar Navbar -->

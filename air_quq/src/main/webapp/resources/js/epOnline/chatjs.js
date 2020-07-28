@@ -31,8 +31,8 @@ $(function(){
     	$("#dmdm").css('visibility','hidden')
     })
     //send 버튼
-	$("#sendText").click(function(){
-		sock.send=sendMessage;
+	$("#sendText").on('click',function(){
+		sendMessage();
 /*		var text=$("#message").val();
 		var mnum=$("#mnum").val();
 		var chat_no=$("#chat_no").val();
@@ -46,11 +46,14 @@ $(function(){
 	})
 	//메시지 전송
 	function sendMessage(){
-			var text=$("#message").val();
-			var mnum=$("#mnum").val();
-			var chat_no=$("#chat_no").val();
-			
-			sock.send($("#message").val()+","+mnum+","+chat_no); //send가 Handler(컨트롤러,서버)에 데이터 전송 
+    	var text=$("#message").val();
+    	var mnum=$("#mnum").val();
+    	var chat_no=$("#chat_no").val();
+    	
+//		sock.send($("#message").val()+","+mnum+","+chat_no); //send가 Handler(컨트롤러,서버)에 데이터 전송
+		sock.send(text);
+		sock.send(mnum);
+		console.log("text :"+text+", mnum :"+mnum+", chat_no :"+chat_no+", messageval :"+$("#message").val())
 	}
 	//서버로부터 메세지를 받았을 때
 	function onMessage(msg){
@@ -62,13 +65,18 @@ $(function(){
 		$("#messageArea").append(
 				"<div class='message-box-holder'>"+
 				"<div class='message-box'>"+
-				data+"</div>"+","+text+","+mnum+","+chat_no);
+				data+"</div>");
 	}
 	//서버와 연결을 끊었을 때
 	function onClose(evt){
 		console.log("연결끊기기 전");
 		$("#messageArea").append("연결끊김");
 	}
+	//에러났을때
+	function onError(evt) {
+		console.log("에러")
+		$("#messageArea").append('<span style = "color: red;">ERROR:</span> ' + evt.data);
+     } 
 });
   
 

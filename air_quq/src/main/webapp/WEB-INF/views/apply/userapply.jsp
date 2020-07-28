@@ -3,7 +3,7 @@
 <link href="/resources/css/userapply/userapply.css" rel="stylesheet" type="text/css">
 
 <!-- 카카오 맵 api -->
-<!-- <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=asd"></script> -->
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=asd"></script>
 
 <script src="/resources/js/userapply/userapply.js"></script>
 <input type="hidden" id="hinum" value="${infovo.hinum }">
@@ -12,7 +12,7 @@
 	<div class="row">
 		<div class="col-md-1"></div>
 		<div class="col-md-10">
-			<img src="/resources/img/1.jpg" id="bigphoto">
+			<img src="/resources/img/적분이_001.JPG" id="bigphoto">
 		</div>
 		<div class="col-md-1"></div>
 	</div>
@@ -22,12 +22,12 @@
 			<span>최대 인원 ${infovo.max_n }명 · 침실${infovo.bedroom }</span>
 		</div>
 		<div class="col-md-1">
-			<img onerror="this.src='/resources/img/1.jpg';" src="/user/apply/memberimg?menum=${infovo.menum }" class="applypofile" id="memberprofile1">
+			<img onerror="this.src='/resources/img/적분이_001.JPG';" src="/user/apply/memberimg?menum=${infovo.menum }" class="applypofile" id="memberprofile1">
 		</div>
 	</div>
 
 	<div class="row" id="applydivision">
-		<div class="col-md-12">
+		<div class="col-md-12" id="housecontent">
 			${infovo.content }
 		</div>
 	</div>
@@ -46,7 +46,6 @@
 			<input type="button" value="수정하기" class="btn btn-danger btn-icon-split" data-toggle="modal" data-target="#myModal">
 		</div>
 	</div>
-	<div class="row" id="applydivision"></div>
 	<div class="row" id="applydivision3">
 		<div class="col-md-12">첫 후기를 남겨 주세요!!</div>
 	</div>
@@ -54,13 +53,13 @@
 	<div class="row" id="applydivision1">
 		<div class="col-md-12">
 			<div id="locationfont">위치</div>
-			<div>주소</div>
+			<div>${infovo.addr }</div>
 			<div id="map"></div>
 		</div>
 	</div>
 	<div class="row" id="applydivision4">
 		<div class="col-md-12">
-			<img onerror="this.src='/resources/img/1.jpg';" src="/user/apply/memberimg?menum=${infovo.menum }" class="applypofile" id="memberprofile2">${infovo.id }<br>
+			<img onerror="this.src='/resources/img/적분이_001.JPG';" src="/user/apply/memberimg?menum=${infovo.menum }" class="applypofile" id="memberprofile2">${infovo.id }<br>
 			<input type="button" value="호스트에게 연락하기" class="btn btn-danger btn-icon-split">
 		</div>
 	</div>
@@ -99,6 +98,9 @@
 		<input type="hidden" value="${infovo.startdate }" id="hoststartdate">
 		<input type="hidden" value="${infovo.enddate }" id="hostenddate">
 		<input type="hidden" value="${chekcdatepicker }" id="chekcdatepicker">
+		<input type="hidden" value="${imgarr }" id="imgarr">
+		<input type="hidden" value="${infovo.lat}" id="lat">
+		<input type="hidden" value="${infovo.lnt}" id="lnt">
 	</div>
 	<div id="quickmenulayer">
 		<input type="button" value="예약하기" class="btn btn-danger btn-icon-split" id="btnApply">

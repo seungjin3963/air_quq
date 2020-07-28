@@ -64,7 +64,7 @@
 	
 	<!-- 상세 신청 데이터 뽑기 -->
 	<select id="applyselect" parameterType="int" resultType="com.jhta.airqnq.vo.Apply_infoVo">
-	 	select hinum,h.menum,id,title,content,h.addr,addr_detail,price,max_n,bedroom,checkin_time,startdate,enddate from house_info h,member m where hinum=#{hinum} and h.menum=m.menum
+	 	select hinum,h.menum,id,title,content,h.addr,addr_detail,price,max_n,bedroom,checkin_time,lat,lnt,startdate,enddate from house_info h,member m where hinum=#{hinum} and h.menum=m.menum
 	</select>
 	
 	<!-- 승인된 house_info 뽑기 -->
