@@ -21,3 +21,10 @@
 	</div>
 </footer>
 <!-- End of Footer -->
+
+<script type="text/javascript" src="/resources/js/setDateFormat.js"></script>
+<script type="text/javascript">
+	$("#start_day").attr('min', today.format('yyyy-MM-dd'));
+	$("#end_day").attr('min', today.format('yyyy-MM-dd'));
+	$("#day").attr('min', today.format('yyyy-MM-dd'));
+</script>
