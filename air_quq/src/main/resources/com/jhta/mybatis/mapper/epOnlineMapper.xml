@@ -78,6 +78,6 @@
 		insert into chat_select values(0,#{memnum},#{id},0)
 	</insert>
 	<insert id="addcontent" parameterType="hashmap">
-		insert into chatting values(#{chat_no},#{content},#{mnum},1)
+		insert into chatting values(#{chat_no},#{content},#{mnum},1,0)
 	</insert>
 </mapper>

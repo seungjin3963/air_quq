@@ -37,7 +37,7 @@ public class EpOnlineService {
 	public int findRoom(HashMap<String, Object> hash) {
 		return dao.findRoom(hash);
 	}
-	public List<ChatLogVo> chatlog(int number){
+	public ChatLogVo chatlog(int number){
 		return dao.chatlog(number);
 	}
 	public int addChat(HashMap<String, Object> hash) {

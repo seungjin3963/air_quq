@@ -577,6 +577,8 @@
 		</div>
 	</div>
 </div>
+<input type="hidden" val="${memnum }" id="mnum">
+<input type="hidden" val="${chat_no }" id="chat_no">
 <script>
 /* $("#dmcall2").on('click',function(){
 	var hinum=$("#hinumvalue").val();
