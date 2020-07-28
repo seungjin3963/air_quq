@@ -29,6 +29,7 @@ import com.jhta.airqnq.vo.EP_ManagementVo;
 import com.jhta.airqnq.vo.HouseInfoVo;
 import com.jhta.airqnq.vo.JoinVo;
 import com.jhta.airqnq.vo.RentVo;
+import com.jhta.airqnq.vo.ReportTypeVo;
 
 @Controller
 public class AdminController {
@@ -345,5 +346,16 @@ public class AdminController {
 		model.addAttribute("pricerange", pricerange);	
 			
 		return ".admin.statisticsadmin";	
+	}
+	
+	
+	
+	//////////////////////영노 신고 목록
+	@RequestMapping("/admin/Declaration")
+	public String adminDeclaration(Model model) {
+		List<ReportTypeVo> reportVo=service.reportList();
+		System.out.println(reportVo);
+		model.addAttribute("reportVo" , reportVo);
+		return ".admin.adminDeclaration";
 	}
 }

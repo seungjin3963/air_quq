@@ -82,6 +82,10 @@ public class ExperienceService {
 		return dao.experienceUpdate(vo);
 	}
 	
+	public int houseInsert(EP_ManagementVo vo) {
+		return dao.houseInsert(vo);
+	}
+	
 	
 	//체험 검색하는 기능
 	public List<ExperienceSearchVo> getExSearchList(String loc) {

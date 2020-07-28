@@ -127,7 +127,7 @@ public class ExperiencePageController {
 		} else {
 			sessionVo.setLoc(value);
 			sessionVo.setUp(up);
-			sessionVo.setUp(down);
+			sessionVo.setDown(down);
 			int housenum = sessionVo.getHinum();
 			
 			
@@ -297,9 +297,11 @@ public class ExperiencePageController {
 			hinum=service.temporary(sessionVo.getMemnum());
 			sessionVo.setHinum(hinum);	
 			int n=service.experienceInsert(sessionVo);
+			service.houseInsert(sessionVo);
 		}else {
 			hinum=sessionVo.getHinum();
 			int n=service.experienceUpdate(sessionVo);
+			service.houseInsert(sessionVo);
 		}
 		
 		JSONObject json=new JSONObject(); 
@@ -325,7 +327,7 @@ public class ExperiencePageController {
 			hinum=service.temporary(sessionVo.getMemnum());
 			sessionVo.setHinum(hinum);
 			int n=service.experienceInsert(sessionVo);
-			
+			service.houseInsert(sessionVo);
 		/*	HashMap<String , Object> map=new HashMap<String, Object>();
 			map.put("up", sessionVo.getUp());
 			map.put("up", sessionVo.getDown());
@@ -333,6 +335,7 @@ public class ExperiencePageController {
 		}else {
 			hinum=sessionVo.getHinum();
 			int n=service.experienceUpdate(sessionVo);
+			service.houseInsert(sessionVo);
 		}
 		String uploadPath = session.getServletContext().getRealPath("/resources/img/house_img");
 		if(session.getAttribute("epimglist")==null) {

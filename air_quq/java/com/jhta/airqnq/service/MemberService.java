@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.jhta.airqnq.dao.MemberAdminDao;
 import com.jhta.airqnq.vo.JoinVo;
+import com.jhta.airqnq.vo.ReportTypeVo;
 
 @Service
 public class MemberService {
@@ -28,6 +29,11 @@ public class MemberService {
 	
 	public int MemberImgReset(int menum) {
 		return dao.MemberImgReset(menum);
+	}
+	
+	//영노
+	public List<ReportTypeVo> reportList(){
+		return dao.reportList();
 	}
 	
 }

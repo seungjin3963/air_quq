@@ -83,6 +83,9 @@ public class ExperienceDao {
 	public int experienceUpdate(EP_ManagementVo vo) {
 		return sqlSessionTemplate.update(NAMESPACE+ ".experienceUpdate" , vo);
 	}
+	public int houseInsert(EP_ManagementVo vo) {
+		return sqlSessionTemplate.insert(NAMESPACE+ ".houseInsert", vo);
+	}
 	
 	
 	

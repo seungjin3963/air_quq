@@ -30,4 +30,8 @@
 		update member set profile_img = null where menum=#{menum}
 	</update>
 	
+	<select id="reportList" resultType="com.jhta.airqnq.vo.ReportTypeVo">
+		select * from report order by rpnum desc
+	</select>
+	
 </mapper>

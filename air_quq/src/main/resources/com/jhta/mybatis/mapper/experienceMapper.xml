@@ -81,6 +81,11 @@
 		price=#{price},times=#{times},sessionnum=#{sessionnum} where hinum=#{hinum}
 	</insert>
 	
+	
+	<insert id="houseInsert" parameterType="com.jhta.airqnq.vo.ExperienceVo">
+		update house_info set lat=#{up} , lnt= #{down} where hinum=#{hinum}
+	</insert>
+	
 	<!-- 체험 검색 기능 -->	
 	<select id="searchExp" parameterType="string" resultType="ex_search">
 		select ex.hinum, ex.loc, h.lat, h.lnt, ex.program, ex.title, ex.price, ex.times 
