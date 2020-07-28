@@ -45,17 +45,17 @@ public class EchoHandler extends TextWebSocketHandler{
 
 	//메세지 보낸것
 	@Override
-	protected void handleTextMessage(WebSocketSession session, TextMessage message1) throws Exception {
-		System.out.println("메세지 보낸것 메소드");
-		Object newone = (Object)message1;
-		String newwone = (String)newone;
-		String newwwone=newwone.split(",")[0];
-		String mnum=newwone.split(",")[1];
-		String chat_no=newwone.split(",")[2];
+	protected void handleTextMessage(WebSocketSession session, TextMessage message) throws Exception {
+//		System.out.println("메세지 보낸것 메소드");
+//		Object newone = (Object)message1;
+//		String newwone = (String)newone;
+//		String newwwone=newwone.split(",")[0];
+//		String mnum=newwone.split(",")[1];
+//		String chat_no=newwone.split(",")[2];
+//		Object newwwwone=(Object)newwwone;
+//		TextMessage message=(TextMessage)newwwwone;
 		
-		Object newwwwone=(Object)newwwone;
-		TextMessage message=(TextMessage)newwwwone;
-		
+		System.out.println(mnum+", mnum"+message+", message "+chat_no+" chat_no ");
 		HashMap<String, Object> hash = new HashMap<String, Object>();
 		//#{chat_no},#{content},#{mnum}
 		hash.put("chat_no", chat_no);
