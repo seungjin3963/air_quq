@@ -76,7 +76,6 @@ public class ExperienceDao {
 	}
 	
 	
-	
 	public int experienceInsert(EP_ManagementVo vo) {
 		return sqlSessionTemplate.insert(NAMESPACE + ".experienceInsert" , vo);
 	}
@@ -90,7 +89,12 @@ public class ExperienceDao {
 	
 	
 	//체험 검색하는 기능
-	public List<ExperienceSearchVo> getExSearchList(String loc) {
-		return sqlSessionTemplate.selectList(NAMESPACE + ".searchExp", loc);
+	public List<ExperienceSearchVo> getExSearchList(HashMap<String, Object> map) {
+		return sqlSessionTemplate.selectList(NAMESPACE + ".searchExp", map);
+	}
+	
+	//검색된 전체글 개수
+	public int getExSearchListCount(String loc) {
+		return sqlSessionTemplate.selectOne(NAMESPACE + ".searchExpCount", loc);
 	}
 } 

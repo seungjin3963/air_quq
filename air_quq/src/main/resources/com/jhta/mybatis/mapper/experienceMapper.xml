@@ -87,11 +87,31 @@
 	</insert>
 	
 	<!-- 체험 검색 기능 -->	
-	<select id="searchExp" parameterType="string" resultType="ex_search">
-		select ex.hinum, ex.loc, h.lat, h.lnt, ex.program, ex.title, ex.price, ex.times 
-		from experience_info ex, house_info h 
+	<select id="searchExp" parameterType="hashmap" resultType="ex_search">
+		select ex.hinum, ex.loc, h.lat, h.lnt, ex.program, ex.title, ex.price, ex.times, himg.img
+		from experience_info ex, house_info h, house_img himg
 		where ex.loc like concat('%', #{loc} , '%') 
 		and ex.del_yn='n'
 		and ex.hinum =h.hinum
+		and h.hinum = himg.hinum
+		and ex.div_type=4
+		and ex.hinum IN (select hinum from house_img)
+		and himg.ordernum =1
+		limit #{startRow}, #{endRow}
+	</select>
+	
+	<!-- 검색된 체험 검색의 수 -->
+	<select id="searchExpCount" parameterType="string" resultType="int">
+		select count(*) from(
+			select ex.hinum, ex.loc, h.lat, h.lnt, ex.program, ex.title, ex.price, ex.times, himg.img
+			from experience_info ex, house_info h, house_img himg
+			where ex.loc like concat('%', #{loc} , '%') 
+			and ex.del_yn='n'
+			and ex.hinum =h.hinum
+			and h.hinum = himg.hinum
+			and ex.div_type=4
+			and ex.hinum IN (select hinum from house_img)
+			and himg.ordernum =1
+		)ss
 	</select>
 </mapper>

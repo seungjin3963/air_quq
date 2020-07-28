@@ -88,7 +88,12 @@ public class ExperienceService {
 	
 	
 	//체험 검색하는 기능
-	public List<ExperienceSearchVo> getExSearchList(String loc) {
-		return dao.getExSearchList(loc);
+	public List<ExperienceSearchVo> getExSearchList(HashMap<String, Object> map) {
+		return dao.getExSearchList(map);
+	}
+	
+	//검색된 전체글 개수
+	public int getExSearchListCount(String loc) {
+		return dao.getExSearchListCount(loc);
 	}
 }

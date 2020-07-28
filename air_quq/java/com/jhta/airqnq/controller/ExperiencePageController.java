@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.jhta.airqnq.pageUtil.PageUtilForMySql;
 import com.jhta.airqnq.service.ExperienceService;
 import com.jhta.airqnq.vo.EP_ManagementVo;
 import com.jhta.airqnq.vo.ExperienceSearchVo;
@@ -404,7 +405,7 @@ public class ExperiencePageController {
 	
 	//주소로 체험 검색하는 기능
 	@RequestMapping("/experience/search/result")
-	public String searchExList(String addr, String day, int cnt, Model model) {
+	public String searchExList(String addr, String day, int cnt, Model model, @RequestParam(value = "pageNum", defaultValue = "1") int pageNum) {
 //		System.out.println(addr);
 //		System.out.println(day);
 //		System.out.println(cnt);
@@ -412,12 +413,24 @@ public class ExperiencePageController {
 		model.addAttribute("day", day);
 		model.addAttribute("cnt", cnt);
 		
-		List<ExperienceSearchVo> list = service.getExSearchList(addr);
-		for(ExperienceSearchVo v : list) {
-			System.out.println(v.getLoc());
-			System.out.println(v.getProgram());
-			System.out.println(v.getTitle());
-		}
+		//페이징 처리를위한 객체
+		int rowBlockCount = 4;
+		int pageBlockCount = 5;
+		
+		//검색된 전체글 개수
+		int getSearchCount = service.getExSearchListCount(addr);
+		System.out.println("검색된 전체글 개수" + getSearchCount);
+		
+		PageUtilForMySql pageUtil = new PageUtilForMySql(pageNum, getSearchCount, rowBlockCount, pageBlockCount);
+		model.addAttribute("pageUtil", pageUtil);
+		
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("loc", addr);
+		map.put("startRow", 0);
+		map.put("endRow", 2);
+		
+		List<ExperienceSearchVo> list = service.getExSearchList(map);
+
 		model.addAttribute("exlist", list);
 		
 		return ".exSearchPageResult";

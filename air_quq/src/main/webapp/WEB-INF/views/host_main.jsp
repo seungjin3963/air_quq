@@ -107,10 +107,7 @@
 
 var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
 
-for(var i=0; i<lat.length; i++){
-	
-}
- 
+
 // 마커를 표시할 위치와 title 객체 배열입니다 
 var positions = [];
 

@@ -9,11 +9,12 @@ public class ExperienceSearchVo {
 	private String title;
 	private int price;
 	private int times;
+	private String img;
 	
 	public ExperienceSearchVo() {}
 
 	public ExperienceSearchVo(int hinum, String loc, String lat, String lnt, String program, String title, int price,
-			int times) {
+			int times, String img) {
 		super();
 		this.hinum = hinum;
 		this.loc = loc;
@@ -23,6 +24,7 @@ public class ExperienceSearchVo {
 		this.title = title;
 		this.price = price;
 		this.times = times;
+		this.img = img;
 	}
 
 	public int getHinum() {
@@ -87,6 +89,14 @@ public class ExperienceSearchVo {
 
 	public void setTimes(int times) {
 		this.times = times;
+	}
+
+	public String getImg() {
+		return img;
+	}
+
+	public void setImg(String img) {
+		this.img = img;
 	}
 	
 	
