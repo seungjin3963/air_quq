@@ -9,25 +9,27 @@
 	<div class="row">
 		<div class="col-md-5 listing-block">
 <!--//////////  -->
-	<c:forEach items="${ hostSearch }" var="hitem">
-	<a href="/" onclick='submitPostData(event)'>
-	<form action="/user/apply?pageNum=1" method="post" class="formId2">
-	<input type="hidden" value="${ addr }" name="addr">
-	<input type="hidden" value="${ day }" name="day">
-	<input type="hidden" value="${ cnt }" name="cnt">
-        <div class="media">
-              <img class="d-flex align-self-start" src="/resources/img/house_img/${ hitem.img }">
-              <div class="media-body pl-3">
-                <div class="price">￦${ hitem.price }원<small>${ hitem.addr }</small></div>
-                <div class="address">${ hitem.addr_detail }</div>
-                <div class="titlw"><big>${ hitem.title }</big></div>
-                <div type="hidden" value="${ hitem.addr_detail }" id="locationAdress"></div>
-                <div class="stats">
-                    <span><i class="fa fa-users" aria-hidden="true"></i>${ hitem.max_n }</span>
-                    <span><i class="fa fa-calendar" aria-hidden="true"></i>${ hitem.startdate } ~ ${ hitem.enddate }</span>
-                </div>
-              </div>
-            </div>
+
+	<c:forEach items="${ exlist }" var="exlist">
+	<form action="/ep/apply" method="post" class="formId2">
+		<button type="submit" style="border:none; width:100%; text-align: left;" class="btn btn-light">
+		<input type="hidden" value="${ addr }" name="addr">
+		<input type="hidden" value="${ day }" name="day">
+		<input type="hidden" value="${ cnt }" name="cnt">
+	        <div class="media">
+	              <img class="d-flex align-self-start" src="/resources/img/house_img/">
+	              <div class="media-body pl-3">
+	                <div class="price">￦${  exlist.price }원<small>${ exlist.loc }</small></div>
+	                <div class="address"></div>
+	                <div class="titlw"><big>${ exlist.title }</big></div>
+	                <div type="hidden" value="" id="locationAdress"></div>
+	                <div class="stats">
+	                    <span><i class="fa fa-users" aria-hidden="true"></i></span>
+	                    <span><i class="fa fa-calendar" aria-hidden="true"></i></span>
+	                </div>
+	              </div>
+	            </div>
+	     </button>
      </form>
      </a>    
    </c:forEach>
@@ -93,11 +95,14 @@ mapOption = {
 //지도를 생성합니다    
 var map = new kakao.maps.Map(mapContainer, mapOption); 
 
+//검색어를 가져옵니다
+var keyword = $("input[name='addr']").val();
+
 //주소-좌표 변환 객체를 생성합니다
 var geocoder = new kakao.maps.services.Geocoder();
 
 //주소로 좌표를 검색합니다
-geocoder.addressSearch('제주특별자치도 제주시 첨단로 242', function(result, status) {
+geocoder.addressSearch(keyword, function(result, status) {
 
 // 정상적으로 검색이 완료됐으면 
  if (status === kakao.maps.services.Status.OK) {

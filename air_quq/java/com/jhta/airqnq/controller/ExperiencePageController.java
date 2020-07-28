@@ -21,6 +21,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.jhta.airqnq.service.ExperienceService;
 import com.jhta.airqnq.vo.EP_ManagementVo;
+import com.jhta.airqnq.vo.ExperienceSearchVo;
 import com.jhta.airqnq.vo.ExperienceVo;
 
 @Controller
@@ -393,13 +394,21 @@ public class ExperiencePageController {
 	
 	//주소로 체험 검색하는 기능
 	@RequestMapping("/experience/search/result")
-	public String searchExList(String addr, String day, int cnt) {
+	public String searchExList(String addr, String day, int cnt, Model model) {
 //		System.out.println(addr);
 //		System.out.println(day);
 //		System.out.println(cnt);
+		model.addAttribute("addr", addr);
+		model.addAttribute("day", day);
+		model.addAttribute("cnt", cnt);
 		
-		
-		
+		List<ExperienceSearchVo> list = service.getExSearchList(addr);
+		for(ExperienceSearchVo v : list) {
+			System.out.println(v.getLoc());
+			System.out.println(v.getProgram());
+			System.out.println(v.getTitle());
+		}
+		model.addAttribute("exlist", list);
 		
 		return ".exSearchPageResult";
 	}

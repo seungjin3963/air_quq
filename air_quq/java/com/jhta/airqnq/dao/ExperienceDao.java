@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.jhta.airqnq.vo.EP_ManagementVo;
+import com.jhta.airqnq.vo.ExperienceSearchVo;
 import com.jhta.airqnq.vo.ExperienceVo;
 
 @Repository
@@ -81,5 +82,12 @@ public class ExperienceDao {
 	}
 	public int experienceUpdate(EP_ManagementVo vo) {
 		return sqlSessionTemplate.update(NAMESPACE+ ".experienceUpdate" , vo);
+	}
+	
+	
+	
+	//체험 검색하는 기능
+	public List<ExperienceSearchVo> getExSearchList(String loc) {
+		return sqlSessionTemplate.selectList(NAMESPACE + ".searchExp", loc);
 	}
 } 

@@ -80,4 +80,13 @@
 		update experience_info set div_type=#{div_type},sunum=#{sunum},loc=#{loc},intr=#{intr},program=#{program},title=#{title},mater=#{mater},
 		price=#{price},times=#{times},sessionnum=#{sessionnum} where hinum=#{hinum}
 	</insert>
+	
+	<!-- 체험 검색 기능 -->	
+	<select id="searchExp" parameterType="string" resultType="ex_search">
+		select ex.hinum, ex.loc, h.lat, h.lnt, ex.program, ex.title, ex.price, ex.times 
+		from experience_info ex, house_info h 
+		where ex.loc like concat('%', #{loc} , '%') 
+		and ex.del_yn='n'
+		and ex.hinum =h.hinum
+	</select>
 </mapper>

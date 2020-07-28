@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.jhta.airqnq.dao.ExperienceDao;
 import com.jhta.airqnq.vo.EP_ManagementVo;
+import com.jhta.airqnq.vo.ExperienceSearchVo;
 import com.jhta.airqnq.vo.ExperienceVo;
 
 @Service
@@ -79,5 +80,11 @@ public class ExperienceService {
 	}
 	public int experienceUpdate(EP_ManagementVo vo) {
 		return dao.experienceUpdate(vo);
+	}
+	
+	
+	//체험 검색하는 기능
+	public List<ExperienceSearchVo> getExSearchList(String loc) {
+		return dao.getExSearchList(loc);
 	}
 }
