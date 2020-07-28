@@ -54,16 +54,16 @@ public class EchoHandler extends TextWebSocketHandler{
 //		String chat_no=newwone.split(",")[2];
 //		Object newwwwone=(Object)newwwone;
 //		TextMessage message=(TextMessage)newwwwone;
-		int mnum = 0;
-		int chat_no = 0;
-		System.out.println(mnum+", mnum"+message+", message "+chat_no+" chat_no ");
-		HashMap<String, Object> hash = new HashMap<String, Object>();
-		//#{chat_no},#{content},#{mnum}
-		hash.put("chat_no", chat_no);
-		hash.put("content", message);
-		hash.put("mnum", mnum);
+//		int mnum = 0;
+//		int chat_no = 0;
+//		System.out.println(mnum+", mnum"+message+", message "+chat_no+" chat_no ");
+//		HashMap<String, Object> hash = new HashMap<String, Object>();
+//		//#{chat_no},#{content},#{mnum}
+//		hash.put("chat_no", chat_no);
+//		hash.put("content", message);
+//		hash.put("mnum", mnum);
 		logger.info("{}님이 {}라고 보냄",session.getId(),message.getPayload());
-		service.addcontent(hash);
+//		service.addcontent(hash);
 		//여기에 DB접속해서 몇개의 row있는지 확인 다르면, 알림가게
 		//모든 사람에게
 		for(WebSocketSession sess:sessionList) {
