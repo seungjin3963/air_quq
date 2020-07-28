@@ -111,7 +111,7 @@ public class ExperiencePageController {
 
 
 	@RequestMapping("/experience/ep_insert/location") // 체험 위치 설정 2
-	public String experienceInsertlocation(Model model, String value, HttpSession session) {
+	public String experienceInsertlocation(Model model, String value, HttpSession session , String up , String down) {
 
 		EP_ManagementVo sessionVo = (EP_ManagementVo) session.getAttribute("sessionVo");
 
@@ -125,6 +125,8 @@ public class ExperiencePageController {
 			return ".experience.ep_insert.ep_introduce";
 		} else {
 			sessionVo.setLoc(value);
+			sessionVo.setUp(up);
+			sessionVo.setUp(down);
 			int housenum = sessionVo.getHinum();
 			
 			
@@ -322,6 +324,11 @@ public class ExperiencePageController {
 			hinum=service.temporary(sessionVo.getMemnum());
 			sessionVo.setHinum(hinum);
 			int n=service.experienceInsert(sessionVo);
+			
+		/*	HashMap<String , Object> map=new HashMap<String, Object>();
+			map.put("up", sessionVo.getUp());
+			map.put("up", sessionVo.getDown());
+			int n=service.houseInsertloc(map);*/
 		}else {
 			hinum=sessionVo.getHinum();
 			int n=service.experienceUpdate(sessionVo);

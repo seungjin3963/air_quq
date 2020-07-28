@@ -48,14 +48,14 @@
 				<span>호스트하우스목록</span>
 			</a>
 		</li>
-			<li class="nav-item">
+			<li class="nav-item"> <!-- 영노 -->
 				<a class="nav-link" href="/admin/ep_info/list"> 
 					<i class="fas fa-fw fa-tachometer-alt"></i> 
 					<span>체험목록</span>
 				</a>
 			</li>
-			<li class="nav-item">
-				<a class="nav-link" href="/admin/approve"> <!-- 영노 -->
+			<li class="nav-item"> <!-- 영노 -->
+				<a class="nav-link" href="/admin/approve"> 
 					<i class="far fa-check-circle"></i>
 					<span>승인/취소</span>
 				</a>
@@ -68,8 +68,8 @@
 				</a>
 			</li>
 
-			<li class="nav-item">
-				<a class="nav-link" href="#"> 
+			<li class="nav-item"> <!-- 영노 -->
+				<a class="nav-link" href="/admin/Declaration"> 
 					<i class="far fa-angry"></i> 
 					<span>신고목록</span>
 				</a>

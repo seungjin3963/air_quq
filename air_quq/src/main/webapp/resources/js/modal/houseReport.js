@@ -63,3 +63,9 @@ function houseReportSave(target){
 		}
 	});
 }
+
+
+
+$('.Declaration').click(function(){
+	$('#houseReportModal').modal('show');
+})
