@@ -52,7 +52,6 @@
 			<i class="fas fa-angle-up"></i>
 		</a>
 	</div>
-  
   <script src="/resources/vendor/jquery-easing/jquery.easing.min.js"></script>
   <script src="/resources/js/sb-admin-2.min.js"></script>
   <script type="text/javascript" src="/resources/js/main/join.js"></script>

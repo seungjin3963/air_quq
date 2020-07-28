@@ -55,7 +55,6 @@
 		</a>
 	</div>
   
-
   <script src="/resources/vendor/jquery-easing/jquery.easing.min.js"></script>
   <script src="/resources/js/sb-admin-2.min.js"></script>
   <script src="/resources/vendor/chart.js/Chart.min.js"></script>

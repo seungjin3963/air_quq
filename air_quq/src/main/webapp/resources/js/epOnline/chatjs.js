@@ -1,3 +1,4 @@
+console.log("chatjs.js입장");
 $(function(){
 	let sock = new SockJS("http://localhost:8090/echo");
 	//드롭다운, 종료
@@ -7,8 +8,11 @@ $(function(){
     	$("#dmdm").css('visibility','hidden')
     });
     //호스트 호출
-    $("#dmcall").click(function(){
-    	location.href = "/online/dm";
+    $("#dmcall2").on('click',function(){
+    	var hinum=$("#hinumvalue").val();
+    	//console.log(hinum);
+    	console.log("123");
+    	location.href = '/online/dm?hinum='+hinum;
         $( "#dmdm" ).css('visibility','visible')
     });
     $("#dmclose").click(function(){

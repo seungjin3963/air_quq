@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.socket.CloseStatus;
 import org.springframework.web.socket.TextMessage;
+import org.springframework.web.socket.WebSocketMessage;
 import org.springframework.web.socket.WebSocketSession;
 import org.springframework.web.socket.handler.TextWebSocketHandler;
 
@@ -21,7 +22,6 @@ public class EchoHandler extends TextWebSocketHandler{
 	
 	private static Logger logger =LoggerFactory.getLogger(EchoHandler.class);
 	
-	
 	@Autowired
 	private EpOnlineService service;
 	
@@ -32,9 +32,14 @@ public class EchoHandler extends TextWebSocketHandler{
 		String enterOne=session.getId();
 		logger.info("{} 여기에아이디",session.getId());
 		for(WebSocketSession sess:sessionList) {
-			sess.sendMessage(new TextMessage("입장하셨습니다"));
+			sess.sendMessage(encodeURI(new TextMessage("입장하셨습니다")));
 		}
 	}
+	
+	private WebSocketMessage<?> encodeURI(TextMessage textMessage) {
+		return null;
+	}
+
 	//메세지 보낸것
 	@Override
 	protected void handleTextMessage(WebSocketSession session, TextMessage message) throws Exception {
@@ -42,9 +47,10 @@ public class EchoHandler extends TextWebSocketHandler{
 		//여기에 DB접속해서 몇개의 row있는지 확인 다르면, 알림가게
 		//모든 사람에게
 		for(WebSocketSession sess:sessionList) {
-			sess.sendMessage(new TextMessage(message.getPayload()));
+			sess.sendMessage(encodeURI(new TextMessage(message.getPayload())));
 		}
 	}
+	
 	//종료직후
 	@Override
 	public void afterConnectionClosed(WebSocketSession session, CloseStatus status) throws Exception {
@@ -52,7 +58,7 @@ public class EchoHandler extends TextWebSocketHandler{
 		String lostone=session.getId();
 		logger.info("{} 님퇴장.",session.getId());
 		for(WebSocketSession sess:sessionList) {
-			sess.sendMessage(new TextMessage("퇴장하셨습니다."));
+			sess.sendMessage(encodeURI(new TextMessage("퇴장하셨습니다.")));
 		}
 	}
 }

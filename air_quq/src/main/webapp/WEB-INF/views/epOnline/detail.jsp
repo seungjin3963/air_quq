@@ -1,13 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<script src="/resources/js/epOnline/chatjs.js"></script>
 <link href="/resources/css/epOnline/chat.css" rel="stylesheet">
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
 	integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
 	crossorigin="anonymous">
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.1.5/sockjs.min.js"></script>
+
 <div class="container body-content">
 	<div class="container">
 		<div class="row justify-content-start"
@@ -230,7 +231,8 @@
 				in The Ritz-Carlton NYC. As head chef, he received accolades from
 				major New York food critics & major food and wine publication.</div>
 		</div>
-		<button type="button" class="btn btn-light" id="dmcall">
+		<input type="hidden" value="${hinum }" id="hinumvalue">
+		<button type="button" class="btn btn-light" id="dmcall2">
 			<b>호스트에게 연락하기</b>
 		</button>
 		<img src="/resources/img/pic/shield.png" viewBox="0 0 30 30"
@@ -575,3 +577,13 @@
 		</div>
 	</div>
 </div>
+<script>
+/* $("#dmcall2").on('click',function(){
+	var hinum=$("#hinumvalue").val();
+	console.log(hinum);
+	console.log("123");
+	location.href = '/online/dm?hinum='+hinum;
+    $( "#dmdm" ).css('visibility','visible')
+}); */
+</script>
+<script type="text/javascript" src="/resources/js/epOnline/chatjs.js"></script>

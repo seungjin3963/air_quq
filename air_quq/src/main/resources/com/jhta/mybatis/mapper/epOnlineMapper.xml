@@ -75,7 +75,7 @@
 		select * from chatting where chat_no=#{number}
 	</select>
 	<insert id="addChat" parameterType="hashmap">
-		insert into chat_select values(0,#{memnum},#{id})
+		insert into chat_select values(0,#{memnum},#{id},0)
 	</insert>
 	<insert id="addcontent" parameterType="hashmap">
 		insert into chatting values(#{chat_no},#{content},#{mnum},1)
