@@ -190,7 +190,7 @@
 			<div class="modal-body" id="houseimgall">
 			</div>
 			<div class="modal-footer">
-				<input type="button" value="확인" class="btn btn-danger btn-icon-split" id="imgclose">
+				<input type="button" value="확인" class="btn btn-danger btn-icon-split" id="imgclose" >
 			</div>
 		</div>
 	</div>

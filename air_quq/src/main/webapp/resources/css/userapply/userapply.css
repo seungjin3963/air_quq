@@ -224,7 +224,7 @@
 /* img modal */
 #imgclose{
 	width: 80px;
-	margin: 10px;
+	margin: 10px auto;
 } 
 
 /* 사용자 입력된 정보 */
