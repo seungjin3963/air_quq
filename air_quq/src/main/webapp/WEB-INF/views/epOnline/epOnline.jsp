@@ -4,7 +4,6 @@
 	<input type="hidden" id="hinum" value="${hinum }">
 	<div class="videoContainer">
 		<video id="localVideo" autoplay></video>
-		<video id="remoteVideo" autoplay></video>
 	</div>
 	
 	<script src="http://192.168.0.2:3000/socket.io/socket.io.js"></script>
