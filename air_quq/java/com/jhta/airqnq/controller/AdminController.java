@@ -267,8 +267,12 @@ public class AdminController {
 		int hostcnt=0;	
 		int rentcnt=0;	
 		int pricecnt=0;	
-			
-		int maxprice=houselist.get(0).getPrice();	
+		
+		int maxprice=0;
+		
+		if(houselist != null) {
+			maxprice=houselist.get(0).getPrice();
+		}
 			
 		ArrayList<Integer> pricelist=new ArrayList<Integer>();	
 		ArrayList<Integer> ranglist=new ArrayList<Integer>();	
