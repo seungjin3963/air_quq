@@ -25,13 +25,17 @@ let socket = io.connect("https://192.168.0.2:3000/");
     console.log('Attempted to create or join Room',room);
   }
 
-socket.on('created', (room,id)=>{
+socket.on('created', (room,id,clients)=>{
   console.log('Created room' + room+'socket ID : '+id);
   isInitiator= true;
 })
 
-socket.on('full', room=>{
-  console.log('Room '+room+'is full');
+//socket.on('full', room=>{
+//  console.log('Room '+room+'is full');
+//});
+
+socket.on('user-exit', (id) => {
+	$("#remoteVideo").srcObject = null;
 });
 
 socket.on('join',room=>{
@@ -44,6 +48,7 @@ socket.on('joined',room=>{
   console.log('joined : '+ room );
   isChannelReady= true;
 })
+
 socket.on('log', array=>{
   console.log.apply(console,array);
 });
@@ -68,7 +73,8 @@ socket.on('message', (message)=>{
 
     pc.addIceCandidate(candidate);
   }
-})
+});
+
 function sendMessage(message){
   console.log('Client sending message: ',message);
   socket.emit('message',message);

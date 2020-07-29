@@ -1,17 +1,10 @@
-.localContainer {
-	text-align: center;
+video {
+	width: 35%;
+	position: relative;
+	top: 50%;
+	transform: translateY(-50%);
 }
 
-#localVideo {
-	width: 70%;
-	height: 400px;
-}
-
-.remoteContainer {
-	width: 100%;
-}
-
-.remoteContainer>video {
-	width: 20%;
-	border: 2px solid black;
+.videoContainer {
+	height: 90vh;
 }

@@ -36,7 +36,7 @@ io.sockets.on('connection',socket=>{
             console.log('create room!');
             socket.join(room);
             log('Client ID ' + socket.id + ' created room ' + room);
-            socket.emit('created',room,socket.id);
+            socket.emit('created',room,socket.id,Object.keys(io.sockets.clients().sockets));
         }
         else if(numClients===1){
             console.log('join room!');
@@ -52,6 +52,10 @@ io.sockets.on('connection',socket=>{
 
     socket.on('roomList', () => {
     	let rooms = Object.keys(io.sockets.adapter.rooms);
-    	socket.emit('roomList', rooms);
+    	io.sockets.emit('roomList', rooms);
     });
+    
+    socket.on('disconnect', function() {
+		io.sockets.emit('user-exit',socket.id);
+	});
 });
