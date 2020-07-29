@@ -24,11 +24,11 @@
 	<!-- house_info 검색 sql -->
 	<sql id="search">
 		<if test="field != null and field != ''">
-			 where manager_check=1 and ${field} like '%${keyword}%'
+			 where manager_check=1 and ${field} like '%${keyword}%' and title is not null
 		</if>
 		
 		<if test="field == null or field == ''">
-			where manager_check=1
+			where manager_check=1 and title is not null
 		</if>
 	</sql>
 	
@@ -48,7 +48,7 @@
 	
 	<!-- 선택된 house_info data --> 
 	<select id="hostone" parameterType="int" resultType="house_info">
-		select * from house_info where hinum=#{hinum} and manager_check=1
+		select * from house_info where hinum=#{hinum} and manager_check=1 
 	</select>
 	
 	<!-- house_info 이미지 뽑기 -->
@@ -69,7 +69,7 @@
 	
 	<!-- 승인된 house_info 뽑기 -->
 	<select id="okhouseinfo" resultType="house_info">
-		select * from house_info where manager_check=1
+		select * from house_info where manager_check=1 and title is not null
 	</select>
 	
 	<!-- house main img 포함 vo -->
