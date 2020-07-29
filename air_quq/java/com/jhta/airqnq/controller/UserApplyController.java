@@ -65,14 +65,18 @@ public class UserApplyController {
 		List<EP_ManagementVo> epvo = approveservice.epappImg(hinum);
 		
 		String imgarr=null;
-		
+
 		int cnt=0;
 		
 		for(EP_ManagementVo vo: epvo) {
 			if(vo.getImg() != null) {
 				if(vo.getOrdernum() == 1) {
-					imgarr=vo.getImg()+"/";
-					cnt++;
+					if(epvo.size() == 1) {
+						imgarr=vo.getImg();
+					}else {
+						imgarr=vo.getImg()+"/";
+						cnt++;
+					}
 				}else {
 					if(epvo.size()-1 == cnt) {
 						imgarr+=vo.getImg();

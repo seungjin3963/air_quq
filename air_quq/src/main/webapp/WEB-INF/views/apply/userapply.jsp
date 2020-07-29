@@ -22,7 +22,7 @@
 			<span>최대 인원 ${infovo.max_n }명 · 침실${infovo.bedroom }</span>
 		</div>
 		<div class="col-md-1">
-			<img onerror="this.src='/resources/img/적분이_001.JPG';" src="/user/apply/memberimg?menum=${infovo.menum }" class="applypofile" id="memberprofile1">
+			<img onerror="this.src='/resources/img/Hourglass.png';" src="/user/apply/memberimg?menum=${infovo.menum }" class="applypofile" id="memberprofile1">
 		</div>
 	</div>
 

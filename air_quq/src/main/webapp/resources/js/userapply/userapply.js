@@ -154,23 +154,23 @@ $(function(){
 		/*house_img 이미지 변경*/
 		
 		var imgarr=$("#imgarr").val().split("/");
-		var imgcnt=0;
+		var imgcnt=1;
 		
-		$("#bigphoto").prop("src","/resources/img/house_img/"+imgarr[1]);
+		$("#bigphoto").prop("src","/resources/img/house_img/"+imgarr[0]);
 		
-		console.log(imgarr.length);
-		
-		setInterval(function() {
-			
-			$("#bigphoto").prop("src","/resources/img/house_img/"+imgarr[imgcnt]);
-			
-			imgcnt++;
-			
-			if(imgcnt == imgarr.length){
-				imgcnt=0;
-			}
+		if(imgarr.length != 1){
+			setInterval(function() {
 				
-		}, 1500)
+				$("#bigphoto").prop("src","/resources/img/house_img/"+imgarr[imgcnt]);
+				
+				imgcnt++;
+				
+				if(imgcnt == imgarr.length){
+					imgcnt=0;
+				}
+				
+			}, 1500)
+		}
 		
 		
 		$("#bigphoto").click(function(){
