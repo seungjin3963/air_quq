@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.jhta.airqnq.dao.MemberAdminDao;
 import com.jhta.airqnq.vo.JoinVo;
 import com.jhta.airqnq.vo.ReportTypeVo;
+import com.jhta.airqnq.vo.ReportVo;
 
 @Service
 public class MemberService {
@@ -32,7 +33,7 @@ public class MemberService {
 	}
 	
 	//영노
-	public List<ReportTypeVo> reportList(){
+	public List<ReportVo> reportList(){
 		return dao.reportList();
 	}
 	

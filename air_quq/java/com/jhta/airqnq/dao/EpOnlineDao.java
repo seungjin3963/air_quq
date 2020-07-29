@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import com.jhta.airqnq.vo.AdminInfoVo;
 import com.jhta.airqnq.vo.ChatLogVo;
+import com.jhta.airqnq.vo.ReviewVo;
 import com.jhta.airqnq.vo.SliderVo;
 
 @Repository
@@ -58,5 +59,13 @@ public class EpOnlineDao {
 	}
 	public int count(HashMap<String, Object> hash) {
 		return sql.selectOne(NAMESPACE+".count",hash);
+	}
+	
+	
+	public List<SliderVo> randInfo(){
+		return sql.selectList(NAMESPACE + ".randInfo");
+	}
+	public List<ReviewVo> ReviewSelect(int hinum){
+		return sql.selectList(NAMESPACE+".ReviewSelect" , hinum);
 	}
 }

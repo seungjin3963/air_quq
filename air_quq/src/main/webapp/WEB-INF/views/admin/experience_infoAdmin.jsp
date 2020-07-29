@@ -62,24 +62,32 @@
 	<br>
 	<br>
 	<div  id="ep_pagediv">
-	<button  <c:if test="${pu.pageNum == 1 }">disabled="disabled"</c:if>  id="ep_pageBtnL">
-		<i class="fas fa-backward"></i>
-	</button>
+	
+	<c:if test="${pu.startPageNum > 1 }">
+		<a href="/admin/ep_info/list?pageNum=${pu.pageNum -1}&field=${field}&keyword=${keyword}"  <c:if test="${pu.pageNum == 1 }">disabled="disabled"</c:if>  id="ep_pageBtnL">
+			<i class="fas fa-backward"></i>
+		</a>	
+	</c:if>
+	
 	<div id="ep_pageNum">
 		<c:forEach var="i" begin="${pu.startPageNum }" end="${pu.endPageNum }">
 			<c:choose>
 				<c:when test="${pu.pageNum == i }">
-					<a href="/admin/ep_info/list?pageNum=${i}&field=${field}&keyword=${keyword}"><span id="fontred">[${i}]</span></a>
+					<a href="/admin/ep_info/list?pageNum=${i}&field=${field}&keyword=${keyword}"><span style="color: red;">[${i}]</span></a>
 				</c:when>
 				<c:otherwise>
 					<a href="/admin/ep_info/list?pageNum=${i}&field=${field}&keyword=${keyword}"><span>[${i}]</span></a>
 				</c:otherwise>
 			</c:choose>
+			
 		</c:forEach>
 	</div>
-	<button  <c:if test="${pu.pageNum == pu.totalPageCount }">disabled="disabled"</c:if> id="ep_pageBtnR">
-		<i class="fas fa-forward"></i>
-	</button>
+	<c:if test="${pu.endPageNum < pu.totalPageCount}">
+		<a  href="/admin/ep_info/list?pageNum=${pu.pageNum + 1}&field=${field}&keyword=${keyword}"  <c:if test="${pu.pageNum == pu.totalPageCount }">disabled="disabled"</c:if> id="ep_pageBtnR">
+			<i class="fas fa-forward"></i>
+		</a>
+	</c:if>
+	
 </div>
     	</div>
     	<div class="col-md-1"></div>

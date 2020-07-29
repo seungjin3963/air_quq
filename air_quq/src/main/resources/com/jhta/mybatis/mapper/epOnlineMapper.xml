@@ -77,4 +77,13 @@ select e.memnum,e.hinum , e.div_type , e.loc , e.intr , e.program , e.title , e.
 	<insert id="addcontent" parameterType="hashmap">
 		insert into chatting values(#{chat_no},#{content},#{mnum},1,0)
 	</insert>
+	
+	
+	<select id="randInfo" resultType="slinfo"> <!-- 랜덤 list -->
+		select ee.*, h.img from (
+select  e.hinum , e.div_type , e.title,e.program , e.price , e.times , s.subname from experience_info  e inner join  subDetail s on  e.sunum=s.sunum) ee inner join house_img h on ee.hinum=h.hinum where h.ordernum=1 order by rand() limit 5
+	</select>
+	<select id="ReviewSelect" parameterType="int" resultType="com.jhta.airqnq.vo.ReviewVo">
+		select r.* , m.profile_img , m.id  ,(select sum(score)/count(*) from review where hinum=#{hinum}) totalscore from review r inner join member m on r.menum=m.menum where r.hinum=#{hinum} order by renum desc
+	</select>
 </mapper>

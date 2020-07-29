@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import com.jhta.airqnq.vo.JoinVo;
 import com.jhta.airqnq.vo.ReportTypeVo;
+import com.jhta.airqnq.vo.ReportVo;
 
 @Repository
 public class MemberAdminDao {
@@ -33,7 +34,7 @@ public class MemberAdminDao {
 		return sqlSessionTemplate.update(NAMESPACE+".memberimgreset", menum);
 	}
 	
-	public List<ReportTypeVo> reportList() {
+	public List<ReportVo> reportList() {
 		return sqlSessionTemplate.selectList(NAMESPACE+ ".reportList");
 	}
 	
