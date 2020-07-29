@@ -210,7 +210,9 @@
 	/* 프로필사진 초기화*/
 $("#photochange").click(function(){
 	var menum=$(this).next().val();
+	alert("프로필 이미지가 초기화 되었습니다.");
 	location.href="/admin/memberimgreset?menum="+menum;
+	
 });
 
 	/* 이미지 모달 나가기 */
