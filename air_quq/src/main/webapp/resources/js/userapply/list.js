@@ -76,7 +76,8 @@ function datechange(datetime) {
 }
 
 function expApplyList(){
-	let socket = io.connect("https://localhost:3000/");
+	//let socket = io.connect("https://localhost:3000/");
+	let socket = io.connect("http://192.168.0.2:3000/");
 	socket.emit('roomList');
 	
 	socket.on('roomList', rooms => {

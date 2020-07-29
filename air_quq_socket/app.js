@@ -1,4 +1,4 @@
-const http = require('https');
+const http = require('http');
 const os = require('os');
 const socketIO = require('socket.io');
 const nodeStatic = require('node-static');
