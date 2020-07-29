@@ -3,7 +3,7 @@
 <link href="/resources/css/userapply/userapply.css" rel="stylesheet" type="text/css">
 
 <!-- 카카오 맵 api -->
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=asd"></script>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=ddd2f94399ee8ea1c0cfd63741aef9b0"></script>
 
 <script src="/resources/js/userapply/userapply.js"></script>
 <input type="hidden" id="hinum" value="${infovo.hinum }">
@@ -95,18 +95,18 @@
 		<br>
 		<input type="text" readonly="readonly" id="summoney" class="quickmenufont">
 	</div>
-	<input type="hidden" value="1">
-	<input type="hidden" value="${infovo.startdate }" id="hoststartdate">
-	<input type="hidden" value="${infovo.enddate }" id="hostenddate">
-	<input type="hidden" value="${chekcdatepicker }" id="chekcdatepicker">
-	<input type="hidden" value="${imgarr }" id="imgarr">
-	<input type="hidden" value="${infovo.lat}" id="lat">
-	<input type="hidden" value="${infovo.lnt}" id="lnt">
 	<div id="quickmenulayer">
 		<input type="button" value="예약하기" class="btn btn-danger btn-icon-split" id="btnApply">
 		<input type="button" value="수정하기" class="btn btn-danger btn-icon-split" data-toggle="modal" data-target="#myModal">
 	</div>
 </div>
+<input type="hidden" value="1">
+<input type="hidden" value="${infovo.startdate }" id="hoststartdate">
+<input type="hidden" value="${infovo.enddate }" id="hostenddate">
+<input type="hidden" value="${chekcdatepicker }" id="chekcdatepicker">
+<input type="hidden" value="${imgarr }" id="imgarr">
+<input type="hidden" value="${infovo.lat}" id="lat">
+<input type="hidden" value="${infovo.lnt}" id="lnt">
 <div class="modal fade" id="myModal" role="dialog">
 	<div class="modal-dialog">
 		<div class="modal-content">
