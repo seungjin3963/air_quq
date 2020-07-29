@@ -221,8 +221,29 @@
 	margin: 10px;
 }
 
+/* img modal */
+#imgclose{
+	width: 80px;
+	margin: 10px;
+} 
+
 /* 사용자 입력된 정보 */
 #usecal{
 	text-align: center;
+}
+
+/* 사진 modal 크기 */
+#houseimgall{
+	width:797px; 
+	height: 750px; 
+	padding-left: 97px; 
+	overflow: auto;
+}
+
+/* modal 안에 사진 크기 */
+#allimg{
+	width:600px; 
+	height:500px; 
+	margin: 30px 0px;
 }
 

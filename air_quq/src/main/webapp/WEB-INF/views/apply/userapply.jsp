@@ -180,18 +180,20 @@
 	</div>
 </div>
 
-<div class="modal fade" id="houseallimg" role="dialog">
-	<div class="modal-dialog">
+<div class="modal fade" id="houseallimg" role="dialog" aria-labelledby="myFullsizeModalLabel">
+	<div class="modal-dialog modal-lg">
 		<div class="modal-content">
 			<div class="modal-header">
 				<h3 class="modal-title">하우스 모든 사진 보기</h3>
 				<button type="button" class="close" data-dismiss="modal" id="modalexit">X</button>
 			</div>
-			<div class="modal-body" id="houseimgall"></div>
+			<div class="modal-body" id="houseimgall">
+			</div>
 			<div class="modal-footer">
-				<input type="button" value="확인" class="btn btn-danger btn-icon-split">
+				<input type="button" value="확인" class="btn btn-danger btn-icon-split" id="imgclose">
 			</div>
 		</div>
 	</div>
 </div>
+
 

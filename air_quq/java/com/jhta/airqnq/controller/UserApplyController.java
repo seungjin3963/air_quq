@@ -88,9 +88,6 @@ public class UserApplyController {
 			}
 		}
 		
-		System.out.println(imgarr);
-		
-		
 		String chekcdatepicker=null;
 		
 		if(hinumrentlist != null) {

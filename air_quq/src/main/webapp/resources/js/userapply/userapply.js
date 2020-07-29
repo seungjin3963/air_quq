@@ -82,6 +82,10 @@ $(function(){
 			$("#myModal").modal("hide");
 		});
 		
+		$("#imgclose").click(function(){
+			$("#houseallimg").modal("hide");
+		});
+		
 		// datepicker
 		var hoststartdate=$("#hoststartdate").val().split("-");
 		var hostenddate=$("#hostenddate").val().split("-");
@@ -172,10 +176,9 @@ $(function(){
 			}, 1500)
 		}
 		
-		
 		$("#bigphoto").click(function(){
 			for (var i = 0; i < imgarr.length; i++) {
-				$("#houseimgall").append("<img src='/resources/img/house_img/"+imgarr[i]+"' id='houseimgall'>")
+				$("#houseimgall").append("<img src='/resources/img/house_img/"+imgarr[i]+"' id='allimg'>")
 			}
 			$("#houseallimg").modal();
 		});
