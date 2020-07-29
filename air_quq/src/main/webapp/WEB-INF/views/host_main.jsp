@@ -89,7 +89,7 @@
 	</div>
 </div>
 <%-- <input type="hidden" value="${ hostSearch.hinum }" id="locationAdress"> --%>
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=406ad69f366b925b30509f2bc766e47f&libraries=services"></script>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=406ad69f366b925b30509f2bc766e47f"></script>
 <!-- <script type="text/javascript" src="/resources/js/kakao_map/hostSearch_loadmap.js"></script> -->
 <script type="text/javascript">
 	var lat = $("input[name='lat']");
