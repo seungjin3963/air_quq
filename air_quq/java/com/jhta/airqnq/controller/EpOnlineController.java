@@ -20,6 +20,7 @@ import com.jhta.airqnq.service.AdminApproveService;
 import com.jhta.airqnq.service.EpOnlineService;
 import com.jhta.airqnq.vo.ChatLogVo;
 import com.jhta.airqnq.vo.EP_ManagementVo;
+import com.jhta.airqnq.vo.ReviewVo;
 import com.jhta.airqnq.vo.SliderVo;
 
 @Controller
@@ -43,28 +44,31 @@ public class EpOnlineController {
 	}
 	
 	@RequestMapping("/online/details")
-	public String goDetails(int hinum,Model model) throws IOException {
+	public String goDetails(int hinum,Model model) throws IOException {	
 		//영노
-		
-		
 		String[] mater= {};
 		String Mater="";
 		List<EP_ManagementVo> hinum_Img=imgService.epappImg(hinum); // 이미지	
 		model.addAttribute("hinum_Img" , hinum_Img);
 		
-		SliderVo experienceInfo=service.outslider(hinum);
+		SliderVo experienceInfo=service.outslider(hinum); // hinum 정보
+		model.addAttribute("experienceInfo" , experienceInfo);
+		
+		List<SliderVo> randexperienceInfo=service.randInfo(); // randlist
+		model.addAttribute("rand",randexperienceInfo);
+		
+		List<ReviewVo> Review=service.ReviewSelect(hinum);
+		model.addAttribute("Review",Review);
+		
 		String maters= experienceInfo.getMater();
 		if(maters==null) {
 			Mater= "준비물 없습니다.";
 			model.addAttribute("mater",Mater);
-
 		}else {
-			
 			mater=maters.split(",");
 			model.addAttribute("mater",maters);
 		}
 		
-		model.addAttribute("experienceInfo" , experienceInfo);
 		/*model.addAttribute("list2",service.inslider(hinum));
 		List<SliderVo> list=service.inslider(hinum);
 		for (int i=0; i<list.size(); i++) {

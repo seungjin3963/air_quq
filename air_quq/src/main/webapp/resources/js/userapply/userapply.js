@@ -271,6 +271,20 @@ $(function(){
 	// 권준범
 	// 결제 API(아임포트)
 	$("#btnApply").click(()=>{
+
+		var checkin=$("#checkin").val();
+		var checkout=$("#checkout").val();
+		var checkcnt=$("#checkcnt").val();
+		var checkcnt=$("#checkcnt").val();
+		var summoney=$("#summoney").val();
+		
+		let applyVo = {checkIn:checkin,
+				checkOut:checkout,
+				max_n:checkcnt,
+				totmoney:summoney};
+		
+		$.post("/user/apply/setApply",applyVo);
+		
 		location.href = "/user/applyCheck";
 	});
 })

@@ -45,7 +45,7 @@ public class SessionResetFilter implements Filter {
 		String url = req.getRequestURI().toString().trim();
 		if(!url.startsWith("/user/apply") && !url.equals("/member/login")) {
 			session.removeAttribute("applyVo");
-			session.removeAttribute("rentVo");
+			/* session.removeAttribute("rentVo"); */
 			session.removeAttribute("infovo");
 			session.removeAttribute("usercheck");
 		}
