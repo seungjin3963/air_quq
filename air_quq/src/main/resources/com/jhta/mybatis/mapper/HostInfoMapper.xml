@@ -20,6 +20,15 @@
 		SELECT hinum FROM house_info where menum=#{menum} order by hinum desc LIMIT 1
 	</select>
 	
+	<!-- 편의기능 추가하기 -->
+	<insert id="convenInsert" parameterType="int">
+		insert into conven values(0, #{hinum}, 'n')
+	</insert>
+	
+	<insert id="convenDetailInsert" parameterType="convenVo">
+		insert into convendetail values(0, #{conum}, #{pool}, #{paking}, #{wifi}, #{washer}, #{kitchen}, #{etc}, 'n')
+	</insert>
+	
 	<!-- 승진 -->
 	<!-- house_info 검색 sql -->
 	<sql id="search">

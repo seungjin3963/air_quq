@@ -128,12 +128,12 @@ public class HostController {
 			String lnt, HttpSession session, int next, String pool, String paking, String wifi, String washer, String kitchen, String etc) {
 		
 		
-		System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>-----"+pool);
-		System.out.println(paking);
-		System.out.println(wifi);
-		System.out.println(washer);
-		System.out.println(kitchen);
-		System.out.println(etc);
+//		System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>-----"+pool);
+//		System.out.println(paking);
+//		System.out.println(wifi);
+//		System.out.println(washer);
+//		System.out.println(kitchen);
+//		System.out.println(etc);
 		
 		
 		HashMap<String, Object> map = new HashMap<String, Object>();
