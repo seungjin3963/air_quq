@@ -76,7 +76,7 @@ public class MemberLoginController {
 
 		String email = (String) userInfo.get("email");
 		String nickname = (String) userInfo.get("nickname");
-
+		
 		int n = service.selectKakaoUser(Integer.parseInt(kakao_id));
 
 		// 카카오 가입안한 서비스 회원일경우 최초로 DB에 등록됨

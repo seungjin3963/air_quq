@@ -31,7 +31,7 @@
 								</form>
 								<hr>
 								<div class="text-center">
-									<a href="https://kauth.kakao.com/oauth/authorize?client_id=f5b5ae84edd2bb27cfdebdebaa48bc3f&redirect_uri=http://localhost:8090/kakao/login&response_type=code">
+									<a href="https://kauth.kakao.com/oauth/authorize?client_id=f5b5ae84edd2bb27cfdebdebaa48bc3f&redirect_uri=http://192.168.0.2:8090/kakao/login&response_type=code">
 										<img src="/resources/img/kakao_login_medium_wide.png">
 									</a>
 								</div>
