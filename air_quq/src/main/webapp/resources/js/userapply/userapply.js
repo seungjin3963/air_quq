@@ -154,19 +154,22 @@ $(function(){
 		/*house_img 이미지 변경*/
 		
 		var imgarr=$("#imgarr").val().split("/");
-		var imgcnt=1;
+		var imgcnt=0;
 		
-		$("#bigphoto").prop("src","/resources/img/house_img/"+imgarr[0]);
+		$("#bigphoto").prop("src","/resources/img/house_img/"+imgarr[1]);
+		
+		console.log(imgarr.length);
+		
 		setInterval(function() {
 			
 			$("#bigphoto").prop("src","/resources/img/house_img/"+imgarr[imgcnt]);
-
+			
 			imgcnt++;
-
+			
 			if(imgcnt == imgarr.length){
 				imgcnt=0;
 			}
-			
+				
 		}, 1500)
 		
 		
