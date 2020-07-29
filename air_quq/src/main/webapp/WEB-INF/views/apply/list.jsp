@@ -25,8 +25,43 @@
 	</div>
 	<div class="row">
 		<div class="col-md-12">
-			<div class="tableContainer">
-			</div>
+			<table class="table table-bordered" id="houseDataTable" width="100%" cellspacing="0">
+				<thead>
+					<tr>
+						<th class="d-none">예약 번호</th>
+						<th class="d-none">숙소 번호</th>
+						<th>숙소 제목</th>
+						<th>시작 날짜</th>
+						<th>종료 날짜</th>
+						<th>상태</th>
+						<th>인원 수</th>
+						<th>결제 금액</th>
+						<th>리뷰 작성 여부</th>
+						<th>리뷰 & 평점</th>
+						<th>예약 취소</th>
+					</tr>
+				</thead>
+				<tbody>
+				</tbody>
+			</table>
+			<table class="table table-bordered" id="expDataTable" width="100%" cellspacing="0">
+				<thead>
+					<tr>
+						<th class="d-none">예약 번호</th>
+						<th class="d-none">숙소 번호</th>
+						<th>숙소 제목</th>
+						<th>시작 날짜</th>
+						<th>상태</th>
+						<th>결제 금액</th>
+						<th>리뷰 작성 여부</th>
+						<th>리뷰 & 평점</th>
+						<th>예약 취소</th>
+						<th>체험 참여</th>
+					</tr>
+				</thead>
+				<tbody>
+				</tbody>
+			</table>
 		</div>
 	</div>
 </div>
@@ -254,7 +289,7 @@
 	</div>
 </div>
 <script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
-<!-- <script src="https://localhost:3000/socket.io/socket.io.js"></script> -->
-<script src="http://192.168.0.2:3000/socket.io/socket.io.js"></script>
+<script src="http://localhost:3000/socket.io/socket.io.js"></script>
+<!-- <script src="http://192.168.0.2:3000/socket.io/socket.io.js"></script> -->
 <script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
 <script src="/resources/js/userapply/list.js"></script>
