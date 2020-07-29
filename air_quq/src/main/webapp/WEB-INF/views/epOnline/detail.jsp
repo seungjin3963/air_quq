@@ -7,6 +7,9 @@
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
 	integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
 	crossorigin="anonymous">
+	
+<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script> <!-- 결제 -->
+<link href="/resources/css/userapply/userapply.css" rel="stylesheet" type="text/css"><!-- 결제 css -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.1.5/sockjs.min.js"></script>
 
@@ -93,14 +96,14 @@
 			<div class="col">
 				<img src="/resources/img/pic/people.svg" viewBox="0 0 16 16"
 					style="display: block; height: 16px; width: 16px; fill: currentcolor; margin-top: 4px;"
-					align="left">최대 인원 수 : <b>${experienceInfo.people}</b> 명
+					align="left">최대 인원 수 : <b><span id="MaxPeople">${experienceInfo.people}</span></b> 명
 			</div>
 		</div>
 		<div class="row">
 			<div class="col">
 				<img src="/resources/img/pic/comcom.svg" viewBox="0 0 16 16"
 					style="display: block; height: 16px; width: 16px; fill: currentcolor; margin-top: 4px;"
-					align="left">컴퓨터, 휴대전화나 태블릿을 이용해 참여하세요.
+					align="left">&nbsp;<b>1</b> 인 가격 : <b> ￦ <span id="experiecePrice">${experienceInfo.price}</span> 원</b>
 			</div>
 			<div class="col">
 				<img src="/resources/img/pic/chat.svg" viewBox="0 0 16 16"
@@ -372,7 +375,57 @@
 		</div>
 	</div>
 </div>
+
+<!--  예약 div -->
+<div id="quickmenu">
+	
+	
+	<div id="quickmenulayer" data-toggle="modal" data-target="#myModal">
+		<b>체험 일</b>
+		<br>
+		<i class="far fa-calendar-alt fa-3x"></i>
+		<br>
+		<br>
+		<input type="date"  id="checkin" class="quickmenufont">
+	</div>
+	
+	<div id="quickmenulayer" data-toggle="modal" data-target="#myModal">
+		<b>인원수</b><br>
+		<i class="fas fa-users fa-3x"></i>
+		<br>
+		<br>
+		<input type="button" value="-" class="btn btn-danger btn-icon-split PeopleBtnM" style="border-radius: 120px;">
+		&nbsp;&nbsp;<b><span id="PeopleSpan"> 1 </span></b>&nbsp;&nbsp;
+		<input type="button" value="+" class="btn btn-danger btn-icon-split PeopleBtnP"  style="border-radius: 120px;">
+		<!-- <input type="text"  readonly="readonly" id="checkcnt" class="quickmenufont"> -->
+	</div>
+	
+	<div id="quickmenulayer" data-toggle="modal" data-target="#myModal">
+		<b>총금액</b><br>
+		<i class="fas fa-coins fa-3x"></i>
+		<br>
+		<br>
+		<b>￦<span id="PriceSpan"> ${experienceInfo.price }  </span> 원</b>
+		<!--<input type="text" readonly="readonly" id="summoney" class="quickmenufont">-->
+	</div>
+
+	<input type="hidden" value="1">
+	<input type="hidden"  id="hoststartdate">
+	<input type="hidden"  id="hostenddate">
+	<input type="hidden"  id="chekcdatepicker">
+	<input type="hidden"  id="imgarr">
+	<input type="hidden"  id="lat">
+	<input type="hidden"  id="lnt">
+	<div id="quickmenulayer">
+		<br>
+		
+		
+		<input type="button" value="예약하기" class="btn btn-danger btn-icon-split" id="btnApply" style="margin: auto;">
+		
+	</div>
+</div>
 <script>
+
 /* $("#dmcall2").on('click',function(){
 	var hinum=$("#hinumvalue").val();
 	console.log(hinum);
@@ -382,3 +435,7 @@
 }); */
 </script>
 <script type="text/javascript" src="/resources/js/epOnline/chatjs.js"></script>
+
+<script type="text/javascript" src="/resources/js/epOnline/onlineapply.js"></script><!-- 영노 -->
+
+<script src="/resources/js/userapply/applyCheck.js"></script><!-- 결제 -->
