@@ -70,6 +70,9 @@ select e.memnum,e.hinum , e.div_type , e.loc , e.intr , e.program , e.title , e.
 	</select>
 	<select id="chatLog" resultType="chatLog" parameterType="int">
 		select * from chatting where chat_no=#{number}
+		  
+		  
+		  
 	</select>
 	<insert id="addChat" parameterType="hashmap">
 		insert into chat_select values(0,#{memnum},#{id},0)

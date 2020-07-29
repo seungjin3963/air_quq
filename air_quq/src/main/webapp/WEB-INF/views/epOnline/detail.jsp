@@ -2,13 +2,13 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/functions" prefix = "fn" %>
+<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script> <!-- 결제 -->
 <link href="/resources/css/epOnline/chat.css" rel="stylesheet">
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
 	integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
 	crossorigin="anonymous">
 	
-<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script> <!-- 결제 -->
 <link href="/resources/css/userapply/userapply.css" rel="stylesheet" type="text/css"><!-- 결제 css -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.1.5/sockjs.min.js"></script>
@@ -66,6 +66,7 @@
 				<div class="col-md-8">
 					<h3 tabindex="-1">
 						<b>${experienceInfo.title}</b>
+						
 					</h3>
 				</div>
 				<div class="col-md-4"></div>
@@ -420,7 +421,7 @@
 		<br>
 		
 		
-		<input type="button" value="예약하기" class="btn btn-danger btn-icon-split" id="btnApply" style="margin: auto;">
+		<input type="button" value="예약하기" class="btn btn-danger btn-icon-split test1" style="margin: auto;">
 		
 	</div>
 </div>

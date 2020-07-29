@@ -1,7 +1,12 @@
 package com.jhta.airqnq.controller;
 
+
+
+import java.sql.Date;
+
 import javax.servlet.http.HttpSession;
 
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,7 +26,7 @@ public class RentController {
 		RentVo vo = (RentVo)session.getAttribute("rentVo");
 		
 		int menum=(int)session.getAttribute("menum");
-		
+		System.out.println("회원 번호 확인 : " + menum + "  ㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁ");
 		vo.setMenum(menum);
 		vo.setImp_uid(imp_uid);
 		vo.setMerchant_uid(merchant_uid);
@@ -40,6 +45,24 @@ public class RentController {
 	@ResponseBody
 	public RentVo rentselect(int rtnum) {
 		 return rentservice.rentselect(rtnum);
+	}
+	
+	@RequestMapping(value="/user/apply/rentVo/insert")
+	@ResponseBody
+	public String rentVoInsert(Date checkdata, int PriceSpan, int PeopleSpan , int hinum , HttpSession session) {
+		
+		RentVo vo=new RentVo();
+		vo.setStartrent(checkdata);
+		vo.setEndrent(checkdata);
+		vo.setPay_price(PriceSpan);
+		vo.setPerson(PeopleSpan);
+		vo.setHinum(hinum);
+		vo.setStatus(1);
+		
+		session.setAttribute("rentVo", vo);
+		JSONObject json=new JSONObject();
+		
+		return json.toString() ;
 	}
 	
 }
