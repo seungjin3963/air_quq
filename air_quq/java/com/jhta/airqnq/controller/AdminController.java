@@ -31,6 +31,7 @@ import com.jhta.airqnq.vo.HouseInfoVo;
 import com.jhta.airqnq.vo.JoinVo;
 import com.jhta.airqnq.vo.RentVo;
 import com.jhta.airqnq.vo.ReportTypeVo;
+import com.jhta.airqnq.vo.ReportVo;
 
 @Controller
 public class AdminController {
@@ -176,6 +177,10 @@ public class AdminController {
 		@RequestMapping("/admin/ep_info/list")
 		public String experienceSelect(Model model,@RequestParam(value="pageNum",defaultValue = "1")int pageNum, String keyword,String field) {
 			
+			if(pageNum==0) {
+				pageNum=1;
+			}
+			
 			HashMap<String, Object> map=new HashMap<String, Object>();
 			
 			map.put("keyword", keyword);
@@ -262,8 +267,12 @@ public class AdminController {
 		int hostcnt=0;	
 		int rentcnt=0;	
 		int pricecnt=0;	
-			
-		int maxprice=houselist.get(0).getPrice();	
+		
+		int maxprice=0;
+		
+		if(houselist != null) {
+			maxprice=houselist.get(0).getPrice();
+		}
 			
 		ArrayList<Integer> pricelist=new ArrayList<Integer>();	
 		ArrayList<Integer> ranglist=new ArrayList<Integer>();	
@@ -363,8 +372,8 @@ public class AdminController {
 	//////////////////////영노 신고 목록
 	@RequestMapping("/admin/Declaration")
 	public String adminDeclaration(Model model) {
-		List<ReportTypeVo> reportVo=service.reportList();
-		System.out.println(reportVo);
+		List<ReportVo> reportVo=service.reportList();
+	
 		model.addAttribute("reportVo" , reportVo);
 		return ".admin.adminDeclaration";
 	}

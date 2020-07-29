@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.jhta.airqnq.dao.EpOnlineDao;
 import com.jhta.airqnq.vo.AdminInfoVo;
 import com.jhta.airqnq.vo.ChatLogVo;
+import com.jhta.airqnq.vo.ReviewVo;
 import com.jhta.airqnq.vo.SliderVo;
 
 @Service
@@ -56,4 +57,15 @@ public class EpOnlineService {
 	public int count(HashMap<String, Object> hash) {
 		return dao.count(hash);
 	}
+	
+	//랜덤 리스트
+	public List<SliderVo> randInfo(){
+		return dao.randInfo();
+	}
+	//리뷰
+	public List<ReviewVo> ReviewSelect(int hinum){
+		return dao.ReviewSelect(hinum);
+	}
+	
+	
 }

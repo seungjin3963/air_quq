@@ -63,12 +63,12 @@
 				</a>
 			</li>
 
-			<li class="nav-item">
+			<!-- <li class="nav-item">
 				<a class="nav-link" href="/admin/adminQ">
 					<i class="fas fa-question"></i> 
 					<span>QnA</span>
 				</a>
-			</li>
+			</li> -->
 
 			<li class="nav-item"> <!-- 영노 -->
 				<a class="nav-link" href="/admin/Declaration"> 

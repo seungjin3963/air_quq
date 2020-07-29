@@ -21,13 +21,13 @@ on e.hinum=h.hinum where e.div_type=3 and ordernum=1 )a inner join subDetail s o
 	<select id="OnlineCookList" resultType="com.jhta.airqnq.vo.EP_ManagementVo" parameterType="int">
 		select a.img , a.hinum , a.title , a.price , a.times , subname from (
 select img,e.hinum,title,price,times ,sunum from experience_info e inner join house_img h 
-on e.hinum=h.hinum where e.div_type=3 and ordernum=1 and (sunum=167 or sunum=166 or sunum=164 or sunum=165 or sunum=136 or sunum=135 or sunum=134))a inner join subDetail s on a.sunum=s.sunum limit #{row}, 5;
+on e.hinum=h.hinum where e.div_type=3 and ordernum=1 and (sunum=163 or sunum=166 or sunum=164 or sunum=165 or sunum=136 or sunum=135 or sunum=134))a inner join subDetail s on a.sunum=s.sunum limit #{row}, 5;
 	</select>
 	<select id="onlineCookListC" resultType="int">
 	select count(*) from(
 		select a.img , a.hinum , a.title , a.price , a.times , subname from (
 select img,e.hinum,title,price,times ,sunum from experience_info e inner join house_img h 
-on e.hinum=h.hinum where e.div_type=3 and ordernum=1 and (sunum=167 or sunum=166 or sunum=164 or sunum=165 or sunum=136 or sunum=135 or sunum=134))a inner join subDetail s on a.sunum=s.sunum) s;
+on e.hinum=h.hinum where e.div_type=3 and ordernum=1 and (sunum=163 or sunum=166 or sunum=164 or sunum=165 or sunum=136 or sunum=135 or sunum=134))a inner join subDetail s on a.sunum=s.sunum) s;
 	</select>
 	
 

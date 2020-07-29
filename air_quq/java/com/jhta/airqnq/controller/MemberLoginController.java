@@ -54,7 +54,8 @@ public class MemberLoginController {
 	@GetMapping("/logout")
 	public String logoutPage() {
 		String client_id = "f5b5ae84edd2bb27cfdebdebaa48bc3f";
-		String logout_redirect_uri = "http://localhost:8090/kakao/logout";
+		/* String logout_redirect_uri = "http://localhost:8090/kakao/logout"; */
+		String logout_redirect_uri = "http://192.168.0.2:8090/kakao/logout";
 		String path = "https://kauth.kakao.com/oauth/logout?client_id="+ client_id + "&logout_redirect_uri=" + logout_redirect_uri + "&state=?";
 		return "redirect:" + path;
 	}
@@ -76,7 +77,7 @@ public class MemberLoginController {
 
 		String email = (String) userInfo.get("email");
 		String nickname = (String) userInfo.get("nickname");
-
+		
 		int n = service.selectKakaoUser(Integer.parseInt(kakao_id));
 
 		// 카카오 가입안한 서비스 회원일경우 최초로 DB에 등록됨

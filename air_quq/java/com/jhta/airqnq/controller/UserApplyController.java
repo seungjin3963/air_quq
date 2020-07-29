@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -64,14 +65,18 @@ public class UserApplyController {
 		List<EP_ManagementVo> epvo = approveservice.epappImg(hinum);
 		
 		String imgarr=null;
-		
+
 		int cnt=0;
 		
 		for(EP_ManagementVo vo: epvo) {
 			if(vo.getImg() != null) {
 				if(vo.getOrdernum() == 1) {
-					imgarr=vo.getImg()+"/";
-					cnt++;
+					if(epvo.size() == 1) {
+						imgarr=vo.getImg();
+					}else {
+						imgarr=vo.getImg()+"/";
+						cnt++;
+					}
 				}else {
 					if(epvo.size()-1 == cnt) {
 						imgarr+=vo.getImg();
@@ -211,12 +216,10 @@ public class UserApplyController {
 			
 			long timebetween3=timebetween2*infovo.getPrice();
 			
-			ApplyVo vo=new ApplyVo(start, end, people_count, (int)timebetween3);
 			RentVo rentvo=new RentVo(0, hinum, 0, rentstart, rentend, 1, people_count, (int)timebetween3, "n", null, null,1);
 			
-			session.setAttribute("applyVo", vo);
 			session.setAttribute("rentVo", rentvo);
-			
+
 			model.addAttribute("imgarr", imgarr);
 			model.addAttribute("infovo", infovo);
 			model.addAttribute("usercheck", usercheck);
@@ -248,7 +251,8 @@ public class UserApplyController {
 			System.out.println(ie.getMessage());
 		} catch (NullPointerException np) {}
 	}
-// 환불기능 포기
+	
+// 환불기능 나중에
 //	@RequestMapping("/refund/access_token")
 //	@ResponseBody
 //	public HashMap<String, Object> updateSpittle(String imp_key,String imp_secret) {
@@ -299,12 +303,14 @@ public class UserApplyController {
 			Date start2=(Date) format.parse(start);
 			Date end2=(Date) format.parse(end);
 			
+			
 			java.sql.Date rentstart=new java.sql.Date(start2.getTime());
 			java.sql.Date rentend=new java.sql.Date(end2.getTime());
 			
 			rent.setStartrent(rentstart);
 			rent.setEndrent(rentend);
 			rent.setPerson(vo.getMax_n());
+			rent.setPay_price(vo.getTotmoney());
 			
 			session.setAttribute("rentVo", rent);
 			session.setAttribute("applyVo", vo);
@@ -313,6 +319,7 @@ public class UserApplyController {
 			System.out.println("수정 날짜 오류"+pe.getMessage());
 		}
 	}
+	
 
 	@GetMapping(value = "/user/applyCheck")
 	public String apply(HttpSession session) {

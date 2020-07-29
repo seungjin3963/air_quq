@@ -1,4 +1,4 @@
-const http = require('https');
+const http = require('http');
 const os = require('os');
 const socketIO = require('socket.io');
 const nodeStatic = require('node-static');
@@ -36,14 +36,14 @@ io.sockets.on('connection',socket=>{
             console.log('create room!');
             socket.join(room);
             log('Client ID ' + socket.id + ' created room ' + room);
-            socket.emit('created',room,socket.id);
+            socket.emit('created', room, socket.id);
         }
         else if(numClients===1){
             console.log('join room!');
             log('Client Id' + socket.id + 'joined room' + room);
             io.sockets.in(room).emit('join',room);
             socket.join(room);
-            socket.emit('joined',room,socket.id);
+            socket.emit('joined', room, socket.id);
             io.sockets.in(room).emit('ready');
         }else{
             socket.emit('full',room);
@@ -52,6 +52,20 @@ io.sockets.on('connection',socket=>{
 
     socket.on('roomList', () => {
     	let rooms = Object.keys(io.sockets.adapter.rooms);
-    	socket.emit('roomList', rooms);
+    	io.sockets.emit('roomList', rooms);
     });
+    
+    socket.on('user-exit', room => {
+    	socket.leave(room);
+    });
+    
+    socket.on('clientList', (room) => {
+    	console.log(Object.keys(io.sockets.clients().sockets));
+//    	socket.emit('clientList', clients);
+    });
+    
+    socket.on('disconnect', function() {
+		io.sockets.emit('user-exit', socket.id);
+	});
 });
+

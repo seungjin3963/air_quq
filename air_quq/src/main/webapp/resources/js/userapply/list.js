@@ -5,15 +5,40 @@ function houseApplyList(){
 	$("#houseNavItem").addClass("active border-bottom-danger");
 	$("#expNavItem").removeClass("active border-bottom-danger");
 	
-	$("#houseDataTable").removeClass("d-none");
-	$("#expDataTable").addClass("d-none");
+//	$("table[name='houseDataTable']").removeClass("d-none");
+//	$("table[name='expDataTable']").addClass("d-none");
+//	$(".houseCard").removeClass("d-none");
+//	$(".expCard").addClass("d-none");
 	
-	let table = $("#houseDataTable");
-	table.find("tbody").empty();
+//	let table = $("table[name='houseDataTable']");
+//	table.find("tbody").empty();
+	
+	$(".tableContainer").empty();
 	
 	getApplyHouseList().then(function(data){
 		let html = "";
+		html += `<div class="card shadow mb-4">`;
+		html += `<div class="card-body houseCard">`;
+		html += `<div class="table-responsive">`;
+		html += `<table class="table table-bordered" id="dataTable" name="houseDataTable" width="100%" cellspacing="0">`;
+		html += `<thead>`;
+		html += `<tr>`;
+		html += `<th class="d-none">예약 번호</th>`;
+		html += `<th class="d-none">숙소 번호</th>`;
+		html += `<th>숙소 제목</th>`;
+		html += `<th>시작 날짜</th>`;
+		html += `<th>종료 날짜</th>`;
+		html += `<th>상태</th>`;
+		html += `<th>인원 수</th>`;
+		html += `<th>결제 금액</th>`;
+		html += `<th>리뷰 작성 여부</th>`;
+		html += `<th>리뷰 & 평점</th>`;
+		html += `<th>예약 취소</th>`;
+		html += `</tr>`;
+		html += `</thead>`;
+		html += `<tbody>`;
 		$(data).each(function(key ,value){
+			
 			let status;
 			let statusBackColor;
 			if(value.status == 9){
@@ -25,6 +50,7 @@ function houseApplyList(){
 			}
 			let startrent = datechange(new Date(value.startrent));
 			let endrent = datechange(new Date(value.endrent));
+			
 			html += `<tr class="${statusBackColor}">`;
 			html += `<td class="d-none">${value.rtnum }</td>`;
 			html += `<td class="d-none">${value.hinum }</td>`;
@@ -35,7 +61,7 @@ function houseApplyList(){
 			html += `<td>${value.person }</td>`;
 			html += `<td>${value.pay_price }</td>`;
 			html += "<td>";
-			if(value.rag_yn = "n"){
+			if(value.rag_yn == "n"){
 				html += `<i class="fa fa-times text-danger fa-2x"></i>`;
 			}else{
 				html += `<i class="fa fa-check text-info fa-2x"></i>`;
@@ -43,7 +69,7 @@ function houseApplyList(){
 			html += "</td>";
 			
 			html += "<td>";
-			let now = new Date();
+			let now = datechange(new Date());
 			if(endrent <= now){
 				html += `<a class="text-success openReviewAndGrade" href="#" data-toggle="modal" data-target="#reviewAndGradeModal" data-rtnum="${value.rtnum }" data-hinum="${value.hinum }"><i class="fa fa-thumbs-up fa-2x"></i></a>`;
 			}else{
@@ -59,7 +85,13 @@ function houseApplyList(){
 			html += "</td>";
 			html += "</tr>";
 		});
-		table.find("tbody").append(html);
+		html += `</tbody>`;
+		html += `</table>`;
+		html += `</div>`;
+		html += `</div>`;
+		html += `</div>`;
+		//table.find("tbody").append(html);
+		$(".tableContainer").append(html);
 	});
 }
 
@@ -76,21 +108,46 @@ function datechange(datetime) {
 }
 
 function expApplyList(){
-	let socket = io.connect("https://localhost:3000/");
+	//let socket = io.connect("https://localhost:3000/");
+	let socket = io.connect("http://192.168.0.2:3000/");
 	socket.emit('roomList');
 	
 	socket.on('roomList', rooms => {
-		$("#houseDataTable").addClass("d-none");
-		$("#expDataTable").removeClass("d-none");
-		
+		$(".tableContainer").empty();
+//		$("table[name='houseDataTable']").addClass("d-none");
+//		$("table[name='expDataTable']").removeClass("d-none");
+//		$(".houseCard").addClass("d-none");
+//		$(".expCard").removeClass("d-none");
+//		
 		$("#houseNavItem").removeClass("active border-bottom-danger");
 		$("#expNavItem").addClass("active border-bottom-danger");
 		
-		let table = $("#expDataTable");
-		table.find("tbody").empty();
+//		let table = $("table[name='expDataTable']");
+//		table.find("tbody").empty();
 		
 		getApplyExpList().then(function(data){
+			console.log("abc");
 			let html = "";
+			html += `<div class="card shadow mb-4">`;
+			html += `<div class="card-body houseCard">`;
+			html += `<div class="table-responsive">`;
+			html += `<table class="table table-bordered" id="dataTable" name="houseDataTable" width="100%" cellspacing="0">`;
+			html += `<thead>`;
+			html += `<tr>`;
+			html += `<th class="d-none">예약 번호</th>`;
+			html += `<th class="d-none">숙소 번호</th>`;
+			html += `<th>숙소 제목</th>`;
+			html += `<th>시작 날짜</th>`;
+			html += `<th>상태</th>`;
+			html += `<th>결제 금액</th>`;
+			html += `<th>리뷰 작성 여부</th>`;
+			html += `<th>리뷰 & 평점</th>`;
+			html += `<th>예약 취소</th>`;
+			html += `<th>체험 참여</th>`;
+			html += `</tr>`;
+			html += `</thead>`;
+			html += `<tbody>`;
+			
 			$(data).each(function(key ,value){
 				let status;
 				let statusBackColor;
@@ -147,7 +204,13 @@ function expApplyList(){
 				html += "</td>";
 				html += "</tr>";
 			});
-			table.find("tbody").append(html);
+			html += `</tbody>`;
+			html += `</table>`;
+			html += `</div>`;
+			html += `</div>`;
+			html += `</div>`;
+			//table.find("tbody").append(html);
+			$(".tableContainer").append(html);
 		});
 	});
 }

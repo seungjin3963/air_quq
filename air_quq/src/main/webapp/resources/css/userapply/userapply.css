@@ -51,6 +51,11 @@
 	border-radius: 100%
 }
 
+#houseimgall{
+	width: 400px;
+	height: 400px;
+}
+
 /* content 크기 */
 #housecontent {
 	height: 500px;	
@@ -99,6 +104,12 @@
 	text-align: center;
 	font-weight: bold;
 	font-size: 50px;
+}
+
+.usercheck {
+	display: inline-block;
+	text-align: center;
+	font-weight: bold;
 }
 
 /*위치*/
@@ -209,3 +220,30 @@
 	width: 80px;
 	margin: 10px;
 }
+
+/* img modal */
+#imgclose{
+	width: 80px;
+	margin: 10px auto;
+} 
+
+/* 사용자 입력된 정보 */
+#usecal{
+	text-align: center;
+}
+
+/* 사진 modal 크기 */
+#houseimgall{
+	width:797px; 
+	height: 750px; 
+	padding-left: 97px; 
+	overflow: auto;
+}
+
+/* modal 안에 사진 크기 */
+#allimg{
+	width:600px; 
+	height:500px; 
+	margin: 30px 0px;
+}
+

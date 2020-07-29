@@ -4,7 +4,9 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import com.jhta.airqnq.dao.ConvenDao;
 import com.jhta.airqnq.dao.HostInfoDao;
 import com.jhta.airqnq.dao.HostInfoImageDao;
 import com.jhta.airqnq.dao.HouseSearchDao;
@@ -21,6 +23,8 @@ public class HostInfoService {
 	private HostInfoImageDao hostInfoImageDao;
 	@Autowired
 	private HouseSearchDao houstSearchDao;
+	@Autowired
+	private ConvenDao convenDao;
 	
 	//하우스번호구하기
 	public int selectHouseNumber(int menum) {
@@ -34,6 +38,7 @@ public class HostInfoService {
 	public int insertHouse(HouseInfoVo vo) {
 		return hostInfoDao.insertHouse(vo);
 	}
+	
 	
 	//하우스 정보 리스트 가져오기
 	public List<HouseInfoVo> getHouseInfoList(HouseInfoVo vo){
@@ -52,5 +57,11 @@ public class HostInfoService {
 	//검색된 하우스 전체 글개수
 	public int getSearchCount(HouseSearchVo vo) {
 		return houstSearchDao.getSearchCount(vo);
+	}
+	
+	//트렌젝션 처리
+	public int insert(Object data) {
+		
+		return 1;
 	}
 }

@@ -68,11 +68,12 @@ function passwordCheckForm(){
 
 function checkedForm(){
 	var chk = passwordCheckForm();
-	if(emailchk == true && idchk == true && chk == true && checkGender != null){
+	if(emailchk == true && idchk == true){
 		return true;
+	}else{
+		alert("폼에 빈값이 들어갈수없습니다.");
+		return false;
 	}
-	alert("폼에 빈값이 들어갈수없습니다.");
-	return false;
 }
 
 

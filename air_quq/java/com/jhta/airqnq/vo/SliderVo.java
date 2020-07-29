@@ -32,7 +32,23 @@ public class SliderVo {
 	
 	
 	
-	public SliderVo(int hinum, int memnum, String title, String loc, String times, String price, byte[] profile_img, //영노
+	public SliderVo(int hinum, String img, String title, String times, String price, String program, String subname, // 랜덤 list
+			int div_type) {
+		super();
+		this.hinum = hinum;
+		this.img = img;
+		this.title = title;
+		this.times = times;
+		this.price = price;
+		this.program = program;
+		this.subname = subname;
+		this.div_type = div_type;
+	}
+
+
+
+
+	public SliderVo(int hinum, int memnum, String title, String loc, String times, String price, byte[] profile_img, // hinum list 영노
 			String program, String intr, String mater, int people, String subname , String id) {
 		super();
 		this.hinum = hinum;

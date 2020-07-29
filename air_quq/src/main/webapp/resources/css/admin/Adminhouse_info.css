@@ -73,3 +73,9 @@ label {
 	height: 300px;
 	color: black;
 }
+
+.modal-body img{
+	width: 450px;
+    height: 400px;
+    border-radius: 30px;
+}

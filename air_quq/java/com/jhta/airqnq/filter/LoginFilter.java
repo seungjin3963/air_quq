@@ -44,6 +44,7 @@ public class LoginFilter implements Filter {
 		HttpServletRequest req = (HttpServletRequest) request;
 		HttpSession session = req.getSession();
 		if (!excludeUrl(req) && session.getAttribute("logind") == null) {
+			System.out.println(req.getRequestURI().toString().trim());
 			req.setAttribute("filterUrl", req.getRequestURI().toString().trim());
 			req.getRequestDispatcher("/login").forward(request, response);
 		} else {
@@ -76,7 +77,7 @@ public class LoginFilter implements Filter {
 			return true;
 		} else if (uri.equals("/user/applyCheck")) {
 			return false;
-		} else if (uri.equals("/user/apply")) {
+		} else if (uri.startsWith("/user/apply")) {
 			return true;
 		} else if (uri.startsWith("/upload")) {
 			return true;

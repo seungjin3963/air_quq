@@ -1,5 +1,118 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<style>
+<!--
+	체크박스 css
+-->
+.funkyradio div {
+  clear: both;
+  overflow: hidden;
+}
+
+.funkyradio label {
+  width: 25%;
+  border-radius: 3px;
+  border: 1px solid #D1D3D4;
+  font-weight: normal;
+}
+
+.funkyradio input[type="radio"]:empty,
+.funkyradio input[type="checkbox"]:empty {
+  display: none;
+}
+
+.funkyradio input[type="radio"]:empty ~ label,
+.funkyradio input[type="checkbox"]:empty ~ label {
+  position: relative;
+  line-height: 2.5em;
+  text-indent: 3.25em;
+  margin-top: 2em;
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+.funkyradio input[type="radio"]:empty ~ label:before,
+.funkyradio input[type="checkbox"]:empty ~ label:before {
+  position: absolute;
+  display: block;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  content: '';
+  width: 2.5em;
+  background: #D1D3D4;
+  border-radius: 3px 0 0 3px;
+}
+
+.funkyradio input[type="radio"]:hover:not(:checked) ~ label,
+.funkyradio input[type="checkbox"]:hover:not(:checked) ~ label {
+  color: #888;
+}
+
+.funkyradio input[type="radio"]:hover:not(:checked) ~ label:before,
+.funkyradio input[type="checkbox"]:hover:not(:checked) ~ label:before {
+  content: '\2714';
+  text-indent: .9em;
+  color: #C2C2C2;
+}
+
+.funkyradio input[type="radio"]:checked ~ label,
+.funkyradio input[type="checkbox"]:checked ~ label {
+  color: #777;
+}
+
+.funkyradio input[type="radio"]:checked ~ label:before,
+.funkyradio input[type="checkbox"]:checked ~ label:before {
+  content: '\2714';
+  text-indent: .9em;
+  color: #333;
+  background-color: #ccc;
+}
+
+.funkyradio input[type="radio"]:focus ~ label:before,
+.funkyradio input[type="checkbox"]:focus ~ label:before {
+  box-shadow: 0 0 0 3px #999;
+}
+
+.funkyradio-default input[type="radio"]:checked ~ label:before,
+.funkyradio-default input[type="checkbox"]:checked ~ label:before {
+  color: #333;
+  background-color: #ccc;
+}
+
+.funkyradio-primary input[type="radio"]:checked ~ label:before,
+.funkyradio-primary input[type="checkbox"]:checked ~ label:before {
+  color: #fff;
+  background-color: #337ab7;
+}
+
+.funkyradio-success input[type="radio"]:checked ~ label:before,
+.funkyradio-success input[type="checkbox"]:checked ~ label:before {
+  color: #fff;
+  background-color: #5cb85c;
+}
+
+.funkyradio-danger input[type="radio"]:checked ~ label:before,
+.funkyradio-danger input[type="checkbox"]:checked ~ label:before {
+  color: #fff;
+  background-color: #d9534f;
+}
+
+.funkyradio-warning input[type="radio"]:checked ~ label:before,
+.funkyradio-warning input[type="checkbox"]:checked ~ label:before {
+  color: #fff;
+  background-color: #f0ad4e;
+}
+
+.funkyradio-info input[type="radio"]:checked ~ label:before,
+.funkyradio-info input[type="checkbox"]:checked ~ label:before {
+  color: #fff;
+  background-color: #5bc0de;
+}
+</style>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <link rel="stylesheet" type="text/css" href="/resources/css/host/fileupload.css">
 <c:if test="${ hostStep == 1 }">
@@ -242,7 +355,35 @@
 						<i class="fa fa-plus imgAdd"></i>
 					</div><!-- row -->
 				</div><!-- container -->
-				
+				<hr class="my-4">
+				<h4>숙소 편의기능을 선택해 주세요.(중복선택가능)</h4>
+				<!-- 숙소 편의기능 -->
+				<div class="funkyradio">
+			        <div class="funkyradio-primary">
+			            <input type="checkbox" name="pool" id="pool" value="1" checked/>
+			            <label for="pool">수영장</label>
+			        </div>
+			        <div class="funkyradio-primary">
+			            <input type="checkbox" name="paking" id="paking" value="2"/>
+			            <label for="paking">주차장</label>
+			        </div>	
+			        <div class="funkyradio-primary">
+			            <input type="checkbox" name="wifi" id="wifi" value="3"/>
+			            <label for="wifi">무선 인터넷</label>
+			        </div>
+			        <div class="funkyradio-primary">
+			            <input type="checkbox" name="washer" id="washer" value="4"/>
+			            <label for="washer">세탁기</label>
+			        </div>
+			        <div class="funkyradio-primary">
+			            <input type="checkbox" name="kitchen" id="kitchen" value="5"/>
+			            <label for="kitchen">주방</label>
+			        </div>
+		        </div>
+		        <div class="form-group">
+				  <label for="exampleFormControlTextarea1">etc</label>
+				  <textarea class="form-control" id="etc" rows="3" style="width: 50%" name="etc"></textarea>
+				</div>
 				<br> <input type="hidden" value="4" name="next"> <input type="submit" class="btn btn-outline-primary" role="button" value="완료">
 			</form>
 			<script type="text/javascript" src="/resources/js/passport/passportDetail.js"></script>

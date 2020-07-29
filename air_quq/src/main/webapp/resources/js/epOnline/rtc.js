@@ -1,13 +1,14 @@
 "use strict";
 
 let localVideo = document.getElementById("localVideo");
-let remoteVideo = document.getElementById("remoteVideo");
+//let remoteVideo = document.getElementById("remoteVideo");
 let isInitiator = false;
 let isChannelReady = false;
 let isStarted = false;
 let localStream;
 let remoteStream;
 let pc;
+let joinId;
 
 let pcConfig = {
     'iceServers': [{
@@ -18,20 +19,36 @@ let pcConfig = {
 /*let room = 'foo';*/
 let room = $('#hinum').val();
 
-let socket = io.connect("https://192.168.0.2:3000/");
+let socket = io.connect("http://192.168.0.2:3000/");
 
-  if(room !==''){
-    socket.emit('create or join',room);
-    console.log('Attempted to create or join Room',room);
-  }
+if(room !==''){
+  socket.emit('create or join',room);
+  console.log('Attempted to create or join Room',room);
+}
 
 socket.on('created', (room,id)=>{
-  console.log('Created room' + room+'socket ID : '+id);
+  console.log('Created room' + room +' socket ID : '+id);
   isInitiator= true;
+  
+  joinId = id;
 })
 
 socket.on('full', room=>{
   console.log('Room '+room+'is full');
+});
+
+socket.on('user-exit', (id) => {
+	//$("#remoteVideo").srcObject = null;
+	console.log(id);
+	
+	socket.emit('clientList', room);
+	
+	$("#"+id).remove();
+	socket.emit('user-exit', room);
+});
+
+socket.on('clientList', (clientList) => {
+	console.log(clientList);
 });
 
 socket.on('join',room=>{
@@ -44,6 +61,7 @@ socket.on('joined',room=>{
   console.log('joined : '+ room );
   isChannelReady= true;
 })
+
 socket.on('log', array=>{
   console.log.apply(console,array);
 });
@@ -68,7 +86,8 @@ socket.on('message', (message)=>{
 
     pc.addIceCandidate(candidate);
   }
-})
+});
+
 function sendMessage(message){
   console.log('Client sending message: ',message);
   socket.emit('message',message);
@@ -123,9 +142,20 @@ function handleCreateOfferError(event) {
 }
 
 function handleRemoteStreamAdded(event) {
-  console.log("remote stream added");
-  remoteStream = event.stream;
-  remoteVideo.srcObject = remoteStream;
+	console.log("remote stream added");
+//	remoteStream = event.stream;
+//	remoteVideo.srcObject = remoteStream;
+
+	var video  = document.createElement('video');
+	//video.setAttribute('data-socket', id);
+	video.srcObject   = event.stream;
+	video.autoplay    = true; 
+	video.muted       = true;
+	video.playsinline = true;
+	
+	video.setAttribute('id', joinId);
+	
+	document.querySelector('.videoContainer').appendChild(video);
 }
 
 function maybeStart() {

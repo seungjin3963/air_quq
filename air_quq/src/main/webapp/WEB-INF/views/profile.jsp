@@ -31,25 +31,25 @@
                               <div class="form-group row">
                                 <label for="pwd" class="col-4 col-form-label">비밀번호</label> 
                                 <div class="col-8">
-                                  <input id="pwd" name="pwd" placeholder="First Name" class="form-control here" type="password" value="${ member.pwd }">
+                                  <input id="pwd" name="pwd" placeholder="비밀번호" class="form-control here" type="password" value="${ member.pwd }">
                                 </div>
                               </div>
                               <div class="form-group row">
                                 <label for="addr" class="col-4 col-form-label">주소</label> 
                                 <div class="col-8">
-                                  <input id="addr" name="addr" placeholder="Last Name" class="form-control here" type="text" value="${ member.addr }">
+                                  <input id="addr" name="addr" placeholder="주소" class="form-control here" type="text" value="${ member.addr }">
                                 </div>
                               </div>
                               <div class="form-group row">
                                 <label for="email" class="col-4 col-form-label">이메일</label> 
                                 <div class="col-8">
-                                  <input id="email" name="email" placeholder="Nick Name" class="form-control here" required="required" type="email" value="${ member.email }">
+                                  <input id="email" name="email" placeholder="이메일" class="form-control here" required="required" type="email" value="${ member.email }">
                                 </div>
                               </div>
                               <div class="form-group row">
                                 <label for="phone" class="col-4 col-form-label">폰번호</label> 
                                 <div class="col-8">
-                                  <input id="phone" name="phone" placeholder="Email" class="form-control here" required="required" type="text" value="${ member.phone }">
+                                  <input id="phone" name="phone" placeholder="폰번호" class="form-control here" required="required" type="text" value="${ member.phone }">
                                 </div>
                               </div>
                               <div class="form-group row" id="profileUp">

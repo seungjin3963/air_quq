@@ -95,7 +95,7 @@
 							<div class="onlinecooklist_div">
 								<input type="hidden" value="${i.hinum }">
 								<a href="/online/details?hinum=${i.hinum }">
-								<img src="/resources/img/house_img/${i.img }"> ${i.subname}
+								<img src="/resources/img/house_img/${i.img }"></a> ${i.subname}
 								<br>
 								<br>
 								<h5>${i.title }</h5>
@@ -129,7 +129,7 @@
 							<div class="onlinecooklist_div">
 								<input type="hidden" value="${i.hinum }">
 								<a href="/online/details?hinum=${i.hinum }">
-								<img src="/resources/img/house_img/${i.img }"> ${i.subname}
+								<img src="/resources/img/house_img/${i.img }"></a> ${i.subname}
 								<br>
 								<br>
 								<h5>${i.title }</h5>
@@ -152,7 +152,8 @@
 						<div class="onlinecooklist">
 							<div class="onlinecooklist_div">
 								<input type="hidden" value="${i.hinum }">
-								<img src="/resources/img/house_img/${i.img }"> ${i.subname}
+								<a href="/online/details?hinum=${i.hinum }">
+								<img src="/resources/img/house_img/${i.img }"></a> ${i.subname}
 								<br>
 								<br>
 								<h5>${i.title }</h5>
