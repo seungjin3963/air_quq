@@ -124,7 +124,18 @@ public class HostController {
 	}
 	
 	@RequestMapping(value = "/host/regist/4")
-	public String hostRegist4(MultipartFile[] file1, String roadAddr, String addressDetail, String lat, String lnt, HttpSession session, int next) {
+	public String hostRegist4(MultipartFile[] file1, String roadAddr, String addressDetail, String lat,
+			String lnt, HttpSession session, int next, String pool, String paking, String wifi, String washer, String kitchen, String etc) {
+		
+		
+		System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>-----"+pool);
+		System.out.println(paking);
+		System.out.println(wifi);
+		System.out.println(washer);
+		System.out.println(kitchen);
+		System.out.println(etc);
+		
+		
 		HashMap<String, Object> map = new HashMap<String, Object>();
 		map.put("address", roadAddr);
 		map.put("addressDetail", addressDetail);
