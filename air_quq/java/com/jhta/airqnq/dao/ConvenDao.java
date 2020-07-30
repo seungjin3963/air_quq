@@ -10,13 +10,17 @@ import com.jhta.airqnq.vo.ConvenDetailVo;
 public class ConvenDao {
 	@Autowired
 	private SqlSessionTemplate sqlSessionTemplate;
-	private final String NAMESPACE = "convenVo";
+	private final String NAMESPACE = "com.jhta.airqnq.mapper.HostInfoMapper";
 	
 	public int insertConven(int hinum) {
 		return sqlSessionTemplate.insert(NAMESPACE + ".convenInsert", hinum);
 	}
 	
 	public int insertConvenDetail(ConvenDetailVo vo) {
-		return sqlSessionTemplate.insert(NAMESPACE + ".convenInsert", vo);
+		return sqlSessionTemplate.insert(NAMESPACE + ".convenDetailInsert", vo);
+	}
+	
+	public int selectConvenNumber(int hinum) {
+		return sqlSessionTemplate.selectOne(NAMESPACE + ".convenSelect", hinum);
 	}
 }

@@ -23,6 +23,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.jhta.airqnq.service.HostInfoService;
 import com.jhta.airqnq.service.HostService;
+import com.jhta.airqnq.vo.ConvenDetailVo;
 import com.jhta.airqnq.vo.ExpInfoVo;
 import com.jhta.airqnq.vo.HouseImgVo;
 import com.jhta.airqnq.vo.HouseInfoVo;
@@ -35,6 +36,7 @@ public class HostController {
 	
 	@Autowired
 	private HostInfoService hostService;
+	
 
 	@GetMapping(value = "/host/epOnline/list")
 	public String epOnlineList(Model model, HttpSession session) {
@@ -128,12 +130,29 @@ public class HostController {
 			String lnt, HttpSession session, int next, String pool, String paking, String wifi, String washer, String kitchen, String etc) {
 		
 		
-//		System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>-----"+pool);
-//		System.out.println(paking);
-//		System.out.println(wifi);
-//		System.out.println(washer);
-//		System.out.println(kitchen);
-//		System.out.println(etc);
+		
+		if(pool == null) pool = "0";
+		if(paking == null) paking = "0";
+		if(wifi == null) wifi = "0";
+		if(washer == null) washer = "0";
+		if(kitchen == null) kitchen = "0";
+		if(etc == null) etc = "";
+		
+		System.out.println(Integer.parseInt(pool));
+		System.out.println(Integer.parseInt(paking));
+		System.out.println(Integer.parseInt(wifi));
+		System.out.println(Integer.parseInt(washer));
+		System.out.println(Integer.parseInt(kitchen));
+		System.out.println(etc);
+		
+		//멤버 번호
+		Integer menum = (Integer)session.getAttribute("menum");
+		System.out.println(menum + "<<<<<<<멤버번호");
+		
+		
+		//하우스 번호 가져오기
+		int hinum = hostService.selectHouseNumber(menum);
+		System.out.println("하우스 번호 : " + hinum);
 		
 		
 		HashMap<String, Object> map = new HashMap<String, Object>();
@@ -149,8 +168,7 @@ public class HostController {
 		
 		System.out.println("마지막 단계 : " + roadAddr + ", " + addressDetail + ", " + lat + ", " + lnt);
 		
-		Integer menum = (Integer)session.getAttribute("menum");
-		System.out.println(menum + "<<<<<<<멤버번호");
+		
 		
 		
 		HashMap<String, Object> regist1 = (HashMap<String, Object>)session.getAttribute("regist1");
@@ -173,16 +191,14 @@ public class HostController {
 		HouseInfoVo hvo = new HouseInfoVo(0, menum, title, content, roadAddr, addressDetail, price, max_n,
 				bedroom, checkinTime, div, lat, lnt, startdate, enddate, del_yn, 0);
 		
-		int result = hostService.insertHouse(hvo);
+		//int hinum, String pool, String paking, String wifi, String washer, String kitchen, String etc
+		int result = hostService.insert(hinum, pool, paking, wifi, washer, kitchen, etc, hvo);
+		
 		System.out.println("집등록 결과 <<" + result);
 		int cnt = 1;
 		
 		
 		if(result > 0) {
-			//하우스 번호 가져오기
-			int hinum = hostService.selectHouseNumber(menum);
-			System.out.println("하우스 번호 : " + hinum);
-			
 			for(MultipartFile f : file1) {
 				//전송된 파일명
 				String orgfilename = f.getOriginalFilename();

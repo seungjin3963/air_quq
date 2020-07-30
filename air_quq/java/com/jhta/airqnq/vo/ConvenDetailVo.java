@@ -91,4 +91,6 @@ public class ConvenDetailVo {
 		this.etc = etc;
 	}
 	
+	
+	
 }

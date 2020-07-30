@@ -364,19 +364,19 @@
 			            <label for="pool">수영장</label>
 			        </div>
 			        <div class="funkyradio-primary">
-			            <input type="checkbox" name="paking" id="paking" value="2"/>
+			            <input type="checkbox" name="paking" id="paking" value="1"/>
 			            <label for="paking">주차장</label>
 			        </div>	
 			        <div class="funkyradio-primary">
-			            <input type="checkbox" name="wifi" id="wifi" value="3"/>
+			            <input type="checkbox" name="wifi" id="wifi" value="1"/>
 			            <label for="wifi">무선 인터넷</label>
 			        </div>
 			        <div class="funkyradio-primary">
-			            <input type="checkbox" name="washer" id="washer" value="4"/>
+			            <input type="checkbox" name="washer" id="washer" value="1"/>
 			            <label for="washer">세탁기</label>
 			        </div>
 			        <div class="funkyradio-primary">
-			            <input type="checkbox" name="kitchen" id="kitchen" value="5"/>
+			            <input type="checkbox" name="kitchen" id="kitchen" value="1"/>
 			            <label for="kitchen">주방</label>
 			        </div>
 		        </div>
