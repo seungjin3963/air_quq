@@ -71,7 +71,6 @@
 		</div>
 	</div>
 	
-	
 	<h1 class="text-danger">이제 가까운 곳에서 소중한 것들을 찾아보세요.</h1>
 	<script type="text/javascript" src="/resources/js/hostFormValidation.js"></script>
 	<!-- <script type="text/javascript" src="/resources/js/passport/passport_main.js"></script> -->
@@ -81,21 +80,21 @@
 			<a href="" class="text-decoration-none">
 				<img src="/resources/img/Ij9o0LjK3rMUxtyJTVMpvN2uDvgk.jpg" class="rounded-lg img-thumbnail homeImg">
 				<div class="text-lg font-weight-bold text-danger text-uppercase mb-1">가까운 여행지</div>
-				<div class="text-danger text-uppercase">자동차로 금방 다녀올 수 있는 근교 여행지에서 휴식을 즐기세요.</div>
+				<div class="text-secondary text-uppercase">자동차로 금방 다녀올 수 있는 근교 여행지에서 휴식을 즐기세요.</div>
 			</a>
 		</div>
 		<div class="col-md-4">
 			<a href="" class="text-decoration-none">
 				<img src="/resources/img/restmb_allidxmake1.jpg" class="rounded img-thumbnail homeImg">
 				<div class="text-lg font-weight-bold text-danger text-uppercase mb-1">온라인 체험</div>
-				<div class="text-danger text-uppercase">세계 각지의 호스트가 진행하고 모두 함께 즐기는 독특한 액티비티</div>
+				<div class="text-secondary text-uppercase">세계 각지의 호스트가 진행하고 모두 함께 즐기는 독특한 액티비티</div>
 			</a>
 		</div>
 		<div class="col-md-4">
 			<a href="" class="text-decoration-none">
 				<img src="/resources/img/3e7363ad1dbdedbb0efdf984cb485224.jpg" class="rounded img-thumbnail homeImg">
 				<div class="text-lg font-weight-bold text-danger text-uppercase mb-1">집 전체</div>
-				<div class="text-danger text-uppercase">일행만을 위한 편안한 공간에서 친구 및 가족과 오붓한 시간을 보내세요. 최고의 셰프와 함께하는 온라인 체험</div>
+				<div class="text-secondary text-uppercase">일행만을 위한 편안한 공간에서 친구 및 가족과 오붓한 시간을 보내세요. 최고의 셰프와 함께하는 온라인 체험</div>
 			</a>
 		</div>
 	</div>
