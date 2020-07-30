@@ -98,7 +98,7 @@ public class UserApplyController {
 			SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
 			
 			boolean overlap=true;
-
+			
 			for(RentVo vo : hinumrentlist) {
 				
 				long timetemp=vo.getEndrent().getTime()-vo.getStartrent().getTime();
@@ -129,6 +129,7 @@ public class UserApplyController {
 							if(overlapcheck) {
 								temp.add(sdf.format(tempday));
 							}
+							
 						} catch (ParseException pe) {
 							System.out.println("String -> date 변경 오류:"+pe.getMessage());
 						}
@@ -165,6 +166,8 @@ public class UserApplyController {
 							
 							Date tempday=new Date(cal.getTimeInMillis());
 							
+							String tempday2=sdf.format(tempday);
+							
 							for (int j = 0; j < temp.size(); j++) {
 								if(sdf.format(tempday).equals(temp.get(j))) {
 									overlapcheck=false;
@@ -172,6 +175,15 @@ public class UserApplyController {
 							}
 							if(overlapcheck) {
 								temp.add(sdf.format(tempday));
+								if(daybetween > 1) {
+									temp2.add(tempday2);
+								}
+							}
+							
+							if(i == daybetween-1) {
+								for (int j = 0; j < temp2.size(); j++) {
+									temp2.remove(j);
+								}
 							}
 						} catch (ParseException pe) {
 							System.out.println("String -> date 변경 오류:"+pe.getMessage());
@@ -217,7 +229,7 @@ public class UserApplyController {
 			long timebetween3=timebetween2*infovo.getPrice();
 			
 			RentVo rentvo=new RentVo(0, hinum, 0, rentstart, rentend, 1, people_count, (int)timebetween3, "n", null, null,1);
-			
+
 			session.setAttribute("rentVo", rentvo);
 
 			model.addAttribute("imgarr", imgarr);
@@ -291,29 +303,29 @@ public class UserApplyController {
 	/* 준범 */
 	@PostMapping(value = "/user/apply/setApply")
 	@ResponseBody
-	public void totmoney(HttpSession session, ApplyVo vo) {
+	public void totmoney(HttpSession session, String checkin, String checkout, int checkcnt,int summoney) {
 		RentVo rent=(RentVo)session.getAttribute("rentVo");
+		ApplyVo applyVo=new ApplyVo(checkin, checkout, checkcnt, summoney);
 		
 		try {
-			String start=vo.getCheckIn();
-			String end=vo.getCheckIn();
-			
+			String start=checkin;
+			String end=checkout;
+
 			SimpleDateFormat format=new SimpleDateFormat("yyyy/MM/dd");
 			
 			Date start2=(Date) format.parse(start);
 			Date end2=(Date) format.parse(end);
-			
 			
 			java.sql.Date rentstart=new java.sql.Date(start2.getTime());
 			java.sql.Date rentend=new java.sql.Date(end2.getTime());
 			
 			rent.setStartrent(rentstart);
 			rent.setEndrent(rentend);
-			rent.setPerson(vo.getMax_n());
-			rent.setPay_price(vo.getTotmoney());
+			rent.setPerson(checkcnt);
+			rent.setPay_price(summoney);
 			
 			session.setAttribute("rentVo", rent);
-			session.setAttribute("applyVo", vo);
+			session.setAttribute("applyVo", applyVo);
 			
 		} catch (ParseException pe) {
 			System.out.println("수정 날짜 오류"+pe.getMessage());
