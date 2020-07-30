@@ -45,7 +45,7 @@ $(".test1").click(()=>{
 		 	var hinum=$('#hinum').val();//숙소 번호
 		 	var div_type=$('#hidden_divType').val();
 		 	$.ajax({
-		 		url:'/user/apply/rentVo/insert',
+		 		url:'/user/apply/rentVo/Epinsert',
 		 		dataType:'json',
 		 		data:{checkdata:checkdata,PriceSpan:PriceSpan,PeopleSpan:PeopleSpan,hinum:hinum,div_type:div_type},
 		 		success:function(data){

@@ -78,8 +78,8 @@ function datechange(datetime) {
 }
 
 function expApplyList(){
-	let socket = io.connect("http://localhost:3000/");
-	// let socket = io.connect("http://192.168.0.2:3000/");
+	//let socket = io.connect("http://localhost:3000/");
+	let socket = io.connect("http://192.168.0.2:3000/");
 	socket.emit('roomList');
 	
 	socket.on('roomList', rooms => {
@@ -117,7 +117,7 @@ function expApplyList(){
 				html += `<td>${status }</td>`;
 				html += `<td>${value.pay_price }</td>`;
 				html += "<td>";
-				if(value.rag_yn = "n"){
+				if(value.rag_yn == "n"){
 					html += `<i class="fa fa-times text-danger fa-2x"></i>`;
 				}else{
 					html += `<i class="fa fa-check text-info fa-2x"></i>`;
@@ -216,6 +216,7 @@ $("#btnReviewAndGradeSave").click( () => {
 		if(data === "success"){
 			alert("리뷰 및 평점 저장 성공");
 			$("#reviewAndGradeModal").modal("hide");
+			houseApplyList();
 		}else{
 			location.href = "/error";
 		}

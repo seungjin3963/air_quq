@@ -47,7 +47,7 @@ public class RentController {
 		 return rentservice.rentselect(rtnum);
 	}
 	
-	@RequestMapping(value="/user/apply/rentVo/insert")
+	@RequestMapping(value="/user/apply/rentVo/Epinsert")
 	@ResponseBody
 	public String rentVoInsert(Date checkdata, int PriceSpan, int PeopleSpan , int hinum , HttpSession session , int div_type) {
 		if(div_type==4) {

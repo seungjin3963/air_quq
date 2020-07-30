@@ -15,16 +15,28 @@ let pcConfig = {
       }]
 }
 
+
 /*let room = 'foo';*/
 let room = $('#hinum').val();
 
-/*let socket = io.connect("http://192.168.0.2:3000/");*/
-let socket = io.connect("http://192.168.219.100:3000/");
+let socket = io.connect("http://192.168.0.2:3000/");
+/*let socket = io.connect("http://192.168.219.100:3000/");*/
 
-  if(room !==''){
+$("#remoteClose").click(function(){
+	socket.emit('user-out', room);
+});
+
+socket.on('user-out', function(){
+	var video = document.getElementById('remoteVideo');
+	video.pause();
+	video.removeAttribute('src'); // empty source
+	//video.load();
+});
+
+if(room !==''){
     socket.emit('create or join',room);
     console.log('Attempted to create or join Room',room);
-  }
+}
 
 socket.on('created', (room,id,clients)=>{
   console.log('Created room' + room+'socket ID : '+id);
@@ -36,7 +48,8 @@ socket.on('created', (room,id,clients)=>{
 //});
 
 socket.on('user-exit', (id) => {
-	$("#remoteVideo").srcObject = null;
+	//$("#remoteVideo").srcObject = null;
+	$("#remoteVideo").empty();
 });
 
 socket.on('join',room=>{
@@ -52,6 +65,12 @@ socket.on('joined',room=>{
 
 socket.on('log', array=>{
   console.log.apply(console,array);
+});
+
+
+socket.emit('clientList');
+socket.on('clientList', (id) => {
+	$("#remoteId").val(id);
 });
 
 socket.on('message', (message)=>{
