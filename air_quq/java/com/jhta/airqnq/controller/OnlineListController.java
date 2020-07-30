@@ -66,12 +66,26 @@ public class OnlineListController {
 	@RequestMapping(value = "/ep_cook" ,produces = "application/json;charset=utf-8")
 	@ResponseBody
 	public String Ep_cook(int pagenum, int cooktotalR) {
-		
+		System.out.println("//////////////////");
+		System.out.println(pagenum + "  페이지 넘");
+		System.out.println(cooktotalR + "  총 갯수"); 
+		System.out.println("//////////////////");
 		JSONObject json=new JSONObject();
+		
 		PageUtilForMySql cookPageUtil=new PageUtilForMySql(pagenum,cooktotalR,5,1);
 		List<EP_ManagementVo> cooklist=service.onlineCookList(cookPageUtil.getStartRow());
-				
+		System.out.println(cooklist + "  쿡 list");
 		json.put("cooklist", cooklist);
+		return  json.toString();
+		
+	}
+	
+	@RequestMapping(value = "/test" ,produces = "application/json;charset=utf-8")
+	@ResponseBody
+	public String test(int cooktotalR , int pagenum) {
+		
+		JSONObject json=new JSONObject();
+		json.put("test","왜 안되니? page" + pagenum+ " 전체 " + cooktotalR);
 		return  json.toString();
 		
 	}
