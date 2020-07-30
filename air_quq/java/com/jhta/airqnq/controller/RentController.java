@@ -26,7 +26,7 @@ public class RentController {
 		RentVo vo = (RentVo)session.getAttribute("rentVo");
 		
 		int menum=(int)session.getAttribute("menum");
-		System.out.println("회원 번호 확인 : " + menum + "  ㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁ");
+		
 		vo.setMenum(menum);
 		vo.setImp_uid(imp_uid);
 		vo.setMerchant_uid(merchant_uid);
@@ -49,7 +49,10 @@ public class RentController {
 	
 	@RequestMapping(value="/user/apply/rentVo/insert")
 	@ResponseBody
-	public String rentVoInsert(Date checkdata, int PriceSpan, int PeopleSpan , int hinum , HttpSession session) {
+	public String rentVoInsert(Date checkdata, int PriceSpan, int PeopleSpan , int hinum , HttpSession session , int div_type) {
+		if(div_type==4) {
+			div_type=2;
+		}
 		
 		RentVo vo=new RentVo();
 		vo.setStartrent(checkdata);
@@ -57,7 +60,7 @@ public class RentController {
 		vo.setPay_price(PriceSpan);
 		vo.setPerson(PeopleSpan);
 		vo.setHinum(hinum);
-		vo.setStatus(1);
+		vo.setStatus(div_type);
 		
 		session.setAttribute("rentVo", vo);
 		JSONObject json=new JSONObject();

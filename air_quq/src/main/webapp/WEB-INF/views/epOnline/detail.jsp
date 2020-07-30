@@ -13,6 +13,10 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.1.5/sockjs.min.js"></script>
 
+
+  
+
+
 <div class="container body-content">
 	<div class="container">
 		<div class="row justify-content-start"
@@ -53,6 +57,7 @@
 					<img src="/resources/img/pic/com.svg" viewBox="0 0 16 16"
 						style="display: block; height: 16px; width: 16px; fill: currentcolor; margin-top: 4px;"
 						align="left">
+						<input type="hidden" value="${experienceInfo.div_type}" id="hidden_divType">
 						<c:choose>
 							<c:when test="${experienceInfo.div_type==3}">
 								<h4>온라인 체험</h4>
@@ -71,11 +76,7 @@
 				</div>
 				<div class="col-md-4"></div>
 				<div class="col-md-8">
-					<img src="/resources/img/pic/star.svg" viewBox="0 0 16 16"
-						style="display: block; height: 16px; width: 16px; fill: currentcolor; margin-top: 4px;"
-						align="left">평점 5.0 (매긴사람갯수) <b><label
-						style="vertical-align: middle;">.</label></b> <b
-						style="text-decoration: underline;">에어비앤비 온라인 체험</b> 에 포함된 체험
+					
 				</div>
 			</div>
 		</div>
@@ -162,9 +163,10 @@
 						<h6>● 호스트소개 <br><br>${experienceInfo.intr }</h6>
 					</div>
 					<div class="row">
+						<br>
 						<img src="/resources/img/pic/star.svg" viewBox="0 0 30 30"
 							style="display: block; height: 24px; width: 24px; fill: currentcolor; margin-top: 4px; margin-right: 15px; margin-bottom: 5px;">
-						<h6>후기(갯수)개</h6>
+						<h6>후기 <b>${fn:length(Review) }</b> 개</h6>
 					</div>
 					<div class="row">
 						<img src="/resources/img/pic/shield.png" viewBox="0 0 30 30"
@@ -265,7 +267,10 @@
 						
 					
 				</div>
+				<br><br>
+				<input type="button" value="후기 ${fn:length(Review) }개 모두 보기" class="btn btn-danger ReviewBtn">
 			</div>
+				
 		<br> <br>
 	</div>
 	<hr>
@@ -276,6 +281,7 @@
 	<div class="row justify-content-start"
 		style="padding-top: 10px; margin-bottom: 10px;">
 			<div class="container">
+			
 				<div class="row">
 					<div class="col">
 						<h5>
@@ -418,13 +424,44 @@
 	<input type="hidden"  id="lat">
 	<input type="hidden"  id="lnt">
 	<div id="quickmenulayer">
-		<br>
-		
-		
-		<input type="button" value="예약하기" class="btn btn-danger btn-icon-split test1" style="margin: auto;">
-		
+		<br>		
+		<input type="button" value="예약하기" class="btn btn-danger btn-icon-split test1" style="margin: auto;">		
 	</div>
 </div>
+
+<!-- 전체 리뷰 보기 모달 -->
+<div class="modal fade" id="detailReview">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+     
+       <div class="container" style="padding: 50px;">
+        <img src="/resources/img/pic/star.svg"
+						style="display: block; height: 50px; width: 50px; fill: currentcolor; margin-top: 4px; margin-right: 15px; margin-bottom: 20px;"
+						align="left"> &nbsp;&nbsp; <h3> ${Review[0].totalscore }점 후기( <b>${fn:length(Review) }</b> 개) </h3> 
+       
+      </div>
+      <div class="modal-body">
+      		<c:forEach var="review" items="${Review }">
+					<div class="col-md-6">
+						<img src="/memberimg?menum=${review.menum }" onerror="this.src='/resources/img/적분이_001.JPG';" viewBox="0 0 30 30"
+							style="display: block; height: 50px; width: 50px; fill: currentcolor; margin-top: 4px; margin-right: 15px; border-radius: 50%;"
+							align="left">
+						<h6>
+							<b>${review.id }</b>
+							<h1>${review.score }</h1>
+						</h6>
+						
+						<br>${review.content}
+					</div>
+						</c:forEach>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
 <script>
 
 /* $("#dmcall2").on('click',function(){
