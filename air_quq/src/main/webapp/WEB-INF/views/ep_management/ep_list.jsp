@@ -7,7 +7,7 @@
 <div class="container">
 	<div class="row">
 		<div class="col-md-2">
-			<h2>내 체험</h2>
+			<h2>등록 중 체험</h2>
 		</div>
 		<div class="col-md-8"></div>
 		<div class="col ep_mangement">

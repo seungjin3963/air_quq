@@ -1,6 +1,8 @@
 /**
  * 
  */
+
+
 $(".test1").click(()=>{
 	if($('#checkin').val()=="" || $('#checkin').val()==null){
 		alert("날짜를 입력해 주세요");
@@ -41,10 +43,11 @@ $(".test1").click(()=>{
 		 	var PriceSpan=$('#PriceSpan').text(); //가격
 		 	var PeopleSpan=$('#PeopleSpan').text(); //인원수 
 		 	var hinum=$('#hinum').val();//숙소 번호
+		 	var div_type=$('#hidden_divType').val();
 		 	$.ajax({
 		 		url:'/user/apply/rentVo/insert',
 		 		dataType:'json',
-		 		data:{checkdata:checkdata,PriceSpan:PriceSpan,PeopleSpan:PeopleSpan,hinum:hinum},
+		 		data:{checkdata:checkdata,PriceSpan:PriceSpan,PeopleSpan:PeopleSpan,hinum:hinum,div_type:div_type},
 		 		success:function(data){
 		 			 if ( rsp.success ) {
 		 				
@@ -123,4 +126,12 @@ $('.PeopleBtnM').click(function(){
 	
 	$('#PeopleSpan').text(val);
 	$('#PriceSpan').text(parseInt(price)*val);
+});
+
+
+
+
+/*리뷰 버늩*/
+$('.ReviewBtn').click(function(){
+	$('#detailReview').modal('show');
 });
