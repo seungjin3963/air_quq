@@ -289,7 +289,7 @@
 	</div>
 </div>
 <script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
-<script src="http://localhost:3000/socket.io/socket.io.js"></script>
-<!-- <script src="http://192.168.0.2:3000/socket.io/socket.io.js"></script> -->
+<!-- <script src="http://localhost:3000/socket.io/socket.io.js"></script> -->
+<script src="http://192.168.0.2:3000/socket.io/socket.io.js"></script>
 <script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
 <script src="/resources/js/userapply/list.js"></script>

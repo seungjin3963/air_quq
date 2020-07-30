@@ -1,11 +1,24 @@
 video {
-	width: 35%;
+	width: 100%;
 	position: relative;
-	top: 50%;
-	transform: translateY(-50%);
 	height: 500px;
 }
 
 .videoContainer {
 	height: 90vh;
 }
+
+.videoContainer div {
+	width: 40%;
+	display: inline-block;
+}
+
+.close {
+	display: none;
+	margin-top: 20px;
+	color: red;
+	position: absolute;
+	font-size: 50px;
+	margin-top: 20px;
+}
+
