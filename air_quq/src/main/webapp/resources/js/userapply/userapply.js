@@ -3,7 +3,7 @@ $(function(){
 		var datechange = function(datetime) {
 			return datetime.toISOString().slice(0, 10);
 		}
-		
+
 		// 시작일 마지막일 사이 구하는 함수
 		var between=function(startdate,enddate){
 			var startarr=startdate.split("/");
@@ -110,10 +110,15 @@ $(function(){
 			monthNames: ["1월","2월","3월","4월","5월","6월","7월","8월","9월","10월","11월","12월"],
 			minDate : startdatepicker,
 			maxDate: endtdatepicker,
-			/*beforeShowDay:function(date){
+			beforeShowDay:function(date){
 				var check=false;
 				
-				var datetime=datechange(date)
+				var y=date.getFullYear();
+				var m=date.getMonth();
+				var d=date.getDate()+1;
+				
+				var tempdate=new Date(y, m, d);
+				var datetime=datechange(tempdate);
 				
 				for (var i = 0; i < applyday.length; i++) {
 					if(datetime == applyday[i]){
@@ -121,12 +126,11 @@ $(function(){
 					}
 				}
 				
-				
 				if(check){
 					return [false];
 				}
 				return [true];
-			},*/
+			},
 			onSelect:function(d){
 				
 				if(onswitch){
@@ -281,7 +285,6 @@ $(function(){
 		var checkin=$("#checkin").val();
 		var checkout=$("#checkout").val();
 		var checkcnt=$("#checkcnt").val();
-		var checkcnt=$("#checkcnt").val();
 		var summoney=$("#summoney").val();
 		
 		let applyVo = {checkIn:checkin,
@@ -289,7 +292,7 @@ $(function(){
 				max_n:checkcnt,
 				totmoney:summoney};
 		
-		$.post("/user/apply/setApply",applyVo);
+		$.post("/user/apply/setApply",{"checkin":checkin,"checkout":checkout,"checkcnt":checkcnt,"summoney":summoney});
 		
 		location.href = "/user/applyCheck";
 	});
