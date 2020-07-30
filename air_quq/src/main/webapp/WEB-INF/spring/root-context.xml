@@ -34,26 +34,23 @@
 			value="classpath:com/jhta/mybatis/config/mybatis-config.xml" />
 	</bean>
 
-	<bean id="sqlSession"
-		class="org.mybatis.spring.SqlSessionTemplate">
+	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
 		<constructor-arg index="0" ref="sqlSessionFactory" />
 	</bean>
 
-	<!-- 트랜잭션 설정 -->
-	<bean id="transationManager"
-		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
-		<property name="dataSource" ref="dataSource" />
-	</bean>
-	<tx:advice id="advice"
-		transaction-manager="transationManager">
-		<!-- 트랜젝션 전파규칙 설정 -->
-		<tx:attributes>
-			<!-- insert로 시작하는 모든 메소드에 트랜젝션 적용해라. -->
-			<tx:method name="insert" propagation="REQUIRED"/>
-		</tx:attributes>
-	</tx:advice>
-	<aop:config>
-		<aop:pointcut expression="execution(* com.jhta.airqnq.service.HostInfoService.*(..))" id="pointcut"/>
-		<aop:advisor advice-ref="advice" pointcut-ref="pointcut" />
-	</aop:config>
+	 <!-- 트랜잭션 설정 -->
+    <bean id="transationManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+    	<property name="dataSource" ref="dataSource"/>
+    </bean>
+    <tx:advice id="advice" transaction-manager="transationManager">
+    	<!-- 트랜젝션 전파규칙 설정 -->
+    	<tx:attributes>
+    		<!-- insert로 시작하는 모든 메소드에 트랜젝션 적용해라. -->
+    		<tx:method name="insert" propagation="REQUIRED"/>
+    	</tx:attributes>
+    </tx:advice>
+    <aop:config>
+    	<aop:pointcut expression="execution(* com.jhta.airqnq.service.HostInfoService*.*(..))" id="pointcut"/>
+    	<aop:advisor advice-ref="advice" pointcut-ref="pointcut"/>
+    </aop:config>
 </beans>
