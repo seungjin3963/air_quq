@@ -250,19 +250,38 @@
 			
 			<div class="container">
 				<div class="row">
-					
-						<c:forEach var="review" items="${Review }">
-					<div class="col-md-6">
-						<img src="/memberimg?menum=${review.menum }" onerror="this.src='/resources/img/적분이_001.JPG';" viewBox="0 0 30 30"
-							style="display: block; height: 50px; width: 50px; fill: currentcolor; margin-top: 4px; margin-right: 15px; border-radius: 50%;"
-							align="left">
-						<h6>
-							<b>${review.id }</b>
-						</h6>
+						<c:choose>
+							<c:when test="${fn:length(Review) > 4}">
+								<c:forEach var="i" begin="0" end="3">
+									<div class="col-md-6" style="padding-top: 10px;">
+										<img src="/memberimg?menum=${Review[i].menum }" onerror="this.src='/resources/img/적분이_001.JPG';" viewBox="0 0 30 30"
+										style="display: block; height: 50px; width: 50px; fill: currentcolor; margin-top: 4px; margin-right: 15px; border-radius: 50%;"
+										align="left">
+										<h6>
+											<b>${Review[i].id }</b>
+										</h6>
+								
+										<br>${Review[i].content}
+									</div>
+								</c:forEach>		
+							</c:when>
+							<c:otherwise>
+								<c:forEach var="review" items="${Review }">
+									<div class="col-md-6"  style="padding-top: 10px;">
+										<img src="/memberimg?menum=${review.menum }" onerror="this.src='/resources/img/적분이_001.JPG';" viewBox="0 0 30 30"
+										style="display: block; height: 50px; width: 50px; fill: currentcolor; margin-top: 4px; margin-right: 15px; border-radius: 50%;"
+										align="left">
+										<h6>
+											<b>${review.id }</b>
+										</h6>
+								
+										<br>${review.content}
+									</div>
+								</c:forEach>	
+							</c:otherwise>
+						</c:choose>
 						
-						<br>${review.content}
-					</div>
-						</c:forEach>
+						
 						
 						
 					
@@ -437,27 +456,38 @@
        <div class="container" style="padding: 50px;">
         <img src="/resources/img/pic/star.svg"
 						style="display: block; height: 50px; width: 50px; fill: currentcolor; margin-top: 4px; margin-right: 15px; margin-bottom: 20px;"
-						align="left"> &nbsp;&nbsp; <h3> ${Review[0].totalscore }점 후기( <b>${fn:length(Review) }</b> 개) </h3> 
+						align="left"> &nbsp;&nbsp; <h3> ${Review[0].totalscore } 점  후기 ( <b>${fn:length(Review) }</b> 개) </h3> 
        
       </div>
-      <div class="modal-body">
+      <div class="modal-body" style="padding-left: 50px">
       		<c:forEach var="review" items="${Review }">
-					<div class="col-md-6">
+					<div class="row">
+					<div class="col-md-3">
 						<img src="/memberimg?menum=${review.menum }" onerror="this.src='/resources/img/적분이_001.JPG';" viewBox="0 0 30 30"
 							style="display: block; height: 50px; width: 50px; fill: currentcolor; margin-top: 4px; margin-right: 15px; border-radius: 50%;"
 							align="left">
 						<h6>
 							<b>${review.id }</b>
-							<h1>${review.score }</h1>
-						</h6>
+							<br>
+							<c:forEach var="i" begin="1" end="${review.score }">
+								<img src="/resources/img/pic/star.svg"
+						style="display: block; height: 15px; width: 15px; fill: currentcolor; margin-top: 10px; margin-right: 5px; margin-bottom: 20px;"
+						align="left">
+							</c:forEach>
+							
+							
 						
-						<br>${review.content}
+						</h6>
 					</div>
-						</c:forEach>
+					<div class="col-md-9" >
+						<h6>${review.content}</h6>
+					</div>
+					</div>
+			</c:forEach>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal">  닫 기</button>
+      
       </div>
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
