@@ -4,12 +4,12 @@
 	<input type="hidden" id="hinum" value="${hinum }">
 	<div class="videoContainer">
 		<div>
-			<span id="localClose" class='close'>&times;</span>
 			<video id="localVideo" autoplay></video>
 		</div>
 		<div>
 			<span id="remoteClose" class='close'>&times;</span>
 			<video id="remoteVideo" autoplay></video>
+			<input type="text" id="remoteId">
 		</div>
 	</div>
 

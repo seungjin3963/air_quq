@@ -14,11 +14,12 @@ video {
 }
 
 .close {
-	display: none;
 	margin-top: 20px;
 	color: red;
 	position: absolute;
 	font-size: 50px;
 	margin-top: 20px;
+	cursor: pointer;
+	z-index: 99;
 }
 
