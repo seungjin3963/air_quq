@@ -10,6 +10,7 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 /**
@@ -77,6 +78,8 @@ public class LoginFilter implements Filter {
 			return true;
 		} else if (uri.equals("/user/applyCheck")) {
 			return false;
+		} else if (uri.startsWith("/user/applyCheck")) {
+			return true;
 		} else if (uri.startsWith("/user/apply")) {
 			return true;
 		} else if (uri.startsWith("/upload")) {
@@ -97,7 +100,9 @@ public class LoginFilter implements Filter {
 			return true;
 		} else if(uri.startsWith("/forget")) {
 			return true;
-		} 
+		} else if(uri.startsWith("/ep_")) {
+			return true;
+		}
 		return false;
 	}
 }

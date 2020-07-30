@@ -11,12 +11,13 @@ $(".test1").click(()=>{
 	function getMemberInfo(){
 		return new Promise(function(resolve, reject) { 
 			$.getJSON("/user/applyCheck/getMemberInfo",(data)=>{
-				console.log(data);
 				let memberInfo = {email:data.email
 								,id:data.id
 								,phone:data.phone
 								,addr:data.addr};
 				resolve(memberInfo);
+			}).fail(function() {
+			    location.href = "/login";
 			});
 		});
 	}

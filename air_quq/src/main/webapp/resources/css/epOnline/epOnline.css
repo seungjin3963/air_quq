@@ -11,12 +11,12 @@ video {
 .videoContainer div {
 	width: 40%;
 	display: inline-block;
+	margin-top: 20px;
 }
 
 .close {
 	margin-top: 20px;
 	color: red;
-	position: absolute;
 	font-size: 50px;
 	margin-top: 20px;
 	cursor: pointer;

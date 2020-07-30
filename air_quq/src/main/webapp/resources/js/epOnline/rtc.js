@@ -23,7 +23,8 @@ let socket = io.connect("http://192.168.0.2:3000/");
 /*let socket = io.connect("http://192.168.219.100:3000/");*/
 
 $("#remoteClose").click(function(){
-	socket.emit('user-out', room);
+	//socket.emit('user-out', room);
+	$("#remoteVideo").remove();
 });
 
 socket.on('user-out', function(){

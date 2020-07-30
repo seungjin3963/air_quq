@@ -7,8 +7,8 @@
 			<video id="localVideo" autoplay></video>
 		</div>
 		<div>
-			<span id="remoteClose" class='close'>&times;</span>
 			<video id="remoteVideo" autoplay></video>
+			<span id="remoteClose" class='close'>&times;</span>
 			<input type="text" id="remoteId">
 		</div>
 	</div>
