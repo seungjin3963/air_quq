@@ -2,6 +2,7 @@
 <%@taglib prefix="ep" uri="http://java.sun.com/jsp/jstl/core"%>
 <link href="/resources/css/OnlineList.css" rel="stylesheet">
 <div class="container">
+<input type="button" id="testBtn" value="왜 안되니?">
 	<div class="navbar navbar-expand-lg navbar-light bg-light mb-5">
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
