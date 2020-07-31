@@ -147,11 +147,15 @@ public class HostController {
 		
 		//멤버 번호
 		Integer menum = (Integer)session.getAttribute("menum");
-		System.out.println(menum + "<<<<<<<멤버번호");
+		//System.out.println(menum + "<<<<<<<멤버번호");
 		
 		
 		//하우스 번호 가져오기
-		int hinum = hostService.selectHouseNumber(menum) + 1;
+		int hinum = hostService.selectHouseNumber(menum);
+		
+		if(hinum == -1) {
+			return "error";
+		}
 		
 		System.out.println("하우스 번호 : " + hinum);
 		
@@ -223,7 +227,7 @@ public class HostController {
 					fos.close();
 					
 //					//실제 DB에 넣기
-					HouseImgVo ivo = new HouseImgVo(0, hinum, savefileName, "n", cnt);
+					HouseImgVo ivo = new HouseImgVo(0, hinum+1, savefileName, "n", cnt);
 					hostService.insertHouseImg(ivo);
 					System.out.println("DB에 이미지 등록됨");
 					

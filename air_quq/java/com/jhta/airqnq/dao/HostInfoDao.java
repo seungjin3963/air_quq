@@ -23,7 +23,13 @@ public class HostInfoDao {
 	}
 	
 	public int selectHouseNumber(int menum) {
-		return session.selectOne(NAMESPACE + ".hostNumSelect", menum);
+		Object r = session.selectOne(NAMESPACE + ".hostNumSelect", menum);
+		if(r != null) {
+			return (int)r;
+		} else {
+			r = -1;
+		}
+		return -1;
 	}
 	
 	//하우스 정보 리스트 가져오기
