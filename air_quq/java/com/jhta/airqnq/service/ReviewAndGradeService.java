@@ -18,7 +18,6 @@ public class ReviewAndGradeService {
 	@Transactional
 	public void reviewAndGradeSave(Map<String, Object> map) {
 		int renum = dao.selReviewAndGrade(map);
-		System.out.println((int)map.get("cleanGrade"));
 		if(renum == -1) {
 			dao.insReview(map);
 			dao.insGrade(map);
