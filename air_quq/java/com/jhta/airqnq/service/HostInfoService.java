@@ -69,16 +69,17 @@ public class HostInfoService {
 	
 	//트렌젝션 처리
 	public int insert(int hinum, String pool, String paking, String wifi, String washer, String kitchen, String etc, HouseInfoVo hvo) {
-
+		
+		int result = insertHouse(hvo);
+		System.out.println(hinum + "<<<<<<<<<<<<<<<<<<< 하우스번호");
+		
 		convenDao.insertConven(hinum);
 		int conum = convenDao.selectConvenNumber(hinum);
-		
 		ConvenDetailVo vo = new ConvenDetailVo(0, conum, Integer.parseInt(pool), Integer.parseInt(paking),
 				Integer.parseInt(wifi), Integer.parseInt(washer), Integer.parseInt(kitchen), etc);
 		
 		insertConvenDetail(vo);
 		
-		int result = insertHouse(hvo);
 		return result;
 	}
 	
