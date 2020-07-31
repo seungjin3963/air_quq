@@ -1,5 +1,6 @@
 package com.jhta.airqnq.service;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -60,6 +61,12 @@ public class HostInfoService {
 		return houstSearchDao.getSearchCount(vo);
 	}
 	
+	//모든 하우스 전체글 개수
+	public int getSearchCount() {
+		return houstSearchDao.getSearchCount();
+	}
+	
+	
 	//트렌젝션 처리
 	public int insert(int hinum, String pool, String paking, String wifi, String washer, String kitchen, String etc, HouseInfoVo hvo) {
 
@@ -85,5 +92,10 @@ public class HostInfoService {
 	
 	public int selectConvenNumber(int hinum) {
 		return convenDao.selectConvenNumber(hinum);
+	}
+	
+	//모든 하우스정보 검색
+	public List<HouseInfoVo> selectHouseAll(HashMap<String, Object> map){
+		return hostInfoDao.selectHouseAll(map);
 	}
 }

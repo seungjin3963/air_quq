@@ -91,7 +91,7 @@
 			</a>
 		</div>
 		<div class="col-md-4">
-			<a href="" class="text-decoration-none">
+			<a href="/search/host/all" class="text-decoration-none">
 				<img src="/resources/img/3e7363ad1dbdedbb0efdf984cb485224.jpg" class="rounded img-thumbnail homeImg">
 				<div class="text-lg font-weight-bold text-danger text-uppercase mb-1">집 전체</div>
 				<div class="text-secondary text-uppercase">일행만을 위한 편안한 공간에서 친구 및 가족과 오붓한 시간을 보내세요. 최고의 셰프와 함께하는 온라인 체험</div>

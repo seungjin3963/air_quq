@@ -1,5 +1,6 @@
 package com.jhta.airqnq.dao;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -38,5 +39,10 @@ public class HostInfoDao {
 	//하우스 검색된 객체 반환
 	public List<MainHouseInfoVo> getMainHouseInfoList(HouseSearchVo vo){
 		return session.selectList(NAMESPACE + ".mainHouseGetList", vo);
+	}
+	
+	//모든 하우스정보 검색
+	public List<HouseInfoVo> selectHouseAll(HashMap<String, Object> map){
+		return session.selectList(NAMESPACE + ".selectHouseAll", map);
 	}
 }

@@ -12,9 +12,37 @@ public class HouseSearchVo {
 	private int manager_check;
 	private int startRow;
 	private int endRow;
+	private int hinum;
+	private String title;
+	private String lat;
+	private String lnt;
+	private int price;
+	private String img;
+	private String addr_detail;
 	
 	public HouseSearchVo() {}
 
+	public HouseSearchVo(String addr, int max_n, int div, Date startdate, Date enddate, String del_yn, int manager_check,
+			int startRow, int endRow, int hinum, String title, String lat, String lnt, int price, String img, String addr_detail) {
+		super();
+		this.addr = addr;
+		this.max_n = max_n;
+		this.div = div;
+		this.startdate = startdate;
+		this.enddate = enddate;
+		this.del_yn = del_yn;
+		this.manager_check = manager_check;
+		this.startRow = startRow;
+		this.endRow = endRow;
+		this.hinum = hinum;
+		this.title = title;
+		this.lat = lat;
+		this.lnt = lnt;
+		this.price = price;
+		this.img = img;
+		this.addr_detail = addr_detail;
+	}
+	
 	public HouseSearchVo(String addr, int max_n, int div, Date startdate, Date enddate, String del_yn, int manager_check,
 			int startRow, int endRow) {
 		super();
@@ -101,6 +129,62 @@ public class HouseSearchVo {
 
 	public void setEndRow(int endRow) {
 		this.endRow = endRow;
+	}
+
+	public int getHinum() {
+		return hinum;
+	}
+
+	public void setHinum(int hinum) {
+		this.hinum = hinum;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public String getLat() {
+		return lat;
+	}
+
+	public void setLat(String lat) {
+		this.lat = lat;
+	}
+
+	public String getLnt() {
+		return lnt;
+	}
+
+	public void setLnt(String lnt) {
+		this.lnt = lnt;
+	}
+
+	public int getPrice() {
+		return price;
+	}
+
+	public void setPrice(int price) {
+		this.price = price;
+	}
+
+	public String getImg() {
+		return img;
+	}
+
+	public void setImg(String img) {
+		this.img = img;
+	}
+
+	public String getAddr_detail() {
+		return addr_detail;
+	}
+
+	public void setAddr_detail(String addr_detail) {
+		this.addr_detail = addr_detail;
 	}
 	
 	

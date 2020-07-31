@@ -48,30 +48,59 @@
 			    </li>
 	    	</c:when>
 	    	<c:otherwise>
+	    	<c:if test="${ all_h == 'false' }">
 	    		<li class="page-item">
 			      <a class="page-link" href="/search/host?pageNum=${ pageUtil.endPageNum - 1 }&locationAdress=${addr}&start_day=${start_day}&end_day=${end_day}&people_count=${people_count}" tabindex="-1">이전</a>
 			    </li>
+			</c:if>
+			<c:if test="${ all_h == 'true' }">
+	    		<li class="page-item">
+			      <a class="page-link" href="/search/host/all?pageNum=${ pageUtil.endPageNum - 1 }" tabindex="-1">이전</a>
+			    </li>
+			</c:if>
 	    	</c:otherwise>
 	   </c:choose>
 	    
 	    <c:forEach var="i" begin="${ pageUtil.startPageNum }" end="${ pageUtil.endPageNum }">
     		<c:choose>
     			<c:when test="${ pageUtil.pageNum == i }">
+    			<c:if test="${ all_h == 'false' }">
     				<li class="page-item active"><a class="page-link" href="/search/host?pageNum=${ i }&locationAdress=${addr}&start_day=${start_day}&end_day=${end_day}&people_count=${people_count}">${ i }</a></li>   	
+    			</c:if>
+    			<c:if test="${ all_h == 'true' }">
+    				<li class="page-item active"><a class="page-link" href="/search/host/all?pageNum=${ i }">${ i }</a></li> 
+    			</c:if>
     			</c:when>
     			<c:otherwise>
-    				<li class="page-item"><a class="page-link" href="/search/host?pageNum=${ i }&locationAdress=${addr}&start_day=${start_day}&end_day=${end_day}&people_count=${people_count}">${ i }</a></li>   	
+    				<c:if test="${ all_h == 'false' }">
+    					<li class="page-item"><a class="page-link" href="/search/host?pageNum=${ i }&locationAdress=${addr}&start_day=${start_day}&end_day=${end_day}&people_count=${people_count}">${ i }</a></li>   	
+    				</c:if>
+    				<c:if test="${ all_h == 'true' }">
+    					<li class="page-item"><a class="page-link" href="/search/host/all?pageNum=${ i }">${ i }</a></li>
+    				</c:if>
     			</c:otherwise>
     		</c:choose>
 	    </c:forEach>
 		<c:if test="${ pageUtil.pageNum == pageUtil.totalPageCount + 1 }">
-			<li class="page-item active"><a class="page-link" href="/search/host?pageNum=${ i }&locationAdress=${addr}&start_day=${start_day}&end_day=${end_day}&people_count=${pageUtil.pageNum}">${ pageUtil.pageNum }</a></li>   	
+			<c:if test="${ all_h == 'false' }">
+				<li class="page-item active"><a class="page-link" href="/search/host?pageNum=${ i }&locationAdress=${addr}&start_day=${start_day}&end_day=${end_day}&people_count=${pageUtil.pageNum}">${ pageUtil.pageNum }</a></li>   	
+			</c:if>
+			<c:if test="${ all_h == 'true' }">
+				<li class="page-item active"><a class="page-link" href="/search/host/all?pageNum=${ i }">${ pageUtil.pageNum }</a></li>
+			</c:if>
 		</c:if>
 	    <c:choose>
 	    	<c:when test="${ pageUtil.pageBlockCount < pageUtil.totalPageCount }">
-	    		<li class="page-item page-item">
-			   		<a class="page-link" href="/search/host?pageNum=${ pageUtil.endPageNum + 1 }&locationAdress=${addr}&start_day=${start_day}&end_day=${end_day}&people_count=${people_count}">다음</a>
-				</li>
+	    		<c:if test="${ all_h == 'false' }">
+		    		<li class="page-item page-item">
+				   		<a class="page-link" href="/search/host?pageNum=${ pageUtil.endPageNum + 1 }&locationAdress=${addr}&start_day=${start_day}&end_day=${end_day}&people_count=${people_count}">다음</a>
+					</li>
+				</c:if>
+				<c:if test="${ all_h == 'true' }">
+					<li class="page-item page-item">
+				   		<a class="page-link" href="/search/host/all?pageNum=${ pageUtil.endPageNum + 1 }">다음</a>
+					</li>
+				</c:if>
 	    	</c:when>
 	    	<c:otherwise>
 	    		<li class="page-item page-item  disabled">

@@ -125,6 +125,20 @@
 						AND h.hinum = i.hinum
 		)ss
 	</select>
+	
+	<!-- 모든 하우스 정보 검색 -->
+	<select id="selectHouseAll" resultType="house_search" parameterType="hashmap">
+		select h.hinum, i.img, h.title, h.lat, h.lnt, h.price, h.startdate, h.enddate, h.addr, h.addr_detail from house_info h, house_img i 
+		where h.`div`=1 and h.del_yn='n' and h.manager_check=1 and h.hinum = i.hinum and i.del_yn='n' and i.ordernum=1
+		LIMIT #{startRow}, #{endRow} 
+	</select>
+	
+	<!-- 모든 하우스 글 개수 -->
+	<select id="selectHouseAllCount" resultType="int">
+		select count(*) from (
+		select * from house_info where `div`=1 and del_yn='n' and manager_check=1
+		)aa
+	</select>
 		
 	<!-- house 검색 이미지 가져오기 -->
 	<select id="houseGetImg" parameterType="int" resultType="string">

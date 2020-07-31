@@ -3,6 +3,7 @@ package com.jhta.airqnq.controller;
 import java.io.IOException;
 import java.sql.Blob;
 import java.sql.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -91,14 +92,16 @@ public class HomeController {
 		
 		//관리자 가 승인한 게시물만 검색
 		HouseSearchVo vo = new HouseSearchVo(locationAdress, people_count, 1, start_day, end_day, "n", 1, limit, rowBlockCount);
-		
 		List<MainHouseInfoVo> list = getHouseInfo(vo);
+		
 		
 		session.setAttribute("addr", locationAdress);
 		session.setAttribute("hostSearch", list);
 		session.setAttribute("start_day", start_day);
 		session.setAttribute("end_day", end_day);
 		session.setAttribute("people_count", people_count);
+		
+		session.setAttribute("all_h", "false");
 		
 		//검색된 전체글 개수
 		int getSearchCount = hostService.getSearchCount(vo);
@@ -195,5 +198,51 @@ public class HomeController {
 	    headers.setContentType(MediaType.IMAGE_PNG);
 		
 		return new ResponseEntity<byte[]>(blobImg, headers, HttpStatus.OK);
+	}
+	
+	//전체 집 검색하기
+	@RequestMapping("search/host/all")
+	public String selectHouseAll(HttpSession session, @RequestParam(value = "pageNum", defaultValue = "1") int pageNum) {
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		
+		int rowBlockCount = 4;
+		int pageBlockCount = 5;
+		
+		int limit = (pageNum-1) * rowBlockCount;
+		map.put("startRow", limit);
+		map.put("endRow", rowBlockCount);
+		
+		List<HouseInfoVo> list = hostService.selectHouseAll(map);
+		
+		session.setAttribute("addr", "전체");
+		session.setAttribute("hostSearch", list);
+		session.setAttribute("start_day", "");
+		session.setAttribute("end_day", "");
+		session.setAttribute("people_count", 0);
+		session.setAttribute("all_h", "true");
+		
+		
+//		for(HouseInfoVo h : list) {
+//			System.out.println(h.getAddr());
+//			System.out.println(h.getLat());
+//			System.out.println(h.getLnt());
+//			System.out.println(h.getTitle());
+//			System.out.println(h.getContent());
+//			System.out.println(h.getHinum());
+//		}
+		
+		
+		
+		//검색된 전체글 개수
+		int getSearchCount = hostService.getSearchCount();
+		System.out.println("검색된 전체글 개수" + getSearchCount);
+		
+		
+		//페이징 처리를위한 객체
+		PageUtilForMySql pageUtil = new PageUtilForMySql(pageNum, getSearchCount, rowBlockCount, pageBlockCount);
+		session.setAttribute("pageUtil", pageUtil);
+		
+		
+		return ".hostsearch";
 	}
 }
