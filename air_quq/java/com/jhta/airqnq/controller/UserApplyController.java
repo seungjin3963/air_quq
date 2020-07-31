@@ -32,6 +32,7 @@ import com.jhta.airqnq.service.MemberService;
 import com.jhta.airqnq.service.RentService;
 import com.jhta.airqnq.vo.ApplyVo;
 import com.jhta.airqnq.vo.Apply_infoVo;
+import com.jhta.airqnq.vo.ConvenDetailVo;
 import com.jhta.airqnq.vo.EP_ManagementVo;
 import com.jhta.airqnq.vo.JoinVo;
 import com.jhta.airqnq.vo.MemberVo;
@@ -59,11 +60,13 @@ public class UserApplyController {
 
 	@RequestMapping(value="/user/apply")
 	public String userapply(Model model,HttpSession session, String start_day, String end_day, int hinum, int people_count) {
+		ConvenDetailVo convenvo= service.selectconvendetail(hinum);
 		Apply_infoVo infovo= house_infoService.HinumSelect(hinum);
-		HashMap<String, String> usercheck=new HashMap<String, String>();
 		List<RentVo> hinumrentlist=rentservice.hinumrentselect(hinum);
 		List<EP_ManagementVo> epvo = approveservice.epappImg(hinum);
 		
+		HashMap<String, String> usercheck=new HashMap<String, String>();
+
 		String imgarr=null;
 
 		int cnt=0;
@@ -232,6 +235,15 @@ public class UserApplyController {
 
 			session.setAttribute("rentVo", rentvo);
 
+			String conven=null;
+			
+			System.out.println("출력"+convenvo);
+//			System.out.println(convenvo.getWifi());
+//			System.out.println(convenvo.getPool());
+//			System.out.println(convenvo.getWasher());
+//			System.out.println(convenvo.getPaking());
+//			System.out.println(convenvo.getKitchen());
+			
 			model.addAttribute("imgarr", imgarr);
 			model.addAttribute("infovo", infovo);
 			model.addAttribute("usercheck", usercheck);

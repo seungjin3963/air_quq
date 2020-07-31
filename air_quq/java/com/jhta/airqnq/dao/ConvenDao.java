@@ -23,4 +23,9 @@ public class ConvenDao {
 	public int selectConvenNumber(int hinum) {
 		return sqlSessionTemplate.selectOne(NAMESPACE + ".convenSelect", hinum);
 	}
+	
+	/* 승진 */
+	public ConvenDetailVo selectconvendetail(int hinum) {
+		return sqlSessionTemplate.selectOne(NAMESPACE+".convendetailselect", hinum);
+	}
 }

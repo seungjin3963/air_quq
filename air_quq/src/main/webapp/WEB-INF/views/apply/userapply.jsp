@@ -34,7 +34,8 @@
 	<div class="row" id="applydivision2">
 		<div class="col-md-12">
 			<h3>편의 기능</h3>
-			<input type="button" value="편의시설 conven 갯수" class="btn btn-danger btn-icon-split">
+			<span></span>
+			<input type="button" value="추가 편의 기능" class="btn btn-danger btn-icon-split">
 		</div>
 	</div>
 	<div class="row" id="applydivision1">

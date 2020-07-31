@@ -85,6 +85,11 @@
 		select * from house_info where manager_check=1 and title is not null
 	</select>
 	
+	<!-- 편의 기능 상세보기 데이터 가져오기-->
+	<select id="convendetailselect" parameterType="int" resultType="convenVo">
+		select * from convendetail where conum = (select conum from conven where hinum=#{hinum})
+	</select>
+	
 	<!-- house main img 포함 vo -->
 	<select id="mainHouseGetList" parameterType="house_search" resultType="main_houseinfo">
 		SELECT h.hinum, h.addr, h.max_n, h.addr_detail, h.price, h.lat, h.lnt, h.startdate, h.enddate, i.img, h.title
