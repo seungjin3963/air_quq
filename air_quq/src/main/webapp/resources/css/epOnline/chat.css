@@ -319,3 +319,20 @@ ul {
 .settings-popup ul li a:hover {
   background: rgba(0, 0, 0, .05);
 }
+
+
+
+
+.onlineMyPick1{
+	color: red; 
+	float: right;
+	margin-right: 20px;
+}
+
+.onlineMypick2{
+	color: red; 
+	float: right;
+	display: none;
+	margin-right: 20px;
+}
+

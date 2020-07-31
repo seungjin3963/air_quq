@@ -127,6 +127,16 @@
 											</div>
 										</div>
 									</a>
+									<a class="dropdown-item" href="/online/myPick">
+										<div class="row">
+											<div class="col-md-3">
+												<i class="far fa-heart fa-2x"></i>
+											</div>
+											<div class="col-md-9">
+												<h6 class="d-inline-block">체험 찜 목록</h6>
+											</div>
+										</div>
+									</a>
 									<div class="dropdown-divider"></div>
 									<a class="dropdown-item" href="/logout">
 										<div class="row">

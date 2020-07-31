@@ -1,8 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib prefix="ep" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/functions" prefix = "fn" %>
 <link href="/resources/css/OnlineList.css" rel="stylesheet">
+
 <div class="container">
-<input type="button" id="testBtn" value="왜 안되니?">
 	<div class="navbar navbar-expand-lg navbar-light bg-light mb-5">
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
@@ -53,11 +54,13 @@
 				<h2>쉐프와 함께 만드는 요리</h2>
 				<br>
 				<div id="CookList">
+						
 					<ep:forEach var="i" items="${CookList }">
-
 						<div class="onlinecooklist">
 							<div class="onlinecooklist_div">
-								<input type="hidden" value="${i.hinum }">
+					
+							
+								<input type="hidden" value="${i.hinum }" class="hiddenhinum">
 								<a href="/online/details?hinum=${i.hinum }">
 									<img src="/resources/img/house_img/${i.img }">
 								</a>
@@ -94,7 +97,8 @@
 
 						<div class="onlinecooklist">
 							<div class="onlinecooklist_div">
-								<input type="hidden" value="${i.hinum }">
+							
+								<input type="hidden" value="${i.hinum }" class="hiddenhinum">
 								<a href="/online/details?hinum=${i.hinum }">
 								<img src="/resources/img/house_img/${i.img }"></a> ${i.subname}
 								<br>
@@ -128,7 +132,8 @@
 
 						<div class="onlinecooklist">
 							<div class="onlinecooklist_div">
-								<input type="hidden" value="${i.hinum }">
+							
+								<input type="hidden" value="${i.hinum }" class="hiddenhinum">
 								<a href="/online/details?hinum=${i.hinum }">
 								<img src="/resources/img/house_img/${i.img }"></a> ${i.subname}
 								<br>
@@ -152,7 +157,8 @@
 
 						<div class="onlinecooklist">
 							<div class="onlinecooklist_div">
-								<input type="hidden" value="${i.hinum }">
+					
+								<input type="hidden" value="${i.hinum }" class="hiddenhinum">
 								<a href="/online/details?hinum=${i.hinum }">
 								<img src="/resources/img/house_img/${i.img }"></a> ${i.subname}
 								<br>

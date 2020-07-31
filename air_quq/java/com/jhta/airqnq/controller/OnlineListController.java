@@ -1,6 +1,9 @@
 package com.jhta.airqnq.controller;
 
+import java.util.HashMap;
 import java.util.List;
+
+import javax.servlet.http.HttpSession;
 
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,13 +15,17 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.jhta.airqnq.pageUtil.PageUtilForMySql;
 import com.jhta.airqnq.service.OnlineListServer;
 import com.jhta.airqnq.vo.EP_ManagementVo;
+import com.jhta.airqnq.vo.basketVo;
 
 @Controller
 public class OnlineListController {
 	@Autowired private OnlineListServer service;
 	
 	@RequestMapping("/ep_OnlineList")
-	public String Ep_OnlineList(Model model) {
+	public String Ep_OnlineList(Model model , HttpSession session) {
+		
+		
+
 		
 		int CookListC=service.onlineCookListC();
 		PageUtilForMySql cookPageUtil=new PageUtilForMySql(1,CookListC,5,1);	
@@ -66,10 +73,7 @@ public class OnlineListController {
 	@RequestMapping(value = "/ep_cook" ,produces = "application/json;charset=utf-8")
 	@ResponseBody
 	public String Ep_cook(int pagenum, int cooktotalR) {
-		System.out.println("//////////////////");
-		System.out.println(pagenum + "  페이지 넘");
-		System.out.println(cooktotalR + "  총 갯수"); 
-		System.out.println("//////////////////");
+		
 		JSONObject json=new JSONObject();
 		
 		PageUtilForMySql cookPageUtil=new PageUtilForMySql(pagenum,cooktotalR,5,1);
@@ -118,6 +122,31 @@ public class OnlineListController {
 		json.put("regdatelist", regdatelist);
 		
 		return  json.toString();
+		
+	}
+	
+	@RequestMapping(value = "/onlinePick" ,produces = "application/json;charset=utf-8")
+	@ResponseBody
+	public String onlinePick(int hinum , int num , HttpSession session){
+		int menum=(int)session.getAttribute("menum");
+		JSONObject json=new JSONObject();
+		
+		HashMap<String, Object> map=new HashMap<String, Object>();
+		map.put("hinum", hinum);
+		map.put("menum", menum);
+		
+		if(num==1) { // 찜하기
+			service.onlineMyPickInsert(map);
+			
+			json.put("success", "찜 하 기 ");
+		}
+		if(num==2) { // 찜 취소
+			service.onlineMyPickDelete(map);
+			
+			json.put("success", "찜 취 소 ");
+		}
+		
+		return json.toString();
 		
 	}
 }

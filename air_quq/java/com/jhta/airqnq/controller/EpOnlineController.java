@@ -18,10 +18,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.jhta.airqnq.pageUtil.PageUtil;
 import com.jhta.airqnq.service.AdminApproveService;
 import com.jhta.airqnq.service.EpOnlineService;
+import com.jhta.airqnq.service.OnlineListServer;
 import com.jhta.airqnq.vo.ChatLogVo;
 import com.jhta.airqnq.vo.EP_ManagementVo;
 import com.jhta.airqnq.vo.ReviewVo;
 import com.jhta.airqnq.vo.SliderVo;
+import com.jhta.airqnq.vo.basketVo;
 
 @Controller
 public class EpOnlineController {
@@ -31,6 +33,9 @@ public class EpOnlineController {
 	
 	@Autowired
 	private AdminApproveService imgService;
+	
+	@Autowired
+	private OnlineListServer heartservice;
 	
 	@RequestMapping("/online/home")
 	public String goHome(Model model) {
@@ -44,7 +49,14 @@ public class EpOnlineController {
 	}
 	
 	@RequestMapping("/online/details")
-	public String goDetails(int hinum,Model model) throws IOException {	
+	public String goDetails(int hinum,Model model ,HttpSession session) throws IOException {	
+		
+		  if(session.getAttribute("menum")!=null) { int
+		  menum=(int)session.getAttribute("menum"); 
+		  List<basketVo> basket=heartservice.basketlist(menum); System.out.println(basket);
+		  model.addAttribute("basket" ,basket); }
+		 
+		
 		//영노
 		String[] mater= {};
 		String Mater="";
@@ -199,5 +211,15 @@ public class EpOnlineController {
 			hash.put("div",2);
 		}
 		return hash;
+	}
+	
+	
+	
+	@RequestMapping("/online/myPick")
+	public String mypageonlinePick(HttpSession session , Model model) {
+		int menum=(int)session.getAttribute("menum");
+		List<EP_ManagementVo> vo=heartservice.Picklist(menum);
+		model.addAttribute("vo" , vo);
+		return ".ep_management.pickpage";
 	}
 }

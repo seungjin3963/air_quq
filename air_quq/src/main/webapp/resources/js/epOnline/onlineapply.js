@@ -1,7 +1,45 @@
 /**
  * 
  */
+$('.onlineMyPick1').click(function(){
+	var num=1;
+	
+	$(this).css('display' ,'none');
+	$('.onlineMypick2').css('display' ,'block');
+	
+	var hinum=$('#hinum').val();
+	
+	
+	
+	$.ajax({
+		url : '/onlinePick',
+		dataType:'json',
+		data : {hinum:hinum , num:num},
+		success : function(data){
+			alert(data.success);
+		}
+	});
+});
 
+
+$('.onlineMypick2').click(function(event){
+	var num=2;
+	$(this).css('display' ,'none');
+	$('.onlineMyPick1').css('display' ,'block');
+	
+	var hinum=$('#hinum').val();
+	
+	
+	$.ajax({
+		url : '/onlinePick',
+		dataType:'json',
+		data : {hinum:hinum , num:num},
+		success : function(data){
+			alert(data.success);
+		}
+	});
+
+});
 
 $(".test1").click(()=>{
 	if($('#checkin').val()=="" || $('#checkin').val()==null){

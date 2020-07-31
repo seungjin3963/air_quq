@@ -343,5 +343,56 @@ $('#Ep_regdateBtnM').click(function(){
 
 
 
+// 찜하기
+
+$('.onlineMyPick1').click(function(){
+	var num=1;
+	var index=$('.onlineMyPick1').index(this);
+	$(this).css('display' ,'none');
+	$('.onlineMypick2').eq(index).css('display' ,'block');
+	
+	var hinum=$('.hiddenhinum').eq(index).val();
+	
+	alert(hinum + "  " + index);
+	
+	$.ajax({
+		url : '/onlinePick',
+		dataType:'json',
+		data : {hinum:hinum , num:num},
+		success : function(data){
+			alert(data.success);
+		}
+	});
+});
+
+
+$('.onlineMypick2').click(function(event){
+	var num=2;
+	var index=$('.onlineMyPick2').index(this);
+	
+	$(this).css('display' ,'none');
+	$('.onlineMyPick1').eq(index).css('display' ,'block');
+	
+	var hinum=$('.hiddenhinum').eq(index).val();
+	
+	alert(hinum + "  " + index);
+	$.ajax({
+		url : '/onlinePick',
+		dataType:'json',
+		data : {hinum:hinum , num:num},
+		success : function(data){
+			alert(data.success);
+		}
+	});
+
+});
+ //
+
+
+
+/*$('.onlineMyPick2').click(function(){
+	$(this).closest('i').attr('class' , 'far fa-heart fa-2x onlineMyPick1');
+});*/
+
 
 

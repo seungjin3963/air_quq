@@ -57,4 +57,21 @@ select a.img , a.hinum , a.title , a.price , a.times , subname   from (
 select img,e.hinum,title,price,times ,sunum ,regdate from experience_info e inner join house_img h 
 on e.hinum=h.hinum where e.div_type=3 and ordernum=1)a inner join subDetail s on a.sunum=s.sunum order by a.regdate desc) c;
 	</select>
+	
+	
+	<insert id="onlineMyPickInsert" parameterType="hashmap">
+		insert into basket values(0,#{menum},#{hinum} ,'n');
+	</insert>
+	<delete id="onlineMyPickDelete"  parameterType="hashmap">
+		delete from basket where menum=#{menum} and hinum=#{hinum}
+	</delete>
+	<select id="basketlist" parameterType="int" resultType="com.jhta.airqnq.vo.basketVo">
+		select * from basket where menum=#{menum}
+	</select>
+	<select id="Picklist" parameterType="int" resultType="com.jhta.airqnq.vo.EP_ManagementVo">
+		select k.hinum , k.title , k.price , k.times ,k.img ,subname from (
+select a.hinum , a.div_type , a.program , a.title , a.price , a.times , a.sunum,img from (
+select e.* from (select hinum from basket where menum=#{menum}) b inner join experience_info e on b.hinum=e.hinum) a inner join house_img h on a.hinum=h.hinum where ordernum=1) k inner join subDetail s on k.sunum=s.sunum;
+		
+	</select>
 </mapper>

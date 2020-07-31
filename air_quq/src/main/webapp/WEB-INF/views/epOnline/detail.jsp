@@ -51,6 +51,52 @@
 			</div>
 		</div>
 		<hr>
+				<%-- <c:if test="${!empty menum }"> <!--  /////////////////////////// /////////////////////////////////////////////////-->
+								<c:set var="doneLoop" value="false"/>
+									<c:forEach var="i"  begin="0" end="${fn:length(basket) }">
+										<c:if test="doneLoop != true">	
+											<c:if test="${experienceInfo.hinum==basket[i].hinum}">
+												<h4 style="float: right;margin-top: 10px;">찜</h4>
+												<i class="far fa-heart fa-3x onlineMyPick1" style="display: none;"></i>
+												<i class="fas fa-heart fa-3x onlineMypick2" style="display: block;"></i>	
+												<c:set var="doneLoop" value="true"/>			
+											</c:if>
+											
+											<c:if test="${i==fn:length(basket) }">
+												<i class="far fa-heart fa-3x onlineMyPick1" ></i>
+												<i class="fas fa-heart fa-3x onlineMypick2"></i>
+											</c:if>
+											${i } ///// ${fn:length(basket) }
+										</c:if>
+									</c:forEach>
+								
+				</c:if> --%>
+				
+				
+				<c:if test="${!empty menum }">
+				
+					<c:set var="doneLoop" value="false"/>
+					
+						<c:forEach var="i"  begin="0" end="${fn:length(basket) }">
+						
+							<c:if test="${doneLoop != true }">
+							
+								<c:if test="${experienceInfo.hinum==basket[i].hinum }">
+									<h4 style="float: right;margin-top: 10px;">찜</h4>
+									<i class="far fa-heart fa-3x onlineMyPick1" style="display: none;"></i>
+									<i class="fas fa-heart fa-3x onlineMypick2" style="display: block;"></i>
+									<c:set var="doneLoop" value="true"/>
+								</c:if>
+								
+								<c:if test="${fn:length(basket) == i}">
+									<h4 style="float: right;margin-top: 10px;">찜</h4>
+									<i class="far fa-heart fa-3x onlineMyPick1" ></i>
+									<i class="fas fa-heart fa-3x onlineMypick2" ></i>
+								</c:if>
+								
+							</c:if>
+						</c:forEach>
+				</c:if>
 		<div class="row justify-content-start" style="padding-top: 10px;">
 			<div class="row">
 				<div class="col-md-8">
@@ -58,6 +104,7 @@
 						style="display: block; height: 16px; width: 16px; fill: currentcolor; margin-top: 4px;"
 						align="left">
 						<input type="hidden" value="${experienceInfo.div_type}" id="hidden_divType">
+						
 						<c:choose>
 							<c:when test="${experienceInfo.div_type==3}">
 								<h4>온라인 체험</h4>
@@ -74,7 +121,9 @@
 						
 					</h3>
 				</div>
-				<div class="col-md-4"></div>
+				<div class="col-md-4">
+					
+				</div>
 				<div class="col-md-8">
 					
 				</div>
