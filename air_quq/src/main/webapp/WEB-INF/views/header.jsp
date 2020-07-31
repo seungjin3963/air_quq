@@ -107,13 +107,23 @@
 										</div>
 									</a>
 									<div class="dropdown-divider"></div>
+									<a class="dropdown-item" href="/host/house/list">
+										<div class="row">
+											<div class="col-md-3">
+												<i class="fa fa-home menu-icon-size mr-2"></i>
+											</div>
+											<div class="col-md-9">
+												<h6 class="d-inline-block">내가 등록한 숙소</h6>
+											</div>
+										</div>
+									</a>
 									<a class="dropdown-item" href="/host/epOnline/list">
 										<div class="row">
 											<div class="col-md-3">
 												<i class="fas fa-photo-video menu-icon-size mr-2"></i>
 											</div>
 											<div class="col-md-9">
-												<h6 class="d-inline-block">등록한 체험</h6>
+												<h6 class="d-inline-block">내가 등록한 체험</h6>
 											</div>
 										</div>
 									</a>

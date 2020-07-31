@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.jhta.airqnq.vo.ExpInfoVo;
+import com.jhta.airqnq.vo.HouseInfoVo;
 
 @Repository
 public class HostDao {
@@ -49,5 +50,9 @@ public class HostDao {
 
 	public void delExpInfo(int hinum) {
 		session.delete(NAMESPACE + ".delExpInfo", hinum);
+	}
+
+	public List<HouseInfoVo> houseList(int menum) {
+		return session.selectList(NAMESPACE + ".houseList", menum);
 	}
 }

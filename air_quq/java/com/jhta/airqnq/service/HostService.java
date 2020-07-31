@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.jhta.airqnq.dao.HostDao;
 import com.jhta.airqnq.vo.ExpInfoVo;
+import com.jhta.airqnq.vo.HouseInfoVo;
 
 @Service
 public class HostService {
@@ -34,5 +35,9 @@ public class HostService {
 		dao.delHouseImg(hinum);
 		dao.delExpInfo(hinum);
 		dao.delEpOnline(hinum);
+	}
+
+	public List<HouseInfoVo> houseList(int menum) {
+		return dao.houseList(menum);
 	}
 }

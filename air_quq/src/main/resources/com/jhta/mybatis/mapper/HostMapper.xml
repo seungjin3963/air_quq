@@ -35,4 +35,7 @@
 	<delete id="delExpInfo" parameterType="int">
 		update experience_info set del_yn = 'y' where hinum = #{hinum}
 	</delete>
+	<select id="houseList" parameterType="int" resultType="house_info">
+		select * from house_info where menum = #{menum} and `div` = 1 and del_yn = 'n' and title is not null
+	</select>
 </mapper>
