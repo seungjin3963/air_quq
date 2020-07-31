@@ -130,7 +130,6 @@ public class HostController {
 			String lnt, HttpSession session, int next, String pool, String paking, String wifi, String washer, String kitchen, String etc) {
 		
 		
-		
 		if(pool == null) pool = "0";
 		if(paking == null) paking = "0";
 		if(wifi == null) wifi = "0";
@@ -145,19 +144,35 @@ public class HostController {
 		System.out.println(Integer.parseInt(kitchen));
 		System.out.println(etc);
 		
+		
+		HashMap<String, Object> regist1 = (HashMap<String, Object>)session.getAttribute("regist1");
+		HashMap<String, Object> regist2 = (HashMap<String, Object>)session.getAttribute("regist2");
+		HashMap<String, Object> regist3 = (HashMap<String, Object>)session.getAttribute("regist3");
+		
+		String title = (String)regist2.get("hostTitle"); 
+		String content = (String)regist2.get("hostContent");
+		int price = Integer.parseInt(regist3.get("v_grade").toString().replace(",", ""));
+		int max_n = Integer.parseInt(regist3.get("pcount").toString());
+		int bedroom = Integer.parseInt(regist3.get("bcount").toString());
+		String checkinTime = (String)regist3.get("oclick");
+		int div = 1;
+		
 		//멤버 번호
 		Integer menum = (Integer)session.getAttribute("menum");
 		//System.out.println(menum + "<<<<<<<멤버번호");
 		
 		
-		//하우스 번호 가져오기
-		int hinum = hostService.selectHouseNumber(menum);
+		Date startdate = transformDate((String)regist3.get("startDay"));
+		Date enddate = transformDate((String)regist3.get("endDay"));
+		String del_yn = "n";
 		
-		if(hinum == -1) {
-			return "error";
-		}
+		HouseInfoVo hvo = new HouseInfoVo(0, menum, title, content, roadAddr, addressDetail, price, max_n,
+				bedroom, checkinTime, div, lat, lnt, startdate, enddate, del_yn, 0);
 		
-		System.out.println("하우스 번호 : " + hinum);
+		//int hinum, String pool, String paking, String wifi, String washer, String kitchen, String etc
+		int result = hostService.insert(menum, pool, paking, wifi, washer, kitchen, etc, hvo, session, file1);
+		
+		System.out.println("집등록 결과 <<" + result);
 		
 		
 		HashMap<String, Object> map = new HashMap<String, Object>();
@@ -173,73 +188,6 @@ public class HostController {
 		
 		System.out.println("마지막 단계 : " + roadAddr + ", " + addressDetail + ", " + lat + ", " + lnt);
 		
-		
-		
-		
-		HashMap<String, Object> regist1 = (HashMap<String, Object>)session.getAttribute("regist1");
-		HashMap<String, Object> regist2 = (HashMap<String, Object>)session.getAttribute("regist2");
-		HashMap<String, Object> regist3 = (HashMap<String, Object>)session.getAttribute("regist3");
-		
-		String title = (String)regist2.get("hostTitle"); 
-		String content = (String)regist2.get("hostContent");
-		int price = Integer.parseInt(regist3.get("v_grade").toString().replace(",", ""));
-		int max_n = Integer.parseInt(regist3.get("pcount").toString());
-		int bedroom = Integer.parseInt(regist3.get("bcount").toString());
-		String checkinTime = (String)regist3.get("oclick");
-		int div = 1;
-		
-		
-		Date startdate = transformDate((String)regist3.get("startDay"));
-		Date enddate = transformDate((String)regist3.get("endDay"));
-		String del_yn = "n";
-		
-		HouseInfoVo hvo = new HouseInfoVo(0, menum, title, content, roadAddr, addressDetail, price, max_n,
-				bedroom, checkinTime, div, lat, lnt, startdate, enddate, del_yn, 0);
-		
-		//int hinum, String pool, String paking, String wifi, String washer, String kitchen, String etc
-		int result = hostService.insert(hinum, pool, paking, wifi, washer, kitchen, etc, hvo);
-		
-		System.out.println("집등록 결과 <<" + result);
-		int cnt = 1;
-		
-		
-		if(result > 0) {
-			for(MultipartFile f : file1) {
-				//전송된 파일명
-				String orgfilename = f.getOriginalFilename();
-				
-				//실제 저장할 파일명(중복되지 않도록)
-				String savefileName = UUID.randomUUID() + "_" + orgfilename;
-//				//업로드할 폴더 경로 얻어오기
-				String uploadPath = session.getServletContext().getRealPath("resources/img/house_img");
-				
-				System.out.println(uploadPath);
-				try {
-//					//전송된 파일을 읽어오는 스트림 
-					InputStream fis = f.getInputStream(); 
-					
-//					//전송된 파일을 서버에 복사(업로드) 하기위한 출력 스트림
-					FileOutputStream fos = new FileOutputStream(uploadPath + "//" + savefileName);
-//					
-//					//파일복사하기
-					FileCopyUtils.copy(fis, fos);
-					fis.close();
-					fos.close();
-					
-//					//실제 DB에 넣기
-					HouseImgVo ivo = new HouseImgVo(0, hinum+1, savefileName, "n", cnt);
-					hostService.insertHouseImg(ivo);
-					System.out.println("DB에 이미지 등록됨");
-					
-					cnt++;
-					
-				} catch(IOException io) {
-					System.out.println(io.getMessage());
-				}
-			}
-		} else {
-			System.out.println("호스트 등록 에러!");
-		}
 		
 		return "redirect:/";
 	}

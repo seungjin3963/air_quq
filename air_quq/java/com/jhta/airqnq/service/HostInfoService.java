@@ -1,11 +1,19 @@
 package com.jhta.airqnq.service;
 
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.HashMap;
 import java.util.List;
+import java.util.UUID;
+
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.FileCopyUtils;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.jhta.airqnq.dao.ConvenDao;
 import com.jhta.airqnq.dao.HostInfoDao;
@@ -68,17 +76,65 @@ public class HostInfoService {
 	
 	
 	//트렌젝션 처리
-	public int insert(int hinum, String pool, String paking, String wifi, String washer, String kitchen, String etc, HouseInfoVo hvo) {
+	public int insert(int menum, String pool, String paking, String wifi, String washer, String kitchen, String etc, HouseInfoVo hvo,
+			HttpSession session, MultipartFile[] file1) {
 		
 		int result = insertHouse(hvo);
-		System.out.println(hinum + "<<<<<<<<<<<<<<<<<<< 하우스번호");
 		
-		convenDao.insertConven(hinum);
-		int conum = convenDao.selectConvenNumber(hinum);
-		ConvenDetailVo vo = new ConvenDetailVo(0, conum, Integer.parseInt(pool), Integer.parseInt(paking),
-				Integer.parseInt(wifi), Integer.parseInt(washer), Integer.parseInt(kitchen), etc);
+		if(result > 0) {
+			
+			//하우스 번호 가져오기
+			int hinum = selectHouseNumber(menum);
+			System.out.println(hinum + "<<<<<<<<<<<<<<<<<<< 하우스번호");
+			
+			convenDao.insertConven(hinum);
+			int conum = convenDao.selectConvenNumber(hinum);
+			ConvenDetailVo vo = new ConvenDetailVo(0, conum, Integer.parseInt(pool), Integer.parseInt(paking),
+					Integer.parseInt(wifi), Integer.parseInt(washer), Integer.parseInt(kitchen), etc);
+			
+			insertConvenDetail(vo);
+	
+			
+			int cnt = 1;
 		
-		insertConvenDetail(vo);
+		
+		
+			for(MultipartFile f : file1) {
+				//전송된 파일명
+				String orgfilename = f.getOriginalFilename();
+				
+				//실제 저장할 파일명(중복되지 않도록)
+				String savefileName = UUID.randomUUID() + "_" + orgfilename;
+//				//업로드할 폴더 경로 얻어오기
+				String uploadPath = session.getServletContext().getRealPath("resources/img/house_img");
+				
+				System.out.println(uploadPath);
+				try {
+//					//전송된 파일을 읽어오는 스트림 
+					InputStream fis = f.getInputStream(); 
+					
+//					//전송된 파일을 서버에 복사(업로드) 하기위한 출력 스트림
+					FileOutputStream fos = new FileOutputStream(uploadPath + "//" + savefileName);
+//					
+//					//파일복사하기
+					FileCopyUtils.copy(fis, fos);
+					fis.close();
+					fos.close();
+					
+//					//실제 DB에 넣기
+					HouseImgVo ivo = new HouseImgVo(0, hinum, savefileName, "n", cnt);
+					insertHouseImg(ivo);
+					System.out.println("DB에 이미지 등록됨");
+					
+					cnt++;
+					
+				} catch(IOException io) {
+					System.out.println(io.getMessage());
+				}
+			}
+		} else {
+			System.out.println("호스트 등록 에러!");
+		}
 		
 		return result;
 	}
