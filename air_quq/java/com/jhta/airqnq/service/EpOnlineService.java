@@ -1,6 +1,6 @@
 package com.jhta.airqnq.service;
 
-import java.util.HashMap; 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,8 +38,8 @@ public class EpOnlineService {
 	public int findRoom(HashMap<String, Object> hash) {
 		return dao.findRoom(hash);
 	}
-	public ChatLogVo chatlog(int number){
-		return dao.chatlog(number);
+	public List<ChatLogVo> chatlog(int n){
+		return dao.chatlog(n);
 	}
 	public int addChat(HashMap<String, Object> hash) {
 		return dao.addChat(hash);
@@ -66,6 +66,7 @@ public class EpOnlineService {
 	public List<ReviewVo> ReviewSelect(int hinum){
 		return dao.ReviewSelect(hinum);
 	}
-	
-	
+	public int maxChatNo() {
+		return dao.maxChatNo();
+	}
 }

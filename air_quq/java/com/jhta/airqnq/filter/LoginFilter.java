@@ -102,6 +102,8 @@ public class LoginFilter implements Filter {
 			return true;
 		} else if(uri.startsWith("/ep_")) {
 			return true;
+		} else if(uri.equals("/online/dm")) {
+			return true;
 		}
 		return false;
 	}
