@@ -190,6 +190,7 @@
 		</div>
 		<input type="hidden" value="${hinum }" id="hinumvalue">
 		<input type="hidden" id="menumvalue">
+		<input type="hidden" id="hostNum" value="${hostNum }">
 		<input type="hidden" id="chat_no">
 		<button type="button" class="btn btn-light" id="dmcall2">
 			<b>호스트에게 연락하기</b>
@@ -361,7 +362,7 @@
 			<!-- 이름 -->
 			<div class="chat-partner-name">
 				<span class="status online"></span>
-				<a target="_blank" href="https://www.facebook.com/mfreak">JHTA</a>
+				<a target="_blank" href="#">JHTA</a>
 			</div>
 			<!-- 아이콘 -->
 			<div class="chatbox-icons">

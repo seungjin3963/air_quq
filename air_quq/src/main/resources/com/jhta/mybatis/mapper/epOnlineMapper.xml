@@ -66,13 +66,13 @@
 		where  ei.hinum=#{hinum} and ei.div_type=3;
 	</select>
 	<select id="findRoom" parameterType="hashmap" resultType="int">
-		select chat_no from chat_select where menum=#{menum} and younum=#{id};
+		select chat_no from chat_select where menum=#{menum} and younum=#{younum};
 	</select>
 	<select id="chatLog" resultType="chatLog" parameterType="int">
 		select * from chatting where chat_no = #{n} order by chnum
 	</select>
 	<insert id="addChat" parameterType="map">
-		insert into chat_select values(0,#{menum},#{id},'n')
+		insert into chat_select values(0,#{menum},#{younum},'n')
 	</insert>
 	<insert id="addcontent" parameterType="map">
 		insert into chatting values(0,#{chat_no},#{content},#{mnum},'n')

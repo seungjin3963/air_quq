@@ -93,6 +93,7 @@ public class EpOnlineController {
 		 */
 		
 		model.addAttribute("hinum", hinum);
+		model.addAttribute("hostNum", experienceInfo.getMemnum());
 		
 		return ".epOnline.detail";
 	}
@@ -107,7 +108,7 @@ public class EpOnlineController {
 
 	@ResponseBody
 	@RequestMapping(value = "/online/dm", method = RequestMethod.GET)
-	public Map<String, Object> dm(HttpSession session, int hinum) {
+	public Map<String, Object> dm(HttpSession session, int hinum, int hostNum) {
 		Map<String, Object> returnHash = new HashMap<String, Object>();
 		if(session.getAttribute("logind") == null) {
 			returnHash.put("result", "login");
@@ -117,12 +118,9 @@ public class EpOnlineController {
 		}
 		int menum = (int) session.getAttribute("menum");
 		
-//		memnum =회원번호,  hinum==게시물번호
-		// 회원-호스트 // 다른 방식은 modal로 안되게 처리
-		int menum3 = (int) session.getAttribute("menum");// 아이디
 		HashMap<String, Object> hash = new HashMap<String, Object>();
 		hash.put("menum", menum);
-		hash.put("id", menum3);
+		hash.put("younum", hostNum);
 		int n = 0;
 		try {
 			n = service.findRoom(hash);
@@ -136,7 +134,7 @@ public class EpOnlineController {
 			returnHash.put("chat_no", n);
 		} else {// chat목록에 추가하도록 chat_no만들기
 			service.addChat(hash);
-			hash.put("chat_no", service.maxChatNo());
+			returnHash.put("chat_no", service.maxChatNo());
 		}
 		returnHash.put("menum", menum);
 

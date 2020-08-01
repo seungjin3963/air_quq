@@ -61,4 +61,7 @@
 		set del_yn = 'y'
 		where hinum = #{hinum}
 	</update>
+	<select id="chat_selectList" parameterType="int" resultType="chat_select">
+		select * from chat_select where younum = #{menum}
+	</select>
 </mapper>

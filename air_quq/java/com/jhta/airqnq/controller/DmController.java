@@ -15,17 +15,17 @@ import com.jhta.airqnq.service.EpOnlineService;
 public class DmController {
 	@Autowired
 	private EpOnlineService service;
-	
+
 	@RequestMapping(value = "/echo/addcontent")
 	@ResponseBody
-	public String addContent(String content,HttpSession session,int mnum,int chat_no,int hinum) {
-		HashMap<String,Object> hash = new HashMap<String, Object>();
-		hash.put("chat_no",chat_no);
-		hash.put("content",content);
-		hash.put("mnum",mnum);
-		if(service.addcontent(hash) > 0) {
+	public String addContent(String content, HttpSession session, int mnum, int chat_no) {
+		HashMap<String, Object> hash = new HashMap<String, Object>();
+		hash.put("chat_no", chat_no);
+		hash.put("content", content);
+		hash.put("mnum", mnum);
+		if (service.addcontent(hash) > 0) {
 			return "success";
-		}else {
+		} else {
 			return "error";
 		}
 	}

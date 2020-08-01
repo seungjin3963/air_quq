@@ -127,6 +127,16 @@
 											</div>
 										</div>
 									</a>
+									<a class="dropdown-item" href="/host/dm/list">
+										<div class="row">
+											<div class="col-md-3">
+												<i class="fas fa-photo-video menu-icon-size mr-2"></i>
+											</div>
+											<div class="col-md-9">
+												<h6 class="d-inline-block">DM</h6>
+											</div>
+										</div>
+									</a>
 									<a class="dropdown-item" href="/host/ResCheck">
 										<div class="row">
 											<div class="col-md-3">

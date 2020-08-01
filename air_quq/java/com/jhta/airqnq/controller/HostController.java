@@ -14,10 +14,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.jhta.airqnq.service.HostInfoService;
 import com.jhta.airqnq.service.HostService;
+import com.jhta.airqnq.vo.Chat_selectVo;
 import com.jhta.airqnq.vo.ExpInfoVo;
 import com.jhta.airqnq.vo.HouseInfoVo;
 
@@ -224,28 +226,42 @@ public class HostController {
 			return ".host.house.list";
 		}
 	}
-	
+
 	@GetMapping("/host/house/modify")
 	public String houseModify(Model model, int hinum) {
 		model.addAttribute("vo", service.getHouseInfo(hinum));
 		return ".host.house.modify";
 	}
-	
+
 	@PostMapping("/host/house/modify")
 	public String houseModifyOk(HouseInfoVo vo) {
-		if(service.houseModify(vo) > 0) {
-			return "redirect:/host/house/list";			
-		}else {
+		if (service.houseModify(vo) > 0) {
+			return "redirect:/host/house/list";
+		} else {
 			return "redirect:/error";
 		}
 	}
-	
+
 	@GetMapping("/host/house/delete")
 	public String houseDelete(int hinum) {
-		if(service.delHouse(hinum) > 0) {
+		if (service.delHouse(hinum) > 0) {
 			return "redirect:/host/house/list";
-		}else {
+		} else {
 			return "redirect:/error";
 		}
+	}
+
+	@GetMapping("/host/dm/list")
+	public String houseDM(HttpSession session, Model model) {
+		int menum = (int) session.getAttribute("menum");
+		model.addAttribute("list", service.chat_selectList(menum));
+		return ".host.dm.list";
+	}
+
+	@RequestMapping("/host/dm/getChatting")
+	@ResponseBody
+	public String getChatting(int chat_no) {
+		
+		return "";
 	}
 }

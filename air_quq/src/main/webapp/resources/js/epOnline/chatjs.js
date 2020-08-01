@@ -1,6 +1,7 @@
 $(function(){
 	//드롭다운, 종료
-	$('.fa-minus').click(function(){    $(this).closest('.chatbox').toggleClass('chatbox-min');
+	$('.fa-minus').click(function(){    
+		$(this).closest('.chatbox').toggleClass('chatbox-min');
 	});
 	$('.fa-close').click(function(){
 		$("#dmdm").css('visibility','hidden')
@@ -8,7 +9,8 @@ $(function(){
     //호스트 호출
     $("#dmcall2").on('click',function(){
     	var hinum=$("#hinumvalue").val();
-    	$.getJSON("/online/dm",{hinum},function(data){
+    	var hostNum=$("#hostNum").val();
+    	$.getJSON("/online/dm",{hinum,hostNum},function(data){
     		if(data.result == "login"){
     			location.href = "/login";
     		}else if(data.result == "success"){
@@ -16,7 +18,6 @@ $(function(){
     		    $("#chat_no").val(data.chat_no);
     			$("#menumvalue").val(data.menum);
     			
-    			console.log(data.chat);
     			$(data.chat).each(function(i, val){
     				if(data.menum == val.mnum){
     					$("#messageArea").append(
@@ -57,7 +58,7 @@ $(function(){
 		$.ajax({
 			url:"/echo/addcontent",
 			data:{"content":text,"mnum":
-				mnum,"hinum":hinum,"chat_no":chat_no},
+				mnum,"chat_no":chat_no},
 			success:function(data){
 				console.log(data);
 				if(data == "success"){

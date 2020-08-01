@@ -6,6 +6,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.jhta.airqnq.vo.Chat_selectVo;
 import com.jhta.airqnq.vo.ExpInfoVo;
 import com.jhta.airqnq.vo.HouseInfoVo;
 
@@ -66,5 +67,9 @@ public class HostDao {
 
 	public int delHouse(int hinum) {
 		return session.delete(NAMESPACE + ".delHouse", hinum);
+	}
+
+	public List<Chat_selectVo> chat_selectList(int menum) {
+		return session.selectList(NAMESPACE + ".chat_selectList", menum);
 	}
 }

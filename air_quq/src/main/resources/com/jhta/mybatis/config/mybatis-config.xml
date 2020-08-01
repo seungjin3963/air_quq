@@ -21,6 +21,7 @@
  	<typeAlias type="com.jhta.airqnq.vo.HouseSearchVo" alias="house_search"/>
  	<typeAlias type="com.jhta.airqnq.vo.ExperienceSearchVo" alias="ex_search"/>
  	<typeAlias type="com.jhta.airqnq.vo.ConvenDetailVo" alias="convenVo"/>
+ 	<typeAlias type="com.jhta.airqnq.vo.Chat_selectVo" alias="chat_select"/>
  </typeAliases>
  <mappers>
     <mapper resource="com/jhta/mybatis/mapper/JoinMapper.xml"/>
@@ -28,14 +29,14 @@
     <mapper resource="com/jhta/mybatis/mapper/experienceMapper.xml"/>
   	<mapper resource="com/jhta/mybatis/mapper/EP_ManagementMapper.xml"/>
     <mapper resource="com/jhta/mybatis/mapper/HostMapper.xml"/>
-   <mapper resource="com/jhta/mybatis/mapper/HostInfoMapper.xml"/>
+    <mapper resource="com/jhta/mybatis/mapper/HostInfoMapper.xml"/>
     <mapper resource="com/jhta/mybatis/mapper/MemberMapper.xml"/>
     <mapper resource="com/jhta/mybatis/mapper/epOnlineMapper.xml"/>
     <mapper resource="com/jhta/mybatis/mapper/RentMapper.xml"/>
     <mapper resource="com/jhta/mybatis/mapper/ReviewAndGradeMapper.xml"/>
     <mapper resource="com/jhta/mybatis/mapper/OnlineListMapper.xml"/>
     <mapper resource="com/jhta/mybatis/mapper/ReportMapper.xml"/>
-     <mapper resource="com/jhta/mybatis/mapper/HostResCheckMapper.xml"/>
-     <mapper resource="com/jhta/mybatis/mapper/ProfileMapper.xml"/>
+    <mapper resource="com/jhta/mybatis/mapper/HostResCheckMapper.xml"/>
+    <mapper resource="com/jhta/mybatis/mapper/ProfileMapper.xml"/>
   </mappers>
 </configuration>

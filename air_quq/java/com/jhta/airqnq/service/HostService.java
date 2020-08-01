@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.jhta.airqnq.dao.HostDao;
+import com.jhta.airqnq.vo.Chat_selectVo;
 import com.jhta.airqnq.vo.ExpInfoVo;
 import com.jhta.airqnq.vo.HouseInfoVo;
 
@@ -51,5 +52,9 @@ public class HostService {
 
 	public int delHouse(int hinum) {
 		return dao.delHouse(hinum);
+	}
+
+	public List<Chat_selectVo> chat_selectList(int menum) {
+		return dao.chat_selectList(menum);
 	}
 }
