@@ -55,4 +55,16 @@ public class HostDao {
 	public List<HouseInfoVo> houseList(int menum) {
 		return session.selectList(NAMESPACE + ".houseList", menum);
 	}
+
+	public HouseInfoVo getHouseInfo(int hinum) {
+		return session.selectOne(NAMESPACE + ".getHouseInfo", hinum);
+	}
+
+	public int houseModify(HouseInfoVo vo) {
+		return session.update(NAMESPACE + ".houseModify", vo);
+	}
+
+	public int delHouse(int hinum) {
+		return session.delete(NAMESPACE + ".delHouse", hinum);
+	}
 }

@@ -40,4 +40,16 @@ public class HostService {
 	public List<HouseInfoVo> houseList(int menum) {
 		return dao.houseList(menum);
 	}
+
+	public HouseInfoVo getHouseInfo(int hinum) {
+		return dao.getHouseInfo(hinum);
+	}
+
+	public int houseModify(HouseInfoVo vo) {
+		return dao.houseModify(vo);
+	}
+
+	public int delHouse(int hinum) {
+		return dao.delHouse(hinum);
+	}
 }

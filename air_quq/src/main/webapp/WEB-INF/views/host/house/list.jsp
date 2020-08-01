@@ -1,4 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <link href="/resources/css/host/epOnline/list.css" rel="stylesheet">
@@ -10,7 +11,8 @@
 		</div>
 		<div class="card-body">
 			<div class="table-responsive">
-				<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+				<table class="table table-bordered" id="dataTable" width="100%"
+					cellspacing="0">
 					<thead>
 						<tr>
 							<th class="d-none">번호</th>
@@ -22,6 +24,7 @@
 							<th>종료 날짜</th>
 							<th>수정</th>
 							<th>삭제</th>
+							<th>채팅</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -29,19 +32,26 @@
 							<tr>
 								<td class="d-none">${list.hinum }</td>
 								<td>${list.title }</td>
-								<td>${list.addr } ${list.addr_detail }</td>
+								<td>${list.addr }${list.addr_detail }</td>
 								<td>${list.price }</td>
 								<td>${list.checkin_time }</td>
 								<td>${list.startdate }</td>
 								<td>${list.enddate }</td>
 								<td>
-									<a data-toggle="modal" href="#ModifyModal" class="modiIcon">
+									<a href="/host/house/modify?hinum=${list.hinum }"
+										class="modiIcon">
 										<i class="fa fa-folder-open fa-2x"></i>
 									</a>
 								</td>
 								<td>
-									<a href="" class="delIcon">
+									<a href="/host/huose/delete?hinum=${list.hinum }"
+										class="delIcon">
 										<i class="far fa-trash-alt fa-2x"></i>
+									</a>
+								</td>
+								<td>
+									<a href="" class="">
+										<i class="fa fa-comments fa-2x"></i>
 									</a>
 								</td>
 							</tr>
@@ -51,24 +61,38 @@
 			</div>
 		</div>
 	</div>
-
-	<div class="modal fade" id="ModifyModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h5 class="modal-title" id="exampleModalLabel">숙소 수정</h5>
-					<button class="close" type="button" data-dismiss="modal" aria-label="Close">
-						<span aria-hidden="true">×</span>
-					</button>
-				</div>
-				<div class="modal-body text-center align-middle">
-					
-				</div>
-				<div class="modal-footer">
-					<button class="btn btn-secondary" type="button" data-dismiss="modal">닫기</button>
-					<a class="btn btn-danger" href="login.html">수정</a>
-				</div>
+</div>
+<div class="chatbox-holder" id="dmdm">
+	<div class="chatbox" id="dmdm2">
+		<!-- 헤더 -->
+		<div class="chatbox-top">
+			<!-- 이미지 -->
+			<div class="chatbox-avatar">
+				<a target="_blank">
+					<img src="/resources/img/pic/pro.png" />
+				</a>
 			</div>
+			<!-- 이름 -->
+			<div class="chat-partner-name">
+				<span class="status online"></span>
+				<a target="_blank" href="https://www.facebook.com/mfreak">JHTA</a>
+			</div>
+			<!-- 아이콘 -->
+			<div class="chatbox-icons">
+				<i class="fa fa-minus">
+					<span class="material-icons">arrow_drop_down_circle</span>
+				</i>
+				<i class="fa fa-close">
+					<span class="material-icons">cancel</span>
+				</i>
+			</div>
+		</div>
+		<!-- 메시지 -->
+		<div class="chat-messages" id="messageArea">
+		</div>
+		<div class="chat-input-holder">
+			<textarea class="chat-input" id="message"></textarea>
+			<input type="submit" value="Send" class="message-send" id="sendText" />
 		</div>
 	</div>
 </div>

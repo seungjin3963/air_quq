@@ -1,21 +1,16 @@
 package com.jhta.airqnq.controller;
 
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
 import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.List;
-import java.util.UUID;
 
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,9 +18,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.jhta.airqnq.service.HostInfoService;
 import com.jhta.airqnq.service.HostService;
-import com.jhta.airqnq.vo.ConvenDetailVo;
 import com.jhta.airqnq.vo.ExpInfoVo;
-import com.jhta.airqnq.vo.HouseImgVo;
 import com.jhta.airqnq.vo.HouseInfoVo;
 
 @Controller
@@ -228,8 +221,31 @@ public class HostController {
 			int menum = (int) session.getAttribute("menum");
 			List<HouseInfoVo> list = service.houseList(menum);
 			model.addAttribute("list", list);
-			System.out.println(list);
 			return ".host.house.list";
+		}
+	}
+	
+	@GetMapping("/host/house/modify")
+	public String houseModify(Model model, int hinum) {
+		model.addAttribute("vo", service.getHouseInfo(hinum));
+		return ".host.house.modify";
+	}
+	
+	@PostMapping("/host/house/modify")
+	public String houseModifyOk(HouseInfoVo vo) {
+		if(service.houseModify(vo) > 0) {
+			return "redirect:/host/house/list";			
+		}else {
+			return "redirect:/error";
+		}
+	}
+	
+	@GetMapping("/host/house/delete")
+	public String houseDelete(int hinum) {
+		if(service.delHouse(hinum) > 0) {
+			return "redirect:/host/house/list";
+		}else {
+			return "redirect:/error";
 		}
 	}
 }

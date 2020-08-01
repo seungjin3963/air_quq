@@ -216,5 +216,13 @@ public class HouseInfoVo {
 	public void setManager_check(int manager_check) {
 		this.manager_check = manager_check;
 	}
-	
+
+	@Override
+	public String toString() {
+		return "HouseInfoVo [hinum=" + hinum + ", menum=" + menum + ", title=" + title + ", content=" + content
+				+ ", addr=" + addr + ", addr_detail=" + addr_detail + ", price=" + price + ", max_n=" + max_n
+				+ ", bedroom=" + bedroom + ", checkin_time=" + checkin_time + ", div=" + div + ", lat=" + lat + ", lnt="
+				+ lnt + ", startdate=" + startdate + ", enddate=" + enddate + ", del_yn=" + del_yn + ", manager_check="
+				+ manager_check + "]";
+	}
 }
