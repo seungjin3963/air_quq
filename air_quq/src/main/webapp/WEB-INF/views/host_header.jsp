@@ -62,6 +62,9 @@
 				<ul class="navbar-nav">
 					<div class="divider d-none d-sm-block"></div>
 
+					<ul class="navbar-nav">
+					<div class="divider d-none d-sm-block"></div>
+
 					<!-- Nav Item - User Information -->
 					<c:choose>
 						<c:when test="${ logind == false || logind == null }">
@@ -75,39 +78,109 @@
 									<i class="far fa-grin-beam fa-fw fa-2x text-danger"></i>
 								</a>
 								<!-- Dropdown - User Information -->
-								<div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-									<a class="dropdown-item" href="/host/epOnline/list">
-										<i class="fas fa-photo-video menu-icon-size mr-2"></i>
-										<h6 class="d-inline-block">호스트-등록한 체험</h6>
+								<div class="dropdown-menu dropdown-menu-right shadow animated--grow-in user-menu-size" aria-labelledby="userDropdown">
+									<a class="dropdown-item" href="/member/profile?menum=${ menum }">
+										<div class="row">
+											<div class="col-md-3">
+												<i class="fas fa-user menu-icon-size mr-3"></i>
+											</div>
+											<div class="col-md-9">
+												<h6 class="d-inline-block">내 정보</h6>
+											</div>
+										</div>
 									</a>
-									<a class="dropdown-item" href="/host/ResCheck">
-										<i class="fas fa-list menu-icon-size mr-3"></i>
-										<h6 class="d-inline-block">호스트-내 집에 온다는 사람들</h6>
-									</a>
+									<div class="dropdown-divider"></div>
 									<a class="dropdown-item" href="/user/apply/list">
-										<i class="fas fa-list menu-icon-size mr-3"></i>
-										<h6 class="d-inline-block">유저-예약 현황</h6>
+										<div class="row">
+											<div class="col-md-3">
+												<i class="fas fa-list menu-icon-size mr-3"></i>
+											</div>
+											<div class="col-md-9">
+												<h6 class="d-inline-block">예약 현황</h6>
+											</div>
+										</div>
 									</a>
 									<a class="dropdown-item" href="/experience/myexperience">
-										<i class="fas fa-list menu-icon-size mr-3"></i>
-										<h6 class="d-inline-block">유저-체험 호스팅하기</h6>
+										<div class="row">
+											<div class="col-md-3">
+												<i class="fa fa-handshake-o menu-icon-size mr-3"></i>
+											</div>
+											<div class="col-md-9">
+												<h6 class="d-inline-block">체험 호스팅하기</h6>
+											</div>
+										</div>
 									</a>
 									<a class="dropdown-item" href="/ep_management/ep_listg">
-										<i class="fas fa-list menu-icon-size mr-3"></i>
-										<h6 class="d-inline-block">유저-등록 중인 체험(테스트)</h6>
+										<div class="row">
+											<div class="col-md-3">
+												<i class="fa fa-reply-all menu-icon-size mr-3"></i>
+											</div>
+											<div class="col-md-9">
+												<h6 class="d-inline-block">등록 중인 체험</h6>
+											</div>
+										</div>
 									</a>
 									<a class="dropdown-item" href="/host/regist/1?next=1">
-										<i class="fas fa-list menu-icon-size mr-3"></i>
-										<h6 class="d-inline-block">유저-숙소 호스트 되기</h6>
+										<div class="row">
+											<div class="col-md-3">
+												<i class="fa fa-fort-awesome menu-icon-size mr-3"></i>
+											</div>
+											<div class="col-md-9">
+												<h6 class="d-inline-block">숙소 호스트 되기</h6>
+											</div>
+										</div>
 									</a>
-									<a class="dropdown-item" href="#">
-										<i class="fas fa-user menu-icon-size mr-3"></i>
-										<h6 class="d-inline-block">Profile</h6>
+									<div class="dropdown-divider"></div>
+									<a class="dropdown-item" href="/host/house/list">
+										<div class="row">
+											<div class="col-md-3">
+												<i class="fa fa-home menu-icon-size mr-2"></i>
+											</div>
+											<div class="col-md-9">
+												<h6 class="d-inline-block">내가 등록한 숙소</h6>
+											</div>
+										</div>
+									</a>
+									<a class="dropdown-item" href="/host/epOnline/list">
+										<div class="row">
+											<div class="col-md-3">
+												<i class="fas fa-photo-video menu-icon-size mr-2"></i>
+											</div>
+											<div class="col-md-9">
+												<h6 class="d-inline-block">내가 등록한 체험</h6>
+											</div>
+										</div>
+									</a>
+									<a class="dropdown-item" href="/host/ResCheck">
+										<div class="row">
+											<div class="col-md-3">
+												<i class="fa fa-users menu-icon-size mr-3"></i>
+											</div>
+											<div class="col-md-9">
+												<h6 class="d-inline-block">내 집에 온다는 사람들</h6>
+											</div>
+										</div>
+									</a>
+									<a class="dropdown-item" href="/online/myPick">
+										<div class="row">
+											<div class="col-md-3">
+												<i class="far fa-heart fa-2x"></i>
+											</div>
+											<div class="col-md-9">
+												<h6 class="d-inline-block">체험 찜 목록</h6>
+											</div>
+										</div>
 									</a>
 									<div class="dropdown-divider"></div>
 									<a class="dropdown-item" href="/logout">
-										<i class="fas fa-sign-out-alt menu-icon-size mr-3"></i>
-										<h6 class="d-inline-block">로그아웃</h6>
+										<div class="row">
+											<div class="col-md-3">
+												<i class="fas fa-sign-out-alt menu-icon-size mr-3"></i>
+											</div>
+											<div class="col-md-9">
+												<h6 class="d-inline-block">로그아웃</h6>
+											</div>
+										</div>
 									</a>
 								</div>
 							</li>
