@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <link href="/resources/css/userapply/userapply.css" rel="stylesheet" type="text/css">
 
@@ -33,9 +34,16 @@
 	</div>
 	<div class="row" id="applydivision2">
 		<div class="col-md-12">
-			<h3>편의 기능</h3>
-			<span></span>
-			<input type="button" value="추가 편의 기능" class="btn btn-danger btn-icon-split">
+			<c:choose>
+				<c:when test="${conven ne null}">
+					<h3>편의 기능</h3>
+					<span>${conven }</span><br>
+					<input type="button" value="추가 편의 기능" class="btn btn-danger btn-icon-split" data-toggle="modal" data-target="#convendetail">
+				</c:when>
+				<c:otherwise>
+					<h3>편의 기능 없습니다.</h3>
+				</c:otherwise>
+			</c:choose>
 		</div>
 	</div>
 	<div class="row" id="applydivision1">
@@ -197,4 +205,18 @@
 	</div>
 </div>
 
+<div class="modal fade" id="convendetail" role="dialog">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h3 class="modal-title">편의 시설</h3>
+				<button type="button" class="close" data-dismiss="modal" id="modalexit">X</button>
+			</div>
+			<div class="modal-body">${convendetail }</div>
+			<div class="modal-footer">
+				<input type="button" value="확인" class="btn btn-danger btn-icon-split" id="alertclose">
+			</div>
+		</div>
+	</div>
+</div>
 

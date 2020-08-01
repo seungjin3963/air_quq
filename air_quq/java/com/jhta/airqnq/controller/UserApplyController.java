@@ -237,17 +237,56 @@ public class UserApplyController {
 
 			String conven=null;
 			
-			System.out.println("출력"+convenvo);
-//			System.out.println(convenvo.getWifi());
-//			System.out.println(convenvo.getPool());
-//			System.out.println(convenvo.getWasher());
-//			System.out.println(convenvo.getPaking());
-//			System.out.println(convenvo.getKitchen());
+			boolean convencheck=true;
+			
+			if(convenvo.getPool() == 1) {
+				if(convencheck) {
+					conven="수영장・";
+					convencheck=false;
+				}
+			}
+			if(convenvo.getPaking() == 1) {
+				if(convencheck) {
+					conven="주차장・";
+					convencheck=false;
+				}else {
+					conven+="주차장・";
+				}
+			}
+			if(convenvo.getWifi() == 1) {
+				if(convencheck) {
+					conven="무선인터넷・";
+					convencheck=false;
+				}else {
+					conven+="무선인터넷・";
+				}
+			}
+			if(convenvo.getWasher() == 1) {
+				if(convencheck) {
+					conven="세탁기・";
+					convencheck=false;
+				}else {
+					conven+="세탁기・";
+				}
+			}
+			if(convenvo.getKitchen() == 1) {
+				if(convencheck) {
+					conven="주방・";
+					convencheck=false;
+				}else {
+					conven+="주방・";
+				}
+			}
+			
+			conven=conven.substring(0, conven.length()-1);
 			
 			model.addAttribute("imgarr", imgarr);
 			model.addAttribute("infovo", infovo);
 			model.addAttribute("usercheck", usercheck);
+			model.addAttribute("conven", conven);
+			model.addAttribute("convendetail", convenvo.getEtc());
 			model.addAttribute("chekcdatepicker", chekcdatepicker);
+			
 		} catch (ParseException pe) {
 			System.out.println("날짜 오류 :"+pe);
 		}
