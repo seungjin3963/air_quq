@@ -67,6 +67,10 @@ public class EchoHandler extends TextWebSocketHandler{
 		//여기에 DB접속해서 몇개의 row있는지 확인 다르면, 알림가게
 		//모든 사람에게
 		for(WebSocketSession sess:sessionList) {
+			System.out.println(sess.getId());
+			if(session.getId().equals(sess.getId())) {
+				continue;
+			}
 			sess.sendMessage(new TextMessage(message.getPayload()));
 		}
 		System.out.println("메세지 보낸것 메소드1");

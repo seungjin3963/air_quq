@@ -35,7 +35,8 @@ $(function(){
     		}
     	});
     });
-    let sock = new SockJS("http://localhost:8090/echo");
+    /*let sock = new SockJS("http://localhost:8090/echo");*/
+    let sock = new SockJS("http://192.168.219.100:8090/echo");
     sock.onmessage=onMessage;
     sock.onclose=onClose;
     
@@ -59,7 +60,6 @@ $(function(){
 			data:{"content":text,"mnum":
 				mnum,"chat_no":chat_no},
 			success:function(data){
-				console.log(data);
 				if(data == "success"){
 					$("#message").val("");
 					msgAreaScrollUpdate();
@@ -67,15 +67,21 @@ $(function(){
 					location.href = "/error";
 				}
 			}
-		})
+		});
+		
+		$("#messageArea").append(
+				"<div class='message-box-holder'>"+
+				"<div class='message-box'>"+
+				text+"</div>");
 	}
 	//서버로부터 메세지를 받았을 때
 	function onMessage(msg){
 		var data=msg.data;
 		$("#messageArea").append(
 				"<div class='message-box-holder'>"+
-				"<div class='message-box'>"+
+				"<div class='message-box message-partner'>"+
 				data+"</div>");
+		msgAreaScrollUpdate();
 	}
 	//서버와 연결을 끊었을 때
 	function onClose(evt){
