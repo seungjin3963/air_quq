@@ -97,4 +97,9 @@
 				and a.rtnum = #{rtnum}
 				and a.hinum = #{hinum}
 	</select>
+	
+	<!-- 승진 -->
+	<select id="selectreviewandgrade" resultType="com.jhta.airqnq.vo.ReviewGradeVo" parameterType="int">
+		select clean,accuracy,commu,position,checkin,satis,menum,score,content from review r,grade g where hinum=#{hinum} and r.renum=g.renum;
+	</select>
 </mapper>

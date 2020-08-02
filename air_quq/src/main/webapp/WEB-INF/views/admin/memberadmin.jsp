@@ -38,10 +38,10 @@
 				</c:choose>
 				<c:choose>
 					<c:when test="${vo.del_yn == 'n'}">
-						<td><input type="button" value="강퇴" class="btn btn-danger" onclick="memberexit(this)"></td>
+						<td><input type="button" value="강퇴" class="btn btn-danger" onclick="memberexit(this,${vo.menum })"></td>
 					</c:when>
 					<c:otherwise>
-						<td><input type="button" value="복구" class="btn btn-danger" onclick="memberexit(this)"></td>
+						<td><input type="button" value="복구" class="btn btn-danger" onclick="memberexit(this,,${vo.menum })"></td>
 					</c:otherwise>
 				</c:choose>
 				<td><input type="button" value="프로필 보기" class="btn btn-danger" onclick="memberprofile(${vo.menum })"></td>

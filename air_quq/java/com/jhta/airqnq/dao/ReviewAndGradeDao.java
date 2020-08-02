@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.jhta.airqnq.vo.GradeOneVo;
+import com.jhta.airqnq.vo.ReviewAndGradeVo;
+import com.jhta.airqnq.vo.ReviewGradeVo;
 
 @Repository
 public class ReviewAndGradeDao {
@@ -38,5 +40,10 @@ public class ReviewAndGradeDao {
 
 	public List<GradeOneVo> selReviewGrade(Map<String, Object> map) {
 		return session.selectList(NAMESPACE + ".selReviewGrade", map);
+	}
+	
+	/* 승진 */
+	public List<ReviewGradeVo> selectreviewandgrade(int hinum){
+		return session.selectList(NAMESPACE +".selectreviewandgrade", hinum);
 	}
 }

@@ -56,7 +56,30 @@
 		</div>
 	</div>
 	<div class="row" id="applydivision3">
-		<div class="col-md-12">첫 후기를 남겨 주세요!!</div>
+		<c:choose>
+			<c:when test="${review ne null }">
+				<div class="col-md-12">
+					<div class="row">
+						<div class="row"><i class="fas fa-star" style="color: red;"></i>${revieavg.scoretot }점(후기 ${revieavg.reviewgradecnt }개)</div>
+					</div>
+					<div class="row">
+						<div class="col-md-3">청결도</div><div class="col-md-3">${revieavg.clean }</div><div class="col-md-3">정확성</div><div class="col-md-3">${revieavg.accuracy }</div>
+					</div>
+					<div class="row">
+						<div class="col-md-3">의사소통</div><div class="col-md-3">${revieavg.commu }</div><div class="col-md-3">위치</div><div class="col-md-3">${revieavg.position }</div>
+					</div>
+					<div class="row">
+						<div class="col-md-3">체크인</div><div class="col-md-3">${revieavg.checkinscore }</div><div class="col-md-3">가격 대비 만족도</div><div class="col-md-3">${revieavg.satis }</div>
+					</div>
+				</div>
+				<div>
+					<input type="button" value="후기보기" class="btn btn-danger btn-icon-split" data-toggle="modal" data-target="#reviewmodal">
+				</div>
+			</c:when>
+			<c:otherwise>
+				<div class="col-md-12">첫 후기를 남겨 주세요!!</div>
+			</c:otherwise>
+		</c:choose>
 	</div>
 
 	<div class="row" id="applydivision1">
@@ -116,6 +139,7 @@
 <input type="hidden" value="${imgarr }" id="imgarr">
 <input type="hidden" value="${infovo.lat}" id="lat">
 <input type="hidden" value="${infovo.lnt}" id="lnt">
+<%-- <input type="text" value="${review.menum }"> --%>
 <div class="modal fade" id="myModal" role="dialog">
 	<div class="modal-dialog">
 		<div class="modal-content">
@@ -215,6 +239,28 @@
 			<div class="modal-body">${convendetail }</div>
 			<div class="modal-footer">
 				<input type="button" value="확인" class="btn btn-danger btn-icon-split" id="alertclose">
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="modal fade" id="reviewmodal" role="dialog">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h3 class="modal-title">후기</h3>
+				<button type="button" class="close" data-dismiss="modal" id="modalexit">X</button>
+			</div>
+			<div class="modal-body">
+				<c:forEach var="reviewdata" items="${membernumid }">
+					<div>
+						<img onerror="this.src='/resources/img/적분이_001.JPG';" src="/memberimg?menum=${ reviewdata.menum}" style="width: 20px; height: 20px; border-radius: 100%;">${ reviewdata.id}<br>
+						<div>${ reviewdata.content}</div>				
+					</div>
+				</c:forEach>
+			</div>
+			<div class="modal-footer">
+				<input type="button" value="확인" class="" id="">
 			</div>
 		</div>
 	</div>

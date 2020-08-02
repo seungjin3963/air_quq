@@ -30,6 +30,7 @@ import com.jhta.airqnq.service.ApplyService;
 import com.jhta.airqnq.service.House_infoAdminService;
 import com.jhta.airqnq.service.MemberService;
 import com.jhta.airqnq.service.RentService;
+import com.jhta.airqnq.service.ReviewAndGradeService;
 import com.jhta.airqnq.vo.ApplyVo;
 import com.jhta.airqnq.vo.Apply_infoVo;
 import com.jhta.airqnq.vo.ConvenDetailVo;
@@ -37,6 +38,9 @@ import com.jhta.airqnq.vo.EP_ManagementVo;
 import com.jhta.airqnq.vo.JoinVo;
 import com.jhta.airqnq.vo.MemberVo;
 import com.jhta.airqnq.vo.RentVo;
+import com.jhta.airqnq.vo.ReviewAndGradeVo;
+import com.jhta.airqnq.vo.ReviewGradeVo;
+import com.jhta.airqnq.vo.ReviewmodalVo;
 
 @Controller
 public class UserApplyController {
@@ -56,16 +60,23 @@ public class UserApplyController {
 	private RentService rentservice;
 	
 	@Autowired
-	private AdminApproveService approveservice; 
+	private AdminApproveService approveservice;
+	
+	@Autowired
+	private ReviewAndGradeService reviewandgradeservice;
 
 	@RequestMapping(value="/user/apply")
 	public String userapply(Model model,HttpSession session, String start_day, String end_day, int hinum, int people_count) {
+		
 		ConvenDetailVo convenvo= service.selectconvendetail(hinum);
 		Apply_infoVo infovo= house_infoService.HinumSelect(hinum);
 		List<RentVo> hinumrentlist=rentservice.hinumrentselect(hinum);
 		List<EP_ManagementVo> epvo = approveservice.epappImg(hinum);
+		List<ReviewGradeVo> review=reviewandgradeservice.selectreviewandgrade(hinum);
 		
 		HashMap<String, String> usercheck=new HashMap<String, String>();
+		HashMap<String, Object> revieavg=new HashMap<String, Object>();
+		ArrayList<ReviewmodalVo> membernumid=new ArrayList<ReviewmodalVo>();
 
 		String imgarr=null;
 
@@ -280,12 +291,62 @@ public class UserApplyController {
 			
 			conven=conven.substring(0, conven.length()-1);
 			
+			Double clean=0.0;
+			Double accuracy=0.0;
+			Double commu=0.0;
+			Double position=0.0;
+			Double checkinscore=0.0;
+			Double satis=0.0;
+			Double score=0.0;
+			int reviewgradecnt=0;
+			String scoretot=null;
+			
+			if(review != null) {
+				for(ReviewGradeVo vo : review) {
+					clean+=vo.getClean();
+					accuracy+=vo.getAccuracy();
+					commu+=vo.getCommu();
+					position+=vo.getPosition();
+					checkinscore+=vo.getCheckin();
+					satis+=vo.getSatis();
+					score+=vo.getScore();
+					reviewgradecnt++;
+					
+					ReviewmodalVo reviewvo=new ReviewmodalVo(vo.getMenum(), memberservice.MemberOne(vo.getMenum()).getId() , vo.getContent());
+					membernumid.add(reviewvo);
+					
+				}
+				
+				clean/=reviewgradecnt;
+				accuracy/=reviewgradecnt;
+				commu/=reviewgradecnt;
+				position/=reviewgradecnt;
+				checkinscore/=reviewgradecnt;
+				satis/=reviewgradecnt;
+				score/=reviewgradecnt;
+				
+				scoretot=String.format("%.2f",score);
+				
+				revieavg.put("clean", clean);
+				revieavg.put("accuracy", accuracy);
+				revieavg.put("commu", commu);
+				revieavg.put("position", position);
+				revieavg.put("checkinscore", checkinscore);
+				revieavg.put("satis", satis);
+				revieavg.put("scoretot", scoretot);
+				revieavg.put("reviewgradecnt", reviewgradecnt);
+			}
+			
 			model.addAttribute("imgarr", imgarr);
 			model.addAttribute("infovo", infovo);
 			model.addAttribute("usercheck", usercheck);
 			model.addAttribute("conven", conven);
 			model.addAttribute("convendetail", convenvo.getEtc());
 			model.addAttribute("chekcdatepicker", chekcdatepicker);
+			model.addAttribute("revieavg", revieavg);
+			model.addAttribute("review", review);
+			model.addAttribute("membernumid", membernumid);
+			model.addAttribute("reviewgradecnt", reviewgradecnt);
 			
 		} catch (ParseException pe) {
 			System.out.println("날짜 오류 :"+pe);

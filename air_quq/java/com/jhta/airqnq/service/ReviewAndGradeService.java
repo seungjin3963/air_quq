@@ -9,6 +9,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.jhta.airqnq.dao.ReviewAndGradeDao;
 import com.jhta.airqnq.vo.GradeOneVo;
+import com.jhta.airqnq.vo.ReviewAndGradeVo;
+import com.jhta.airqnq.vo.ReviewGradeVo;
 
 @Service
 public class ReviewAndGradeService {
@@ -30,5 +32,10 @@ public class ReviewAndGradeService {
 
 	public List<GradeOneVo> selReviewGrade(Map<String, Object> map) {
 		return dao.selReviewGrade(map);
+	}
+	
+	/* 승진 */
+	public List<ReviewGradeVo> selectreviewandgrade(int hinum){
+		return dao.selectreviewandgrade(hinum);
 	}
 }
