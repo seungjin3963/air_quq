@@ -1,7 +1,12 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <link href="/resources/css/epOnline/chat.css" rel="stylesheet">
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.1.5/sockjs.min.js"></script>
+<script type="text/javascript"
+	src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.1.5/sockjs.min.js"></script>
+
+<input type="hidden" id="menumvalue">
+<input type="hidden" id="chat_no">
 <div class="container">
 	<!-- DataTales Example -->
 	<div class="card shadow mb-4">
@@ -10,7 +15,8 @@
 		</div>
 		<div class="card-body">
 			<div class="table-responsive">
-				<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+				<table class="table table-bordered" id="dataTable" width="100%"
+					cellspacing="0">
 					<thead>
 						<tr>
 							<th>번호</th>
@@ -20,13 +26,15 @@
 					</thead>
 					<tbody>
 						<c:forEach var="list" items="${list }">
-							<td>${list.chat_no }</td>
-							<td>${list.menum }</td>
-							<td>
-								<a href="javascript:chatStart(${list.chat_no })">
-									<i class="fa fa-comments fa-2x"></i>
-								</a>
-							</td>
+							<tr>
+								<td>${list.chat_no }</td>
+								<td>${list.menum }</td>
+								<td>
+									<a href="javascript:chatStart(${list.chat_no })">
+										<i class="fa fa-comments fa-2x"></i>
+									</a>
+								</td>
+							</tr>
 						</c:forEach>
 					</tbody>
 				</table>

@@ -22,6 +22,7 @@
  	<typeAlias type="com.jhta.airqnq.vo.ExperienceSearchVo" alias="ex_search"/>
  	<typeAlias type="com.jhta.airqnq.vo.ConvenDetailVo" alias="convenVo"/>
  	<typeAlias type="com.jhta.airqnq.vo.Chat_selectVo" alias="chat_select"/>
+ 	<typeAlias type="com.jhta.airqnq.vo.ChattingVo" alias="chatting"/>
  </typeAliases>
  <mappers>
     <mapper resource="com/jhta/mybatis/mapper/JoinMapper.xml"/>

@@ -26,9 +26,8 @@ $(function(){
     							val.content+"</div>");
     				}else{
     					$("#messageArea").append(
-    							"<div class='message-box message-partner'>"+
-    							"<div class='message-box'>"+
-    							val.content+"</div>");
+    							"<div class='message-box-holder'><div class='message-box message-partner'>"+
+    							val.content+"</div></div>");
     				}
     			});
     			

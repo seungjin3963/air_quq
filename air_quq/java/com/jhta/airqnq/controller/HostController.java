@@ -5,6 +5,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -19,7 +20,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.jhta.airqnq.service.HostInfoService;
 import com.jhta.airqnq.service.HostService;
-import com.jhta.airqnq.vo.Chat_selectVo;
+import com.jhta.airqnq.vo.ChattingVo;
 import com.jhta.airqnq.vo.ExpInfoVo;
 import com.jhta.airqnq.vo.HouseInfoVo;
 
@@ -260,8 +261,10 @@ public class HostController {
 
 	@RequestMapping("/host/dm/getChatting")
 	@ResponseBody
-	public String getChatting(int chat_no) {
-		
-		return "";
+	public Map<String, Object> getChatting(HttpSession session, int chat_no) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("menum", session.getAttribute("menum"));
+		map.put("list", service.chattingList(chat_no));
+		return map;
 	}
 }

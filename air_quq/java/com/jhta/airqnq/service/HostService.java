@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.jhta.airqnq.dao.HostDao;
 import com.jhta.airqnq.vo.Chat_selectVo;
+import com.jhta.airqnq.vo.ChattingVo;
 import com.jhta.airqnq.vo.ExpInfoVo;
 import com.jhta.airqnq.vo.HouseInfoVo;
 
@@ -56,5 +57,9 @@ public class HostService {
 
 	public List<Chat_selectVo> chat_selectList(int menum) {
 		return dao.chat_selectList(menum);
+	}
+
+	public List<ChattingVo> chattingList(int chat_no) {
+		return dao.chattingList(chat_no);
 	}
 }

@@ -1,20 +1,23 @@
 function chatStart(chat_no){
 	$.getJSON("/host/dm/getChatting",{chat_no},function(data){
-	    $("#dmdm").css('visibility','visible');
-	    $("#chat_no").val(data.chat_no);
-		$("#menumvalue").val(data.menum);
+		$("#messageArea").empty();
 		
-		$(data.chat).each(function(i, val){
-			if(data.menum == val.mnum){
+		$(".fa-minus").addClass(".chatbox");
+		
+	    $("#dmdm").css('visibility','visible');
+		$("#menumvalue").val(data.menum);
+		$("#chat_no").val(chat_no);
+		
+		let menum = data.menum;
+		$(data.list).each(function(i, val){
+			if(menum == val.mnum){
 				$("#messageArea").append(
 						"<div class='message-box-holder'>"+
 						"<div class='message-box'>"+
 						val.content+"</div>");
 			}else{
 				$("#messageArea").append(
-						"<div class='message-box message-partner'>"+
-						"<div class='message-box'>"+
-						val.content+"</div>");
+						`<div class='message-box-holder'><div class='message-box message-partner'>${val.content}</div></div>`);
 			}
 		});
 		
