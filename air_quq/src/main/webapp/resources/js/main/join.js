@@ -34,7 +34,7 @@ $("input[name='id']").change( ()=> {
 	});
 });
 
-//이메일 중복체크
+/*//이메일 중복체크
 $("input[name='email']").change( ()=> {
 	var email = $("input[name='email']").val();
 
@@ -50,7 +50,7 @@ $("input[name='email']").change( ()=> {
 			alert('사용할수없는 이메일입니다.');
 		}
 	});
-});
+});*/
 
 //페스워드 입력 체크
 function passwordCheckForm(){
