@@ -57,7 +57,7 @@
 	</div>
 	<div class="row" id="applydivision3">
 		<c:choose>
-			<c:when test="${review ne null }">
+			<c:when test="${review ne '[]' }">
 				<div class="col-md-12">
 					<div class="row">
 						<div class="row" id="middlediv"><i class="fas fa-star" id="starcolor"></i>${revieavg.scoretot }점(후기 ${revieavg.reviewgradecnt }개)</div>
