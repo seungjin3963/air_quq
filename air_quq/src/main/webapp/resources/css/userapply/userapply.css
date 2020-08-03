@@ -265,9 +265,15 @@
 	border-radius: 100%;
 }
 
+/* 리뷰 닫기 */
 #reviewmodalexit{
 	width: 100px;
 	margin: auto;
+}
+
+/* 리뷰 모달 스크롤 */
+#reviewmodalscroll{
+	overflow: auto;
 }
 
 

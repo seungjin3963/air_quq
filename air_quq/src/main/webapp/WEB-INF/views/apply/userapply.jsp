@@ -246,7 +246,7 @@
 
 <div class="modal fade" id="reviewmodal" role="dialog">
 	<div class="modal-dialog">
-		<div class="modal-content">
+		<div class="modal-content" id="reviewmodalscroll">
 			<div class="modal-header">
 				<h3 class="modal-title">후기</h3>
 				<button type="button" class="close" data-dismiss="modal" id="modalexit">X</button>

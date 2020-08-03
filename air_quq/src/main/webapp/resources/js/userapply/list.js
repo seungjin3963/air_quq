@@ -53,7 +53,7 @@ function houseApplyList(){
 				html += "</td>";
 				html += "<td>";
 				if(startrent >= now){
-					html += `<a href="javascript:refundmodal(${value.rtnum })" class="text-warning"><i class="fa fa-calendar-times-o fa-2x"></i></a>`;
+					html += `<a href="javascript:applyCancel(${value.rtnum })" class="text-warning"><i class="fa fa-calendar-times-o fa-2x"></i></a>`;
 				}else{
 					html += `<a class="text-Secondary disable"><i class="fa fa-calendar-times-o fa-2x"></i></a>`;
 				}
@@ -134,7 +134,7 @@ function expApplyList(){
 				html += "</td>";
 				html += "<td>";
 				if(startrent >= now){
-					html += `<a href="javascript:refundmodal(${value.rtnum })" class="text-warning"><i class="fa fa-calendar-times-o fa-2x"></i></a>`;
+					html += `<a href="javascript:applyCancel(${value.rtnum })" class="text-warning"><i class="fa fa-calendar-times-o fa-2x"></i></a>`;
 				}else{
 					html += `<a class="text-Secondary disable"><i class="fa fa-calendar-times-o fa-2x"></i></a>`;
 				}
