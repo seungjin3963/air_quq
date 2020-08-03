@@ -15,8 +15,6 @@ let pcConfig = {
       }]
 }
 
-
-/*let room = 'foo';*/
 let room = $('#hinum').val();
 
 let socket = io.connect("http://192.168.0.2:3000/");

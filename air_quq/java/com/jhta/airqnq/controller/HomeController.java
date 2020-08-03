@@ -201,7 +201,7 @@ public class HomeController {
 	}
 	
 	//전체 집 검색하기
-	@RequestMapping("search/host/all")
+	@RequestMapping("/search/host/all")
 	public String selectHouseAll(HttpSession session, @RequestParam(value = "pageNum", defaultValue = "1") int pageNum) {
 		HashMap<String, Object> map = new HashMap<String, Object>();
 		

@@ -21,17 +21,11 @@
 									<div class="form-group">
 										<input type="password" class="form-control form-control-user" name="pwdl" placeholder="비밀번호">
 									</div>
-									<div class="form-group">
-										<div class="custom-control custom-checkbox small">
-											<input type="checkbox" class="custom-control-input" id="customCheck">
-											<label class="custom-control-label" for="customCheck">자동 로그인</label>
-										</div>
-									</div>
 									<input type="submit" class="btn btn-primary btn-user btn-block" value="로그인">
 								</form>
 								<hr>
 								<div class="text-center">
-									<a href="https://kauth.kakao.com/oauth/authorize?client_id=f5b5ae84edd2bb27cfdebdebaa48bc3f&redirect_uri=http://localhost:8090/kakao/login&response_type=code">
+									<a href="https://kauth.kakao.com/oauth/authorize?client_id=f5b5ae84edd2bb27cfdebdebaa48bc3f&redirect_uri=http://192.168.0.2:8090/kakao/login&response_type=code">
 										<img src="/resources/img/kakao_login_medium_wide.png">
 									</a>
 								</div>

@@ -33,7 +33,7 @@ $('.fa-close').click(function(){
 });
 
 /*let sock = new SockJS("http://localhost:8090/echo");*/
-let sock = new SockJS("http://192.168.219.100:8090/echo");
+let sock = new SockJS("http://192.168.0.2:8090/echo");
 sock.onmessage=onMessage;
 sock.onclose=onClose;
 
