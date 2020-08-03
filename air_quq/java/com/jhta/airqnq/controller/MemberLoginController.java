@@ -57,8 +57,16 @@ public class MemberLoginController {
 		String logout_redirect_uri = "http://192.168.0.2:8090/kakao/logout"; 
 //		String logout_redirect_uri = "http://192.168.219.100:8090/kakao/logout";
 		String path = "https://kauth.kakao.com/oauth/logout?client_id="+ client_id + "&logout_redirect_uri=" + logout_redirect_uri + "&state=?";
-		session.invalidate();
-		return "redirect:" + path;
+		
+		String access_Token = (String)session.getAttribute("access_Token");
+		System.out.println(access_Token + ": access_Token");
+		if(access_Token == null || access_Token.equals("")) {
+			session.invalidate();
+			return "redirect:" + path;
+		} else {
+			System.out.println("홈으로 리다이렉트");
+			return "redirect:.home";
+		}
 		//return ".home";
 	}
 

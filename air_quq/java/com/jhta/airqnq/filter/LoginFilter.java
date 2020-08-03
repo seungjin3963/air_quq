@@ -104,6 +104,8 @@ public class LoginFilter implements Filter {
 			return true;
 		} else if(uri.equals("/online/dm")) {
 			return true;
+		} else if(uri.equals("/kakao/logout")) {
+			return true;
 		}
 		return false;
 	}
