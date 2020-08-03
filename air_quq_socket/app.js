@@ -55,19 +55,10 @@ io.sockets.on('connection',socket=>{
     	io.sockets.emit('roomList', rooms);
     });
     
-    socket.on('user-exit', room => {
-    	socket.leave(room);
-    });
-    
     socket.on('clientList', (room) => {
     	//console.log(Object.keys(io.sockets.clients().sockets));
     	let clients = Object.keys(io.sockets.clients().sockets);
     	socket.emit('clientList', clients);
-    });
-    
-    socket.on('user-out', (room) => {
-    	socket.leave(room);
-    	socket.emit('user-out');
     });
     
     socket.on('disconnect', function() {

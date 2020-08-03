@@ -9,7 +9,6 @@
 		<div>
 			<video id="remoteVideo" autoplay></video>
 			<span id="remoteClose" class='close'>&times;</span>
-			<input type="text" id="remoteId">
 		</div>
 	</div>
 
@@ -18,5 +17,4 @@
 	<!-- <script src="http://192.168.219.100:3000/socket.io/socket.io.js"></script> -->
 	<script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
 	<script src="/resources/js/epOnline/rtc.js"></script>
-	<script src="/resources/js/epOnline/epOnline.js"></script>
 </div>

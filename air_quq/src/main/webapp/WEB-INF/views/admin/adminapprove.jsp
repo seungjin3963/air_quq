@@ -59,7 +59,14 @@
 					<input type="button" class="btn btn-danger btn-icon-split" value="<<" style=" width:15%;" id="hm_approveM">
 					<span id="hm_pageNum">${housePage.pageNum }</span>
 					/
-					<span id="hm_totalPageCount">${housePage.totalPageCount}</span>
+					<c:choose>
+						<c:when test="${housePage.totalPageCount == 0}">
+							<span id=hm_totalPageCount>1</span>
+						</c:when>
+						<c:otherwise>
+							<span id="hm_totalPageCount">${housePage.totalPageCount}</span>
+						</c:otherwise>
+					</c:choose>
 					<input type="button" class="btn btn-danger btn-icon-split" value=">>" style="width: 15%;" id="hm_approveP">
 				</div>
 				<div class="col-md-4"></div>
@@ -114,18 +121,23 @@
 			</table>
 
 		</div>
-		<br>
-		<br>
 		<div class="row">
-			<div class="col-md-4"></div>
+			<div class="col-md-5"></div>
 			<div class="col-md-3">
 				<input type="button" class="btn btn-danger btn-icon-split" value="<<" style=" width:15%;" id="ep_approveM">
 				<span id="ep_pageNum">${experiencePage.pageNum }</span>
 				/
-				<span id="ep_totalPageCount">${experiencePage.totalPageCount}</span>
+				<c:choose>
+					<c:when test="${experiencePage.totalPageCount == 0}">
+						<span id="ep_totalPageCount">1</span>
+					</c:when>
+					<c:otherwise>
+						<span id="ep_totalPageCount">${experiencePage.totalPageCount}</span>
+					</c:otherwise>
+				</c:choose>
 				<input type="button" class="btn btn-danger btn-icon-split" value=">>" style="width: 15%;" id="ep_approveP">
 			</div>
-			<div class="col-md-5"></div>
+			<div class="col-md-4"></div>
 		</div>
 	</div>
 

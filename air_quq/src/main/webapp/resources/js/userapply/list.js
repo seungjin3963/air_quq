@@ -74,7 +74,10 @@ function getApplyHouseList(){
 }
 
 function datechange(datetime) {
-	return datetime.toISOString().slice(0, 10);
+//	console.log(datetime.getFullYear());
+	//console.log(myDate.getFullYear() + "-" + ("0"+(myDate.getMonth() + 1)).slice(-2) + "-" + ("0" + myDate.getDate()).slice(-2));
+//	return datetime.toISOString().slice(0, 10);
+	return datetime.getFullYear() + "-" + ("0"+(datetime.getMonth() + 1)).slice(-2) + "-" + ("0" + datetime.getDate()).slice(-2)
 }
 
 function expApplyList(){

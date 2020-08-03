@@ -20,18 +20,6 @@ let room = $('#hinum').val();
 let socket = io.connect("http://192.168.0.2:3000/");
 /*let socket = io.connect("http://192.168.219.100:3000/");*/
 
-$("#remoteClose").click(function(){
-	//socket.emit('user-out', room);
-	$("#remoteVideo").remove();
-});
-
-socket.on('user-out', function(){
-	var video = document.getElementById('remoteVideo');
-	video.pause();
-	video.removeAttribute('src'); // empty source
-	//video.load();
-});
-
 if(room !==''){
     socket.emit('create or join',room);
     console.log('Attempted to create or join Room',room);
@@ -45,11 +33,6 @@ socket.on('created', (room,id,clients)=>{
 //socket.on('full', room=>{
 //  console.log('Room '+room+'is full');
 //});
-
-socket.on('user-exit', (id) => {
-	//$("#remoteVideo").srcObject = null;
-	$("#remoteVideo").empty();
-});
 
 socket.on('join',room=>{
   console.log('Another peer made a request to join room' + room);
