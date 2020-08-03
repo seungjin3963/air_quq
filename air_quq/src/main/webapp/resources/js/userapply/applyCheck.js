@@ -24,7 +24,7 @@ $("#btnApply").click(()=>{
 	 merchant_uid : 'merchant_' + new Date().getTime(),
 	 name : 'Airquq',
 //	 amount : $("#totmoney").val(),
-	 amount : data.money,
+	 amount : 100,
 	 buyer_email : data.email,
 	 buyer_name : data.id,
 	 buyer_tel : data.phone,
