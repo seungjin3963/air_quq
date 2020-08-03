@@ -1,0 +1,21 @@
+@charset "UTF-8";
+
+#hostEnrollment{
+		width: 1110px;
+		height: 640px;
+	}
+	
+	#applycnt{
+		width: 1110px;
+		height: 640px;
+	}
+	
+	#hostonemoney{
+		width: 1110px;
+		height: 640px;
+	}
+	
+	#fontcenter{
+		text-align: center;
+		margin-top: 20px;
+	}

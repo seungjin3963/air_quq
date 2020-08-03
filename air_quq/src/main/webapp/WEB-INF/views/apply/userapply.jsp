@@ -60,7 +60,7 @@
 			<c:when test="${review ne null }">
 				<div class="col-md-12">
 					<div class="row">
-						<div class="row"><i class="fas fa-star" style="color: red;"></i>${revieavg.scoretot }점(후기 ${revieavg.reviewgradecnt }개)</div>
+						<div class="row" id="middlediv"><i class="fas fa-star" id="starcolor"></i>${revieavg.scoretot }점(후기 ${revieavg.reviewgradecnt }개)</div>
 					</div>
 					<div class="row">
 						<div class="col-md-3">청결도</div><div class="col-md-3">${revieavg.clean }</div><div class="col-md-3">정확성</div><div class="col-md-3">${revieavg.accuracy }</div>
@@ -72,7 +72,7 @@
 						<div class="col-md-3">체크인</div><div class="col-md-3">${revieavg.checkinscore }</div><div class="col-md-3">가격 대비 만족도</div><div class="col-md-3">${revieavg.satis }</div>
 					</div>
 				</div>
-				<div>
+				<div id="middlediv">
 					<input type="button" value="후기보기" class="btn btn-danger btn-icon-split" data-toggle="modal" data-target="#reviewmodal">
 				</div>
 			</c:when>
@@ -253,14 +253,15 @@
 			</div>
 			<div class="modal-body">
 				<c:forEach var="reviewdata" items="${membernumid }">
-					<div>
-						<img onerror="this.src='/resources/img/적분이_001.JPG';" src="/memberimg?menum=${ reviewdata.menum}" style="width: 20px; height: 20px; border-radius: 100%;">${ reviewdata.id}<br>
-						<div>${ reviewdata.content}</div>				
+					<div id="usecal">
+						<img onerror="this.src='/resources/img/적분이_001.JPG';" src="/memberimg?menum=${ reviewdata.menum}" class="reviewmodalimg">${ reviewdata.id}<br>
+						<div>${ reviewdata.content}</div>
+						<br>			
 					</div>
 				</c:forEach>
 			</div>
 			<div class="modal-footer">
-				<input type="button" value="확인" class="" id="">
+				<input type="button" value="확인" class="btn btn-danger btn-icon-split" id="reviewmodalexit">
 			</div>
 		</div>
 	</div>

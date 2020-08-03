@@ -211,7 +211,6 @@ public class AdminController {
 			json.put("list", list);
 			EP_ManagementVo listinfo=host_infoService.epappinfo(hinum);
 			
-		//	json.put("div_type", listinfo.getDiv_type());
 			json.put("title",  listinfo.getTitle());		
 			json.put("subname", listinfo.getSubname());		
 			json.put("loc", listinfo.getLoc());	
