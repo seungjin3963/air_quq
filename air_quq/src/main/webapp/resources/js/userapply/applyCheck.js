@@ -1,3 +1,4 @@
+var totmoney=$("#totmoney").val();
 
 $("#btnApply").click(()=>{
 	function getMemberInfo(){
@@ -7,7 +8,8 @@ $("#btnApply").click(()=>{
 				let memberInfo = {email:data.email
 								,id:data.id
 								,phone:data.phone
-								,addr:data.addr};
+								,addr:data.addr
+								,money:totmoney};
 				resolve(memberInfo);
 			});
 		});
@@ -22,7 +24,7 @@ $("#btnApply").click(()=>{
 	 merchant_uid : 'merchant_' + new Date().getTime(),
 	 name : 'Airquq',
 //	 amount : $("#totmoney").val(),
-	 amount : 100,
+	 amount : data.money,
 	 buyer_email : data.email,
 	 buyer_name : data.id,
 	 buyer_tel : data.phone,
