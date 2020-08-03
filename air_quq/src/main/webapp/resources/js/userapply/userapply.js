@@ -216,6 +216,11 @@ $(function(){
 			$("#alert").modal("hide");
 		});
 		
+		//리뷰 모달 닫기
+		$("#reviewmodalexit").click(function(){
+			$("#reviewmodal").modal("hide");
+		})
+		
 		// 인원수 추가
 		$("#addbutton").click(function(){
 			var maxcnt=Number($("#h-cnt").val())+1

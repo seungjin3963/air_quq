@@ -68,6 +68,7 @@ public class UserApplyController {
 	@RequestMapping(value="/user/apply")
 	public String userapply(Model model,HttpSession session, String start_day, String end_day, int hinum, int people_count) {
 		
+		
 		ConvenDetailVo convenvo= service.selectconvendetail(hinum);
 		Apply_infoVo infovo= house_infoService.HinumSelect(hinum);
 		List<RentVo> hinumrentlist=rentservice.hinumrentselect(hinum);
